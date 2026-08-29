@@ -8,47 +8,47 @@
     :root {
       --card-h: 520px;
       --demo-h: 200px;
-      --radius: 6px;
+      --radius: 4px;
       --font: ui-sans-serif, system-ui, -apple-system, "PingFang SC", "Noto Sans SC", sans-serif;
       --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
     }
     html[data-theme="dark"] {
-      --bg: #0c0c0b;
-      --bg-2: #141413;
-      --card: #161615;
-      --demo: #10100f;
-      --line: #2c2c28;
-      --line-2: #3a3a35;
-      --text: #ededeb;
-      --muted: #9c9c96;
-      --faint: #6e6e68;
-      --fill: #1e1e1c;
-      --fill-2: #262623;
-      --accent: #c96442;
-      --accent-ink: #fff7f3;
-      --ok: #7a9a6a;
-      --danger: #c45c4a;
-      --shadow: 0 8px 24px rgba(0,0,0,.35);
-      --overlay: rgba(0,0,0,.5);
+      --bg: #000000;
+      --bg-2: #0a0a0a;
+      --card: #0e0e0e;
+      --demo: #0e0e0e;
+      --line: #262626;
+      --line-2: #3f3f3f;
+      --text: #fafafa;
+      --muted: #a3a3a3;
+      --faint: #737373;
+      --fill: #171717;
+      --fill-2: #1f1f1f;
+      --accent: #f97316;
+      --accent-ink: #fff7ed;
+      --ok: #a3a3a3;
+      --danger: #ef4444;
+      --shadow: none;
+      --overlay: rgba(0,0,0,.62);
     }
     html[data-theme="light"] {
-      --bg: #f4f3ef;
-      --bg-2: #eeede8;
-      --card: #fcfcfa;
-      --demo: #f7f6f2;
-      --line: #e2e0d8;
-      --line-2: #cfcbc0;
-      --text: #1c1c19;
-      --muted: #6a6a64;
-      --faint: #8a8a84;
-      --fill: #f0efe9;
-      --fill-2: #e8e6de;
-      --accent: #b54d2f;
-      --accent-ink: #fffaf8;
-      --ok: #4f7344;
-      --danger: #b44538;
-      --shadow: 0 8px 20px rgba(28,28,25,.08);
-      --overlay: rgba(28,28,25,.28);
+      --bg: #ffffff;
+      --bg-2: #fafafa;
+      --card: #ffffff;
+      --demo: #fafafa;
+      --line: #e5e5e5;
+      --line-2: #d4d4d4;
+      --text: #0a0a0a;
+      --muted: #525252;
+      --faint: #a3a3a3;
+      --fill: #f5f5f5;
+      --fill-2: #eeeeee;
+      --accent: #ea580c;
+      --accent-ink: #fff7ed;
+      --ok: #525252;
+      --danger: #dc2626;
+      --shadow: none;
+      --overlay: rgba(10,10,10,.32);
     }
     * { box-sizing: border-box; }
     html, body {
@@ -67,16 +67,20 @@
     .hero h1 { margin: 0 0 8px; font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
     .hero p { margin: 0; color: var(--muted); max-width: 640px; font-size: 13px; }
     .formula {
-      margin-top: 14px; padding: 0 0 0 12px; border-left: 2px solid var(--line-2);
+      margin-top: 14px; padding: 0 0 0 11px; border-left: 1px solid var(--accent);
       color: var(--muted); font-size: 13px;
     }
     .formula em { font-style: normal; color: var(--text); }
-    .theme-btn {
-      display: inline-flex; align-items: center; gap: 6px;
-      height: 34px; padding: 0 10px; border-radius: var(--radius);
-      border: 1px solid var(--line); background: var(--card); color: var(--muted);
+    .theme-switch {
+      display: inline-flex; border: 1px solid var(--line); border-radius: var(--radius);
+      overflow: hidden; flex: 0 0 auto;
     }
-    .theme-btn:hover { color: var(--text); border-color: var(--line-2); }
+    .theme-switch button {
+      display: inline-flex; align-items: center; gap: 6px;
+      height: 32px; padding: 0 10px; border: 0; background: transparent; color: var(--muted);
+    }
+    .theme-switch button + button { border-left: 1px solid var(--line); }
+    .theme-switch button.on { color: var(--text); background: var(--fill); }
     .toolbar { display: flex; gap: 10px; margin: 0 0 12px; align-items: center; }
     .search {
       flex: 1; height: 36px; padding: 0 12px; border-radius: var(--radius);
@@ -90,7 +94,7 @@
       border-radius: var(--radius); padding: 4px 9px; font-size: 12px;
     }
     .cat:hover { color: var(--text); }
-    .cat.active { color: var(--bg); background: var(--text); border-color: var(--text); }
+    .cat.active { color: var(--text); background: transparent; border-color: var(--text); }
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -101,7 +105,7 @@
       display: flex; flex-direction: column;
       background: var(--card);
       border: 1px solid var(--line);
-      border-radius: 8px;
+      border-radius: var(--radius);
       overflow: hidden; min-width: 0;
     }
     .demo {
@@ -135,25 +139,26 @@
     .empty-filter { color: var(--muted); padding: 48px 0; text-align: center; grid-column: 1 / -1; }
 
     .ui-btn {
-      border: 1px solid transparent; border-radius: var(--radius); padding: 6px 11px;
-      background: var(--text); color: var(--bg); font-weight: 500;
+      border: 1px solid var(--line); border-radius: var(--radius); padding: 6px 11px;
+      background: transparent; color: var(--text); font-weight: 500;
     }
-    .ui-btn.secondary { background: var(--fill); color: var(--text); border-color: var(--line); }
+    .ui-btn:hover { border-color: var(--text); }
+    .ui-btn.secondary { background: transparent; color: var(--text); border-color: var(--line); }
     .ui-btn.outline { background: transparent; color: var(--text); border-color: var(--line); }
     .ui-btn.ghost { background: transparent; color: var(--text); border-color: transparent; }
     .ui-btn.text { background: transparent; color: var(--text); border: 0; padding-inline: 4px; text-decoration: underline; text-underline-offset: 3px; }
     .ui-btn.link { background: transparent; color: var(--text); border: 0; text-decoration: underline; text-underline-offset: 3px; }
-    .ui-btn.danger { background: var(--danger); color: #fff; }
+    .ui-btn.danger { background: transparent; color: var(--danger); border-color: var(--danger); }
     .ui-btn.icon, .ui-btn.circle {
       width: 32px; height: 32px; padding: 0;
       display: inline-flex; align-items: center; justify-content: center;
     }
     .ui-btn.circle { border-radius: 50%; }
     .ui-btn[disabled] { opacity: .4; cursor: not-allowed; }
-    .ui-btn.on { background: var(--fill-2); color: var(--text); border-color: var(--text); }
+    .ui-btn.on { background: transparent; color: var(--text); border-color: var(--text); }
     .fab {
       position: absolute; right: 12px; bottom: 12px; width: 40px; height: 40px;
-      border-radius: 50%; border: 1px solid var(--line); background: var(--text); color: var(--bg);
+      border-radius: 50%; border: 1px solid var(--line); background: transparent; color: var(--text);
       display: flex; align-items: center; justify-content: center;
     }
     .field, .select-face {
@@ -173,13 +178,13 @@
       transition: transform .16s ease, width .16s ease;
     }
     .pills .tab { border: 1px solid transparent; border-radius: 999px; }
-    .pills .tab.active { border-color: var(--line); background: var(--fill); }
-    .seg { display: flex; background: var(--fill); border: 1px solid var(--line); border-radius: var(--radius); padding: 2px; }
-    .seg .tab { flex: 1; justify-content: center; border-radius: 4px; }
-    .seg .tab.active { background: var(--card); color: var(--text); }
+    .pills .tab.active { border-color: var(--text); background: transparent; }
+    .seg { display: flex; background: transparent; border: 1px solid var(--line); border-radius: var(--radius); padding: 2px; }
+    .seg .tab { flex: 1; justify-content: center; border-radius: 2px; }
+    .seg .tab.active { background: transparent; color: var(--text); box-shadow: inset 0 0 0 1px var(--text); }
     .menu, .popover {
       position: absolute; background: var(--card); border: 1px solid var(--line);
-      border-radius: var(--radius); min-width: 148px; z-index: 3; box-shadow: var(--shadow);
+      border-radius: var(--radius); min-width: 148px; z-index: 3;
     }
     .menu button, .list-item {
       display: block; width: 100%; text-align: left; background: none; border: 0;
@@ -197,13 +202,13 @@
     .toast {
       position: absolute; right: 10px; bottom: 10px;
       background: var(--card); border: 1px solid var(--line);
-      padding: 7px 10px; border-radius: var(--radius); font-size: 12px; box-shadow: var(--shadow);
+      padding: 7px 10px; border-radius: var(--radius); font-size: 12px;
     }
     .modal-mask {
       position: absolute; inset: 0; background: var(--overlay);
       display: flex; align-items: center; justify-content: center; z-index: 4;
     }
-    .modal { width: 86%; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px; }
+    .modal { width: 86%; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px; }
     .drawer {
       position: absolute; top: 0; right: 0; bottom: 0; width: 58%;
       background: var(--card); border-left: 1px solid var(--line); z-index: 4; padding: 10px;
@@ -253,7 +258,7 @@
     .bubble.me { margin-left: auto; background: var(--card); border-radius: 8px 8px 2px 8px; }
     .cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; font-size: 11px; }
     .cal b, .cal button { text-align: center; padding: 4px 0; border: 0; background: none; color: var(--text); border-radius: 4px; }
-    .cal button.sel { background: var(--text); color: var(--bg); }
+    .cal button.sel { background: transparent; color: var(--text); box-shadow: inset 0 0 0 1px var(--text); }
     .rail { display: flex; flex-direction: column; gap: 4px; width: 36px; }
     .rail button {
       height: 32px; border: 1px solid transparent; border-radius: var(--radius);
@@ -278,7 +283,10 @@
         <p>把脑子里的样子写成标准名称，再交给模型。卡片一样大，上面的组件可以点。</p>
         <div class="formula">以后按这个说：<em>名称 + 变体 + 结构 + 交互 + 状态 + 动效</em>。细线跟着 Tab 走，请写 underlined tabs，不要写 slider。</div>
       </header>
-      <button class="theme-btn" id="themeBtn" type="button" aria-label="切换颜色模式"></button>
+      <div class="theme-switch" role="group" aria-label="颜色模式">
+        <button type="button" id="themeDark" data-mode="dark">深色</button>
+        <button type="button" id="themeLight" data-mode="light">浅色</button>
+      </div>
     </div>
     <div class="toolbar">
       <input class="search" id="q" placeholder="搜中文名、英文名或别名" />
@@ -930,16 +938,20 @@
   var catsEl = document.getElementById("cats");
   var countEl = document.getElementById("count");
   var root = document.documentElement;
-  var themeBtn = document.getElementById("themeBtn");
+  var themeDark = document.getElementById("themeDark");
+  var themeLight = document.getElementById("themeLight");
 
   function applyTheme(mode) {
     root.setAttribute("data-theme", mode);
     localStorage.setItem("ui-dict-theme", mode);
-    clear(themeBtn);
-    themeBtn.append(icon(mode === "dark" ? "sun" : "moon", 16), document.createTextNode(mode === "dark" ? " 浅色" : " 深色"));
+    themeDark.className = mode === "dark" ? "on" : "";
+    themeLight.className = mode === "light" ? "on" : "";
+    clear(themeDark); themeDark.append(icon("moon", 14), document.createTextNode(" 深色"));
+    clear(themeLight); themeLight.append(icon("sun", 14), document.createTextNode(" 浅色"));
   }
   applyTheme(localStorage.getItem("ui-dict-theme") || "dark");
-  themeBtn.onclick = function () { applyTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark"); };
+  themeDark.onclick = function () { applyTheme("dark"); };
+  themeLight.onclick = function () { applyTheme("light"); };
 
   function visible() {
     var s = q.trim().toLowerCase();
