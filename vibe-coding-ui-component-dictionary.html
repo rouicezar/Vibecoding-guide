@@ -28,7 +28,7 @@
       --accent-ink: #ecfdf5;
       --ok: #22c55e;
       --warn: #fbbf24;
-      --info: #60a5fa;
+      --info: #d97757;
       --teal: #2dd4bf;
       --danger: #ef4444;
       --cat: var(--accent);
@@ -52,7 +52,7 @@
       --accent-ink: #ecfdf5;
       --ok: #16a34a;
       --warn: #d97706;
-      --info: #2563eb;
+      --info: #c6613f;
       --teal: #0d9488;
       --danger: #dc2626;
       --cat: var(--accent);
@@ -100,7 +100,29 @@
       display: flex; align-items: flex-start; justify-content: space-between;
       gap: 12px; margin-bottom: 10px;
     }
-    .hero h1 { margin: 0 0 4px; font-size: 20px; font-weight: 650; letter-spacing: -0.03em; }
+    .hero h1.wordmark {
+      display: flex; align-items: baseline; flex-wrap: wrap; gap: 10px 14px;
+      margin: 0 0 6px; font-size: 20px; font-weight: 650; letter-spacing: -0.03em;
+    }
+    .wm {
+      display: inline-flex; align-items: baseline; gap: .32em;
+      line-height: 1;
+    }
+    .wm-vibe {
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Songti SC", serif;
+      font-style: italic; font-weight: 700; font-size: 1.38em;
+      letter-spacing: -0.045em; color: var(--accent);
+    }
+    .wm-coding {
+      font-weight: 720; font-size: 1.12em; letter-spacing: -0.07em;
+      color: var(--text);
+    }
+    .wm-ui {
+      font-size: .58em; font-weight: 750; letter-spacing: .16em;
+      padding: 4px 7px 3px; border: 1.5px solid var(--info); border-radius: 5px;
+      color: var(--info); transform: translateY(-3px);
+    }
+    .wm-rest { font-weight: 560; letter-spacing: -0.02em; color: var(--text); }
     .hero p { margin: 0; color: var(--muted); max-width: none; font-size: 12px; line-height: 1.45; }
     .formula {
       margin-top: 8px; padding: 0 0 0 10px; border-left: 2px solid var(--accent);
@@ -472,7 +494,14 @@
     <div class="mast">
       <div class="top">
         <header class="hero">
-          <h1>Vibe Coding UI 组件<span class="title-mark">词典</span></h1>
+          <h1 class="wordmark">
+            <span class="wm" aria-label="Vibe Coding UI">
+              <span class="wm-vibe">Vibe</span>
+              <span class="wm-coding">Coding</span>
+              <span class="wm-ui">UI</span>
+            </span>
+            <span class="wm-rest">组件<span class="title-mark">词典</span></span>
+          </h1>
           <p>把脑子里的样子写成标准名称，再交给模型。卡片一样大，上面的组件可以点。复制 AI Prompt，应能直接做出同款组件。</p>
           <div class="formula">以后按这个说：<em><span class="kw kw-o">名称</span> + <span class="kw kw-g">变体</span> + <span class="kw kw-b">结构</span> + 交互 + 状态 + 动效</em>。细线跟着 Tab 走，请写 underlined tabs，不要写 slider。</div>
         </header>
