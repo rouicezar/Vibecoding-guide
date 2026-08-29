@@ -31,7 +31,7 @@
       --info: #60a5fa;
       --teal: #2dd4bf;
       --danger: #ef4444;
-      --shadow: none;
+      --shadow: 0 1px 0 rgba(255,255,255,.1) inset, 0 -8px 16px rgba(0,0,0,.35) inset, 0 10px 28px rgba(0,0,0,.55), 0 2px 4px rgba(0,0,0,.4);
       --overlay: rgba(0,0,0,.62);
     }
     html[data-theme="light"] {
@@ -53,7 +53,7 @@
       --info: #2563eb;
       --teal: #0d9488;
       --danger: #dc2626;
-      --shadow: none;
+      --shadow: 0 1px 0 #fff inset, 0 -6px 12px rgba(40,36,30,.06) inset, 0 12px 28px rgba(40,36,30,.14), 0 2px 6px rgba(40,36,30,.08);
       --overlay: rgba(10,10,10,.32);
     }
     * { box-sizing: border-box; }
@@ -116,21 +116,50 @@
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 10px;
+      gap: 16px;
     }
     .card {
+      position: relative;
       height: var(--card-h);
       display: flex; flex-direction: column;
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 6px;
+      background: linear-gradient(180deg, color-mix(in srgb, var(--card) 88%, #fff 12%), var(--card) 28%);
+      border: 1px solid var(--line-2);
+      border-radius: 12px;
       overflow: hidden; min-width: 0;
+      box-shadow: var(--shadow);
     }
-    .card:hover { border-color: var(--line-2); }
+    .card:hover { transform: translateY(-2px); }
+    .card::before {
+      content: "";
+      position: absolute; top: 0; left: 22px; right: 22px; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: .75; pointer-events: none; z-index: 2;
+    }
+    .card-deco { position: absolute; inset: 0; pointer-events: none; z-index: 3; }
+    .card-deco i {
+      position: absolute; width: 7px; height: 7px; border-radius: 50%;
+      background: radial-gradient(circle at 32% 28%, #cfcfcf, #6a6a6a 42%, #2a2a2a 70%);
+      box-shadow: inset 0 -1px 1px rgba(0,0,0,.55), 0 1px 0 rgba(255,255,255,.22);
+    }
+    html[data-theme="light"] .card-deco i {
+      background: radial-gradient(circle at 32% 28%, #fff, #c8c4bc 46%, #8a857c 78%);
+      box-shadow: inset 0 -1px 1px rgba(80,70,50,.35), 0 1px 0 #fff;
+    }
+    .card-deco i:nth-child(1) { top: 8px; left: 8px; }
+    .card-deco i:nth-child(2) { top: 8px; right: 8px; }
+    .card-deco i:nth-child(3) { bottom: 8px; left: 8px; }
+    .card-deco i:nth-child(4) { bottom: 8px; right: 8px; }
     .demo {
       height: var(--demo-h); flex: 0 0 var(--demo-h);
-      background: var(--demo); border-bottom: 1px solid var(--line);
+      margin: 16px 12px 0; width: auto;
+      background: var(--demo);
+      border: 1px solid color-mix(in srgb, var(--line) 70%, #000 30%);
+      border-radius: 8px;
       position: relative; overflow: hidden; padding: 10px;
+      box-shadow: inset 0 3px 10px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04);
+    }
+    html[data-theme="light"] .demo {
+      box-shadow: inset 0 3px 8px rgba(40,36,30,.12), inset 0 1px 0 #fff;
     }
     .meta { flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 8px 10px 10px; }
     .row { display: grid; grid-template-columns: 52px 1fr; gap: 6px; margin-bottom: 3px; align-items: start; }
@@ -158,8 +187,8 @@
     .copy:hover { color: var(--accent); border-color: var(--accent); }
     .copy.ok { color: var(--ok); border-color: var(--ok); }
     .prompt-scroll {
-      flex: 1; min-height: 0; overflow: auto; padding: 7px 8px;
-      background: var(--bg); border: 1px solid var(--line); border-radius: 4px;
+      flex: 1; min-height: 0; overflow: auto; padding: 0;
+      background: transparent; border: 0;
     }
     .prompt {
       margin: 0; padding: 0; border: 0; background: transparent;
@@ -2060,6 +2089,7 @@
         setTimeout(function () { copy.textContent = "复制"; copy.classList.remove("ok"); }, 1200);
       };
       grid.append($("article", { class: "card" }, [
+        $("div", { class: "card-deco", "aria-hidden": "true" }, [$("i"), $("i"), $("i"), $("i")]),
         demo,
         $("div", { class: "meta" }, [
           $("div", { class: "row" }, [$("span", { class: "k" }, "中文俗称"), $("div", { class: "v zh", title: it.zh }, it.zh)]),
