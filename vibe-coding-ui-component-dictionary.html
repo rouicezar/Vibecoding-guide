@@ -75,12 +75,12 @@
     button { cursor: pointer; }
     svg { flex: 0 0 auto; }
     .shell {
-      display: grid; grid-template-columns: 268px minmax(0, 1fr);
-      gap: 20px; max-width: 1680px; margin: 0 auto; padding: 12px 16px 40px;
+      display: grid; grid-template-columns: 244px minmax(0, 1fr);
+      gap: 14px; max-width: 1680px; margin: 0 auto; padding: 12px 16px 40px;
     }
     .cat-rail {
       position: sticky; top: 12px; align-self: start;
-      min-width: 268px; width: 268px;
+      min-width: 244px; width: 244px;
       height: calc(100vh - 24px); overflow: auto;
       padding: 4px 12px 20px 0; border-right: 1px solid var(--line);
     }
@@ -158,20 +158,6 @@
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 18px;
     }
-    .cat-head {
-      grid-column: 1 / -1;
-      display: flex; align-items: center; gap: 8px;
-      margin: 10px 0 -4px; padding: 0 2px 8px;
-      border-bottom: 1px solid var(--line);
-      color: var(--faint); font-size: 12px; letter-spacing: 0; text-transform: none;
-    }
-    .cat-head:first-child { margin-top: 2px; }
-    .cat-dot {
-      width: 7px; height: 7px; border-radius: 50%; background: var(--cat);
-      box-shadow: 0 0 0 3px color-mix(in srgb, var(--cat) 22%, transparent);
-    }
-    .cat-name { letter-spacing: 0; color: var(--muted); font-weight: 550; }
-    .cat-n { margin-left: auto; letter-spacing: 0; text-transform: none; font-variant-numeric: tabular-nums; }
     .card {
       --cat: var(--accent);
       position: relative;
@@ -191,13 +177,10 @@
       background: linear-gradient(90deg, transparent, var(--cat), transparent);
       opacity: .85; pointer-events: none; z-index: 2;
     }
-    .card[data-cat="button"], .card[data-cat="selection"], .cat-head[data-cat="button"], .cat-head[data-cat="selection"] { --cat: var(--teal); }
-    .card[data-cat="overlay"], .card[data-cat="feedback"], .card[data-cat="loading"],
-    .cat-head[data-cat="overlay"], .cat-head[data-cat="feedback"], .cat-head[data-cat="loading"] { --cat: var(--info); }
-    .card[data-cat="input"], .card[data-cat="select"], .card[data-cat="slider"], .card[data-cat="datetime"],
-    .cat-head[data-cat="input"], .cat-head[data-cat="select"], .cat-head[data-cat="slider"], .cat-head[data-cat="datetime"] { --cat: var(--teal); }
-    .card[data-cat="saas"], .card[data-cat="desktop"], .card[data-cat="special"],
-    .cat-head[data-cat="saas"], .cat-head[data-cat="desktop"], .cat-head[data-cat="special"] { --cat: var(--warn); }
+    .card[data-cat="button"], .card[data-cat="selection"] { --cat: var(--teal); }
+    .card[data-cat="overlay"], .card[data-cat="feedback"], .card[data-cat="loading"] { --cat: var(--info); }
+    .card[data-cat="input"], .card[data-cat="select"], .card[data-cat="slider"], .card[data-cat="datetime"] { --cat: var(--teal); }
+    .card[data-cat="saas"], .card[data-cat="desktop"], .card[data-cat="special"] { --cat: var(--warn); }
     .card-deco { position: absolute; inset: 0; pointer-events: none; z-index: 3; }
     .card-deco i {
       display: block; font-style: normal;
@@ -2186,9 +2169,6 @@
     });
   }
 
-  var CAT_LABEL = {};
-  CATS.forEach(function (pair) { CAT_LABEL[pair[0]] = pair[1] + "｜" + pair[2]; });
-
   function appendCard(it) {
     var demo = $("div", { class: "demo" });
     var copy = $("button", { class: "copy" }, "复制");
@@ -2216,19 +2196,7 @@
     countEl.innerHTML = "<span class=\"n\">" + items.length + "</span> / " + CATALOG.length;
     clear(grid);
     if (!items.length) { grid.append($("div", { class: "empty-filter" }, "没有匹配的组件")); return; }
-    var i = 0;
-    while (i < items.length) {
-      var c = items[i].category;
-      var j = i;
-      while (j < items.length && items[j].category === c) j++;
-      grid.append($("div", { class: "cat-head", "data-cat": c }, [
-        $("span", { class: "cat-dot" }),
-        $("span", { class: "cat-name" }, CAT_LABEL[c] || c),
-        $("span", { class: "cat-n" }, String(j - i))
-      ]));
-      items.slice(i, j).forEach(appendCard);
-      i = j;
-    }
+    items.forEach(appendCard);
   }
 
   CATS.forEach(function (pair) {
