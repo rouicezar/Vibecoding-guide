@@ -74,13 +74,26 @@
     button, input, select, textarea { font: inherit; color: inherit; }
     button { cursor: pointer; }
     svg { flex: 0 0 auto; }
-    .wrap { max-width: 1520px; margin: 0 auto; padding: 0 16px 40px; }
+    .shell {
+      display: grid; grid-template-columns: 236px minmax(0, 1fr);
+      gap: 20px; max-width: 1680px; margin: 0 auto; padding: 12px 16px 40px;
+    }
+    .rail {
+      position: sticky; top: 12px; align-self: start;
+      height: calc(100vh - 24px); overflow: auto;
+      padding: 4px 12px 20px 0; border-right: 1px solid var(--line);
+    }
+    .rail-title {
+      margin: 0 8px 10px; color: var(--faint); font-size: 10px;
+      letter-spacing: .14em; text-transform: uppercase;
+    }
+    .main { min-width: 0; }
     .mast {
       position: sticky; top: 0; z-index: 8;
       background: color-mix(in srgb, var(--bg) 92%, transparent);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--line);
-      margin: 0 -16px 14px; padding: 12px 16px 10px;
+      margin: 0 0 14px; padding: 8px 0 10px;
     }
     .top {
       display: flex; align-items: flex-start; justify-content: space-between;
@@ -114,13 +127,29 @@
     }
     .search:focus { border-color: var(--info); }
     .count { color: var(--faint); font-size: 12px; white-space: nowrap; }
-    .cats { display: flex; flex-wrap: wrap; gap: 5px; margin: 0; }
+    .cats { display: flex; flex-direction: column; gap: 1px; margin: 0; }
     .cat {
-      border: 1px solid var(--line); background: transparent; color: var(--muted);
-      border-radius: 999px; padding: 4px 10px; font-size: 12px;
+      display: flex; align-items: center; gap: 8px; width: 100%;
+      border: 0; background: transparent; color: var(--muted);
+      border-radius: 8px; padding: 7px 8px; font-size: 12px; text-align: left;
     }
-    .cat:hover { color: var(--text); border-color: var(--line-2); }
-    .cat.active { color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); border-color: var(--accent); }
+    .cat svg { opacity: .8; }
+    .cat-lab { display: flex; align-items: baseline; min-width: 0; line-height: 1.3; }
+    .cat-en { font-weight: 550; }
+    .cat-sep { color: var(--faint); margin: 0 3px; font-weight: 400; }
+    .cat-zh { color: var(--faint); font-weight: 400; }
+    .cat:hover { color: var(--text); background: var(--fill); }
+    .cat:hover .cat-zh, .cat:hover svg { color: inherit; opacity: 1; }
+    .cat.active { color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); }
+    .cat.active svg { opacity: 1; }
+    .cat.active .cat-zh, .cat.active .cat-sep { color: color-mix(in srgb, var(--accent) 70%, var(--faint)); }
+    @media (max-width: 860px) {
+      .shell { grid-template-columns: 1fr; }
+      .rail {
+        position: static; height: auto; max-height: 42vh;
+        border-right: 0; border-bottom: 1px solid var(--line); padding: 0 0 10px;
+      }
+    }
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -131,14 +160,14 @@
       display: flex; align-items: center; gap: 8px;
       margin: 10px 0 -4px; padding: 0 2px 8px;
       border-bottom: 1px solid var(--line);
-      color: var(--faint); font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--faint); font-size: 12px; letter-spacing: 0; text-transform: none;
     }
     .cat-head:first-child { margin-top: 2px; }
     .cat-dot {
       width: 7px; height: 7px; border-radius: 50%; background: var(--cat);
       box-shadow: 0 0 0 3px color-mix(in srgb, var(--cat) 22%, transparent);
     }
-    .cat-name { letter-spacing: .08em; color: var(--muted); }
+    .cat-name { letter-spacing: 0; color: var(--muted); font-weight: 550; }
     .cat-n { margin-left: auto; letter-spacing: 0; text-transform: none; font-variant-numeric: tabular-nums; }
     .card {
       --cat: var(--accent);
@@ -448,7 +477,12 @@
   </style>
 </head>
 <body>
-  <div class="wrap">
+  <div class="shell">
+    <aside class="rail" aria-label="组件分类">
+      <p class="rail-title">分类</p>
+      <div class="cats" id="cats"></div>
+    </aside>
+    <div class="main">
     <div class="mast">
       <div class="top">
         <header class="hero">
@@ -466,21 +500,40 @@
           <input class="search" id="q" placeholder="搜中文名、英文名或别名" />
           <span class="count" id="count"></span>
         </div>
-        <div class="cats" id="cats"></div>
       </div>
     </div>
     <div class="grid" id="grid"></div>
+    </div>
   </div>
   <script>
 (function () {
   const CATS = [
-    ["all", "全部"], ["tabs", "Tabs"], ["stepper", "Stepper"], ["button", "Button"],
-    ["input", "Input"], ["select", "Select"], ["selection", "Selection"], ["slider", "Slider"],
-    ["datetime", "日期时间"], ["special", "特殊输入"], ["upload", "上传"], ["menu", "Menu"],
-    ["nav", "Navigation"], ["card", "Card"], ["data", "数据展示"], ["tag", "Tag / Badge"],
-    ["accordion", "Accordion"], ["overlay", "Overlay"], ["feedback", "反馈"], ["loading", "Loading"],
-    ["empty", "Empty"], ["layout", "布局"], ["saas", "SaaS / AI"], ["tree", "Tree"],
-    ["mobile", "移动端"], ["desktop", "桌面"]
+    ["all", "All", "全部", "grid"],
+    ["tabs", "Tabs", "标签", "catTabs"],
+    ["stepper", "Stepper", "步骤条", "catStep"],
+    ["button", "Button", "按钮", "catBtn"],
+    ["input", "Input", "输入", "catInput"],
+    ["select", "Select", "选择器", "catSelect"],
+    ["selection", "Selection", "勾选", "catCheck"],
+    ["slider", "Slider", "滑块", "catSlider"],
+    ["datetime", "DateTime", "日期时间", "calendar"],
+    ["special", "Special", "特殊输入", "hash"],
+    ["upload", "Upload", "上传", "upload"],
+    ["menu", "Menu", "菜单", "menu"],
+    ["nav", "Navigation", "导航", "catNav"],
+    ["card", "Card", "卡片", "catCard"],
+    ["data", "Data", "数据展示", "catTable"],
+    ["tag", "Tag", "标签徽章", "catTag"],
+    ["accordion", "Accordion", "折叠", "catAcc"],
+    ["overlay", "Overlay", "浮层", "catOver"],
+    ["feedback", "Feedback", "反馈", "alert"],
+    ["loading", "Loading", "加载", "catLoad"],
+    ["empty", "Empty", "空状态", "catEmpty"],
+    ["layout", "Layout", "布局", "catLay"],
+    ["saas", "SaaS", "智能应用", "bolt"],
+    ["tree", "Tree", "树", "catTree"],
+    ["mobile", "Mobile", "移动端", "catPhone"],
+    ["desktop", "Desktop", "桌面", "catDesk"]
   ];
   const ICONS = {
     home: '<path d="M4 10.5 12 4l8 6.5"/><path d="M6 10v9h12v-9"/>',
@@ -519,7 +572,26 @@
     layers: '<path d="m12 4 8 4-8 4-8-4 8-4zM4 12l8 4 8-4"/>',
     msg: '<path d="M5 6h14v10H8l-3 3z"/>',
     bolt: '<path d="M13 3 6 13h5l-1 8 7-10h-5z"/>',
-    hash: '<path d="m9 5-1 14M16 5l-1 14M5 9h15M4 15h15"/>'
+    hash: '<path d="m9 5-1 14M16 5l-1 14M5 9h15M4 15h15"/>',
+    catTabs: '<path d="M4 9h5l1.5 2H20v9H4z"/><path d="M4 9V7h4l1 2"/>',
+    catStep: '<circle cx="6" cy="12" r="2.2"/><circle cx="12" cy="12" r="2.2"/><circle cx="18" cy="12" r="2.2"/><path d="M8.2 12h1.6M14.2 12h1.6"/>',
+    catBtn: '<rect x="4" y="8" width="16" height="8" rx="2"/>',
+    catInput: '<rect x="3.5" y="8" width="17" height="8" rx="1.5"/><path d="M8 12h7"/>',
+    catSelect: '<rect x="3.5" y="7" width="17" height="10" rx="1.5"/><path d="m9 11 3 3 3-3"/>',
+    catCheck: '<rect x="5" y="5" width="14" height="14" rx="2"/><path d="m8 12 3 3 5-6"/>',
+    catSlider: '<path d="M4 12h16"/><circle cx="14" cy="12" r="2.4"/>',
+    catNav: '<path d="M5 19V5h5v14M14 19V9h5v10"/>',
+    catCard: '<rect x="5" y="5" width="14" height="14" rx="1.5"/><path d="M8 10h8M8 14h5"/>',
+    catTable: '<rect x="4" y="5" width="16" height="14" rx="1"/><path d="M4 10h16M4 15h16M10 5v14"/>',
+    catTag: '<path d="M4 11V6h6l8 8-5 5z"/><circle cx="8.2" cy="9.2" r="1"/>',
+    catAcc: '<path d="M5 7h14M5 12h14M5 17h9"/>',
+    catOver: '<rect x="6" y="7" width="13" height="11" rx="1.5"/><path d="M4 16V5h12"/>',
+    catLoad: '<path d="M12 5a7 7 0 1 1-6.1 3.5"/><path d="M12 5V8"/>',
+    catEmpty: '<rect x="5" y="7" width="14" height="11" rx="1.5"/><path d="M9 12h6"/>',
+    catLay: '<rect x="3.5" y="5" width="7" height="14" rx="1"/><rect x="13.5" y="5" width="7" height="14" rx="1"/>',
+    catTree: '<path d="M12 4v7M12 11h6v4M12 11H6v8"/>',
+    catPhone: '<rect x="8" y="3.5" width="8" height="17" rx="1.5"/><path d="M11 18h2"/>',
+    catDesk: '<rect x="3.5" y="5" width="17" height="11" rx="1.5"/><path d="M8 20h8M12 16v4"/>'
   };
 
   function icon(name, size) {
@@ -2112,7 +2184,7 @@
   }
 
   var CAT_LABEL = {};
-  CATS.forEach(function (pair) { CAT_LABEL[pair[0]] = pair[1]; });
+  CATS.forEach(function (pair) { CAT_LABEL[pair[0]] = pair[1] + "｜" + pair[2]; });
 
   function appendCard(it) {
     var demo = $("div", { class: "demo" });
@@ -2157,8 +2229,15 @@
   }
 
   CATS.forEach(function (pair) {
-    var b = $("button", { class: "cat" + (pair[0] === "all" ? " active" : "") }, pair[1]);
-    b.onclick = function () { cat = pair[0]; [].forEach.call(catsEl.children, function (x) { x.classList.toggle("active", x === b); }); render(); };
+    var b = $("button", { class: "cat" + (pair[0] === "all" ? " active" : ""), type: "button" }, [
+      icon(pair[3], 16),
+      $("span", { class: "cat-lab" }, [
+        $("span", { class: "cat-en" }, pair[1]),
+        $("span", { class: "cat-sep" }, "｜"),
+        $("span", { class: "cat-zh" }, pair[2])
+      ])
+    ]);
+    b.onclick = function () { cat = pair[0]; [].forEach.call(catsEl.querySelectorAll(".cat"), function (x) { x.classList.toggle("active", x === b); }); render(); };
     catsEl.append(b);
   });
   document.getElementById("q").addEventListener("input", function (e) { q = e.target.value; render(); });
