@@ -13,17 +13,17 @@
       --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
     }
     html[data-theme="dark"] {
-      --bg: #000000;
-      --bg-2: #0a0a0a;
-      --card: #0e0e0e;
-      --demo: #161616;
-      --line: #262626;
-      --line-2: #3f3f3f;
-      --text: #fafafa;
-      --muted: #a3a3a3;
-      --faint: #737373;
-      --fill: #171717;
-      --fill-2: #1f1f1f;
+      --bg: #12110e;
+      --bg-2: #18160f;
+      --card: #1a1914;
+      --demo: #0c0b09;
+      --line: #2e2b24;
+      --line-2: #433e34;
+      --text: #f4efe6;
+      --muted: #b3aa9a;
+      --faint: #7a7368;
+      --fill: #221f18;
+      --fill-2: #2a261e;
       --accent: #f97316;
       --accent-ink: #fff7ed;
       --ok: #22c55e;
@@ -31,21 +31,23 @@
       --info: #60a5fa;
       --teal: #2dd4bf;
       --danger: #ef4444;
-      --shadow: 0 1px 0 rgba(255,255,255,.1) inset, 0 -8px 16px rgba(0,0,0,.35) inset, 0 10px 28px rgba(0,0,0,.55), 0 2px 4px rgba(0,0,0,.4);
+      --cat: var(--accent);
+      --shadow: 0 1px 0 rgba(255,244,220,.08) inset, 0 10px 24px rgba(0,0,0,.4), 0 2px 4px rgba(0,0,0,.35);
+      --shadow-hover: 0 1px 0 rgba(255,244,220,.12) inset, 0 18px 36px rgba(0,0,0,.5), 0 6px 12px rgba(0,0,0,.35);
       --overlay: rgba(0,0,0,.62);
     }
     html[data-theme="light"] {
-      --bg: #ffffff;
-      --bg-2: #fafafa;
-      --card: #ffffff;
-      --demo: #f3f3f3;
-      --line: #e5e5e5;
-      --line-2: #d4d4d4;
-      --text: #0a0a0a;
-      --muted: #525252;
-      --faint: #a3a3a3;
-      --fill: #f5f5f5;
-      --fill-2: #eeeeee;
+      --bg: #f4f0e8;
+      --bg-2: #ebe5d8;
+      --card: #fbf8f1;
+      --demo: #efe8da;
+      --line: #e0d6c6;
+      --line-2: #cfc3ae;
+      --text: #1c1810;
+      --muted: #5c564a;
+      --faint: #8a8274;
+      --fill: #efe8da;
+      --fill-2: #e6dece;
       --accent: #ea580c;
       --accent-ink: #fff7ed;
       --ok: #16a34a;
@@ -53,14 +55,21 @@
       --info: #2563eb;
       --teal: #0d9488;
       --danger: #dc2626;
-      --shadow: 0 1px 0 #fff inset, 0 -6px 12px rgba(40,36,30,.06) inset, 0 12px 28px rgba(40,36,30,.14), 0 2px 6px rgba(40,36,30,.08);
+      --cat: var(--accent);
+      --shadow: 0 1px 0 #fff inset, 0 12px 28px rgba(40,36,30,.12), 0 2px 6px rgba(40,36,30,.08);
+      --shadow-hover: 0 1px 0 #fff inset, 0 18px 40px rgba(40,36,30,.18), 0 6px 12px rgba(40,36,30,.1);
       --overlay: rgba(10,10,10,.32);
     }
     * { box-sizing: border-box; }
     html, body {
       margin: 0; min-height: 100%;
-      background: var(--bg); color: var(--text);
+      color: var(--text);
       font: 14px/1.5 var(--font);
+    }
+    body {
+      background:
+        radial-gradient(900px 420px at 50% -8%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 55%),
+        var(--bg);
     }
     button, input, select, textarea { font: inherit; color: inherit; }
     button { cursor: pointer; }
@@ -86,8 +95,7 @@
     .formula em { font-style: normal; color: var(--text); }
     .filters {
       display: flex; flex-direction: column; gap: 8px;
-      padding: 8px; border: 1px solid var(--line); border-radius: var(--radius);
-      background: var(--card);
+      padding: 0; border: 0; background: transparent;
     }
     .theme-switch {
       display: inline-flex; border: 1px solid var(--line); border-radius: var(--radius);
@@ -109,58 +117,84 @@
     .cats { display: flex; flex-wrap: wrap; gap: 5px; margin: 0; }
     .cat {
       border: 1px solid var(--line); background: transparent; color: var(--muted);
-      border-radius: var(--radius); padding: 4px 9px; font-size: 12px;
+      border-radius: 999px; padding: 4px 10px; font-size: 12px;
     }
-    .cat:hover { color: var(--text); }
-    .cat.active { color: var(--accent); background: transparent; border-color: var(--accent); }
+    .cat:hover { color: var(--text); border-color: var(--line-2); }
+    .cat.active { color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); border-color: var(--accent); }
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 16px;
+      gap: 18px;
     }
+    .cat-head {
+      grid-column: 1 / -1;
+      display: flex; align-items: center; gap: 8px;
+      margin: 10px 0 -4px; padding: 0 2px 8px;
+      border-bottom: 1px solid var(--line);
+      color: var(--faint); font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    }
+    .cat-head:first-child { margin-top: 2px; }
+    .cat-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--cat);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--cat) 22%, transparent);
+    }
+    .cat-name { letter-spacing: .08em; color: var(--muted); }
+    .cat-n { margin-left: auto; letter-spacing: 0; text-transform: none; font-variant-numeric: tabular-nums; }
     .card {
+      --cat: var(--accent);
       position: relative;
       height: var(--card-h);
       display: flex; flex-direction: column;
-      background: linear-gradient(180deg, color-mix(in srgb, var(--card) 88%, #fff 12%), var(--card) 28%);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--card) 82%, #fff 18%), var(--card) 32%);
       border: 1px solid var(--line-2);
-      border-radius: 12px;
+      border-radius: 14px;
       overflow: hidden; min-width: 0;
       box-shadow: var(--shadow);
+      transition: transform .18s ease, box-shadow .18s ease;
     }
-    .card:hover { transform: translateY(-2px); }
+    .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
     .card::before {
       content: "";
-      position: absolute; top: 0; left: 22px; right: 22px; height: 2px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      opacity: .75; pointer-events: none; z-index: 2;
+      position: absolute; top: 0; left: 28px; right: 28px; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--cat), transparent);
+      opacity: .85; pointer-events: none; z-index: 2;
     }
+    .card[data-cat="button"], .card[data-cat="selection"], .cat-head[data-cat="button"], .cat-head[data-cat="selection"] { --cat: var(--ok); }
+    .card[data-cat="overlay"], .card[data-cat="feedback"], .card[data-cat="loading"],
+    .cat-head[data-cat="overlay"], .cat-head[data-cat="feedback"], .cat-head[data-cat="loading"] { --cat: var(--info); }
+    .card[data-cat="input"], .card[data-cat="select"], .card[data-cat="slider"], .card[data-cat="datetime"],
+    .cat-head[data-cat="input"], .cat-head[data-cat="select"], .cat-head[data-cat="slider"], .cat-head[data-cat="datetime"] { --cat: var(--teal); }
+    .card[data-cat="saas"], .card[data-cat="desktop"], .card[data-cat="special"],
+    .cat-head[data-cat="saas"], .cat-head[data-cat="desktop"], .cat-head[data-cat="special"] { --cat: var(--warn); }
     .card-deco { position: absolute; inset: 0; pointer-events: none; z-index: 3; }
     .card-deco i {
       display: block; font-style: normal;
-      position: absolute; width: 7px; height: 7px; border-radius: 50%;
-      background: radial-gradient(circle at 32% 28%, #cfcfcf, #6a6a6a 42%, #2a2a2a 70%);
-      box-shadow: inset 0 -1px 1px rgba(0,0,0,.55), 0 1px 0 rgba(255,255,255,.22);
+      position: absolute; top: 8px; width: 6px; height: 6px; border-radius: 50%;
+      background: radial-gradient(circle at 32% 28%, #d8d0c4, #6a6458 46%, #2a261e 72%);
+      box-shadow: inset 0 -1px 1px rgba(0,0,0,.5), 0 1px 0 rgba(255,255,255,.2);
     }
     html[data-theme="light"] .card-deco i {
       background: radial-gradient(circle at 32% 28%, #fff, #c8c4bc 46%, #8a857c 78%);
       box-shadow: inset 0 -1px 1px rgba(80,70,50,.35), 0 1px 0 #fff;
     }
-    .card-deco i:nth-child(1) { top: 8px; left: 8px; }
-    .card-deco i:nth-child(2) { top: 8px; right: 8px; }
-    .card-deco i:nth-child(3) { bottom: 8px; left: 8px; }
-    .card-deco i:nth-child(4) { bottom: 8px; right: 8px; }
+    .card-deco i:nth-child(1) { left: 8px; }
+    .card-deco i:nth-child(2) { right: 8px; }
     .demo {
       height: var(--demo-h); flex: 0 0 var(--demo-h);
       margin: 16px 12px 0; width: auto;
-      background: var(--demo);
+      background:
+        radial-gradient(circle, color-mix(in srgb, var(--line-2) 55%, transparent) 0.7px, transparent 1px) 0 0 / 10px 10px,
+        var(--demo);
       border: 1px solid color-mix(in srgb, var(--line) 70%, #000 30%);
       border-radius: 8px;
-      position: relative; overflow: hidden; padding: 10px;
-      box-shadow: inset 0 3px 10px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04);
+      position: relative; overflow: hidden; padding: 12px;
+      box-shadow: inset 0 3px 10px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05);
     }
     html[data-theme="light"] .demo {
-      box-shadow: inset 0 3px 8px rgba(40,36,30,.12), inset 0 1px 0 #fff;
+      box-shadow: inset 0 3px 8px rgba(40,36,30,.1), inset 0 1px 0 #fff;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .card, .card:hover { transition: none; transform: none; }
     }
     .meta { flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 8px 10px 10px; }
     .row { display: grid; grid-template-columns: 52px 1fr; gap: 6px; margin-bottom: 3px; align-items: start; }
@@ -193,7 +227,8 @@
     }
     .prompt {
       margin: 0; padding: 0; border: 0; background: transparent;
-      color: var(--muted); font: 11px/1.5 var(--mono);
+      color: color-mix(in srgb, var(--text) 78%, var(--muted));
+      font: 11.5px/1.55 var(--mono);
       white-space: pre-wrap; word-break: break-word;
     }
     .prompt-zh {
@@ -418,7 +453,7 @@
       <div class="top">
         <header class="hero">
           <h1>Vibe Coding UI 组件<span class="title-mark">词典</span></h1>
-          <p>把脑子里的样子写成标准名称，再交给模型。卡片一样大，上面的组件可以点。</p>
+          <p>把脑子里的样子写成标准名称，再交给模型。卡片一样大，上面的组件可以点。复制 AI Prompt，应能直接做出同款组件。</p>
           <div class="formula">以后按这个说：<em><span class="kw kw-o">名称</span> + <span class="kw kw-g">变体</span> + <span class="kw kw-b">结构</span> + 交互 + 状态 + 动效</em>。细线跟着 Tab 走，请写 underlined tabs，不要写 slider。</div>
         </header>
         <div class="theme-switch" role="group" aria-label="颜色模式">
@@ -504,46 +539,46 @@
   }
 
   const PROMPT_ZH = {
-  "tabs-underlined": "使用横向下划线标签：激活项用约 2px 细指示条，未选项文字弱化，不要卡片底。",
-  "tabs-sliding": "使用带滑动下划线的标签，指示条切换时约 180ms 过渡。",
-  "tabs-pill": "使用胶囊形标签，当前项填充，圆角胶囊外观。",
-  "tabs-segmented": "使用分段控制器：所有选项在同一条圆角轨道里，不是 Tabs。",
-  "tabs-contained": "使用贴在内容面板上沿的包含式标签，与面板共用描边。",
-  "tabs-folder": "使用文件夹式页签，视觉上与内容面板连在一起。",
-  "tabs-vertical": "使用垂直标签：标签在左，内容在右。",
-  "tabs-icon": "使用纯图标标签，每个目的地配 tooltip。",
-  "tabs-icon-label": "使用同时包含图标和文字的标签。",
-  "tabs-scrollable": "使用可横向滚动的标签，超出时提供溢出控制。",
-  "tabs-closable": "使用类似浏览器的可关闭标签，每项带关闭控件。",
-  "tabs-draggable": "使用可拖动重排的标签，指针拖拽即可改顺序。",
-  "tabs-switcher": "使用内容切换器，切换同一数据集的不同视图。",
+  "tabs-underlined": "做成一个下划线标签组件，不要整页。上方横排标签、下方一块内容。默认三项 Overview、Billing、Settings，点哪项只显示对应面板。当前项是贴着文字宽度的 2px 底线；未选项弱文字、无底、无卡片、无公共轨道。支持点击和左右键。状态含默认、悬停、选中、禁用。面板切换可即时。不要做成胶囊标签、分段控制或滑块。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "tabs-sliding": "做成带滑动指示条的标签，不要整页。结构同下划线标签：横排 Overview、Billing、Settings，下方一块内容；2px 底线在当前文字下。点击或左右键切换。状态含默认、悬停、选中、禁用。底线必须约 180ms 滑到新项，不要瞬移。不要做成胶囊标签、分段控制或滑块。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "tabs-pill": "做成胶囊标签，不要整页。三个互不相连的圆角胶囊 Overview、Billing、Settings，下方一块内容。当前胶囊实心或强描边，其余描边或纯文字，胶囊之间有间隙。点击切换面板。状态含默认、悬停、选中、禁用。约 150ms 变色，不要滑动底线。不要做成同一轨道的分段控制、文件夹页签或滑块。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "tabs-segmented": "做成分段控制，不是 Tabs，不要整页。Day、Week、Month 挤在同一条圆角轨道里，段与段无间隙，同时只选一段。点击切换同一数据集的视图，不是互不相关的页面。状态含默认、选中（轨道内填充）、悬停、禁用。约 150ms。不要做成分散胶囊、下划线标签或滑块。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "tabs-contained": "做成卡片标签，不要整页。Overview、Billing、Settings 贴在带描边内容面板的上沿，标签和面板共用一圈边。当前项与面板视觉相连（无缝、共边）。点击切换内容。状态含默认、选中、悬停、禁用。不要做成悬浮胶囊、分段轨道或叠放的文件夹页签。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "tabs-folder": "做成文件夹式页签，不要整页。页签像笔记本文件夹搭在内容面板上，当前项像页签盖住面板上沿。默认 Overview、Billing、Settings。点击把对应面板带到前面。状态含默认、选中、悬停、禁用。不要做成滑动底线、胶囊或分段控制。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "tabs-vertical": "做成垂直标签，不要整页。左侧竖排 Overview、Billing、Settings，右侧内容占满剩余宽度。当前项可用左侧强调条或更重文字。点击或上下键切换右侧面板。状态含默认、悬停、选中、禁用。不要做成横向下划线、整站侧栏链接或分段控制。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "tabs-icon": "做成纯图标标签，不要整页。三个仅图标项（首页、搜索、设置的线条图标）加内容面板。每个图标悬停/聚焦出目的地名称 tooltip。点击切换面板。热区至少 32px。状态含默认、悬停、选中、禁用。不要加可见文字标签，也不要做成铺满屏宽的底部导航。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "tabs-icon-label": "做成图标加文字的标签，不要整页。三项横排，每项前面线条图标加文字 Overview、Billing、Settings，下方一块内容。点图标或文字都能切换。状态含默认、悬停、选中、禁用。不要做成纯图标标签或分段控制。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "tabs-scrollable": "做成可滚动标签，不要整页。一行至少八个标签（Home 到 Settings）超出固定宽度，配左右溢出按钮，下方一块内容。点击可见项选中；用箭头或横向滚动露出被裁切的项。状态含默认、选中、悬停、禁用、溢出。不要折成两行，也不要用下拉菜单代替这一行。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "tabs-closable": "做成类似浏览器的可关闭标签，不要整页。至少三个文档页签（Untitled、README、styles.css），每项有标题和关闭；可有加号新增。内容区显示当前文档名。点击激活；点关闭删该项并选中邻居；不能关掉最后一个。不要做成胶囊或分段控制。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "tabs-draggable": "做成可拖动重排的标签，不要整页。一行至少三个有名标签加内容面板。点击选中；按住横向拖动改顺序，松开即生效。状态含默认、选中、拖动中、悬停。不要另开编辑模式，也不要用可排序列表代替标签。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "tabs-switcher": "做成同一数据集的内容切换器，不要整页。List、Board、Calendar 三个紧凑选项在同一块数据画布上方。只改呈现，记录不变。点击切换布局。不要做成跳到不同栏目的下划线页面标签，也不要做成筛选栏。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
   "step-numbered": "使用横向数字步骤条，步骤间有连线；已完成高亮，当前步强调，未到步弱化。",
   "step-dot": "使用极简圆点步骤条，圆点之间用进度线连接。",
   "step-chevron": "使用鱼骨/箭头步骤条，每一步呈箭头并咬合下一步。",
   "step-filled": "使用实心填充的鱼骨进度条，已完成步骤用实心底。",
   "step-vertical": "使用带说明文字和连线的垂直步骤条。",
   "step-tracker": "使用纵向进度追踪，展示物流或订单状态。",
-  "btn-primary": "使用实心主按钮作为页面主行动点。",
-  "btn-secondary": "使用次按钮，放在主按钮旁边。",
-  "btn-outline": "使用 1px 描边、透明填充的描边按钮。",
-  "btn-ghost": "使用幽灵按钮：默认无底，悬停才出现背景。",
-  "btn-text": "使用无任何边框底色的文字按钮。",
-  "btn-link": "使用带下划线的链接样式按钮。",
-  "btn-icon": "使用图标按钮，点击热区约 32px。",
-  "btn-circular": "使用圆形图标按钮，适合紧凑的添加操作。",
-  "btn-fab": "使用锚定在右下角的浮动操作按钮（FAB）。",
-  "btn-danger": "使用危险/破坏性按钮表示不可逆操作。",
-  "btn-loading": "使用加载按钮：显示转圈并禁止连点。",
-  "btn-disabled": "使用对比度降低的禁用按钮。",
-  "btn-split": "使用分裂按钮：左侧主操作，右侧下拉箭头。",
-  "btn-dropdown": "使用点击后展开操作菜单的下拉按钮。",
-  "btn-group": "使用连在一起的按钮组，放相关操作。",
-  "btn-toggle": "使用有按下/未按下两种状态的开关按钮。",
-  "btn-tgroup": "使用开关按钮组，如加粗、斜体、下划线。",
-  "btn-toolbar": "使用带撤销、重做和格式化的图标工具栏。",
-  "btn-kebab": "使用竖三点溢出按钮打开更多操作。",
-  "btn-meatball": "使用横三点肉丸菜单。",
-  "btn-speed": "使用速度拨号：FAB 展开成多个操作。",
+  "btn-primary": "做一颗主按钮，作为页面主操作，不要整条工具栏。实心填充、对比足够的文字，标签 Save，高度约 32px。点击执行主操作，键盘有可见焦点环。状态含默认、悬停、按下、禁用。不要做成幽灵、描边或链接，也不要右侧下拉箭头。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-secondary": "做一颗次按钮，用来放在主按钮旁边。标签 Cancel，高度与主按钮一致。比主按钮弱，中性填充，不要实心强调色。状态含默认、悬停、按下、禁用。不要做成文字链接。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-outline": "做一颗描边按钮。标签 Edit，约 32px 高。1px 边、透明底、字色跟边走，不要重阴影。悬停可在边框内淡填。不要实心主色，也不要去掉边框变成幽灵/文字按钮。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-ghost": "做一颗幽灵按钮，适合工具栏。标签 Filter。静止时无底无边，悬停才出现浅底。不要常驻描边（那是描边按钮），也不要实心强调色（那是主按钮）。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-text": "做一颗最轻的文字按钮。标签 Skip，完全无框。静止无边无底，悬停可出现下划线。不要加任何铬框，也不要做成一直带下划线的导航链接。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-link": "做一颗链接按钮，跳转感要强。标签 Open docs。信息色或强调色文字，带下划线（常显或悬停），一眼是链接。不要做成带边框的按钮形，也不要当页面主保存按钮。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-icon": "做一颗图标按钮。约 32px 方形，只有线条设置图标，无文字。点击；悬停 tooltip 为 Settings。热区至少 32px。不要做成圆形 FAB，也不要在旁边加可见文字。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-circular": "做一颗圆形图标按钮，用于紧凑添加。32–40px 圆，中间加号线条图标。可点，tooltip 为 Add。不要做成方图标按钮，也不要钉在屏幕角落当 FAB。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-fab": "做一颗浮动操作按钮 FAB。圆形 40–56px，加号图标，锚定在容器右下角。比普通图标按钮更强调。点击即主创建。悬停可微抬。不要排进表单行里，也不要默认展开成速度拨号。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-danger": "做一颗危险按钮，用于不可逆操作。标签 Delete。红色字/边/底，仍是按钮。不要做成主保存的强调色，也不要用纯文字链接当删除。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-loading": "做一颗加载按钮，防止连点。标签 Save。点击后进入等待：小转圈、文案 Saving、禁用再点，直到一次短模拟结束。转圈要转。不要允许双提交，也不要用整页转圈代替按钮自己的状态。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-disabled": "做一颗禁用按钮，按不了。标签 Submit，主按钮外形但对比降低（约 40% 透明）。不可点、不可当操作聚焦，光标 not-allowed。不要看起来还能点，也不要带转圈（那是加载按钮）。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-split": "做一颗分裂按钮。同一描边里左侧主操作 Save，右侧箭头。点左执行 Save；点右打开小菜单（Save draft、Save and close）。不要做成把主操作藏进菜单的下拉按钮，也不要拆成两颗不相连的按钮。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-dropdown": "做一颗下拉按钮。标签 Actions 加箭头，点击展开 Edit、Duplicate、Delete。再点一项后关闭；Escape 关闭。不要把主操作和箭头分成两个热区（那是分裂按钮），也不要用纯竖三点触发。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-group": "做成连在一起的按钮组。Left、Center、Right 共一圈边、内部分隔、无间隙。每段可点，是相关操作。不要做成有间距的独立按钮；若不是互斥视图切换，不要做成分段控制。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-toggle": "做一颗开关按钮，有按下和未按下。标签 Bold 或图标。点击在开/关之间保持状态。按下用强调边或底。不要做成带轨道的 Switch，也不要默认做成一组。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-tgroup": "做成格式用的开关按钮组。Bold、Italic、Underline 连在一起，各项可独立开（可多选），点击切换。不要做成只能选一个的分段控制，也不要用下拉。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-toolbar": "做成一排图标工具栏。Undo、Redo、Bold、Italic、分隔、Link。每项可点，悬停有 tooltip。不要收进下拉，也不要用大号主按钮。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-kebab": "做一颗竖三点溢出按钮。点击打开 Edit、Duplicate、Delete；点外部或 Escape 关闭。不要用横三点（肉丸菜单），也不要只用带文字的 Actions 下拉当触发器。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-meatball": "做一颗横三点肉丸菜单。点击打开 Edit、Duplicate、Delete。不要用竖三点，也不要做成 FAB。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-speed": "做成速度拨号：角落一颗 FAB，点击展开 2–3 个更小的圆形操作（文件、图片、笔记）带短标签。再点操作后收起。约 180ms 展开。静止时不要把所有操作都摆出来，也不要用扁平下拉列表代替。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
   "in-text": "使用带标签、占位符和可见焦点态的单行输入。",
   "in-area": "使用固定高度的多行文本域。",
   "in-search": "使用带前置图标和清除按钮的搜索框。",
@@ -639,15 +674,15 @@
   "ac-acc": "使用多项垂直堆叠的手风琴。",
   "ac-col": "使用单个可折叠区块，适合高级设置。",
   "ac-dis": "使用带箭头的显隐/披露控件。",
-  "ov-tip": "使用悬停或聚焦出现的短说明，不要放复杂交互。",
-  "ov-pop": "使用可容纳按钮和表单的气泡卡片，不只是文字。",
-  "ov-hover": "使用悬停预览人物或实体的悬停卡片。",
-  "ov-modal": "使用带遮罩、标题和主/次操作的对话框。",
-  "ov-alert": "使用必须回应才能继续的警告对话框。",
-  "ov-popc": "使用锚定在危险操作旁的气泡确认。",
-  "ov-drawer": "使用从右侧滑入、固定宽度的抽屉。",
-  "ov-sheet": "使用从边缘滑入的面板。",
-  "ov-bs": "使用从底部升起并带操作的底部弹层。",
+  "ov-tip": "做成工具提示。触发器文字 Name，浮层只有一行短说明（如发票上显示的名称）。小块反色，里面不能有按钮。悬停和键盘聚焦约 200ms 后出现，离开即关。不要放表单或操作，也不要做成气泡卡片或对话框。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "ov-pop": "做成可放操作的气泡卡片，不要只有一句话。触发按钮 Share；浮层里有短标题、一两个操作（Copy link、Embed）。点击开关；点外部或 Escape 关闭；打开时焦点在面板内。不要只靠悬停、不要整页遮罩（那是对话框），也不要做成纯 tooltip。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "ov-hover": "做成悬停预览人物的卡片。触发文字 Ada Lovelace；悬停出现姓名、角色和操作 Message。稍延迟出现，移进卡片保持打开，都离开才关。不要靠点击才打开，不要阻断式对话框，也不要做成一行 tooltip。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "ov-modal": "做成对话框。有变暗遮罩、居中面板、标题 Edit project、正文或简单字段、主按钮 Save 和次按钮 Cancel、关闭。从触发器打开；焦点锁在内部；Escape 和点遮罩关闭。遮罩淡入，面板约 180ms。不要做成侧抽屉，也不要没有遮罩。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "ov-alert": "做成必须回应的警告对话框。标题 Delete file?，短警告，危险色 Confirm 和 Cancel。打开后其余界面不可用；不能点空白处当没看见（或点遮罩只等于 Cancel）。不要加额外表单，也不要用非阻断 Toast。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "ov-popc": "做成锚定在危险操作旁的气泡确认。Delete 旁小气泡：Confirm deletion? 加 Yes / No。点 Delete 打开；选完或点外部关闭；不要全屏变暗。不要做成居中对话框，也不要做成没有按钮的纯 tooltip。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "ov-drawer": "做成从右侧滑入的固定宽度抽屉。触发 Open；遮罩上从右滑入，标题 Details、正文、关闭。Escape 和点遮罩关闭。约 200ms 滑入。不要居中对话框，不要从底部升起，也不要做成从不盖住内容的常驻侧栏。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "ov-sheet": "做成从左右边缘滑入的面板，不是居中对话框，也不是底部弹层。标题 Filters 加几个控件，可有遮罩。触发打开，关闭钮或 Escape 关闭。约 200ms。不要居中，也不要贴屏幕底边。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "ov-bs": "做成从底部升起的弹层。有拖动手柄、标题 Actions、纵向操作 Share、Copy、Delete。可下扫、点遮罩或取消行关闭。约 200ms 升起。不要从侧面滑入，也不要做成桌面居中对话框。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
   "fb-alert": "使用带图标和短警告文案的警告条。",
   "fb-inline": "使用嵌在相关字段旁的行内提示。",
   "fb-banner": "使用通栏系统维护横幅。",
@@ -726,19 +761,19 @@
     for (var i = 0; i < arguments.length; i++) CATALOG.push(arguments[i]);
   }
   add(
-    C("tabs-underlined","tabs","下划线标签","Underlined Tabs","Line Tabs, Flat Tabs","不同内容区域切换。细线跟着文字走，不要叫 Slider。","Use horizontal underlined tabs with a thin 2px active indicator, muted inactive text, no card background.","tabs",{kind:"underline"}),
-    C("tabs-sliding","tabs","滑动指示标签","Tabs with Sliding Indicator","Animated underline tabs","标签切换时底部指示线平滑滑动。","Use tabs with an animated sliding underline indicator and a 180ms transition.","tabs",{kind:"sliding"}),
-    C("tabs-pill","tabs","胶囊标签","Pill Tabs","Rounded tabs","选项是独立胶囊，当前项填充。","Use pill-shaped tabs with a filled active state and rounded corners.","tabs",{kind:"pill"}),
-    C("tabs-segmented","tabs","分段控制","Segmented Control","Shared track","同一数据集的短选项，如日/周/月。不是 Tabs。","Use a segmented control with all options inside one shared rounded track.","tabs",{kind:"segmented"}),
-    C("tabs-contained","tabs","卡片标签","Contained Tabs","Attached Tabs","标签贴在内容面板上沿。","Use contained tabs attached directly to the content panel with a shared border.","tabs",{kind:"contained"}),
-    C("tabs-folder","tabs","文件夹标签","Folder-style Tabs","Notebook tabs","视觉上像文件夹页签。","Use folder-style tabs visually connected to the content panel.","tabs",{kind:"folder"}),
-    C("tabs-vertical","tabs","垂直标签","Vertical Tabs","Side tabs","标签在左、内容在右。","Use vertical tabs on the left with content on the right.","tabs",{kind:"vertical"}),
-    C("tabs-icon","tabs","图标标签","Icon Tabs","Icon-only tabs","空间紧，需要额外说明。","Use icon-only tabs with tooltips for each destination.","tabs",{kind:"icon"}),
-    C("tabs-icon-label","tabs","图标文字标签","Icon + Label Tabs","Icon text tabs","图标和文字同时出现。","Use tabs containing both icons and text labels.","tabs",{kind:"iconLabel"}),
-    C("tabs-scrollable","tabs","可滚动标签","Scrollable Tabs","Overflow tabs","标签超出宽度时横向滚动。","Use horizontally scrollable tabs with overflow controls.","tabs",{kind:"scroll"}),
-    C("tabs-closable","tabs","可关闭标签","Closable Tabs","Browser-like tabs","类似浏览器页签。","Use closable tabs similar to browser tabs, with a close control on each tab.","tabs",{kind:"closable"}),
-    C("tabs-draggable","tabs","可拖动标签","Draggable Tabs","Reorderable Tabs","允许重排顺序。","Use draggable reorderable tabs that can be rearranged by pointer.","tabs",{kind:"drag"}),
-    C("tabs-switcher","tabs","内容切换器","Content Switcher","Same-content views","同一数据集的不同视图。","Use a content switcher for alternate views of the same dataset.","tabs",{kind:"switcher"}),
+    C("tabs-underlined","tabs","下划线标签","Underlined Tabs","Line Tabs, Flat Tabs","不同内容区域切换。细线跟着文字走，不要叫 Slider。","Build a single Underlined Tabs component, not a full page. Structure: a horizontal tab list on top and one content panel below. Default three tabs labeled Overview, Billing, and Settings, each revealing its own short panel. The active tab has a 2px underline aligned to the label width; inactive tabs have muted text, no fill, no card background, and no shared track. Interaction: click a tab to switch panels; only the active panel is visible; Left/Right keys when the list is focused. States: default, hover (slightly brighter text), selected (accent underline and stronger text), disabled (non-interactive, reduced contrast). Motion: instant panel swap is fine. Do not build pill tabs, a segmented control, or a slider. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","tabs",{kind:"underline"}),
+    C("tabs-sliding","tabs","滑动指示标签","Tabs with Sliding Indicator","Animated underline tabs","标签切换时底部指示线平滑滑动。","Build a single Tabs with Sliding Indicator component, not a full page. Structure: same as underlined tabs: horizontal labels Overview, Billing, Settings above one content panel; a 2px underline sits under the active label. Interaction: click or Left/Right to change the selected tab and panel. States: default, hover, selected, disabled. Motion: the underline must slide to the new tab in about 180ms; do not jump instantly. Do not use pill tabs, a segmented control, or a range slider. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","tabs",{kind:"sliding"}),
+    C("tabs-pill","tabs","胶囊标签","Pill Tabs","Rounded tabs","选项是独立胶囊，当前项填充。","Build a single Pill Tabs component, not a full page. Structure: three independent pill-shaped tabs labeled Overview, Billing, Settings, plus one content panel below. Each tab is its own rounded capsule with gap between pills. The selected pill has a filled or strongly outlined active surface; others are outline or text-only. Interaction: click a pill to swap the panel. States: default, hover, selected, disabled. Motion: 150ms fill/color change, no sliding underline. Do not use a shared segmented track, folder tabs, or a slider. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","tabs",{kind:"pill"}),
+    C("tabs-segmented","tabs","分段控制","Segmented Control","Shared track","同一数据集的短选项，如日/周/月。不是 Tabs。","Build a single Segmented Control, not Tabs and not a full page. Structure: Day, Week, Month packed inside one shared rounded track with no gap between segments. Only one segment is selected. Interaction: click a segment to change the selected value; this switches a view of the same dataset, not unrelated pages. States: default, selected (inset or filled in the track), hover, disabled. Motion: 150ms selected-thumb or fill. Do not use separate pill tabs, underlines, or a slider. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","tabs",{kind:"segmented"}),
+    C("tabs-contained","tabs","卡片标签","Contained Tabs","Attached Tabs","标签贴在内容面板上沿。","Build a single Contained Tabs component, not a full page. Structure: tab labels Overview, Billing, Settings attached to the top edge of a bordered content panel so tabs and panel share one outline. The active tab connects visually to the panel (no gap, shared border). Interaction: click a tab to change panel content. States: default, selected (connected to panel), hover, disabled. Motion: instant or 150ms. Do not use floating pills, a segmented track, or folder-style overlapping tabs. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","tabs",{kind:"contained"}),
+    C("tabs-folder","tabs","文件夹标签","Folder-style Tabs","Notebook tabs","视觉上像文件夹页签。","Build a single Folder-style Tabs component, not a full page. Structure: tabs look like notebook file folders sitting on a content panel; the selected tab overlaps the panel edge like a folder flap. Default labels Overview, Billing, Settings. Interaction: click a folder tab to bring its panel forward. States: default, selected (in front, connected), hover, disabled. Motion: 150ms. Do not use a sliding underline, pills, or a segmented control. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","tabs",{kind:"folder"}),
+    C("tabs-vertical","tabs","垂直标签","Vertical Tabs","Side tabs","标签在左、内容在右。","Build a single Vertical Tabs component, not a full page. Structure: a vertical tab list on the left (Overview, Billing, Settings) and the content panel on the right, filling remaining width. Active tab can use a left accent bar or stronger text. Interaction: click a row to swap the right panel; Up/Down keys when the list is focused. States: default, hover, selected, disabled. Motion: instant panel swap. Do not use horizontal underlines, a sidebar of page links, or a segmented control. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","tabs",{kind:"vertical"}),
+    C("tabs-icon","tabs","图标标签","Icon Tabs","Icon-only tabs","空间紧，需要额外说明。","Build a single Icon Tabs component, not a full page. Structure: three icon-only tabs (home, search, settings as line icons) plus a content panel. Each icon has a tooltip with the destination name. Interaction: click an icon to switch the panel; tooltip on hover/focus. States: default, hover, selected (accent icon or underline), disabled. Hit target at least 32px. Do not add visible text labels, and do not use a mobile bottom nav bar spanning the screen. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","tabs",{kind:"icon"}),
+    C("tabs-icon-label","tabs","图标文字标签","Icon + Label Tabs","Icon text tabs","图标和文字同时出现。","Build a single Icon + Label Tabs component, not a full page. Structure: three horizontal tabs, each with a leading line icon and a text label (Overview, Billing, Settings), plus one content panel. Interaction: click either icon or label to switch. States: default, hover, selected, disabled. Do not use icon-only tabs or a segmented control. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","tabs",{kind:"iconLabel"}),
+    C("tabs-scrollable","tabs","可滚动标签","Scrollable Tabs","Overflow tabs","标签超出宽度时横向滚动。","Build a single Scrollable Tabs component, not a full page. Structure: many tab labels in one row (at least eight: Home, Projects, Billing, Members, Analytics, Alerts, Integrations, Settings) that overflow a fixed-width viewport, with left/right overflow controls. A content panel sits below. Interaction: click a visible tab to select; use chevrons or horizontal scroll to reveal hidden tabs. States: default, selected, hover, disabled, overflow (chevrons appear when clipped). Do not wrap tabs onto two lines and do not use a dropdown to replace the row. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","tabs",{kind:"scroll"}),
+    C("tabs-closable","tabs","可关闭标签","Closable Tabs","Browser-like tabs","类似浏览器页签。","Build a single Closable Tabs component like browser tabs, not a full page. Structure: a tab strip with at least three documents (Untitled, README, styles.css); each tab shows a title and a close control; a plus control can add a tab. Content panel shows the active document name. Interaction: click to activate; click close to remove that tab and select a neighbor; cannot close the last remaining tab. States: default, selected, hover, dirty optional. Do not use pills or a segmented control. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","tabs",{kind:"closable"}),
+    C("tabs-draggable","tabs","可拖动标签","Draggable Tabs","Reorderable Tabs","允许重排顺序。","Build a single Draggable Tabs component, not a full page. Structure: three or more named tabs in a row plus a content panel. Interaction: click to select; pointer-drag a tab horizontally to reorder the strip; drop commits the new order. States: default, selected, dragging (lifted tab), hover. Motion: the strip reflows as the tab is dragged. Do not require a separate edit mode, and do not use a sortable list instead of tabs. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","tabs",{kind:"drag"}),
+    C("tabs-switcher","tabs","内容切换器","Content Switcher","Same-content views","同一数据集的不同视图。","Build a single Content Switcher for alternate views of the same dataset, not a full page. Structure: a compact switcher with List, Board, and Calendar options sitting above one dataset canvas. Only the presentation changes; the records stay the same. Interaction: click an option to change the view layout. States: default, selected, hover, disabled. Do not use underlined page tabs that navigate to different sections, and do not use a filter bar. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","tabs",{kind:"switcher"}),
     C("step-numbered","stepper","数字步骤条","Stepper","Progress Steps","多步表单、向导。","Use a horizontal numbered stepper with connected lines, completed steps highlighted, current step emphasized and future steps muted.","stepper",{kind:"numbered"}),
     C("step-dot","stepper","圆点步骤条","Dot Stepper","Minimal stepper","空间少、步骤名可省略。","Use a minimal dot stepper with connected progress lines.","stepper",{kind:"dot"}),
     C("step-chevron","stepper","鱼骨步骤条","Chevron Stepper","Arrow Stepper","每步呈箭头并咬合下一步。","Use a connected chevron stepper where each step forms an arrow shape.","stepper",{kind:"chevron"}),
@@ -747,27 +782,27 @@
     C("step-tracker","stepper","进度追踪","Progress Tracker","Order tracker","物流或订单状态。","Use a vertical progress tracker for order or logistics statuses.","stepper",{kind:"tracker"})
   );
   add(
-    C("btn-primary","button","主按钮","Primary Button","Main CTA","页面主操作。","Use a primary filled button for the main call to action.","button",{kind:"primary"}),
-    C("btn-secondary","button","次按钮","Secondary Button","Default button","与主按钮配对。","Use a secondary button beside the primary action.","button",{kind:"secondary"}),
-    C("btn-outline","button","描边按钮","Outline Button","Bordered button","弱一点但仍是按钮。","Use an outline button with a 1px border and transparent fill.","button",{kind:"outline"}),
-    C("btn-ghost","button","幽灵按钮","Ghost Button","Bare button","无背景，工具栏常见。","Use a ghost button with no background until hover.","button",{kind:"ghost"}),
-    C("btn-text","button","文字按钮","Text Button","Textual button","最轻量操作。","Use a text button with no chrome.","button",{kind:"text"}),
-    C("btn-link","button","链接按钮","Link Button","Button as link","跳转感强的操作。","Use a link-styled button with an underline affordance.","button",{kind:"link"}),
-    C("btn-icon","button","图标按钮","Icon Button","Icon-only button","工具操作。","Use an icon button with a 32px hit target.","button",{kind:"icon"}),
-    C("btn-circular","button","圆形图标按钮","Circular Icon Button","Round icon button","添加一类圆形强调。","Use a circular icon button for compact add actions.","button",{kind:"circle"}),
-    C("btn-fab","button","浮动按钮","Floating Action Button","FAB","移动端主创建入口。","Use a floating action button anchored to the bottom-right corner.","button",{kind:"fab"}),
-    C("btn-danger","button","危险按钮","Destructive Button","Danger button","删除、不可逆操作。","Use a destructive button for irreversible actions.","button",{kind:"danger"}),
-    C("btn-loading","button","加载按钮","Loading Button","Pending button","提交中防止连点。","Use a loading button that shows a spinner and disables repeat clicks.","button",{kind:"loading"}),
-    C("btn-disabled","button","禁用按钮","Disabled Button","Inactive button","当前不可用。","Use a disabled button with reduced contrast.","button",{kind:"disabled"}),
-    C("btn-split","button","分裂按钮","Split Button","Split CTA","主操作加右侧更多。","Use a split button with the primary action on the left and a dropdown chevron on the right.","button",{kind:"split"}),
-    C("btn-dropdown","button","下拉按钮","Dropdown Button","Menu Button","点开操作菜单。","Use a dropdown / menu button that reveals actions on click.","button",{kind:"dropdown"}),
-    C("btn-group","button","按钮组","Button Group","Connected buttons","相关操作并排。","Use a connected button group for related actions.","button",{kind:"group"}),
-    C("btn-toggle","button","开关按钮","Toggle Button","Pressed button","按下和未按下。","Use a toggle button with distinct pressed and unpressed states.","button",{kind:"toggle"}),
-    C("btn-tgroup","button","开关按钮组","Toggle Group","Format group","格式组。","Use a toggle group for formatting actions like bold italic underline.","button",{kind:"tgroup"}),
-    C("btn-toolbar","button","图标工具栏","Toolbar","Action toolbar","编辑器一排图标。","Use an icon toolbar with undo, redo and formatting controls.","button",{kind:"toolbar"}),
-    C("btn-kebab","button","更多按钮","Overflow Button","Kebab Menu","竖三点溢出操作。","Use a kebab overflow button that opens additional actions.","button",{kind:"kebab"}),
-    C("btn-meatball","button","肉丸菜单","Meatball Menu","Horizontal ellipsis","横三点更多。","Use a meatball menu with a horizontal ellipsis.","button",{kind:"meatball"}),
-    C("btn-speed","button","快速操作菜单","Speed Dial","FAB speed dial","浮动按钮展开多个操作。","Use a speed dial that expands a FAB into multiple actions.","button",{kind:"speed"})
+    C("btn-primary","button","主按钮","Primary Button","Main CTA","页面主操作。","Build a single Primary Button, the main call to action, not a toolbar. Structure: one filled button labeled Save with comfortable padding (about 32px height). Visual: solid accent fill, high-contrast label, no outline-only look. Interaction: click fires the primary action; keyboard focus-visible ring. States: default, hover (slightly lighter or lifted), pressed, disabled, loading optional. Do not style it as a ghost, outline, or link, and do not add a dropdown chevron. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"primary"}),
+    C("btn-secondary","button","次按钮","Secondary Button","Default button","与主按钮配对。","Build a single Secondary Button meant to sit beside a primary CTA. Structure: label Cancel, same height as a primary button. Visual: quieter than primary — filled muted or neutral, not accent-solid. Interaction: click; focus-visible. States: default, hover, pressed, disabled. Do not use accent fill, and do not make it look like a text link. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"secondary"}),
+    C("btn-outline","button","描边按钮","Outline Button","Bordered button","弱一点但仍是按钮。","Build a single Outline Button. Structure: label Edit, ~32px height. Visual: 1px border, transparent fill, text matches border; no heavy shadow. Interaction: click; focus-visible. States: default, hover (light fill inside the border), pressed, disabled. Do not use a solid primary fill, and do not remove the border (that would be ghost/text). If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"outline"}),
+    C("btn-ghost","button","幽灵按钮","Ghost Button","Bare button","无背景，工具栏常见。","Build a single Ghost Button for toolbars. Structure: label Filter, same height as other buttons. Visual: no background and no border at rest; hover reveals a light fill. Interaction: click; focus-visible. States: default (bare), hover (fill), pressed, disabled. Do not keep a permanent border (outline) or a solid accent fill (primary). If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"ghost"}),
+    C("btn-text","button","文字按钮","Text Button","Textual button","最轻量操作。","Build a single Text Button, the lightest action. Structure: label Skip with no box at all. Visual: text only, optional underline on hover; no border, no fill at rest. Interaction: click; focus-visible. States: default, hover, pressed, disabled. Do not add chrome, and do not style it as a navigation link with always-on underline unless hovering. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"text"}),
+    C("btn-link","button","链接按钮","Link Button","Button as link","跳转感强的操作。","Build a single Link Button that feels like navigation. Structure: label Open docs. Visual: accent or info colored text with an underline affordance (always or on hover, but clearly a link). Interaction: click; focus-visible. States: default, hover, visited optional, disabled. Do not use a bordered button shape, and do not use it as the page primary save action. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"link"}),
+    C("btn-icon","button","图标按钮","Icon Button","Icon-only button","工具操作。","Build a single Icon Button. Structure: a square control about 32px with a line icon (settings gear), no text. Interaction: click; tooltip Settings on hover; focus-visible. States: default, hover, pressed, disabled. Hit target at least 32px. Do not use a circular FAB, and do not add a visible label beside the icon. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"icon"}),
+    C("btn-circular","button","圆形图标按钮","Circular Icon Button","Round icon button","添加一类圆形强调。","Build a single Circular Icon Button for a compact add action. Structure: a round 32–40px control with a plus line icon. Visual: circular clip, 1px border or soft fill. Interaction: click to add; tooltip Add. States: default, hover, pressed, disabled. Do not use a square icon button, and do not pin it as a screen-corner FAB. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"circle"}),
+    C("btn-fab","button","浮动按钮","Floating Action Button","FAB","移动端主创建入口。","Build a single Floating Action Button (FAB). Structure: a circular 40–56px button with a plus icon, visually anchored to the bottom-right of its container. Visual: stronger than a normal icon button (accent fill or accent ring). Interaction: click is the main create action. States: default, hover (lift), pressed, disabled. Do not place it inline in a form row, and do not expand it into a speed-dial unless asked. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"fab"}),
+    C("btn-danger","button","危险按钮","Destructive Button","Danger button","删除、不可逆操作。","Build a single Destructive Button for irreversible actions. Structure: label Delete. Visual: danger red text and/or border or fill, still clearly a button. Interaction: click; should not look like the primary save. States: default, hover, pressed, disabled. Do not use accent orange/green, and do not use a text-only link style for delete. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"danger"}),
+    C("btn-loading","button","加载按钮","Loading Button","Pending button","提交中防止连点。","Build a single Loading Button that blocks repeat submits. Structure: label Save, ~32px. Interaction: on click, switch to a pending state: show a small spinner, change label to Saving, and disable further clicks until a short mock finish. States: default, loading (spinner + disabled), success optional, disabled. Motion: spinner rotates. Do not allow double-submit, and do not use a page-level spinner instead of the button state. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"loading"}),
+    C("btn-disabled","button","禁用按钮","Disabled Button","Inactive button","当前不可用。","Build a single Disabled Button that cannot be pressed. Structure: label Submit, visually a primary-shaped button at reduced contrast (about 40% opacity). Interaction: not clickable, not focusable as an action, cursor not-allowed. States: only the disabled look. Do not make it look enabled, and do not use it as a loading button with a spinner. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"disabled"}),
+    C("btn-split","button","分裂按钮","Split Button","Split CTA","主操作加右侧更多。","Build a single Split Button. Structure: one control split into a left primary action labeled Save and a right chevron slot sharing one outline. Interaction: left click runs Save; right click opens a small menu with Save draft and Save and close. States: default, hover, open, disabled. Do not use a single dropdown that hides the primary action, and do not use a disconnected button plus icon. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"split"}),
+    C("btn-dropdown","button","下拉按钮","Dropdown Button","Menu Button","点开操作菜单。","Build a single Dropdown / Menu Button. Structure: one button labeled Actions with a chevron; click reveals a menu of Edit, Duplicate, Delete. Interaction: click toggles the menu; choose an item then close; Escape closes. States: default, hover, open, disabled. Do not split primary vs chevron into two hit targets, and do not use a kebab-only trigger. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"dropdown"}),
+    C("btn-group","button","按钮组","Button Group","Connected buttons","相关操作并排。","Build a single connected Button Group. Structure: three joined buttons Left, Center, Right sharing one outline with inner dividers (no gap). Interaction: each segment is clickable; they are related actions, not exclusive selection unless styled as toggle. States: default, hover per segment, pressed, disabled. Do not use separate spaced buttons, and do not use a segmented control for view switching unless the labels are clearly actions. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"group"}),
+    C("btn-toggle","button","开关按钮","Toggle Button","Pressed button","按下和未按下。","Build a single Toggle Button with pressed and unpressed states. Structure: label Bold or an icon, one control. Interaction: click flips pressed on/off and keeps the state. Visual: pressed uses accent border or fill; unpressed is quiet. States: off, on, hover, disabled. Do not use a Switch track, and do not group multiple toggles unless asked. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"toggle"}),
+    C("btn-tgroup","button","开关按钮组","Toggle Group","Format group","格式组。","Build a single Toggle Group for formatting. Structure: three joined toggles Bold, Italic, Underline. Interaction: each can be on independently (multi-select), click to toggle. States: off, on, hover, disabled per item. Do not allow only one selected (that would be segmented control), and do not use a dropdown. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"tgroup"}),
+    C("btn-toolbar","button","图标工具栏","Toolbar","Action toolbar","编辑器一排图标。","Build a single icon Toolbar. Structure: a horizontal row of icon buttons: Undo, Redo, Bold, Italic, a separator, then Link. Interaction: each icon is clickable; tooltips on hover. States: default, hover, disabled (e.g. Undo when empty). Do not wrap into a dropdown, and do not use huge primary buttons. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"toolbar"}),
+    C("btn-kebab","button","更多按钮","Overflow Button","Kebab Menu","竖三点溢出操作。","Build a single Overflow / Kebab button. Structure: a vertical three-dots icon button. Interaction: click opens a menu with Edit, Duplicate, Delete; click outside or Escape closes. States: default, hover, open. Do not use a horizontal ellipsis (meatball), and do not use a labeled Actions dropdown as the only trigger. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"kebab"}),
+    C("btn-meatball","button","肉丸菜单","Meatball Menu","Horizontal ellipsis","横三点更多。","Build a single Meatball Menu button. Structure: a horizontal three-dots icon button. Interaction: click opens the same kind of overflow menu (Edit, Duplicate, Delete). States: default, hover, open. Do not use vertical kebab dots, and do not place it as a FAB. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"meatball"}),
+    C("btn-speed","button","快速操作菜单","Speed Dial","FAB speed dial","浮动按钮展开多个操作。","Build a single Speed Dial. Structure: a FAB in the corner; on click it fans out 2–3 smaller circular actions (file, image, note) with labels. Interaction: click FAB to expand/collapse; click an action then collapse. States: collapsed, expanded, hover. Motion: 180ms fan-out. Do not keep all actions visible at rest, and do not use a flat dropdown list instead of radial/stacked FABs. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"speed"})
   );
   add(
     C("in-text","input","单行输入","Text Input","Text Field","短文本。","Use a labeled text input with placeholder and focus-visible states.","input",{kind:"text"}),
@@ -875,15 +910,15 @@
     C("ac-acc","accordion","手风琴","Accordion","Disclosure group","多个垂直折叠项。","Use an accordion of stacked disclosures.","accordion",{kind:"acc"}),
     C("ac-col","accordion","可折叠块","Collapsible","Collapse panel","单个展开收起区。","Use a single collapsible section for advanced settings.","accordion",{kind:"col"}),
     C("ac-dis","accordion","显隐控件","Disclosure","Show-hide control","接近 Collapsible 的独立模式。","Use a disclosure / show-hide control with a chevron.","accordion",{kind:"dis"}),
-    C("ov-tip","overlay","工具提示","Tooltip","Hint","短说明，不能放复杂交互。","Use a tooltip on hover/focus with a short label only.","overlay",{kind:"tooltip"}),
-    C("ov-pop","overlay","气泡卡片","Popover","Rich popover","可含按钮和表单。","Use a popover that can contain actions, not just text.","overlay",{kind:"popover"}),
-    C("ov-hover","overlay","悬停卡片","Hover Card","Preview card","悬停预览资料。","Use a hover card to preview a person or entity.","overlay",{kind:"hover"}),
-    C("ov-modal","overlay","对话框","Modal","Dialog","阻断式编辑或确认。","Use a modal dialog with overlay, title and primary/secondary actions.","overlay",{kind:"modal"}),
-    C("ov-alert","overlay","警告对话框","Alert Dialog","Confirm dialog","必须回应才能继续。","Use an alert dialog that requires an explicit user response.","overlay",{kind:"alert"}),
-    C("ov-popc","overlay","气泡确认","Popconfirm","Confirmation Popover","删除前的小确认。","Use a popconfirm anchored to the dangerous action.","overlay",{kind:"popconfirm"}),
-    C("ov-drawer","overlay","抽屉","Drawer","Side panel","从边缘滑入的面板。","Use a right-side drawer with a fixed width.","overlay",{kind:"drawer"}),
-    C("ov-sheet","overlay","滑入面板","Sheet","Edge sheet","从边缘滑入。","Use a sheet that slides in from the edge.","overlay",{kind:"sheet"}),
-    C("ov-bs","overlay","底部弹层","Bottom Sheet","Action sheet","从底部升起。","Use a bottom sheet with actions.","overlay",{kind:"bottom"})
+    C("ov-tip","overlay","工具提示","Tooltip","Hint","短说明，不能放复杂交互。","Build a single Tooltip. Structure: a short trigger labeled Name and a tiny floating label with one line of help (Display name shown on invoices). Visual: dark or inverse small chip, no buttons inside. Interaction: show on hover and keyboard focus, hide on blur/leave; delay about 200ms. States: hidden, visible. Do not put forms or actions inside, and do not use a popover or modal. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","overlay",{kind:"tooltip"}),
+    C("ov-pop","overlay","气泡卡片","Popover","Rich popover","可含按钮和表单。","Build a single Popover that can hold actions, not just text. Structure: a trigger button Share; the floating panel contains a short title, a compact field or two actions (Copy link, Embed). Interaction: click trigger to toggle; click outside or Escape closes; focus stays in the panel while open. States: closed, open. Do not auto-open on hover only, do not dim the whole page like a modal, and do not limit content to one tooltip sentence. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","overlay",{kind:"popover"}),
+    C("ov-hover","overlay","悬停卡片","Hover Card","Preview card","悬停预览资料。","Build a single Hover Card that previews a person. Structure: a text trigger (Ada Lovelace); on hover a card appears with name, role, and one action (Message). Interaction: open on hover with a short delay; keep open while moving into the card; close when leaving both. States: hidden, visible. Do not require a click to open, do not use a blocking modal, and do not use a one-line tooltip. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","overlay",{kind:"hover"}),
+    C("ov-modal","overlay","对话框","Modal","Dialog","阻断式编辑或确认。","Build a single Modal Dialog. Structure: a dimmed overlay, a centered panel with title Edit project, body text or a simple field, primary Save and secondary Cancel, plus a close control. Interaction: open from a trigger; trap focus inside; Escape and overlay click close; Cancel/Save close. States: closed, open. Motion: overlay fade, panel ~180ms. Do not use a side drawer, and do not open without a scrim. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","overlay",{kind:"modal"}),
+    C("ov-alert","overlay","警告对话框","Alert Dialog","Confirm dialog","必须回应才能继续。","Build a single Alert Dialog that must be answered. Structure: overlay plus panel titled Delete file?, short warning copy, danger Confirm and Cancel. Interaction: open from Delete; the rest of the UI is inert; Escape may cancel; there is no click-away-to-dismiss, or overlay click maps to Cancel only. States: closed, open. Do not include extra form fields, and do not use a non-blocking toast. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","overlay",{kind:"alert"}),
+    C("ov-popc","overlay","气泡确认","Popconfirm","Confirmation Popover","删除前的小确认。","Build a single Popconfirm anchored to a dangerous action. Structure: a Delete text/button; beside it a small bubble with Confirm deletion? plus Yes and No. Interaction: click Delete to open the bubble; Yes/No or outside click closes; no full-screen dim. States: closed, open. Do not use a centered modal, and do not use a tooltip-only sentence without buttons. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","overlay",{kind:"popconfirm"}),
+    C("ov-drawer","overlay","抽屉","Drawer","Side panel","从边缘滑入的面板。","Build a single right-side Drawer. Structure: a trigger Open; a fixed-width panel slides from the right over a dim overlay, with title Details, body content, and close. Interaction: open/close; Escape and overlay click close; focus in the drawer. Motion: panel slides ~200ms. Do not center a modal, do not rise from the bottom (bottom sheet), and do not use a persistent sidebar that never overlays. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","overlay",{kind:"drawer"}),
+    C("ov-sheet","overlay","滑入面板","Sheet","Edge sheet","从边缘滑入。","Build a single edge Sheet (not a modal, not a bottom sheet). Structure: a panel that slides in from the right or left edge with title Filters and a few controls, optional overlay. Interaction: open from a trigger, close via close control or Escape. Motion: edge slide ~200ms. Do not center the panel, and do not attach it to the bottom of the screen. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","overlay",{kind:"sheet"}),
+    C("ov-bs","overlay","底部弹层","Bottom Sheet","Action sheet","从底部升起。","Build a single Bottom Sheet. Structure: a panel that rises from the bottom with a grab handle, title Actions, and stacked actions (Share, Copy, Delete). Interaction: open from a trigger; close by swipe down, overlay click, or a cancel row. Motion: ~200ms rise. Do not slide from the side (drawer), and do not center a desktop modal. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","overlay",{kind:"bottom"})
   );
   add(
     C("fb-alert","feedback","警告条","Alert","Page alert","块级结果提示。","Use an alert with an icon and short warning copy.","feedback",{kind:"alert"}),
@@ -2076,32 +2111,49 @@
     });
   }
 
+  var CAT_LABEL = {};
+  CATS.forEach(function (pair) { CAT_LABEL[pair[0]] = pair[1]; });
+
+  function appendCard(it) {
+    var demo = $("div", { class: "demo" });
+    var copy = $("button", { class: "copy" }, "复制");
+    copy.onclick = function () {
+      navigator.clipboard.writeText(it.prompt).catch(function () {});
+      copy.textContent = "已复制"; copy.classList.add("ok");
+      setTimeout(function () { copy.textContent = "复制"; copy.classList.remove("ok"); }, 1200);
+    };
+    grid.append($("article", { class: "card", "data-cat": it.category }, [
+      $("div", { class: "card-deco", "aria-hidden": "true" }, [$("i"), $("i")]),
+      demo,
+      $("div", { class: "meta" }, [
+        $("div", { class: "row" }, [$("span", { class: "k" }, "中文俗称"), $("div", { class: "v zh", title: it.zh }, it.zh)]),
+        $("div", { class: "row" }, [$("span", { class: "k" }, "标准英文"), $("div", { class: "v en", title: it.en }, it.en)]),
+        $("div", { class: "row" }, [$("span", { class: "k" }, "常见别名"), $("div", { class: "v aliases", title: it.aliases }, it.aliases)]),
+        $("div", { class: "row" }, [$("span", { class: "k" }, "何时使用"), $("div", { class: "v when", title: it.when }, it.when)]),
+        $("div", { class: "prompt-box" }, [$("div", { class: "prompt-head" }, [$("span", { class: "k" }, "AI Prompt"), copy]), $("div", { class: "prompt-scroll" }, [$("pre", { class: "prompt" }, it.prompt), $("p", { class: "prompt-zh" }, it.promptZh)])])
+      ])
+    ]));
+    mountDemo(demo, it);
+  }
+
   function render() {
     var items = visible();
     countEl.innerHTML = "<span class=\"n\">" + items.length + "</span> / " + CATALOG.length;
     clear(grid);
     if (!items.length) { grid.append($("div", { class: "empty-filter" }, "没有匹配的组件")); return; }
-    items.forEach(function (it) {
-      var demo = $("div", { class: "demo" });
-      var copy = $("button", { class: "copy" }, "复制");
-      copy.onclick = function () {
-        navigator.clipboard.writeText(it.prompt).catch(function () {});
-        copy.textContent = "已复制"; copy.classList.add("ok");
-        setTimeout(function () { copy.textContent = "复制"; copy.classList.remove("ok"); }, 1200);
-      };
-      grid.append($("article", { class: "card" }, [
-        $("div", { class: "card-deco", "aria-hidden": "true" }, [$("i"), $("i"), $("i"), $("i")]),
-        demo,
-        $("div", { class: "meta" }, [
-          $("div", { class: "row" }, [$("span", { class: "k" }, "中文俗称"), $("div", { class: "v zh", title: it.zh }, it.zh)]),
-          $("div", { class: "row" }, [$("span", { class: "k" }, "标准英文"), $("div", { class: "v en", title: it.en }, it.en)]),
-          $("div", { class: "row" }, [$("span", { class: "k" }, "常见别名"), $("div", { class: "v aliases", title: it.aliases }, it.aliases)]),
-          $("div", { class: "row" }, [$("span", { class: "k" }, "何时使用"), $("div", { class: "v when", title: it.when }, it.when)]),
-          $("div", { class: "prompt-box" }, [$("div", { class: "prompt-head" }, [$("span", { class: "k" }, "AI Prompt"), copy]), $("div", { class: "prompt-scroll" }, [$("pre", { class: "prompt" }, it.prompt), $("p", { class: "prompt-zh" }, it.promptZh)])])
-        ])
+    var i = 0;
+    while (i < items.length) {
+      var c = items[i].category;
+      var j = i;
+      while (j < items.length && items[j].category === c) j++;
+      grid.append($("div", { class: "cat-head", "data-cat": c }, [
+        $("span", { class: "cat-dot" }),
+        $("span", { class: "cat-name" }, CAT_LABEL[c] || c),
+        $("span", { class: "cat-n" }, String(j - i))
       ]));
-      mountDemo(demo, it);
-    });
+      items.slice(i, j).forEach(appendCard);
+      i = j;
+    }
   }
 
   CATS.forEach(function (pair) {
