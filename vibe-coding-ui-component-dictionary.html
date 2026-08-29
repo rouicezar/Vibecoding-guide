@@ -24,8 +24,8 @@
       --faint: #7a7368;
       --fill: #221f18;
       --fill-2: #2a261e;
-      --accent: #f97316;
-      --accent-ink: #fff7ed;
+      --accent: #34d399;
+      --accent-ink: #ecfdf5;
       --ok: #22c55e;
       --warn: #fbbf24;
       --info: #60a5fa;
@@ -48,8 +48,8 @@
       --faint: #8a8274;
       --fill: #efe8da;
       --fill-2: #e6dece;
-      --accent: #ea580c;
-      --accent-ink: #fff7ed;
+      --accent: #059669;
+      --accent-ink: #ecfdf5;
       --ok: #16a34a;
       --warn: #d97706;
       --info: #2563eb;
@@ -159,7 +159,7 @@
       background: linear-gradient(90deg, transparent, var(--cat), transparent);
       opacity: .85; pointer-events: none; z-index: 2;
     }
-    .card[data-cat="button"], .card[data-cat="selection"], .cat-head[data-cat="button"], .cat-head[data-cat="selection"] { --cat: var(--ok); }
+    .card[data-cat="button"], .card[data-cat="selection"], .cat-head[data-cat="button"], .cat-head[data-cat="selection"] { --cat: var(--teal); }
     .card[data-cat="overlay"], .card[data-cat="feedback"], .card[data-cat="loading"],
     .cat-head[data-cat="overlay"], .cat-head[data-cat="feedback"], .cat-head[data-cat="loading"] { --cat: var(--info); }
     .card[data-cat="input"], .card[data-cat="select"], .card[data-cat="slider"], .card[data-cat="datetime"],
@@ -384,7 +384,7 @@
     .title-mark { color: var(--accent); }
     .kw { font-style: normal; }
     .kw-o { color: var(--accent); }
-    .kw-g { color: var(--ok); }
+    .kw-g { color: var(--teal); }
     .kw-b { color: var(--info); }
     .count .n { color: var(--accent); }
     .ui-btn.solid { background: var(--accent); color: #fff; border-color: var(--accent); }
@@ -567,7 +567,7 @@
   "btn-icon": "做一颗图标按钮。约 32px 方形，只有线条设置图标，无文字。点击；悬停 tooltip 为 Settings。热区至少 32px。不要做成圆形 FAB，也不要在旁边加可见文字。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
   "btn-circular": "做一颗圆形图标按钮，用于紧凑添加。32–40px 圆，中间加号线条图标。可点，tooltip 为 Add。不要做成方图标按钮，也不要钉在屏幕角落当 FAB。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
   "btn-fab": "做一颗浮动操作按钮 FAB。圆形 40–56px，加号图标，锚定在容器右下角。比普通图标按钮更强调。点击即主创建。悬停可微抬。不要排进表单行里，也不要默认展开成速度拨号。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
-  "btn-danger": "做一颗危险按钮，用于不可逆操作。标签 Delete。红色字/边/底，仍是按钮。不要做成主保存的强调色，也不要用纯文字链接当删除。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-danger": "做一颗危险按钮，用于不可逆操作。标签 Delete。红色字/边/底，仍是按钮。不要用主强调色（现在是绿），也不要用纯文字链接当删除。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
   "btn-loading": "做一颗加载按钮，防止连点。标签 Save。点击后进入等待：小转圈、文案 Saving、禁用再点，直到一次短模拟结束。转圈要转。不要允许双提交，也不要用整页转圈代替按钮自己的状态。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
   "btn-disabled": "做一颗禁用按钮，按不了。标签 Submit，主按钮外形但对比降低（约 40% 透明）。不可点、不可当操作聚焦，光标 not-allowed。不要看起来还能点，也不要带转圈（那是加载按钮）。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
   "btn-split": "做一颗分裂按钮。同一描边里左侧主操作 Save，右侧箭头。点左执行 Save；点右打开小菜单（Save draft、Save and close）。不要做成把主操作藏进菜单的下拉按钮，也不要拆成两颗不相连的按钮。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
@@ -791,7 +791,7 @@
     C("btn-icon","button","图标按钮","Icon Button","Icon-only button","工具操作。","Build a single Icon Button. Structure: a square control about 32px with a line icon (settings gear), no text. Interaction: click; tooltip Settings on hover; focus-visible. States: default, hover, pressed, disabled. Hit target at least 32px. Do not use a circular FAB, and do not add a visible label beside the icon. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"icon"}),
     C("btn-circular","button","圆形图标按钮","Circular Icon Button","Round icon button","添加一类圆形强调。","Build a single Circular Icon Button for a compact add action. Structure: a round 32–40px control with a plus line icon. Visual: circular clip, 1px border or soft fill. Interaction: click to add; tooltip Add. States: default, hover, pressed, disabled. Do not use a square icon button, and do not pin it as a screen-corner FAB. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"circle"}),
     C("btn-fab","button","浮动按钮","Floating Action Button","FAB","移动端主创建入口。","Build a single Floating Action Button (FAB). Structure: a circular 40–56px button with a plus icon, visually anchored to the bottom-right of its container. Visual: stronger than a normal icon button (accent fill or accent ring). Interaction: click is the main create action. States: default, hover (lift), pressed, disabled. Do not place it inline in a form row, and do not expand it into a speed-dial unless asked. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"fab"}),
-    C("btn-danger","button","危险按钮","Destructive Button","Danger button","删除、不可逆操作。","Build a single Destructive Button for irreversible actions. Structure: label Delete. Visual: danger red text and/or border or fill, still clearly a button. Interaction: click; should not look like the primary save. States: default, hover, pressed, disabled. Do not use accent orange/green, and do not use a text-only link style for delete. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"danger"}),
+    C("btn-danger","button","危险按钮","Destructive Button","Danger button","删除、不可逆操作。","Build a single Destructive Button for irreversible actions. Structure: label Delete. Visual: danger red text and/or border or fill, still clearly a button. Interaction: click; should not look like the primary save. States: default, hover, pressed, disabled. Do not use the primary accent color, and do not use a text-only link style for delete. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"danger"}),
     C("btn-loading","button","加载按钮","Loading Button","Pending button","提交中防止连点。","Build a single Loading Button that blocks repeat submits. Structure: label Save, ~32px. Interaction: on click, switch to a pending state: show a small spinner, change label to Saving, and disable further clicks until a short mock finish. States: default, loading (spinner + disabled), success optional, disabled. Motion: spinner rotates. Do not allow double-submit, and do not use a page-level spinner instead of the button state. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"loading"}),
     C("btn-disabled","button","禁用按钮","Disabled Button","Inactive button","当前不可用。","Build a single Disabled Button that cannot be pressed. Structure: label Submit, visually a primary-shaped button at reduced contrast (about 40% opacity). Interaction: not clickable, not focusable as an action, cursor not-allowed. States: only the disabled look. Do not make it look enabled, and do not use it as a loading button with a spinner. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"disabled"}),
     C("btn-split","button","分裂按钮","Split Button","Split CTA","主操作加右侧更多。","Build a single Split Button. Structure: one control split into a left primary action labeled Save and a right chevron slot sharing one outline. Interaction: left click runs Save; right click opens a small menu with Save draft and Save and close. States: default, hover, open, disabled. Do not use a single dropdown that hides the primary action, and do not use a disconnected button plus icon. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"split"}),
