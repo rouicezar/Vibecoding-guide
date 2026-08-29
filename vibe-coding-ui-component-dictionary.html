@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vibe Coding UI 组件精准描述词典</title>
+  <style>
+    :root {
+      --card-h: 520px;
+      --demo-h: 200px;
+      --radius: 6px;
+      --font: ui-sans-serif, system-ui, -apple-system, "PingFang SC", "Noto Sans SC", sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    html[data-theme="dark"] {
+      --bg: #0c0c0b;
+      --bg-2: #141413;
+      --card: #161615;
+      --demo: #10100f;
+      --line: #2c2c28;
+      --line-2: #3a3a35;
+      --text: #ededeb;
+      --muted: #9c9c96;
+      --faint: #6e6e68;
+      --fill: #1e1e1c;
+      --fill-2: #262623;
+      --accent: #c96442;
+      --accent-ink: #fff7f3;
+      --ok: #7a9a6a;
+      --danger: #c45c4a;
+      --shadow: 0 8px 24px rgba(0,0,0,.35);
+      --overlay: rgba(0,0,0,.5);
+    }
+    html[data-theme="light"] {
+      --bg: #f4f3ef;
+      --bg-2: #eeede8;
+      --card: #fcfcfa;
+      --demo: #f7f6f2;
+      --line: #e2e0d8;
+      --line-2: #cfcbc0;
+      --text: #1c1c19;
+      --muted: #6a6a64;
+      --faint: #8a8a84;
+      --fill: #f0efe9;
+      --fill-2: #e8e6de;
+      --accent: #b54d2f;
+      --accent-ink: #fffaf8;
+      --ok: #4f7344;
+      --danger: #b44538;
+      --shadow: 0 8px 20px rgba(28,28,25,.08);
+      --overlay: rgba(28,28,25,.28);
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; min-height: 100%;
+      background: var(--bg); color: var(--text);
+      font: 14px/1.5 var(--font);
+    }
+    button, input, select, textarea { font: inherit; color: inherit; }
+    button { cursor: pointer; }
+    svg { flex: 0 0 auto; }
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 32px 20px 72px; }
+    .top {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 16px; margin-bottom: 22px;
+    }
+    .hero h1 { margin: 0 0 8px; font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
+    .hero p { margin: 0; color: var(--muted); max-width: 640px; font-size: 13px; }
+    .formula {
+      margin-top: 14px; padding: 0 0 0 12px; border-left: 2px solid var(--line-2);
+      color: var(--muted); font-size: 13px;
+    }
+    .formula em { font-style: normal; color: var(--text); }
+    .theme-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      height: 34px; padding: 0 10px; border-radius: var(--radius);
+      border: 1px solid var(--line); background: var(--card); color: var(--muted);
+    }
+    .theme-btn:hover { color: var(--text); border-color: var(--line-2); }
+    .toolbar { display: flex; gap: 10px; margin: 0 0 12px; align-items: center; }
+    .search {
+      flex: 1; height: 36px; padding: 0 12px; border-radius: var(--radius);
+      border: 1px solid var(--line); background: var(--card); outline: none;
+    }
+    .search:focus { border-color: var(--text); }
+    .count { color: var(--faint); font-size: 12px; white-space: nowrap; }
+    .cats { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+    .cat {
+      border: 1px solid var(--line); background: transparent; color: var(--muted);
+      border-radius: var(--radius); padding: 4px 9px; font-size: 12px;
+    }
+    .cat:hover { color: var(--text); }
+    .cat.active { color: var(--bg); background: var(--text); border-color: var(--text); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 14px;
+    }
+    .card {
+      height: var(--card-h);
+      display: flex; flex-direction: column;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden; min-width: 0;
+    }
+    .demo {
+      height: var(--demo-h); flex: 0 0 var(--demo-h);
+      background: var(--demo); border-bottom: 1px solid var(--line);
+      position: relative; overflow: hidden; padding: 12px;
+    }
+    .meta { flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 10px 12px 12px; }
+    .row { display: grid; grid-template-columns: 64px 1fr; gap: 8px; margin-bottom: 6px; }
+    .k { color: var(--faint); font-size: 11px; padding-top: 2px; }
+    .v { min-width: 0; }
+    .zh { font-weight: 600; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .en { color: var(--muted); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .aliases, .when {
+      color: var(--muted); font-size: 12px;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .prompt-box { flex: 1; min-height: 0; display: flex; flex-direction: column; margin-top: 2px; }
+    .prompt-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+    .copy {
+      height: 22px; padding: 0 8px; border-radius: 4px; border: 1px solid var(--line);
+      background: transparent; color: var(--muted); font-size: 11px;
+    }
+    .copy.ok { color: var(--ok); border-color: var(--ok); }
+    .prompt {
+      flex: 1; min-height: 0; overflow: auto; margin: 0; padding: 8px;
+      background: var(--fill); border: 1px solid var(--line); border-radius: 4px;
+      color: var(--muted); font: 11px/1.5 var(--mono);
+      white-space: pre-wrap; word-break: break-word;
+    }
+    .empty-filter { color: var(--muted); padding: 48px 0; text-align: center; grid-column: 1 / -1; }
+
+    .ui-btn {
+      border: 1px solid transparent; border-radius: var(--radius); padding: 6px 11px;
+      background: var(--text); color: var(--bg); font-weight: 500;
+    }
+    .ui-btn.secondary { background: var(--fill); color: var(--text); border-color: var(--line); }
+    .ui-btn.outline { background: transparent; color: var(--text); border-color: var(--line); }
+    .ui-btn.ghost { background: transparent; color: var(--text); border-color: transparent; }
+    .ui-btn.text { background: transparent; color: var(--text); border: 0; padding-inline: 4px; text-decoration: underline; text-underline-offset: 3px; }
+    .ui-btn.link { background: transparent; color: var(--text); border: 0; text-decoration: underline; text-underline-offset: 3px; }
+    .ui-btn.danger { background: var(--danger); color: #fff; }
+    .ui-btn.icon, .ui-btn.circle {
+      width: 32px; height: 32px; padding: 0;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .ui-btn.circle { border-radius: 50%; }
+    .ui-btn[disabled] { opacity: .4; cursor: not-allowed; }
+    .ui-btn.on { background: var(--fill-2); color: var(--text); border-color: var(--text); }
+    .fab {
+      position: absolute; right: 12px; bottom: 12px; width: 40px; height: 40px;
+      border-radius: 50%; border: 1px solid var(--line); background: var(--text); color: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .field, .select-face {
+      width: 100%; height: 32px; padding: 0 9px; border-radius: var(--radius);
+      border: 1px solid var(--line); background: var(--card);
+    }
+    textarea.field { height: 72px; padding: 8px 9px; resize: none; }
+    .tabs { display: flex; gap: 0; position: relative; }
+    .tab {
+      background: none; border: 0; color: var(--muted); padding: 7px 10px;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .tab.active { color: var(--text); }
+    .tab-underline { border-bottom: 1px solid var(--line); }
+    .tab-underline .ink {
+      position: absolute; left: 0; bottom: -1px; height: 1px; background: var(--text);
+      transition: transform .16s ease, width .16s ease;
+    }
+    .pills .tab { border: 1px solid transparent; border-radius: 999px; }
+    .pills .tab.active { border-color: var(--line); background: var(--fill); }
+    .seg { display: flex; background: var(--fill); border: 1px solid var(--line); border-radius: var(--radius); padding: 2px; }
+    .seg .tab { flex: 1; justify-content: center; border-radius: 4px; }
+    .seg .tab.active { background: var(--card); color: var(--text); }
+    .menu, .popover {
+      position: absolute; background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--radius); min-width: 148px; z-index: 3; box-shadow: var(--shadow);
+    }
+    .menu button, .list-item {
+      display: block; width: 100%; text-align: left; background: none; border: 0;
+      color: var(--text); padding: 7px 11px;
+    }
+    .menu button:hover, .list-item:hover { background: var(--fill); }
+    .chip {
+      display: inline-flex; align-items: center; gap: 4px;
+      border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; font-size: 12px;
+      background: var(--card);
+    }
+    .chip .x { cursor: pointer; display: inline-flex; }
+    .track { height: 4px; background: var(--fill-2); border-radius: 99px; position: relative; overflow: hidden; }
+    .tree-row { display: flex; gap: 6px; align-items: center; padding: 3px 0; cursor: pointer; font-size: 12px; }
+    .toast {
+      position: absolute; right: 10px; bottom: 10px;
+      background: var(--card); border: 1px solid var(--line);
+      padding: 7px 10px; border-radius: var(--radius); font-size: 12px; box-shadow: var(--shadow);
+    }
+    .modal-mask {
+      position: absolute; inset: 0; background: var(--overlay);
+      display: flex; align-items: center; justify-content: center; z-index: 4;
+    }
+    .modal { width: 86%; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px; }
+    .drawer {
+      position: absolute; top: 0; right: 0; bottom: 0; width: 58%;
+      background: var(--card); border-left: 1px solid var(--line); z-index: 4; padding: 10px;
+    }
+    .sheet {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      background: var(--card); border-top: 1px solid var(--line); z-index: 4; padding: 10px;
+    }
+    .mini-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+    .mini-table th, .mini-table td { border-bottom: 1px solid var(--line); padding: 5px 6px; text-align: left; }
+    .status { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ok); }
+    .spin {
+      width: 18px; height: 18px; border: 1.5px solid var(--line-2);
+      border-top-color: var(--text); border-radius: 50%; animation: spin .7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes shimmer { 0% { background-position: -160px 0; } 100% { background-position: 160px 0; } }
+    .skel { height: 8px; border-radius: 2px; background: var(--fill-2); margin: 8px 0; }
+    .shimmer {
+      background: linear-gradient(90deg, var(--fill-2) 0, var(--line) 50%, var(--fill-2) 100%);
+      background-size: 160px 100%; animation: shimmer 1.1s infinite;
+    }
+    .center { height: 100%; display: flex; align-items: center; justify-content: center; }
+    .hscroll { overflow-x: auto; }
+    .grow { flex: 1; min-height: 0; overflow: auto; }
+    .hint { color: var(--faint); font-size: 11px; }
+    .split { display: flex; height: 100%; }
+    .pane { overflow: auto; padding: 6px; }
+    .gutter { width: 5px; background: var(--line); cursor: col-resize; flex: 0 0 5px; }
+    .kanban { display: flex; gap: 8px; height: 100%; }
+    .col { flex: 1; background: var(--fill); border: 1px solid var(--line); border-radius: var(--radius); padding: 6px; overflow: auto; }
+    .card-mini { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 8px; font-size: 12px; }
+    .star-btn { background: none; border: 0; color: var(--faint); padding: 0 2px; display: inline-flex; }
+    .star-btn.on { color: var(--accent); }
+    .otp { display: flex; gap: 6px; justify-content: center; }
+    .otp input {
+      width: 30px; height: 36px; text-align: center; border-radius: var(--radius);
+      border: 1px solid var(--line); background: var(--card);
+    }
+    .code {
+      font-family: var(--mono); font-size: 11px; background: var(--fill);
+      border: 1px solid var(--line); padding: 8px; border-radius: var(--radius);
+      height: 100%; overflow: auto; white-space: pre;
+    }
+    .bubble { max-width: 80%; background: var(--fill); border: 1px solid var(--line); border-radius: 8px 8px 8px 2px; padding: 7px 10px; font-size: 12px; }
+    .bubble.me { margin-left: auto; background: var(--card); border-radius: 8px 8px 2px 8px; }
+    .cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; font-size: 11px; }
+    .cal b, .cal button { text-align: center; padding: 4px 0; border: 0; background: none; color: var(--text); border-radius: 4px; }
+    .cal button.sel { background: var(--text); color: var(--bg); }
+    .rail { display: flex; flex-direction: column; gap: 4px; width: 36px; }
+    .rail button {
+      height: 32px; border: 1px solid transparent; border-radius: var(--radius);
+      background: transparent; color: var(--muted); display: flex; align-items: center; justify-content: center;
+    }
+    .rail button.on { color: var(--text); border-color: var(--line); background: var(--card); }
+    .bnav { display: flex; width: 100%; }
+    .bnav button {
+      flex: 1; background: none; border: 0; color: var(--muted); font-size: 10px;
+      display: flex; flex-direction: column; align-items: center; gap: 3px;
+    }
+    .bnav button.on { color: var(--text); }
+    input[type=range] { width: 100%; accent-color: var(--text); }
+    .ico-row { display: inline-flex; align-items: center; gap: 6px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <header class="hero">
+        <h1>Vibe Coding UI 组件词典</h1>
+        <p>把脑子里的样子写成标准名称，再交给模型。卡片一样大，上面的组件可以点。</p>
+        <div class="formula">以后按这个说：<em>名称 + 变体 + 结构 + 交互 + 状态 + 动效</em>。细线跟着 Tab 走，请写 underlined tabs，不要写 slider。</div>
+      </header>
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="切换颜色模式"></button>
+    </div>
+    <div class="toolbar">
+      <input class="search" id="q" placeholder="搜中文名、英文名或别名" />
+      <span class="count" id="count"></span>
+    </div>
+    <div class="cats" id="cats"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <script>
+(function () {
+  const CATS = [
+    ["all", "全部"], ["tabs", "Tabs"], ["stepper", "Stepper"], ["button", "Button"],
+    ["input", "Input"], ["select", "Select"], ["selection", "Selection"], ["slider", "Slider"],
+    ["datetime", "日期时间"], ["special", "特殊输入"], ["upload", "上传"], ["menu", "Menu"],
+    ["nav", "Navigation"], ["card", "Card"], ["data", "数据展示"], ["tag", "Tag / Badge"],
+    ["accordion", "Accordion"], ["overlay", "Overlay"], ["feedback", "反馈"], ["loading", "Loading"],
+    ["empty", "Empty"], ["layout", "布局"], ["saas", "SaaS / AI"], ["tree", "Tree"],
+    ["mobile", "移动端"], ["desktop", "桌面"]
+  ];
+  const ICONS = {
+    home: '<path d="M4 10.5 12 4l8 6.5"/><path d="M6 10v9h12v-9"/>',
+    grid: '<rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/>',
+    settings: '<circle cx="12" cy="12" r="3"/><path d="M12 3.5v2.2M12 18.3v2.2M4.9 7.1l1.6 1.6M17.5 15.3l1.6 1.6M3.5 12h2.2M18.3 12h2.2M4.9 16.9l1.6-1.6M17.5 8.7l1.6-1.6"/>',
+    search: '<circle cx="11" cy="11" r="6"/><path d="m20 20-3.5-3.5"/>',
+    plus: '<path d="M12 5v14M5 12h14"/>',
+    user: '<circle cx="12" cy="8" r="3.2"/><path d="M5 19c1.5-3 4-4.5 7-4.5S17.5 16 19 19"/>',
+    moreV: '<circle cx="12" cy="6" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="18" r="1"/>',
+    moreH: '<circle cx="6" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="18" cy="12" r="1"/>',
+    check: '<path d="m5 12 5 5 9-10"/>',
+    x: '<path d="M6 6l12 12M18 6 6 18"/>',
+    chevR: '<path d="m9 6 6 6-6 6"/>',
+    chevD: '<path d="m6 9 6 6 6-6"/>',
+    chevL: '<path d="m15 6-6 6 6 6"/>',
+    chevU: '<path d="m6 15 6-6 6 6"/>',
+    trash: '<path d="M5 7h14M9 7V5h6v2M8 7l1 12h6l1-12"/>',
+    copy: '<rect x="8" y="8" width="11" height="11" rx="1.5"/><path d="M5 15V5h10"/>',
+    edit: '<path d="M4 17.5V20h2.5L18 8.5 15.5 6 4 17.5z"/>',
+    file: '<path d="M7 4h7l5 5v11H7z"/><path d="M14 4v5h5"/>',
+    image: '<rect x="4" y="5" width="16" height="14" rx="1.5"/><path d="m5 16 4-4 3 3 3-4 4 5"/>',
+    star: '<path d="m12 3.5 2.4 5 5.5.6-4 3.8 1.1 5.4L12 16.2 7 18.3l1.1-5.4-4-3.8 5.5-.6z"/>',
+    sun: '<circle cx="12" cy="12" r="3.5"/><path d="M12 3v2M12 19v2M4.9 4.9l1.5 1.5M17.6 17.6l1.5 1.5M3 12h2M19 12h2M4.9 19.1l1.5-1.5M17.6 6.4l1.5-1.5"/>',
+    moon: '<path d="M16 3.3A8.5 8.5 0 1 1 3.3 16 7 7 0 0 0 16 3.3z"/>',
+    send: '<path d="M4 12h12M12 6l6 6-6 6"/>',
+    camera: '<rect x="3.5" y="7" width="17" height="12" rx="1.5"/><circle cx="12" cy="13" r="3"/>',
+    upload: '<path d="M12 16V6M8 10l4-4 4 4M5 19h14"/>',
+    inbox: '<path d="M4 13h4l2 3h4l2-3h4v6H4z"/><path d="M4 13 7 5h10l3 8"/>',
+    alert: '<circle cx="12" cy="12" r="8.5"/><path d="M12 8v5M12 16.5h.01"/>',
+    checkC: '<circle cx="12" cy="12" r="8.5"/><path d="m8 12 3 3 5-6"/>',
+    help: '<rect x="5" y="4" width="14" height="16" rx="1.5"/><path d="M9.5 9a2.5 2.5 0 1 1 3.2 2.4c-.8.4-1.2.8-1.2 1.6V14M12 17h.01"/>',
+    grip: '<path d="M9 7h.01M9 12h.01M9 17h.01M15 7h.01M15 12h.01M15 17h.01"/>',
+    eye: '<path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z"/><circle cx="12" cy="12" r="2.2"/>',
+    calendar: '<rect x="4" y="6" width="16" height="14" rx="1.5"/><path d="M8 4v4M16 4v4M4 11h16"/>',
+    menu: '<path d="M5 7h14M5 12h14M5 17h14"/>',
+    layers: '<path d="m12 4 8 4-8 4-8-4 8-4zM4 12l8 4 8-4"/>',
+    msg: '<path d="M5 6h14v10H8l-3 3z"/>',
+    bolt: '<path d="M13 3 6 13h5l-1 8 7-10h-5z"/>',
+    hash: '<path d="m9 5-1 14M16 5l-1 14M5 9h15M4 15h15"/>'
+  };
+
+  function icon(name, size) {
+    size = size || 16;
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "0 0 24 24");
+    svg.setAttribute("width", String(size));
+    svg.setAttribute("height", String(size));
+    svg.setAttribute("fill", "none");
+    svg.setAttribute("stroke", "currentColor");
+    svg.setAttribute("stroke-width", "1.5");
+    svg.setAttribute("stroke-linecap", "round");
+    svg.setAttribute("stroke-linejoin", "round");
+    svg.setAttribute("aria-hidden", "true");
+    svg.innerHTML = ICONS[name] || ICONS.grid;
+    return svg;
+  }
+
+  function C(id, category, zh, en, aliases, when, prompt, demo, opts) {
+    return { id: id, category: category, zh: zh, en: en, aliases: aliases, when: when, prompt: prompt, demo: demo, opts: opts || {} };
+  }
+
+  const CATALOG = [];
+  function add() {
+    for (var i = 0; i < arguments.length; i++) CATALOG.push(arguments[i]);
+  }
+  add(
+    C("tabs-underlined","tabs","下划线标签","Underlined Tabs","Line Tabs, Flat Tabs","不同内容区域切换。细线跟着文字走，不要叫 Slider。","Use horizontal underlined tabs with a thin 2px active indicator, muted inactive text, no card background.","tabs",{kind:"underline"}),
+    C("tabs-sliding","tabs","滑动指示标签","Tabs with Sliding Indicator","Animated underline tabs","标签切换时底部指示线平滑滑动。","Use tabs with an animated sliding underline indicator and a 180ms transition.","tabs",{kind:"sliding"}),
+    C("tabs-pill","tabs","胶囊标签","Pill Tabs","Rounded tabs","选项是独立胶囊，当前项填充。","Use pill-shaped tabs with a filled active state and rounded corners.","tabs",{kind:"pill"}),
+    C("tabs-segmented","tabs","分段控制","Segmented Control","Shared track","同一数据集的短选项，如日/周/月。不是 Tabs。","Use a segmented control with all options inside one shared rounded track.","tabs",{kind:"segmented"}),
+    C("tabs-contained","tabs","卡片标签","Contained Tabs","Attached Tabs","标签贴在内容面板上沿。","Use contained tabs attached directly to the content panel with a shared border.","tabs",{kind:"contained"}),
+    C("tabs-folder","tabs","文件夹标签","Folder-style Tabs","Notebook tabs","视觉上像文件夹页签。","Use folder-style tabs visually connected to the content panel.","tabs",{kind:"folder"}),
+    C("tabs-vertical","tabs","垂直标签","Vertical Tabs","Side tabs","标签在左、内容在右。","Use vertical tabs on the left with content on the right.","tabs",{kind:"vertical"}),
+    C("tabs-icon","tabs","图标标签","Icon Tabs","Icon-only tabs","空间紧，需要额外说明。","Use icon-only tabs with tooltips for each destination.","tabs",{kind:"icon"}),
+    C("tabs-icon-label","tabs","图标文字标签","Icon + Label Tabs","Icon text tabs","图标和文字同时出现。","Use tabs containing both icons and text labels.","tabs",{kind:"iconLabel"}),
+    C("tabs-scrollable","tabs","可滚动标签","Scrollable Tabs","Overflow tabs","标签超出宽度时横向滚动。","Use horizontally scrollable tabs with overflow controls.","tabs",{kind:"scroll"}),
+    C("tabs-closable","tabs","可关闭标签","Closable Tabs","Browser-like tabs","类似浏览器页签。","Use closable tabs similar to browser tabs, with a close control on each tab.","tabs",{kind:"closable"}),
+    C("tabs-draggable","tabs","可拖动标签","Draggable Tabs","Reorderable Tabs","允许重排顺序。","Use draggable reorderable tabs that can be rearranged by pointer.","tabs",{kind:"drag"}),
+    C("tabs-switcher","tabs","内容切换器","Content Switcher","Same-content views","同一数据集的不同视图。","Use a content switcher for alternate views of the same dataset.","tabs",{kind:"switcher"}),
+    C("step-numbered","stepper","数字步骤条","Stepper","Progress Steps","多步表单、向导。","Use a horizontal numbered stepper with connected lines, completed steps highlighted, current step emphasized and future steps muted.","stepper",{kind:"numbered"}),
+    C("step-dot","stepper","圆点步骤条","Dot Stepper","Minimal stepper","空间少、步骤名可省略。","Use a minimal dot stepper with connected progress lines.","stepper",{kind:"dot"}),
+    C("step-chevron","stepper","鱼骨步骤条","Chevron Stepper","Arrow Stepper","每步呈箭头并咬合下一步。","Use a connected chevron stepper where each step forms an arrow shape.","stepper",{kind:"chevron"}),
+    C("step-filled","stepper","填充鱼骨步骤","Filled Chevron Stepper","Solid chevron","强调已完成块的实心填充。","Use a filled chevron progress stepper with completed steps using solid backgrounds.","stepper",{kind:"filled"}),
+    C("step-vertical","stepper","垂直步骤条","Vertical Stepper","Vertical progress steps","步骤带说明、纵向阅读。","Use a vertical stepper with labels and connecting lines.","stepper",{kind:"vertical"}),
+    C("step-tracker","stepper","进度追踪","Progress Tracker","Order tracker","物流或订单状态。","Use a vertical progress tracker for order or logistics statuses.","stepper",{kind:"tracker"})
+  );
+  add(
+    C("btn-primary","button","主按钮","Primary Button","Main CTA","页面主操作。","Use a primary filled button for the main call to action.","button",{kind:"primary"}),
+    C("btn-secondary","button","次按钮","Secondary Button","Default button","与主按钮配对。","Use a secondary button beside the primary action.","button",{kind:"secondary"}),
+    C("btn-outline","button","描边按钮","Outline Button","Bordered button","弱一点但仍是按钮。","Use an outline button with a 1px border and transparent fill.","button",{kind:"outline"}),
+    C("btn-ghost","button","幽灵按钮","Ghost Button","Bare button","无背景，工具栏常见。","Use a ghost button with no background until hover.","button",{kind:"ghost"}),
+    C("btn-text","button","文字按钮","Text Button","Textual button","最轻量操作。","Use a text button with no chrome.","button",{kind:"text"}),
+    C("btn-link","button","链接按钮","Link Button","Button as link","跳转感强的操作。","Use a link-styled button with an underline affordance.","button",{kind:"link"}),
+    C("btn-icon","button","图标按钮","Icon Button","Icon-only button","工具操作。","Use an icon button with a 32px hit target.","button",{kind:"icon"}),
+    C("btn-circular","button","圆形图标按钮","Circular Icon Button","Round icon button","添加一类圆形强调。","Use a circular icon button for compact add actions.","button",{kind:"circle"}),
+    C("btn-fab","button","浮动按钮","Floating Action Button","FAB","移动端主创建入口。","Use a floating action button anchored to the bottom-right corner.","button",{kind:"fab"}),
+    C("btn-danger","button","危险按钮","Destructive Button","Danger button","删除、不可逆操作。","Use a destructive button for irreversible actions.","button",{kind:"danger"}),
+    C("btn-loading","button","加载按钮","Loading Button","Pending button","提交中防止连点。","Use a loading button that shows a spinner and disables repeat clicks.","button",{kind:"loading"}),
+    C("btn-disabled","button","禁用按钮","Disabled Button","Inactive button","当前不可用。","Use a disabled button with reduced contrast.","button",{kind:"disabled"}),
+    C("btn-split","button","分裂按钮","Split Button","Split CTA","主操作加右侧更多。","Use a split button with the primary action on the left and a dropdown chevron on the right.","button",{kind:"split"}),
+    C("btn-dropdown","button","下拉按钮","Dropdown Button","Menu Button","点开操作菜单。","Use a dropdown / menu button that reveals actions on click.","button",{kind:"dropdown"}),
+    C("btn-group","button","按钮组","Button Group","Connected buttons","相关操作并排。","Use a connected button group for related actions.","button",{kind:"group"}),
+    C("btn-toggle","button","开关按钮","Toggle Button","Pressed button","按下和未按下。","Use a toggle button with distinct pressed and unpressed states.","button",{kind:"toggle"}),
+    C("btn-tgroup","button","开关按钮组","Toggle Group","Format group","格式组。","Use a toggle group for formatting actions like bold italic underline.","button",{kind:"tgroup"}),
+    C("btn-toolbar","button","图标工具栏","Toolbar","Action toolbar","编辑器一排图标。","Use an icon toolbar with undo, redo and formatting controls.","button",{kind:"toolbar"}),
+    C("btn-kebab","button","更多按钮","Overflow Button","Kebab Menu","竖三点溢出操作。","Use a kebab overflow button that opens additional actions.","button",{kind:"kebab"}),
+    C("btn-meatball","button","肉丸菜单","Meatball Menu","Horizontal ellipsis","横三点更多。","Use a meatball menu with a horizontal ellipsis.","button",{kind:"meatball"}),
+    C("btn-speed","button","快速操作菜单","Speed Dial","FAB speed dial","浮动按钮展开多个操作。","Use a speed dial that expands a FAB into multiple actions.","button",{kind:"speed"})
+  );
+  add(
+    C("in-text","input","单行输入","Text Input","Text Field","短文本。","Use a labeled text input with placeholder and focus-visible states.","input",{kind:"text"}),
+    C("in-area","input","多行输入","Textarea","Multiline Text Field","长文本。","Use a textarea / multiline text field with a fixed height.","input",{kind:"textarea"}),
+    C("in-search","input","搜索框","Search Field","Search Input","过滤列表或全局搜索。","Use a search field with a leading icon and clear button.","input",{kind:"search"}),
+    C("in-pass","input","密码输入","Password Field","Password Input","敏感输入，可显隐。","Use a password field with a trailing visibility toggle.","input",{kind:"password"}),
+    C("in-num","input","数字输入","Number Input","Numeric field","直接键入数字。","Use a number input that accepts numeric values.","input",{kind:"number"}),
+    C("in-spin","input","步进数字","Spinbutton","Numeric Stepper","带增减按钮的数值。","Use a numeric spinbutton with increment and decrement controls.","input",{kind:"spin"}),
+    C("sel-single","select","下拉单选","Select","Dropdown Select","固定选项里选一个，不能自由输入。","Use a single-select dropdown for choosing one option from a predefined list.","select",{kind:"single"}),
+    C("sel-multi","select","下拉多选","Multi-select","Multiselect","已选项以可删 Chip 出现在框内。","Use a multi-select dropdown where selected values appear as removable chips inside the field.","select",{kind:"multi"}),
+    C("sel-combo","select","组合框","Combobox","Searchable select","可输入、过滤、选已有项。不是 Select。","Use a searchable combobox that filters suggestions while the user types.","select",{kind:"combo"}),
+    C("sel-auto","select","自动完成","Autocomplete","Autosuggest","输入时出建议，核心仍是文本框。","Use an autocomplete text field with suggestions appearing while typing.","select",{kind:"auto"}),
+    C("sel-cascader","select","级联选择","Cascader","Hierarchical select","省市区这类层级路径。","Use a multi-level cascader for selecting hierarchical geographic data.","select",{kind:"cascader"}),
+    C("sel-tree","select","树选择","Tree Select","Tree dropdown","层级多选或单选。","Use a searchable tree select with expandable hierarchical options.","select",{kind:"tree"}),
+    C("ck-box","selection","复选框","Checkbox","Multi-select boxes","多项独立勾选。","Use checkboxes for independent multi-selection.","checks",{kind:"check"}),
+    C("ck-radio","selection","单选组","Radio Group","Radios","一组里最多选一个。","Use a radio group where only one option can be selected.","checks",{kind:"radio"}),
+    C("ck-switch","selection","开关","Switch","Toggle Switch","开/关二元状态，不要用 Radio 代替。","Use a switch for enabled/disabled binary state, not a radio group.","checks",{kind:"switch"}),
+    C("ck-tri","selection","三态复选框","Tri-state Checkbox","Indeterminate Checkbox","全选、部分选、未选。","Use a tri-state checkbox supporting checked, unchecked and partially checked.","checks",{kind:"tri"}),
+    C("sl-h","slider","数值滑块","Slider","Range Input","连续范围内选一个值。","Use a horizontal slider with a draggable thumb and visible track.","slider",{kind:"single"}),
+    C("sl-range","slider","范围滑块","Range Slider","Multi-thumb Slider","选最小和最大两个值。","Use a dual-thumb range slider for choosing minimum and maximum values.","slider",{kind:"range"}),
+    C("sl-v","slider","垂直滑块","Vertical Slider","Vertical range","音量等纵向场景。","Use a vertical slider with a draggable thumb.","slider",{kind:"vertical"}),
+    C("sl-step","slider","步进滑块","Stepped Slider","Discrete Slider","只能落在刻度上。","Use a stepped / discrete slider that snaps to tick marks.","slider",{kind:"stepped"})
+  );
+
+  add(
+    C("dt-date","datetime","日期选择器","Date Picker","Date field","选一天。","Use a date picker with a calendar popover.","date",{kind:"date"}),
+    C("dt-range","datetime","日期范围","Date Range Picker","Range dates","开始日到结束日。","Use a date range picker with two linked date fields and a calendar popover.","date",{kind:"range"}),
+    C("dt-time","datetime","时间选择","Time Picker","Time field","选时分。","Use a time picker with hour and minute controls.","date",{kind:"time"}),
+    C("dt-dt","datetime","日期时间","DateTime Picker","Date and time","日期加时间。","Use a datetime picker combining calendar and time controls.","date",{kind:"datetime"}),
+    C("dt-cal","datetime","日历","Calendar","Month calendar","月视图点选。","Use an inline calendar month view for picking a date.","date",{kind:"calendar"}),
+    C("dt-week","datetime","周选择","Week Picker","Week field","选一整周。","Use a week picker that selects a full ISO week.","date",{kind:"week"}),
+    C("dt-month","datetime","月选择","Month Picker","Month field","选年月。","Use a month picker for year-month selection.","date",{kind:"month"}),
+    C("dt-year","datetime","年选择","Year Picker","Year field","选年份。","Use a year picker with a year grid.","date",{kind:"year"}),
+    C("sp-otp","special","验证码输入","OTP Input","PIN Input","分格输入，自动跳格。","Use a six-digit OTP input with separate single-character fields and automatic focus advance.","otp",{}),
+    C("sp-tag","special","标签输入","Tag Input","Token field","回车生成标签。","Use a tag input that creates tokens on Enter.","chips",{}),
+    C("sp-chip","special","芯片输入","Chip Input","Chips input","以 Chip 展示已输入项。","Use a chip input where values render as removable chips.","chips",{}),
+    C("sp-mentions","special","提及输入","Mentions Input","At-mention","输入 @ 出人列表。","Use a mentions input that suggests people after typing @.","mentions",{}),
+    C("sp-rte","special","富文本编辑器","Rich Text Editor","WYSIWYG Editor","所见即所得排版。","Use a compact WYSIWYG editor with bold italic and lists.","editor",{kind:"rte"}),
+    C("sp-md","special","Markdown 编辑器","Markdown Editor","MD editor","写 Markdown。","Use a markdown editor with a live preview toggle.","editor",{kind:"md"}),
+    C("sp-code","special","代码编辑器","Code Editor","Code textarea","编辑代码。","Use a monospace code editor with line-oriented editing.","editor",{kind:"code"}),
+    C("sp-inline","special","行内编辑","Inline Edit","Click-to-edit","点文字即编辑。","Use inline edit: click the text to reveal an input.","inline",{}),
+    C("sp-mask","special","遮罩输入","Masked Input","Input mask","格式锁定。","Use a masked input with a visible format pattern.","masked",{kind:"mask"}),
+    C("sp-phone","special","电话输入","Phone Input","Tel field","区号加号码。","Use a phone input with country code and numeric grouping.","masked",{kind:"phone"}),
+    C("sp-cur","special","金额输入","Currency Input","Money field","货币符号与小数。","Use a currency input with a leading symbol and decimal rounding.","masked",{kind:"currency"}),
+    C("sp-url","special","URL 输入","URL Input","Link field","网址。","Use a URL input with protocol hint and validation state.","masked",{kind:"url"}),
+    C("sp-color","special","颜色选择器","Color Picker","Swatch picker","选颜色。","Use a color picker with a swatch and hex value.","color",{}),
+    C("sp-rating","special","星级评分","Rating Control","Star rating","1 到 5 分。","Use a star rating control with hover preview and click-to-set.","rating",{}),
+    C("up-file","upload","文件选择","File Input","Choose file","系统文件框。","Use a native-style file input for selecting one file.","file",{kind:"input"}),
+    C("up-btn","upload","上传按钮","Upload Button","Upload CTA","按钮触发选择。","Use an upload button that opens the file picker.","file",{kind:"button"}),
+    C("up-drop","upload","拖放上传区","Dropzone","Drag-and-drop Uploader","大虚线区域拖文件。","Use a large drag-and-drop file upload dropzone with dashed borders.","file",{kind:"drop"}),
+    C("up-list","upload","上传列表","Upload List","File Queue","显示进度与完成。","Use a file upload list showing name, progress and completion.","file",{kind:"list"})
+  );
+  add(
+    C("mn-drop","menu","下拉菜单","Dropdown Menu","Action menu","按钮下展开操作。","Use a dropdown menu anchored to an actions button.","menu",{kind:"dropdown"}),
+    C("mn-ctx","menu","上下文菜单","Context Menu","Right-click menu","右键出现。","Use a context menu on right-click with copy rename and delete.","menu",{kind:"context"}),
+    C("mn-bar","menu","菜单栏","Menubar","Application menu","File Edit View Help。","Use a menubar with File Edit View Help and nested menus.","menu",{kind:"bar"}),
+    C("mn-nav","menu","导航菜单","Navigation Menu","Nav dropdown","站点主导航下拉。","Use a navigation menu with section dropdowns.","menu",{kind:"nav"}),
+    C("mn-mega","menu","巨型导航菜单","Mega Menu","Mega nav","大站多列导航。","Use a mega menu with grouped product columns.","menu",{kind:"mega"}),
+    C("mn-overflow","menu","溢出菜单","Overflow Menu","Kebab Menu","空间不够时收进更多。","Use an overflow menu triggered by a kebab icon.","menu",{kind:"overflow"}),
+    C("nv-bc","nav","面包屑","Breadcrumb","Breadcrumbs","显示层级位置。","Use breadcrumbs for hierarchical location.","nav",{kind:"crumb"}),
+    C("nv-page","nav","分页","Pagination","Pager","翻页浏览。","Use pagination with page numbers and previous/next controls.","nav",{kind:"page"}),
+    C("nv-side","nav","侧边导航","Sidebar Navigation","Side Navigation","后台主导航。","Use a sidebar navigation with Dashboard Projects Analytics Settings.","nav",{kind:"side"}),
+    C("nv-rail","nav","导航轨","Navigation Rail","Narrow rail","比侧栏更窄的图标轨。","Use a compact navigation rail with icon destinations.","nav",{kind:"rail"}),
+    C("nv-bottom","nav","底部导航","Bottom Navigation","Tab bar","移动端主入口。","Use bottom navigation with Home Search Create and Profile.","nav",{kind:"bottom"}),
+    C("nv-top","nav","顶部导航","Top Navigation","Navbar","站点顶栏。","Use a top navigation bar with logo, links and a login action.","nav",{kind:"top"}),
+    C("nv-anchor","nav","锚点导航","Anchor Navigation","In-page Navigation","点击滚动到页内章节。","Use in-page anchor navigation that scrolls between sections.","nav",{kind:"anchor"})
+  );
+
+  add(
+    C("cd-basic","card","基础卡片","Card","Basic Card","内容分组容器。","Use a basic card with title and body.","card",{kind:"basic"}),
+    C("cd-elev","card","悬浮卡片","Elevated Card","Shadow card","带一点阴影抬起。","Use elevated cards with subtle shadows and rounded corners.","card",{kind:"elevated"}),
+    C("cd-out","card","描边卡片","Outlined Card","Bordered card","靠描边分层。","Use an outlined card with a 1px border and no shadow.","card",{kind:"outlined"}),
+    C("cd-int","card","可点击卡片","Interactive Card","Clickable Card","整卡可点。","Use an interactive clickable card with hover and pressed states.","card",{kind:"interactive"}),
+    C("cd-sel","card","可选中卡片","Selectable Card","Choice card","套餐选择等。","Use a selectable card with a selected treatment.","card",{kind:"selectable"}),
+    C("cd-metric","card","指标卡片","Metric Card","Stat Card","关键数字和涨跌。","Use a metric / stat card with value, label and delta.","card",{kind:"metric"}),
+    C("cd-media","card","媒体卡片","Media Card","Image card","上图下文。","Use a media card with image on top and text below.","card",{kind:"media"}),
+    C("cd-h","card","横向卡片","Horizontal Card","Split card","左右布局。","Use a horizontal card with media on the left and content on the right.","card",{kind:"horizontal"}),
+    C("cd-dash","card","仪表卡片","Dashboard Card","Widget Card","仪表盘小部件。","Use a dashboard widget card with a title and metric.","card",{kind:"dashboard"}),
+    C("da-table","data","表格","Table","Static table","静态数据表。","Use a static table for read-only tabular data.","table",{kind:"table"}),
+    C("da-dt","data","数据表","Data Table","Sortable table","可排序筛选的业务表。","Use a data table with sortable headers.","table",{kind:"datatable"}),
+    C("da-grid","data","数据网格","Data Grid","Interactive grid","键盘导航、单元格交互。不是静态 Table。","Use an interactive data grid with cell focus.","table",{kind:"grid"}),
+    C("da-edit","data","可编辑表格","Editable Table","Spreadsheet table","单元格内编辑。","Use an editable table where cells become inputs on click.","table",{kind:"edit"}),
+    C("da-exp","data","展开表格","Expandable Table","Row expand table","行可展开详情。","Use an expandable table with nested row details.","table",{kind:"expand"}),
+    C("da-tt","data","树形表格","Tree Table","Treegrid table","行可展开子行。","Use a tree table with expandable hierarchical rows.","table",{kind:"treetable"}),
+    C("da-list","data","列表","List","Action list","线性条目。","Use a simple selectable list.","list",{kind:"list"}),
+    C("da-struct","data","结构列表","Structured List","Definition-style list","带固定栏位的列表。","Use a structured list with consistent columns per row.","list",{kind:"structured"}),
+    C("da-tree","data","树","Tree View","Tree","文件夹式层级。","Use a tree view with expand/collapse disclosure.","tree",{}),
+    C("da-dl","data","描述列表","Description List","Key-value list","字段名加值。","Use a description list for label-value pairs.","list",{kind:"desc"}),
+    C("da-time","data","时间线","Timeline","Activity timeline","事件按时间排列。","Use a vertical timeline of events.","timeline",{}),
+    C("da-kanban","data","看板","Kanban Board","Board","列中拖卡片。","Use a kanban board with draggable cards across columns.","kanban",{}),
+    C("da-gantt","data","甘特图","Gantt Chart","Timeline bars","工期条。","Use a compact gantt chart with time bars.","gantt",{}),
+    C("da-sched","data","日程表","Scheduler","Resource calendar","资源乘时间。","Use a scheduler with hours as columns.","scheduler",{}),
+    C("da-calv","data","日历视图","Calendar View","Month agenda","月历展示事件。","Use a calendar view with events on dates.","date",{kind:"calview"}),
+    C("da-mas","data","瀑布流","Masonry Grid","Uneven grid","不等高图片流。","Use a masonry grid of uneven image tiles.","masonry",{}),
+    C("da-car","data","图片轮播","Carousel","Slideshow","水平轮播。","Use a carousel with previous/next controls.","carousel",{}),
+    C("da-gal","data","图片画廊","Gallery","Image gallery","点击切换大图。","Use a gallery grid that selects a featured image.","gallery",{})
+  );
+  add(
+    C("tg-badge","tag","徽章","Badge","Count badge","数字或状态点，常挂在图标上。","Use a numeric badge on a host control, not as a category tag.","tags",{kind:"badge"}),
+    C("tg-tag","tag","类别标签","Tag","Category tag","表示类别，通常不可点删。","Use a tag to represent a category.","tags",{kind:"tag"}),
+    C("tg-chip","tag","芯片","Chip","Dismissible chip","可交互、常可关闭。不是 Tag。","Use a chip that can be dismissed.","tags",{kind:"chip"}),
+    C("tg-filter","tag","筛选芯片","Filter Chip","Choice chip","筛选条件开关。","Use filter chips with a selected check treatment.","tags",{kind:"filter"}),
+    C("tg-status","tag","状态徽章","Status Badge","Presence badge","运行中等状态。","Use a status badge with a color dot and short label.","tags",{kind:"status"}),
+    C("tg-loz","tag","胶囊状态","Lozenge","Compact status tag","紧凑状态文字。","Use a lozenge for compact status text such as IN PROGRESS.","tags",{kind:"lozenge"}),
+    C("ac-acc","accordion","手风琴","Accordion","Disclosure group","多个垂直折叠项。","Use an accordion of stacked disclosures.","accordion",{kind:"acc"}),
+    C("ac-col","accordion","可折叠块","Collapsible","Collapse panel","单个展开收起区。","Use a single collapsible section for advanced settings.","accordion",{kind:"col"}),
+    C("ac-dis","accordion","显隐控件","Disclosure","Show-hide control","接近 Collapsible 的独立模式。","Use a disclosure / show-hide control with a chevron.","accordion",{kind:"dis"}),
+    C("ov-tip","overlay","工具提示","Tooltip","Hint","短说明，不能放复杂交互。","Use a tooltip on hover/focus with a short label only.","overlay",{kind:"tooltip"}),
+    C("ov-pop","overlay","气泡卡片","Popover","Rich popover","可含按钮和表单。","Use a popover that can contain actions, not just text.","overlay",{kind:"popover"}),
+    C("ov-hover","overlay","悬停卡片","Hover Card","Preview card","悬停预览资料。","Use a hover card to preview a person or entity.","overlay",{kind:"hover"}),
+    C("ov-modal","overlay","对话框","Modal","Dialog","阻断式编辑或确认。","Use a modal dialog with overlay, title and primary/secondary actions.","overlay",{kind:"modal"}),
+    C("ov-alert","overlay","警告对话框","Alert Dialog","Confirm dialog","必须回应才能继续。","Use an alert dialog that requires an explicit user response.","overlay",{kind:"alert"}),
+    C("ov-popc","overlay","气泡确认","Popconfirm","Confirmation Popover","删除前的小确认。","Use a popconfirm anchored to the dangerous action.","overlay",{kind:"popconfirm"}),
+    C("ov-drawer","overlay","抽屉","Drawer","Side panel","从边缘滑入的面板。","Use a right-side drawer with a fixed width.","overlay",{kind:"drawer"}),
+    C("ov-sheet","overlay","滑入面板","Sheet","Edge sheet","从边缘滑入。","Use a sheet that slides in from the edge.","overlay",{kind:"sheet"}),
+    C("ov-bs","overlay","底部弹层","Bottom Sheet","Action sheet","从底部升起。","Use a bottom sheet with actions.","overlay",{kind:"bottom"})
+  );
+  add(
+    C("fb-alert","feedback","警告条","Alert","Page alert","块级结果提示。","Use an alert with an icon and short warning copy.","feedback",{kind:"alert"}),
+    C("fb-inline","feedback","行内提示","Inline Alert","Inline Message","嵌在表单字段旁。","Use an inline message next to the related field.","feedback",{kind:"inline"}),
+    C("fb-banner","feedback","横幅","Banner","System banner","跨页宽系统通知。","Use a full-width banner for system maintenance messaging.","feedback",{kind:"banner"}),
+    C("fb-toast","feedback","轻提示","Toast","Timed toast","短暂出现，弱打断。","Use a toast in the corner that auto-dismisses.","feedback",{kind:"toast"}),
+    C("fb-snack","feedback","快餐条","Snackbar","Undo bar","可带一个操作如撤销。","Use a snackbar with a single action such as Undo.","feedback",{kind:"snack"}),
+    C("fb-note","feedback","通知卡片","Notification","Notification item","比 Toast 信息更多。","Use a notification card with title and body.","feedback",{kind:"note"}),
+    C("ld-spin","loading","旋转加载","Spinner","Loading spinner","不知道结构时的等待。","Use a spinner for indeterminate short waits.","loading",{kind:"spin"}),
+    C("ld-skel","loading","骨架屏","Skeleton Loader","Placeholder skeleton","先占位内容结构。","Use skeleton placeholders matching the final layout.","loading",{kind:"skel"}),
+    C("ld-shim","loading","微光加载","Shimmer Loading","Shimmer skeleton","骨架上有流动高光。","Use shimmer loading with a moving highlight.","loading",{kind:"shim"}),
+    C("ld-bar","loading","进度条","Progress Bar","Linear progress","线性进度。","Use a labeled progress bar showing percent complete.","loading",{kind:"bar"}),
+    C("ld-circ","loading","环形进度","Circular Progress","Donut progress","环形百分比。","Use circular progress with a percent label.","loading",{kind:"circ"}),
+    C("ld-indet","loading","不确定进度","Indeterminate Progress","Unknown progress","不知还要多久。","Use an indeterminate progress animation when percent is unknown.","loading",{kind:"indet"}),
+    C("ld-det","loading","确定进度","Determinate Progress","Percent progress","已知百分比。","Use determinate progress bound to a known percentage.","loading",{kind:"det"}),
+    C("em-empty","empty","空状态","Empty State","Zero data","还没有数据，给下一步。","Use an empty state with explanation and a create action.","empty",{kind:"empty"}),
+    C("em-err","empty","错误状态","Error State","Load error","加载失败可重试。","Use an error state with retry.","empty",{kind:"error"}),
+    C("em-ok","empty","成功结果","Success Result","Result page","流程完成页。","Use a success result page with a confirmation and next step.","empty",{kind:"ok"}),
+    C("em-404","empty","异常页面","Error Page","404 / 500","整页错误。","Use an exception page for 404 or 500.","empty",{kind:"404"})
+  );
+  add(
+    C("ly-res","layout","可调整面板","Resizable Panels","Resize panes","拖分隔条改宽度。","Use resizable panels with a draggable gutter.","layout",{kind:"resize"}),
+    C("ly-split","layout","分栏","Split Pane","Split View","左右或上下分屏。","Use a split pane / split view for tree and editor.","layout",{kind:"split"}),
+    C("ly-splitr","layout","窗口分隔条","Window Splitter","Splitter","专门指可拖分隔线。","Use a window splitter pattern with a keyboard-accessible gutter.","layout",{kind:"splitter"}),
+    C("ly-drag","layout","可拖列表","Draggable List","Sortable List","手柄拖排序。","Use a draggable sortable list with drag handles.","layout",{kind:"drag"}),
+    C("ly-reo","layout","可重排列表","Reorderable List","Reorder list","顺序可改。","Use a reorderable list with up/down or drag.","layout",{kind:"reorder"}),
+    C("ly-rss","layout","可调整侧栏","Resizable Sidebar","Resize nav","侧栏宽度可拖。","Use a resizable sidebar with a drag edge.","layout",{kind:"sidebar"}),
+    C("ai-md","saas","主从布局","Master-detail Layout","List-detail","左列表右详情。","Use a master-detail layout with a selectable list and a detail pane.","saas",{kind:"master"}),
+    C("ai-ins","saas","属性编辑栏","Inspector Panel","Property Panel","选中对象的属性。","Use an inspector / property panel with collapsible sections.","saas",{kind:"inspector"}),
+    C("ai-fb","saas","筛选栏","Filter Bar","Toolbar filters","一排筛选控件。","Use a filter bar of compact controls above a table.","saas",{kind:"filterbar"}),
+    C("ai-facet","saas","多条件筛选","Faceted Filter","Facet filters","多面筛选。","Use faceted filters with counts per facet.","saas",{kind:"facet"}),
+    C("ai-qb","saas","查询构建器","Query Builder","Advanced query","组合条件查询。","Use a query builder with field operator value rows.","saas",{kind:"query"}),
+    C("ai-pal","saas","命令面板","Command Palette","Cmd+K palette","模糊搜命令。","Add a Cmd+K command palette with fuzzy search, keyboard navigation and grouped commands.","saas",{kind:"palette"}),
+    C("ai-cmd","saas","命令菜单","Command Menu","Command dialog","偏菜单分组的命令窗。","Use a command menu dialog grouped by category.","saas",{kind:"cmdmenu"}),
+    C("ai-chat","saas","聊天输入框","Chat Composer","Chat input","对话底部输入。","Use a chat composer with send.","saas",{kind:"chat"}),
+    C("ai-bub","saas","消息气泡","Message Bubble","Chat bubble","对话气泡。","Use message bubbles for assistant and user turns.","saas",{kind:"bubble"}),
+    C("ai-conv","saas","对话列表","Conversation List","Thread list","历史会话。","Use a conversation list with title and timestamp.","saas",{kind:"conv"}),
+    C("ai-pr","saas","Prompt 输入","Prompt Composer","Prompt box","给模型的主输入。","Use a prompt composer with a large field and send.","saas",{kind:"prompt"}),
+    C("ai-ag","saas","Agent 状态","Agent Status Indicator","Agent state","运行、等待、出错。","Use an agent status indicator with Running Thinking and Idle.","saas",{kind:"agent"}),
+    C("ai-tool","saas","工具调用卡","Tool Call Card","Function call card","展示工具名与参数。","Use a tool call card showing tool name and compact arguments.","saas",{kind:"tool"}),
+    C("ai-think","saas","思考过程","Thinking Panel","Reasoning panel","可展开的推理过程。","Use a collapsible reasoning / thinking panel.","saas",{kind:"think"}),
+    C("ai-term","saas","终端面板","Terminal Panel","Console","命令输出。","Use a terminal panel with monospace output.","saas",{kind:"term"}),
+    C("ai-diff","saas","差异对比","Diff Viewer","Code diff","加减行对比。","Use a diff viewer with added and removed lines.","saas",{kind:"diff"}),
+    C("ai-ft","saas","文件树","File Tree","Explorer Tree","项目文件。","Use a file tree / explorer tree.","tree",{}),
+    C("ai-json","saas","JSON 树","JSON Tree Viewer","JSON explorer","可展开 JSON。","Use a JSON tree viewer with expandable keys.","tree",{}),
+    C("ai-log","saas","日志查看","Log Viewer","Logs","可滚日志。","Use a log viewer with timestamp and level.","saas",{kind:"log"}),
+    C("ai-mdv","saas","Markdown 预览","Markdown Preview","MD preview","渲染 Markdown。","Use a markdown preview pane.","saas",{kind:"md"}),
+    C("ai-cb","saas","代码块","Code Block","Fenced code","展示代码。","Use a code block with language label.","saas",{kind:"codeblock"}),
+    C("ai-snip","saas","可复制代码","Code Snippet","Copyable snippet","带复制。","Use a code snippet with a copy button.","saas",{kind:"snip"}),
+    C("ai-sug","saas","输入建议","Prompt Suggestions","Suggestion Chips","点芯片填 Prompt。","Use suggestion chips that fill the composer.","saas",{kind:"suggest"}),
+    C("ai-cite","saas","引用芯片","Citation Chip","Source Card","引用源。","Use citation chips / source cards linking to evidence.","saas",{kind:"cite"}),
+    C("tr-view","tree","树视图","Tree View","ARIA tree","通用层级树。","Use a tree view with expand and collapse.","tree",{}),
+    C("tr-file","tree","文件树","File Tree","File Explorer","文件资源管理。","Use a file explorer tree.","tree",{}),
+    C("tr-grid","tree","树网格","Treegrid","Hierarchical grid","树加表头列。","Build a treegrid with name and size columns and expandable rows.","table",{kind:"treegrid"}),
+    C("mb-pull","mobile","下拉刷新","Pull-to-refresh","PTR","列表下拉刷新。","Use pull-to-refresh on a mobile list.","mobile",{kind:"pull"}),
+    C("mb-swipe","mobile","左滑操作","Swipe Actions","Swipe row","左滑出删除。","Use swipe actions revealing Delete behind a row.","mobile",{kind:"swipe"}),
+    C("mb-long","mobile","长按菜单","Long-press Context Menu","Press menu","长按出菜单。","Use a long-press context menu on a list item.","mobile",{kind:"long"}),
+    C("mb-dots","mobile","页面指示点","Page Indicator","Pagination Dots","轮播页点。","Use pagination dots for paged cards.","mobile",{kind:"dots"}),
+    C("mb-cards","mobile","滑动卡片","Swipeable Cards","Card stack","卡片可滑走。","Use swipeable cards with left/right actions.","mobile",{kind:"cards"}),
+    C("mb-safe","mobile","安全区域","Safe Area","Inset padding","避开刘海与底部横条。","Use safe-area padding for notch and home indicator.","mobile",{kind:"safe"}),
+    C("mb-nav","mobile","顶部导航栏","Navigation Bar","Mobile nav bar","移动端顶栏。","Use a mobile navigation bar with back title and action.","mobile",{kind:"navbar"}),
+    C("mb-lg","mobile","大标题导航","Large-title Navigation Bar","Large title","滚动时可收成小标题。","Use a large-title navigation bar that compacts on scroll.","mobile",{kind:"large"}),
+    C("dk-3","desktop","三栏布局","Three-pane Layout","IDE layout","侧栏、编辑器、检查器。","Use a three-pane layout: sidebar, editor and inspector.","desktop",{kind:"three"}),
+    C("dk-act","desktop","活动栏","Activity Bar","Icon rail","最左侧图标栏。","Use an activity bar of icon destinations.","desktop",{kind:"activity"}),
+    C("dk-exp","desktop","资源管理面板","Explorer Panel","Side explorer","文件或图层列表。","Use an explorer panel listing files.","desktop",{kind:"explorer"}),
+    C("dk-et","desktop","编辑器标签","Editor Tabs","Open editors","打开文件的页签。","Use editor tabs for open documents.","desktop",{kind:"edtabs"}),
+    C("dk-ep","desktop","编辑器面板","Editor Pane","Code pane","主编辑区。","Use an editor pane with a monospace canvas.","desktop",{kind:"edpane"}),
+    C("dk-prop","desktop","属性面板","Property Panel","Props inspector","检查器里的属性表。","Use a property panel of labeled fields.","desktop",{kind:"prop"}),
+    C("dk-st","desktop","状态栏","Status Bar","Bottom status","底部状态。","Use a status bar with branch, problems and encoding.","desktop",{kind:"status"}),
+    C("dk-cb","desktop","命令栏","Command Bar","App command bar","一排命令按钮。","Use a command bar of labeled icon actions.","desktop",{kind:"cmdbar"}),
+    C("dk-dock","desktop","可停靠面板","Dockable Panel","Dock panel","可停左右底。","Use a dockable panel that can pin to an edge.","desktop",{kind:"dock"}),
+    C("dk-float","desktop","浮动面板","Floating Panel","Floating window","可拖动的浮层工具。","Use a floating panel with a drag handle.","desktop",{kind:"float"})
+  );
+
+  const $ = function (t, a, kids) {
+    a = a || {}; kids = kids == null ? [] : kids;
+    const n = document.createElement(t);
+    Object.keys(a).forEach(function (k) {
+      var v = a[k];
+      if (k === "class") n.className = v;
+      else if (k === "style" && typeof v === "object") Object.assign(n.style, v);
+      else if (k.slice(0, 2) === "on" && typeof v === "function") n.addEventListener(k.slice(2), v);
+      else if (v !== false && v != null) n.setAttribute(k, v === true ? "" : v);
+    });
+    (Array.isArray(kids) ? kids : [kids]).forEach(function (c) {
+      if (c == null || c === false) return;
+      n.append(c.nodeType ? c : document.createTextNode(String(c)));
+    });
+    return n;
+  };
+  const clear = function (n) { n.textContent = ""; return n; };
+  const toastIn = function (host, text) {
+    host.querySelectorAll(".toast").forEach(function (x) { x.remove(); });
+    var t = $("div", { class: "toast" }, text);
+    host.append(t);
+    setTimeout(function () { t.remove(); }, 1400);
+  };
+
+  function rowI(name, label) {
+    var w = $("span", { class: "ico-row" });
+    w.append(icon(name, 14));
+    if (label) w.append(document.createTextNode(" " + label));
+    return w;
+  }
+
+  function demoTabs(host, opts) {
+    var kind = opts.kind, items = ["首页", "项目", "设置"], icons = ["home", "grid", "settings"], i = 0;
+    if (kind === "scroll" || kind === "closable" || kind === "drag") items = ["概览", "文档", "API", "账单", "成员"];
+    if (kind === "switcher") items = ["全部", "已读", "未读"];
+    if (kind === "vertical") items = ["账户", "权限", "账单"];
+    function paint() {
+      clear(host);
+      if (kind === "vertical") {
+        var col = $("div", { style: { display: "flex", height: "100%", gap: "8px" } });
+        var tabs = $("div", { style: { display: "flex", flexDirection: "column", width: "76px" } });
+        items.forEach(function (lab, idx) {
+          tabs.append($("button", { class: "tab" + (idx === i ? " active" : ""), onclick: function () { i = idx; paint(); } }, lab));
+        });
+        col.append(tabs, $("div", { class: "grow card-mini" }, "内容区 · " + items[i]));
+        host.append(col); return;
+      }
+      var bar = $("div", { class: "tabs" + (kind === "pill" ? " pills" : (kind === "segmented" || kind === "switcher" ? " seg" : "")) + (kind === "scroll" ? " hscroll" : "") });
+      if (kind === "sliding" || kind === "underline") bar.classList.add("tab-underline");
+      items.forEach(function (lab, idx) {
+        var content = lab;
+        if (kind === "icon") content = icon(icons[idx] || "grid", 16);
+        if (kind === "iconLabel") content = rowI(icons[idx] || "grid", lab);
+        if (kind === "closable") {
+          var wrap = $("span", { class: "ico-row" }, lab);
+          wrap.append($("span", { onclick: function (e) { e.stopPropagation(); items.splice(idx, 1); i = Math.min(i, items.length - 1); paint(); } }, icon("x", 12)));
+          content = wrap;
+        }
+        var b = $("button", { class: "tab" + (idx === i ? " active" : ""), draggable: kind === "drag" ? "true" : "false", onclick: function () { i = idx; paint(); } }, content);
+        if (kind === "drag") {
+          b.addEventListener("dragstart", function (e) { e.dataTransfer.setData("text", String(idx)); });
+          b.ondragover = function (e) { e.preventDefault(); };
+          b.ondrop = function (e) { e.preventDefault(); var from = +e.dataTransfer.getData("text"); var t = items.splice(from, 1)[0]; items.splice(idx, 0, t); i = idx; paint(); };
+        }
+        bar.append(b);
+      });
+      host.append(bar);
+      if (kind === "contained" || kind === "folder") host.append($("div", { class: "card-mini", style: { marginTop: "8px" } }, items[i] + " 面板"));
+      else if (kind !== "icon") host.append($("div", { class: "hint", style: { marginTop: "8px" } }, "当前：" + items[i]));
+      if (kind === "sliding" || kind === "underline") {
+        var ink = $("div", { class: "ink" }); bar.append(ink);
+        requestAnimationFrame(function () {
+          var a = bar.querySelector(".tab.active"); if (!a) return;
+          ink.style.width = a.offsetWidth + "px"; ink.style.transform = "translateX(" + a.offsetLeft + "px)";
+        });
+      }
+    }
+    paint();
+  }
+
+  function demoButton(host, opts) {
+    var k = opts.kind;
+    if (k === "fab" || k === "speed") {
+      var open = false;
+      function paint() {
+        clear(host);
+        var c = $("div", { style: { position: "relative", height: "100%" } });
+        if (k === "speed" && open) {
+          ["edit", "upload", "camera"].forEach(function (s, i) {
+            var b = $("button", { class: "ui-btn circle secondary", style: { position: "absolute", right: "14px", bottom: (62 + i * 40) + "px" }, onclick: function () { toastIn(host, s); } });
+            b.append(icon(s, 14)); c.append(b);
+          });
+        }
+        var fab = $("button", { class: "fab", onclick: function () { if (k === "speed") { open = !open; paint(); } else toastIn(host, "创建"); } });
+        fab.append(icon("plus", 18)); c.append(fab); host.append(c);
+      }
+      paint(); return;
+    }
+    if (k === "split" || k === "dropdown" || k === "kebab" || k === "meatball") {
+      var open = false;
+      function paint() {
+        clear(host);
+        var box = $("div", { class: "center", style: { position: "relative" } });
+        var b;
+        if (k === "kebab" || k === "meatball") {
+          b = $("button", { class: "ui-btn icon secondary", onclick: function () { open = !open; paint(); } });
+          b.append(icon(k === "kebab" ? "moreV" : "moreH", 16)); box.append(b);
+        } else if (k === "dropdown") {
+          b = $("button", { class: "ui-btn secondary", onclick: function () { open = !open; paint(); } });
+          b.append(rowI("chevD", "操作")); box.append(b);
+        } else {
+          box.append($("button", { class: "ui-btn", onclick: function () { toastIn(host, "已保存"); } }, "保存"));
+          var c = $("button", { class: "ui-btn", style: { marginLeft: "1px" }, onclick: function () { open = !open; paint(); } });
+          c.append(icon("chevD", 14)); box.append(c);
+        }
+        if (open) box.append($("div", { class: "menu", style: { top: "42px" } }, ["编辑", "复制", "删除"].map(function (x) { return $("button", { onclick: function () { toastIn(host, x); } }, x); })));
+        host.append(box);
+      }
+      paint(); return;
+    }
+    if (k === "group") {
+      clear(host).append($("div", { class: "center" }, ["左", "中", "右"].map(function (t, i) {
+        return $("button", { class: "ui-btn " + (i ? "secondary" : ""), style: { borderRadius: i === 0 ? "6px 0 0 6px" : i === 2 ? "0 6px 6px 0" : 0 }, onclick: function () { toastIn(host, t); } }, t);
+      }))); return;
+    }
+    if (k === "toggle") {
+      var on = false;
+      var b = $("button", { class: "ui-btn secondary", onclick: function () { on = !on; b.classList.toggle("on", on); b.textContent = on ? "已按下" : "未按下"; } }, "未按下");
+      clear(host).append($("div", { class: "center" }, b)); return;
+    }
+    if (k === "tgroup" || k === "toolbar") {
+      var row = $("div", { class: "center" });
+      ["B", "I", "U"].forEach(function (t) {
+        var bb = $("button", { class: "ui-btn secondary icon", onclick: function () { bb.classList.toggle("on"); } }, t);
+        row.append(bb);
+      });
+      clear(host).append(row); return;
+    }
+    if (k === "loading") {
+      var load = false;
+      var b = $("button", { class: "ui-btn", onclick: function () {
+        if (load) return; load = true; b.textContent = "保存中";
+        setTimeout(function () { load = false; b.textContent = "保存"; toastIn(host, "已保存"); }, 900);
+      } }, "保存");
+      clear(host).append($("div", { class: "center" }, b)); return;
+    }
+    var map = { primary: ["ui-btn", "保存"], secondary: ["ui-btn secondary", "取消"], outline: ["ui-btn outline", "保存"], ghost: ["ui-btn ghost", "操作"], text: ["ui-btn text", "取消"], link: ["ui-btn link", "查看更多"], icon: ["ui-btn icon secondary", ""], circle: ["ui-btn circle secondary", ""], danger: ["ui-btn danger", "删除"], disabled: ["ui-btn", "不可用"] };
+    var pair = map[k] || map.primary;
+    var b = $("button", { class: pair[0], disabled: k === "disabled" }, pair[1]);
+    if (k === "icon") b.append(icon("settings", 16));
+    if (k === "circle") b.append(icon("plus", 16));
+    if (k !== "disabled") b.onclick = function () { toastIn(host, pair[1] || "ok"); };
+    clear(host).append($("div", { class: "center" }, b));
+  }
+
+  function demoInput(host, opts) {
+    clear(host);
+    if (opts.kind === "textarea") { host.append($("textarea", { class: "field", placeholder: "多行文字" })); return; }
+    if (opts.kind === "search") {
+      var i = $("input", { class: "field", placeholder: "搜索项目" });
+      var wrap = $("div", { style: { display: "flex", gap: "6px", alignItems: "center" } });
+      wrap.append(icon("search", 14), i); host.append(wrap); return;
+    }
+    if (opts.kind === "password") {
+      var p = $("input", { class: "field", type: "password", value: "secret12" });
+      var b = $("button", { class: "ui-btn text", onclick: function () { p.type = p.type === "password" ? "text" : "password"; } });
+      b.append(icon("eye", 14)); host.append(p, b); return;
+    }
+    if (opts.kind === "number") { host.append($("input", { class: "field", type: "number", value: "12" })); return; }
+    if (opts.kind === "spin") {
+      var n = 12;
+      var v = $("input", { class: "field", value: "12", style: { width: "72px" } });
+      var up = $("button", { class: "ui-btn secondary icon", onclick: function () { n++; v.value = n; } }); up.append(icon("chevU", 12));
+      var dn = $("button", { class: "ui-btn secondary icon", onclick: function () { n--; v.value = n; } }); dn.append(icon("chevD", 12));
+      host.append($("div", { class: "center", style: { gap: "6px" } }, [v, up, dn])); return;
+    }
+    host.append($("div", { class: "hint" }, "姓名"), $("input", { class: "field", placeholder: "输入姓名" }));
+  }
+
+  function demoSelect(host, opts) {
+    var all = ["React", "Vue", "Angular"], open = false, q = "", sel = opts.kind === "multi" ? ["React"] : "China";
+    var geo = { 中国: { 上海: ["浦东新区", "徐汇区"], 北京: ["海淀区"] } }, path = [];
+    function paint() {
+      clear(host);
+      if (opts.kind === "cascader") {
+        var node = geo; path.forEach(function (p) { node = node[p] || {}; });
+        var keys = Array.isArray(node) ? node : Object.keys(node);
+        host.append($("div", { class: "hint" }, path.join(" / ") || "选择地区"));
+        keys.forEach(function (kk) { host.append($("button", { class: "list-item", onclick: function () { path = path.concat(kk); paint(); } }, kk)); });
+        if (path.length) host.append($("button", { class: "ui-btn text", onclick: function () { path.pop(); paint(); } }, "返回"));
+        return;
+      }
+      if (opts.kind === "tree") {
+        ["中国", "上海", "浦东"].forEach(function (n, i) {
+          host.append($("label", { class: "tree-row", style: { paddingLeft: (i * 12) + "px" } }, [$("input", { type: "checkbox", checked: i < 2 }), n]));
+        }); return;
+      }
+      var face = $("div", { class: "select-face", onclick: function () { open = !open; paint(); }, style: { display: "flex", alignItems: "center", justifyContent: "space-between" } });
+      if (opts.kind === "multi") {
+        var chips = $("div", { style: { display: "flex", gap: "4px", flexWrap: "wrap" } });
+        sel.forEach(function (s) {
+          var c = $("span", { class: "chip" }, s);
+          var x = $("span", { class: "x", onclick: function (e) { e.stopPropagation(); sel = sel.filter(function (v) { return v !== s; }); paint(); } });
+          x.append(icon("x", 10)); c.append(x); chips.append(c);
+        });
+        face.append(chips, icon("chevD", 14));
+      } else if (opts.kind === "combo" || opts.kind === "auto") {
+        var inp = $("input", { class: "field", value: q, placeholder: "输入或选择", onclick: function (e) { e.stopPropagation(); }, oninput: function (e) { q = e.target.value; open = true; paint(); var el = host.querySelector("input"); if (el) el.focus(); } });
+        face.append(inp, icon("chevD", 14));
+      } else face.append($("span", {}, sel), icon("chevD", 14));
+      host.append(face);
+      if (open) {
+        var menuEl = $("div", { class: "menu", style: { left: "12px", right: "12px", top: "46px" } });
+        var list = opts.kind === "single" ? ["China", "Japan", "Singapore"] : all.filter(function (x) { return x.toLowerCase().indexOf(q.toLowerCase()) >= 0; });
+        list.forEach(function (x) {
+          menuEl.append($("button", { onclick: function () { if (opts.kind === "multi") sel = sel.indexOf(x) >= 0 ? sel.filter(function (s) { return s !== x; }) : sel.concat(x); else { sel = x; q = x; open = false; } paint(); } }, x));
+        });
+        host.append(menuEl);
+      }
+    }
+    paint();
+  }
+
+  function demoStepper(host, opts) {
+    var labels = ["账户", "信息", "支付", "完成"], cur = 1;
+    function paint() {
+      clear(host);
+      var row = $("div", { style: { display: "flex", alignItems: "center", overflow: "auto" } });
+      labels.forEach(function (l, idx) {
+        var on = idx === cur, done = idx < cur;
+        var b = $("button", { class: "ui-btn " + (on ? "" : "secondary"), style: { borderRadius: "50%", width: "26px", height: "26px", padding: 0 }, onclick: function () { cur = idx; paint(); } }, String(idx + 1));
+        row.append($("div", { style: { display: "flex", flexDirection: "column", alignItems: "center", minWidth: "52px" } }, [b, $("span", { class: "hint" }, l)]));
+        if (idx < labels.length - 1) row.append($("div", { style: { flex: "1", height: "1px", background: done ? "var(--text)" : "var(--line)", minWidth: "16px" } }));
+      });
+      host.append(row);
+    }
+    paint();
+  }
+
+  window.__UI_DICT__ = { CATS: CATS, CATALOG: CATALOG, demoTabs: demoTabs, demoButton: demoButton, demoInput: demoInput, demoSelect: demoSelect, demoStepper: demoStepper, icon: icon, $: $, clear: clear, toastIn: toastIn, rowI: rowI };
+})();
+
+(function () {
+  var D = window.__UI_DICT__;
+  var $ = D.$, icon = D.icon, clear = D.clear, toastIn = D.toastIn, CATS = D.CATS, CATALOG = D.CATALOG;
+
+  function mountDemo(host, it) {
+    var d = it.demo, k = (it.opts && it.opts.kind) || "";
+    if (d === "tabs") return D.demoTabs(host, it.opts);
+    if (d === "stepper") return D.demoStepper(host, it.opts);
+    if (d === "button") return D.demoButton(host, it.opts);
+    if (d === "input") return D.demoInput(host, it.opts);
+    if (d === "select") return D.demoSelect(host, it.opts);
+    if (d === "checks") {
+      ["选项 A", "选项 B"].forEach(function (n, i) {
+        host.append($("label", { class: "tree-row" }, [$("input", { type: k === "radio" ? "radio" : "checkbox", name: "g" + it.id, checked: i === 0 }), n]));
+      });
+      return;
+    }
+    if (d === "slider") {
+      var rng = $("input", { type: "range", min: "0", max: "100", value: "40" });
+      var lab = $("div", { class: "hint" }, "40");
+      rng.oninput = function () { lab.textContent = rng.value; };
+      clear(host).append(rng, lab); return;
+    }
+    if (d === "otp") {
+      var box = $("div", { class: "otp" });
+      for (var n = 0; n < 6; n++) box.append($("input", { maxlength: "1" }));
+      clear(host).append(box); return;
+    }
+    if (d === "overlay" || d === "menu") {
+      var open = false;
+      function paint() {
+        clear(host);
+        host.append($("button", { class: "ui-btn secondary", onclick: function () { open = !open; paint(); } }, "打开"));
+        if (open && (k === "modal" || k === "alert")) host.append($("div", { class: "modal-mask" }, $("div", { class: "modal" }, [$("strong", {}, "确认"), $("button", { class: "ui-btn", onclick: function () { open = false; paint(); } }, "确定")])));
+        else if (open) host.append($("div", { class: "menu", style: { top: "44px" } }, ["编辑", "复制"].map(function (x) { return $("button", { onclick: function () { toastIn(host, x); open = false; paint(); } }, x); })));
+      }
+      paint(); return;
+    }
+    if (d === "saas" && (k === "palette" || k === "cmdmenu")) {
+      var cmds = ["New project", "Open file", "Settings"], qv = "";
+      function paint() {
+        clear(host);
+        var inp = $("input", { class: "field", placeholder: "Search commands", value: qv, oninput: function (e) { qv = e.target.value; paint(); host.querySelector("input").focus(); } });
+        host.append(inp);
+        cmds.filter(function (c) { return c.toLowerCase().indexOf(qv.toLowerCase()) >= 0; }).forEach(function (c) {
+          host.append($("button", { class: "list-item", onclick: function () { toastIn(host, c); } }, c));
+        });
+      }
+      paint(); return;
+    }
+    if (d === "tree") {
+      var openT = true;
+      function paint() {
+        clear(host);
+        var row = $("div", { class: "tree-row", onclick: function () { openT = !openT; paint(); } });
+        row.append(icon(openT ? "chevD" : "chevR", 12), document.createTextNode(" src"));
+        host.append(row);
+        if (openT) { var r = $("div", { class: "tree-row", style: { paddingLeft: "16px" } }); r.append(icon("file", 12), document.createTextNode(" App.tsx")); host.append(r); }
+      }
+      paint(); return;
+    }
+    if (d === "accordion") {
+      var openA = false;
+      function paint() {
+        clear(host);
+        var btn = $("button", { class: "list-item", onclick: function () { openA = !openA; paint(); } });
+        btn.append(icon(openA ? "chevD" : "chevR", 12), document.createTextNode(" 高级设置"));
+        host.append(btn); if (openA) host.append($("div", { class: "hint" }, "展开后的内容"));
+      }
+      paint(); return;
+    }
+    if (d === "rating") {
+      var stars = 3;
+      function paint() {
+        clear(host); var row = $("div", { class: "center" });
+        for (var i = 1; i <= 5; i++) {
+          var st = $("button", { class: "star-btn" + (i <= stars ? " on" : ""), onclick: (function (x) { return function () { stars = x; paint(); }; })(i) });
+          st.append(icon("star", 18)); row.append(st);
+        }
+        host.append(row);
+      }
+      paint(); return;
+    }
+    if (d === "loading") { clear(host).append($("div", { class: "center" }, $("div", { class: "spin" }))); return; }
+    var fb = $("button", { class: "ui-btn", onclick: function () { toastIn(host, it.en); } }, it.zh);
+    clear(host).append($("div", { class: "center", style: { flexDirection: "column", gap: "8px" } }, [fb, $("div", { class: "hint" }, it.en)]));
+  }
+
+  var cat = "all", q = "";
+  var grid = document.getElementById("grid");
+  var catsEl = document.getElementById("cats");
+  var countEl = document.getElementById("count");
+  var root = document.documentElement;
+  var themeBtn = document.getElementById("themeBtn");
+
+  function applyTheme(mode) {
+    root.setAttribute("data-theme", mode);
+    localStorage.setItem("ui-dict-theme", mode);
+    clear(themeBtn);
+    themeBtn.append(icon(mode === "dark" ? "sun" : "moon", 16), document.createTextNode(mode === "dark" ? " 浅色" : " 深色"));
+  }
+  applyTheme(localStorage.getItem("ui-dict-theme") || "dark");
+  themeBtn.onclick = function () { applyTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark"); };
+
+  function visible() {
+    var s = q.trim().toLowerCase();
+    return CATALOG.filter(function (it) {
+      if (cat !== "all" && it.category !== cat) return false;
+      if (!s) return true;
+      return [it.zh, it.en, it.aliases, it.when, it.prompt].join(" ").toLowerCase().indexOf(s) >= 0;
+    });
+  }
+
+  function render() {
+    var items = visible();
+    countEl.textContent = items.length + " / " + CATALOG.length;
+    clear(grid);
+    if (!items.length) { grid.append($("div", { class: "empty-filter" }, "没有匹配的组件")); return; }
+    items.forEach(function (it) {
+      var demo = $("div", { class: "demo" });
+      var copy = $("button", { class: "copy" }, "复制");
+      copy.onclick = function () {
+        navigator.clipboard.writeText(it.prompt).catch(function () {});
+        copy.textContent = "已复制"; copy.classList.add("ok");
+        setTimeout(function () { copy.textContent = "复制"; copy.classList.remove("ok"); }, 1200);
+      };
+      grid.append($("article", { class: "card" }, [
+        demo,
+        $("div", { class: "meta" }, [
+          $("div", { class: "row" }, [$("span", { class: "k" }, "中文俗称"), $("div", { class: "v zh", title: it.zh }, it.zh)]),
+          $("div", { class: "row" }, [$("span", { class: "k" }, "标准英文"), $("div", { class: "v en", title: it.en }, it.en)]),
+          $("div", { class: "row" }, [$("span", { class: "k" }, "常见别名"), $("div", { class: "v aliases", title: it.aliases }, it.aliases)]),
+          $("div", { class: "row" }, [$("span", { class: "k" }, "何时使用"), $("div", { class: "v when", title: it.when }, it.when)]),
+          $("div", { class: "prompt-box" }, [$("div", { class: "prompt-head" }, [$("span", { class: "k" }, "AI Prompt"), copy]), $("pre", { class: "prompt" }, it.prompt)])
+        ])
+      ]));
+      mountDemo(demo, it);
+    });
+  }
+
+  CATS.forEach(function (pair) {
+    var b = $("button", { class: "cat" + (pair[0] === "all" ? " active" : "") }, pair[1]);
+    b.onclick = function () { cat = pair[0]; [].forEach.call(catsEl.children, function (x) { x.classList.toggle("active", x === b); }); render(); };
+    catsEl.append(b);
+  });
+  document.getElementById("q").addEventListener("input", function (e) { q = e.target.value; render(); });
+  render();
+})();
+
+  </script>
+</body>
+</html>
