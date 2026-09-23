@@ -11,7 +11,7 @@ export const modules = [
   { id:'mobile', path:'projects/mobile', icon:'phone', title:['手机 App 开发','Mobile apps'], term:'Mobile App Development', desc:['把想法装进手机，学会处理保存、权限与更新。','Build for a phone, with thoughtful storage, permissions, and updates.'] },
   { id:'desktop', path:'projects/desktop', icon:'monitor', title:['桌面 App 开发','Desktop apps'], term:'Desktop App Development', desc:['做一个电脑工具，处理日常重复的工作。','Make a desktop tool for repetitive everyday tasks.'] },
   { id:'agent', path:'communicate', icon:'message', title:['和 Agent 沟通','Talking to agents'], term:'Agent Communication', desc:['让能执行任务的 AI 助手听懂项目目标和完成标准。','Give an AI assistant a clear goal and a way to check its work.'] },
-  { id:'stack', icon:'layers', title:['技术栈选择','Choosing a stack'], term:'Tech Stack', desc:['选出制作和运行产品所需的技术与服务组合。','Choose the tools and services the product will be built with.'] },
+  { id:'stack', path:'stacks', icon:'layers', title:['技术栈选择','Choosing a stack'], term:'Tech Stack', desc:['选出制作和运行产品所需的技术与服务组合。','Choose the tools and services the product will be built with.'] },
   { id:'ui', icon:'layout', title:['前端与 UI','Frontend & UI'], term:'User Interface', desc:['认出界面上的组件，把脑海里的样子讲清楚。','Identify interface components, then describe it precisely.'] },
   { id:'backend', icon:'database', title:['后端','Backend'], term:'Backend', desc:['让信息保存下来，让不同的人看到该看的内容。','Keep information safe and give people the right access.'] },
   { id:'test', icon:'checklist', title:['测试','Testing'], term:'Testing', desc:['亲手检查它能不能用，遇到意外会发生什么。','Check that things work—and find out what happens when they don’t.'] },

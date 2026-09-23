@@ -1,13 +1,14 @@
 ---
 import Shell from '../../layouts/Shell.astro';
+import StackGuide from '../../components/StackGuide.astro';
 import Communication from '../../components/Communication.astro';
 import Home from '../../components/Home.astro';
 import ProjectIndex from '../../components/ProjectIndex.astro';
 import ProjectDetail from '../../components/ProjectDetail.astro';
 import {locales,projects,t,type Locale} from '../../data/site';
-export function getStaticPaths(){return locales.flatMap(locale=>['','start','communicate',...projects.map(p=>`projects/${p.id}`)].map(path=>({params:{locale,page:path||undefined},props:{locale,path}})));}
+export function getStaticPaths(){return locales.flatMap(locale=>['','start','communicate','stacks',...projects.map(p=>`projects/${p.id}`)].map(path=>({params:{locale,page:path||undefined},props:{locale,path}})));}
 const {locale,path}=Astro.props as {locale:Locale;path:string};
 const project=projects.find(p=>path===`projects/${p.id}`);
-const title=path==='communicate'?t(['和 Agent 沟通','Talking to agents'],locale):project?t(project.title,locale):path==='start'?t(['项目分类','Project types'],locale):t(['零基础，也能把想法做出来','Build the idea, no coding experience needed'],locale);
+const title=path==='stacks'?t(['技术栈选择','Choosing a stack'],locale):path==='communicate'?t(['和 Agent 沟通','Talking to agents'],locale):project?t(project.title,locale):path==='start'?t(['项目分类','Project types'],locale):t(['零基础，也能把想法做出来','Build the idea, no coding experience needed'],locale);
 ---
-<Shell locale={locale} path={path} title={title}>{path==='communicate'?<Communication locale={locale}/>:project?<ProjectDetail locale={locale} project={project}/>:path==='start'?<ProjectIndex locale={locale}/>:<Home locale={locale}/>}</Shell>
+<Shell locale={locale} path={path} title={title}>{path==='stacks'?<StackGuide locale={locale}/>:path==='communicate'?<Communication locale={locale}/>:project?<ProjectDetail locale={locale} project={project}/>:path==='start'?<ProjectIndex locale={locale}/>:<Home locale={locale}/>}</Shell>
