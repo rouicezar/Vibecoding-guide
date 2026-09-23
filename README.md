@@ -8,6 +8,8 @@
 
 ## 从哪里开始
 
+- [12 个板块的布局与内容分层](docs/page-content-architecture.md)
+- [五种代表页面线框](docs/layout-wireframes.md)
 - [站点总规划：12 项主题、四条路线与提示词](docs/site-blueprint.md)
 - [产品需求与站点结构](docs/product-requirements.md)
 - [内容规划与写作标准](docs/content-plan.md)
