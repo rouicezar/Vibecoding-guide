@@ -1,5 +1,7 @@
 ---
 import Shell from '../../layouts/Shell.astro';
+import ActionGuide from '../../components/ActionGuide.astro';
+import {guides} from '../../data/action-guides';
 import Dictionary from '../../components/Dictionary.astro';
 import dictionary from '../../data/dictionary.json';
 import StackGuide from '../../components/StackGuide.astro';
@@ -8,9 +10,10 @@ import Home from '../../components/Home.astro';
 import ProjectIndex from '../../components/ProjectIndex.astro';
 import ProjectDetail from '../../components/ProjectDetail.astro';
 import {locales,projects,t,type Locale} from '../../data/site';
-export function getStaticPaths(){return locales.flatMap(locale=>['','start','communicate','stacks','components',...dictionary.entries.map(e=>`components/${e.id}`),...projects.map(p=>`projects/${p.id}`)].map(path=>({params:{locale,page:path||undefined},props:{locale,path}})));}
+export function getStaticPaths(){return locales.flatMap(locale=>['','start','communicate','stacks','components',...guides.map(g=>g.path),...dictionary.entries.map(e=>`components/${e.id}`),...projects.map(p=>`projects/${p.id}`)].map(path=>({params:{locale,page:path||undefined},props:{locale,path}})));}
 const {locale,path}=Astro.props as {locale:Locale;path:string};
 const project=projects.find(p=>path===`projects/${p.id}`);
-const title=path.startsWith('components')?t(['前端与 UI','Frontend & UI'],locale):path==='stacks'?t(['技术栈选择','Choosing a stack'],locale):path==='communicate'?t(['和 Agent 沟通','Talking to agents'],locale):project?t(project.title,locale):path==='start'?t(['项目分类','Project types'],locale):t(['零基础，也能把想法做出来','Build the idea, no coding experience needed'],locale);
+const guide=guides.find(g=>g.path===path);
+const title=guide?t(guide.title,locale):path.startsWith('components')?t(['前端与 UI','Frontend & UI'],locale):path==='stacks'?t(['技术栈选择','Choosing a stack'],locale):path==='communicate'?t(['和 Agent 沟通','Talking to agents'],locale):project?t(project.title,locale):path==='start'?t(['项目分类','Project types'],locale):t(['零基础，也能把想法做出来','Build the idea, no coding experience needed'],locale);
 ---
-<Shell locale={locale} path={path} title={title}>{path.startsWith('components')?<Dictionary locale={locale} entryId={path.split('/')[1]}/>:path==='stacks'?<StackGuide locale={locale}/>:path==='communicate'?<Communication locale={locale}/>:project?<ProjectDetail locale={locale} project={project}/>:path==='start'?<ProjectIndex locale={locale}/>:<Home locale={locale}/>}</Shell>
+<Shell locale={locale} path={path} title={title}>{guide?<ActionGuide locale={locale} guide={guide}/>:path.startsWith('components')?<Dictionary locale={locale} entryId={path.split('/')[1]}/>:path==='stacks'?<StackGuide locale={locale}/>:path==='communicate'?<Communication locale={locale}/>:project?<ProjectDetail locale={locale} project={project}/>:path==='start'?<ProjectIndex locale={locale}/>:<Home locale={locale}/>}</Shell>

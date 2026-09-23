@@ -13,10 +13,10 @@ export const modules = [
   { id:'agent', path:'communicate', icon:'message', title:['和 Agent 沟通','Talking to agents'], term:'Agent Communication', desc:['让能执行任务的 AI 助手听懂项目目标和完成标准。','Give an AI assistant a clear goal and a way to check its work.'] },
   { id:'stack', path:'stacks', icon:'layers', title:['技术栈选择','Choosing a stack'], term:'Tech Stack', desc:['选出制作和运行产品所需的技术与服务组合。','Choose the tools and services the product will be built with.'] },
   { id:'ui', path:'components', icon:'layout', title:['前端与 UI','Frontend & UI'], term:'User Interface', desc:['认出界面上的组件，把脑海里的样子讲清楚。','Identify interface components, then describe it precisely.'] },
-  { id:'backend', icon:'database', title:['后端','Backend'], term:'Backend', desc:['让信息保存下来，让不同的人看到该看的内容。','Keep information safe and give people the right access.'] },
-  { id:'test', icon:'checklist', title:['测试','Testing'], term:'Testing', desc:['亲手检查它能不能用，遇到意外会发生什么。','Check that things work—and find out what happens when they don’t.'] },
-  { id:'launch', icon:'upload', title:['部署上线','Deployment'], term:'Deployment & Release', desc:['把做好的版本交给别人，打开或安装就能使用。','Make the work available for people to open or install.'] },
-  { id:'ops', icon:'settings', title:['运维','Maintenance'], term:'Operations & Maintenance', desc:['上线之后，照看费用、更新、备份和使用反馈。','Look after costs, updates, backups, and feedback after launch.'] },
+  { id:'backend', path:'data', icon:'database', title:['后端','Backend'], term:'Backend', desc:['让信息保存下来，让不同的人看到该看的内容。','Keep information safe and give people the right access.'] },
+  { id:'test', path:'check', icon:'checklist', title:['测试','Testing'], term:'Testing', desc:['亲手检查它能不能用，遇到意外会发生什么。','Check that things work—and find out what happens when they don’t.'] },
+  { id:'launch', path:'launch', icon:'upload', title:['部署上线','Deployment'], term:'Deployment & Release', desc:['把做好的版本交给别人，打开或安装就能使用。','Make the work available for people to open or install.'] },
+  { id:'ops', path:'maintain', icon:'settings', title:['运维','Maintenance'], term:'Operations & Maintenance', desc:['上线之后，照看费用、更新、备份和使用反馈。','Look after costs, updates, backups, and feedback after launch.'] },
 ] satisfies {id:string; path?:string; icon:string; title:Copy; term:string; desc:Copy}[];
 export type ProjectKey = 'web' | 'mini-program' | 'mobile' | 'desktop';
 export interface Project {

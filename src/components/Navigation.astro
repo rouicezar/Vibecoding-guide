@@ -6,6 +6,6 @@ const {locale,path}=Astro.props;
 ---
 <div class="nav-label">{t(['学习与实践','LEARN & BUILD'],locale)}</div>
 <nav aria-label={t(['主要导航','Main navigation'],locale)}>
-{modules.map(item=> 'path' in item ? <a class:list={['nav-item',{active:(item.path===path||Boolean(item.path&&path.startsWith(item.path+'/')))}]} href={url(locale,item.path)} aria-current={(item.path===path||Boolean(item.path&&path.startsWith(item.path+'/')))?'page':undefined}><span class={`nav-glyph glyph-${item.id}`}><Icon name={item.icon} size={16}/></span><span>{t(item.title,locale)}</span></a> : <button class="nav-item" data-planned={t(item.title,locale)} data-description={t(item.desc,locale)}><span class={`nav-glyph glyph-${item.id}`}><Icon name={item.icon} size={16}/></span><span>{t(item.title,locale)}</span><span class="pending-dot" aria-label={t(['待制作','Planned'],locale)}></span></button>)}
+{modules.map(item=> <a class:list={['nav-item',{active:(item.path===path||Boolean(item.path&&path.startsWith(item.path+'/')))}]} href={url(locale,item.path)} aria-current={(item.path===path||Boolean(item.path&&path.startsWith(item.path+'/')))?'page':undefined}><span class={`nav-glyph glyph-${item.id}`}><Icon name={item.icon} size={16}/></span><span>{t(item.title,locale)}</span></a>)}
 </nav>
-<div class="nav-footer"><span class="status-dot"></span>{t(['设计预览 · 9 种页面','Design preview · 9 page types'],locale)}<p>{t(['从一个小想法开始。','Start with one small idea.'],locale)}</p></div>
+<div class="nav-footer"><span class="status-dot"></span>{t(['本地预览 · 全部板块已开放','Local preview · all modules open'],locale)}<p>{t(['从一个小想法开始。','Start with one small idea.'],locale)}</p></div>

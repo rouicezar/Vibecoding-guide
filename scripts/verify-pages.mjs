@@ -19,7 +19,7 @@ for(const stage of journey){
  }
 }
 const dictionary=JSON.parse(await readFile('src/data/dictionary.json','utf8'));
-const paths=['','start/','communicate/','stacks/','components/',...dictionary.entries.map(e=>`components/${e.id}/`),'projects/web/','projects/mini-program/','projects/mobile/','projects/desktop/'];
+const paths=['','start/','communicate/','stacks/','components/','data/','check/','launch/','maintain/',...dictionary.entries.map(e=>`components/${e.id}/`),'projects/web/','projects/mini-program/','projects/mobile/','projects/desktop/'];
 for(const locale of ['zh-cn','en'])for(const path of paths){
  const html=await readFile(`dist/${locale}/${path}index.html`,'utf8');
  assert(!html.includes('\u4f60'),`Disallowed copy in ${locale}/${path}`);
@@ -31,4 +31,4 @@ for(const locale of ['zh-cn','en'])for(const path of paths){
  }
  for(const match of html.matchAll(/href="#([^"]+)"/g))assert(html.includes(`id="${match[1]}"`),`Missing anchor ${match[1]}`);
 }
-console.log('PASS: 442 localized pages, language counterparts, headings, local links/assets section anchors, copy policy, module coverage structured bilingual templates, branch parents and lifecycle ordering.');
+console.log('PASS: 450 localized pages, language counterparts, headings, local links/assets section anchors, copy policy, module coverage structured bilingual templates, branch parents and lifecycle ordering.');
