@@ -4,7 +4,16 @@
 
 帮助普通人制作网站、小程序、手机应用与电脑工具：把想法讲清楚，选好搭建方式，学会检查、上线和后续照看。
 
-当前已存在的产品是 UI 组件词典：25 类、212 个词条。新站点处于需求与架构规划阶段，尚未安装新技术栈或迁移页面。
+旧版 UI 组件词典保留：25 类、212 个词条。新站已完成 Astro 双语视觉预览：首页、分类总览和四类项目详情，共 12 个中英文页面。其他板块与旧词典迁移仍待实施。
+
+## 运行新站
+
+使用 `.nvmrc` 对应 Node 版本，执行 `npm ci`，再运行 `npm run dev`。以终端打印的地址为准，访问 `/zh-cn/` 或 `/en/`。Astro 7 开发服务在后台运行，可用 `npx astro dev stop` 停止。
+
+验证：`npm run check`、`npm run build`、`npm run verify`。构建产物在 `dist/`，不纳入 Git。
+
+- [双语规范与预览范围](docs/bilingual-preview.md)
+- [页面效果图与验证记录](docs/preview-review.md)
 
 ## 从哪里开始
 
@@ -27,7 +36,7 @@
 | `docs/UI 组件大全.md` | 原始内容资料，保留原文；不是逐条核验过的发布稿 |
 | `docs/`、`tasks/` | 新站点的需求、设计与实施记录 |
 
-目前可直接用浏览器打开 `vibe-ui-dictionary/index.html`。需要本地 HTTP 预览时，在仓库根运行 `python3 -m http.server 8000 --bind 127.0.0.1 --directory vibe-ui-dictionary`，访问 `http://127.0.0.1:8000`，结束后按 Ctrl+C。尚无 npm 开发或构建命令。
+目前可直接用浏览器打开 `vibe-ui-dictionary/index.html`。需要本地 HTTP 预览时，在仓库根运行 `python3 -m http.server 8000 --bind 127.0.0.1 --directory vibe-ui-dictionary`，访问 `http://127.0.0.1:8000`，结束后按 Ctrl+C。新站预览与旧词典独立。
 
 历史补丁脚本使用搬动前的绝对路径，且独立演示代码与 HTML 不完全一致，勿将其用于更新正式入口。复制反馈和部分演示交互仍有已知缺口，见任务表。
 
