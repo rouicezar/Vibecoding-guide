@@ -6,7 +6,7 @@ const {id,title,prompt,locale,kind='prompt'}=Astro.props;
 const worksheet=kind==='worksheet';
 const instruction:Copy=worksheet?['这是供自行填写的想法草稿。复制到笔记后修改示例；不确定的地方保留“尚未确定”，下一步再交给 AI。','This worksheet is for personal notes. Copy it into a note and edit the examples. Leave unknowns as undecided; share the draft with AI in the next step.']:kind==='handoff'?['把“想法草稿”占位内容替换为上一站填写的全文，再复制到 AI 对话中。','Replace the draft placeholder with the completed worksheet from the previous step before sending to AI.']:['以虚构的烘焙预约项目为例。保留【字段名】，把后面的示例内容换成实际情况；不确定的部分填写“尚未确定”。','The fictional bakery project is an example. Keep the [field labels] and replace the sample values with actual details. Write “undecided” where information is missing.'];
 ---
-<div class="prompt-template">
+<div class="prompt-template" data-pagefind-weight="0.2">
   <div class="template-toolbar"><h3 id={`prompt-title-${id}`}><Icon name={worksheet?"book":"message"} size={15}/>{t(title,locale)}</h3><button class="template-copy" data-copy-template={id} data-copied={t(['已复制','Copied'],locale)} data-failed={t(['复制失败，请在代码框内手动选择并复制。','Copy failed. Select and copy the text in the code box.'],locale)}><Icon name="copy" size={14}/><span>{t(worksheet?['复制填写模板','Copy worksheet']:['复制提示词','Copy prompt'],locale)}</span></button></div>
   <p class="template-instruction">{t(instruction,locale)}</p>
   <pre tabindex="0" aria-labelledby={`prompt-title-${id}`}><code data-template-text={id}>{t(prompt,locale)}</code></pre>

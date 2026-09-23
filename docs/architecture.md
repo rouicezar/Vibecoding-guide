@@ -93,3 +93,8 @@
 - [Astro On-demand Rendering](https://docs.astro.build/en/guides/on-demand-rendering/)：后续动态路由能力。
 - [Pagefind](https://pagefind.app/docs/) 与 [中文分词说明](https://pagefind.app/docs/multilingual/)：构建时索引及中文支持要求。
 - [Next.js Server and Client Components](https://nextjs.org/docs/app/getting-started/server-and-client-components)：备选方案能力边界。
+
+## 当前实现更新（2026-09-23 P19）
+
+Astro静态路由现有450个本地化地址；模块内容采用TypeScript类型数据与共用Astro模板。表单和演示使用局部原生浏览器脚本，无需为当前交互新增React。Pagefind 1.5.2 Extended已接入构建，按HTML语言分索引，仅正文参与；搜索API按需原生模块导入，避免构建器误处理构建后才出现的索引。具体规则依据 [Pagefind API](https://pagefind.app/docs/api/)、[索引范围](https://pagefind.app/docs/indexing/)、[多语言分词](https://pagefind.app/docs/multilingual/)，本轮2026-09-23核验。
+内容集合schema、React和Vitest仍不是当前运行依赖；不将历史技术规划视为已安装。现有结构校验、选型规则验证和原词典逐字段比对纳入npm run verify。

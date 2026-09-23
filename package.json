@@ -9,9 +9,9 @@
   "scripts": {
     "dev": "astro dev --host 127.0.0.1",
     "check": "astro check",
-    "build": "astro build",
+    "build": "astro build && pagefind --site dist",
     "preview": "astro preview --host 127.0.0.1",
-    "verify": "node scripts/verify-pages.mjs"
+    "verify": "node scripts/verify-pages.mjs && node scripts/verify-stacks.mjs && node scripts/extract-dictionary.mjs --check"
   },
   "dependencies": {
     "@lucide/astro": "1.47.0",
@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",
+    "pagefind": "1.5.2",
     "typescript": "6.0.3"
   }
 }

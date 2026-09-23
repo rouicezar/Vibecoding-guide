@@ -1,0 +1,22 @@
+[
+{"locale":"zh-cn","query":"下划线标签","expected":"components/tabs-underlined/"},
+{"locale":"zh-cn","query":"下面会动的线","expected":"components/tabs-sliding/"},
+{"locale":"zh-cn","query":"Slider","expected":"components/sl-h/"},
+{"locale":"zh-cn","query":"刷新后资料消失","expected":"data/"},
+{"locale":"zh-cn","query":"上线后打不开","expected":"launch/"},
+{"locale":"zh-cn","query":"权限","expected":"data/"},
+{"locale":"zh-cn","query":"新会话接手","expected":"communicate/"},
+{"locale":"zh-cn","query":"备份恢复","expected":"maintain/"},
+{"locale":"zh-cn","query":"技术栈选择","expected":"stacks/"},
+{"locale":"zh-cn","query":"组合框","expected":"components/sel-combo/"},
+{"locale":"en","query":"Underlined Tabs","expected":"components/tabs-underlined/"},
+{"locale":"en","query":"sliding underline","expected":"components/tabs-sliding/"},
+{"locale":"en","query":"range slider","expected":"components/sl-h/"},
+{"locale":"en","query":"data disappears","expected":"data/"},
+{"locale":"en","query":"deployment","expected":"launch/"},
+{"locale":"en","query":"access rules","expected":"data/"},
+{"locale":"en","query":"handoff","expected":"communicate/"},
+{"locale":"en","query":"backup recovery","expected":"maintain/"},
+{"locale":"en","query":"stack","expected":"stacks/"},
+{"locale":"en","query":"combobox","expected":"components/sel-combo/"}
+]
