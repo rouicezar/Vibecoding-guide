@@ -9,34 +9,38 @@ export const journey:Stage[] = [
     ],
     "term": "Idea",
     "question": [
-      "不用想完整，先说说想做什么。",
-      "A rough idea is enough to start a conversation."
+      "先把脑海里的想法记下来，不用写成专业文档。",
+      "Capture the idea in plain language, without making it a formal document."
     ],
     "output": [
-      "一句具体的产品描述",
-      "A specific product description"
+      "一份自己的想法草稿，供下一步交给 AI",
+      "A personal idea draft, ready to share with AI in the next step"
     ],
     "actions": [
       [
-        "想到什么就说什么，一句话也可以。",
-        "Describe the initial idea. One sentence is enough."
+        "复制下方填写模板到笔记中，把示例换成实际情况。",
+        "Copy the worksheet into a note and replace the examples with actual details."
       ],
       [
-        "还没想好，就说说生活或工作中哪件事供觉得麻烦。",
-        "When unsure, describe something frustrating at work or in daily life."
+        "尽量补充背景、给谁用、现有做法和最想解决的问题。",
+        "Add context, the intended audience, the current process, and the main problem."
+      ],
+      [
+        "不确定的部分写“尚未确定”；保留原本的想法，不必提前选技术。",
+        "Mark unknowns as undecided. Keep the original idea without choosing technologies yet."
       ]
     ],
     "problem": [
-      "想做的东西太多，不知道从哪里开始。",
-      "Too many ideas. Where should I start?"
+      "有些地方还没想清楚，是否需要全部填完？",
+      "Does every field need a complete answer?"
     ],
     "answer": [
-      "选一个最熟悉、能找到人试用的场景。先解决其中一件事，其他想法单独记下。",
-      "Choose a familiar situation with someone who can try the result. Solve one problem and keep the other ideas for later."
+      "不必。先记录已经知道的情况，具体例子比专业名词更有用。空缺可以保留，下一步交给 AI 提问补全。",
+      "No. Record what is already known; concrete examples are more useful than technical terms. Leave gaps for clarification with AI in the next step."
     ],
     "prompt": [
-      "我不懂开发，想先把一个产品想法聊清楚。请担任耐心的产品访谈助手，先提问，不写代码。\n\n【背景】我经营一家小型烘焙工作室，现在通过聊天软件接蛋糕预约。\n【给谁用】想预约蛋糕的顾客，以及负责确认订单的店主。\n【现在怎么做】顾客发消息说明日期和口味，店主手动登记，再回复确认。\n【最麻烦的问题】消息容易遗漏，经常需要来回询问时间、人数和联系方式。\n【初步想法】做一个手机上能打开的预约页面，顾客填写信息，店主集中查看。\n【希望改善的结果】减少重复沟通和漏单，顾客知道预约是否已被确认。\n【已有条件与限制】只有一台电脑；每月预算约 100 元；第一版先不做在线付款。\n【还没想清楚】是否需要登录、怎样提醒店主、顾客如何修改预约。\n\n以上是初步想法，不是已经确定的功能清单。请按以下方式开始：\n1. 用两三句话复述目前理解，区分已知事实和待确认的推测。\n2. 一次只问一个最影响方案的问题，不要同时抛出一长串问题。\n3. 我回答“不知道”时，给出 2—3 个贴近场景的例子，解释差别并提供建议。\n4. 优先问清使用场景、主要操作和成功标准，再讨论技术。\n5. 信息足够后，整理第一版建议、暂不做的功能和待确认问题，等我确认。\n现在先复述理解，再提出第一个问题。",
-      "I have no development experience and want to explore a product idea. Act as a patient product interviewer. Ask questions before writing code.\n\n[Background] I run a small bakery and accept cake reservations through chat messages.\n[People using it] Customers reserving cakes and the owner confirming orders.\n[Current process] Customers send a date and flavor; the owner records details and replies manually.\n[Main difficulty] Messages get missed, with repeated questions about dates, group sizes, and contact details.\n[Initial idea] A mobile-friendly reservation page, with one place for the owner to review requests.\n[Desired outcome] Less repeated messaging and fewer missed orders; customers can tell whether a reservation is confirmed.\n[Resources and limits] One computer, about $15 per month, and no online payments in the first version.\n[Uncertainties] Sign-in, owner notifications, and changes to existing reservations.\n\nThese are starting ideas, not approved features.\n1. Restate the idea in two or three sentences, separating known facts from assumptions.\n2. Ask only one high-impact question at a time.\n3. If I answer “I don’t know,” offer two or three realistic examples, explain their differences, and recommend an option.\n4. Clarify the situation, main flow, and success criteria before discussing technology.\n5. Once enough is known, propose a first version, exclusions, and unresolved questions. Wait for my confirmation.\nStart with a short summary and the first question."
+      "我的想法草稿\n\n【背景】我经营一家小型烘焙工作室，现在通过聊天软件接蛋糕预约。\n【给谁用】想预约蛋糕的顾客，以及负责确认订单的店主。\n【现在怎么做】顾客发消息说明日期和口味，店主手动登记，再回复确认。\n【最想解决的问题】消息容易遗漏，经常需要反复询问时间、口味和联系方式。\n【脑海中的产品】一个手机上能打开的预约页面，顾客填写信息，店主集中查看。\n【一次使用的例子】顾客预约周六的生日蛋糕，填写日期、口味和联系方式，等待店主确认。\n【希望改善的结果】减少重复沟通和漏单，顾客能知道预约是否已被确认。\n【第一版最重要的事】提交预约、店主确认、查看预约结果。\n【暂时不做】在线付款、会员积分、多门店管理。\n【已有条件和限制】一台电脑；每月预算约 100 元；没有开发经验。\n【参考或喜欢的效果】尚未确定，可以补充截图、网址或文字描述。\n【还没想清楚】是否需要登录、怎样提醒店主、顾客如何修改预约。",
+      "My idea draft\n\n[Background] I run a small bakery and take cake reservations through chat.\n[Audience] Customers reserving cakes and the owner confirming orders.\n[Current process] Customers send a date and flavor; the owner records details and replies manually.\n[Main problem] Messages get missed and dates, flavors, and contact details require repeated questions.\n[Product in mind] A page that opens on a phone, with a form for customers and one place for the owner to review requests.\n[Example use] A customer requests a birthday cake for Saturday, supplies a date, flavor, and contact details, then waits for confirmation.\n[Desired improvement] Less repeated messaging and fewer missed orders, with clear confirmation status.\n[First-version priorities] Submit a reservation, owner confirmation, and status lookup.\n[Not needed yet] Payments, loyalty points, and multiple stores.\n[Resources and limits] One computer, about $15 monthly, and no development experience.\n[References or preferred appearance] Undecided; screenshots, links, or a description can be added.\n[Open questions] Sign-in, owner notifications, and changes to existing reservations."
     ],
     "modules": [
       "项目分类",
@@ -47,8 +51,8 @@ export const journey:Stage[] = [
     ],
     "color": "blue",
     "promptTitle": [
-      "介绍想法，启动提问",
-      "Introduce an idea and start clarification"
+      "我的想法草稿 · 填写模板",
+      "My idea draft · Worksheet"
     ]
   },
   {
@@ -59,8 +63,8 @@ export const journey:Stage[] = [
     ],
     "term": "Conversation",
     "question": [
-      "把刚才那句话发给 AI，不用换成专业说法。",
-      "Send the idea to AI in plain language."
+      "把上一站的想法草稿交给 AI，再附上沟通要求。",
+      "Share the previous step’s idea draft with AI, together with conversation instructions."
     ],
     "output": [
       "一段已经开始的对话",
@@ -68,12 +72,16 @@ export const journey:Stage[] = [
     ],
     "actions": [
       [
-        "打开当前正在用的 AI 工具，把想法输入或说给它听。",
-        "Open an available AI tool and type or speak the idea."
+        "打开正在使用的 AI 工具，复制下方提示词。",
+        "Open an AI tool and copy the prompt below."
       ],
       [
-        "不知道怎么开口，就复制下面这段话，补上一句话。",
-        "When starting feels difficult, copy the prompt below and add a sentence."
+        "把“想法草稿”占位内容替换为上一站填写的全文，不用重新填写背景。",
+        "Replace the draft placeholder with the completed worksheet; there is no need to repeat the background."
+      ],
+      [
+        "发送后先检查 AI 的复述；有偏差就纠正，再进入提问补全。",
+        "After sending, check AI’s summary, correct misunderstandings, and continue to clarification."
       ]
     ],
     "problem": [
@@ -85,8 +93,8 @@ export const journey:Stage[] = [
       "Tell it: “I do not know development. Please ask for the missing information.” No long form or technical vocabulary is required."
     ],
     "prompt": [
-      "请协助启动一个零基础产品项目。先访谈，不直接开发。\n\n【项目背景】小型烘焙工作室通过聊天接单，容易漏记预约。\n【服务对象】预约蛋糕的顾客和负责确认的店主。\n【希望解决】减少重复询问，集中查看预约，让顾客知道确认结果。\n【想做的东西】手机浏览器可打开的预约页面。\n【当前材料】只有上述想法，还没有需求文档、设计图或代码。\n【不能改变的限制】第一版不收款，不公开顾客联系方式。\n\n请先说明目前还缺哪些关键类别的信息，但本轮只问一个问题。\n后续每轮根据回答更新“已确认 / 未确认”记录，给出日常语言解释。\n涉及账号、预算或使用习惯时先询问，不自行假定。\n如果没有读取文件、访问网页或执行操作的能力，请说明实际能力，不声称已经执行。\n先确认对项目的理解，然后开始第一问。",
-      "Help start a beginner product project. Interview first; do not build yet.\n\n[Context] A small bakery takes orders through chat and sometimes misses reservations.\n[Audience] Cake customers and the owner confirming requests.\n[Problem] Repeated questions, scattered requests, and unclear confirmation status.\n[Product idea] A reservation page that opens in a phone browser.\n[Available material] Only this idea; no requirements, designs, or code yet.\n[Constraints] No payments in version one. Customer contact details must not be public.\n\nIdentify the categories of missing information, but ask only one question in this turn.\nMaintain a confirmed/unconfirmed record as the conversation progresses. Explain decisions in everyday language.\nAsk about accounts, budget, and habits rather than assuming them.\nState actual file, browsing, and execution capabilities; never claim an action was performed without doing it.\nBegin with a summary and the first question."
+      "我不懂开发，下面是我自己整理的初步想法。请先理解，不直接开发。\n\n【想法草稿】\n在这里粘贴上一站填写的完整草稿，替换这一行。\n【草稿结束】\n\n请按以下方式开始：\n1. 先检查是否提供了实际草稿；如果仍是占位文字，请提醒补充，不代替我编造项目。\n2. 用两三句话复述产品给谁用、希望解决什么问题，区分原文事实和推测。\n3. 先问“这份理解是否准确”，等待我确认或纠正。\n4. 理解确认后再提问补全，一次只问一个最影响方案的问题。\n5. 我回答“不知道”时，给出 2—3 个贴近场景的例子，解释差别并提供建议。\n6. 将已确认内容与待确认问题分开记录。不要求我先写需求文档，也不提前选技术或写代码。\n现在先检查草稿并复述理解。",
+      "I have no development experience. The following is my own rough idea. Understand it first; do not build yet.\n\n[Idea draft]\nPaste the complete worksheet from the previous step here, replacing this line.\n[End of draft]\n\n1. Check that an actual draft is present. If only the placeholder remains, request the draft rather than inventing a project.\n2. Restate the audience and problem in two or three sentences, distinguishing stated facts from assumptions.\n3. Ask whether that understanding is accurate, then wait for confirmation or corrections.\n4. After confirmation, clarify one high-impact question at a time.\n5. If I answer “I don’t know,” offer two or three realistic examples with differences and a recommendation.\n6. Keep confirmed decisions separate from open questions. Do not ask me to write requirements first, choose technologies prematurely, or start coding.\nBegin by checking the draft and summarizing the understanding."
     ],
     "modules": [
       "和 Agent 沟通",
@@ -97,8 +105,8 @@ export const journey:Stage[] = [
     ],
     "color": "blue",
     "promptTitle": [
-      "把想法交给 AI 开始对话",
-      "Start the conversation"
+      "把想法草稿交给 AI · 沟通提示词",
+      "Share the idea draft · Conversation prompt"
     ]
   },
   {
