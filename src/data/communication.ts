@@ -15,7 +15,7 @@ export const scenarios = [
 ] satisfies {id:string;title:Copy;task:Copy;example:Copy}[];
 export function makePrompt(index:number,locale:Locale,values?:string[]){
  const scene=scenarios[index];
- const defaults=[t(['社区烘焙预约项目；已有一个可打开的网页。','A neighborhood bakery reservation project with an existing web page.'],locale),t(['附近顾客和店主','Nearby customers and the shop owner'],locale),t(scene.example,locale),t(['粘贴已确认范围、相关截图或复现步骤；未提供的材料请先索取。','Attach agreed scope, relevant screenshots, or reproduction steps; request missing material first.'],locale),t(['只做本次目标；预算与发布时间尚未确定。','Limit work to this goal; budget and release date are undecided.'],locale)];
+ const defaults=[t(['填写项目用途、当前进度与已有页面。','Enter the purpose, current progress, and existing page.'],locale),t(['填写实际使用者。','Enter the intended users.'],locale),t(['填写当前问题和希望达到的结果；参考上方单独标明的例子。','Enter the current problem and desired result; refer to the separately labeled example above.'],locale),t(['粘贴已确认范围、相关截图或复现步骤；未提供的材料请先索取。','Attach agreed scope, relevant screenshots, or reproduction steps; request missing material first.'],locale),t(['只做本次目标；预算与发布时间尚未确定。','Limit work to this goal; budget and release date are undecided.'],locale)];
  const v=values??defaults;
  return locale==='zh-cn'?`【背景】${v[0]}
 【给谁用】${v[1]}

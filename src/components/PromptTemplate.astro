@@ -1,16 +1,16 @@
 ---
 import Icon from './Icon.astro';
 import {t,type Locale,type Copy} from '../data/site';
-interface Props {id:string; title:Copy; prompt:Copy; locale:Locale; kind?:"worksheet"|"handoff"|"prompt";}
+interface Props {id:string; title:Copy; prompt:Copy; locale:Locale; kind?:"worksheet"|"handoff"|"prompt"|"file";}
 const {id,title,prompt,locale,kind='prompt'}=Astro.props;
 const worksheet=kind==='worksheet';
-const instruction:Copy=worksheet?['这是供自行填写的想法草稿。复制到笔记后修改示例；不确定的地方保留“尚未确定”，下一步再交给 AI。','This worksheet is for personal notes. Copy it into a note and edit the examples. Leave unknowns as undecided; share the draft with AI in the next step.']:kind==='handoff'?['把“想法草稿”占位内容替换为上一站填写的全文，再复制到 AI 对话中。','Replace the draft placeholder with the completed worksheet from the previous step before sending to AI.']:['以虚构的烘焙预约项目为例。保留【字段名】，把后面的示例内容换成实际情况；不确定的部分填写“尚未确定”。','The fictional bakery project is an example. Keep the [field labels] and replace the sample values with actual details. Write “undecided” where information is missing.'];
+const instruction:Copy=kind==='file'?['这是文件正文，不是对话提示词。交给 AI 合并到项目规则文件；待确认字段由 AI 读取真实项目后补齐。','This is file content, not a chat prompt. Ask AI to merge it into project instructions and fill unknowns from the actual project.']:worksheet?['先复制到自己的笔记，填写实际情况；这一步是本人记录想法，下一步才交给 AI。','Copy into personal notes and enter actual details. This step records the idea; share it with AI in the next step.']:['在当前项目的 AI 对话中发送。把待填字段换成实际材料，已有文件可直接附上；不确定项明确写“尚未确定”。单独标出的“比如”只用于帮助理解。','Send this in the current project conversation. Replace placeholders with actual material or attach existing files. Mark unknowns as undecided. Separately labeled examples are only for illustration.'];
 ---
 <div class="prompt-template" data-pagefind-weight="0.2">
-  <div class="template-toolbar"><h3 id={`prompt-title-${id}`}><Icon name={worksheet?"book":"message"} size={15}/>{t(title,locale)}</h3><button class="template-copy" data-copy-template={id} data-copied={t(['已复制','Copied'],locale)} data-failed={t(['复制失败，请在代码框内手动选择并复制。','Copy failed. Select and copy the text in the code box.'],locale)}><Icon name="copy" size={14}/><span>{t(worksheet?['复制填写模板','Copy worksheet']:['复制提示词','Copy prompt'],locale)}</span></button></div>
+  <div class="template-toolbar"><h3 id={`prompt-title-${id}`}><Icon name={worksheet?"book":"message"} size={15}/>{t(title,locale)}</h3><button class="template-copy" data-copy-template={id} data-copied={t(['已复制','Copied'],locale)} data-failed={t(['复制失败，请在代码框内手动选择并复制。','Copy failed. Select and copy the text in the code box.'],locale)}><Icon name="copy" size={14}/><span>{t(kind==='file'?['复制文件模板','Copy file template']:worksheet?['复制填写模板','Copy worksheet']:['复制提示词','Copy prompt'],locale)}</span></button></div>
   <p class="template-instruction">{t(instruction,locale)}</p>
   <pre tabindex="0" aria-labelledby={`prompt-title-${id}`}><code data-template-text={id}>{t(prompt,locale)}</code></pre>
-  <div class="template-footer"><span>{t(worksheet?['填写草稿 → 下一站再交给 AI','Complete the draft → Share with AI in the next step']:['纯文本 · 补齐实际材料后发送给 AI','Plain text · Add actual material before sending to AI'],locale)}</span><span role="status" data-template-status={id}></span></div>
+  <div class="template-footer"><span>{t(kind==='file'?['文件正文 · 合并到项目规则文件','File content · Merge into project instructions']:worksheet?['填写草稿 → 下一站再交给 AI','Complete the draft → Share with AI in the next step']:['纯文本 · 补齐实际材料后发送给 AI','Plain text · Add actual material before sending to AI'],locale)}</span><span role="status" data-template-status={id}></span></div>
 </div>
 <script>
 document.querySelectorAll<HTMLButtonElement>('[data-copy-template]').forEach(button=>button.addEventListener('click',async()=>{

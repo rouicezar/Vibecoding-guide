@@ -1,0 +1,66 @@
+{
+  "checkedAt": "2026-09-23",
+  "note": "Official site favicons or official publisher icons, used for product identification. Geometry and colors retained. Trademarks belong to their owners.",
+  "assets": [
+    {
+      "id": "claude",
+      "url": "https://assets.claude.com/95a868946ac8a31e5ff832e2899f294aa368b836.png?w=32&h=32",
+      "path": "public/brand/tools/claude.png",
+      "bytes": 1198
+    },
+    {
+      "id": "cursor",
+      "url": "https://cursor.com/marketing-static/favicon-light.svg",
+      "path": "public/brand/tools/cursor.svg",
+      "bytes": 4388
+    },
+    {
+      "id": "qoder",
+      "url": "https://qoder.com/favIcon.svg",
+      "path": "public/brand/tools/qoder.svg",
+      "bytes": 73379
+    },
+    {
+      "id": "trae",
+      "url": "https://lf-static.traecdn.us/obj/trae-ai-tx/trae_website/favicon.png",
+      "path": "public/brand/tools/trae.png",
+      "bytes": 488
+    },
+    {
+      "id": "kimi",
+      "url": "https://www.kimi.com/pwa-192.png",
+      "path": "public/brand/tools/kimi.png",
+      "bytes": 21645
+    },
+    {
+      "id": "gemini",
+      "url": "https://geminicli.com/icon.png",
+      "path": "public/brand/tools/gemini.png",
+      "bytes": 46696
+    },
+    {
+      "id": "lovable",
+      "url": "https://lovable.dev/favicon.svg",
+      "path": "public/brand/tools/lovable.svg",
+      "bytes": 7276
+    },
+    {
+      "id": "replit",
+      "url": "https://replit.com/public/icons/favicon-prompt-192-rebrand.png",
+      "path": "public/brand/tools/replit.png",
+      "bytes": 612
+    },
+    {
+      "id": "copilot",
+      "url": "https://github.com/features/copilot",
+      "path": "public/brand/tools/copilot.svg",
+      "note": "Official inline Octicon; geometry unchanged."
+    },
+    {
+      "id": "codex",
+      "url": "https://openai.gallerycdn.vsassets.io/extensions/openai/chatgpt/26.5917.61114/1790120725247/Microsoft.VisualStudio.Services.Icons.Default",
+      "page": "https://marketplace.visualstudio.com/items?itemName=openai.chatgpt",
+      "path": "public/brand/tools/codex.png"
+    }
+  ]
+}

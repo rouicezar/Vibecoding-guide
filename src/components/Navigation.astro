@@ -3,9 +3,11 @@ import {modules,t,url,type Locale} from '../data/site';
 import Icon from './Icon.astro';
 interface Props {locale:Locale; path:string;}
 const {locale,path}=Astro.props;
+const groups=[{title:['从这里开始','START HERE'] as const,ids:['home','types','tools','agent']},{title:['制作项目','BUILD THE PROJECT'] as const,ids:['web','mobile','desktop','stack','ui','backend']},{title:['检查与交付','CHECK & DELIVER'] as const,ids:['test','launch','ops']}];
 ---
-<div class="nav-label">{t(['学习与实践','LEARN & BUILD'],locale)}</div>
 <nav aria-label={t(['主要导航','Main navigation'],locale)}>
-{modules.map(item=> <a class:list={['nav-item',{active:(item.path===path||Boolean(item.path&&path.startsWith(item.path+'/')))}]} href={url(locale,item.path)} aria-current={(item.path===path||Boolean(item.path&&path.startsWith(item.path+'/')))?'page':undefined}><span class={`nav-glyph glyph-${item.id}`}><Icon name={item.icon} size={16}/></span><span>{t(item.title,locale)}</span></a>)}
+{groups.map(group=><div class="nav-group"><div class="nav-label">{t(group.title,locale)}</div>{group.ids.map(id=>modules.find(m=>m.id===id)!).map(item=> <a class:list={['nav-item',{active:(item.path===path||Boolean(item.path&&path.startsWith(item.path+'/')))}]} href={url(locale,item.path)} aria-current={(item.path===path||Boolean(item.path&&path.startsWith(item.path+'/')))?'page':undefined}><span class={`nav-glyph glyph-${item.id}`}><Icon name={item.icon} size={16}/></span><span>{t(item.title,locale)}</span></a>)}</div>)}
 </nav>
 <div class="nav-footer"><a href={url(locale,'terms')}>{t(['白话术语','Plain-language glossary'],locale)}</a><br/><span class="status-dot"></span>{t(['本地预览 · 全部板块已开放','Local preview · all modules open'],locale)}<p>{t(['从一个小想法开始。','Start with one small idea.'],locale)}</p></div>
+
+<style>.nav-group+.nav-group{margin-top:22px}.nav-group .nav-label{font-size:11px;font-weight:600;margin-bottom:7px}.nav-item{font-size:13px;min-height:40px}</style>

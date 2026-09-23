@@ -13,3 +13,12 @@
 
 #full-search-results a {display:block;}
 #full-search-results a span {display:block;font-size:12px;color:#64748b;margin-top:5px;}
+
+/* Learning content: comfortable reading sizes; route labels remain compact. */
+.stage-actions,.stage-problem p,.stage-output p,.stage-template>p{font-size:14px;line-height:1.9}
+.stage-columns h3,.stage-problem h3{font-size:16px}
+.practice-input,.practice-check,.practice-example,.practice-next{font-size:15px;line-height:1.85}
+.section>p{max-width:78ch;line-height:1.85}
+.template-instruction{line-height:1.8}
+.glyph-tools{background:#eef6f4;color:#527e73}
+@media(max-width:650px){.journey-context{align-items:flex-start}.journey-context a{font-size:12px}.anchor-nav{gap:8px}.anchor-nav a{line-height:1.6}}

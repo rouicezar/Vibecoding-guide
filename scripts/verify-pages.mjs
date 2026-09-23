@@ -1,6 +1,7 @@
 import {readFile,access} from 'node:fs/promises';
 import assert from 'node:assert/strict';
 import {journey,mainJourney} from '../src/data/journey.ts';
+import {practices} from '../src/data/practice.ts';
 import {modules} from '../src/data/site.ts';
 for(const stage of journey.filter(stage=>stage.parent)){
  assert(mainJourney.some(parent=>parent.id===stage.parent),`Invalid branch parent: ${stage.id}`);
@@ -12,14 +13,21 @@ const covered=new Set(journey.flatMap(stage=>stage.moduleIds));
 for(const item of modules.filter(item=>item.id!=='home'))assert(covered.has(item.id),`Unmapped module: ${item.id}`);
 for(const stage of journey)for(const id of stage.moduleIds)assert(modules.some(item=>item.id===id),`Unknown module: ${id}`);
 assert.equal(new Set(journey.map(stage=>stage.id)).size,journey.length);
+for(const practice of practices){
+ assert(practice.steps.length>=3, `Missing practical steps: ${practice.path}`);
+ assert(journey.some(s=>s.id===practice.stage), `Missing source stage: ${practice.path}`);
+ for(const step of practice.steps)assert(step.check.every(Boolean), `Missing completion check: ${practice.path}`);
+}
 for(const stage of journey){
+ assert(stage.incoming.every(Boolean),`Missing incoming material: ${stage.id}`);
+ assert(stage.example[0].startsWith('比如：')&&stage.example[1].startsWith('For example:'),`Example not separated: ${stage.id}`);
  for(const [index,prompt] of stage.prompt.entries()){
   assert(prompt.split('\n').length>=10, `Template too short: ${stage.id}/${index}`);
   assert(prompt.includes(index===0?'【':'['), `Missing example fields: ${stage.id}/${index}`);
  }
 }
 const dictionary=JSON.parse(await readFile('src/data/dictionary.json','utf8'));
-const paths=['','start/','communicate/','stacks/','components/','terms/','data/','check/','launch/','maintain/',...dictionary.entries.map(e=>`components/${e.id}/`),'projects/web/','projects/mini-program/','projects/mobile/','projects/desktop/'];
+const paths=['','tools/','start/','communicate/','stacks/','components/','terms/',...practices.map(p=>p.path+'/'),'data/','check/','launch/','maintain/',...dictionary.entries.map(e=>`components/${e.id}/`),'projects/web/','projects/mini-program/','projects/mobile/','projects/desktop/'];
 for(const locale of ['zh-cn','en'])for(const path of paths){
  const html=await readFile(`dist/${locale}/${path}index.html`,'utf8');
  assert(!html.includes('\u4f60'),`Disallowed copy in ${locale}/${path}`);
@@ -31,4 +39,4 @@ for(const locale of ['zh-cn','en'])for(const path of paths){
  }
  for(const match of html.matchAll(/href="#([^"]+)"/g))assert(html.includes(`id="${match[1]}"`),`Missing anchor ${match[1]}`);
 }
-console.log('PASS: 452 localized pages, language counterparts, headings, local links/assets section anchors, copy policy, module coverage structured bilingual templates, branch parents and lifecycle ordering.');
+console.log('PASS: 462 localized pages, language counterparts, headings, local links/assets section anchors, copy policy, module coverage structured bilingual templates, branch parents and lifecycle ordering.');

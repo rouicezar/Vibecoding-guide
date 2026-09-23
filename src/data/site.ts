@@ -7,6 +7,7 @@ export const slogan: Copy = ['AI 时代，即使零基础不懂代码，也能 V
 export const modules = [
   { id:'home', path:'', icon:'home', title:['首页','Home'], term:'Vibe Coding', desc:['和 AI 讲清需求、检查结果，逐步做出软件。','Describe the idea, check the results, and build with AI.'] },
   { id:'types', path:'start', icon:'grid', title:['项目分类','Project types'], term:'Project Types', desc:['先选一个合适的起点：网站、小程序、手机或电脑应用。','Find the starting point: a website, mini program, or app.'] },
+  { id:'tools', path:'tools', icon:'tool', title:['选择工具','Choose a tool'], term:'AI Coding Tools', desc:['比较使用方式、价格和项目适合度，再开始实操。','Compare workflows, costs and project fit, then begin.'] },
   { id:'web', path:'projects/web', icon:'browser', title:['Web 站点开发','Web development'], term:'Web Development', desc:['从一个想法，到一个别人点开就能用的网址。','Turn an idea into a website people can open and use.'] },
   { id:'mobile', path:'projects/mobile', icon:'phone', title:['手机 App 开发','Mobile apps'], term:'Mobile App Development', desc:['把想法装进手机，学会处理保存、权限与更新。','Build for a phone, with thoughtful storage, permissions, and updates.'] },
   { id:'desktop', path:'projects/desktop', icon:'monitor', title:['桌面 App 开发','Desktop apps'], term:'Desktop App Development', desc:['做一个电脑工具，处理日常重复的工作。','Make a desktop tool for repetitive everyday tasks.'] },
