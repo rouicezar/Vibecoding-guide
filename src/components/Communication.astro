@@ -20,7 +20,7 @@ const fields=[['背景与现状','Background and current state'],['给谁用','A
 <script>
 import {makePrompt,scenarios} from '../data/communication';
 import type {Locale} from '../data/site';
-const selectScene=()=>{const requested=location.hash.slice(1);const selected=scenarios.some(s=>s.id===requested)?requested:'first';document.querySelectorAll<HTMLElement>('.communication-scene').forEach(section=>section.hidden=section.id!==selected);document.querySelectorAll<HTMLAnchorElement>('.anchor-nav a').forEach(link=>{if(link.hash==='#'+selected)link.setAttribute('aria-current','step');else link.removeAttribute('aria-current');});document.querySelectorAll<HTMLAnchorElement>('.languages a').forEach(link=>link.hash=selected);};
+const selectScene=()=>{const requested=location.hash.slice(1);const selected=scenarios.some(s=>s.id===requested)?requested:'first';document.querySelectorAll<HTMLElement>('.communication-scene').forEach(section=>section.hidden=section.id!==selected);document.querySelectorAll<HTMLAnchorElement>('.anchor-nav a').forEach(link=>{if(link.hash==='#'+selected)link.setAttribute('aria-current','step');else link.removeAttribute('aria-current');});document.querySelectorAll<HTMLAnchorElement>('.languages a').forEach(link=>link.hash=requested&&document.getElementById(requested)?requested:selected);};
 selectScene();window.addEventListener('hashchange',selectScene);
 document.querySelectorAll<HTMLFormElement>('[data-prompt-form]').forEach(form=>form.addEventListener('submit',event=>{
  event.preventDefault();const fields=Array.from(form.querySelectorAll<HTMLTextAreaElement>('textarea'));

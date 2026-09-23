@@ -1,0 +1,13 @@
+---
+import {terms} from '../data/terms';
+import {t,url,type Locale} from '../data/site';
+const {locale}=Astro.props as {locale:Locale};
+---
+<header class="journey-intro"><p class="eyebrow">PLAIN-LANGUAGE GLOSSARY</p><h1>{t(['遇到术语，先看它影响哪一步','Understand what a term changes'],locale)}</h1><p>{t(['30 个常见词，先读白话解释，再回到正在完成的任务。不需要按顺序背诵。','Thirty common terms: read the plain-language meaning, then return to the task. No memorization required.'],locale)}</p></header>
+<label for="term-search">{t(['查名称或用途','Find a name or use'],locale)}</label><input id="term-search" type="search" placeholder="Git / API / Context"/><p role="status" id="term-count">30 / 30</p><p id="term-empty" hidden>{t(['没有匹配，试试英文名称或更短的词。','No match. Try the English name or a shorter word.'],locale)}</p>
+{terms.map(term=><section class="section term-entry" id={term.id} data-term={[term.name,...term.definition,...term.check].join(' ').toLowerCase()}><h2>{term.name}</h2><p>{t(term.definition,locale)}</p><p><strong>{t(['现在如何判断：','Decision to make: '],locale)}</strong>{t(term.check,locale)}</p><a href={url(locale,term.path)}>{t(['回到相关任务 →','Open the related task →'],locale)}</a></section>)}
+<script>
+const input=document.querySelector<HTMLInputElement>('#term-search')!;input.addEventListener('input',()=>{let count=0;document.querySelectorAll<HTMLElement>('[data-term]').forEach(entry=>{entry.hidden=!entry.dataset.term!.includes(input.value.toLowerCase().trim());if(!entry.hidden)count++;});document.querySelector('#term-count')!.textContent=`${count} / 30`;document.querySelector<HTMLElement>('#term-empty')!.hidden=count>0;});
+const syncHash=()=>document.querySelectorAll<HTMLAnchorElement>('.languages a').forEach(a=>a.hash=location.hash);syncHash();window.addEventListener('hashchange',syncHash);
+</script>
+<style>#term-search{display:block;width:min(100%,500px);padding:10px;border:1px solid #9aa5b5;border-radius:6px;margin-top:8px}.term-entry{scroll-margin-top:90px}</style>
