@@ -1,7 +1,13 @@
 import {readFile,access} from 'node:fs/promises';
 import assert from 'node:assert/strict';
-import {journey} from '../src/data/journey.ts';
+import {journey,mainJourney} from '../src/data/journey.ts';
 import {modules} from '../src/data/site.ts';
+for(const stage of journey.filter(stage=>stage.parent)){
+ assert(mainJourney.some(parent=>parent.id===stage.parent),`Invalid branch parent: ${stage.id}`);
+}
+assert(mainJourney.findIndex(stage=>stage.id==='scope')<mainJourney.findIndex(stage=>stage.id==='requirements'));
+assert(mainJourney.findIndex(stage=>stage.id==='environment')<mainJourney.findIndex(stage=>stage.id==='build'));
+assert(mainJourney.findIndex(stage=>stage.id==='accept')<mainJourney.findIndex(stage=>stage.id==='launch'));
 const covered=new Set(journey.flatMap(stage=>stage.moduleIds));
 for(const item of modules.filter(item=>item.id!=='home'))assert(covered.has(item.id),`Unmapped module: ${item.id}`);
 for(const stage of journey)for(const id of stage.moduleIds)assert(modules.some(item=>item.id===id),`Unknown module: ${id}`);
@@ -24,4 +30,4 @@ for(const locale of ['zh-cn','en'])for(const path of paths){
  }
  for(const match of html.matchAll(/href="#([^"]+)"/g))assert(html.includes(`id="${match[1]}"`),`Missing anchor ${match[1]}`);
 }
-console.log('PASS: 12 localized pages, language counterparts, headings, local links/assets section anchors, copy policy, module coverage and structured bilingual templates.');
+console.log('PASS: 12 localized pages, language counterparts, headings, local links/assets section anchors, copy policy, module coverage structured bilingual templates, branch parents and lifecycle ordering.');

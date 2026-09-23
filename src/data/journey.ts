@@ -1,5 +1,5 @@
 import type {Copy} from './site';
-export interface Stage {id:string; title:Copy; term:string; question:Copy; output:Copy; actions:Copy[]; problem:Copy; answer:Copy; promptTitle:Copy; prompt:Copy; modules:Copy; moduleIds:string[]; color:string;}
+export interface Stage {id:string; parent?:string; title:Copy; term:string; question:Copy; output:Copy; actions:Copy[]; problem:Copy; answer:Copy; promptTitle:Copy; prompt:Copy; modules:Copy; moduleIds:string[]; color:string;}
 export const journey:Stage[] = [
   {
     "id": "idea",
@@ -58,39 +58,39 @@ export const journey:Stage[] = [
   {
     "id": "tell",
     "title": [
-      "把想法告诉 AI",
-      "Tell AI the idea"
+      "准备 AI 工具并开始对话",
+      "Prepare an AI tool and start"
     ],
     "term": "Conversation",
     "question": [
-      "把上一站的想法草稿交给 AI，再附上沟通要求。",
-      "Share the previous step’s idea draft with AI, together with conversation instructions."
+      "先准备能对话的 AI 工具，再交接想法草稿。",
+      "Prepare an AI conversation tool, then share the idea draft."
     ],
     "output": [
-      "一段已经开始的对话",
-      "An initial conversation with AI"
+      "可用的 AI 对话工具，以及已经交接的想法草稿",
+      "A working AI conversation tool and a shared idea draft"
     ],
     "actions": [
       [
-        "打开正在使用的 AI 工具，复制下方提示词。",
-        "Open an AI tool and copy the prompt below."
+        "已有能正常对话的 AI 工具时直接使用；尚未准备时先完成账号登录，确认费用与使用限制。",
+        "Use an existing working AI tool, or complete sign-in and check costs and limits first."
       ],
       [
-        "把“想法草稿”占位内容替换为上一站填写的全文，不用重新填写背景。",
-        "Replace the draft placeholder with the completed worksheet; there is no need to repeat the background."
+        "当前只需要对话能力。后续制作需要可读取项目、修改文件和运行检查的 Agent；先确认实际能力，不必一开始购买多种工具。",
+        "Conversation is sufficient now. Building later requires an agent able to read files, edit them, and run checks. Verify capabilities rather than buying multiple tools upfront."
       ],
       [
-        "发送后先检查 AI 的复述；有偏差就纠正，再进入提问补全。",
-        "After sending, check AI’s summary, correct misunderstandings, and continue to clarification."
+        "将上一站草稿粘贴到下方模板，发送后检查 AI 的复述，再开始提问补全。",
+        "Paste the previous worksheet into the template, send it, and review AI’s summary before clarification."
       ]
     ],
     "problem": [
-      "我连应该告诉 AI 哪些信息都不知道。",
-      "I do not know what information AI needs."
+      "还没有 AI 工具，或者只有聊天功能。",
+      "No AI tool is ready, or only chat is available."
     ],
     "answer": [
-      "直接告诉它“我不懂开发，请问我”。不用先填写一大张表，也不用提前认识技术名词。",
-      "Tell it: “I do not know development. Please ask for the missing information.” No long form or technical vocabulary is required."
+      "先选择可正常访问、支持文字对话的工具并检查账号费用。聊天工具可以完成前期讨论；进入环境准备时再核对是否能操作项目。安装和账号验证按官方界面完成，不把密码粘贴到对话里。",
+      "Start with an accessible text-chat tool and check account costs. Chat is enough for early discussion; verify project-execution capabilities at environment setup. Use official setup and sign-in screens without pasting passwords into chat."
     ],
     "prompt": [
       "我不懂开发，下面是我自己整理的初步想法。请先理解，不直接开发。\n\n【想法草稿】\n在这里粘贴上一站填写的完整草稿，替换这一行。\n【草稿结束】\n\n请按以下方式开始：\n1. 先检查是否提供了实际草稿；如果仍是占位文字，请提醒补充，不代替我编造项目。\n2. 用两三句话复述产品给谁用、希望解决什么问题，区分原文事实和推测。\n3. 先问“这份理解是否准确”，等待我确认或纠正。\n4. 理解确认后再提问补全，一次只问一个最影响方案的问题。\n5. 我回答“不知道”时，给出 2—3 个贴近场景的例子，解释差别并提供建议。\n6. 将已确认内容与待确认问题分开记录。不要求我先写需求文档，也不提前选技术或写代码。\n现在先检查草稿并复述理解。",
@@ -165,6 +165,61 @@ export const journey:Stage[] = [
     ]
   },
   {
+    "id": "scope",
+    "title": [
+      "确认第一版范围",
+      "Confirm the first version"
+    ],
+    "term": "Scope / MVP",
+    "question": [
+      "先确认这次只做什么，再让 AI 写需求文档。",
+      "Agree on what this version includes before documenting it."
+    ],
+    "output": [
+      "人工确认的必做项、排除项、成功标准与待定项",
+      "Approved essentials, exclusions, success criteria, and open questions"
+    ],
+    "actions": [
+      [
+        "让 AI 根据问答提出最小可用流程，说明删掉每项功能会有什么影响。",
+        "Ask AI for the smallest useful flow and the effect of leaving features out."
+      ],
+      [
+        "实际选择必须保留的功能，明确暂时不做的内容；不必一次确认所有未来计划。",
+        "Choose essential features and explicit exclusions without settling every future feature."
+      ],
+      [
+        "确认成功标准与预算边界，把结果作为需求文档的输入。",
+        "Agree on observable success criteria and budget limits as input to requirements."
+      ]
+    ],
+    "problem": [
+      "每个建议都想加，第一版迟迟做不完。",
+      "Every suggestion seems useful and the first version never finishes."
+    ],
+    "answer": [
+      "围绕一条真实使用流程取舍；非必需功能进入后续清单。确认只代表本轮范围，不代表以后不能增加。",
+      "Prioritize one real user flow and keep extras in a later list. Approval defines this iteration, not every future version."
+    ],
+    "promptTitle": [
+      "确认第一版范围",
+      "Confirm the first version"
+    ],
+    "prompt": [
+      "请根据已确认问答提出第一版范围，等待人工确认，不开始开发。\n\n【输入】粘贴上一站问答与待确认问题；缺失时先索取。\n【项目示例】烘焙预约页面。\n【核心流程示例】顾客提交 → 店主确认 → 顾客查看结果。\n【预算边界示例】每月 100 元以内。\n【暂不做示例】付款、积分、多门店。\n\n请分别列出必须做、可以延后、明确不做和仍需决定的内容。\n每个必做项解释与核心流程的关系，给出可实际检查的成功标准。\n指出会影响费用、资料安全或发布条件的选择，一次询问一个阻塞问题。\n提出建议后等待我明确确认，不把示例或沉默当作批准。\n确认后整理范围记录，交给下一站生成需求文档。",
+      "Propose the first-version scope from the confirmed conversation. Wait for human approval; do not build.\n\n[Input] Paste the previous Q&A and unresolved questions. Request missing material.\n[Example] A bakery reservation page.\n[Core flow] Customer submits → owner confirms → customer checks status.\n[Budget] About $15 monthly.\n[Exclusions] Payments, points, multiple stores.\n\nList essentials, deferrable features, exclusions, and unresolved choices.\nExplain each essential feature’s role and give an observable success criterion.\nIdentify cost, privacy, or release implications; ask one blocking question at a time.\nWait for explicit agreement. Examples and silence are not approval.\nRecord the confirmed scope for requirements documentation."
+    ],
+    "moduleIds": [
+      "agent",
+      "types"
+    ],
+    "modules": [
+      "相关板块",
+      "Related modules"
+    ],
+    "color": "blue"
+  },
+  {
     "id": "requirements",
     "title": [
       "让 AI 生成需求文档",
@@ -180,6 +235,10 @@ export const journey:Stage[] = [
       "A requirements document: audience, features, and acceptance criteria"
     ],
     "actions": [
+      [
+        "先读取已确认的第一版范围，未经确认的想法只记入待定项。",
+        "Start from the approved first-version scope; keep unapproved ideas in open questions."
+      ],
       [
         "把前面聊过的内容交给 AI，让它整理成一份需求文档。",
         "Ask AI to turn the conversation into a requirements document."
@@ -329,6 +388,122 @@ export const journey:Stage[] = [
     ]
   },
   {
+    "id": "environment",
+    "title": [
+      "让 AI 准备项目环境",
+      "Let AI prepare the workspace"
+    ],
+    "term": "Setup / Environment",
+    "question": [
+      "先确保项目能打开、能运行，再开始制作功能。",
+      "Make the project open and run before building features."
+    ],
+    "output": [
+      "能运行的初始项目、启动方法、账号待办与恢复基线",
+      "A runnable starter, startup instructions, account prerequisites, and a recovery baseline"
+    ],
+    "actions": [
+      [
+        "让 Agent 检查现有目录、设备与所需工具，保留已有文件和未提交改动。",
+        "Have the agent inspect the existing folder, device, and required tools while preserving files and pending changes."
+      ],
+      [
+        "让 AI 按选型准备依赖和项目骨架；账号、费用和设备授权需要人工完成时给出具体步骤。",
+        "Have AI prepare dependencies and the starter project; provide specific instructions for manual account, payment, and device permissions."
+      ],
+      [
+        "实际打开初始页面或运行目标设备预览，记录启动方法并保存基线。",
+        "Open the starter or target-device preview, record startup steps, and save a baseline."
+      ]
+    ],
+    "problem": [
+      "AI 给了一串命令，但不知道是否已经执行。",
+      "AI lists commands without making it clear whether they ran."
+    ],
+    "answer": [
+      "让 AI 分别列出已执行及其结果、尚未执行和需人工操作的步骤。运行失败留在本节点排查，不以生成文件代替环境可用。",
+      "Require separate lists of executed actions with results, unexecuted actions, and manual steps. Resolve startup failures here rather than treating generated files as a working setup."
+    ],
+    "promptTitle": [
+      "让 AI 准备项目环境",
+      "Let AI prepare the workspace"
+    ],
+    "prompt": [
+      "请按已确认技术选型准备开发环境，不开始业务功能开发。\n\n【输入】需求、技术选型、开发计划；缺失时先索取。\n【项目位置示例】使用当前指定项目文件夹，不覆盖已有资料。\n【设备示例】普通笔记本，具体系统先检测或询问。\n【目标示例】可在手机浏览器访问的网站预览。\n【限制】收费服务、账号验证和扩大设备权限先说明并等待人工处理。\n\n先检查实际文件操作和运行能力；只有聊天能力时明确说明，并给出连接 Agent 的准备清单。\n列出缺失工具及用途，按已确认方案安装依赖、生成骨架，保留无关文件。\n实际启动并检查最小页面；手机或桌面 App 则说明真机或目标系统测试条件，小程序说明平台工具条件。\n输出启动/停止方式、已执行结果、未完成账号事项和下一步。\n按项目约定保存可恢复基线，更新计划；无法运行则标记受阻，不宣称环境完成。",
+      "Prepare the development environment from the agreed stack. Do not build product features yet.\n\n[Inputs] Requirements, stack decisions, and development plan; request missing material.\n[Folder] Use the specified project folder without overwriting existing work.\n[Device] An ordinary laptop; detect or ask for the operating system.\n[Target] A website preview for phone browsers.\n[Limits] Explain paid services, account verification, and expanded permissions before manual action.\n\nCheck actual file and execution capabilities. With chat only, state the limitation and explain agent setup prerequisites.\nIdentify missing tools, prepare dependencies and the starter, and preserve unrelated files.\nStart and check a minimal page. For apps, explain real-device/system testing; for mini programs, explain platform-tool prerequisites.\nReport start/stop steps, actual results, pending account tasks, and the next step.\nSave a recoverable baseline according to project conventions and update the plan. A startup failure remains blocked, not complete."
+    ],
+    "moduleIds": [
+      "stack",
+      "agent",
+      "web",
+      "mobile",
+      "desktop"
+    ],
+    "modules": [
+      "相关板块",
+      "Related modules"
+    ],
+    "color": "violet"
+  },
+  {
+    "id": "build",
+    "title": [
+      "让 AI 分步制作",
+      "Let AI build in small steps"
+    ],
+    "term": "Implementation",
+    "question": [
+      "按任务依赖推进，界面、数据和完整流程在这里衔接。",
+      "Follow task dependencies and connect the interface, data, and complete flow here."
+    ],
+    "output": [
+      "一个能运行、能亲手操作的版本",
+      "A working version ready for a trial"
+    ],
+    "actions": [
+      [
+        "按计划选择下一项可执行任务；界面、数据和完整流程按依赖交替推进，不必先把某一类全部做完。",
+        "Choose the next ready task; interface, data, and flow work can alternate according to dependencies."
+      ],
+      [
+        "通过下方分支进入具体做法。不需要后端时记录原因并跳过数据分支。",
+        "Use the branches below for specific guidance. Skip data/backend work with a recorded reason when unnecessary."
+      ],
+      [
+        "每次交付实际试用，保存可恢复版本、更新任务状态，再继续。",
+        "Try each delivery, save a recoverable version, update task status, and continue."
+      ]
+    ],
+    "problem": [
+      "昨天还能用，今天改完却坏了。",
+      "It worked yesterday, but today’s change broke it."
+    ],
+    "answer": [
+      "让 AI 比较上一个可用版本和本次改动，先定位受影响的操作。恢复前说明会丢掉哪些改动，不要盲目覆盖。",
+      "Ask AI to compare the last working version with the changes and identify the affected flow. Before restoring, check which changes would be lost."
+    ],
+    "prompt": [
+      "请读取项目文档和当前代码，按计划完成下一项可执行任务。\n\n【输入】requirements.md、technology-decisions.md、development-plan.md 和当前项目。\n【本轮目标示例】把预约表单与已验证的保存功能接通。\n【需要保留】已经确认的页面样式、访问规则和其他可用功能。\n【不能擅自做】增加付款、改换技术栈、删除资料、公开发布。\n\n先报告当前状态、建议执行的任务编号及依赖是否满足。材料无法读取时先索取，不猜测进度。\n只完成本轮任务；遇到需求冲突或会改变范围的决定时先说明。\n完成后实际运行相关检查，提供打开方式和一条完整试用路径。\n按“改了什么 / 检查了什么 / 实际结果 / 剩余问题”汇报，区分实现与验证。\n同步更新开发计划。按项目约定保存可恢复的版本，不覆盖无关改动。\n没有执行权限或运行环境时说明限制，不能将建议冒充已执行。",
+      "Read the project documents and current code, then complete the next executable task.\n\n[Inputs] requirements.md, technology-decisions.md, development-plan.md, and the current project.\n[Example goal] Connect the reservation form to verified storage.\n[Preserve] Agreed styles, access rules, and working features.\n[Do not add] Payments, a different stack, data deletion, or public release.\n\nReport the current state, proposed task ID, and dependency readiness. Request inaccessible material rather than guessing progress.\nComplete only this task and raise conflicts or scope-changing decisions.\nRun relevant checks and provide opening instructions plus a complete trial flow.\nReport changes, checks, actual results, and remaining issues, distinguishing implementation from verification.\nUpdate the plan and save a recoverable version according to project conventions without overwriting unrelated work.\nState execution limitations honestly; recommendations are not completed actions."
+    ],
+    "modules": [
+      "Web / 手机 / 桌面开发 · 和 Agent 沟通",
+      "Web / Mobile / Desktop development · Talking to agents"
+    ],
+    "moduleIds": [
+      "web",
+      "mobile",
+      "desktop",
+      "ui",
+      "backend"
+    ],
+    "color": "amber",
+    "promptTitle": [
+      "按计划完成一个开发任务",
+      "Complete one planned task"
+    ]
+  },
+  {
     "id": "ui",
     "title": [
       "让 AI 制作界面与组件",
@@ -380,7 +555,8 @@ export const journey:Stage[] = [
     "promptTitle": [
       "描述页面与组件效果",
       "Describe the interface and component behavior"
-    ]
+    ],
+    "parent": "build"
   },
   {
     "id": "backend",
@@ -434,63 +610,67 @@ export const journey:Stage[] = [
     "promptTitle": [
       "实现保存与访问规则",
       "Implement storage and access rules"
-    ]
+    ],
+    "parent": "build"
   },
   {
-    "id": "build",
+    "id": "flow",
     "title": [
-      "让 AI 按计划开发",
-      "Let AI follow the build plan"
+      "接通完整使用流程",
+      "Connect the complete flow"
     ],
-    "term": "Implementation",
+    "term": "Integration",
     "question": [
-      "让 AI 按计划制作，每做好一小步就供试用。",
-      "Have AI follow the plan and provide a version to try after each small step."
+      "从开始到完成目标，实际走通一次。",
+      "Run the complete task from beginning to end."
     ],
     "output": [
-      "一个能运行、能亲手操作的版本",
-      "A working version ready for a trial"
+      "目标设备上可重复完成的真实流程",
+      "A repeatable real flow on the target device"
     ],
     "actions": [
       [
-        "让 AI 从开发文档中选出下一项任务并完成。",
-        "Have AI pick and complete the next task from the development plan."
+        "让 AI 接通界面操作、实际数据和权限反馈，替换仅供展示的假结果。",
+        "Have AI connect interface actions, real data, and access feedback, replacing mock-only results."
       ],
       [
-        "按 AI 给的打开方式试用，把不符合想法的地方告诉它。",
-        "Try the result using AI’s instructions and tell it what does not match the idea."
+        "用测试资料从开始走到结束，再刷新或重开验证结果仍然成立。",
+        "Follow the flow with sample data, then refresh or reopen to verify the result."
       ],
       [
-        "让 AI 保存可恢复的版本，再继续下一项。",
-        "Ask AI to save a recoverable version before continuing."
+        "按目标平台检查：网站用浏览器，小程序进入所选平台，App 在目标设备或系统上试用。",
+        "Check the target platform: browser for websites, selected host for mini programs, and target devices/systems for apps."
       ]
     ],
     "problem": [
-      "昨天还能用，今天改完却坏了。",
-      "It worked yesterday, but today’s change broke it."
+      "每个页面都能看，连起来却不能用。",
+      "Each screen looks fine, but the full task fails."
     ],
     "answer": [
-      "让 AI 比较上一个可用版本和本次改动，先定位受影响的操作。恢复前说明会丢掉哪些改动，不要盲目覆盖。",
-      "Ask AI to compare the last working version with the changes and identify the affected flow. Before restoring, check which changes would be lost."
+      "让 AI 从第一个失败步骤检查输入、保存、状态与权限，修复后重复整条流程，而不是只演示单个按钮。",
+      "Have AI trace inputs, storage, status, and access at the first failing step, then repeat the entire flow after fixing it."
+    ],
+    "promptTitle": [
+      "接通完整使用流程",
+      "Connect the complete flow"
     ],
     "prompt": [
-      "请读取项目文档和当前代码，按计划完成下一项可执行任务。\n\n【输入】requirements.md、technology-decisions.md、development-plan.md 和当前项目。\n【本轮目标示例】把预约表单与已验证的保存功能接通。\n【需要保留】已经确认的页面样式、访问规则和其他可用功能。\n【不能擅自做】增加付款、改换技术栈、删除资料、公开发布。\n\n先报告当前状态、建议执行的任务编号及依赖是否满足。材料无法读取时先索取，不猜测进度。\n只完成本轮任务；遇到需求冲突或会改变范围的决定时先说明。\n完成后实际运行相关检查，提供打开方式和一条完整试用路径。\n按“改了什么 / 检查了什么 / 实际结果 / 剩余问题”汇报，区分实现与验证。\n同步更新开发计划。按项目约定保存可恢复的版本，不覆盖无关改动。\n没有执行权限或运行环境时说明限制，不能将建议冒充已执行。",
-      "Read the project documents and current code, then complete the next executable task.\n\n[Inputs] requirements.md, technology-decisions.md, development-plan.md, and the current project.\n[Example goal] Connect the reservation form to verified storage.\n[Preserve] Agreed styles, access rules, and working features.\n[Do not add] Payments, a different stack, data deletion, or public release.\n\nReport the current state, proposed task ID, and dependency readiness. Request inaccessible material rather than guessing progress.\nComplete only this task and raise conflicts or scope-changing decisions.\nRun relevant checks and provide opening instructions plus a complete trial flow.\nReport changes, checks, actual results, and remaining issues, distinguishing implementation from verification.\nUpdate the plan and save a recoverable version according to project conventions without overwriting unrelated work.\nState execution limitations honestly; recommendations are not completed actions."
-    ],
-    "modules": [
-      "Web / 手机 / 桌面开发 · 和 Agent 沟通",
-      "Web / Mobile / Desktop development · Talking to agents"
+      "请接通并验证一条完整使用流程，不新增范围外功能。\n\n【输入】需求、计划和当前已实现的界面与数据功能。\n【流程示例】顾客提交预约 → 店主确认 → 顾客查看结果。\n【测试资料示例】虚构顾客与日期，不使用真实联系方式。\n【目标平台示例】手机和电脑浏览器。\n【预期】刷新后预约存在，状态更新正确，无权限账号无法读取私人资料。\n\n先检查前置任务；未具备时记录缺口，不伪造成功状态。\n连接已有功能，区分演示数据与真实保存。\n实际从头操作到尾并重开验证，记录设备和结果。\n失败时定位并修复后重复流程；无法检查的目标平台明确标记。\n更新任务计划并保存可恢复版本，再进入系统测试。",
+      "Connect and verify one complete flow without adding out-of-scope features.\n\n[Inputs] Requirements, plan, and implemented interface/data features.\n[Flow] Customer submits → owner confirms → customer checks status.\n[Data] Fictional customers and dates, with no real contact details.\n[Platform] Phone and desktop browsers.\n[Expected] Reservations persist after refresh, status is correct, and unauthorized accounts cannot access private data.\n\nCheck prerequisites first; record gaps rather than faking success.\nConnect existing features and distinguish mock data from actual persistence.\nRun the whole flow and reopen it, recording devices and results.\nFix failures and repeat the flow. Mark untested platforms explicitly.\nUpdate the plan and save a recoverable version before system testing."
     ],
     "moduleIds": [
       "web",
       "mobile",
-      "desktop"
+      "desktop",
+      "backend",
+      "test"
+    ],
+    "modules": [
+      "相关板块",
+      "Related modules"
     ],
     "color": "amber",
-    "promptTitle": [
-      "按计划完成一个开发任务",
-      "Complete one planned task"
-    ]
+    "parent": "build"
   },
   {
     "id": "test",
@@ -547,6 +727,61 @@ export const journey:Stage[] = [
     ]
   },
   {
+    "id": "accept",
+    "title": [
+      "实际试用并确认发布",
+      "Try it and approve release"
+    ],
+    "term": "Acceptance",
+    "question": [
+      "检查是否真的符合想法，而不只是 AI 的检查通过。",
+      "Confirm that it meets the original purpose, beyond AI’s checks."
+    ],
+    "output": [
+      "人工试用结果、阻塞问题与明确的发布决定",
+      "Human trial results, blockers, and an explicit release decision"
+    ],
+    "actions": [
+      [
+        "让 AI 从需求提取验收清单，说明每项操作及应看到的结果。",
+        "Have AI derive an acceptance checklist with actions and expected results."
+      ],
+      [
+        "由实际使用者走完主要流程，记录是否顺手、是否达成目标及仍有疑问的地方。",
+        "Have intended users try the main flow and record usability, goal completion, and uncertainties."
+      ],
+      [
+        "逐项决定通过、需修改或未试用；阻塞问题回到开发，确认通过后才准备正式发布。",
+        "Mark each item accepted, needs changes, or untried. Return blockers to development and approve release explicitly."
+      ]
+    ],
+    "problem": [
+      "测试都通过了，实际使用仍然别扭。",
+      "Tests pass, but the product is awkward to use."
+    ],
+    "answer": [
+      "保留具体操作和感受，交给 AI 区分缺陷与新需求。当前目标未达成时先修复，不用新增功能掩盖问题。",
+      "Give AI concrete actions and observations to distinguish defects from new scope. Fix unmet goals rather than hiding them with new features."
+    ],
+    "promptTitle": [
+      "实际试用并确认发布",
+      "Try it and approve release"
+    ],
+    "prompt": [
+      "请整理发布前的人工验收流程，不代表人工作出通过决定。\n\n【输入】已确认需求、测试结果和可运行版本。\n【使用者示例】一位顾客和一位店主；尚未邀请时标记未试用。\n【核心目标示例】顾客能提交预约，店主能确认，顾客能理解状态。\n【需要检查】流程完整、文字易懂、目标设备可用、资料权限符合要求。\n【发布决定】尚未确认。\n\n每次给出一个试用任务和预期结果，等待实际反馈。\n把反馈记录为通过、需修改或未试用，不能把 AI 自动检查代替人工确认。\n区分阻塞故障、可延后问题和新增需求，说明建议理由。\n阻塞问题回到对应开发任务，修复后重新验收。\n最后输出验收记录及待决定事项，明确询问是否允许进入发布准备，不能自行批准。",
+      "Prepare a human acceptance trial without deciding approval on behalf of people.\n\n[Inputs] Agreed requirements, test results, and a runnable version.\n[Participants] A customer and owner; mark untried if nobody has participated.\n[Goal] Submit a reservation, confirm it, and understand its status.\n[Checks] Complete flow, understandable language, target-device usability, and access rules.\n[Release decision] Not approved yet.\n\nProvide one trial task and expected result at a time, then wait for actual feedback.\nRecord accepted, needs changes, or untried. Automated checks do not replace human approval.\nSeparate blockers, deferrable issues, and new scope with reasons.\nReturn blockers to the relevant task and repeat acceptance after a fix.\nProduce the acceptance record and ask explicitly whether release preparation is allowed. Do not self-approve."
+    ],
+    "moduleIds": [
+      "test",
+      "launch"
+    ],
+    "modules": [
+      "相关板块",
+      "Related modules"
+    ],
+    "color": "green"
+  },
+  {
     "id": "launch",
     "title": [
       "让 AI 协助部署上线",
@@ -562,6 +797,10 @@ export const journey:Stage[] = [
       "A usable public link or installable release"
     ],
     "actions": [
+      [
+        "先核对人工验收决定和仍未解决的问题；没有明确发布确认时只做准备。",
+        "Check the acceptance decision and unresolved issues first. Without explicit approval, prepare only."
+      ],
       [
         "让 AI 推荐发布方式，说明费用与所需账号。",
         "Ask AI to recommend a release method and explain costs and required accounts."
@@ -603,8 +842,8 @@ export const journey:Stage[] = [
   {
     "id": "maintain",
     "title": [
-      "让 AI 协助维护迭代",
-      "Let AI assist with maintenance"
+      "收集反馈并维护迭代",
+      "Collect feedback and maintain"
     ],
     "term": "Maintenance",
     "question": [
@@ -617,16 +856,16 @@ export const journey:Stage[] = [
     ],
     "actions": [
       [
-        "让 AI 整理费用、续期和备份清单，需要人工操作的步骤逐项说明。",
-        "Ask AI to organize costs, renewals, and backups and explain required manual actions."
+        "先收集真实使用记录：是否完成目标、在哪一步卡住、原有麻烦是否减少。没有试用数据时保持未知。",
+        "Collect real usage evidence: goal completion, sticking points, and whether the original problem improved. Without data, keep results unknown."
       ],
       [
-        "把用户反馈发给 AI，让它区分故障和新想法，建议先处理什么。",
-        "Send feedback to AI so it can separate bugs from ideas and suggest priorities."
+        "让 AI 分类故障与新需求。故障回到开发和测试，新需求回到范围确认，再更新文档与计划。",
+        "Have AI separate bugs from new scope. Bugs return to development/testing; new requests return to scope approval and documentation."
       ],
       [
-        "确认改动后，让 AI 备份、修改并检查，再由使用者试用确认。",
-        "After agreeing on changes, have AI back up, update, and check the product, then confirm it through an actual trial."
+        "让 AI 协助照看费用、更新、备份与恢复，所有自动提醒或监测需实际配置并验证后才标记启用。",
+        "Have AI assist with costs, updates, backups, and recovery. Mark automated reminders or monitoring enabled only after setup and verification."
       ]
     ],
     "problem": [
@@ -655,3 +894,4 @@ export const journey:Stage[] = [
     ]
   }
 ];
+export const mainJourney=journey.filter(stage=>!stage.parent);

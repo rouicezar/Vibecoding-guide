@@ -1,17 +1,18 @@
 ---
 import Icon from './Icon.astro';
-import {journey} from '../data/journey';
+import {mainJourney} from '../data/journey';
 import {t,type Locale} from '../data/site';
 interface Props {locale:Locale;}
 const {locale}=Astro.props;
-const stageIcons:Record<string,string>={idea:'brain',tell:'message',refine:'message',requirements:'book',stack:'layers',plan:'checklist',ui:'layout',backend:'database',build:'browser',test:'checklist',launch:'upload',maintain:'settings'};
+const stageIcons:Record<string,string>={scope:'checklist',environment:'settings',accept:'checklist',idea:'brain',tell:'message',refine:'message',requirements:'book',stack:'layers',plan:'checklist',ui:'layout',backend:'database',build:'browser',test:'checklist',launch:'upload',maintain:'settings'};
 ---
 <section aria-labelledby="route-title" class="journey-map">
   <div class="route-heading"><h2 id="route-title">{t(['从想法到上线的完整路线','The route from idea to release'],locale)}</h2><span>{t(['按编号前进 · 点击查看','Follow the numbers · Select a stage'],locale)}</span></div>
   <div class="route-legend"><span class="blue">{t(['想法与需求','Idea & requirements'],locale)}</span><span class="violet">{t(['选型与计划','Stack & planning'],locale)}</span><span class="amber">{t(['界面、数据与开发','Interface, data & build'],locale)}</span><span class="green">{t(['验证、发布与维护','Checks, release & upkeep'],locale)}</span></div>
   <div class="connected-route"><svg class="route-lines" aria-hidden="true"><defs><marker id="route-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/></marker></defs><g id="route-edges"></g></svg>
-  <ol class="route-nodes">{journey.map((stage,i)=><li class={stage.color}><a href={`#stage-${stage.id}`} class:list={['route-node',{selected:i===0}]} data-stage-link={stage.id} aria-current={i===0?'step':undefined}><span class="node-index"><Icon name={stageIcons[stage.id]} size={19}/></span><strong><span class="node-order">{String(i+1).padStart(2,'0')}</span>{t(stage.title,locale)}</strong><small>{stage.term}</small></a></li>)}</ol></div>
-  <p class="route-return">↶ {t(['需求变化 → 回到需求文档并更新选型与计划；测试未通过 → 回到对应开发任务；上线反馈 → 进入下一轮。','Changed requirements return to the document and plan. Failed checks return to the relevant task. Release feedback starts the next iteration.'],locale)}</p>
+  <ol class="route-nodes" style={`--rows:${Math.ceil(mainJourney.length/4)};--mobile-rows:${Math.ceil(mainJourney.length/2)}`}>{mainJourney.map((stage,i)=><li class={stage.color} style={`--r:${Math.floor(i/4)+1};--c:${Math.floor(i/4)%2?4-i%4:i%4+1};--mr:${Math.floor(i/2)+1};--mc:${Math.floor(i/2)%2?2-i%2:i%2+1}`}><a href={`#stage-${stage.id}`} class:list={['route-node',{selected:i===0}]} data-stage-link={stage.id} aria-current={i===0?'step':undefined}><span class="node-index"><Icon name={stageIcons[stage.id]} size={19}/></span><strong><span class="node-order">{String(i+1).padStart(2,'0')}</span>{t(stage.title,locale)}</strong><small>{stage.term}{stage.id==='build'?t([' · 3 个分支',' · 3 branches'],locale):''}</small></a></li>)}</ol></div>
+  <p class="route-return">↶ {t(['需求变化 → 回到第一版范围确认；测试或验收未通过 → 回到开发任务；上线反馈 → 区分故障与新需求后进入下一轮。','Changed requirements return to scope approval. Failed tests or acceptance return to development. Release feedback is classified before the next iteration.'],locale)}</p>
+<div class="route-rules"><span>{t(['贯穿全程：可恢复版本 · 任务状态 · 验证记录','Throughout: recoverable versions · task status · verification evidence'],locale)}</span><span>{t(['按条件选择：项目类型 · 是否需要后端 · 平台发布要求','Conditional: product type · backend needs · platform release requirements'],locale)}</span></div>
 </section>
 <script>
 const container=document.querySelector<HTMLElement>('.connected-route')!;
