@@ -4,7 +4,7 @@ import {journey} from '../data/journey';
 import {t,type Locale} from '../data/site';
 interface Props {locale:Locale;}
 const {locale}=Astro.props;
-const stageIcons:Record<string,string>={idea:'help',tell:'message',refine:'message',requirements:'book',stack:'layers',plan:'checklist',ui:'layout',backend:'database',build:'browser',test:'checklist',launch:'upload',maintain:'settings'};
+const stageIcons:Record<string,string>={idea:'brain',tell:'message',refine:'message',requirements:'book',stack:'layers',plan:'checklist',ui:'layout',backend:'database',build:'browser',test:'checklist',launch:'upload',maintain:'settings'};
 ---
 <section aria-labelledby="route-title" class="journey-map">
   <div class="route-heading"><h2 id="route-title">{t(['从想法到上线的完整路线','The route from idea to release'],locale)}</h2><span>{t(['按编号前进 · 点击查看','Follow the numbers · Select a stage'],locale)}</span></div>
