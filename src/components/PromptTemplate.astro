@@ -6,7 +6,7 @@ const {id,title,prompt,locale,kind='prompt'}=Astro.props;
 const worksheet=kind==='worksheet';
 const instruction:Copy=kind==='file'?['这是文件正文，不是对话提示词。交给 AI 合并到项目规则文件；待确认字段由 AI 读取真实项目后补齐。','This is file content, not a chat prompt. Ask AI to merge it into project instructions and fill unknowns from the actual project.']:worksheet?['先复制到自己的笔记，填写实际情况；这一步是本人记录想法，下一步才交给 AI。','Copy into personal notes and enter actual details. This step records the idea; share it with AI in the next step.']:['在当前项目的 AI 对话中发送。把待填字段换成实际材料，已有文件可直接附上；不确定项明确写“尚未确定”。单独标出的“比如”只用于帮助理解。','Send this in the current project conversation. Replace placeholders with actual material or attach existing files. Mark unknowns as undecided. Separately labeled examples are only for illustration.'];
 ---
-<div class="prompt-template" data-pagefind-weight="0.2">
+<div id={`template-${id}`} class="prompt-template" data-pagefind-weight="0.2">
   <div class="template-toolbar"><h3 id={`prompt-title-${id}`}><Icon name={worksheet?"book":"message"} size={15}/>{t(title,locale)}</h3><button class="template-copy" data-copy-template={id} data-copied={t(['已复制','Copied'],locale)} data-failed={t(['复制失败，请在代码框内手动选择并复制。','Copy failed. Select and copy the text in the code box.'],locale)}><Icon name="copy" size={14}/><span>{t(kind==='file'?['复制文件模板','Copy file template']:worksheet?['复制填写模板','Copy worksheet']:['复制提示词','Copy prompt'],locale)}</span></button></div>
   <p class="template-instruction">{t(instruction,locale)}</p>
   <pre tabindex="0" aria-labelledby={`prompt-title-${id}`}><code data-template-text={id}>{t(prompt,locale)}</code></pre>
@@ -17,7 +17,10 @@ document.querySelectorAll<HTMLButtonElement>('[data-copy-template]').forEach(but
  const id=button.dataset.copyTemplate!;
  const text=document.querySelector<HTMLElement>(`[data-template-text="${id}"]`)!.textContent!;
  const status=document.querySelector<HTMLElement>(`[data-template-status="${id}"]`)!;
- try{await navigator.clipboard.writeText(text);status.textContent=button.dataset.copied!;}
- catch{status.textContent=button.dataset.failed!;}
+ const en=document.documentElement.lang==='en';status.textContent=en?'Copying…':'正在复制…';
+ let timer:ReturnType<typeof setTimeout>|undefined;
+ try{await Promise.race([navigator.clipboard.writeText(text),new Promise((_,reject)=>{timer=setTimeout(()=>reject(new Error('clipboard timeout')),1800);})]);status.textContent=button.dataset.copied!;}
+ catch{const code=document.querySelector<HTMLElement>(`[data-template-text="${id}"]`)!;const range=document.createRange();range.selectNodeContents(code);const selection=window.getSelection();selection?.removeAllRanges();selection?.addRange(range);status.textContent=en?'Text selected. Press Ctrl+C or ⌘C, or long-press to copy.':'已选中文字，请按 Ctrl+C / ⌘C，或长按复制。';}
+ finally{if(timer)clearTimeout(timer);}
 }));
 </script>

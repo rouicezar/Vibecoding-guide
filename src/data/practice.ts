@@ -138,3 +138,38 @@ export const practices:Practice[]=[
 {id:'component-edit',title:['指定组件修改提示词','Specific component-edit prompt'],text:handoff(['【组件名称】填写认识的名字；不知道时贴图并描述位置，请AI先识别。\n【所在位置】填写页面和区域。\n【当前状态】描述默认、点击或输入后的表现。\n【目标状态】分别说明外观和操作反馈。\n【禁用/空白/失败时】说明应该看到什么，不适用时说明原因。\n【修改范围】仅此处或所有复用位置。\n保留原数据与事件，只实现确认的变化。','[Component] Known name, or provide an image and location for AI to identify.\n[Location] Page and region.\n[Current states] Default, click, or input behavior.\n[Desired states] Appearance and response separately.\n[Disabled/empty/error] Expected feedback, or explain inapplicability.\n[Scope] This occurrence or all reused locations.\nPreserve existing data and events; implement only approved changes.'],['当前组件截图或页面、需求与现有风格；词典名称可作为补充。','Current screenshot or page, requirements, and existing style; dictionary names are optional supporting material.'],['组件修改、受影响页面列表；实际检查鼠标、键盘、手机和关键状态，不用静态截图替代交互验证。','The edited component and affected page list; check pointer, keyboard, mobile, and key states rather than only a screenshot.'])}],next:'/#stage-flow',nextLabel:['修改通过后：接通完整使用流程','After the edit passes: connect the full flow']}
 ];
 export const practiceHref=(locale:string,path:string)=>path.startsWith('/#')?`/${locale}/${path.slice(1)}`:`/${locale}/${path}/`;
+
+// Keep the instruction-creation prompt usable when copied on its own.
+const setupGuide=practices.find(p=>p.path==='communicate/setup')!;
+const createInstructions=setupGuide.templates.find(p=>p.id==='agents-create')!;
+createInstructions.title=['生成并验证项目规则 · 完整提示词（含模板）','Create and verify project rules · complete prompt with template'];
+createInstructions.text=[
+`我准备在当前项目建立 AI 协作规则，请直接完成以下任务。
+【项目路径】填写已经在工具中打开的项目位置。
+【项目用途】填写用途，或读取 idea.md。
+【正在使用的工具与版本】填写工具名称；版本未知时请先核实。
+
+1. 先说出当前项目根目录，读取已有规则文件与 README，保留原内容。
+2. 根据当前工具官方说明，确认规则文件名、放置位置和加载条件。通用文件名是 AGENTS.md（复数），不要自行使用 AGENT.md。若需 CLAUDE.md、GEMINI.md 或设置页，说明原因并按当前版本接入，避免两套冲突规则。
+3. 把下面的模板合并进真实项目。根据文件填写已知信息，未知命令保持“待确认”，不要猜测。
+4. 保存后重新读取，报告完整路径、改动摘要、三个约束及仍待确认的内容。
+5. 检查当前会话的规则加载记录（工具提供时）；另开新会话后再做一次读取检查。无法观察自动加载时明确写“尚未验证”，不要仅凭自述说自动生效。
+6. 本次不制作业务功能、不推送、不发布。
+
+以下是文件内容模板：
+${agentsTemplate[0]}`,
+`Set up AI working instructions in the currently open project.
+[Project path] Enter the project folder already open in the tool.
+[Purpose] Enter the purpose or read idea.md.
+[Tool and version] Enter the tool; verify the version if unknown.
+
+1. Identify the actual root, then read existing instructions and README without discarding content.
+2. Check the current tool's official filename, location and loading rules. The shared filename is AGENTS.md, plural, not AGENT.md. If CLAUDE.md, GEMINI.md or a settings entry is required, explain why and configure the current version without conflicting duplicates.
+3. Merge the template below into the real project. Fill facts from files and keep unverified commands marked unknown.
+4. Reread the saved file; report its full path, changes, three constraints and unknowns.
+5. Inspect the session's loaded-instruction record when available; repeat in a new session. Mark automatic loading unverified when it cannot be observed. Self-reported compliance alone is not proof.
+6. Do not build product features, push or publish in this task.
+
+File content template:
+${agentsTemplate[1]}`];
+setupGuide.sources!.push({label:'Claude Code instruction loading',href:'https://code.claude.com/docs/en/memory'},{label:'Git installation and identity',href:'https://docs.github.com/en/get-started/git-basics/set-up-git'});

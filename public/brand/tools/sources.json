@@ -61,6 +61,118 @@
       "url": "https://openai.gallerycdn.vsassets.io/extensions/openai/chatgpt/26.5917.61114/1790120725247/Microsoft.VisualStudio.Services.Icons.Default",
       "page": "https://marketplace.visualstudio.com/items?itemName=openai.chatgpt",
       "path": "public/brand/tools/codex.png"
+    },
+    {
+      "id": "kiro",
+      "url": "https://kiro.dev/icon.svg?fe599162bb293ea0",
+      "sourcePage": "https://kiro.dev",
+      "path": "public/brand/tools/kiro.svg",
+      "bytes": 1527
+    },
+    {
+      "id": "cline",
+      "url": "https://cline.bot/assets/branding/favicons/favicon-256x256.png",
+      "sourcePage": "https://cline.bot",
+      "path": "public/brand/tools/cline.png",
+      "bytes": 11504
+    },
+    {
+      "id": "opencode",
+      "url": "https://opencode.ai/favicon-96x96-v3.png",
+      "sourcePage": "https://opencode.ai",
+      "path": "public/brand/tools/opencode.png",
+      "bytes": 536
+    },
+    {
+      "id": "aider",
+      "url": "https://aider.chat/assets/icons/apple-touch-icon.png",
+      "sourcePage": "https://aider.chat",
+      "path": "public/brand/tools/aider.png",
+      "bytes": 26544
+    },
+    {
+      "id": "devin",
+      "url": "https://devin.ai/favicon.svg",
+      "sourcePage": "https://devin.ai",
+      "path": "public/brand/tools/devin.svg",
+      "bytes": 1405
+    },
+    {
+      "id": "codebuddy",
+      "url": "https://download.codebuddy.cn/web/website/1477143690fcf9cafc68e887a9bbd8abf51c2716/assets/logo.svg",
+      "sourcePage": "https://www.codebuddy.cn",
+      "path": "public/brand/tools/codebuddy.svg",
+      "bytes": 4186
+    },
+    {
+      "id": "bolt",
+      "url": "https://bolt.new/static/favicon.svg",
+      "sourcePage": "https://bolt.new",
+      "path": "public/brand/tools/bolt.svg",
+      "bytes": 1445
+    },
+    {
+      "id": "v0",
+      "url": "https://v0.app/assets/icon.svg",
+      "sourcePage": "https://v0.app",
+      "path": "public/brand/tools/v0.svg",
+      "bytes": 1304
+    },
+    {
+      "id": "zed",
+      "url": "https://zed.dev/favicon_black_64.png",
+      "sourcePage": "https://zed.dev",
+      "path": "public/brand/tools/zed.png",
+      "bytes": 2546
+    },
+    {
+      "id": "qwen-code",
+      "url": "https://qwenlm.github.io/qwen-code-docs/favicon.png",
+      "sourcePage": "https://qwenlm.github.io/qwen-code-docs/",
+      "path": "public/brand/tools/qwen-code.png",
+      "bytes": 82880
+    },
+    {
+      "id": "augment",
+      "url": "https://www.augmentcode.com/favicon.svg",
+      "sourcePage": "https://www.augmentcode.com",
+      "path": "public/brand/tools/augment.svg",
+      "bytes": 3448
+    },
+    {
+      "id": "kilo",
+      "url": "https://kilo.ai/favicon/favicon.svg?v=2",
+      "sourcePage": "https://kilo.ai",
+      "path": "public/brand/tools/kilo.svg",
+      "bytes": 686
+    },
+    {
+      "id": "amp",
+      "url": "https://ampcode.com/app-icon.svg?v=4",
+      "sourcePage": "https://ampcode.com",
+      "path": "public/brand/tools/amp.svg",
+      "bytes": 3391
+    },
+    {
+      "id": "comate",
+      "url": "https://comate.baidu.com/favicon.ico",
+      "sourcePage": "https://comate.baidu.com/zh",
+      "path": "public/brand/tools/comate.ico",
+      "bytes": 6782
+    },
+    {
+      "id": "antigravity",
+      "url": "https://antigravity.google/assets/image/antigravity-logo.png",
+      "sourcePage": "https://antigravity.google",
+      "path": "public/brand/tools/antigravity.png",
+      "bytes": 16849
+    },
+    {
+      "id": "base44",
+      "url": "https://media.base44.com/images/public/marketing-site-assets/branded/favicon-branded-v2.png",
+      "sourcePage": "https://base44.com/pricing",
+      "path": "public/brand/tools/base44.png",
+      "bytes": 2705
     }
   ]
 }
