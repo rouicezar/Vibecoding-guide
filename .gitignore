@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+._*
+
+# Dependencies and generated output
+node_modules/
+dist/
+.astro/
+coverage/
+playwright-report/
+test-results/
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+
+# Task-local temporary files
+.tmp/
+*.log
+__pycache__/
+*.py[cod]

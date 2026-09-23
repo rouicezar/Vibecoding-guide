@@ -1,0 +1,2253 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vibe Coding UI 组件精准描述词典</title>
+  <style>
+    :root {
+      --card-h: 500px;
+      --demo-h: 184px;
+      --radius: 4px;
+      --font: ui-sans-serif, system-ui, -apple-system, "PingFang SC", "Noto Sans SC", sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    html[data-theme="dark"] {
+      --bg: #12110e;
+      --bg-2: #18160f;
+      --card: #1a1914;
+      --demo: #0c0b09;
+      --line: #2e2b24;
+      --line-2: #433e34;
+      --text: #f4efe6;
+      --muted: #b3aa9a;
+      --faint: #7a7368;
+      --fill: #221f18;
+      --fill-2: #2a261e;
+      --accent: #34d399;
+      --accent-ink: #ecfdf5;
+      --ok: #22c55e;
+      --warn: #fbbf24;
+      --info: #d97757;
+      --teal: #2dd4bf;
+      --danger: #ef4444;
+      --cat: var(--accent);
+      --shadow: 0 1px 0 rgba(255,244,220,.08) inset, 0 10px 24px rgba(0,0,0,.4), 0 2px 4px rgba(0,0,0,.35);
+      --shadow-hover: 0 1px 0 rgba(255,244,220,.12) inset, 0 18px 36px rgba(0,0,0,.5), 0 6px 12px rgba(0,0,0,.35);
+      --overlay: rgba(0,0,0,.62);
+    }
+    html[data-theme="light"] {
+      --bg: #f4f0e8;
+      --bg-2: #ebe5d8;
+      --card: #fbf8f1;
+      --demo: #efe8da;
+      --line: #e0d6c6;
+      --line-2: #cfc3ae;
+      --text: #1c1810;
+      --muted: #5c564a;
+      --faint: #8a8274;
+      --fill: #efe8da;
+      --fill-2: #e6dece;
+      --accent: #059669;
+      --accent-ink: #ecfdf5;
+      --ok: #16a34a;
+      --warn: #d97706;
+      --info: #c6613f;
+      --teal: #0d9488;
+      --danger: #dc2626;
+      --cat: var(--accent);
+      --shadow: 0 1px 0 #fff inset, 0 12px 28px rgba(40,36,30,.12), 0 2px 6px rgba(40,36,30,.08);
+      --shadow-hover: 0 1px 0 #fff inset, 0 18px 40px rgba(40,36,30,.18), 0 6px 12px rgba(40,36,30,.1);
+      --overlay: rgba(10,10,10,.32);
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; min-height: 100%;
+      color: var(--text);
+      font: 14px/1.5 var(--font);
+    }
+    body {
+      background:
+        radial-gradient(900px 420px at 50% -8%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 55%),
+        var(--bg);
+    }
+    button, input, select, textarea { font: inherit; color: inherit; }
+    button { cursor: pointer; }
+    svg { flex: 0 0 auto; }
+    .shell {
+      display: grid; grid-template-columns: 244px minmax(0, 1fr);
+      gap: 14px; max-width: 1680px; margin: 0 auto; padding: 12px 16px 40px;
+    }
+    .cat-rail {
+      position: sticky; top: 12px; align-self: start;
+      min-width: 244px; width: 244px;
+      height: calc(100vh - 24px); overflow: auto;
+      padding: 4px 12px 20px 0; border-right: 1px solid var(--line);
+    }
+    .rail-title {
+      margin: 0 8px 10px; color: var(--faint); font-size: 10px;
+      letter-spacing: .14em; text-transform: uppercase;
+    }
+    .main { min-width: 0; }
+    .mast {
+      position: sticky; top: 0; z-index: 8;
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      margin: 0 0 14px; padding: 8px 0 10px;
+    }
+    .top {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 12px; margin-bottom: 10px;
+      padding: 0 32px;
+    }
+    .hero {
+      min-width: 0; flex: 1;
+    }
+    .hero h1.wordmark {
+      display: flex; align-items: baseline; flex-wrap: wrap; gap: 10px 14px;
+      margin: 0 0 6px; font-size: 20px; font-weight: 650; letter-spacing: -0.03em;
+    }
+    .wm {
+      display: inline-flex; align-items: baseline; flex-wrap: nowrap; gap: .32em;
+      line-height: 1; white-space: nowrap;
+    }
+    .wm-vibe {
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Songti SC", serif;
+      font-style: italic; font-weight: 700; font-size: 1.38em;
+      letter-spacing: -0.045em; color: var(--accent);
+    }
+    .wm-coding {
+      font-weight: 720; font-size: 1.12em; letter-spacing: -0.07em;
+      color: var(--text);
+    }
+    .wm-ui {
+      font-size: .58em; font-weight: 750; letter-spacing: .16em;
+      padding: 4px 7px 3px; border: 1.5px solid var(--info); border-radius: 5px;
+      color: var(--info); transform: translateY(-3px);
+    }
+    .wm-rest { font-weight: 560; letter-spacing: -0.02em; color: var(--text); }
+    .hero p { margin: 0; color: var(--muted); max-width: none; font-size: 12px; line-height: 1.45; }
+    .formula {
+      margin-top: 8px; padding: 0 0 0 10px; border-left: 2px solid var(--accent);
+      color: var(--faint); font-size: 12px; line-height: 1.5;
+    }
+    .formula em { font-style: normal; color: var(--text); }
+    .filters {
+      display: flex; flex-direction: column; gap: 8px;
+      padding: 0 32px; border: 0; background: transparent;
+    }
+    .theme-switch {
+      display: inline-flex; border: 1px solid var(--line); border-radius: var(--radius);
+      overflow: hidden; flex: 0 0 auto;
+    }
+    .theme-switch button {
+      display: inline-flex; align-items: center; gap: 6px;
+      height: 32px; padding: 0 10px; border: 0; background: transparent; color: var(--muted);
+    }
+    .theme-switch button + button { border-left: 1px solid var(--line); }
+    .theme-switch button.on { color: var(--accent); background: var(--fill); }
+    .toolbar { display: flex; gap: 8px; align-items: center; width: 100%; max-width: 640px; margin: 0 auto; }
+    .search {
+      flex: 1; height: 34px; padding: 0 10px; border-radius: var(--radius);
+      border: 1px solid var(--line); background: var(--bg); outline: none;
+    }
+    .search:focus { border-color: var(--info); }
+    .count { color: var(--faint); font-size: 12px; white-space: nowrap; }
+    .cats { display: flex; flex-direction: column; gap: 8px; margin: 0; }
+    .cat {
+      display: flex; align-items: center; gap: 8px; width: 100%;
+      border: 0; background: transparent; color: var(--muted);
+      border-radius: 8px; padding: 7px 8px; font-size: 12px; text-align: left;
+      transform-origin: left center;
+      transition: transform .16s ease, background-color .16s ease, color .16s ease;
+    }
+    .cat svg { opacity: .8; }
+    .cat-lab { display: flex; align-items: baseline; flex: 1; min-width: 0; line-height: 1.3; white-space: nowrap; }
+    .cat-en { font-weight: 550; }
+    .cat-sep { color: var(--faint); margin: 0 3px; font-weight: 400; }
+    .cat-zh { color: var(--faint); font-weight: 400; }
+    .cat:hover { color: var(--text); background: var(--fill); transform: scale(1.04); }
+    .cat:hover .cat-zh, .cat:hover svg { color: inherit; opacity: 1; }
+    .cat.active { color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); }
+    .cat.active svg { opacity: 1; }
+    .cat.active .cat-zh, .cat.active .cat-sep { color: color-mix(in srgb, var(--accent) 70%, var(--faint)); }
+    @media (max-width: 860px) {
+      .shell { grid-template-columns: 1fr; }
+      .cat-rail {
+        position: static; height: auto; max-height: 42vh; width: auto; min-width: 0;
+        border-right: 0; border-bottom: 1px solid var(--line); padding: 0 0 10px;
+      }
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 18px;
+    }
+    .card {
+      --cat: var(--accent);
+      position: relative;
+      height: var(--card-h);
+      display: flex; flex-direction: column;
+      background: linear-gradient(180deg, color-mix(in srgb, var(--card) 82%, #fff 18%), var(--card) 32%);
+      border: 1px solid var(--line-2);
+      border-radius: 14px;
+      overflow: hidden; min-width: 0;
+      box-shadow: var(--shadow);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+    .card::before {
+      content: "";
+      position: absolute; top: 0; left: 28px; right: 28px; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--cat), transparent);
+      opacity: .85; pointer-events: none; z-index: 2;
+    }
+    .card[data-cat="button"], .card[data-cat="selection"] { --cat: var(--teal); }
+    .card[data-cat="overlay"], .card[data-cat="feedback"], .card[data-cat="loading"] { --cat: var(--info); }
+    .card[data-cat="input"], .card[data-cat="select"], .card[data-cat="slider"], .card[data-cat="datetime"] { --cat: var(--teal); }
+    .card[data-cat="saas"], .card[data-cat="desktop"], .card[data-cat="special"] { --cat: var(--warn); }
+    .card-deco { position: absolute; inset: 0; pointer-events: none; z-index: 3; }
+    .card-deco i {
+      display: block; font-style: normal;
+      position: absolute; top: 8px; width: 6px; height: 6px; border-radius: 50%;
+      background: radial-gradient(circle at 32% 28%, #d8d0c4, #6a6458 46%, #2a261e 72%);
+      box-shadow: inset 0 -1px 1px rgba(0,0,0,.5), 0 1px 0 rgba(255,255,255,.2);
+    }
+    html[data-theme="light"] .card-deco i {
+      background: radial-gradient(circle at 32% 28%, #fff, #c8c4bc 46%, #8a857c 78%);
+      box-shadow: inset 0 -1px 1px rgba(80,70,50,.35), 0 1px 0 #fff;
+    }
+    .card-deco i:nth-child(1) { left: 8px; }
+    .card-deco i:nth-child(2) { right: 8px; }
+    .demo {
+      height: var(--demo-h); flex: 0 0 var(--demo-h);
+      margin: 16px 12px 0; width: auto;
+      background:
+        radial-gradient(circle, color-mix(in srgb, var(--line-2) 55%, transparent) 0.7px, transparent 1px) 0 0 / 10px 10px,
+        var(--demo);
+      border: 1px solid color-mix(in srgb, var(--line) 70%, #000 30%);
+      border-radius: 8px;
+      position: relative; overflow: hidden; padding: 12px;
+      box-shadow: inset 0 3px 10px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05);
+    }
+    html[data-theme="light"] .demo {
+      box-shadow: inset 0 3px 8px rgba(40,36,30,.1), inset 0 1px 0 #fff;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .card, .card:hover, .cat, .cat:hover { transition: none; transform: none; }
+    }
+    .meta { flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 8px 10px 10px; }
+    .row { display: grid; grid-template-columns: 52px 1fr; gap: 6px; margin-bottom: 3px; align-items: start; }
+    .meta .row:nth-child(1) { margin-bottom: 0; }
+    .meta .row:nth-child(2) {
+      margin-bottom: 7px; padding-bottom: 7px; border-bottom: 1px solid var(--line);
+    }
+    .k { color: var(--faint); font-size: 10px; padding-top: 3px; letter-spacing: 0.02em; }
+    .v { min-width: 0; }
+    .zh { font-weight: 650; font-size: 15px; letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .en { color: var(--info); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .aliases, .when {
+      color: var(--muted); font-size: 12px; line-height: 1.4;
+      display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .prompt-box {
+      flex: 1; min-height: 0; display: flex; flex-direction: column;
+      margin-top: 7px; padding-top: 7px; border-top: 1px solid var(--line);
+    }
+    .prompt-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+    .copy {
+      height: 22px; padding: 0 8px; border-radius: 4px; border: 1px solid var(--line);
+      background: transparent; color: var(--muted); font-size: 11px;
+    }
+    .copy:hover { color: var(--accent); border-color: var(--accent); }
+    .copy.ok { color: var(--ok); border-color: var(--ok); }
+    .prompt-scroll {
+      flex: 1; min-height: 0; overflow: auto; padding: 0;
+      background: transparent; border: 0;
+    }
+    .prompt {
+      margin: 0; padding: 0; border: 0; background: transparent;
+      color: color-mix(in srgb, var(--text) 78%, var(--muted));
+      font: 11.5px/1.55 var(--mono);
+      white-space: pre-wrap; word-break: break-word;
+    }
+    .prompt-zh {
+      margin: 8px 0 0; padding-top: 6px; border-top: 1px dashed var(--line);
+      color: var(--faint); font: 10px/1.45 var(--font);
+    }
+    .empty-filter { color: var(--muted); padding: 48px 0; text-align: center; grid-column: 1 / -1; }
+
+    .ui-btn {
+      border: 1px solid var(--line); border-radius: var(--radius); padding: 6px 11px;
+      background: transparent; color: var(--text); font-weight: 500;
+    }
+    .ui-btn:hover { border-color: var(--text); }
+    .ui-btn.secondary { background: transparent; color: var(--text); border-color: var(--line); }
+    .ui-btn.outline { background: transparent; color: var(--text); border-color: var(--line); }
+    .ui-btn.ghost { background: transparent; color: var(--text); border-color: transparent; }
+    .ui-btn.text { background: transparent; color: var(--text); border: 0; padding-inline: 4px; text-decoration: underline; text-underline-offset: 3px; }
+    .ui-btn.link { background: transparent; color: var(--info); border: 0; text-decoration: underline; text-underline-offset: 3px; }
+    .ui-btn.danger { background: transparent; color: var(--danger); border-color: var(--danger); }
+    .ui-btn.icon, .ui-btn.circle {
+      width: 32px; height: 32px; padding: 0;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .ui-btn.circle { border-radius: 50%; }
+    .ui-btn[disabled] { opacity: .4; cursor: not-allowed; }
+    .ui-btn.on { background: transparent; color: var(--accent); border-color: var(--accent); }
+    .fab {
+      position: absolute; right: 12px; bottom: 12px; width: 40px; height: 40px;
+      border-radius: 50%; border: 1px solid var(--accent); background: transparent; color: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .field, .select-face {
+      width: 100%; height: 32px; padding: 0 9px; border-radius: var(--radius);
+      border: 1px solid var(--line); background: var(--card);
+    }
+    .field:focus, .select-face:focus { outline: none; border-color: var(--info); }
+    textarea.field { height: 72px; padding: 8px 9px; resize: none; }
+    .tabs { display: flex; gap: 0; position: relative; }
+    .tab {
+      background: none; border: 0; color: var(--muted); padding: 7px 10px;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .tab.active { color: var(--accent); }
+    .tab-underline { border-bottom: 1px solid var(--line); }
+    .tab-underline .ink {
+      position: absolute; left: 0; bottom: -1px; height: 1px; background: var(--accent);
+      transition: transform .16s ease, width .16s ease;
+    }
+    .pills .tab { border: 1px solid transparent; border-radius: 999px; }
+    .pills .tab.active { border-color: var(--accent); color: var(--accent); background: transparent; }
+    .seg { display: flex; background: transparent; border: 1px solid var(--line); border-radius: var(--radius); padding: 2px; }
+    .seg .tab { flex: 1; justify-content: center; border-radius: 2px; }
+    .seg .tab.active { background: transparent; color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+    .menu, .popover {
+      position: absolute; background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--radius); min-width: 148px; z-index: 3;
+    }
+    .menu button, .list-item {
+      display: block; width: 100%; text-align: left; background: none; border: 0;
+      color: var(--text); padding: 7px 11px;
+    }
+    .menu button:hover, .list-item:hover { background: var(--fill); }
+    .list-item.on { color: var(--info); }
+    .chip {
+      display: inline-flex; align-items: center; gap: 4px;
+      border: 1px solid var(--info); color: var(--info); border-radius: 999px; padding: 1px 8px; font-size: 12px;
+      background: var(--card);
+    }
+    .chip .x { cursor: pointer; display: inline-flex; }
+    .track { height: 4px; background: var(--fill-2); border-radius: 99px; position: relative; overflow: hidden; }
+    .tree-row { display: flex; gap: 6px; align-items: center; padding: 3px 0; cursor: pointer; font-size: 12px; }
+    .toast {
+      position: absolute; right: 10px; bottom: 10px;
+      background: var(--card); border: 1px solid var(--ok);
+      color: var(--ok);
+      padding: 7px 10px; border-radius: var(--radius); font-size: 12px;
+    }
+    .modal-mask {
+      position: absolute; inset: 0; background: var(--overlay);
+      display: flex; align-items: center; justify-content: center; z-index: 4;
+    }
+    .modal { width: 86%; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px; }
+    .drawer {
+      position: absolute; top: 0; right: 0; bottom: 0; width: 58%;
+      background: var(--card); border-left: 1px solid var(--line); z-index: 4; padding: 10px;
+    }
+    .sheet {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      background: var(--card); border-top: 1px solid var(--line); z-index: 4; padding: 10px;
+    }
+    .mini-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+    .mini-table th, .mini-table td { border-bottom: 1px solid var(--line); padding: 5px 6px; text-align: left; }
+    .status { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ok); }
+    .spin {
+      width: 18px; height: 18px; border: 1.5px solid var(--line-2);
+      border-top-color: var(--accent); border-radius: 50%; animation: spin .7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes shimmer { 0% { background-position: -160px 0; } 100% { background-position: 160px 0; } }
+    .skel { height: 8px; border-radius: 2px; background: var(--fill-2); margin: 8px 0; }
+    .shimmer {
+      background: linear-gradient(90deg, var(--fill-2) 0, var(--line) 50%, var(--fill-2) 100%);
+      background-size: 160px 100%; animation: shimmer 1.1s infinite;
+    }
+    .center { height: 100%; display: flex; align-items: center; justify-content: center; }
+    .hscroll { overflow-x: auto; }
+    .grow { flex: 1; min-height: 0; overflow: auto; }
+    .hint { color: var(--faint); font-size: 11px; }
+    .split { display: flex; height: 100%; }
+    .pane { overflow: auto; padding: 6px; }
+    .gutter { width: 5px; background: var(--info); cursor: col-resize; flex: 0 0 5px; }
+    .kanban { display: flex; gap: 8px; height: 100%; }
+    .kanban .col:nth-child(1) { border-top: 2px solid var(--accent); }
+    .kanban .col:nth-child(2) { border-top: 2px solid var(--ok); }
+    .kanban .col:nth-child(3) { border-top: 2px solid var(--info); }
+    .col { flex: 1; background: var(--fill); border: 1px solid var(--line); border-radius: var(--radius); padding: 6px; overflow: auto; }
+    .card-mini { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 8px; font-size: 12px; }
+    .star-btn { background: none; border: 0; color: var(--faint); padding: 0 2px; display: inline-flex; }
+    .star-btn.on { color: var(--accent); }
+    .otp { display: flex; gap: 6px; justify-content: center; }
+    .otp input {
+      width: 30px; height: 36px; text-align: center; border-radius: var(--radius);
+      border: 1px solid var(--line); background: var(--card);
+    }
+    .otp input:focus { outline: none; border-color: var(--accent); }
+    .code {
+      font-family: var(--mono); font-size: 11px; background: var(--fill);
+      border: 1px solid var(--line); padding: 8px; border-radius: var(--radius);
+      height: 100%; overflow: auto; white-space: pre;
+    }
+    .bubble { max-width: 80%; background: var(--fill); border: 1px solid var(--line); border-radius: 8px 8px 8px 2px; padding: 7px 10px; font-size: 12px; }
+    .bubble.me { margin-left: auto; background: var(--card); border-color: var(--info); border-radius: 8px 8px 2px 8px; }
+    .cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; font-size: 11px; }
+    .cal b, .cal button { text-align: center; padding: 4px 0; border: 0; background: none; color: var(--text); border-radius: 4px; }
+    .cal button.sel { background: transparent; color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+    .rail { display: flex; flex-direction: column; gap: 4px; width: 36px; }
+    .rail button {
+      height: 32px; border: 1px solid transparent; border-radius: var(--radius);
+      background: transparent; color: var(--muted); display: flex; align-items: center; justify-content: center;
+    }
+    .rail button.on { color: var(--accent); border-color: var(--accent); background: var(--card); }
+    .bnav { display: flex; width: 100%; }
+    .bnav button {
+      flex: 1; background: none; border: 0; color: var(--muted); font-size: 10px;
+      display: flex; flex-direction: column; align-items: center; gap: 3px;
+    }
+    .bnav button.on { color: var(--accent); }
+    input[type=range] { width: 100%; accent-color: var(--accent); }
+    input[type=checkbox], input[type=radio] { accent-color: var(--ok); }
+    .ico-row { display: inline-flex; align-items: center; gap: 6px; }
+
+    .title-mark { color: var(--accent); }
+    .kw { font-style: normal; }
+    .kw-o { color: var(--accent); }
+    .kw-g { color: var(--teal); }
+    .kw-b { color: var(--info); }
+    .count .n { color: var(--accent); }
+    .ui-btn.solid { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .sw {
+      width: 36px; height: 20px; border-radius: 99px; border: 1px solid var(--line);
+      background: transparent; position: relative; padding: 0;
+    }
+    .sw i {
+      position: absolute; width: 14px; height: 14px; border-radius: 50%;
+      background: var(--muted); top: 2px; left: 2px; pointer-events: none;
+    }
+    .sw.on { border-color: var(--ok); }
+    .sw.on i { left: 18px; background: var(--ok); }
+    .dropzone {
+      height: 100%; border: 1px dashed var(--line); display: flex; align-items: center;
+      justify-content: center; color: var(--muted); font-size: 12px; text-align: center;
+    }
+    .dropzone.on { border-color: var(--info); color: var(--info); }
+    .delta-up { color: var(--ok); font-size: 12px; }
+    .delta-dn { color: var(--danger); font-size: 12px; }
+    .prog { height: 4px; background: var(--fill-2); border-radius: 99px; overflow: hidden; width: 100%; }
+    .prog > i { display: block; height: 100%; background: var(--ok); width: 42%; }
+    .indet-bar { height: 3px; background: var(--fill-2); overflow: hidden; width: 100%; }
+    .indet-bar i { display: block; width: 40%; height: 100%; background: var(--accent); animation: indet 1s ease-in-out infinite; }
+    @keyframes indet { 0% { transform: translateX(-100%); } 100% { transform: translateX(280%); } }
+    .circ-p {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: conic-gradient(var(--info) 72%, var(--line) 0);
+      display: grid; place-items: center;
+    }
+    .circ-p span { width: 30px; height: 30px; border-radius: 50%; background: var(--demo); color: var(--info); font-size: 10px; display: grid; place-items: center; }
+    .status-ok { color: var(--ok); }
+    .status-warn { color: var(--warn); }
+    .status-err { color: var(--danger); }
+    .status-info { color: var(--info); }
+    .add-line { color: var(--ok); }
+    .del-line { color: var(--danger); }
+    .phone-frame { height: 100%; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+    .safe-top, .safe-bot { height: 10px; background: var(--fill); flex: 0 0 auto; }
+    .gantt-bar { height: 10px; border-radius: 2px; opacity: .9; }
+    .masonry { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; height: 100%; }
+    .masonry .t { background: var(--fill); border: 1px solid var(--line); }
+    .masonry .t:nth-child(1) { border-color: var(--accent); }
+    .masonry .t:nth-child(2) { border-color: var(--ok); }
+    .masonry .t:nth-child(3) { border-color: var(--info); }
+    .masonry .t:nth-child(4) { border-color: var(--accent); }
+    .thumb { width: 28px; height: 28px; border: 1px solid var(--line); background: var(--fill); }
+    .thumb.on { border-color: var(--accent); background: var(--accent); }
+    .v-slider { writing-mode: vertical-lr; direction: rtl; height: 120px; width: 24px; }
+    .dot.warn { background: var(--warn); }
+    .dot.err { background: var(--danger); }
+    .dot.info { background: var(--info); }
+    .star-btn.on { color: var(--accent); }
+    .ed { height: 72px; border: 1px solid var(--line); padding: 6px; overflow: auto; font-size: 12px; outline: none; }
+    .crumb { display: flex; gap: 6px; align-items: center; font-size: 12px; color: var(--muted); }
+    .crumb button { background: none; border: 0; color: var(--muted); padding: 0; }
+    .crumb button.on { color: var(--info); }
+    .page-n { display: flex; gap: 4px; }
+    .page-n button { min-width: 24px; height: 24px; border: 1px solid var(--line); background: transparent; color: var(--text); }
+    .page-n button.on { border-color: var(--info); color: var(--info); }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="cat-rail" aria-label="组件分类">
+      <p class="rail-title">分类</p>
+      <div class="cats" id="cats"></div>
+    </aside>
+    <div class="main">
+    <div class="mast">
+      <div class="top">
+        <header class="hero">
+          <h1 class="wordmark">
+            <span class="wm" aria-label="Vibe Coding UI">
+              <span class="wm-vibe">Vibe</span>
+              <span class="wm-coding">Coding</span>
+              <span class="wm-ui">UI</span>
+            </span>
+            <span class="wm-rest">组件<span class="title-mark">词典</span></span>
+          </h1>
+          <p>把脑子里的样子写成标准名称，再交给模型。卡片一样大，上面的组件可以点。复制 AI Prompt，应能直接做出同款组件。</p>
+          <div class="formula">以后按这个说：<em><span class="kw kw-o">名称</span> + <span class="kw kw-g">变体</span> + <span class="kw kw-b">结构</span> + 交互 + 状态 + 动效</em>。细线跟着 Tab 走，请写 underlined tabs，不要写 slider。</div>
+        </header>
+        <div class="theme-switch" role="group" aria-label="颜色模式">
+          <button type="button" id="themeDark" data-mode="dark">深色</button>
+          <button type="button" id="themeLight" data-mode="light">浅色</button>
+        </div>
+      </div>
+      <div class="filters">
+        <div class="toolbar">
+          <input class="search" id="q" placeholder="搜中文名、英文名或别名" />
+          <span class="count" id="count"></span>
+        </div>
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+    </div>
+  </div>
+  <script>
+(function () {
+  const CATS = [
+    ["all", "All", "全部", "grid"],
+    ["tabs", "Tabs", "标签", "catTabs"],
+    ["stepper", "Stepper", "步骤条", "catStep"],
+    ["button", "Button", "按钮", "catBtn"],
+    ["input", "Input", "输入", "catInput"],
+    ["select", "Select", "选择器", "catSelect"],
+    ["selection", "Selection", "勾选", "catCheck"],
+    ["slider", "Slider", "滑块", "catSlider"],
+    ["datetime", "DateTime", "日期时间", "calendar"],
+    ["special", "Special", "特殊输入", "hash"],
+    ["upload", "Upload", "上传", "upload"],
+    ["menu", "Menu", "菜单", "menu"],
+    ["nav", "Navigation", "导航", "catNav"],
+    ["card", "Card", "卡片", "catCard"],
+    ["data", "Data", "数据展示", "catTable"],
+    ["tag", "Tag", "标签徽章", "catTag"],
+    ["accordion", "Accordion", "折叠", "catAcc"],
+    ["overlay", "Overlay", "浮层", "catOver"],
+    ["feedback", "Feedback", "反馈", "alert"],
+    ["loading", "Loading", "加载", "catLoad"],
+    ["empty", "Empty", "空状态", "catEmpty"],
+    ["layout", "Layout", "布局", "catLay"],
+    ["saas", "SaaS", "智能应用", "bolt"],
+    ["tree", "Tree", "树", "catTree"],
+    ["mobile", "Mobile", "移动端", "catPhone"],
+    ["desktop", "Desktop", "桌面", "catDesk"]
+  ];
+  const ICONS = {
+    home: '<path d="M4 10.5 12 4l8 6.5"/><path d="M6 10v9h12v-9"/>',
+    grid: '<rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/>',
+    settings: '<circle cx="12" cy="12" r="3"/><path d="M12 3.5v2.2M12 18.3v2.2M4.9 7.1l1.6 1.6M17.5 15.3l1.6 1.6M3.5 12h2.2M18.3 12h2.2M4.9 16.9l1.6-1.6M17.5 8.7l1.6-1.6"/>',
+    search: '<circle cx="11" cy="11" r="6"/><path d="m20 20-3.5-3.5"/>',
+    plus: '<path d="M12 5v14M5 12h14"/>',
+    user: '<circle cx="12" cy="8" r="3.2"/><path d="M5 19c1.5-3 4-4.5 7-4.5S17.5 16 19 19"/>',
+    moreV: '<circle cx="12" cy="6" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="18" r="1"/>',
+    moreH: '<circle cx="6" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="18" cy="12" r="1"/>',
+    check: '<path d="m5 12 5 5 9-10"/>',
+    x: '<path d="M6 6l12 12M18 6 6 18"/>',
+    chevR: '<path d="m9 6 6 6-6 6"/>',
+    chevD: '<path d="m6 9 6 6 6-6"/>',
+    chevL: '<path d="m15 6-6 6 6 6"/>',
+    chevU: '<path d="m6 15 6-6 6 6"/>',
+    trash: '<path d="M5 7h14M9 7V5h6v2M8 7l1 12h6l1-12"/>',
+    copy: '<rect x="8" y="8" width="11" height="11" rx="1.5"/><path d="M5 15V5h10"/>',
+    edit: '<path d="M4 17.5V20h2.5L18 8.5 15.5 6 4 17.5z"/>',
+    file: '<path d="M7 4h7l5 5v11H7z"/><path d="M14 4v5h5"/>',
+    image: '<rect x="4" y="5" width="16" height="14" rx="1.5"/><path d="m5 16 4-4 3 3 3-4 4 5"/>',
+    star: '<path d="m12 3.5 2.4 5 5.5.6-4 3.8 1.1 5.4L12 16.2 7 18.3l1.1-5.4-4-3.8 5.5-.6z"/>',
+    sun: '<circle cx="12" cy="12" r="3.5"/><path d="M12 3v2M12 19v2M4.9 4.9l1.5 1.5M17.6 17.6l1.5 1.5M3 12h2M19 12h2M4.9 19.1l1.5-1.5M17.6 6.4l1.5-1.5"/>',
+    moon: '<path d="M16 3.3A8.5 8.5 0 1 1 3.3 16 7 7 0 0 0 16 3.3z"/>',
+    send: '<path d="M4 12h12M12 6l6 6-6 6"/>',
+    camera: '<rect x="3.5" y="7" width="17" height="12" rx="1.5"/><circle cx="12" cy="13" r="3"/>',
+    upload: '<path d="M12 16V6M8 10l4-4 4 4M5 19h14"/>',
+    inbox: '<path d="M4 13h4l2 3h4l2-3h4v6H4z"/><path d="M4 13 7 5h10l3 8"/>',
+    alert: '<circle cx="12" cy="12" r="8.5"/><path d="M12 8v5M12 16.5h.01"/>',
+    checkC: '<circle cx="12" cy="12" r="8.5"/><path d="m8 12 3 3 5-6"/>',
+    help: '<rect x="5" y="4" width="14" height="16" rx="1.5"/><path d="M9.5 9a2.5 2.5 0 1 1 3.2 2.4c-.8.4-1.2.8-1.2 1.6V14M12 17h.01"/>',
+    grip: '<path d="M9 7h.01M9 12h.01M9 17h.01M15 7h.01M15 12h.01M15 17h.01"/>',
+    eye: '<path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z"/><circle cx="12" cy="12" r="2.2"/>',
+    calendar: '<rect x="4" y="6" width="16" height="14" rx="1.5"/><path d="M8 4v4M16 4v4M4 11h16"/>',
+    menu: '<path d="M5 7h14M5 12h14M5 17h14"/>',
+    layers: '<path d="m12 4 8 4-8 4-8-4 8-4zM4 12l8 4 8-4"/>',
+    msg: '<path d="M5 6h14v10H8l-3 3z"/>',
+    bolt: '<path d="M13 3 6 13h5l-1 8 7-10h-5z"/>',
+    hash: '<path d="m9 5-1 14M16 5l-1 14M5 9h15M4 15h15"/>',
+    catTabs: '<path d="M4 9h5l1.5 2H20v9H4z"/><path d="M4 9V7h4l1 2"/>',
+    catStep: '<circle cx="6" cy="12" r="2.2"/><circle cx="12" cy="12" r="2.2"/><circle cx="18" cy="12" r="2.2"/><path d="M8.2 12h1.6M14.2 12h1.6"/>',
+    catBtn: '<rect x="4" y="8" width="16" height="8" rx="2"/>',
+    catInput: '<rect x="3.5" y="8" width="17" height="8" rx="1.5"/><path d="M8 12h7"/>',
+    catSelect: '<rect x="3.5" y="7" width="17" height="10" rx="1.5"/><path d="m9 11 3 3 3-3"/>',
+    catCheck: '<rect x="5" y="5" width="14" height="14" rx="2"/><path d="m8 12 3 3 5-6"/>',
+    catSlider: '<path d="M4 12h16"/><circle cx="14" cy="12" r="2.4"/>',
+    catNav: '<path d="M5 19V5h5v14M14 19V9h5v10"/>',
+    catCard: '<rect x="5" y="5" width="14" height="14" rx="1.5"/><path d="M8 10h8M8 14h5"/>',
+    catTable: '<rect x="4" y="5" width="16" height="14" rx="1"/><path d="M4 10h16M4 15h16M10 5v14"/>',
+    catTag: '<path d="M4 11V6h6l8 8-5 5z"/><circle cx="8.2" cy="9.2" r="1"/>',
+    catAcc: '<path d="M5 7h14M5 12h14M5 17h9"/>',
+    catOver: '<rect x="6" y="7" width="13" height="11" rx="1.5"/><path d="M4 16V5h12"/>',
+    catLoad: '<path d="M12 5a7 7 0 1 1-6.1 3.5"/><path d="M12 5V8"/>',
+    catEmpty: '<rect x="5" y="7" width="14" height="11" rx="1.5"/><path d="M9 12h6"/>',
+    catLay: '<rect x="3.5" y="5" width="7" height="14" rx="1"/><rect x="13.5" y="5" width="7" height="14" rx="1"/>',
+    catTree: '<path d="M12 4v7M12 11h6v4M12 11H6v8"/>',
+    catPhone: '<rect x="8" y="3.5" width="8" height="17" rx="1.5"/><path d="M11 18h2"/>',
+    catDesk: '<rect x="3.5" y="5" width="17" height="11" rx="1.5"/><path d="M8 20h8M12 16v4"/>'
+  };
+
+  function icon(name, size) {
+    size = size || 16;
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "0 0 24 24");
+    svg.setAttribute("width", String(size));
+    svg.setAttribute("height", String(size));
+    svg.setAttribute("fill", "none");
+    svg.setAttribute("stroke", "currentColor");
+    svg.setAttribute("stroke-width", "1.5");
+    svg.setAttribute("stroke-linecap", "round");
+    svg.setAttribute("stroke-linejoin", "round");
+    svg.setAttribute("aria-hidden", "true");
+    svg.innerHTML = ICONS[name] || ICONS.grid;
+    return svg;
+  }
+
+  const PROMPT_ZH = {
+  "tabs-underlined": "做成一个下划线标签组件，不要整页。上方横排标签、下方一块内容。默认三项 Overview、Billing、Settings，点哪项只显示对应面板。当前项是贴着文字宽度的 2px 底线；未选项弱文字、无底、无卡片、无公共轨道。支持点击和左右键。状态含默认、悬停、选中、禁用。面板切换可即时。不要做成胶囊标签、分段控制或滑块。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "tabs-sliding": "做成带滑动指示条的标签，不要整页。结构同下划线标签：横排 Overview、Billing、Settings，下方一块内容；2px 底线在当前文字下。点击或左右键切换。状态含默认、悬停、选中、禁用。底线必须约 180ms 滑到新项，不要瞬移。不要做成胶囊标签、分段控制或滑块。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "tabs-pill": "做成胶囊标签，不要整页。三个互不相连的圆角胶囊 Overview、Billing、Settings，下方一块内容。当前胶囊实心或强描边，其余描边或纯文字，胶囊之间有间隙。点击切换面板。状态含默认、悬停、选中、禁用。约 150ms 变色，不要滑动底线。不要做成同一轨道的分段控制、文件夹页签或滑块。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "tabs-segmented": "做成分段控制，不是 Tabs，不要整页。Day、Week、Month 挤在同一条圆角轨道里，段与段无间隙，同时只选一段。点击切换同一数据集的视图，不是互不相关的页面。状态含默认、选中（轨道内填充）、悬停、禁用。约 150ms。不要做成分散胶囊、下划线标签或滑块。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "tabs-contained": "做成卡片标签，不要整页。Overview、Billing、Settings 贴在带描边内容面板的上沿，标签和面板共用一圈边。当前项与面板视觉相连（无缝、共边）。点击切换内容。状态含默认、选中、悬停、禁用。不要做成悬浮胶囊、分段轨道或叠放的文件夹页签。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "tabs-folder": "做成文件夹式页签，不要整页。页签像笔记本文件夹搭在内容面板上，当前项像页签盖住面板上沿。默认 Overview、Billing、Settings。点击把对应面板带到前面。状态含默认、选中、悬停、禁用。不要做成滑动底线、胶囊或分段控制。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "tabs-vertical": "做成垂直标签，不要整页。左侧竖排 Overview、Billing、Settings，右侧内容占满剩余宽度。当前项可用左侧强调条或更重文字。点击或上下键切换右侧面板。状态含默认、悬停、选中、禁用。不要做成横向下划线、整站侧栏链接或分段控制。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "tabs-icon": "做成纯图标标签，不要整页。三个仅图标项（首页、搜索、设置的线条图标）加内容面板。每个图标悬停/聚焦出目的地名称 tooltip。点击切换面板。热区至少 32px。状态含默认、悬停、选中、禁用。不要加可见文字标签，也不要做成铺满屏宽的底部导航。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "tabs-icon-label": "做成图标加文字的标签，不要整页。三项横排，每项前面线条图标加文字 Overview、Billing、Settings，下方一块内容。点图标或文字都能切换。状态含默认、悬停、选中、禁用。不要做成纯图标标签或分段控制。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "tabs-scrollable": "做成可滚动标签，不要整页。一行至少八个标签（Home 到 Settings）超出固定宽度，配左右溢出按钮，下方一块内容。点击可见项选中；用箭头或横向滚动露出被裁切的项。状态含默认、选中、悬停、禁用、溢出。不要折成两行，也不要用下拉菜单代替这一行。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "tabs-closable": "做成类似浏览器的可关闭标签，不要整页。至少三个文档页签（Untitled、README、styles.css），每项有标题和关闭；可有加号新增。内容区显示当前文档名。点击激活；点关闭删该项并选中邻居；不能关掉最后一个。不要做成胶囊或分段控制。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "tabs-draggable": "做成可拖动重排的标签，不要整页。一行至少三个有名标签加内容面板。点击选中；按住横向拖动改顺序，松开即生效。状态含默认、选中、拖动中、悬停。不要另开编辑模式，也不要用可排序列表代替标签。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "tabs-switcher": "做成同一数据集的内容切换器，不要整页。List、Board、Calendar 三个紧凑选项在同一块数据画布上方。只改呈现，记录不变。点击切换布局。不要做成跳到不同栏目的下划线页面标签，也不要做成筛选栏。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "step-numbered": "做成带数字的横向步骤条，用于多步向导，不要整页。至少四步 Cart、Address、Payment、Review，圆圈数字加短标签，步间有连线。已完成高亮，当前步强调，未到步弱化。可点已到达的步；可有下一步/上一步。不要只用进度条、鱼骨箭头或标签页。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "step-dot": "做成极简圆点步骤条，不要整页。四个圆点用线连接，不必常显步骤名（可用 tooltip）。进度线填到当前点。点击圆点切换。不要用数字圆、鱼骨或滑块。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "step-chevron": "做成鱼骨/箭头步骤条，不要整页。四步呈咬合的箭头块（Cart 到 Review）。点击切换。不要做成细线上的数字圆，也不要做成整块实心填充（那是填充鱼骨）。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "step-filled": "做成实心填充的鱼骨步骤条，不要整页。已完成步实心底，当前最强，未到步描边或弱化。标签 Cart 到 Review。不要做成空心鱼骨或数字连线步骤。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "step-vertical": "做成垂直步骤条，不要整页。四步纵向，圆点右侧有标题和短说明，竖线连接。点击切换当前步。不要做成横向步骤条或带时间戳的物流追踪。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "step-tracker": "做成物流/订单进度追踪，不是结账向导。纵向状态 Placed、Shipped、Out for delivery、Delivered，带时间，最新为当前。已完成点实心。不要做成结账数字步骤或横向步骤条。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-primary": "做一颗主按钮，作为页面主操作，不要整条工具栏。实心填充、对比足够的文字，标签 Save，高度约 32px。点击执行主操作，键盘有可见焦点环。状态含默认、悬停、按下、禁用。不要做成幽灵、描边或链接，也不要右侧下拉箭头。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-secondary": "做一颗次按钮，用来放在主按钮旁边。标签 Cancel，高度与主按钮一致。比主按钮弱，中性填充，不要实心强调色。状态含默认、悬停、按下、禁用。不要做成文字链接。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-outline": "做一颗描边按钮。标签 Edit，约 32px 高。1px 边、透明底、字色跟边走，不要重阴影。悬停可在边框内淡填。不要实心主色，也不要去掉边框变成幽灵/文字按钮。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-ghost": "做一颗幽灵按钮，适合工具栏。标签 Filter。静止时无底无边，悬停才出现浅底。不要常驻描边（那是描边按钮），也不要实心强调色（那是主按钮）。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-text": "做一颗最轻的文字按钮。标签 Skip，完全无框。静止无边无底，悬停可出现下划线。不要加任何铬框，也不要做成一直带下划线的导航链接。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-link": "做一颗链接按钮，跳转感要强。标签 Open docs。信息色或强调色文字，带下划线（常显或悬停），一眼是链接。不要做成带边框的按钮形，也不要当页面主保存按钮。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-icon": "做一颗图标按钮。约 32px 方形，只有线条设置图标，无文字。点击；悬停 tooltip 为 Settings。热区至少 32px。不要做成圆形 FAB，也不要在旁边加可见文字。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-circular": "做一颗圆形图标按钮，用于紧凑添加。32–40px 圆，中间加号线条图标。可点，tooltip 为 Add。不要做成方图标按钮，也不要钉在屏幕角落当 FAB。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-fab": "做一颗浮动操作按钮 FAB。圆形 40–56px，加号图标，锚定在容器右下角。比普通图标按钮更强调。点击即主创建。悬停可微抬。不要排进表单行里，也不要默认展开成速度拨号。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-danger": "做一颗危险按钮，用于不可逆操作。标签 Delete。红色字/边/底，仍是按钮。不要用主强调色（现在是绿），也不要用纯文字链接当删除。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-loading": "做一颗加载按钮，防止连点。标签 Save。点击后进入等待：小转圈、文案 Saving、禁用再点，直到一次短模拟结束。转圈要转。不要允许双提交，也不要用整页转圈代替按钮自己的状态。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-disabled": "做一颗禁用按钮，按不了。标签 Submit，主按钮外形但对比降低（约 40% 透明）。不可点、不可当操作聚焦，光标 not-allowed。不要看起来还能点，也不要带转圈（那是加载按钮）。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-split": "做一颗分裂按钮。同一描边里左侧主操作 Save，右侧箭头。点左执行 Save；点右打开小菜单（Save draft、Save and close）。不要做成把主操作藏进菜单的下拉按钮，也不要拆成两颗不相连的按钮。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-dropdown": "做一颗下拉按钮。标签 Actions 加箭头，点击展开 Edit、Duplicate、Delete。再点一项后关闭；Escape 关闭。不要把主操作和箭头分成两个热区（那是分裂按钮），也不要用纯竖三点触发。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-group": "做成连在一起的按钮组。Left、Center、Right 共一圈边、内部分隔、无间隙。每段可点，是相关操作。不要做成有间距的独立按钮；若不是互斥视图切换，不要做成分段控制。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-toggle": "做一颗开关按钮，有按下和未按下。标签 Bold 或图标。点击在开/关之间保持状态。按下用强调边或底。不要做成带轨道的 Switch，也不要默认做成一组。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-tgroup": "做成格式用的开关按钮组。Bold、Italic、Underline 连在一起，各项可独立开（可多选），点击切换。不要做成只能选一个的分段控制，也不要用下拉。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-toolbar": "做成一排图标工具栏。Undo、Redo、Bold、Italic、分隔、Link。每项可点，悬停有 tooltip。不要收进下拉，也不要用大号主按钮。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-kebab": "做一颗竖三点溢出按钮。点击打开 Edit、Duplicate、Delete；点外部或 Escape 关闭。不要用横三点（肉丸菜单），也不要只用带文字的 Actions 下拉当触发器。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-meatball": "做一颗横三点肉丸菜单。点击打开 Edit、Duplicate、Delete。不要用竖三点，也不要做成 FAB。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "btn-speed": "做成速度拨号：角落一颗 FAB，点击展开 2–3 个更小的圆形操作（文件、图片、笔记）带短标签。再点操作后收起。约 180ms 展开。静止时不要把所有操作都摆出来，也不要用扁平下拉列表代替。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "in-text": "做成带标签的单行输入，不要整表单页。标签 Name，占位 Jane Doe。可自由输入，焦点环可见。状态含默认、悬停、聚焦、错误（红边加文案）、禁用。不要做成多行、搜索框或格式遮罩。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "in-area": "做成多行文本域，不是富文本。标签 Notes，固定约 4–6 行，占位 Add a note，不要 Markdown 预览。不要工具栏，也不要默认自动长高。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "in-search": "做成搜索框。前置搜索图标、输入、有内容时尾部清除。占位 Search。可输入过滤；Escape 或清除清空。不要做成只有下拉的组合框，也不要省略清除。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "in-pass": "做成密码输入。标签 Password，默认掩码，尾部显隐切换。不要做成普通文本，也不要默认加强度条。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "in-num": "做成数字输入。标签 Quantity，只接受数字。不要加减按钮（那是步进数字），也不要用滑块。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "in-spin": "做成带增减的步进数字。标签 Quantity，默认 1，点加减或键入，限制最小最大。不要用滑块或没有按钮的纯数字框。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "sel-single": "做成下拉单选。关闭时显示一项（Apple）；点开水果列表；不能自由输入。点选项即选中并关闭。不要做成可输入组合框或多选芯片。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "sel-multi": "做成下拉多选。框内是可删芯片，下拉是其余选项。默认已选两项。点选添加，芯片 X 删除。不要做成单选，也不要做成回车造标签的标签输入。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "sel-combo": "做成可搜索组合框，不是普通 Select。可输入并过滤已有选项（城市）；只能选列表里的值。不要做成不能打字的下拉，也不要做成任意文本都算值的自动完成。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "sel-auto": "做成自动完成文本框。本质仍是文本框，输入时出建议（如邮箱）；不选建议也可以，键入内容就是值。不要强制只能选列表（那是 Select/组合框）。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "sel-cascader": "做成级联选择。点开省/市/区多列（如浙江、杭州、西湖），框内显示完整路径。逐级选。不要做成扁平下拉或带复选的树选择。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "sel-tree": "做成树选择。可搜索的下拉里是可展开的树；点选节点。框内显示选中名。不要做成级联多列，也不要做成整页树视图。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "ck-box": "做成复选框组。三项 Email、SMS、Push 可任意组合勾选。不要做成单选或开关。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "ck-radio": "做成单选组。尺码 S/M/L，只能选一个。点一个其余取消。不要用复选或分段控制。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "ck-switch": "做成开关，表示开/关。轨道加滑块，标签 Notifications，默认开。约 150ms。不要用一对单选或方复选框。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "ck-tri": "做成三态复选框。父级 Select all 加子项 A/B/C。父级有未选、全选、部分选。点子项更新父级；点父级全选或清空。不要只有两态。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "sl-h": "做成横向数值滑块。轨道 0–100，单滑块，显示数值。拖或点轨道。不要双滑块或只能停刻度。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "sl-range": "做成双滑块范围条。同一轨道最小最大（如 20–80），两值都显示，不可交叉。不要单值滑块。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "sl-v": "做成垂直滑块。纵向轨道单滑块，上下拖。不要做成横向。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "sl-step": "做成步进/离散滑块。可见刻度（0 到 100 隔 25），滑块只能落在刻度上。不要连续任意值。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "dt-date": "做成日期选择器。框内 YYYY-MM-DD，点开月历选一天即关。不要选范围或时分。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "dt-range": "做成日期范围。开始/结束两个联动字段，月历先选开始再选结束。不要单日选择。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "dt-time": "做成时间选择。HH:MM，时分控件。不要带日历。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "dt-dt": "做成日期时间选择。日历日期加时分合成一个值。不要拆成互不共享值的两个无关控件。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "dt-cal": "做成行内月历，不是弹出字段。星期表头，点选某日，可翻月。不要把格子藏在输入框后面。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "dt-week": "做成周选择。显示如 2026-W35，点任一天高亮整周。不要只选单日。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "dt-month": "做成月选择。选年月（2026-08），可切换年。不要以日网格为主界面。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "dt-year": "做成年选择。年份网格点选，可翻页。不要再选月日。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "sp-otp": "做成六格验证码。每格一字，输入自动跳下一格，退格回上格，粘贴可填满。不要用一个普通文本框。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "sp-tag": "做成标签输入。回车把当前文字变成标签。芯片 X 删除。不要做成只能从固定列表多选。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "sp-chip": "做成芯片输入。已输入项以可删芯片显示在框内，后面可继续键入。不要做成不可删的类别标签。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "sp-mentions": "做成提及输入。输入 @ 出人员列表（Ada、Linus），选中插入 @name。不要做成没有 @ 触发的普通自动完成。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "sp-rte": "做成紧凑所见即所得编辑器。工具栏粗体斜体列表，加可编辑区。不要做成纯 Markdown 文本域。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "sp-md": "做成带预览切换的 Markdown 编辑器。文本域写 md，Preview 显示渲染。不要只有所见即所得工具栏。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "sp-code": "做成等宽代码编辑器。可按行编辑几行代码。不要做成只读高亮代码块。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "sp-inline": "做成行内编辑。显示文字 Project name，点击变输入框，失焦或回车保存。不要一直露出输入框。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "sp-mask": "做成遮罩输入。标签 Code，可见模板如 000-000，只填允许字符。不要无约束文本框。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "sp-phone": "做成电话输入。区号加分组号码。不要无分组的普通文本。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "sp-cur": "做成金额输入。前导货币符号，两位小数。不要无符号的纯数字。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "sp-url": "做成 URL 输入。带 https:// 提示和校验态，非法变错误。不要无校验文本。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "sp-color": "做成颜色选择。色块加十六进制，点选更新。不要只有文字没有色块。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "sp-rating": "做成 1 到 5 星评分。悬停预览，点击打分。不要只用数字滑块。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "up-file": "做成系统风格文件选择。选一个文件并显示文件名。不要做成大拖放区。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "up-btn": "做成上传按钮。按钮 Upload 打开选择器并显示文件名。不要只露一个无标签原生控件。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "up-drop": "做成大虚线拖放上传区。可点击或拖入，拖入时高亮。不要只有小文件按钮。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "up-list": "做成上传列表。每行文件名、进度、完成或失败。至少一行能看到进度到完成。不要只有拖放区没有列表。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "mn-drop": "使用锚定在操作按钮下的下拉菜单。",
+  "mn-ctx": "使用右键出现的上下文菜单，含复制、重命名、删除。",
+  "mn-bar": "使用文件/编辑/视图/帮助及嵌套项的菜单栏。",
+  "mn-nav": "使用带分节下拉的导航菜单。",
+  "mn-mega": "使用按产品分列的巨型导航菜单。",
+  "mn-overflow": "使用竖三点触发的溢出菜单。",
+  "nv-bc": "使用面包屑展示层级位置。",
+  "nv-page": "使用带页码和上一页/下一页的分页。",
+  "nv-side": "使用含总览、项目、分析、设置的侧边导航。",
+  "nv-rail": "使用更窄的图标导航轨。",
+  "nv-bottom": "使用首页、搜索、创建、我的底部导航。",
+  "nv-top": "使用带 Logo、链接和登录的顶部导航。",
+  "nv-anchor": "使用点击后滚到页内章节的锚点导航。",
+  "cd-basic": "使用带标题和正文的基础卡片。",
+  "cd-elev": "使用带轻微阴影和圆角的悬浮卡片。",
+  "cd-out": "使用 1px 描边、无阴影的描边卡片。",
+  "cd-int": "使用整卡可点、有悬停和按下态的交互卡片。",
+  "cd-sel": "使用带选中样式的可选中卡片。",
+  "cd-metric": "使用展示数值、标签和涨跌的指标卡片。",
+  "cd-media": "使用上图下文的媒体卡片。",
+  "cd-h": "使用左媒体右内容的横向卡片。",
+  "cd-dash": "使用带标题和指标的仪表盘小部件卡片。",
+  "da-table": "使用只读的静态表格。",
+  "da-dt": "使用表头可排序的数据表。",
+  "da-grid": "使用单元格可聚焦的交互数据网格，不是静态表。",
+  "da-edit": "使用点击单元格即可编辑的表格。",
+  "da-exp": "使用行可展开详情的表格。",
+  "da-tt": "使用行可展开子行的树形表格。",
+  "da-list": "使用可点选的简单列表。",
+  "da-struct": "使用每行栏位对齐的结构列表。",
+  "da-tree": "使用可展开/收起的树视图。",
+  "da-dl": "使用标签加值的描述列表。",
+  "da-time": "使用事件按时间排列的纵向时间线。",
+  "da-kanban": "使用卡片可跨列拖动的看板。",
+  "da-gantt": "使用带工期条的紧凑甘特图。",
+  "da-sched": "使用小时为列的日程表。",
+  "da-calv": "使用日期上展示事件的日历视图。",
+  "da-mas": "使用不等高图片块的瀑布流。",
+  "da-car": "使用带上一张/下一张的图片轮播。",
+  "da-gal": "使用点击缩略图切换大图的画廊。",
+  "tg-badge": "使用挂在宿主控件上的数字徽章，不要当成类别标签。",
+  "tg-tag": "使用表示类别的标签，通常不可点删。",
+  "tg-chip": "使用可关闭的交互芯片，不是 Tag。",
+  "tg-filter": "使用带选中勾选态的筛选芯片。",
+  "tg-status": "使用带色点和短文案的状态徽章。",
+  "tg-loz": "使用如 IN PROGRESS 的紧凑胶囊状态文字。",
+  "ac-acc": "使用多项垂直堆叠的手风琴。",
+  "ac-col": "使用单个可折叠区块，适合高级设置。",
+  "ac-dis": "使用带箭头的显隐/披露控件。",
+  "ov-tip": "做成工具提示。触发器文字 Name，浮层只有一行短说明（如发票上显示的名称）。小块反色，里面不能有按钮。悬停和键盘聚焦约 200ms 后出现，离开即关。不要放表单或操作，也不要做成气泡卡片或对话框。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "ov-pop": "做成可放操作的气泡卡片，不要只有一句话。触发按钮 Share；浮层里有短标题、一两个操作（Copy link、Embed）。点击开关；点外部或 Escape 关闭；打开时焦点在面板内。不要只靠悬停、不要整页遮罩（那是对话框），也不要做成纯 tooltip。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "ov-hover": "做成悬停预览人物的卡片。触发文字 Ada Lovelace；悬停出现姓名、角色和操作 Message。稍延迟出现，移进卡片保持打开，都离开才关。不要靠点击才打开，不要阻断式对话框，也不要做成一行 tooltip。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "ov-modal": "做成对话框。有变暗遮罩、居中面板、标题 Edit project、正文或简单字段、主按钮 Save 和次按钮 Cancel、关闭。从触发器打开；焦点锁在内部；Escape 和点遮罩关闭。遮罩淡入，面板约 180ms。不要做成侧抽屉，也不要没有遮罩。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "ov-alert": "做成必须回应的警告对话框。标题 Delete file?，短警告，危险色 Confirm 和 Cancel。打开后其余界面不可用；不能点空白处当没看见（或点遮罩只等于 Cancel）。不要加额外表单，也不要用非阻断 Toast。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "ov-popc": "做成锚定在危险操作旁的气泡确认。Delete 旁小气泡：Confirm deletion? 加 Yes / No。点 Delete 打开；选完或点外部关闭；不要全屏变暗。不要做成居中对话框，也不要做成没有按钮的纯 tooltip。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "ov-drawer": "做成从右侧滑入的固定宽度抽屉。触发 Open；遮罩上从右滑入，标题 Details、正文、关闭。Escape 和点遮罩关闭。约 200ms 滑入。不要居中对话框，不要从底部升起，也不要做成从不盖住内容的常驻侧栏。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "ov-sheet": "做成从左右边缘滑入的面板，不是居中对话框，也不是底部弹层。标题 Filters 加几个控件，可有遮罩。触发打开，关闭钮或 Escape 关闭。约 200ms。不要居中，也不要贴屏幕底边。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "ov-bs": "做成从底部升起的弹层。有拖动手柄、标题 Actions、纵向操作 Share、Copy、Delete。可下扫、点遮罩或取消行关闭。约 200ms 升起。不要从侧面滑入，也不要做成桌面居中对话框。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+  "fb-alert": "使用带图标和短警告文案的警告条。",
+  "fb-inline": "使用嵌在相关字段旁的行内提示。",
+  "fb-banner": "使用通栏系统维护横幅。",
+  "fb-toast": "使用角落自动消失的轻提示。",
+  "fb-snack": "使用可带「撤销」等单一操作的快餐条。",
+  "fb-note": "使用带标题和正文的通知卡片。",
+  "ld-spin": "使用转圈表示时长未知的短暂等待。",
+  "ld-skel": "使用与最终布局同结构的骨架占位。",
+  "ld-shim": "使用带流动高光的微光骨架加载。",
+  "ld-bar": "使用显示完成百分比的线性进度条。",
+  "ld-circ": "使用带百分比文字的环形进度。",
+  "ld-indet": "百分比未知时使用不确定进度动画。",
+  "ld-det": "使用绑定已知百分比的确定进度。",
+  "em-empty": "使用带说明和创建操作的空状态。",
+  "em-err": "使用带重试的加载失败状态。",
+  "em-ok": "使用带确认和下一步的成功结果页。",
+  "em-404": "使用 404 或 500 的整页异常页。",
+  "ly-res": "使用带可拖分隔条的可调整面板。",
+  "ly-split": "使用树和编辑器那种左右或上下分栏。",
+  "ly-splitr": "使用键盘也可操作的窗口分隔条。",
+  "ly-drag": "使用带拖动手柄的可排序列表。",
+  "ly-reo": "使用可上移下移或拖拽改序的列表。",
+  "ly-rss": "使用边缘可拖改宽度的侧栏。",
+  "ai-md": "使用左列表右详情的主从布局。",
+  "ai-ins": "使用带可折叠分区的属性检查器。",
+  "ai-fb": "使用表格上方一排紧凑筛选控件。",
+  "ai-facet": "使用带每项计数的多面筛选。",
+  "ai-qb": "使用字段、运算符、值成行的查询构建器。",
+  "ai-pal": "加入 Cmd+K 命令面板：模糊搜索、键盘导航、分组命令。",
+  "ai-cmd": "使用按类别分组的命令菜单对话框。",
+  "ai-chat": "使用带发送的对话底部输入框。",
+  "ai-bub": "使用助手和用户回合的消息气泡。",
+  "ai-conv": "使用带标题和时间的历史会话列表。",
+  "ai-pr": "使用大输入区加发送的 Prompt 编写框。",
+  "ai-ag": "使用运行中、思考中、空闲的 Agent 状态指示。",
+  "ai-tool": "使用展示工具名和简短参数的工具调用卡。",
+  "ai-think": "使用可展开的推理/思考过程面板。",
+  "ai-term": "使用等宽输出的终端面板。",
+  "ai-diff": "使用带增行和删行的差异对比。",
+  "ai-ft": "使用项目文件树/资源管理树。",
+  "ai-json": "使用键可展开的 JSON 树查看器。",
+  "ai-log": "使用带时间和级别的日志查看。",
+  "ai-mdv": "使用渲染 Markdown 的预览面板。",
+  "ai-cb": "使用带语言标签的代码块。",
+  "ai-snip": "使用带复制按钮的代码片段。",
+  "ai-sug": "使用点击后填入编写框的建议芯片。",
+  "ai-cite": "使用指向证据的引用芯片/来源卡。",
+  "tr-view": "使用可展开收起的树视图。",
+  "tr-file": "使用文件资源管理树。",
+  "tr-grid": "构建带名称、大小列且行可展开的树网格。",
+  "mb-pull": "在移动列表上使用下拉刷新。",
+  "mb-swipe": "使用左滑露出删除的滑动操作。",
+  "mb-long": "在列表项上使用长按上下文菜单。",
+  "mb-dots": "使用分页指示点表示多页卡片。",
+  "mb-cards": "使用可左右滑走的滑动卡片。",
+  "mb-safe": "使用避开刘海和底部横条的安全区留白。",
+  "mb-nav": "使用带返回、标题和操作的移动端顶栏。",
+  "mb-lg": "使用滚动后收成小标题的大标题导航栏。",
+  "dk-3": "使用侧栏、编辑器、检查器的三栏布局。",
+  "dk-act": "使用最左侧图标目的地的活动栏。",
+  "dk-exp": "使用列出文件的资源管理面板。",
+  "dk-et": "使用打开文档的编辑器页签。",
+  "dk-ep": "使用等宽画布的主编辑器面板。",
+  "dk-prop": "使用带标签字段的属性面板。",
+  "dk-st": "使用展示分支、问题和编码的状态栏。",
+  "dk-cb": "使用一排带图标和文字的命令栏。",
+  "dk-dock": "使用可钉在边缘的可停靠面板。",
+  "dk-float": "使用带拖动手柄的浮动面板。"
+};
+  function C(id, category, zh, en, aliases, when, prompt, demo, opts) {
+    return { id: id, category: category, zh: zh, en: en, aliases: aliases, when: when, prompt: prompt, promptZh: PROMPT_ZH[id] || "", demo: demo, opts: opts || {} };
+  }
+
+  const CATALOG = [];
+  function add() {
+    for (var i = 0; i < arguments.length; i++) CATALOG.push(arguments[i]);
+  }
+  add(
+    C("tabs-underlined","tabs","下划线标签","Underlined Tabs","Line Tabs, Flat Tabs","不同内容区域切换。细线跟着文字走，不要叫 Slider。","Build a single Underlined Tabs component, not a full page. Structure: a horizontal tab list on top and one content panel below. Default three tabs labeled Overview, Billing, and Settings, each revealing its own short panel. The active tab has a 2px underline aligned to the label width; inactive tabs have muted text, no fill, no card background, and no shared track. Interaction: click a tab to switch panels; only the active panel is visible; Left/Right keys when the list is focused. States: default, hover (slightly brighter text), selected (accent underline and stronger text), disabled (non-interactive, reduced contrast). Motion: instant panel swap is fine. Do not build pill tabs, a segmented control, or a slider. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","tabs",{kind:"underline"}),
+    C("tabs-sliding","tabs","滑动指示标签","Tabs with Sliding Indicator","Animated underline tabs","标签切换时底部指示线平滑滑动。","Build a single Tabs with Sliding Indicator component, not a full page. Structure: same as underlined tabs: horizontal labels Overview, Billing, Settings above one content panel; a 2px underline sits under the active label. Interaction: click or Left/Right to change the selected tab and panel. States: default, hover, selected, disabled. Motion: the underline must slide to the new tab in about 180ms; do not jump instantly. Do not use pill tabs, a segmented control, or a range slider. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","tabs",{kind:"sliding"}),
+    C("tabs-pill","tabs","胶囊标签","Pill Tabs","Rounded tabs","选项是独立胶囊，当前项填充。","Build a single Pill Tabs component, not a full page. Structure: three independent pill-shaped tabs labeled Overview, Billing, Settings, plus one content panel below. Each tab is its own rounded capsule with gap between pills. The selected pill has a filled or strongly outlined active surface; others are outline or text-only. Interaction: click a pill to swap the panel. States: default, hover, selected, disabled. Motion: 150ms fill/color change, no sliding underline. Do not use a shared segmented track, folder tabs, or a slider. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","tabs",{kind:"pill"}),
+    C("tabs-segmented","tabs","分段控制","Segmented Control","Shared track","同一数据集的短选项，如日/周/月。不是 Tabs。","Build a single Segmented Control, not Tabs and not a full page. Structure: Day, Week, Month packed inside one shared rounded track with no gap between segments. Only one segment is selected. Interaction: click a segment to change the selected value; this switches a view of the same dataset, not unrelated pages. States: default, selected (inset or filled in the track), hover, disabled. Motion: 150ms selected-thumb or fill. Do not use separate pill tabs, underlines, or a slider. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","tabs",{kind:"segmented"}),
+    C("tabs-contained","tabs","卡片标签","Contained Tabs","Attached Tabs","标签贴在内容面板上沿。","Build a single Contained Tabs component, not a full page. Structure: tab labels Overview, Billing, Settings attached to the top edge of a bordered content panel so tabs and panel share one outline. The active tab connects visually to the panel (no gap, shared border). Interaction: click a tab to change panel content. States: default, selected (connected to panel), hover, disabled. Motion: instant or 150ms. Do not use floating pills, a segmented track, or folder-style overlapping tabs. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","tabs",{kind:"contained"}),
+    C("tabs-folder","tabs","文件夹标签","Folder-style Tabs","Notebook tabs","视觉上像文件夹页签。","Build a single Folder-style Tabs component, not a full page. Structure: tabs look like notebook file folders sitting on a content panel; the selected tab overlaps the panel edge like a folder flap. Default labels Overview, Billing, Settings. Interaction: click a folder tab to bring its panel forward. States: default, selected (in front, connected), hover, disabled. Motion: 150ms. Do not use a sliding underline, pills, or a segmented control. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","tabs",{kind:"folder"}),
+    C("tabs-vertical","tabs","垂直标签","Vertical Tabs","Side tabs","标签在左、内容在右。","Build a single Vertical Tabs component, not a full page. Structure: a vertical tab list on the left (Overview, Billing, Settings) and the content panel on the right, filling remaining width. Active tab can use a left accent bar or stronger text. Interaction: click a row to swap the right panel; Up/Down keys when the list is focused. States: default, hover, selected, disabled. Motion: instant panel swap. Do not use horizontal underlines, a sidebar of page links, or a segmented control. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","tabs",{kind:"vertical"}),
+    C("tabs-icon","tabs","图标标签","Icon Tabs","Icon-only tabs","空间紧，需要额外说明。","Build a single Icon Tabs component, not a full page. Structure: three icon-only tabs (home, search, settings as line icons) plus a content panel. Each icon has a tooltip with the destination name. Interaction: click an icon to switch the panel; tooltip on hover/focus. States: default, hover, selected (accent icon or underline), disabled. Hit target at least 32px. Do not add visible text labels, and do not use a mobile bottom nav bar spanning the screen. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","tabs",{kind:"icon"}),
+    C("tabs-icon-label","tabs","图标文字标签","Icon + Label Tabs","Icon text tabs","图标和文字同时出现。","Build a single Icon + Label Tabs component, not a full page. Structure: three horizontal tabs, each with a leading line icon and a text label (Overview, Billing, Settings), plus one content panel. Interaction: click either icon or label to switch. States: default, hover, selected, disabled. Do not use icon-only tabs or a segmented control. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","tabs",{kind:"iconLabel"}),
+    C("tabs-scrollable","tabs","可滚动标签","Scrollable Tabs","Overflow tabs","标签超出宽度时横向滚动。","Build a single Scrollable Tabs component, not a full page. Structure: many tab labels in one row (at least eight: Home, Projects, Billing, Members, Analytics, Alerts, Integrations, Settings) that overflow a fixed-width viewport, with left/right overflow controls. A content panel sits below. Interaction: click a visible tab to select; use chevrons or horizontal scroll to reveal hidden tabs. States: default, selected, hover, disabled, overflow (chevrons appear when clipped). Do not wrap tabs onto two lines and do not use a dropdown to replace the row. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","tabs",{kind:"scroll"}),
+    C("tabs-closable","tabs","可关闭标签","Closable Tabs","Browser-like tabs","类似浏览器页签。","Build a single Closable Tabs component like browser tabs, not a full page. Structure: a tab strip with at least three documents (Untitled, README, styles.css); each tab shows a title and a close control; a plus control can add a tab. Content panel shows the active document name. Interaction: click to activate; click close to remove that tab and select a neighbor; cannot close the last remaining tab. States: default, selected, hover, dirty optional. Do not use pills or a segmented control. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","tabs",{kind:"closable"}),
+    C("tabs-draggable","tabs","可拖动标签","Draggable Tabs","Reorderable Tabs","允许重排顺序。","Build a single Draggable Tabs component, not a full page. Structure: three or more named tabs in a row plus a content panel. Interaction: click to select; pointer-drag a tab horizontally to reorder the strip; drop commits the new order. States: default, selected, dragging (lifted tab), hover. Motion: the strip reflows as the tab is dragged. Do not require a separate edit mode, and do not use a sortable list instead of tabs. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","tabs",{kind:"drag"}),
+    C("tabs-switcher","tabs","内容切换器","Content Switcher","Same-content views","同一数据集的不同视图。","Build a single Content Switcher for alternate views of the same dataset, not a full page. Structure: a compact switcher with List, Board, and Calendar options sitting above one dataset canvas. Only the presentation changes; the records stay the same. Interaction: click an option to change the view layout. States: default, selected, hover, disabled. Do not use underlined page tabs that navigate to different sections, and do not use a filter bar. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","tabs",{kind:"switcher"}),
+    C("step-numbered","stepper","数字步骤条","Stepper","Progress Steps","多步表单、向导。","Build a single numbered Stepper for a multi-step wizard, not a full page. Structure: a horizontal row of at least four steps labeled Cart, Address, Payment, Review, connected by lines. Each step shows a number in a circle plus a short label. Completed steps are highlighted, the current step is emphasized, future steps are muted. Interaction: click a reachable step to make it current; optional Next/Back. States: upcoming, current, completed, error optional. Do not use a progress bar alone, chevron fishbone, or tabs. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","stepper",{kind:"numbered"}),
+    C("step-dot","stepper","圆点步骤条","Dot Stepper","Minimal stepper","空间少、步骤名可省略。","Build a single Dot Stepper, not a full page. Structure: a minimal row of connected dots for four steps without requiring visible names (tooltips allowed). A line fills up to the current dot. Interaction: click a dot to change the current step. States: upcoming, current, completed. Do not use numbered circles, chevrons, or a slider. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","stepper",{kind:"dot"}),
+    C("step-chevron","stepper","鱼骨步骤条","Chevron Stepper","Arrow Stepper","每步呈箭头并咬合下一步。","Build a single Chevron Stepper (arrow/fishbone), not a full page. Structure: four steps as connected arrow shapes that bite into the next (Cart, Address, Payment, Review). Interaction: click a chevron to select that step. States: completed, current, upcoming. Do not use numbered circles on a thin line, or filled solid blocks unless this is the filled variant. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","stepper",{kind:"chevron"}),
+    C("step-filled","stepper","填充鱼骨步骤","Filled Chevron Stepper","Solid chevron","强调已完成块的实心填充。","Build a single Filled Chevron Stepper, not a full page. Structure: like chevron stepper but completed steps use a solid filled background, current is strongest, upcoming is outline or muted. Labels Cart, Address, Payment, Review. Interaction: click to change step. Do not use unfilled outline-only chevrons or a numbered line stepper. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","stepper",{kind:"filled"}),
+    C("step-vertical","stepper","垂直步骤条","Vertical Stepper","Vertical progress steps","步骤带说明、纵向阅读。","Build a single Vertical Stepper, not a full page. Structure: four steps stacked with labels and short descriptions on the right of circles, connected by a vertical line. Interaction: click a step to make it current. States: completed, current, upcoming. Do not use a horizontal stepper or a logistics tracker with timestamps. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","stepper",{kind:"vertical"}),
+    C("step-tracker","stepper","进度追踪","Progress Tracker","Order tracker","物流或订单状态。","Build a single Progress Tracker for order/logistics, not a wizard stepper. Structure: a vertical timeline of statuses (Placed, Shipped, Out for delivery, Delivered) with timestamps and the latest as current. Interaction: mostly informative; completed nodes filled. States: done, current, pending. Do not use numbered checkout steps or a horizontal stepper. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","stepper",{kind:"tracker"})
+  );
+  add(
+    C("btn-primary","button","主按钮","Primary Button","Main CTA","页面主操作。","Build a single Primary Button, the main call to action, not a toolbar. Structure: one filled button labeled Save with comfortable padding (about 32px height). Visual: solid accent fill, high-contrast label, no outline-only look. Interaction: click fires the primary action; keyboard focus-visible ring. States: default, hover (slightly lighter or lifted), pressed, disabled, loading optional. Do not style it as a ghost, outline, or link, and do not add a dropdown chevron. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"primary"}),
+    C("btn-secondary","button","次按钮","Secondary Button","Default button","与主按钮配对。","Build a single Secondary Button meant to sit beside a primary CTA. Structure: label Cancel, same height as a primary button. Visual: quieter than primary — filled muted or neutral, not accent-solid. Interaction: click; focus-visible. States: default, hover, pressed, disabled. Do not use accent fill, and do not make it look like a text link. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"secondary"}),
+    C("btn-outline","button","描边按钮","Outline Button","Bordered button","弱一点但仍是按钮。","Build a single Outline Button. Structure: label Edit, ~32px height. Visual: 1px border, transparent fill, text matches border; no heavy shadow. Interaction: click; focus-visible. States: default, hover (light fill inside the border), pressed, disabled. Do not use a solid primary fill, and do not remove the border (that would be ghost/text). If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"outline"}),
+    C("btn-ghost","button","幽灵按钮","Ghost Button","Bare button","无背景，工具栏常见。","Build a single Ghost Button for toolbars. Structure: label Filter, same height as other buttons. Visual: no background and no border at rest; hover reveals a light fill. Interaction: click; focus-visible. States: default (bare), hover (fill), pressed, disabled. Do not keep a permanent border (outline) or a solid accent fill (primary). If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"ghost"}),
+    C("btn-text","button","文字按钮","Text Button","Textual button","最轻量操作。","Build a single Text Button, the lightest action. Structure: label Skip with no box at all. Visual: text only, optional underline on hover; no border, no fill at rest. Interaction: click; focus-visible. States: default, hover, pressed, disabled. Do not add chrome, and do not style it as a navigation link with always-on underline unless hovering. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"text"}),
+    C("btn-link","button","链接按钮","Link Button","Button as link","跳转感强的操作。","Build a single Link Button that feels like navigation. Structure: label Open docs. Visual: accent or info colored text with an underline affordance (always or on hover, but clearly a link). Interaction: click; focus-visible. States: default, hover, visited optional, disabled. Do not use a bordered button shape, and do not use it as the page primary save action. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"link"}),
+    C("btn-icon","button","图标按钮","Icon Button","Icon-only button","工具操作。","Build a single Icon Button. Structure: a square control about 32px with a line icon (settings gear), no text. Interaction: click; tooltip Settings on hover; focus-visible. States: default, hover, pressed, disabled. Hit target at least 32px. Do not use a circular FAB, and do not add a visible label beside the icon. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"icon"}),
+    C("btn-circular","button","圆形图标按钮","Circular Icon Button","Round icon button","添加一类圆形强调。","Build a single Circular Icon Button for a compact add action. Structure: a round 32–40px control with a plus line icon. Visual: circular clip, 1px border or soft fill. Interaction: click to add; tooltip Add. States: default, hover, pressed, disabled. Do not use a square icon button, and do not pin it as a screen-corner FAB. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"circle"}),
+    C("btn-fab","button","浮动按钮","Floating Action Button","FAB","移动端主创建入口。","Build a single Floating Action Button (FAB). Structure: a circular 40–56px button with a plus icon, visually anchored to the bottom-right of its container. Visual: stronger than a normal icon button (accent fill or accent ring). Interaction: click is the main create action. States: default, hover (lift), pressed, disabled. Do not place it inline in a form row, and do not expand it into a speed-dial unless asked. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"fab"}),
+    C("btn-danger","button","危险按钮","Destructive Button","Danger button","删除、不可逆操作。","Build a single Destructive Button for irreversible actions. Structure: label Delete. Visual: danger red text and/or border or fill, still clearly a button. Interaction: click; should not look like the primary save. States: default, hover, pressed, disabled. Do not use the primary accent color, and do not use a text-only link style for delete. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"danger"}),
+    C("btn-loading","button","加载按钮","Loading Button","Pending button","提交中防止连点。","Build a single Loading Button that blocks repeat submits. Structure: label Save, ~32px. Interaction: on click, switch to a pending state: show a small spinner, change label to Saving, and disable further clicks until a short mock finish. States: default, loading (spinner + disabled), success optional, disabled. Motion: spinner rotates. Do not allow double-submit, and do not use a page-level spinner instead of the button state. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"loading"}),
+    C("btn-disabled","button","禁用按钮","Disabled Button","Inactive button","当前不可用。","Build a single Disabled Button that cannot be pressed. Structure: label Submit, visually a primary-shaped button at reduced contrast (about 40% opacity). Interaction: not clickable, not focusable as an action, cursor not-allowed. States: only the disabled look. Do not make it look enabled, and do not use it as a loading button with a spinner. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"disabled"}),
+    C("btn-split","button","分裂按钮","Split Button","Split CTA","主操作加右侧更多。","Build a single Split Button. Structure: one control split into a left primary action labeled Save and a right chevron slot sharing one outline. Interaction: left click runs Save; right click opens a small menu with Save draft and Save and close. States: default, hover, open, disabled. Do not use a single dropdown that hides the primary action, and do not use a disconnected button plus icon. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"split"}),
+    C("btn-dropdown","button","下拉按钮","Dropdown Button","Menu Button","点开操作菜单。","Build a single Dropdown / Menu Button. Structure: one button labeled Actions with a chevron; click reveals a menu of Edit, Duplicate, Delete. Interaction: click toggles the menu; choose an item then close; Escape closes. States: default, hover, open, disabled. Do not split primary vs chevron into two hit targets, and do not use a kebab-only trigger. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"dropdown"}),
+    C("btn-group","button","按钮组","Button Group","Connected buttons","相关操作并排。","Build a single connected Button Group. Structure: three joined buttons Left, Center, Right sharing one outline with inner dividers (no gap). Interaction: each segment is clickable; they are related actions, not exclusive selection unless styled as toggle. States: default, hover per segment, pressed, disabled. Do not use separate spaced buttons, and do not use a segmented control for view switching unless the labels are clearly actions. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"group"}),
+    C("btn-toggle","button","开关按钮","Toggle Button","Pressed button","按下和未按下。","Build a single Toggle Button with pressed and unpressed states. Structure: label Bold or an icon, one control. Interaction: click flips pressed on/off and keeps the state. Visual: pressed uses accent border or fill; unpressed is quiet. States: off, on, hover, disabled. Do not use a Switch track, and do not group multiple toggles unless asked. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"toggle"}),
+    C("btn-tgroup","button","开关按钮组","Toggle Group","Format group","格式组。","Build a single Toggle Group for formatting. Structure: three joined toggles Bold, Italic, Underline. Interaction: each can be on independently (multi-select), click to toggle. States: off, on, hover, disabled per item. Do not allow only one selected (that would be segmented control), and do not use a dropdown. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"tgroup"}),
+    C("btn-toolbar","button","图标工具栏","Toolbar","Action toolbar","编辑器一排图标。","Build a single icon Toolbar. Structure: a horizontal row of icon buttons: Undo, Redo, Bold, Italic, a separator, then Link. Interaction: each icon is clickable; tooltips on hover. States: default, hover, disabled (e.g. Undo when empty). Do not wrap into a dropdown, and do not use huge primary buttons. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"toolbar"}),
+    C("btn-kebab","button","更多按钮","Overflow Button","Kebab Menu","竖三点溢出操作。","Build a single Overflow / Kebab button. Structure: a vertical three-dots icon button. Interaction: click opens a menu with Edit, Duplicate, Delete; click outside or Escape closes. States: default, hover, open. Do not use a horizontal ellipsis (meatball), and do not use a labeled Actions dropdown as the only trigger. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"kebab"}),
+    C("btn-meatball","button","肉丸菜单","Meatball Menu","Horizontal ellipsis","横三点更多。","Build a single Meatball Menu button. Structure: a horizontal three-dots icon button. Interaction: click opens the same kind of overflow menu (Edit, Duplicate, Delete). States: default, hover, open. Do not use vertical kebab dots, and do not place it as a FAB. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"meatball"}),
+    C("btn-speed","button","快速操作菜单","Speed Dial","FAB speed dial","浮动按钮展开多个操作。","Build a single Speed Dial. Structure: a FAB in the corner; on click it fans out 2–3 smaller circular actions (file, image, note) with labels. Interaction: click FAB to expand/collapse; click an action then collapse. States: collapsed, expanded, hover. Motion: 180ms fan-out. Do not keep all actions visible at rest, and do not use a flat dropdown list instead of radial/stacked FABs. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","button",{kind:"speed"})
+  );
+  add(
+    C("in-text","input","单行输入","Text Input","Text Field","短文本。","Build a single labeled Text Input, not a form page. Structure: label Name, one-line field, placeholder Jane Doe, helper text optional. Interaction: type freely; focus-visible ring. States: default, hover, focus, error (red border plus message), disabled. Do not use a textarea, search icon, or masked pattern. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","input",{kind:"text"}),
+    C("in-area","input","多行输入","Textarea","Multiline Text Field","长文本。","Build a single Textarea, not a rich editor. Structure: label Notes, fixed height about 4–6 lines, placeholder Add a note, no live markdown preview. Interaction: type multiline; no resize handle required. States: default, focus, error, disabled. Do not use a WYSIWYG toolbar or auto-grow unless asked. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","input",{kind:"textarea"}),
+    C("in-search","input","搜索框","Search Field","Search Input","过滤列表或全局搜索。","Build a single Search Field. Structure: leading search icon, input, trailing clear button when not empty. Placeholder Search. Interaction: type to filter; Escape or clear empties the field. States: empty, typing, focus, cleared. Do not use a standalone combobox menu as the only UI, and do not omit the clear control. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","input",{kind:"search"}),
+    C("in-pass","input","密码输入","Password Field","Password Input","敏感输入，可显隐。","Build a single Password Field. Structure: label Password, masked input, trailing visibility toggle (show/hide). Interaction: toggle reveals plaintext; autocomplete off. States: masked, visible, focus, error. Do not use a plain text input, and do not add a strength meter unless asked. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","input",{kind:"password"}),
+    C("in-num","input","数字输入","Number Input","Numeric field","直接键入数字。","Build a single Number Input. Structure: label Quantity, field that accepts numeric values (integers). Interaction: type digits; invalid keys ignored. States: default, focus, error. Do not add stepper arrows (that is Spinbutton), and do not use a slider. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","input",{kind:"number"}),
+    C("in-spin","input","步进数字","Spinbutton","Numeric Stepper","带增减按钮的数值。","Build a single Spinbutton. Structure: numeric value with increment and decrement buttons, label Quantity, default 1. Interaction: click plus/minus or type a number; clamp to a min/max. States: default, focus, disabled, at-min/at-max. Do not use a slider or a plain number field without buttons. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","input",{kind:"spin"}),
+    C("sel-single","select","下拉单选","Select","Dropdown Select","固定选项里选一个，不能自由输入。","Build a single Select dropdown. Structure: closed field showing one value (Apple); click opens a list of fruits; cannot type a custom value. Interaction: click option to select and close; Escape closes. States: closed, open, selected, disabled. Do not allow free text (combobox) or multi chips. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","select",{kind:"single"}),
+    C("sel-multi","select","下拉多选","Multi-select","Multiselect","已选项以可删 Chip 出现在框内。","Build a single Multi-select. Structure: field contains removable chips for selected values plus a dropdown of remaining options. Default two selected. Interaction: click to add; chip X removes. States: empty, filled, open. Do not use a single-value select, and do not use a tag input that creates tokens from free text. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","select",{kind:"multi"}),
+    C("sel-combo","select","组合框","Combobox","Searchable select","可输入、过滤、选已有项。不是 Select。","Build a single Combobox (searchable select), not a plain Select. Structure: field you can type in; list filters to matching existing options (cities). Interaction: type to filter; pick an option; do not invent values outside the list. States: idle, filtering, open, selected. Do not use a closed-only select, and do not treat it as autocomplete that keeps arbitrary text as the value. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","select",{kind:"combo"}),
+    C("sel-auto","select","自动完成","Autocomplete","Autosuggest","输入时出建议，核心仍是文本框。","Build a single Autocomplete text field. Structure: a normal text input; suggestions appear while typing (e.g. emails) but the typed string remains the value even if none is chosen. Interaction: pick a suggestion to fill, or keep custom text. Do not force picking from a closed list (that is Select/Combobox). If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","select",{kind:"auto"}),
+    C("sel-cascader","select","级联选择","Cascader","Hierarchical select","省市区这类层级路径。","Build a single Cascader for hierarchical paths. Structure: click to open columns or nested menus for Region / City / District (e.g. Zhejiang, Hangzhou, Xihu). The field shows the full path. Interaction: pick level by level; confirm completes the path. Do not use a flat select or a tree-select with checkboxes. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","select",{kind:"cascader"}),
+    C("sel-tree","select","树选择","Tree Select","Tree dropdown","层级多选或单选。","Build a single Tree Select. Structure: a searchable dropdown whose options are an expandable tree (folders/files); single or multi via checks. Interaction: expand nodes, pick a leaf or node; field shows the chosen name. Do not use a cascader column UI or a full-page tree view. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","select",{kind:"tree"}),
+    C("ck-box","selection","复选框","Checkbox","Multi-select boxes","多项独立勾选。","Build a Checkbox group. Structure: three independent options (Email, SMS, Push) each with a square checkbox and label. Interaction: toggle any combination. States: unchecked, checked, disabled. Do not use radios (exclusive) or a switch. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","checks",{kind:"check"}),
+    C("ck-radio","selection","单选组","Radio Group","Radios","一组里最多选一个。","Build a Radio Group. Structure: three radios Size S/M/L, only one selected. Interaction: picking one deselects others. Do not use checkboxes or a segmented control. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","checks",{kind:"radio"}),
+    C("ck-switch","selection","开关","Switch","Toggle Switch","开/关二元状态，不要用 Radio 代替。","Build a single Switch for binary on/off. Structure: a sliding thumb on a track, label Notifications, default on. Interaction: click/drag toggles. States: on, off, disabled. Motion: 150ms thumb travel. Do not use a radio pair or a checkbox square. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","checks",{kind:"switch"}),
+    C("ck-tri","selection","三态复选框","Tri-state Checkbox","Indeterminate Checkbox","全选、部分选、未选。","Build a Tri-state Checkbox. Structure: a parent Select all with children Option A/B/C. Parent is unchecked, checked, or indeterminate (partial). Interaction: toggle children updates parent; click parent selects/clears all. Do not use only two states. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","checks",{kind:"tri"}),
+    C("sl-h","slider","数值滑块","Slider","Range Input","连续范围内选一个值。","Build a single horizontal Slider. Structure: a track 0–100, one thumb, value label. Interaction: drag thumb or click track. States: default, dragging, disabled. Do not use two thumbs or tick-only steps. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","slider",{kind:"single"}),
+    C("sl-range","slider","范围滑块","Range Slider","Multi-thumb Slider","选最小和最大两个值。","Build a Range Slider with two thumbs. Structure: min and max on one track (e.g. 20–80), both values visible. Interaction: drag each thumb; they cannot cross. Do not use a single-value slider. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","slider",{kind:"range"}),
+    C("sl-v","slider","垂直滑块","Vertical Slider","Vertical range","音量等纵向场景。","Build a Vertical Slider. Structure: a tall track (volume-like) with one thumb. Interaction: drag vertically. Do not use a horizontal slider. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","slider",{kind:"vertical"}),
+    C("sl-step","slider","步进滑块","Stepped Slider","Discrete Slider","只能落在刻度上。","Build a Stepped / discrete Slider. Structure: a track with visible tick marks (e.g. 0, 25, 50, 75, 100); the thumb snaps to ticks only. Interaction: drag snaps. Do not allow free continuous values. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","slider",{kind:"stepped"})
+  );
+
+  add(
+    C("dt-date","datetime","日期选择器","Date Picker","Date field","选一天。","Build a Date Picker. Structure: a field showing YYYY-MM-DD; click opens a calendar popover to pick one day. Interaction: pick a date closes the popover; today highlighted. Do not pick a range or time of day. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","date",{kind:"date"}),
+    C("dt-range","datetime","日期范围","Date Range Picker","Range dates","开始日到结束日。","Build a Date Range Picker. Structure: two linked fields Start and End plus a calendar that can select a start then an end. Interaction: choosing the second date completes the range. Do not use a single-day picker. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","date",{kind:"range"}),
+    C("dt-time","datetime","时间选择","Time Picker","Time field","选时分。","Build a Time Picker. Structure: field HH:MM with hour and minute controls (spinners or lists). Interaction: change hours and minutes, confirm. Do not include a calendar. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","date",{kind:"time"}),
+    C("dt-dt","datetime","日期时间","DateTime Picker","Date and time","日期加时间。","Build a DateTime Picker. Structure: one control combining a calendar date and a time (HH:MM). Interaction: set both then confirm. Do not split into unrelated widgets with no shared value. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","date",{kind:"datetime"}),
+    C("dt-cal","datetime","日历","Calendar","Month calendar","月视图点选。","Build an inline Calendar month view, not a popover field. Structure: month grid with weekday headers; click a day to select it in place. Interaction: prev/next month. Do not hide the grid behind a text field. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","date",{kind:"calendar"}),
+    C("dt-week","datetime","周选择","Week Picker","Week field","选一整周。","Build a Week Picker that selects a full ISO week. Structure: field like 2026-W35; picking any day in the calendar highlights the whole week. Do not select a single day only. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","date",{kind:"week"}),
+    C("dt-month","datetime","月选择","Month Picker","Month field","选年月。","Build a Month Picker. Structure: year-month grid or list (2026-08). Interaction: pick month, optional year switcher. Do not show a full day grid as the primary UI. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","date",{kind:"month"}),
+    C("dt-year","datetime","年选择","Year Picker","Year field","选年份。","Build a Year Picker. Structure: a grid of years; click one year. Interaction: page of years with prev/next. Do not require picking month/day. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","date",{kind:"year"}),
+    C("sp-otp","special","验证码输入","OTP Input","PIN Input","分格输入，自动跳格。","Build a six-digit OTP Input. Structure: six separate single-character boxes. Interaction: type a digit advances focus; backspace goes back; paste fills all. States: empty, filled, error. Do not use one normal text field. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","otp",{}),
+    C("sp-tag","special","标签输入","Tag Input","Token field","回车生成标签。","Build a Tag Input. Structure: a field where Enter creates a token from typed text (e.g. design, ui). Interaction: Enter adds; X on token removes. Do not use a closed multi-select list only. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","chips",{}),
+    C("sp-chip","special","芯片输入","Chip Input","Chips input","以 Chip 展示已输入项。","Build a Chip Input where values render as removable chips inside the field (same family as tag input, chip-forward). Structure: chips plus a trailing caret to type the next value. Do not use static category tags that cannot be removed. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","chips",{}),
+    C("sp-mentions","special","提及输入","Mentions Input","At-mention","输入 @ 出人列表。","Build a Mentions Input. Structure: a text field; typing @ opens a people list (Ada, Linus) to insert a mention token. Interaction: pick a person inserts @name. Do not use a generic autocomplete without the @ trigger. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","mentions",{}),
+    C("sp-rte","special","富文本编辑器","Rich Text Editor","WYSIWYG Editor","所见即所得排版。","Build a compact Rich Text Editor (WYSIWYG). Structure: toolbar Bold, Italic, Lists plus a contenteditable area with sample sentence. Interaction: toggling toolbar formats the selection. Do not use a markdown-only textarea. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","editor",{kind:"rte"}),
+    C("sp-md","special","Markdown 编辑器","Markdown Editor","MD editor","写 Markdown。","Build a Markdown Editor with a preview toggle. Structure: textarea of markdown and a Preview control that shows rendered bold/heading. Interaction: toggle edit/preview. Do not use a full WYSIWYG toolbar as the only mode. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","editor",{kind:"md"}),
+    C("sp-code","special","代码编辑器","Code Editor","Code textarea","编辑代码。","Build a compact Code Editor. Structure: monospace area with a few lines of code, line-oriented caret. Interaction: type/edit code. Do not render as a read-only highlighted block. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","editor",{kind:"code"}),
+    C("sp-inline","special","行内编辑","Inline Edit","Click-to-edit","点文字即编辑。","Build Inline Edit. Structure: a text value (Project name); click turns it into an input; blur or Enter saves. Interaction: click-to-edit. States: read, editing. Do not use a permanently visible input. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","inline",{}),
+    C("sp-mask","special","遮罩输入","Masked Input","Input mask","格式锁定。","Build a Masked Input with a visible pattern. Structure: label Code, pattern like 000-000 shown while typing. Interaction: only allowed characters fill slots. Do not use an unconstrained text field. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","masked",{kind:"mask"}),
+    C("sp-phone","special","电话输入","Phone Input","Tel field","区号加号码。","Build a Phone Input. Structure: country code prefix plus grouped national number. Interaction: digits group as typed. Do not use a generic text field with no grouping. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","masked",{kind:"phone"}),
+    C("sp-cur","special","金额输入","Currency Input","Money field","货币符号与小数。","Build a Currency Input. Structure: leading currency symbol, decimal value (e.g. 12.00). Interaction: numeric entry with two decimals. Do not use a plain number without the symbol. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","masked",{kind:"currency"}),
+    C("sp-url","special","URL 输入","URL Input","Link field","网址。","Build a URL Input. Structure: field with protocol hint (https://) and validation state. Interaction: invalid URL shows error. Do not use an unvalidated text field. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","masked",{kind:"url"}),
+    C("sp-color","special","颜色选择器","Color Picker","Swatch picker","选颜色。","Build a Color Picker. Structure: a swatch plus hex value; click opens a simple palette or native color. Interaction: picking updates swatch and hex. Do not use text-only without a swatch. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","color",{}),
+    C("sp-rating","special","星级评分","Rating Control","Star rating","1 到 5 分。","Build a star Rating Control 1–5. Structure: five stars. Interaction: hover previews, click sets value. States: 0–5. Do not use a numeric slider as the only UI. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","rating",{}),
+    C("up-file","upload","文件选择","File Input","Choose file","系统文件框。","Build a native-style File Input. Structure: Choose file control that selects one file and shows the filename. Interaction: click opens picker (or mock a name). Do not use a large dropzone. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","file",{kind:"input"}),
+    C("up-btn","upload","上传按钮","Upload Button","Upload CTA","按钮触发选择。","Build an Upload Button. Structure: a button Upload that triggers the file picker and then shows the chosen name. Do not use a hidden unlabeled native input as the only visible UI. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","file",{kind:"button"}),
+    C("up-drop","upload","拖放上传区","Dropzone","Drag-and-drop Uploader","大虚线区域拖文件。","Build a Dropzone. Structure: a large dashed area Drop files here. Interaction: click or drag-over highlight; drop accepts a file name. States: idle, dragging, has-file. Do not use a tiny file button only. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","file",{kind:"drop"}),
+    C("up-list","upload","上传列表","Upload List","File Queue","显示进度与完成。","Build an Upload List / queue. Structure: rows with filename, progress bar, and complete/error. Interaction: at least one row animates progress to done. Do not show only a dropzone with no list. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","file",{kind:"list"})
+  );
+  add(
+    C("mn-drop","menu","下拉菜单","Dropdown Menu","Action menu","按钮下展开操作。","Use a dropdown menu anchored to an actions button.","menu",{kind:"dropdown"}),
+    C("mn-ctx","menu","上下文菜单","Context Menu","Right-click menu","右键出现。","Use a context menu on right-click with copy rename and delete.","menu",{kind:"context"}),
+    C("mn-bar","menu","菜单栏","Menubar","Application menu","File Edit View Help。","Use a menubar with File Edit View Help and nested menus.","menu",{kind:"bar"}),
+    C("mn-nav","menu","导航菜单","Navigation Menu","Nav dropdown","站点主导航下拉。","Use a navigation menu with section dropdowns.","menu",{kind:"nav"}),
+    C("mn-mega","menu","巨型导航菜单","Mega Menu","Mega nav","大站多列导航。","Use a mega menu with grouped product columns.","menu",{kind:"mega"}),
+    C("mn-overflow","menu","溢出菜单","Overflow Menu","Kebab Menu","空间不够时收进更多。","Use an overflow menu triggered by a kebab icon.","menu",{kind:"overflow"}),
+    C("nv-bc","nav","面包屑","Breadcrumb","Breadcrumbs","显示层级位置。","Use breadcrumbs for hierarchical location.","nav",{kind:"crumb"}),
+    C("nv-page","nav","分页","Pagination","Pager","翻页浏览。","Use pagination with page numbers and previous/next controls.","nav",{kind:"page"}),
+    C("nv-side","nav","侧边导航","Sidebar Navigation","Side Navigation","后台主导航。","Use a sidebar navigation with Dashboard Projects Analytics Settings.","nav",{kind:"side"}),
+    C("nv-rail","nav","导航轨","Navigation Rail","Narrow rail","比侧栏更窄的图标轨。","Use a compact navigation rail with icon destinations.","nav",{kind:"rail"}),
+    C("nv-bottom","nav","底部导航","Bottom Navigation","Tab bar","移动端主入口。","Use bottom navigation with Home Search Create and Profile.","nav",{kind:"bottom"}),
+    C("nv-top","nav","顶部导航","Top Navigation","Navbar","站点顶栏。","Use a top navigation bar with logo, links and a login action.","nav",{kind:"top"}),
+    C("nv-anchor","nav","锚点导航","Anchor Navigation","In-page Navigation","点击滚动到页内章节。","Use in-page anchor navigation that scrolls between sections.","nav",{kind:"anchor"})
+  );
+
+  add(
+    C("cd-basic","card","基础卡片","Card","Basic Card","内容分组容器。","Use a basic card with title and body.","card",{kind:"basic"}),
+    C("cd-elev","card","悬浮卡片","Elevated Card","Shadow card","带一点阴影抬起。","Use elevated cards with subtle shadows and rounded corners.","card",{kind:"elevated"}),
+    C("cd-out","card","描边卡片","Outlined Card","Bordered card","靠描边分层。","Use an outlined card with a 1px border and no shadow.","card",{kind:"outlined"}),
+    C("cd-int","card","可点击卡片","Interactive Card","Clickable Card","整卡可点。","Use an interactive clickable card with hover and pressed states.","card",{kind:"interactive"}),
+    C("cd-sel","card","可选中卡片","Selectable Card","Choice card","套餐选择等。","Use a selectable card with a selected treatment.","card",{kind:"selectable"}),
+    C("cd-metric","card","指标卡片","Metric Card","Stat Card","关键数字和涨跌。","Use a metric / stat card with value, label and delta.","card",{kind:"metric"}),
+    C("cd-media","card","媒体卡片","Media Card","Image card","上图下文。","Use a media card with image on top and text below.","card",{kind:"media"}),
+    C("cd-h","card","横向卡片","Horizontal Card","Split card","左右布局。","Use a horizontal card with media on the left and content on the right.","card",{kind:"horizontal"}),
+    C("cd-dash","card","仪表卡片","Dashboard Card","Widget Card","仪表盘小部件。","Use a dashboard widget card with a title and metric.","card",{kind:"dashboard"}),
+    C("da-table","data","表格","Table","Static table","静态数据表。","Use a static table for read-only tabular data.","table",{kind:"table"}),
+    C("da-dt","data","数据表","Data Table","Sortable table","可排序筛选的业务表。","Use a data table with sortable headers.","table",{kind:"datatable"}),
+    C("da-grid","data","数据网格","Data Grid","Interactive grid","键盘导航、单元格交互。不是静态 Table。","Use an interactive data grid with cell focus.","table",{kind:"grid"}),
+    C("da-edit","data","可编辑表格","Editable Table","Spreadsheet table","单元格内编辑。","Use an editable table where cells become inputs on click.","table",{kind:"edit"}),
+    C("da-exp","data","展开表格","Expandable Table","Row expand table","行可展开详情。","Use an expandable table with nested row details.","table",{kind:"expand"}),
+    C("da-tt","data","树形表格","Tree Table","Treegrid table","行可展开子行。","Use a tree table with expandable hierarchical rows.","table",{kind:"treetable"}),
+    C("da-list","data","列表","List","Action list","线性条目。","Use a simple selectable list.","list",{kind:"list"}),
+    C("da-struct","data","结构列表","Structured List","Definition-style list","带固定栏位的列表。","Use a structured list with consistent columns per row.","list",{kind:"structured"}),
+    C("da-tree","data","树","Tree View","Tree","文件夹式层级。","Use a tree view with expand/collapse disclosure.","tree",{}),
+    C("da-dl","data","描述列表","Description List","Key-value list","字段名加值。","Use a description list for label-value pairs.","list",{kind:"desc"}),
+    C("da-time","data","时间线","Timeline","Activity timeline","事件按时间排列。","Use a vertical timeline of events.","timeline",{}),
+    C("da-kanban","data","看板","Kanban Board","Board","列中拖卡片。","Use a kanban board with draggable cards across columns.","kanban",{}),
+    C("da-gantt","data","甘特图","Gantt Chart","Timeline bars","工期条。","Use a compact gantt chart with time bars.","gantt",{}),
+    C("da-sched","data","日程表","Scheduler","Resource calendar","资源乘时间。","Use a scheduler with hours as columns.","scheduler",{}),
+    C("da-calv","data","日历视图","Calendar View","Month agenda","月历展示事件。","Use a calendar view with events on dates.","date",{kind:"calview"}),
+    C("da-mas","data","瀑布流","Masonry Grid","Uneven grid","不等高图片流。","Use a masonry grid of uneven image tiles.","masonry",{}),
+    C("da-car","data","图片轮播","Carousel","Slideshow","水平轮播。","Use a carousel with previous/next controls.","carousel",{}),
+    C("da-gal","data","图片画廊","Gallery","Image gallery","点击切换大图。","Use a gallery grid that selects a featured image.","gallery",{})
+  );
+  add(
+    C("tg-badge","tag","徽章","Badge","Count badge","数字或状态点，常挂在图标上。","Use a numeric badge on a host control, not as a category tag.","tags",{kind:"badge"}),
+    C("tg-tag","tag","类别标签","Tag","Category tag","表示类别，通常不可点删。","Use a tag to represent a category.","tags",{kind:"tag"}),
+    C("tg-chip","tag","芯片","Chip","Dismissible chip","可交互、常可关闭。不是 Tag。","Use a chip that can be dismissed.","tags",{kind:"chip"}),
+    C("tg-filter","tag","筛选芯片","Filter Chip","Choice chip","筛选条件开关。","Use filter chips with a selected check treatment.","tags",{kind:"filter"}),
+    C("tg-status","tag","状态徽章","Status Badge","Presence badge","运行中等状态。","Use a status badge with a color dot and short label.","tags",{kind:"status"}),
+    C("tg-loz","tag","胶囊状态","Lozenge","Compact status tag","紧凑状态文字。","Use a lozenge for compact status text such as IN PROGRESS.","tags",{kind:"lozenge"}),
+    C("ac-acc","accordion","手风琴","Accordion","Disclosure group","多个垂直折叠项。","Use an accordion of stacked disclosures.","accordion",{kind:"acc"}),
+    C("ac-col","accordion","可折叠块","Collapsible","Collapse panel","单个展开收起区。","Use a single collapsible section for advanced settings.","accordion",{kind:"col"}),
+    C("ac-dis","accordion","显隐控件","Disclosure","Show-hide control","接近 Collapsible 的独立模式。","Use a disclosure / show-hide control with a chevron.","accordion",{kind:"dis"}),
+    C("ov-tip","overlay","工具提示","Tooltip","Hint","短说明，不能放复杂交互。","Build a single Tooltip. Structure: a short trigger labeled Name and a tiny floating label with one line of help (Display name shown on invoices). Visual: dark or inverse small chip, no buttons inside. Interaction: show on hover and keyboard focus, hide on blur/leave; delay about 200ms. States: hidden, visible. Do not put forms or actions inside, and do not use a popover or modal. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","overlay",{kind:"tooltip"}),
+    C("ov-pop","overlay","气泡卡片","Popover","Rich popover","可含按钮和表单。","Build a single Popover that can hold actions, not just text. Structure: a trigger button Share; the floating panel contains a short title, a compact field or two actions (Copy link, Embed). Interaction: click trigger to toggle; click outside or Escape closes; focus stays in the panel while open. States: closed, open. Do not auto-open on hover only, do not dim the whole page like a modal, and do not limit content to one tooltip sentence. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","overlay",{kind:"popover"}),
+    C("ov-hover","overlay","悬停卡片","Hover Card","Preview card","悬停预览资料。","Build a single Hover Card that previews a person. Structure: a text trigger (Ada Lovelace); on hover a card appears with name, role, and one action (Message). Interaction: open on hover with a short delay; keep open while moving into the card; close when leaving both. States: hidden, visible. Do not require a click to open, do not use a blocking modal, and do not use a one-line tooltip. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","overlay",{kind:"hover"}),
+    C("ov-modal","overlay","对话框","Modal","Dialog","阻断式编辑或确认。","Build a single Modal Dialog. Structure: a dimmed overlay, a centered panel with title Edit project, body text or a simple field, primary Save and secondary Cancel, plus a close control. Interaction: open from a trigger; trap focus inside; Escape and overlay click close; Cancel/Save close. States: closed, open. Motion: overlay fade, panel ~180ms. Do not use a side drawer, and do not open without a scrim. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","overlay",{kind:"modal"}),
+    C("ov-alert","overlay","警告对话框","Alert Dialog","Confirm dialog","必须回应才能继续。","Build a single Alert Dialog that must be answered. Structure: overlay plus panel titled Delete file?, short warning copy, danger Confirm and Cancel. Interaction: open from Delete; the rest of the UI is inert; Escape may cancel; there is no click-away-to-dismiss, or overlay click maps to Cancel only. States: closed, open. Do not include extra form fields, and do not use a non-blocking toast. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","overlay",{kind:"alert"}),
+    C("ov-popc","overlay","气泡确认","Popconfirm","Confirmation Popover","删除前的小确认。","Build a single Popconfirm anchored to a dangerous action. Structure: a Delete text/button; beside it a small bubble with Confirm deletion? plus Yes and No. Interaction: click Delete to open the bubble; Yes/No or outside click closes; no full-screen dim. States: closed, open. Do not use a centered modal, and do not use a tooltip-only sentence without buttons. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","overlay",{kind:"popconfirm"}),
+    C("ov-drawer","overlay","抽屉","Drawer","Side panel","从边缘滑入的面板。","Build a single right-side Drawer. Structure: a trigger Open; a fixed-width panel slides from the right over a dim overlay, with title Details, body content, and close. Interaction: open/close; Escape and overlay click close; focus in the drawer. Motion: panel slides ~200ms. Do not center a modal, do not rise from the bottom (bottom sheet), and do not use a persistent sidebar that never overlays. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","overlay",{kind:"drawer"}),
+    C("ov-sheet","overlay","滑入面板","Sheet","Edge sheet","从边缘滑入。","Build a single edge Sheet (not a modal, not a bottom sheet). Structure: a panel that slides in from the right or left edge with title Filters and a few controls, optional overlay. Interaction: open from a trigger, close via close control or Escape. Motion: edge slide ~200ms. Do not center the panel, and do not attach it to the bottom of the screen. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","overlay",{kind:"sheet"}),
+    C("ov-bs","overlay","底部弹层","Bottom Sheet","Action sheet","从底部升起。","Build a single Bottom Sheet. Structure: a panel that rises from the bottom with a grab handle, title Actions, and stacked actions (Share, Copy, Delete). Interaction: open from a trigger; close by swipe down, overlay click, or a cancel row. Motion: ~200ms rise. Do not slide from the side (drawer), and do not center a desktop modal. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.","overlay",{kind:"bottom"})
+  );
+  add(
+    C("fb-alert","feedback","警告条","Alert","Page alert","块级结果提示。","Use an alert with an icon and short warning copy.","feedback",{kind:"alert"}),
+    C("fb-inline","feedback","行内提示","Inline Alert","Inline Message","嵌在表单字段旁。","Use an inline message next to the related field.","feedback",{kind:"inline"}),
+    C("fb-banner","feedback","横幅","Banner","System banner","跨页宽系统通知。","Use a full-width banner for system maintenance messaging.","feedback",{kind:"banner"}),
+    C("fb-toast","feedback","轻提示","Toast","Timed toast","短暂出现，弱打断。","Use a toast in the corner that auto-dismisses.","feedback",{kind:"toast"}),
+    C("fb-snack","feedback","快餐条","Snackbar","Undo bar","可带一个操作如撤销。","Use a snackbar with a single action such as Undo.","feedback",{kind:"snack"}),
+    C("fb-note","feedback","通知卡片","Notification","Notification item","比 Toast 信息更多。","Use a notification card with title and body.","feedback",{kind:"note"}),
+    C("ld-spin","loading","旋转加载","Spinner","Loading spinner","不知道结构时的等待。","Use a spinner for indeterminate short waits.","loading",{kind:"spin"}),
+    C("ld-skel","loading","骨架屏","Skeleton Loader","Placeholder skeleton","先占位内容结构。","Use skeleton placeholders matching the final layout.","loading",{kind:"skel"}),
+    C("ld-shim","loading","微光加载","Shimmer Loading","Shimmer skeleton","骨架上有流动高光。","Use shimmer loading with a moving highlight.","loading",{kind:"shim"}),
+    C("ld-bar","loading","进度条","Progress Bar","Linear progress","线性进度。","Use a labeled progress bar showing percent complete.","loading",{kind:"bar"}),
+    C("ld-circ","loading","环形进度","Circular Progress","Donut progress","环形百分比。","Use circular progress with a percent label.","loading",{kind:"circ"}),
+    C("ld-indet","loading","不确定进度","Indeterminate Progress","Unknown progress","不知还要多久。","Use an indeterminate progress animation when percent is unknown.","loading",{kind:"indet"}),
+    C("ld-det","loading","确定进度","Determinate Progress","Percent progress","已知百分比。","Use determinate progress bound to a known percentage.","loading",{kind:"det"}),
+    C("em-empty","empty","空状态","Empty State","Zero data","还没有数据，给下一步。","Use an empty state with explanation and a create action.","empty",{kind:"empty"}),
+    C("em-err","empty","错误状态","Error State","Load error","加载失败可重试。","Use an error state with retry.","empty",{kind:"error"}),
+    C("em-ok","empty","成功结果","Success Result","Result page","流程完成页。","Use a success result page with a confirmation and next step.","empty",{kind:"ok"}),
+    C("em-404","empty","异常页面","Error Page","404 / 500","整页错误。","Use an exception page for 404 or 500.","empty",{kind:"404"})
+  );
+  add(
+    C("ly-res","layout","可调整面板","Resizable Panels","Resize panes","拖分隔条改宽度。","Use resizable panels with a draggable gutter.","layout",{kind:"resize"}),
+    C("ly-split","layout","分栏","Split Pane","Split View","左右或上下分屏。","Use a split pane / split view for tree and editor.","layout",{kind:"split"}),
+    C("ly-splitr","layout","窗口分隔条","Window Splitter","Splitter","专门指可拖分隔线。","Use a window splitter pattern with a keyboard-accessible gutter.","layout",{kind:"splitter"}),
+    C("ly-drag","layout","可拖列表","Draggable List","Sortable List","手柄拖排序。","Use a draggable sortable list with drag handles.","layout",{kind:"drag"}),
+    C("ly-reo","layout","可重排列表","Reorderable List","Reorder list","顺序可改。","Use a reorderable list with up/down or drag.","layout",{kind:"reorder"}),
+    C("ly-rss","layout","可调整侧栏","Resizable Sidebar","Resize nav","侧栏宽度可拖。","Use a resizable sidebar with a drag edge.","layout",{kind:"sidebar"}),
+    C("ai-md","saas","主从布局","Master-detail Layout","List-detail","左列表右详情。","Use a master-detail layout with a selectable list and a detail pane.","saas",{kind:"master"}),
+    C("ai-ins","saas","属性编辑栏","Inspector Panel","Property Panel","选中对象的属性。","Use an inspector / property panel with collapsible sections.","saas",{kind:"inspector"}),
+    C("ai-fb","saas","筛选栏","Filter Bar","Toolbar filters","一排筛选控件。","Use a filter bar of compact controls above a table.","saas",{kind:"filterbar"}),
+    C("ai-facet","saas","多条件筛选","Faceted Filter","Facet filters","多面筛选。","Use faceted filters with counts per facet.","saas",{kind:"facet"}),
+    C("ai-qb","saas","查询构建器","Query Builder","Advanced query","组合条件查询。","Use a query builder with field operator value rows.","saas",{kind:"query"}),
+    C("ai-pal","saas","命令面板","Command Palette","Cmd+K palette","模糊搜命令。","Add a Cmd+K command palette with fuzzy search, keyboard navigation and grouped commands.","saas",{kind:"palette"}),
+    C("ai-cmd","saas","命令菜单","Command Menu","Command dialog","偏菜单分组的命令窗。","Use a command menu dialog grouped by category.","saas",{kind:"cmdmenu"}),
+    C("ai-chat","saas","聊天输入框","Chat Composer","Chat input","对话底部输入。","Use a chat composer with send.","saas",{kind:"chat"}),
+    C("ai-bub","saas","消息气泡","Message Bubble","Chat bubble","对话气泡。","Use message bubbles for assistant and user turns.","saas",{kind:"bubble"}),
+    C("ai-conv","saas","对话列表","Conversation List","Thread list","历史会话。","Use a conversation list with title and timestamp.","saas",{kind:"conv"}),
+    C("ai-pr","saas","Prompt 输入","Prompt Composer","Prompt box","给模型的主输入。","Use a prompt composer with a large field and send.","saas",{kind:"prompt"}),
+    C("ai-ag","saas","Agent 状态","Agent Status Indicator","Agent state","运行、等待、出错。","Use an agent status indicator with Running Thinking and Idle.","saas",{kind:"agent"}),
+    C("ai-tool","saas","工具调用卡","Tool Call Card","Function call card","展示工具名与参数。","Use a tool call card showing tool name and compact arguments.","saas",{kind:"tool"}),
+    C("ai-think","saas","思考过程","Thinking Panel","Reasoning panel","可展开的推理过程。","Use a collapsible reasoning / thinking panel.","saas",{kind:"think"}),
+    C("ai-term","saas","终端面板","Terminal Panel","Console","命令输出。","Use a terminal panel with monospace output.","saas",{kind:"term"}),
+    C("ai-diff","saas","差异对比","Diff Viewer","Code diff","加减行对比。","Use a diff viewer with added and removed lines.","saas",{kind:"diff"}),
+    C("ai-ft","saas","文件树","File Tree","Explorer Tree","项目文件。","Use a file tree / explorer tree.","tree",{}),
+    C("ai-json","saas","JSON 树","JSON Tree Viewer","JSON explorer","可展开 JSON。","Use a JSON tree viewer with expandable keys.","tree",{}),
+    C("ai-log","saas","日志查看","Log Viewer","Logs","可滚日志。","Use a log viewer with timestamp and level.","saas",{kind:"log"}),
+    C("ai-mdv","saas","Markdown 预览","Markdown Preview","MD preview","渲染 Markdown。","Use a markdown preview pane.","saas",{kind:"md"}),
+    C("ai-cb","saas","代码块","Code Block","Fenced code","展示代码。","Use a code block with language label.","saas",{kind:"codeblock"}),
+    C("ai-snip","saas","可复制代码","Code Snippet","Copyable snippet","带复制。","Use a code snippet with a copy button.","saas",{kind:"snip"}),
+    C("ai-sug","saas","输入建议","Prompt Suggestions","Suggestion Chips","点芯片填 Prompt。","Use suggestion chips that fill the composer.","saas",{kind:"suggest"}),
+    C("ai-cite","saas","引用芯片","Citation Chip","Source Card","引用源。","Use citation chips / source cards linking to evidence.","saas",{kind:"cite"}),
+    C("tr-view","tree","树视图","Tree View","ARIA tree","通用层级树。","Use a tree view with expand and collapse.","tree",{}),
+    C("tr-file","tree","文件树","File Tree","File Explorer","文件资源管理。","Use a file explorer tree.","tree",{}),
+    C("tr-grid","tree","树网格","Treegrid","Hierarchical grid","树加表头列。","Build a treegrid with name and size columns and expandable rows.","table",{kind:"treegrid"}),
+    C("mb-pull","mobile","下拉刷新","Pull-to-refresh","PTR","列表下拉刷新。","Use pull-to-refresh on a mobile list.","mobile",{kind:"pull"}),
+    C("mb-swipe","mobile","左滑操作","Swipe Actions","Swipe row","左滑出删除。","Use swipe actions revealing Delete behind a row.","mobile",{kind:"swipe"}),
+    C("mb-long","mobile","长按菜单","Long-press Context Menu","Press menu","长按出菜单。","Use a long-press context menu on a list item.","mobile",{kind:"long"}),
+    C("mb-dots","mobile","页面指示点","Page Indicator","Pagination Dots","轮播页点。","Use pagination dots for paged cards.","mobile",{kind:"dots"}),
+    C("mb-cards","mobile","滑动卡片","Swipeable Cards","Card stack","卡片可滑走。","Use swipeable cards with left/right actions.","mobile",{kind:"cards"}),
+    C("mb-safe","mobile","安全区域","Safe Area","Inset padding","避开刘海与底部横条。","Use safe-area padding for notch and home indicator.","mobile",{kind:"safe"}),
+    C("mb-nav","mobile","顶部导航栏","Navigation Bar","Mobile nav bar","移动端顶栏。","Use a mobile navigation bar with back title and action.","mobile",{kind:"navbar"}),
+    C("mb-lg","mobile","大标题导航","Large-title Navigation Bar","Large title","滚动时可收成小标题。","Use a large-title navigation bar that compacts on scroll.","mobile",{kind:"large"}),
+    C("dk-3","desktop","三栏布局","Three-pane Layout","IDE layout","侧栏、编辑器、检查器。","Use a three-pane layout: sidebar, editor and inspector.","desktop",{kind:"three"}),
+    C("dk-act","desktop","活动栏","Activity Bar","Icon rail","最左侧图标栏。","Use an activity bar of icon destinations.","desktop",{kind:"activity"}),
+    C("dk-exp","desktop","资源管理面板","Explorer Panel","Side explorer","文件或图层列表。","Use an explorer panel listing files.","desktop",{kind:"explorer"}),
+    C("dk-et","desktop","编辑器标签","Editor Tabs","Open editors","打开文件的页签。","Use editor tabs for open documents.","desktop",{kind:"edtabs"}),
+    C("dk-ep","desktop","编辑器面板","Editor Pane","Code pane","主编辑区。","Use an editor pane with a monospace canvas.","desktop",{kind:"edpane"}),
+    C("dk-prop","desktop","属性面板","Property Panel","Props inspector","检查器里的属性表。","Use a property panel of labeled fields.","desktop",{kind:"prop"}),
+    C("dk-st","desktop","状态栏","Status Bar","Bottom status","底部状态。","Use a status bar with branch, problems and encoding.","desktop",{kind:"status"}),
+    C("dk-cb","desktop","命令栏","Command Bar","App command bar","一排命令按钮。","Use a command bar of labeled icon actions.","desktop",{kind:"cmdbar"}),
+    C("dk-dock","desktop","可停靠面板","Dockable Panel","Dock panel","可停左右底。","Use a dockable panel that can pin to an edge.","desktop",{kind:"dock"}),
+    C("dk-float","desktop","浮动面板","Floating Panel","Floating window","可拖动的浮层工具。","Use a floating panel with a drag handle.","desktop",{kind:"float"})
+  );
+
+  const $ = function (t, a, kids) {
+    a = a || {}; kids = kids == null ? [] : kids;
+    const n = document.createElement(t);
+    Object.keys(a).forEach(function (k) {
+      var v = a[k];
+      if (k === "class") n.className = v;
+      else if (k === "style" && typeof v === "object") Object.assign(n.style, v);
+      else if (k.slice(0, 2) === "on" && typeof v === "function") n.addEventListener(k.slice(2), v);
+      else if (v !== false && v != null) n.setAttribute(k, v === true ? "" : v);
+    });
+    (Array.isArray(kids) ? kids : [kids]).forEach(function (c) {
+      if (c == null || c === false) return;
+      n.append(c.nodeType ? c : document.createTextNode(String(c)));
+    });
+    return n;
+  };
+  const clear = function (n) { n.textContent = ""; return n; };
+  const toastIn = function (host, text) {
+    host.querySelectorAll(".toast").forEach(function (x) { x.remove(); });
+    var t = $("div", { class: "toast" }, text);
+    host.append(t);
+    setTimeout(function () { t.remove(); }, 1400);
+  };
+
+  function rowI(name, label) {
+    var w = $("span", { class: "ico-row" });
+    w.append(icon(name, 14));
+    if (label) w.append(document.createTextNode(" " + label));
+    return w;
+  }
+
+  function demoTabs(host, opts) {
+    var kind = opts.kind, items = ["首页", "项目", "设置"], icons = ["home", "grid", "settings"], i = 0;
+    if (kind === "scroll" || kind === "closable" || kind === "drag") items = ["概览", "文档", "API", "账单", "成员"];
+    if (kind === "switcher") items = ["全部", "已读", "未读"];
+    if (kind === "vertical") items = ["账户", "权限", "账单"];
+    function paint() {
+      clear(host);
+      if (kind === "vertical") {
+        var col = $("div", { style: { display: "flex", height: "100%", gap: "8px" } });
+        var tabs = $("div", { style: { display: "flex", flexDirection: "column", width: "76px" } });
+        items.forEach(function (lab, idx) {
+          tabs.append($("button", { class: "tab" + (idx === i ? " active" : ""), onclick: function () { i = idx; paint(); } }, lab));
+        });
+        col.append(tabs, $("div", { class: "grow card-mini" }, "内容区 · " + items[i]));
+        host.append(col); return;
+      }
+      var bar = $("div", { class: "tabs" + (kind === "pill" ? " pills" : (kind === "segmented" || kind === "switcher" ? " seg" : "")) + (kind === "scroll" ? " hscroll" : "") });
+      if (kind === "sliding" || kind === "underline") bar.classList.add("tab-underline");
+      items.forEach(function (lab, idx) {
+        var content = lab;
+        if (kind === "icon") content = icon(icons[idx] || "grid", 16);
+        if (kind === "iconLabel") content = rowI(icons[idx] || "grid", lab);
+        if (kind === "closable") {
+          var wrap = $("span", { class: "ico-row" }, lab);
+          wrap.append($("span", { onclick: function (e) { e.stopPropagation(); items.splice(idx, 1); i = Math.min(i, items.length - 1); paint(); } }, icon("x", 12)));
+          content = wrap;
+        }
+        var b = $("button", { class: "tab" + (idx === i ? " active" : ""), draggable: kind === "drag" ? "true" : "false", onclick: function () { i = idx; paint(); } }, content);
+        if (kind === "drag") {
+          b.addEventListener("dragstart", function (e) { e.dataTransfer.setData("text", String(idx)); });
+          b.ondragover = function (e) { e.preventDefault(); };
+          b.ondrop = function (e) { e.preventDefault(); var from = +e.dataTransfer.getData("text"); var t = items.splice(from, 1)[0]; items.splice(idx, 0, t); i = idx; paint(); };
+        }
+        bar.append(b);
+      });
+      host.append(bar);
+      if (kind === "contained" || kind === "folder") host.append($("div", { class: "card-mini", style: { marginTop: "8px" } }, items[i] + " 面板"));
+      else if (kind !== "icon") host.append($("div", { class: "hint", style: { marginTop: "8px" } }, "当前：" + items[i]));
+      if (kind === "sliding" || kind === "underline") {
+        var ink = $("div", { class: "ink" }); bar.append(ink);
+        requestAnimationFrame(function () {
+          var a = bar.querySelector(".tab.active"); if (!a) return;
+          ink.style.width = a.offsetWidth + "px"; ink.style.transform = "translateX(" + a.offsetLeft + "px)";
+        });
+      }
+    }
+    paint();
+  }
+
+  function demoButton(host, opts) {
+    var k = opts.kind;
+    if (k === "fab" || k === "speed") {
+      var open = false;
+      function paint() {
+        clear(host);
+        var c = $("div", { style: { position: "relative", height: "100%" } });
+        if (k === "speed" && open) {
+          ["edit", "upload", "camera"].forEach(function (s, i) {
+            var b = $("button", { class: "ui-btn circle secondary", style: { position: "absolute", right: "14px", bottom: (62 + i * 40) + "px" }, onclick: function () { toastIn(host, s); } });
+            b.append(icon(s, 14)); c.append(b);
+          });
+        }
+        var fab = $("button", { class: "fab", onclick: function () { if (k === "speed") { open = !open; paint(); } else toastIn(host, "创建"); } });
+        fab.append(icon("plus", 18)); c.append(fab); host.append(c);
+      }
+      paint(); return;
+    }
+    if (k === "split" || k === "dropdown" || k === "kebab" || k === "meatball") {
+      var open = false;
+      function paint() {
+        clear(host);
+        var box = $("div", { class: "center", style: { position: "relative" } });
+        var b;
+        if (k === "kebab" || k === "meatball") {
+          b = $("button", { class: "ui-btn icon secondary", onclick: function () { open = !open; paint(); } });
+          b.append(icon(k === "kebab" ? "moreV" : "moreH", 16)); box.append(b);
+        } else if (k === "dropdown") {
+          b = $("button", { class: "ui-btn secondary", onclick: function () { open = !open; paint(); } });
+          b.append(rowI("chevD", "操作")); box.append(b);
+        } else {
+          box.append($("button", { class: "ui-btn", onclick: function () { toastIn(host, "已保存"); } }, "保存"));
+          var c = $("button", { class: "ui-btn", style: { marginLeft: "1px" }, onclick: function () { open = !open; paint(); } });
+          c.append(icon("chevD", 14)); box.append(c);
+        }
+        if (open) box.append($("div", { class: "menu", style: { top: "42px" } }, ["编辑", "复制", "删除"].map(function (x) { return $("button", { onclick: function () { toastIn(host, x); } }, x); })));
+        host.append(box);
+      }
+      paint(); return;
+    }
+    if (k === "group") {
+      clear(host).append($("div", { class: "center" }, ["左", "中", "右"].map(function (t, i) {
+        return $("button", { class: "ui-btn " + (i ? "secondary" : ""), style: { borderRadius: i === 0 ? "6px 0 0 6px" : i === 2 ? "0 6px 6px 0" : 0 }, onclick: function () { toastIn(host, t); } }, t);
+      }))); return;
+    }
+    if (k === "toggle") {
+      var on = false;
+      var b = $("button", { class: "ui-btn secondary", onclick: function () { on = !on; b.classList.toggle("on", on); b.textContent = on ? "已按下" : "未按下"; } }, "未按下");
+      clear(host).append($("div", { class: "center" }, b)); return;
+    }
+    if (k === "tgroup" || k === "toolbar") {
+      var row = $("div", { class: "center" });
+      ["B", "I", "U"].forEach(function (t) {
+        var bb = $("button", { class: "ui-btn secondary icon", onclick: function () { bb.classList.toggle("on"); } }, t);
+        row.append(bb);
+      });
+      clear(host).append(row); return;
+    }
+    if (k === "loading") {
+      var load = false;
+      var b = $("button", { class: "ui-btn", onclick: function () {
+        if (load) return; load = true; b.textContent = "保存中";
+        setTimeout(function () { load = false; b.textContent = "保存"; toastIn(host, "已保存"); }, 900);
+      } }, "保存");
+      clear(host).append($("div", { class: "center" }, b)); return;
+    }
+    var map = { primary: ["ui-btn solid", "保存"], secondary: ["ui-btn secondary", "取消"], outline: ["ui-btn outline", "保存"], ghost: ["ui-btn ghost", "操作"], text: ["ui-btn text", "取消"], link: ["ui-btn link", "查看更多"], icon: ["ui-btn icon secondary", ""], circle: ["ui-btn circle secondary", ""], danger: ["ui-btn danger", "删除"], disabled: ["ui-btn", "不可用"] };
+    var pair = map[k] || map.primary;
+    var b = $("button", { class: pair[0], disabled: k === "disabled" }, pair[1]);
+    if (k === "icon") b.append(icon("settings", 16));
+    if (k === "circle") b.append(icon("plus", 16));
+    if (k !== "disabled") b.onclick = function () { toastIn(host, pair[1] || "ok"); };
+    clear(host).append($("div", { class: "center" }, b));
+  }
+
+  function demoInput(host, opts) {
+    clear(host);
+    if (opts.kind === "textarea") { host.append($("textarea", { class: "field", placeholder: "多行文字" })); return; }
+    if (opts.kind === "search") {
+      var i = $("input", { class: "field", placeholder: "搜索项目" });
+      var wrap = $("div", { style: { display: "flex", gap: "6px", alignItems: "center" } });
+      wrap.append(icon("search", 14), i); host.append(wrap); return;
+    }
+    if (opts.kind === "password") {
+      var p = $("input", { class: "field", type: "password", value: "secret12" });
+      var b = $("button", { class: "ui-btn text", onclick: function () { p.type = p.type === "password" ? "text" : "password"; } });
+      b.append(icon("eye", 14)); host.append(p, b); return;
+    }
+    if (opts.kind === "number") { host.append($("input", { class: "field", type: "number", value: "12" })); return; }
+    if (opts.kind === "spin") {
+      var n = 12;
+      var v = $("input", { class: "field", value: "12", style: { width: "72px" } });
+      var up = $("button", { class: "ui-btn secondary icon", onclick: function () { n++; v.value = n; } }); up.append(icon("chevU", 12));
+      var dn = $("button", { class: "ui-btn secondary icon", onclick: function () { n--; v.value = n; } }); dn.append(icon("chevD", 12));
+      host.append($("div", { class: "center", style: { gap: "6px" } }, [v, up, dn])); return;
+    }
+    host.append($("div", { class: "hint" }, "姓名"), $("input", { class: "field", placeholder: "输入姓名" }));
+  }
+
+  function demoSelect(host, opts) {
+    var all = ["React", "Vue", "Angular"], open = false, q = "", sel = opts.kind === "multi" ? ["React"] : "China";
+    var geo = { 中国: { 上海: ["浦东新区", "徐汇区"], 北京: ["海淀区"] } }, path = [];
+    function paint() {
+      clear(host);
+      if (opts.kind === "cascader") {
+        var node = geo; path.forEach(function (p) { node = node[p] || {}; });
+        var keys = Array.isArray(node) ? node : Object.keys(node);
+        host.append($("div", { class: "hint" }, path.join(" / ") || "选择地区"));
+        keys.forEach(function (kk) { host.append($("button", { class: "list-item", onclick: function () { path = path.concat(kk); paint(); } }, kk)); });
+        if (path.length) host.append($("button", { class: "ui-btn text", onclick: function () { path.pop(); paint(); } }, "返回"));
+        return;
+      }
+      if (opts.kind === "tree") {
+        ["中国", "上海", "浦东"].forEach(function (n, i) {
+          host.append($("label", { class: "tree-row", style: { paddingLeft: (i * 12) + "px" } }, [$("input", { type: "checkbox", checked: i < 2 }), n]));
+        }); return;
+      }
+      var face = $("div", { class: "select-face", onclick: function () { open = !open; paint(); }, style: { display: "flex", alignItems: "center", justifyContent: "space-between" } });
+      if (opts.kind === "multi") {
+        var chips = $("div", { style: { display: "flex", gap: "4px", flexWrap: "wrap" } });
+        sel.forEach(function (s) {
+          var c = $("span", { class: "chip" }, s);
+          var x = $("span", { class: "x", onclick: function (e) { e.stopPropagation(); sel = sel.filter(function (v) { return v !== s; }); paint(); } });
+          x.append(icon("x", 10)); c.append(x); chips.append(c);
+        });
+        face.append(chips, icon("chevD", 14));
+      } else if (opts.kind === "combo" || opts.kind === "auto") {
+        var inp = $("input", { class: "field", value: q, placeholder: "输入或选择", onclick: function (e) { e.stopPropagation(); }, oninput: function (e) { q = e.target.value; open = true; paint(); var el = host.querySelector("input"); if (el) el.focus(); } });
+        face.append(inp, icon("chevD", 14));
+      } else face.append($("span", {}, sel), icon("chevD", 14));
+      host.append(face);
+      if (open) {
+        var menuEl = $("div", { class: "menu", style: { left: "12px", right: "12px", top: "46px" } });
+        var list = opts.kind === "single" ? ["China", "Japan", "Singapore"] : all.filter(function (x) { return x.toLowerCase().indexOf(q.toLowerCase()) >= 0; });
+        list.forEach(function (x) {
+          menuEl.append($("button", { onclick: function () { if (opts.kind === "multi") sel = sel.indexOf(x) >= 0 ? sel.filter(function (s) { return s !== x; }) : sel.concat(x); else { sel = x; q = x; open = false; } paint(); } }, x));
+        });
+        host.append(menuEl);
+      }
+    }
+    paint();
+  }
+
+  function demoStepper(host, opts) {
+    var labels = ["账户", "信息", "支付", "完成"], cur = 1;
+    function paint() {
+      clear(host);
+      var row = $("div", { style: { display: "flex", alignItems: "center", overflow: "auto" } });
+      labels.forEach(function (l, idx) {
+        var on = idx === cur, done = idx < cur;
+        var b = $("button", { class: "ui-btn " + (on ? "" : "secondary"), style: { borderRadius: "50%", width: "26px", height: "26px", padding: 0 }, onclick: function () { cur = idx; paint(); } }, String(idx + 1));
+        row.append($("div", { style: { display: "flex", flexDirection: "column", alignItems: "center", minWidth: "52px" } }, [b, $("span", { class: "hint" }, l)]));
+        if (idx < labels.length - 1) row.append($("div", { style: { flex: "1", height: "1px", background: done ? "var(--text)" : "var(--line)", minWidth: "16px" } }));
+      });
+      host.append(row);
+    }
+    paint();
+  }
+
+  window.__UI_DICT__ = { CATS: CATS, CATALOG: CATALOG, demoTabs: demoTabs, demoButton: demoButton, demoInput: demoInput, demoSelect: demoSelect, demoStepper: demoStepper, icon: icon, $: $, clear: clear, toastIn: toastIn, rowI: rowI };
+})();
+
+(function () {
+  var D = window.__UI_DICT__;
+  var $ = D.$, icon = D.icon, clear = D.clear, toastIn = D.toastIn, rowI = D.rowI, CATS = D.CATS, CATALOG = D.CATALOG;
+
+  function mountDemo(host, it) {
+    var d = it.demo, k = (it.opts && it.opts.kind) || "";
+    function cen(kids) { return $("div", { class: "center", style: { flexDirection: "column", gap: "8px", height: "100%" } }, kids); }
+    function menuOf(items, after) {
+      return $("div", { class: "menu", style: { top: "40px", left: "12px" } }, items.map(function (x) {
+        return $("button", { onclick: function () { toastIn(host, x); if (after) after(); } }, x);
+      }));
+    }
+    if (d === "tabs") return D.demoTabs(host, it.opts);
+    if (d === "stepper") return D.demoStepper(host, it.opts);
+    if (d === "button") return D.demoButton(host, it.opts);
+    if (d === "input") return D.demoInput(host, it.opts);
+    if (d === "select") return D.demoSelect(host, it.opts);
+
+    if (d === "checks") {
+      if (k === "switch") {
+        var on = true;
+        function paint() {
+          var sw = $("button", { class: "sw" + (on ? " on" : ""), onclick: function () { on = !on; paint(); } }, $("i", {}));
+          clear(host).append(cen([$("div", { class: "ico-row" }, [sw, $("span", { class: on ? "status-ok" : "hint" }, on ? "已开启" : "已关闭")])]));
+        }
+        paint(); return;
+      }
+      if (k === "tri") {
+        var st = 1;
+        function paint() {
+          var box = $("input", { type: "checkbox" });
+          box.checked = st === 2; box.indeterminate = st === 1;
+          box.onclick = function (e) { e.preventDefault(); st = (st + 1) % 3; paint(); };
+          clear(host).append(cen([$("label", { class: "tree-row" }, [box, ["未选", "部分选", "全选"][st]])]));
+        }
+        paint(); return;
+      }
+      ["选项 A", "选项 B", "选项 C"].forEach(function (n, i) {
+        host.append($("label", { class: "tree-row" }, [$("input", { type: k === "radio" ? "radio" : "checkbox", name: "g" + it.id, checked: i === 0 }), n]));
+      });
+      return;
+    }
+
+    if (d === "slider") {
+      var a = 28, b = 72;
+      function paint() {
+        clear(host);
+        if (k === "range") {
+          var r1 = $("input", { type: "range", min: "0", max: "100", value: String(a) });
+          var r2 = $("input", { type: "range", min: "0", max: "100", value: String(b) });
+          r1.oninput = function () { a = +r1.value; if (a > b) a = b; paint(); };
+          r2.oninput = function () { b = +r2.value; if (b < a) b = a; paint(); };
+          host.append(cen([$("div", { class: "hint" }, a + " – " + b), r1, r2])); return;
+        }
+        var rng = $("input", { type: "range", min: "0", max: "100", step: k === "stepped" ? "10" : "1", value: String(a), class: k === "vertical" ? "v-slider" : "" });
+        var lab = $("div", { class: "hint" }, String(a));
+        rng.oninput = function () { a = +rng.value; lab.textContent = rng.value; };
+        host.append(cen(k === "vertical" ? [rng, lab] : [rng, lab]));
+      }
+      paint(); return;
+    }
+
+    if (d === "otp") {
+      var box = $("div", { class: "otp" });
+      var cells = [];
+      for (var n = 0; n < 6; n++) {
+        var inp = $("input", { maxlength: "1", inputmode: "numeric" });
+        inp.oninput = (function (idx) {
+          return function () {
+            cells[idx].value = cells[idx].value.replace(/\D/g, "").slice(0, 1);
+            if (cells[idx].value && idx < 5) cells[idx + 1].focus();
+          };
+        })(n);
+        cells.push(inp); box.append(inp);
+      }
+      clear(host).append(cen([box, $("div", { class: "hint" }, "输入后自动跳格")])); return;
+    }
+
+    if (d === "date") {
+      var day = 12, open = (k === "calendar" || k === "calview"), h = 14, m = 30;
+      function cal() {
+        var w = $("div", { class: "cal" });
+        ["一", "二", "三", "四", "五", "六", "日"].forEach(function (x) { w.append($("b", {}, x)); });
+        for (var i = 1; i <= 21; i++) {
+          w.append($("button", { class: i === day ? "sel" : "", onclick: (function (n) { return function () { day = n; if (k !== "calendar" && k !== "calview") open = false; paint(); }; })(i) }, String(i)));
+        }
+        return w;
+      }
+      function paint() {
+        clear(host);
+        if (k === "time") {
+          host.append(cen([$("div", { class: "ico-row" }, [
+            $("button", { class: "ui-btn secondary", onclick: function () { h = (h + 1) % 24; paint(); } }, (h < 10 ? "0" : "") + h),
+            $("span", {}, ":"),
+            $("button", { class: "ui-btn secondary", onclick: function () { m = (m + 5) % 60; paint(); } }, (m < 10 ? "0" : "") + m)
+          ])])); return;
+        }
+        if (k === "month" || k === "year") {
+          var items = k === "month" ? ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月"] : ["2023", "2024", "2025", "2026"];
+          var wrap = $("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: "4px", width: "100%" } });
+          items.forEach(function (x, i) {
+            wrap.append($("button", { class: "ui-btn secondary" + (i === (k === "month" ? 7 : 3) ? " on" : ""), onclick: function () { toastIn(host, x); } }, x));
+          });
+          host.append(wrap); return;
+        }
+        if (k === "week") {
+          host.append(cen([$("div", { class: "hint" }, "第 35 周"), cal(), $("div", { class: "status-info" }, "已选一整周")])); return;
+        }
+        if (k === "datetime") {
+          host.append($("button", { class: "ui-btn secondary", onclick: function () { open = !open; paint(); } }, "2026-08-" + day + "  " + h + ":30"));
+          if (open) host.append(cal()); return;
+        }
+        if (k === "range") {
+          host.append($("div", { class: "hint" }, "开始 08-0" + Math.max(1, day - 3) + "  →  结束 08-" + day));
+          host.append(cal()); return;
+        }
+        host.append($("button", { class: "ui-btn secondary", onclick: function () { open = !open; paint(); } }, rowI("calendar", "2026-08-" + day)));
+        if (open || k === "calendar" || k === "calview") {
+          if (k === "calview") host.append($("div", { class: "hint status-ok" }, day + " 日 · 设计评审"));
+          host.append(cal());
+        }
+      }
+      paint(); return;
+    }
+
+    if (d === "chips") {
+      var tags = ["React", "Vue"], val = "";
+      function paint() {
+        clear(host);
+        var row = $("div", { style: { display: "flex", flexWrap: "wrap", gap: "4px", marginBottom: "6px" } });
+        tags.forEach(function (t) {
+          var c = $("span", { class: "chip" }, t);
+          var x = $("span", { class: "x", onclick: function () { tags = tags.filter(function (z) { return z !== t; }); paint(); } });
+          x.append(icon("x", 10)); c.append(x); row.append(c);
+        });
+        var inp = $("input", { class: "field", placeholder: "回车添加", value: val, onkeydown: function (e) {
+          if (e.key === "Enter" && inp.value.trim()) { tags.push(inp.value.trim()); val = ""; paint(); }
+        } });
+        host.append(row, inp);
+      }
+      paint(); return;
+    }
+
+    if (d === "mentions") {
+      var qv = "", open = false;
+      var people = ["Ada", "Lin", "Sam"];
+      function paint() {
+        clear(host);
+        var inp = $("input", { class: "field", value: qv, placeholder: "输入 @ 提及", oninput: function (e) {
+          qv = e.target.value; open = qv.indexOf("@") >= 0; paint(); host.querySelector("input").focus();
+          host.querySelector("input").setSelectionRange(qv.length, qv.length);
+        } });
+        host.append(inp);
+        if (open) people.forEach(function (p) {
+          host.append($("button", { class: "list-item", onclick: function () { qv = qv.replace(/@[^@]*$/, "@" + p + " "); open = false; paint(); } }, "@" + p));
+        });
+      }
+      paint(); return;
+    }
+
+    if (d === "editor") {
+      var md = false;
+      var ed = $("div", { class: "ed", contenteditable: "true" }, k === "code" ? "const n = 1;" : (k === "md" ? "**粗体** 和列表" : "可编辑正文"));
+      if (k === "code") ed.style.fontFamily = "var(--mono)";
+      var bar = $("div", { class: "ico-row" });
+      if (k === "rte") ["B", "I"].forEach(function (t) {
+        bar.append($("button", { class: "ui-btn secondary icon", onclick: function () { document.execCommand(t === "B" ? "bold" : "italic"); } }, t));
+      });
+      if (k === "md") bar.append($("button", { class: "ui-btn secondary", onclick: function () { md = !md; toastIn(host, md ? "预览" : "编辑"); } }, "预览"));
+      clear(host).append(bar, ed); return;
+    }
+
+    if (d === "inline") {
+      var edit = false, text = "项目名称";
+      function paint() {
+        clear(host);
+        if (!edit) host.append(cen([$("button", { class: "ui-btn text", onclick: function () { edit = true; paint(); } }, text)]));
+        else {
+          var inp = $("input", { class: "field", value: text });
+          host.append(cen([inp, $("button", { class: "ui-btn solid", onclick: function () { text = inp.value; edit = false; paint(); } }, "保存")]));
+          inp.focus();
+        }
+      }
+      paint(); return;
+    }
+
+    if (d === "masked") {
+      var ph = { mask: "____-____", phone: "+86 138 0000 0000", currency: "¥ 0.00", url: "https://" }[k] || "";
+      var inp = $("input", { class: "field", placeholder: ph, value: k === "phone" ? "+86 " : (k === "currency" ? "¥ " : (k === "url" ? "https://" : "")) });
+      clear(host).append(cen([$("div", { class: "hint" }, ph), inp])); return;
+    }
+
+    if (d === "color") {
+      var hex = "#2dd4bf";
+      var c = $("input", { type: "color", value: hex, style: { width: "42px", height: "32px", border: "1px solid var(--line)", background: "transparent" } });
+      var t = $("input", { class: "field", value: hex, style: { width: "96px" } });
+      c.oninput = function () { t.value = c.value; };
+      t.oninput = function () { if (/^#[0-9a-fA-F]{6}$/.test(t.value)) c.value = t.value; };
+      clear(host).append(cen([$("div", { class: "ico-row" }, [c, t])])); return;
+    }
+
+    if (d === "rating") {
+      var stars = 3;
+      function paint() {
+        clear(host); var row = $("div", { class: "center" });
+        for (var i = 1; i <= 5; i++) {
+          var st = $("button", { class: "star-btn" + (i <= stars ? " on" : ""), onclick: (function (x) { return function () { stars = x; paint(); }; })(i) });
+          st.append(icon("star", 18)); row.append(st);
+        }
+        host.append(row, $("div", { class: "hint", style: { textAlign: "center" } }, stars + " / 5"));
+      }
+      paint(); return;
+    }
+
+    if (d === "file") {
+      var files = ["brief.pdf"];
+      var hidden = $("input", { type: "file", style: { display: "none" }, onchange: function () { files = [hidden.files[0] ? hidden.files[0].name : "photo.png"]; paint(); } });
+      function paint() {
+        clear(host); host.append(hidden);
+        if (k === "drop") {
+          var z = $("div", { class: "dropzone", onclick: function () { hidden.click(); } }, "拖入文件或点击选择");
+          z.ondragover = function (e) { e.preventDefault(); z.classList.add("on"); };
+          z.ondragleave = function () { z.classList.remove("on"); };
+          z.ondrop = function (e) { e.preventDefault(); z.classList.remove("on"); files = ["dropped.png"]; paint(); };
+          host.append(z); return;
+        }
+        if (k === "list") {
+          files.forEach(function (f) {
+            host.append($("div", { class: "tree-row" }, [icon("file", 12), $("span", {}, " " + f)]));
+            host.append($("div", { class: "prog" }, $("i", { style: { width: "70%" } })));
+          });
+          host.append($("button", { class: "ui-btn secondary", onclick: function () { hidden.click(); } }, "添加文件")); return;
+        }
+        host.append(cen([$("button", { class: "ui-btn secondary", onclick: function () { hidden.click(); } }, k === "button" ? "上传" : "选择文件"), $("div", { class: "hint" }, files[0])]));
+      }
+      paint(); return;
+    }
+
+    if (d === "menu") {
+      var open = false, which = "";
+      function paint() {
+        clear(host);
+        if (k === "context") {
+          var box = $("div", { class: "card-mini", style: { height: "100%" }, oncontextmenu: function (e) { e.preventDefault(); open = true; paint(); } }, "在此区域右键");
+          host.append(box);
+          if (open) host.append(menuOf(["复制", "重命名", "删除"], function () { open = false; paint(); }));
+          return;
+        }
+        if (k === "bar") {
+          ["文件", "编辑", "视图", "帮助"].forEach(function (lab) {
+            host.append($("button", { class: "tab" + (which === lab ? " active" : ""), onclick: function () { which = which === lab ? "" : lab; paint(); } }, lab));
+          });
+          if (which) host.append(menuOf(["新建", "打开", "保存"]));
+          return;
+        }
+        if (k === "mega" || k === "nav") {
+          host.append($("button", { class: "ui-btn secondary", onclick: function () { open = !open; paint(); } }, "产品"));
+          if (open) {
+            var m = $("div", { class: "menu", style: { top: "40px", display: k === "mega" ? "grid" : "block", gridTemplateColumns: "1fr 1fr", minWidth: "200px" } });
+            ["模型", "路由", "密钥", "文档"].forEach(function (x) { m.append($("button", { onclick: function () { toastIn(host, x); open = false; paint(); } }, x)); });
+            host.append(m);
+          }
+          return;
+        }
+        var b = $("button", { class: k === "overflow" ? "ui-btn icon secondary" : "ui-btn secondary", onclick: function () { open = !open; paint(); } });
+        if (k === "overflow") b.append(icon("moreV", 16)); else b.append(rowI("chevD", "操作"));
+        host.append(cen([b]));
+        if (open) host.append(menuOf(["编辑", "复制", "删除"], function () { open = false; paint(); }));
+      }
+      paint(); return;
+    }
+
+    if (d === "overlay") {
+      var open = false;
+      function paint() {
+        clear(host);
+        var label = { tooltip: "悬停/点击看说明", popover: "打开气泡", hover: "悬停预览", modal: "打开对话框", alert: "打开警告", popconfirm: "删除", drawer: "打开抽屉", sheet: "打开面板", bottom: "打开底栏" }[k] || "打开";
+        var btn = $("button", { class: k === "popconfirm" ? "ui-btn danger" : "ui-btn secondary", onclick: function () { open = !open; paint(); } }, label);
+        if (k === "tooltip" || k === "hover") {
+          btn.onmouseenter = function () { open = true; paint(); };
+          btn.onmouseleave = function () { open = false; paint(); };
+        }
+        host.append(cen([btn]));
+        if (!open) return;
+        if (k === "tooltip") host.append($("div", { class: "toast" }, "短说明"));
+        else if (k === "hover") host.append($("div", { class: "popover", style: { top: "48px" } }, [$("strong", {}, "Ada"), $("div", { class: "hint" }, "在线 · 设计")]));
+        else if (k === "popover") host.append($("div", { class: "popover", style: { top: "48px" } }, [$("div", { class: "hint" }, "可放操作"), $("button", { class: "ui-btn solid", onclick: function () { open = false; paint(); } }, "应用")]));
+        else if (k === "popconfirm") host.append($("div", { class: "popover", style: { top: "48px" } }, [$("div", {}, "确定删除？"), $("button", { class: "ui-btn danger", onclick: function () { toastIn(host, "已删除"); open = false; paint(); } }, "删除")]));
+        else if (k === "modal" || k === "alert") host.append($("div", { class: "modal-mask" }, $("div", { class: "modal" }, [$("strong", {}, k === "alert" ? "无法撤销" : "编辑项目"), $("div", { class: "hint" }, "确认后继续"), $("button", { class: "ui-btn solid", onclick: function () { open = false; paint(); } }, "确定")])));
+        else if (k === "drawer") host.append($("div", { class: "drawer" }, [$("strong", {}, "详情"), $("button", { class: "ui-btn text", onclick: function () { open = false; paint(); } }, "关闭")]));
+        else if (k === "sheet") host.append($("div", { class: "drawer" }, [$("strong", {}, "面板"), $("button", { class: "ui-btn text", onclick: function () { open = false; paint(); } }, "关闭")]));
+        else host.append($("div", { class: "sheet" }, ["分享", "收藏", "取消"].map(function (x) { return $("button", { class: "list-item", onclick: function () { toastIn(host, x); open = false; paint(); } }, x); })));
+      }
+      paint(); return;
+    }
+
+    if (d === "nav") {
+      var cur = 0;
+      function paint() {
+        clear(host);
+        if (k === "crumb") {
+          var parts = ["首页", "项目", "设置"];
+          var row = $("div", { class: "crumb" });
+          parts.forEach(function (p, i) {
+            if (i) row.append($("span", {}, "/"));
+            row.append($("button", { class: i === cur ? "on" : "", onclick: function () { cur = i; paint(); } }, p));
+          });
+          host.append(cen([row])); return;
+        }
+        if (k === "page") {
+          var row = $("div", { class: "page-n" });
+          row.append($("button", { onclick: function () { cur = Math.max(0, cur - 1); paint(); } }, "‹"));
+          for (var i = 0; i < 5; i++) row.append($("button", { class: i === cur ? "on" : "", onclick: (function (n) { return function () { cur = n; paint(); }; })(i) }, String(i + 1)));
+          row.append($("button", { onclick: function () { cur = Math.min(4, cur + 1); paint(); } }, "›"));
+          host.append(cen([row])); return;
+        }
+        if (k === "side") {
+          ["总览", "项目", "设置"].forEach(function (lab, i) {
+            host.append($("button", { class: "list-item" + (i === cur ? " on" : ""), onclick: function () { cur = i; paint(); } }, lab));
+          }); return;
+        }
+        if (k === "rail") {
+          var rail = $("div", { class: "rail" });
+          ["home", "search", "settings"].forEach(function (n, i) {
+            var b = $("button", { class: i === cur ? "on" : "", onclick: function () { cur = i; paint(); } });
+            b.append(icon(n, 16)); rail.append(b);
+          });
+          host.append(rail); return;
+        }
+        if (k === "bottom") {
+          var bar = $("div", { class: "bnav", style: { marginTop: "auto" } });
+          [["home", "首页"], ["search", "搜索"], ["plus", "创建"], ["user", "我的"]].forEach(function (p, i) {
+            var b = $("button", { class: i === cur ? "on" : "", onclick: function () { cur = i; paint(); } });
+            b.append(icon(p[0], 16), document.createTextNode(p[1])); bar.append(b);
+          });
+          host.append($("div", { style: { height: "100%", display: "flex", flexDirection: "column" } }, [$("div", { class: "grow hint" }, "内容"), bar])); return;
+        }
+        if (k === "top") {
+          host.append($("div", { class: "ico-row", style: { justifyContent: "space-between" } }, [$("strong", {}, "Logo"), $("button", { class: "ui-btn secondary" }, "登录")]));
+          var row = $("div", { class: "ico-row" });
+          ["文档", "模型", "定价"].forEach(function (lab, i) {
+            row.append($("button", { class: "tab" + (i === cur ? " active" : ""), onclick: function () { cur = i; paint(); } }, lab));
+          });
+          host.append(row); return;
+        }
+        ["简介", "安装", "API"].forEach(function (lab, i) {
+          host.append($("button", { class: "list-item" + (i === cur ? " on" : ""), onclick: function () { cur = i; paint(); host.scrollTop = 0; } }, lab));
+        });
+        host.append($("div", { class: "card-mini" }, "滚动到：" + ["简介", "安装", "API"][cur]));
+      }
+      paint(); return;
+    }
+
+    if (d === "card") {
+      var sel = false;
+      function paint() {
+        var body = $("div", { class: "card-mini", style: { cursor: k === "interactive" || k === "selectable" ? "pointer" : "default", boxShadow: k === "elevated" ? "0 0 0 1px var(--line)" : "none" }, onclick: function () { if (k === "selectable" || k === "interactive") { sel = !sel; paint(); } } });
+        if (k === "media" || k === "horizontal") body.append($("div", { style: { height: k === "horizontal" ? "48px" : "56px", background: "var(--fill-2)", marginBottom: "6px", border: "1px solid var(--line)" } }));
+        if (k === "metric" || k === "dashboard") body.append($("div", { class: "hint" }, "请求量"), $("strong", {}, "12.4k"), $("span", { class: "delta-up" }, " +8.2%"));
+        else body.append($("strong", {}, k === "selectable" ? (sel ? "已选套餐" : "基础套餐") : "卡片标题"), $("div", { class: "hint" }, "简短描述"));
+        if (k === "selectable") body.style.borderColor = sel ? "var(--accent)" : "var(--line)";
+        clear(host).append(body);
+      }
+      paint(); return;
+    }
+
+    if (d === "table") {
+      var rows = [["Ada", "12"], ["Lin", "9"], ["Sam", "4"]], sort = 0, exp = -1, edit = -1;
+      function paint() {
+        clear(host);
+        var t = $("table", { class: "mini-table" });
+        var trh = $("tr", {});
+        ["名称", "用量"].forEach(function (h, i) {
+          trh.append($("th", { onclick: function () { sort = i; rows.sort(function (a, b) { return String(a[i]).localeCompare(String(b[i])); }); paint(); } }, h));
+        });
+        t.append(trh);
+        rows.forEach(function (r, i) {
+          var tr = $("tr", { onclick: function () { if (k === "expand" || k === "treetable" || k === "treegrid") { exp = exp === i ? -1 : i; paint(); } } });
+          if (k === "edit" && edit === i) {
+            var inp = $("input", { class: "field", value: r[0] });
+            tr.append($("td", {}, inp), $("td", {}, r[1]));
+            inp.onchange = function () { r[0] = inp.value; edit = -1; paint(); };
+          } else {
+            tr.append($("td", { onclick: k === "edit" ? function (e) { e.stopPropagation(); edit = i; paint(); } : null }, (k === "treetable" || k === "treegrid" ? (exp === i ? "  " : "  ") : "") + r[0]), $("td", {}, r[1]));
+          }
+          t.append(tr);
+          if (exp === i && (k === "expand" || k === "treetable" || k === "treegrid")) t.append($("tr", {}, $("td", { colspan: "2", class: "hint" }, "子行 / 详情")));
+        });
+        host.append(t);
+      }
+      paint(); return;
+    }
+
+    if (d === "list") {
+      var cur = 0;
+      var items = k === "desc" ? [["协议", "HTTPS"], ["延迟", "42ms"]] : ["收件箱", "已发送", "草稿"];
+      function paint() {
+        clear(host);
+        items.forEach(function (itx, i) {
+          if (k === "desc") host.append($("div", { class: "tree-row" }, [$("span", { class: "hint" }, itx[0]), $("span", {}, itx[1])]));
+          else host.append($("button", { class: "list-item" + (i === cur ? " on" : ""), onclick: function () { cur = i; paint(); } }, k === "structured" ? itx + "    3 项" : itx));
+        });
+      }
+      paint(); return;
+    }
+
+    if (d === "tree") {
+      var openT = true;
+      function paint() {
+        clear(host);
+        var row = $("div", { class: "tree-row", onclick: function () { openT = !openT; paint(); } });
+        row.append(icon(openT ? "chevD" : "chevR", 12), document.createTextNode(" src"));
+        host.append(row);
+        if (openT) {
+          var r = $("div", { class: "tree-row", style: { paddingLeft: "16px" } });
+          r.append(icon("file", 12), document.createTextNode(" App.tsx")); host.append(r);
+        }
+      }
+      paint(); return;
+    }
+
+    if (d === "accordion") {
+      var openA = k !== "acc";
+      var openB = false;
+      function paint() {
+        clear(host);
+        function item(title, open, set) {
+          var btn = $("button", { class: "list-item", onclick: function () { set(); paint(); } });
+          btn.append(icon(open ? "chevD" : "chevR", 12), document.createTextNode(" " + title));
+          host.append(btn);
+          if (open) host.append($("div", { class: "hint" }, "展开后的内容"));
+        }
+        item("高级设置", openA, function () { openA = !openA; });
+        if (k === "acc") item("通知", openB, function () { openB = !openB; });
+      }
+      paint(); return;
+    }
+
+    if (d === "timeline") {
+      [["已创建", "ok"], ["处理中", "warn"], ["待发布", "info"]].forEach(function (x) {
+        host.append($("div", { class: "tree-row" }, [$("span", { class: "dot " + (x[1] === "ok" ? "" : x[1]) }), $("span", {}, x[0])]));
+      });
+      return;
+    }
+
+    if (d === "kanban") {
+      var cols = [["待办", ["写文档"]], ["进行中", ["设计"]], ["完成", []]];
+      function paint() {
+        clear(host);
+        var board = $("div", { class: "kanban" });
+        cols.forEach(function (c, ci) {
+          var col = $("div", { class: "col" }, $("div", { class: "hint" }, c[0]));
+          c[1].forEach(function (card, ri) {
+            col.append($("div", { class: "card-mini", onclick: function () {
+              var next = (ci + 1) % cols.length;
+              c[1].splice(ri, 1); cols[next][1].push(card); paint();
+            } }, card));
+          });
+          board.append(col);
+        });
+        host.append(board);
+      }
+      paint(); return;
+    }
+
+    if (d === "gantt") {
+      ["研究", "设计", "开发"].forEach(function (n, i) {
+        host.append($("div", { class: "hint" }, n));
+        host.append($("div", { class: "gantt-bar", style: { width: (30 + i * 22) + "%", marginLeft: (i * 12) + "%", background: ["var(--accent)","var(--ok)","var(--info)"][i] } }));
+      });
+      return;
+    }
+
+    if (d === "scheduler") {
+      var sel = "10";
+      function paint() {
+        clear(host);
+        var row = $("div", { style: { display: "flex", gap: "4px", overflow: "auto" } });
+        ["09", "10", "11", "12"].forEach(function (h) {
+          row.append($("button", { class: "ui-btn secondary" + (sel === h ? " on" : ""), onclick: function () { sel = h; paint(); } }, h + ":00"));
+        });
+        host.append($("div", { class: "hint" }, "Ada"), row);
+      }
+      paint(); return;
+    }
+
+    if (d === "masonry") {
+      var box = $("div", { class: "masonry" });
+      box.append($("div", { class: "t", style: { height: "70px" } }), $("div", { class: "t", style: { height: "110px" } }), $("div", { class: "t", style: { height: "90px" } }), $("div", { class: "t", style: { height: "50px" } }));
+      clear(host).append(box); return;
+    }
+
+    if (d === "carousel") {
+      var i = 0, slides = ["一", "二", "三"];
+      function paint() {
+        clear(host);
+        host.append(cen([
+          $("div", { class: "card-mini", style: { width: "80%", textAlign: "center" } }, "幻灯 " + slides[i]),
+          $("div", { class: "ico-row" }, [
+            $("button", { class: "ui-btn icon secondary", onclick: function () { i = (i + 2) % 3; paint(); } }, "‹"),
+            $("button", { class: "ui-btn icon secondary", onclick: function () { i = (i + 1) % 3; paint(); } }, "›")
+          ])
+        ]));
+      }
+      paint(); return;
+    }
+
+    if (d === "gallery") {
+      var i = 0;
+      function paint() {
+        clear(host);
+        host.append($("div", { style: { height: "88px", background: "var(--fill-2)", border: "1px solid var(--line)", marginBottom: "6px" } }, " "));
+        var row = $("div", { class: "ico-row" });
+        [0, 1, 2, 3].forEach(function (n) {
+          row.append($("button", { class: "thumb" + (n === i ? " on" : ""), onclick: function () { i = n; paint(); } }));
+        });
+        host.append(row);
+      }
+      paint(); return;
+    }
+
+    if (d === "tags") {
+      if (k === "badge") {
+        var b = $("button", { class: "ui-btn icon secondary" }); b.append(icon("inbox", 16));
+        var wrap = $("div", { style: { position: "relative", display: "inline-block" } }, [b, $("span", { class: "chip", style: { position: "absolute", top: "-8px", right: "-10px" } }, "3")]);
+        clear(host).append(cen([wrap])); return;
+      }
+      if (k === "chip" || k === "tag") {
+        var show = true;
+        function paint() {
+          clear(host);
+          if (show) {
+            var c = $("span", { class: "chip" }, k === "tag" ? "设计" : "可关闭");
+            if (k === "chip") {
+              var x = $("span", { class: "x", onclick: function () { show = false; paint(); } }); x.append(icon("x", 10)); c.append(x);
+            }
+            host.append(cen([c]));
+          } else host.append(cen([$("button", { class: "ui-btn text", onclick: function () { show = true; paint(); } }, "恢复")]));
+        }
+        paint(); return;
+      }
+      if (k === "filter") {
+        var on = true;
+        var c = $("button", { class: "chip", onclick: function () { on = !on; c.style.borderColor = on ? "var(--accent)" : "var(--line)"; c.textContent = on ? "已筛选" : "筛选"; } }, "已筛选");
+        c.style.borderColor = "var(--accent)";
+        clear(host).append(cen([c])); return;
+      }
+      var st = k === "status" ? [["运行中", "ok"], ["降级", "warn"], ["故障", "err"]] : [["IN PROGRESS", "info"]];
+      st.forEach(function (x) {
+        host.append($("div", { class: "status" }, [$("span", { class: "dot " + (x[1] === "ok" ? "" : x[1]) }), x[0]]));
+      });
+      return;
+    }
+
+    if (d === "feedback") {
+      if (k === "toast") {
+        clear(host).append(cen([$("button", { class: "ui-btn secondary", onclick: function () { toastIn(host, "已保存"); } }, "触发 Toast")])); return;
+      }
+      if (k === "snack") {
+        var show = true;
+        function paint() {
+          clear(host);
+          host.append($("button", { class: "ui-btn secondary", onclick: function () { show = true; paint(); } }, "删除"));
+          if (show) host.append($("div", { class: "toast" }, [$("span", {}, "已删除 "), $("button", { class: "ui-btn text", onclick: function () { show = false; toastIn(host, "已撤销"); paint(); } }, "撤销")]));
+        }
+        paint(); return;
+      }
+      var cls = k === "alert" || k === "banner" ? "status-warn" : (k === "note" ? "status-info" : "status-err");
+      var box = $("div", { class: "card-mini" }, [$("span", { class: cls }, k === "inline" ? "邮箱格式不正确" : (k === "banner" ? "系统维护 02:00" : (k === "note" ? "新评论" : "磁盘即将满")))]);
+      if (k === "inline") clear(host).append($("input", { class: "field", value: "ada@" }), box);
+      else if (k === "banner") { box.style.width = "100%"; clear(host).append(box); }
+      else clear(host).append(box);
+      return;
+    }
+
+    if (d === "loading") {
+      if (k === "skel") { clear(host).append($("div", { class: "skel" }), $("div", { class: "skel" }), $("div", { class: "skel", style: { width: "60%" } })); return; }
+      if (k === "shim") { clear(host).append($("div", { class: "skel shimmer" }), $("div", { class: "skel shimmer" })); return; }
+      if (k === "bar" || k === "det") { clear(host).append(cen([$("div", { class: "prog" }, $("i", {})), $("div", { class: "hint" }, "42%")])); return; }
+      if (k === "circ") { clear(host).append(cen([$("div", { class: "circ-p" }, $("span", {}, "72%"))])); return; }
+      if (k === "indet") { clear(host).append(cen([$("div", { class: "indet-bar" }, $("i", {})), $("div", { class: "hint" }, "处理中")])); return; }
+      clear(host).append(cen([$("div", { class: "spin" })])); return;
+    }
+
+    if (d === "empty") {
+      var map = {
+        empty: ["还没有项目", "创建", "ok"],
+        error: ["加载失败", "重试", "err"],
+        ok: ["提交成功", "返回", "ok"],
+        "404": ["页面不存在", "回首页", "info"]
+      }[k] || ["空", "继续", "info"];
+      clear(host).append(cen([
+        $("div", { class: map[2] === "ok" ? "status-ok" : (map[2] === "err" ? "status-err" : "status-info") }, map[0]),
+        $("button", { class: "ui-btn solid", onclick: function () { toastIn(host, map[1]); } }, map[1])
+      ])); return;
+    }
+
+    if (d === "layout") {
+      var w = 42, items = ["首页", "文档", "设置"];
+      function paint() {
+        clear(host);
+        if (k === "drag" || k === "reorder") {
+          items.forEach(function (n, i) {
+            var row = $("div", { class: "tree-row" });
+            row.append(icon("grip", 12), document.createTextNode(" " + n));
+            row.append($("button", { class: "ui-btn text", onclick: function () {
+              if (i === 0) return; var t = items[i - 1]; items[i - 1] = items[i]; items[i] = t; paint();
+            } }, "上移"));
+            host.append(row);
+          }); return;
+        }
+        var split = $("div", { class: "split", style: { height: "100%" } });
+        var left = $("div", { class: "pane", style: { width: w + "%" } }, "侧栏");
+        var gut = $("div", { class: "gutter" });
+        var right = $("div", { class: "pane grow" }, "内容");
+        gut.onmousedown = function (e) {
+          var start = e.clientX, sw = w;
+          function mv(ev) { w = Math.max(22, Math.min(70, sw + (ev.clientX - start) / 2)); paint(); }
+          function up() { document.removeEventListener("mousemove", mv); document.removeEventListener("mouseup", up); }
+          document.addEventListener("mousemove", mv); document.addEventListener("mouseup", up);
+        };
+        split.append(left, gut, right); host.append(split);
+      }
+      paint(); return;
+    }
+
+    if (d === "saas") {
+      if (k === "palette" || k === "cmdmenu") {
+        var cmds = ["New project", "Open file", "Settings"], qv = "";
+        function paint() {
+          clear(host);
+          var inp = $("input", { class: "field", placeholder: "Search commands", value: qv, oninput: function (e) { qv = e.target.value; paint(); host.querySelector("input").focus(); } });
+          host.append(inp);
+          cmds.filter(function (c) { return c.toLowerCase().indexOf(qv.toLowerCase()) >= 0; }).forEach(function (c) {
+            host.append($("button", { class: "list-item", onclick: function () { toastIn(host, c); } }, c));
+          });
+        }
+        paint(); return;
+      }
+      if (k === "chat" || k === "prompt") {
+        function paint() {
+          clear(host);
+          host.append($("div", { class: "bubble" }, "问我任何问题"));
+          var row = $("div", { class: "ico-row", style: { marginTop: "auto" } });
+          var inp = $("input", { class: "field", placeholder: "输入消息" });
+          var send = $("button", { class: "ui-btn icon solid", onclick: function () { if (inp.value) { toastIn(host, "已发送"); inp.value = ""; } } });
+          send.append(icon("send", 14)); row.append(inp, send); host.append(row);
+        }
+        paint(); return;
+      }
+      if (k === "bubble") {
+        clear(host).append($("div", { class: "bubble" }, "模型回复"), $("div", { class: "bubble me" }, "用户消息")); return;
+      }
+      if (k === "conv") {
+        [["设计系统", "昨天"], ["路由策略", "周一"]].forEach(function (x) {
+          host.append($("button", { class: "list-item" }, x[0] + "  ·  " + x[1]));
+        }); return;
+      }
+      if (k === "agent") {
+        var st = 0, labs = ["Idle", "Thinking", "Running"];
+        function paint() {
+          clear(host).append(cen([
+            $("span", { class: "dot " + (st === 2 ? "" : (st === 1 ? "warn" : "info")) }),
+            $("span", { class: st === 2 ? "status-ok" : "status-warn" }, labs[st]),
+            $("button", { class: "ui-btn secondary", onclick: function () { st = (st + 1) % 3; paint(); } }, "切换")
+          ]));
+        }
+        paint(); return;
+      }
+      if (k === "tool") { clear(host).append($("div", { class: "card-mini" }, [$("strong", {}, "web.search"), $("div", { class: "hint" }, "q = openrouter")])); return; }
+      if (k === "think") {
+        var open = false;
+        function paint() {
+          clear(host);
+          var tb = $("button", { class: "list-item", onclick: function () { open = !open; paint(); } });
+          tb.append(icon(open ? "chevD" : "chevR", 12), document.createTextNode(" 思考过程"));
+          host.append(tb);
+          if (open) host.append($("div", { class: "hint" }, "先检索文档，再组织答案。"));
+        }
+        paint(); return;
+      }
+      if (k === "term" || k === "log") {
+        clear(host).append($("div", { class: "code" }, k === "log" ? "12:01 INFO ready\n12:02 WARN retry" : "$ npm run dev\nready on :3000")); return;
+      }
+      if (k === "diff") {
+        clear(host).append($("div", { class: "code" }, [$("div", { class: "add-line" }, "+ accent teal"), $("div", { class: "del-line" }, "- accent gray")])); return;
+      }
+      if (k === "md") { clear(host).append($("div", {}, [$("strong", {}, "标题"), $("div", { class: "hint" }, "一段 Markdown 预览")])); return; }
+      if (k === "codeblock" || k === "snip") {
+        var pre = $("div", { class: "code" }, "fetch('/v1')");
+        var copy = $("button", { class: "copy", onclick: function () { toastIn(host, "已复制"); } }, "复制");
+        clear(host).append($("div", { class: "hint" }, "ts"), copy, pre); return;
+      }
+      if (k === "suggest") {
+        ["解释这段", "改成表格"].forEach(function (t) {
+          host.append($("button", { class: "chip", onclick: function () { toastIn(host, t); } }, t));
+        }); return;
+      }
+      if (k === "cite") {
+        host.append($("button", { class: "chip", onclick: function () { toastIn(host, "打开来源"); } }, "src #12")); return;
+      }
+      if (k === "master") {
+        var cur = 0, names = ["项目 A", "项目 B"];
+        function paint() {
+          clear(host);
+          var split = $("div", { class: "split", style: { height: "100%" } });
+          var left = $("div", { class: "pane", style: { width: "42%" } });
+          names.forEach(function (n, i) {
+            left.append($("button", { class: "list-item" + (i === cur ? " on" : ""), onclick: function () { cur = i; paint(); } }, n));
+          });
+          split.append(left, $("div", { class: "pane grow" }, names[cur] + " 详情"));
+          host.append(split);
+        }
+        paint(); return;
+      }
+      if (k === "inspector") {
+        var open = true;
+        function paint() {
+          clear(host);
+          host.append($("button", { class: "list-item", onclick: function () { open = !open; paint(); } }, "布局"));
+          if (open) host.append($("div", { class: "hint" }, "宽度 320"), $("input", { class: "field", value: "320" }));
+        }
+        paint(); return;
+      }
+      if (k === "filterbar") {
+        clear(host).append($("div", { class: "ico-row" }, [
+          $("button", { class: "ui-btn secondary" }, "状态"),
+          $("button", { class: "ui-btn secondary" }, "时间")
+        ])); return;
+      }
+      if (k === "facet") {
+        var on = true;
+        function paint() {
+          clear(host);
+          ["开源  12", "闭源  4"].forEach(function (t, i) {
+            host.append($("label", { class: "tree-row" }, [$("input", { type: "checkbox", checked: i === 0 && on, onclick: function () { on = !on; } }), t]));
+          });
+        }
+        paint(); return;
+      }
+      if (k === "query") {
+        clear(host).append($("div", { class: "ico-row" }, [
+          $("button", { class: "ui-btn secondary" }, "status"),
+          $("button", { class: "ui-btn secondary" }, "="),
+          $("input", { class: "field", value: "active", style: { width: "72px" } })
+        ])); return;
+      }
+      clear(host).append(cen([$("div", { class: "hint" }, it.en)])); return;
+    }
+
+    if (d === "mobile") {
+      var page = 0, revealed = false;
+      function paint() {
+        clear(host);
+        var frame = $("div", { class: "phone-frame" });
+        if (k === "safe") { frame.append($("div", { class: "safe-top" }), $("div", { class: "grow center hint" }, "内容避开刘海"), $("div", { class: "safe-bot" })); host.append(frame); return; }
+        if (k === "navbar" || k === "large") {
+          frame.append($("div", { class: "ico-row", style: { padding: "6px 8px" } }, [
+            $("button", { class: "ui-btn icon ghost" }, icon("chevL", 14)),
+            $("strong", { style: { fontSize: k === "large" ? "18px" : "13px" } }, "项目"),
+            $("button", { class: "ui-btn text" }, "编辑")
+          ]), $("div", { class: "grow hint", style: { padding: "8px" } }, "列表"));
+          host.append(frame); return;
+        }
+        if (k === "dots" || k === "cards") {
+          frame.append($("div", { class: "grow center" }, "卡片 " + (page + 1)));
+          var dots = $("div", { class: "ico-row", style: { justifyContent: "center", padding: "6px" } });
+          [0, 1, 2].forEach(function (n) {
+            dots.append($("button", { class: "thumb" + (n === page ? " on" : ""), onclick: function () { page = n; paint(); } }));
+          });
+          if (k === "cards") frame.append($("div", { class: "ico-row", style: { justifyContent: "center" } }, [
+            $("button", { class: "ui-btn secondary", onclick: function () { toastIn(host, "跳过"); page = (page + 1) % 3; paint(); } }, "跳过"),
+            $("button", { class: "ui-btn solid", onclick: function () { toastIn(host, "喜欢"); page = (page + 1) % 3; paint(); } }, "喜欢")
+          ]));
+          frame.append(dots); host.append(frame); return;
+        }
+        if (k === "pull") {
+          frame.append($("button", { class: "list-item", onclick: function () { toastIn(host, "已刷新"); } }, "下拉刷新（点击模拟）"));
+          frame.append($("div", { class: "hint" }, "条目一"), $("div", { class: "hint" }, "条目二"));
+          host.append(frame); return;
+        }
+        if (k === "swipe") {
+          var row = $("div", { style: { display: "flex", height: "40px" } });
+          row.append($("div", { class: "grow card-mini", onclick: function () { revealed = !revealed; paint(); } }, "左滑删除"));
+          if (revealed) row.append($("button", { class: "ui-btn danger", onclick: function () { toastIn(host, "已删除"); revealed = false; paint(); } }, "删除"));
+          frame.append(row); host.append(frame); return;
+        }
+        var hold;
+        frame.append($("div", { class: "card-mini", onmousedown: function () { hold = setTimeout(function () { toastIn(host, "长按菜单"); }, 480); }, onmouseup: function () { clearTimeout(hold); }, onmouseleave: function () { clearTimeout(hold); } }, "按住约 0.5 秒"));
+        host.append(frame);
+      }
+      paint(); return;
+    }
+
+    if (d === "desktop") {
+      var tab = 0, edge = "right", pos = { x: 24, y: 28 };
+      function paint() {
+        clear(host);
+        if (k === "three" || k === "activity" || k === "explorer") {
+          var split = $("div", { class: "split", style: { height: "100%" } });
+          var rail = $("div", { class: "rail" });
+          ["grid", "search", "settings"].forEach(function (n, i) {
+            var b = $("button", { class: i === tab ? "on" : "", onclick: function () { tab = i; paint(); } });
+            b.append(icon(n, 14)); rail.append(b);
+          });
+          split.append(rail);
+          if (k !== "activity") split.append($("div", { class: "pane", style: { width: "36%" } }, ["src", "App.tsx", "styles.css"][tab] || "src"));
+          split.append($("div", { class: "pane grow" }, "编辑器"));
+          if (k === "three") split.append($("div", { class: "pane", style: { width: "28%" } }, "检查器"));
+          host.append(split); return;
+        }
+        if (k === "edtabs") {
+          ["App.tsx", "main.ts"].forEach(function (n, i) {
+            host.append($("button", { class: "tab" + (i === tab ? " active" : ""), onclick: function () { tab = i; paint(); } }, n));
+          });
+          host.append($("div", { class: "code grow" }, "// " + ["App.tsx", "main.ts"][tab])); return;
+        }
+        if (k === "edpane") { clear(host).append($("div", { class: "code", style: { height: "100%" } }, "function render() {}")); return; }
+        if (k === "prop") { clear(host).append($("div", { class: "hint" }, "宽度"), $("input", { class: "field", value: "240" }), $("div", { class: "hint" }, "可见"), $("input", { type: "checkbox", checked: true })); return; }
+        if (k === "status") { clear(host).append($("div", { class: "ico-row", style: { marginTop: "auto" } }, [$("span", { class: "status-ok" }, "main"), $("span", { class: "hint" }, "0 问题"), $("span", { class: "hint" }, "UTF-8")])); return; }
+        if (k === "cmdbar") {
+          [["file", "打开"], ["copy", "复制"], ["trash", "删除"]].forEach(function (p) {
+            var b = $("button", { class: "ui-btn secondary", onclick: function () { toastIn(host, p[1]); } });
+            b.append(rowI(p[0], p[1])); host.append(b);
+          }); return;
+        }
+        if (k === "dock") {
+          host.append($("div", { class: "hint" }, "停靠：" + edge));
+          ["left", "right", "bottom"].forEach(function (e) {
+            host.append($("button", { class: "ui-btn secondary" + (edge === e ? " on" : ""), onclick: function () { edge = e; paint(); } }, e));
+          }); return;
+        }
+        var pan = $("div", { class: "card-mini", style: { position: "absolute", left: pos.x + "px", top: pos.y + "px", width: "120px", cursor: "grab" } }, "拖动手柄");
+        pan.onmousedown = function (e) {
+          var sx = e.clientX, sy = e.clientY, ox = pos.x, oy = pos.y;
+          function mv(ev) { pos = { x: Math.max(0, ox + ev.clientX - sx), y: Math.max(0, oy + ev.clientY - sy) }; pan.style.left = pos.x + "px"; pan.style.top = pos.y + "px"; }
+          function up() { document.removeEventListener("mousemove", mv); document.removeEventListener("mouseup", up); }
+          document.addEventListener("mousemove", mv); document.addEventListener("mouseup", up);
+        };
+        clear(host).append(pan);
+      }
+      paint(); return;
+    }
+
+    clear(host).append(cen([$("div", { class: "hint" }, it.en)]));
+  }
+
+  var cat = "all", q = "";
+  var grid = document.getElementById("grid");
+  var catsEl = document.getElementById("cats");
+  var countEl = document.getElementById("count");
+  var root = document.documentElement;
+  var themeDark = document.getElementById("themeDark");
+  var themeLight = document.getElementById("themeLight");
+
+  function applyTheme(mode) {
+    root.setAttribute("data-theme", mode);
+    localStorage.setItem("ui-dict-theme", mode);
+    themeDark.className = mode === "dark" ? "on" : "";
+    themeLight.className = mode === "light" ? "on" : "";
+    clear(themeDark); themeDark.append(icon("moon", 14), document.createTextNode(" 深色"));
+    clear(themeLight); themeLight.append(icon("sun", 14), document.createTextNode(" 浅色"));
+  }
+  applyTheme(localStorage.getItem("ui-dict-theme") || "dark");
+  themeDark.onclick = function () { applyTheme("dark"); };
+  themeLight.onclick = function () { applyTheme("light"); };
+
+  function visible() {
+    var s = q.trim().toLowerCase();
+    return CATALOG.filter(function (it) {
+      if (cat !== "all" && it.category !== cat) return false;
+      if (!s) return true;
+      return [it.zh, it.en, it.aliases, it.when, it.prompt, it.promptZh].join(" ").toLowerCase().indexOf(s) >= 0;
+    });
+  }
+
+  function appendCard(it) {
+    var demo = $("div", { class: "demo" });
+    var copy = $("button", { class: "copy" }, "复制");
+    copy.onclick = function () {
+      navigator.clipboard.writeText(it.prompt).catch(function () {});
+      copy.textContent = "已复制"; copy.classList.add("ok");
+      setTimeout(function () { copy.textContent = "复制"; copy.classList.remove("ok"); }, 1200);
+    };
+    grid.append($("article", { class: "card", "data-cat": it.category }, [
+      $("div", { class: "card-deco", "aria-hidden": "true" }, [$("i"), $("i")]),
+      demo,
+      $("div", { class: "meta" }, [
+        $("div", { class: "row" }, [$("span", { class: "k" }, "中文俗称"), $("div", { class: "v zh", title: it.zh }, it.zh)]),
+        $("div", { class: "row" }, [$("span", { class: "k" }, "标准英文"), $("div", { class: "v en", title: it.en }, it.en)]),
+        $("div", { class: "row" }, [$("span", { class: "k" }, "常见别名"), $("div", { class: "v aliases", title: it.aliases }, it.aliases)]),
+        $("div", { class: "row" }, [$("span", { class: "k" }, "何时使用"), $("div", { class: "v when", title: it.when }, it.when)]),
+        $("div", { class: "prompt-box" }, [$("div", { class: "prompt-head" }, [$("span", { class: "k" }, "AI Prompt"), copy]), $("div", { class: "prompt-scroll" }, [$("pre", { class: "prompt" }, it.prompt), $("p", { class: "prompt-zh" }, it.promptZh)])])
+      ])
+    ]));
+    mountDemo(demo, it);
+  }
+
+  function render() {
+    var items = visible();
+    countEl.innerHTML = "<span class=\"n\">" + items.length + "</span> / " + CATALOG.length;
+    clear(grid);
+    if (!items.length) { grid.append($("div", { class: "empty-filter" }, "没有匹配的组件")); return; }
+    items.forEach(appendCard);
+  }
+
+  CATS.forEach(function (pair) {
+    var b = $("button", { class: "cat" + (pair[0] === "all" ? " active" : ""), type: "button" }, [
+      icon(pair[3], 16),
+      $("span", { class: "cat-lab" }, [
+        $("span", { class: "cat-en" }, pair[1]),
+        $("span", { class: "cat-sep" }, "｜"),
+        $("span", { class: "cat-zh" }, pair[2])
+      ])
+    ]);
+    b.onclick = function () { cat = pair[0]; [].forEach.call(catsEl.querySelectorAll(".cat"), function (x) { x.classList.toggle("active", x === b); }); render(); };
+    catsEl.append(b);
+  });
+  document.getElementById("q").addEventListener("input", function (e) { q = e.target.value; render(); });
+  render();
+})();
+
+  </script>
+</body>
+</html>
