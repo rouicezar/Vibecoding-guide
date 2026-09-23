@@ -6,6 +6,12 @@ const covered=new Set(journey.flatMap(stage=>stage.moduleIds));
 for(const item of modules.filter(item=>item.id!=='home'))assert(covered.has(item.id),`Unmapped module: ${item.id}`);
 for(const stage of journey)for(const id of stage.moduleIds)assert(modules.some(item=>item.id===id),`Unknown module: ${id}`);
 assert.equal(new Set(journey.map(stage=>stage.id)).size,journey.length);
+for(const stage of journey){
+ for(const [index,prompt] of stage.prompt.entries()){
+  assert(prompt.split('\n').length>=10, `Template too short: ${stage.id}/${index}`);
+  assert(prompt.includes(index===0?'【':'['), `Missing example fields: ${stage.id}/${index}`);
+ }
+}
 const paths=['','start/','projects/web/','projects/mini-program/','projects/mobile/','projects/desktop/'];
 for(const locale of ['zh-cn','en'])for(const path of paths){
  const html=await readFile(`dist/${locale}/${path}index.html`,'utf8');
@@ -18,4 +24,4 @@ for(const locale of ['zh-cn','en'])for(const path of paths){
  }
  for(const match of html.matchAll(/href="#([^"]+)"/g))assert(html.includes(`id="${match[1]}"`),`Missing anchor ${match[1]}`);
 }
-console.log('PASS: 12 localized pages, language counterparts, headings, local links/assets section anchors, copy policy and module coverage.');
+console.log('PASS: 12 localized pages, language counterparts, headings, local links/assets section anchors, copy policy, module coverage and structured bilingual templates.');
