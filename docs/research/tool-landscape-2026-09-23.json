@@ -582,59 +582,62 @@
       "recommendationBasis": "Editorial fit assessment based on official capabilities; not a hands-on ranking."
     },
     {
-      "id": "comate",
-      "name": "Baidu Comate 文心快码",
-      "icon": "comate.ico",
+      "id": "zcode",
+      "name": "智谱 ZCode",
+      "icon": "zcode.png",
       "surfaces": [
-        "ide"
+        "desktop"
       ],
       "forms": [
-        "独立 IDE · 编辑器插件",
-        "Standalone IDE · editor plugins"
+        "桌面智能体工作区 · macOS / Windows / Linux",
+        "Desktop agent workspace · macOS / Windows / Linux"
       ],
       "fit": [
-        "希望使用中文说明，在本地项目中逐步学习。",
-        "Prefer Chinese guidance and gradual learning in a local project."
+        "希望用中文交代任务，在同一工作区检查文件、Git 记录与页面预览。",
+        "Describe tasks in Chinese and inspect files, Git history and previews in one workspace."
       ],
       "advantage": [
-        "中文产品与文档，可从图形化编程工作区起步。",
-        "Chinese product and docs support a visual coding start."
+        "内置文件管理、终端、Git 与浏览器预览，适合以任务对话推进本地项目。",
+        "Built-in files, terminal, Git and browser preview support conversational local development."
       ],
       "limit": [
-        "官网会员费和模型额度分开展示，不把模型额度当订阅价格。",
-        "Membership cost and model allowance are distinct on the pricing page."
+        "按桌面任务界面比较；内置终端不等于独立 CLI。模型连接需在 ZCode 内配置，不会自动沿用终端设置。",
+        "Compared as a desktop task interface; an embedded terminal is not a standalone CLI. Configure model access in ZCode separately from terminal settings."
       ],
       "price": [
-        "官网当前显示连续包月 ¥59；月卡 ¥79；其他档位以结算页核对",
-        "Official page currently shows recurring CNY59/mo; monthly card CNY79; confirm other tiers at checkout"
+        "客户端免费；中国 GLM Coding Plan 标价 Lite ¥118 / Pro ¥538 / Max ¥1,078 每月",
+        "Client free; CN GLM Coding Plan list rates: Lite CNY118 / Pro CNY538 / Max CNY1,078 per month"
       ],
       "billing": [
-        "页面同时列出 ¥55/¥199 模型额度，并非同名会员月费；促销续费需核对。",
-        "CNY55/199 model allowances are not membership fees; verify promotional renewal terms."
+        "模型服务另计。官网优惠价与续费价分开核对，以 BigModel 订阅页为准；API 余额与 Coding Plan 是不同计费入口。",
+        "Model access costs extra. Confirm promotional and renewal prices on BigModel; API balance and Coding Plan use separate billing routes."
       ],
       "start": [
-        "从官方入口安装 IDE 或插件，打开项目后先让 AI 说明文件结构。",
-        "Install the official IDE or plugin, open a project and ask for a file-structure explanation."
+        "从官网下载对应系统版本，连接 BigModel 或 Z.ai 账号及可用模型套餐，打开项目后先完成一处小改动并核对预览。",
+        "Download for the OS, connect a BigModel or Z.ai account with model access, open a project and verify one small edit in preview."
       ],
-      "home": "https://comate.baidu.com/zh",
+      "home": "https://zcode.z.ai/cn",
       "sources": [
         {
-          "label": "Pricing",
-          "url": "https://comate.baidu.com/zh/pricing/payment?track=SEM2025freechangjingB3&type=vip"
+          "label": "Product & plans",
+          "url": "https://zcode.z.ai/cn"
         },
         {
-          "label": "Billing docs",
-          "url": "https://comate.baidu.com/docs/%E4%BA%A7%E5%93%81%E5%AE%9A%E4%BB%B7/%E4%BA%A7%E5%93%81%E5%AE%9A%E4%BB%B7.html"
+          "label": "Install",
+          "url": "https://zcode.z.ai/cn/docs/install"
         },
         {
-          "label": "IDE quickstart",
-          "url": "https://comate.baidu.com/docs/%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B/%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/Comate%20AI%20IDE%20%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/Comate%20IDE.html"
+          "label": "Model configuration",
+          "url": "https://zcode.z.ai/cn/docs/configuration"
+        },
+        {
+          "label": "FAQ & billing",
+          "url": "https://zcode.z.ai/cn/docs/qa"
         }
       ],
-      "iconSourcePage": "https://comate.baidu.com/zh",
-      "iconUrl": "https://comate.baidu.com/favicon.ico",
-      "verifiedAt": "2026-09-23",
-      "recommendationBasis": "Editorial fit assessment based on official capabilities; not a hands-on ranking."
+      "iconSourcePage": "https://zcode.z.ai/cn",
+      "iconUrl": "https://zcode.z.ai/favicon-192x192.png?v=20260707-transparent",
+      "verifiedAt": "2026-09-23"
     },
     {
       "id": "amp",
@@ -882,7 +885,7 @@
   "notes": [
     "Fit/advantage are editorial interpretations of documented capabilities, not benchmarks or tested recommendations.",
     "Prices fetched from official sources; no third-party price used.",
-    "Comate and Amp have ambiguous or divergent official pricing presentation: preserve caution instead of inventing precision.",
+    "Amp has ambiguous or divergent official pricing presentation: preserve caution instead of inventing precision.",
     "Icon URLs extracted from official page link rel=icon/apple-touch-icon; parent should download and inspect before integration."
   ]
 }

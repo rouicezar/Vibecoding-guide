@@ -154,11 +154,11 @@
       "bytes": 3391
     },
     {
-      "id": "comate",
-      "url": "https://comate.baidu.com/favicon.ico",
-      "sourcePage": "https://comate.baidu.com/zh",
-      "path": "public/brand/tools/comate.ico",
-      "bytes": 6782
+      "id": "zcode",
+      "url": "https://zcode.z.ai/favicon-192x192.png?v=20260707-transparent",
+      "sourcePage": "https://zcode.z.ai/cn",
+      "path": "public/brand/tools/zcode.png",
+      "bytes": 6479
     },
     {
       "id": "antigravity",
