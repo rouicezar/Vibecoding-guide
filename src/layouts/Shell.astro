@@ -6,7 +6,7 @@ import Icon from '../components/Icon.astro';
 import Navigation from '../components/Navigation.astro';
 interface Props {locale:Locale;path:string;title:string;}
 const {locale,path,title}=Astro.props;
-const searchEntries=[{path:'',title:t(['首页','Home'],locale)},{path:'start',title:t(['项目分类','Project types'],locale)},{path:'communicate',title:t(['和 Agent 沟通 · 提示词与排查','Talking to agents · prompts and troubleshooting'],locale)},{path:'stacks',title:t(['技术栈选择','Choosing a stack'],locale)},...projects.map(p=>({path:`projects/${p.id}`,title:t(p.title,locale)+' · '+t(p.tagline,locale)}))];
+const searchEntries=[{path:'',title:t(['首页','Home'],locale)},{path:'start',title:t(['项目分类','Project types'],locale)},{path:'communicate',title:t(['和 Agent 沟通 · 提示词与排查','Talking to agents · prompts and troubleshooting'],locale)},{path:'stacks',title:t(['技术栈选择','Choosing a stack'],locale)},{path:'components',title:t(['前端与 UI · 组件词典','Frontend & UI · component dictionary'],locale)},...projects.map(p=>({path:`projects/${p.id}`,title:t(p.title,locale)+' · '+t(p.tagline,locale)}))];
 ---
 <!doctype html><html lang={locale==='zh-cn'?'zh-CN':'en'}><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width"/><meta name="description" content={t(['给零基础创作者的 Vibe Coding 实践指南。','A practical guide to building with AI, for people who don’t code.'],locale)}/><title>{title} · Vibe Guide</title><link rel="icon" type="image/png" href="/brand/vibe-guide-mark.png"/><link rel="alternate" hreflang="zh-CN" href={url('zh-cn',path)}/><link rel="alternate" hreflang="en" href={url('en',path)}/></head>
 <body><a class="skip-link" href="#main">{t(['跳到内容','Skip to content'],locale)}</a>

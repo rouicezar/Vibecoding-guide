@@ -1,0 +1,3086 @@
+{
+  "categories": [
+    [
+      "tabs",
+      "Tabs",
+      "标签",
+      "catTabs"
+    ],
+    [
+      "stepper",
+      "Stepper",
+      "步骤条",
+      "catStep"
+    ],
+    [
+      "button",
+      "Button",
+      "按钮",
+      "catBtn"
+    ],
+    [
+      "input",
+      "Input",
+      "输入",
+      "catInput"
+    ],
+    [
+      "select",
+      "Select",
+      "选择器",
+      "catSelect"
+    ],
+    [
+      "selection",
+      "Selection",
+      "勾选",
+      "catCheck"
+    ],
+    [
+      "slider",
+      "Slider",
+      "滑块",
+      "catSlider"
+    ],
+    [
+      "datetime",
+      "DateTime",
+      "日期时间",
+      "calendar"
+    ],
+    [
+      "special",
+      "Special",
+      "特殊输入",
+      "hash"
+    ],
+    [
+      "upload",
+      "Upload",
+      "上传",
+      "upload"
+    ],
+    [
+      "menu",
+      "Menu",
+      "菜单",
+      "menu"
+    ],
+    [
+      "nav",
+      "Navigation",
+      "导航",
+      "catNav"
+    ],
+    [
+      "card",
+      "Card",
+      "卡片",
+      "catCard"
+    ],
+    [
+      "data",
+      "Data",
+      "数据展示",
+      "catTable"
+    ],
+    [
+      "tag",
+      "Tag",
+      "标签徽章",
+      "catTag"
+    ],
+    [
+      "accordion",
+      "Accordion",
+      "折叠",
+      "catAcc"
+    ],
+    [
+      "overlay",
+      "Overlay",
+      "浮层",
+      "catOver"
+    ],
+    [
+      "feedback",
+      "Feedback",
+      "反馈",
+      "alert"
+    ],
+    [
+      "loading",
+      "Loading",
+      "加载",
+      "catLoad"
+    ],
+    [
+      "empty",
+      "Empty",
+      "空状态",
+      "catEmpty"
+    ],
+    [
+      "layout",
+      "Layout",
+      "布局",
+      "catLay"
+    ],
+    [
+      "saas",
+      "SaaS",
+      "智能应用",
+      "bolt"
+    ],
+    [
+      "tree",
+      "Tree",
+      "树",
+      "catTree"
+    ],
+    [
+      "mobile",
+      "Mobile",
+      "移动端",
+      "catPhone"
+    ],
+    [
+      "desktop",
+      "Desktop",
+      "桌面",
+      "catDesk"
+    ]
+  ],
+  "entries": [
+    {
+      "id": "tabs-underlined",
+      "category": "tabs",
+      "zh": "下划线标签",
+      "en": "Underlined Tabs",
+      "aliases": "Line Tabs, Flat Tabs",
+      "when": "不同内容区域切换。细线跟着文字走，不要叫 Slider。",
+      "prompt": "Build a single Underlined Tabs component, not a full page. Structure: a horizontal tab list on top and one content panel below. Default three tabs labeled Overview, Billing, and Settings, each revealing its own short panel. The active tab has a 2px underline aligned to the label width; inactive tabs have muted text, no fill, no card background, and no shared track. Interaction: click a tab to switch panels; only the active panel is visible; Left/Right keys when the list is focused. States: default, hover (slightly brighter text), selected (accent underline and stronger text), disabled (non-interactive, reduced contrast). Motion: instant panel swap is fine. Do not build pill tabs, a segmented control, or a slider. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成一个下划线标签组件，不要整页。上方横排标签、下方一块内容。默认三项 Overview、Billing、Settings，点哪项只显示对应面板。当前项是贴着文字宽度的 2px 底线；未选项弱文字、无底、无卡片、无公共轨道。支持点击和左右键。状态含默认、悬停、选中、禁用。面板切换可即时。不要做成胶囊标签、分段控制或滑块。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "tabs",
+      "opts": {
+        "kind": "underline"
+      }
+    },
+    {
+      "id": "tabs-sliding",
+      "category": "tabs",
+      "zh": "滑动指示标签",
+      "en": "Tabs with Sliding Indicator",
+      "aliases": "Animated underline tabs",
+      "when": "标签切换时底部指示线平滑滑动。",
+      "prompt": "Build a single Tabs with Sliding Indicator component, not a full page. Structure: same as underlined tabs: horizontal labels Overview, Billing, Settings above one content panel; a 2px underline sits under the active label. Interaction: click or Left/Right to change the selected tab and panel. States: default, hover, selected, disabled. Motion: the underline must slide to the new tab in about 180ms; do not jump instantly. Do not use pill tabs, a segmented control, or a range slider. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成带滑动指示条的标签，不要整页。结构同下划线标签：横排 Overview、Billing、Settings，下方一块内容；2px 底线在当前文字下。点击或左右键切换。状态含默认、悬停、选中、禁用。底线必须约 180ms 滑到新项，不要瞬移。不要做成胶囊标签、分段控制或滑块。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "tabs",
+      "opts": {
+        "kind": "sliding"
+      }
+    },
+    {
+      "id": "tabs-pill",
+      "category": "tabs",
+      "zh": "胶囊标签",
+      "en": "Pill Tabs",
+      "aliases": "Rounded tabs",
+      "when": "选项是独立胶囊，当前项填充。",
+      "prompt": "Build a single Pill Tabs component, not a full page. Structure: three independent pill-shaped tabs labeled Overview, Billing, Settings, plus one content panel below. Each tab is its own rounded capsule with gap between pills. The selected pill has a filled or strongly outlined active surface; others are outline or text-only. Interaction: click a pill to swap the panel. States: default, hover, selected, disabled. Motion: 150ms fill/color change, no sliding underline. Do not use a shared segmented track, folder tabs, or a slider. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成胶囊标签，不要整页。三个互不相连的圆角胶囊 Overview、Billing、Settings，下方一块内容。当前胶囊实心或强描边，其余描边或纯文字，胶囊之间有间隙。点击切换面板。状态含默认、悬停、选中、禁用。约 150ms 变色，不要滑动底线。不要做成同一轨道的分段控制、文件夹页签或滑块。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "tabs",
+      "opts": {
+        "kind": "pill"
+      }
+    },
+    {
+      "id": "tabs-segmented",
+      "category": "tabs",
+      "zh": "分段控制",
+      "en": "Segmented Control",
+      "aliases": "Shared track",
+      "when": "同一数据集的短选项，如日/周/月。不是 Tabs。",
+      "prompt": "Build a single Segmented Control, not Tabs and not a full page. Structure: Day, Week, Month packed inside one shared rounded track with no gap between segments. Only one segment is selected. Interaction: click a segment to change the selected value; this switches a view of the same dataset, not unrelated pages. States: default, selected (inset or filled in the track), hover, disabled. Motion: 150ms selected-thumb or fill. Do not use separate pill tabs, underlines, or a slider. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成分段控制，不是 Tabs，不要整页。Day、Week、Month 挤在同一条圆角轨道里，段与段无间隙，同时只选一段。点击切换同一数据集的视图，不是互不相关的页面。状态含默认、选中（轨道内填充）、悬停、禁用。约 150ms。不要做成分散胶囊、下划线标签或滑块。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "tabs",
+      "opts": {
+        "kind": "segmented"
+      }
+    },
+    {
+      "id": "tabs-contained",
+      "category": "tabs",
+      "zh": "卡片标签",
+      "en": "Contained Tabs",
+      "aliases": "Attached Tabs",
+      "when": "标签贴在内容面板上沿。",
+      "prompt": "Build a single Contained Tabs component, not a full page. Structure: tab labels Overview, Billing, Settings attached to the top edge of a bordered content panel so tabs and panel share one outline. The active tab connects visually to the panel (no gap, shared border). Interaction: click a tab to change panel content. States: default, selected (connected to panel), hover, disabled. Motion: instant or 150ms. Do not use floating pills, a segmented track, or folder-style overlapping tabs. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成卡片标签，不要整页。Overview、Billing、Settings 贴在带描边内容面板的上沿，标签和面板共用一圈边。当前项与面板视觉相连（无缝、共边）。点击切换内容。状态含默认、选中、悬停、禁用。不要做成悬浮胶囊、分段轨道或叠放的文件夹页签。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "tabs",
+      "opts": {
+        "kind": "contained"
+      }
+    },
+    {
+      "id": "tabs-folder",
+      "category": "tabs",
+      "zh": "文件夹标签",
+      "en": "Folder-style Tabs",
+      "aliases": "Notebook tabs",
+      "when": "视觉上像文件夹页签。",
+      "prompt": "Build a single Folder-style Tabs component, not a full page. Structure: tabs look like notebook file folders sitting on a content panel; the selected tab overlaps the panel edge like a folder flap. Default labels Overview, Billing, Settings. Interaction: click a folder tab to bring its panel forward. States: default, selected (in front, connected), hover, disabled. Motion: 150ms. Do not use a sliding underline, pills, or a segmented control. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成文件夹式页签，不要整页。页签像笔记本文件夹搭在内容面板上，当前项像页签盖住面板上沿。默认 Overview、Billing、Settings。点击把对应面板带到前面。状态含默认、选中、悬停、禁用。不要做成滑动底线、胶囊或分段控制。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "tabs",
+      "opts": {
+        "kind": "folder"
+      }
+    },
+    {
+      "id": "tabs-vertical",
+      "category": "tabs",
+      "zh": "垂直标签",
+      "en": "Vertical Tabs",
+      "aliases": "Side tabs",
+      "when": "标签在左、内容在右。",
+      "prompt": "Build a single Vertical Tabs component, not a full page. Structure: a vertical tab list on the left (Overview, Billing, Settings) and the content panel on the right, filling remaining width. Active tab can use a left accent bar or stronger text. Interaction: click a row to swap the right panel; Up/Down keys when the list is focused. States: default, hover, selected, disabled. Motion: instant panel swap. Do not use horizontal underlines, a sidebar of page links, or a segmented control. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成垂直标签，不要整页。左侧竖排 Overview、Billing、Settings，右侧内容占满剩余宽度。当前项可用左侧强调条或更重文字。点击或上下键切换右侧面板。状态含默认、悬停、选中、禁用。不要做成横向下划线、整站侧栏链接或分段控制。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "tabs",
+      "opts": {
+        "kind": "vertical"
+      }
+    },
+    {
+      "id": "tabs-icon",
+      "category": "tabs",
+      "zh": "图标标签",
+      "en": "Icon Tabs",
+      "aliases": "Icon-only tabs",
+      "when": "空间紧，需要额外说明。",
+      "prompt": "Build a single Icon Tabs component, not a full page. Structure: three icon-only tabs (home, search, settings as line icons) plus a content panel. Each icon has a tooltip with the destination name. Interaction: click an icon to switch the panel; tooltip on hover/focus. States: default, hover, selected (accent icon or underline), disabled. Hit target at least 32px. Do not add visible text labels, and do not use a mobile bottom nav bar spanning the screen. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成纯图标标签，不要整页。三个仅图标项（首页、搜索、设置的线条图标）加内容面板。每个图标悬停/聚焦出目的地名称 tooltip。点击切换面板。热区至少 32px。状态含默认、悬停、选中、禁用。不要加可见文字标签，也不要做成铺满屏宽的底部导航。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "tabs",
+      "opts": {
+        "kind": "icon"
+      }
+    },
+    {
+      "id": "tabs-icon-label",
+      "category": "tabs",
+      "zh": "图标文字标签",
+      "en": "Icon + Label Tabs",
+      "aliases": "Icon text tabs",
+      "when": "图标和文字同时出现。",
+      "prompt": "Build a single Icon + Label Tabs component, not a full page. Structure: three horizontal tabs, each with a leading line icon and a text label (Overview, Billing, Settings), plus one content panel. Interaction: click either icon or label to switch. States: default, hover, selected, disabled. Do not use icon-only tabs or a segmented control. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成图标加文字的标签，不要整页。三项横排，每项前面线条图标加文字 Overview、Billing、Settings，下方一块内容。点图标或文字都能切换。状态含默认、悬停、选中、禁用。不要做成纯图标标签或分段控制。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "tabs",
+      "opts": {
+        "kind": "iconLabel"
+      }
+    },
+    {
+      "id": "tabs-scrollable",
+      "category": "tabs",
+      "zh": "可滚动标签",
+      "en": "Scrollable Tabs",
+      "aliases": "Overflow tabs",
+      "when": "标签超出宽度时横向滚动。",
+      "prompt": "Build a single Scrollable Tabs component, not a full page. Structure: many tab labels in one row (at least eight: Home, Projects, Billing, Members, Analytics, Alerts, Integrations, Settings) that overflow a fixed-width viewport, with left/right overflow controls. A content panel sits below. Interaction: click a visible tab to select; use chevrons or horizontal scroll to reveal hidden tabs. States: default, selected, hover, disabled, overflow (chevrons appear when clipped). Do not wrap tabs onto two lines and do not use a dropdown to replace the row. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成可滚动标签，不要整页。一行至少八个标签（Home 到 Settings）超出固定宽度，配左右溢出按钮，下方一块内容。点击可见项选中；用箭头或横向滚动露出被裁切的项。状态含默认、选中、悬停、禁用、溢出。不要折成两行，也不要用下拉菜单代替这一行。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "tabs",
+      "opts": {
+        "kind": "scroll"
+      }
+    },
+    {
+      "id": "tabs-closable",
+      "category": "tabs",
+      "zh": "可关闭标签",
+      "en": "Closable Tabs",
+      "aliases": "Browser-like tabs",
+      "when": "类似浏览器页签。",
+      "prompt": "Build a single Closable Tabs component like browser tabs, not a full page. Structure: a tab strip with at least three documents (Untitled, README, styles.css); each tab shows a title and a close control; a plus control can add a tab. Content panel shows the active document name. Interaction: click to activate; click close to remove that tab and select a neighbor; cannot close the last remaining tab. States: default, selected, hover, dirty optional. Do not use pills or a segmented control. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成类似浏览器的可关闭标签，不要整页。至少三个文档页签（Untitled、README、styles.css），每项有标题和关闭；可有加号新增。内容区显示当前文档名。点击激活；点关闭删该项并选中邻居；不能关掉最后一个。不要做成胶囊或分段控制。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "tabs",
+      "opts": {
+        "kind": "closable"
+      }
+    },
+    {
+      "id": "tabs-draggable",
+      "category": "tabs",
+      "zh": "可拖动标签",
+      "en": "Draggable Tabs",
+      "aliases": "Reorderable Tabs",
+      "when": "允许重排顺序。",
+      "prompt": "Build a single Draggable Tabs component, not a full page. Structure: three or more named tabs in a row plus a content panel. Interaction: click to select; pointer-drag a tab horizontally to reorder the strip; drop commits the new order. States: default, selected, dragging (lifted tab), hover. Motion: the strip reflows as the tab is dragged. Do not require a separate edit mode, and do not use a sortable list instead of tabs. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成可拖动重排的标签，不要整页。一行至少三个有名标签加内容面板。点击选中；按住横向拖动改顺序，松开即生效。状态含默认、选中、拖动中、悬停。不要另开编辑模式，也不要用可排序列表代替标签。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "tabs",
+      "opts": {
+        "kind": "drag"
+      }
+    },
+    {
+      "id": "tabs-switcher",
+      "category": "tabs",
+      "zh": "内容切换器",
+      "en": "Content Switcher",
+      "aliases": "Same-content views",
+      "when": "同一数据集的不同视图。",
+      "prompt": "Build a single Content Switcher for alternate views of the same dataset, not a full page. Structure: a compact switcher with List, Board, and Calendar options sitting above one dataset canvas. Only the presentation changes; the records stay the same. Interaction: click an option to change the view layout. States: default, selected, hover, disabled. Do not use underlined page tabs that navigate to different sections, and do not use a filter bar. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成同一数据集的内容切换器，不要整页。List、Board、Calendar 三个紧凑选项在同一块数据画布上方。只改呈现，记录不变。点击切换布局。不要做成跳到不同栏目的下划线页面标签，也不要做成筛选栏。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "tabs",
+      "opts": {
+        "kind": "switcher"
+      }
+    },
+    {
+      "id": "step-numbered",
+      "category": "stepper",
+      "zh": "数字步骤条",
+      "en": "Stepper",
+      "aliases": "Progress Steps",
+      "when": "多步表单、向导。",
+      "prompt": "Build a single numbered Stepper for a multi-step wizard, not a full page. Structure: a horizontal row of at least four steps labeled Cart, Address, Payment, Review, connected by lines. Each step shows a number in a circle plus a short label. Completed steps are highlighted, the current step is emphasized, future steps are muted. Interaction: click a reachable step to make it current; optional Next/Back. States: upcoming, current, completed, error optional. Do not use a progress bar alone, chevron fishbone, or tabs. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成带数字的横向步骤条，用于多步向导，不要整页。至少四步 Cart、Address、Payment、Review，圆圈数字加短标签，步间有连线。已完成高亮，当前步强调，未到步弱化。可点已到达的步；可有下一步/上一步。不要只用进度条、鱼骨箭头或标签页。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "stepper",
+      "opts": {
+        "kind": "numbered"
+      }
+    },
+    {
+      "id": "step-dot",
+      "category": "stepper",
+      "zh": "圆点步骤条",
+      "en": "Dot Stepper",
+      "aliases": "Minimal stepper",
+      "when": "空间少、步骤名可省略。",
+      "prompt": "Build a single Dot Stepper, not a full page. Structure: a minimal row of connected dots for four steps without requiring visible names (tooltips allowed). A line fills up to the current dot. Interaction: click a dot to change the current step. States: upcoming, current, completed. Do not use numbered circles, chevrons, or a slider. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成极简圆点步骤条，不要整页。四个圆点用线连接，不必常显步骤名（可用 tooltip）。进度线填到当前点。点击圆点切换。不要用数字圆、鱼骨或滑块。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "stepper",
+      "opts": {
+        "kind": "dot"
+      }
+    },
+    {
+      "id": "step-chevron",
+      "category": "stepper",
+      "zh": "鱼骨步骤条",
+      "en": "Chevron Stepper",
+      "aliases": "Arrow Stepper",
+      "when": "每步呈箭头并咬合下一步。",
+      "prompt": "Build a single Chevron Stepper (arrow/fishbone), not a full page. Structure: four steps as connected arrow shapes that bite into the next (Cart, Address, Payment, Review). Interaction: click a chevron to select that step. States: completed, current, upcoming. Do not use numbered circles on a thin line, or filled solid blocks unless this is the filled variant. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成鱼骨/箭头步骤条，不要整页。四步呈咬合的箭头块（Cart 到 Review）。点击切换。不要做成细线上的数字圆，也不要做成整块实心填充（那是填充鱼骨）。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "stepper",
+      "opts": {
+        "kind": "chevron"
+      }
+    },
+    {
+      "id": "step-filled",
+      "category": "stepper",
+      "zh": "填充鱼骨步骤",
+      "en": "Filled Chevron Stepper",
+      "aliases": "Solid chevron",
+      "when": "强调已完成块的实心填充。",
+      "prompt": "Build a single Filled Chevron Stepper, not a full page. Structure: like chevron stepper but completed steps use a solid filled background, current is strongest, upcoming is outline or muted. Labels Cart, Address, Payment, Review. Interaction: click to change step. Do not use unfilled outline-only chevrons or a numbered line stepper. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成实心填充的鱼骨步骤条，不要整页。已完成步实心底，当前最强，未到步描边或弱化。标签 Cart 到 Review。不要做成空心鱼骨或数字连线步骤。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "stepper",
+      "opts": {
+        "kind": "filled"
+      }
+    },
+    {
+      "id": "step-vertical",
+      "category": "stepper",
+      "zh": "垂直步骤条",
+      "en": "Vertical Stepper",
+      "aliases": "Vertical progress steps",
+      "when": "步骤带说明、纵向阅读。",
+      "prompt": "Build a single Vertical Stepper, not a full page. Structure: four steps stacked with labels and short descriptions on the right of circles, connected by a vertical line. Interaction: click a step to make it current. States: completed, current, upcoming. Do not use a horizontal stepper or a logistics tracker with timestamps. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成垂直步骤条，不要整页。四步纵向，圆点右侧有标题和短说明，竖线连接。点击切换当前步。不要做成横向步骤条或带时间戳的物流追踪。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "stepper",
+      "opts": {
+        "kind": "vertical"
+      }
+    },
+    {
+      "id": "step-tracker",
+      "category": "stepper",
+      "zh": "进度追踪",
+      "en": "Progress Tracker",
+      "aliases": "Order tracker",
+      "when": "物流或订单状态。",
+      "prompt": "Build a single Progress Tracker for order/logistics, not a wizard stepper. Structure: a vertical timeline of statuses (Placed, Shipped, Out for delivery, Delivered) with timestamps and the latest as current. Interaction: mostly informative; completed nodes filled. States: done, current, pending. Do not use numbered checkout steps or a horizontal stepper. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成物流/订单进度追踪，不是结账向导。纵向状态 Placed、Shipped、Out for delivery、Delivered，带时间，最新为当前。已完成点实心。不要做成结账数字步骤或横向步骤条。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "stepper",
+      "opts": {
+        "kind": "tracker"
+      }
+    },
+    {
+      "id": "btn-primary",
+      "category": "button",
+      "zh": "主按钮",
+      "en": "Primary Button",
+      "aliases": "Main CTA",
+      "when": "页面主操作。",
+      "prompt": "Build a single Primary Button, the main call to action, not a toolbar. Structure: one filled button labeled Save with comfortable padding (about 32px height). Visual: solid accent fill, high-contrast label, no outline-only look. Interaction: click fires the primary action; keyboard focus-visible ring. States: default, hover (slightly lighter or lifted), pressed, disabled, loading optional. Do not style it as a ghost, outline, or link, and do not add a dropdown chevron. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做一颗主按钮，作为页面主操作，不要整条工具栏。实心填充、对比足够的文字，标签 Save，高度约 32px。点击执行主操作，键盘有可见焦点环。状态含默认、悬停、按下、禁用。不要做成幽灵、描边或链接，也不要右侧下拉箭头。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "button",
+      "opts": {
+        "kind": "primary"
+      }
+    },
+    {
+      "id": "btn-secondary",
+      "category": "button",
+      "zh": "次按钮",
+      "en": "Secondary Button",
+      "aliases": "Default button",
+      "when": "与主按钮配对。",
+      "prompt": "Build a single Secondary Button meant to sit beside a primary CTA. Structure: label Cancel, same height as a primary button. Visual: quieter than primary — filled muted or neutral, not accent-solid. Interaction: click; focus-visible. States: default, hover, pressed, disabled. Do not use accent fill, and do not make it look like a text link. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做一颗次按钮，用来放在主按钮旁边。标签 Cancel，高度与主按钮一致。比主按钮弱，中性填充，不要实心强调色。状态含默认、悬停、按下、禁用。不要做成文字链接。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "button",
+      "opts": {
+        "kind": "secondary"
+      }
+    },
+    {
+      "id": "btn-outline",
+      "category": "button",
+      "zh": "描边按钮",
+      "en": "Outline Button",
+      "aliases": "Bordered button",
+      "when": "弱一点但仍是按钮。",
+      "prompt": "Build a single Outline Button. Structure: label Edit, ~32px height. Visual: 1px border, transparent fill, text matches border; no heavy shadow. Interaction: click; focus-visible. States: default, hover (light fill inside the border), pressed, disabled. Do not use a solid primary fill, and do not remove the border (that would be ghost/text). If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做一颗描边按钮。标签 Edit，约 32px 高。1px 边、透明底、字色跟边走，不要重阴影。悬停可在边框内淡填。不要实心主色，也不要去掉边框变成幽灵/文字按钮。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "button",
+      "opts": {
+        "kind": "outline"
+      }
+    },
+    {
+      "id": "btn-ghost",
+      "category": "button",
+      "zh": "幽灵按钮",
+      "en": "Ghost Button",
+      "aliases": "Bare button",
+      "when": "无背景，工具栏常见。",
+      "prompt": "Build a single Ghost Button for toolbars. Structure: label Filter, same height as other buttons. Visual: no background and no border at rest; hover reveals a light fill. Interaction: click; focus-visible. States: default (bare), hover (fill), pressed, disabled. Do not keep a permanent border (outline) or a solid accent fill (primary). If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做一颗幽灵按钮，适合工具栏。标签 Filter。静止时无底无边，悬停才出现浅底。不要常驻描边（那是描边按钮），也不要实心强调色（那是主按钮）。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "button",
+      "opts": {
+        "kind": "ghost"
+      }
+    },
+    {
+      "id": "btn-text",
+      "category": "button",
+      "zh": "文字按钮",
+      "en": "Text Button",
+      "aliases": "Textual button",
+      "when": "最轻量操作。",
+      "prompt": "Build a single Text Button, the lightest action. Structure: label Skip with no box at all. Visual: text only, optional underline on hover; no border, no fill at rest. Interaction: click; focus-visible. States: default, hover, pressed, disabled. Do not add chrome, and do not style it as a navigation link with always-on underline unless hovering. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做一颗最轻的文字按钮。标签 Skip，完全无框。静止无边无底，悬停可出现下划线。不要加任何铬框，也不要做成一直带下划线的导航链接。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "button",
+      "opts": {
+        "kind": "text"
+      }
+    },
+    {
+      "id": "btn-link",
+      "category": "button",
+      "zh": "链接按钮",
+      "en": "Link Button",
+      "aliases": "Button as link",
+      "when": "跳转感强的操作。",
+      "prompt": "Build a single Link Button that feels like navigation. Structure: label Open docs. Visual: accent or info colored text with an underline affordance (always or on hover, but clearly a link). Interaction: click; focus-visible. States: default, hover, visited optional, disabled. Do not use a bordered button shape, and do not use it as the page primary save action. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做一颗链接按钮，跳转感要强。标签 Open docs。信息色或强调色文字，带下划线（常显或悬停），一眼是链接。不要做成带边框的按钮形，也不要当页面主保存按钮。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "button",
+      "opts": {
+        "kind": "link"
+      }
+    },
+    {
+      "id": "btn-icon",
+      "category": "button",
+      "zh": "图标按钮",
+      "en": "Icon Button",
+      "aliases": "Icon-only button",
+      "when": "工具操作。",
+      "prompt": "Build a single Icon Button. Structure: a square control about 32px with a line icon (settings gear), no text. Interaction: click; tooltip Settings on hover; focus-visible. States: default, hover, pressed, disabled. Hit target at least 32px. Do not use a circular FAB, and do not add a visible label beside the icon. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做一颗图标按钮。约 32px 方形，只有线条设置图标，无文字。点击；悬停 tooltip 为 Settings。热区至少 32px。不要做成圆形 FAB，也不要在旁边加可见文字。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "button",
+      "opts": {
+        "kind": "icon"
+      }
+    },
+    {
+      "id": "btn-circular",
+      "category": "button",
+      "zh": "圆形图标按钮",
+      "en": "Circular Icon Button",
+      "aliases": "Round icon button",
+      "when": "添加一类圆形强调。",
+      "prompt": "Build a single Circular Icon Button for a compact add action. Structure: a round 32–40px control with a plus line icon. Visual: circular clip, 1px border or soft fill. Interaction: click to add; tooltip Add. States: default, hover, pressed, disabled. Do not use a square icon button, and do not pin it as a screen-corner FAB. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做一颗圆形图标按钮，用于紧凑添加。32–40px 圆，中间加号线条图标。可点，tooltip 为 Add。不要做成方图标按钮，也不要钉在屏幕角落当 FAB。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "button",
+      "opts": {
+        "kind": "circle"
+      }
+    },
+    {
+      "id": "btn-fab",
+      "category": "button",
+      "zh": "浮动按钮",
+      "en": "Floating Action Button",
+      "aliases": "FAB",
+      "when": "移动端主创建入口。",
+      "prompt": "Build a single Floating Action Button (FAB). Structure: a circular 40–56px button with a plus icon, visually anchored to the bottom-right of its container. Visual: stronger than a normal icon button (accent fill or accent ring). Interaction: click is the main create action. States: default, hover (lift), pressed, disabled. Do not place it inline in a form row, and do not expand it into a speed-dial unless asked. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做一颗浮动操作按钮 FAB。圆形 40–56px，加号图标，锚定在容器右下角。比普通图标按钮更强调。点击即主创建。悬停可微抬。不要排进表单行里，也不要默认展开成速度拨号。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "button",
+      "opts": {
+        "kind": "fab"
+      }
+    },
+    {
+      "id": "btn-danger",
+      "category": "button",
+      "zh": "危险按钮",
+      "en": "Destructive Button",
+      "aliases": "Danger button",
+      "when": "删除、不可逆操作。",
+      "prompt": "Build a single Destructive Button for irreversible actions. Structure: label Delete. Visual: danger red text and/or border or fill, still clearly a button. Interaction: click; should not look like the primary save. States: default, hover, pressed, disabled. Do not use the primary accent color, and do not use a text-only link style for delete. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做一颗危险按钮，用于不可逆操作。标签 Delete。红色字/边/底，仍是按钮。不要用主强调色（现在是绿），也不要用纯文字链接当删除。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "button",
+      "opts": {
+        "kind": "danger"
+      }
+    },
+    {
+      "id": "btn-loading",
+      "category": "button",
+      "zh": "加载按钮",
+      "en": "Loading Button",
+      "aliases": "Pending button",
+      "when": "提交中防止连点。",
+      "prompt": "Build a single Loading Button that blocks repeat submits. Structure: label Save, ~32px. Interaction: on click, switch to a pending state: show a small spinner, change label to Saving, and disable further clicks until a short mock finish. States: default, loading (spinner + disabled), success optional, disabled. Motion: spinner rotates. Do not allow double-submit, and do not use a page-level spinner instead of the button state. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做一颗加载按钮，防止连点。标签 Save。点击后进入等待：小转圈、文案 Saving、禁用再点，直到一次短模拟结束。转圈要转。不要允许双提交，也不要用整页转圈代替按钮自己的状态。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "button",
+      "opts": {
+        "kind": "loading"
+      }
+    },
+    {
+      "id": "btn-disabled",
+      "category": "button",
+      "zh": "禁用按钮",
+      "en": "Disabled Button",
+      "aliases": "Inactive button",
+      "when": "当前不可用。",
+      "prompt": "Build a single Disabled Button that cannot be pressed. Structure: label Submit, visually a primary-shaped button at reduced contrast (about 40% opacity). Interaction: not clickable, not focusable as an action, cursor not-allowed. States: only the disabled look. Do not make it look enabled, and do not use it as a loading button with a spinner. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做一颗禁用按钮，按不了。标签 Submit，主按钮外形但对比降低（约 40% 透明）。不可点、不可当操作聚焦，光标 not-allowed。不要看起来还能点，也不要带转圈（那是加载按钮）。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "button",
+      "opts": {
+        "kind": "disabled"
+      }
+    },
+    {
+      "id": "btn-split",
+      "category": "button",
+      "zh": "分裂按钮",
+      "en": "Split Button",
+      "aliases": "Split CTA",
+      "when": "主操作加右侧更多。",
+      "prompt": "Build a single Split Button. Structure: one control split into a left primary action labeled Save and a right chevron slot sharing one outline. Interaction: left click runs Save; right click opens a small menu with Save draft and Save and close. States: default, hover, open, disabled. Do not use a single dropdown that hides the primary action, and do not use a disconnected button plus icon. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做一颗分裂按钮。同一描边里左侧主操作 Save，右侧箭头。点左执行 Save；点右打开小菜单（Save draft、Save and close）。不要做成把主操作藏进菜单的下拉按钮，也不要拆成两颗不相连的按钮。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "button",
+      "opts": {
+        "kind": "split"
+      }
+    },
+    {
+      "id": "btn-dropdown",
+      "category": "button",
+      "zh": "下拉按钮",
+      "en": "Dropdown Button",
+      "aliases": "Menu Button",
+      "when": "点开操作菜单。",
+      "prompt": "Build a single Dropdown / Menu Button. Structure: one button labeled Actions with a chevron; click reveals a menu of Edit, Duplicate, Delete. Interaction: click toggles the menu; choose an item then close; Escape closes. States: default, hover, open, disabled. Do not split primary vs chevron into two hit targets, and do not use a kebab-only trigger. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做一颗下拉按钮。标签 Actions 加箭头，点击展开 Edit、Duplicate、Delete。再点一项后关闭；Escape 关闭。不要把主操作和箭头分成两个热区（那是分裂按钮），也不要用纯竖三点触发。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "button",
+      "opts": {
+        "kind": "dropdown"
+      }
+    },
+    {
+      "id": "btn-group",
+      "category": "button",
+      "zh": "按钮组",
+      "en": "Button Group",
+      "aliases": "Connected buttons",
+      "when": "相关操作并排。",
+      "prompt": "Build a single connected Button Group. Structure: three joined buttons Left, Center, Right sharing one outline with inner dividers (no gap). Interaction: each segment is clickable; they are related actions, not exclusive selection unless styled as toggle. States: default, hover per segment, pressed, disabled. Do not use separate spaced buttons, and do not use a segmented control for view switching unless the labels are clearly actions. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成连在一起的按钮组。Left、Center、Right 共一圈边、内部分隔、无间隙。每段可点，是相关操作。不要做成有间距的独立按钮；若不是互斥视图切换，不要做成分段控制。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "button",
+      "opts": {
+        "kind": "group"
+      }
+    },
+    {
+      "id": "btn-toggle",
+      "category": "button",
+      "zh": "开关按钮",
+      "en": "Toggle Button",
+      "aliases": "Pressed button",
+      "when": "按下和未按下。",
+      "prompt": "Build a single Toggle Button with pressed and unpressed states. Structure: label Bold or an icon, one control. Interaction: click flips pressed on/off and keeps the state. Visual: pressed uses accent border or fill; unpressed is quiet. States: off, on, hover, disabled. Do not use a Switch track, and do not group multiple toggles unless asked. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做一颗开关按钮，有按下和未按下。标签 Bold 或图标。点击在开/关之间保持状态。按下用强调边或底。不要做成带轨道的 Switch，也不要默认做成一组。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "button",
+      "opts": {
+        "kind": "toggle"
+      }
+    },
+    {
+      "id": "btn-tgroup",
+      "category": "button",
+      "zh": "开关按钮组",
+      "en": "Toggle Group",
+      "aliases": "Format group",
+      "when": "格式组。",
+      "prompt": "Build a single Toggle Group for formatting. Structure: three joined toggles Bold, Italic, Underline. Interaction: each can be on independently (multi-select), click to toggle. States: off, on, hover, disabled per item. Do not allow only one selected (that would be segmented control), and do not use a dropdown. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成格式用的开关按钮组。Bold、Italic、Underline 连在一起，各项可独立开（可多选），点击切换。不要做成只能选一个的分段控制，也不要用下拉。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "button",
+      "opts": {
+        "kind": "tgroup"
+      }
+    },
+    {
+      "id": "btn-toolbar",
+      "category": "button",
+      "zh": "图标工具栏",
+      "en": "Toolbar",
+      "aliases": "Action toolbar",
+      "when": "编辑器一排图标。",
+      "prompt": "Build a single icon Toolbar. Structure: a horizontal row of icon buttons: Undo, Redo, Bold, Italic, a separator, then Link. Interaction: each icon is clickable; tooltips on hover. States: default, hover, disabled (e.g. Undo when empty). Do not wrap into a dropdown, and do not use huge primary buttons. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成一排图标工具栏。Undo、Redo、Bold、Italic、分隔、Link。每项可点，悬停有 tooltip。不要收进下拉，也不要用大号主按钮。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "button",
+      "opts": {
+        "kind": "toolbar"
+      }
+    },
+    {
+      "id": "btn-kebab",
+      "category": "button",
+      "zh": "更多按钮",
+      "en": "Overflow Button",
+      "aliases": "Kebab Menu",
+      "when": "竖三点溢出操作。",
+      "prompt": "Build a single Overflow / Kebab button. Structure: a vertical three-dots icon button. Interaction: click opens a menu with Edit, Duplicate, Delete; click outside or Escape closes. States: default, hover, open. Do not use a horizontal ellipsis (meatball), and do not use a labeled Actions dropdown as the only trigger. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做一颗竖三点溢出按钮。点击打开 Edit、Duplicate、Delete；点外部或 Escape 关闭。不要用横三点（肉丸菜单），也不要只用带文字的 Actions 下拉当触发器。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "button",
+      "opts": {
+        "kind": "kebab"
+      }
+    },
+    {
+      "id": "btn-meatball",
+      "category": "button",
+      "zh": "肉丸菜单",
+      "en": "Meatball Menu",
+      "aliases": "Horizontal ellipsis",
+      "when": "横三点更多。",
+      "prompt": "Build a single Meatball Menu button. Structure: a horizontal three-dots icon button. Interaction: click opens the same kind of overflow menu (Edit, Duplicate, Delete). States: default, hover, open. Do not use vertical kebab dots, and do not place it as a FAB. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做一颗横三点肉丸菜单。点击打开 Edit、Duplicate、Delete。不要用竖三点，也不要做成 FAB。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "button",
+      "opts": {
+        "kind": "meatball"
+      }
+    },
+    {
+      "id": "btn-speed",
+      "category": "button",
+      "zh": "快速操作菜单",
+      "en": "Speed Dial",
+      "aliases": "FAB speed dial",
+      "when": "浮动按钮展开多个操作。",
+      "prompt": "Build a single Speed Dial. Structure: a FAB in the corner; on click it fans out 2–3 smaller circular actions (file, image, note) with labels. Interaction: click FAB to expand/collapse; click an action then collapse. States: collapsed, expanded, hover. Motion: 180ms fan-out. Do not keep all actions visible at rest, and do not use a flat dropdown list instead of radial/stacked FABs. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成速度拨号：角落一颗 FAB，点击展开 2–3 个更小的圆形操作（文件、图片、笔记）带短标签。再点操作后收起。约 180ms 展开。静止时不要把所有操作都摆出来，也不要用扁平下拉列表代替。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "button",
+      "opts": {
+        "kind": "speed"
+      }
+    },
+    {
+      "id": "in-text",
+      "category": "input",
+      "zh": "单行输入",
+      "en": "Text Input",
+      "aliases": "Text Field",
+      "when": "短文本。",
+      "prompt": "Build a single labeled Text Input, not a form page. Structure: label Name, one-line field, placeholder Jane Doe, helper text optional. Interaction: type freely; focus-visible ring. States: default, hover, focus, error (red border plus message), disabled. Do not use a textarea, search icon, or masked pattern. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成带标签的单行输入，不要整表单页。标签 Name，占位 Jane Doe。可自由输入，焦点环可见。状态含默认、悬停、聚焦、错误（红边加文案）、禁用。不要做成多行、搜索框或格式遮罩。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "input",
+      "opts": {
+        "kind": "text"
+      }
+    },
+    {
+      "id": "in-area",
+      "category": "input",
+      "zh": "多行输入",
+      "en": "Textarea",
+      "aliases": "Multiline Text Field",
+      "when": "长文本。",
+      "prompt": "Build a single Textarea, not a rich editor. Structure: label Notes, fixed height about 4–6 lines, placeholder Add a note, no live markdown preview. Interaction: type multiline; no resize handle required. States: default, focus, error, disabled. Do not use a WYSIWYG toolbar or auto-grow unless asked. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成多行文本域，不是富文本。标签 Notes，固定约 4–6 行，占位 Add a note，不要 Markdown 预览。不要工具栏，也不要默认自动长高。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "input",
+      "opts": {
+        "kind": "textarea"
+      }
+    },
+    {
+      "id": "in-search",
+      "category": "input",
+      "zh": "搜索框",
+      "en": "Search Field",
+      "aliases": "Search Input",
+      "when": "过滤列表或全局搜索。",
+      "prompt": "Build a single Search Field. Structure: leading search icon, input, trailing clear button when not empty. Placeholder Search. Interaction: type to filter; Escape or clear empties the field. States: empty, typing, focus, cleared. Do not use a standalone combobox menu as the only UI, and do not omit the clear control. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成搜索框。前置搜索图标、输入、有内容时尾部清除。占位 Search。可输入过滤；Escape 或清除清空。不要做成只有下拉的组合框，也不要省略清除。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "input",
+      "opts": {
+        "kind": "search"
+      }
+    },
+    {
+      "id": "in-pass",
+      "category": "input",
+      "zh": "密码输入",
+      "en": "Password Field",
+      "aliases": "Password Input",
+      "when": "敏感输入，可显隐。",
+      "prompt": "Build a single Password Field. Structure: label Password, masked input, trailing visibility toggle (show/hide). Interaction: toggle reveals plaintext; autocomplete off. States: masked, visible, focus, error. Do not use a plain text input, and do not add a strength meter unless asked. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成密码输入。标签 Password，默认掩码，尾部显隐切换。不要做成普通文本，也不要默认加强度条。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "input",
+      "opts": {
+        "kind": "password"
+      }
+    },
+    {
+      "id": "in-num",
+      "category": "input",
+      "zh": "数字输入",
+      "en": "Number Input",
+      "aliases": "Numeric field",
+      "when": "直接键入数字。",
+      "prompt": "Build a single Number Input. Structure: label Quantity, field that accepts numeric values (integers). Interaction: type digits; invalid keys ignored. States: default, focus, error. Do not add stepper arrows (that is Spinbutton), and do not use a slider. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成数字输入。标签 Quantity，只接受数字。不要加减按钮（那是步进数字），也不要用滑块。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "input",
+      "opts": {
+        "kind": "number"
+      }
+    },
+    {
+      "id": "in-spin",
+      "category": "input",
+      "zh": "步进数字",
+      "en": "Spinbutton",
+      "aliases": "Numeric Stepper",
+      "when": "带增减按钮的数值。",
+      "prompt": "Build a single Spinbutton. Structure: numeric value with increment and decrement buttons, label Quantity, default 1. Interaction: click plus/minus or type a number; clamp to a min/max. States: default, focus, disabled, at-min/at-max. Do not use a slider or a plain number field without buttons. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成带增减的步进数字。标签 Quantity，默认 1，点加减或键入，限制最小最大。不要用滑块或没有按钮的纯数字框。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "input",
+      "opts": {
+        "kind": "spin"
+      }
+    },
+    {
+      "id": "sel-single",
+      "category": "select",
+      "zh": "下拉单选",
+      "en": "Select",
+      "aliases": "Dropdown Select",
+      "when": "固定选项里选一个，不能自由输入。",
+      "prompt": "Build a single Select dropdown. Structure: closed field showing one value (Apple); click opens a list of fruits; cannot type a custom value. Interaction: click option to select and close; Escape closes. States: closed, open, selected, disabled. Do not allow free text (combobox) or multi chips. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成下拉单选。关闭时显示一项（Apple）；点开水果列表；不能自由输入。点选项即选中并关闭。不要做成可输入组合框或多选芯片。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "select",
+      "opts": {
+        "kind": "single"
+      }
+    },
+    {
+      "id": "sel-multi",
+      "category": "select",
+      "zh": "下拉多选",
+      "en": "Multi-select",
+      "aliases": "Multiselect",
+      "when": "已选项以可删 Chip 出现在框内。",
+      "prompt": "Build a single Multi-select. Structure: field contains removable chips for selected values plus a dropdown of remaining options. Default two selected. Interaction: click to add; chip X removes. States: empty, filled, open. Do not use a single-value select, and do not use a tag input that creates tokens from free text. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成下拉多选。框内是可删芯片，下拉是其余选项。默认已选两项。点选添加，芯片 X 删除。不要做成单选，也不要做成回车造标签的标签输入。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "select",
+      "opts": {
+        "kind": "multi"
+      }
+    },
+    {
+      "id": "sel-combo",
+      "category": "select",
+      "zh": "组合框",
+      "en": "Combobox",
+      "aliases": "Searchable select",
+      "when": "可输入、过滤、选已有项。不是 Select。",
+      "prompt": "Build a single Combobox (searchable select), not a plain Select. Structure: field you can type in; list filters to matching existing options (cities). Interaction: type to filter; pick an option; do not invent values outside the list. States: idle, filtering, open, selected. Do not use a closed-only select, and do not treat it as autocomplete that keeps arbitrary text as the value. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成可搜索组合框，不是普通 Select。可输入并过滤已有选项（城市）；只能选列表里的值。不要做成不能打字的下拉，也不要做成任意文本都算值的自动完成。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "select",
+      "opts": {
+        "kind": "combo"
+      }
+    },
+    {
+      "id": "sel-auto",
+      "category": "select",
+      "zh": "自动完成",
+      "en": "Autocomplete",
+      "aliases": "Autosuggest",
+      "when": "输入时出建议，核心仍是文本框。",
+      "prompt": "Build a single Autocomplete text field. Structure: a normal text input; suggestions appear while typing (e.g. emails) but the typed string remains the value even if none is chosen. Interaction: pick a suggestion to fill, or keep custom text. Do not force picking from a closed list (that is Select/Combobox). If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成自动完成文本框。本质仍是文本框，输入时出建议（如邮箱）；不选建议也可以，键入内容就是值。不要强制只能选列表（那是 Select/组合框）。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "select",
+      "opts": {
+        "kind": "auto"
+      }
+    },
+    {
+      "id": "sel-cascader",
+      "category": "select",
+      "zh": "级联选择",
+      "en": "Cascader",
+      "aliases": "Hierarchical select",
+      "when": "省市区这类层级路径。",
+      "prompt": "Build a single Cascader for hierarchical paths. Structure: click to open columns or nested menus for Region / City / District (e.g. Zhejiang, Hangzhou, Xihu). The field shows the full path. Interaction: pick level by level; confirm completes the path. Do not use a flat select or a tree-select with checkboxes. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成级联选择。点开省/市/区多列（如浙江、杭州、西湖），框内显示完整路径。逐级选。不要做成扁平下拉或带复选的树选择。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "select",
+      "opts": {
+        "kind": "cascader"
+      }
+    },
+    {
+      "id": "sel-tree",
+      "category": "select",
+      "zh": "树选择",
+      "en": "Tree Select",
+      "aliases": "Tree dropdown",
+      "when": "层级多选或单选。",
+      "prompt": "Build a single Tree Select. Structure: a searchable dropdown whose options are an expandable tree (folders/files); single or multi via checks. Interaction: expand nodes, pick a leaf or node; field shows the chosen name. Do not use a cascader column UI or a full-page tree view. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成树选择。可搜索的下拉里是可展开的树；点选节点。框内显示选中名。不要做成级联多列，也不要做成整页树视图。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "select",
+      "opts": {
+        "kind": "tree"
+      }
+    },
+    {
+      "id": "ck-box",
+      "category": "selection",
+      "zh": "复选框",
+      "en": "Checkbox",
+      "aliases": "Multi-select boxes",
+      "when": "多项独立勾选。",
+      "prompt": "Build a Checkbox group. Structure: three independent options (Email, SMS, Push) each with a square checkbox and label. Interaction: toggle any combination. States: unchecked, checked, disabled. Do not use radios (exclusive) or a switch. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成复选框组。三项 Email、SMS、Push 可任意组合勾选。不要做成单选或开关。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "checks",
+      "opts": {
+        "kind": "check"
+      }
+    },
+    {
+      "id": "ck-radio",
+      "category": "selection",
+      "zh": "单选组",
+      "en": "Radio Group",
+      "aliases": "Radios",
+      "when": "一组里最多选一个。",
+      "prompt": "Build a Radio Group. Structure: three radios Size S/M/L, only one selected. Interaction: picking one deselects others. Do not use checkboxes or a segmented control. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成单选组。尺码 S/M/L，只能选一个。点一个其余取消。不要用复选或分段控制。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "checks",
+      "opts": {
+        "kind": "radio"
+      }
+    },
+    {
+      "id": "ck-switch",
+      "category": "selection",
+      "zh": "开关",
+      "en": "Switch",
+      "aliases": "Toggle Switch",
+      "when": "开/关二元状态，不要用 Radio 代替。",
+      "prompt": "Build a single Switch for binary on/off. Structure: a sliding thumb on a track, label Notifications, default on. Interaction: click/drag toggles. States: on, off, disabled. Motion: 150ms thumb travel. Do not use a radio pair or a checkbox square. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成开关，表示开/关。轨道加滑块，标签 Notifications，默认开。约 150ms。不要用一对单选或方复选框。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "checks",
+      "opts": {
+        "kind": "switch"
+      }
+    },
+    {
+      "id": "ck-tri",
+      "category": "selection",
+      "zh": "三态复选框",
+      "en": "Tri-state Checkbox",
+      "aliases": "Indeterminate Checkbox",
+      "when": "全选、部分选、未选。",
+      "prompt": "Build a Tri-state Checkbox. Structure: a parent Select all with children Option A/B/C. Parent is unchecked, checked, or indeterminate (partial). Interaction: toggle children updates parent; click parent selects/clears all. Do not use only two states. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成三态复选框。父级 Select all 加子项 A/B/C。父级有未选、全选、部分选。点子项更新父级；点父级全选或清空。不要只有两态。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "checks",
+      "opts": {
+        "kind": "tri"
+      }
+    },
+    {
+      "id": "sl-h",
+      "category": "slider",
+      "zh": "数值滑块",
+      "en": "Slider",
+      "aliases": "Range Input",
+      "when": "连续范围内选一个值。",
+      "prompt": "Build a single horizontal Slider. Structure: a track 0–100, one thumb, value label. Interaction: drag thumb or click track. States: default, dragging, disabled. Do not use two thumbs or tick-only steps. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成横向数值滑块。轨道 0–100，单滑块，显示数值。拖或点轨道。不要双滑块或只能停刻度。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "slider",
+      "opts": {
+        "kind": "single"
+      }
+    },
+    {
+      "id": "sl-range",
+      "category": "slider",
+      "zh": "范围滑块",
+      "en": "Range Slider",
+      "aliases": "Multi-thumb Slider",
+      "when": "选最小和最大两个值。",
+      "prompt": "Build a Range Slider with two thumbs. Structure: min and max on one track (e.g. 20–80), both values visible. Interaction: drag each thumb; they cannot cross. Do not use a single-value slider. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成双滑块范围条。同一轨道最小最大（如 20–80），两值都显示，不可交叉。不要单值滑块。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "slider",
+      "opts": {
+        "kind": "range"
+      }
+    },
+    {
+      "id": "sl-v",
+      "category": "slider",
+      "zh": "垂直滑块",
+      "en": "Vertical Slider",
+      "aliases": "Vertical range",
+      "when": "音量等纵向场景。",
+      "prompt": "Build a Vertical Slider. Structure: a tall track (volume-like) with one thumb. Interaction: drag vertically. Do not use a horizontal slider. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成垂直滑块。纵向轨道单滑块，上下拖。不要做成横向。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "slider",
+      "opts": {
+        "kind": "vertical"
+      }
+    },
+    {
+      "id": "sl-step",
+      "category": "slider",
+      "zh": "步进滑块",
+      "en": "Stepped Slider",
+      "aliases": "Discrete Slider",
+      "when": "只能落在刻度上。",
+      "prompt": "Build a Stepped / discrete Slider. Structure: a track with visible tick marks (e.g. 0, 25, 50, 75, 100); the thumb snaps to ticks only. Interaction: drag snaps. Do not allow free continuous values. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成步进/离散滑块。可见刻度（0 到 100 隔 25），滑块只能落在刻度上。不要连续任意值。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "slider",
+      "opts": {
+        "kind": "stepped"
+      }
+    },
+    {
+      "id": "dt-date",
+      "category": "datetime",
+      "zh": "日期选择器",
+      "en": "Date Picker",
+      "aliases": "Date field",
+      "when": "选一天。",
+      "prompt": "Build a Date Picker. Structure: a field showing YYYY-MM-DD; click opens a calendar popover to pick one day. Interaction: pick a date closes the popover; today highlighted. Do not pick a range or time of day. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成日期选择器。框内 YYYY-MM-DD，点开月历选一天即关。不要选范围或时分。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "date",
+      "opts": {
+        "kind": "date"
+      }
+    },
+    {
+      "id": "dt-range",
+      "category": "datetime",
+      "zh": "日期范围",
+      "en": "Date Range Picker",
+      "aliases": "Range dates",
+      "when": "开始日到结束日。",
+      "prompt": "Build a Date Range Picker. Structure: two linked fields Start and End plus a calendar that can select a start then an end. Interaction: choosing the second date completes the range. Do not use a single-day picker. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成日期范围。开始/结束两个联动字段，月历先选开始再选结束。不要单日选择。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "date",
+      "opts": {
+        "kind": "range"
+      }
+    },
+    {
+      "id": "dt-time",
+      "category": "datetime",
+      "zh": "时间选择",
+      "en": "Time Picker",
+      "aliases": "Time field",
+      "when": "选时分。",
+      "prompt": "Build a Time Picker. Structure: field HH:MM with hour and minute controls (spinners or lists). Interaction: change hours and minutes, confirm. Do not include a calendar. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成时间选择。HH:MM，时分控件。不要带日历。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "date",
+      "opts": {
+        "kind": "time"
+      }
+    },
+    {
+      "id": "dt-dt",
+      "category": "datetime",
+      "zh": "日期时间",
+      "en": "DateTime Picker",
+      "aliases": "Date and time",
+      "when": "日期加时间。",
+      "prompt": "Build a DateTime Picker. Structure: one control combining a calendar date and a time (HH:MM). Interaction: set both then confirm. Do not split into unrelated widgets with no shared value. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成日期时间选择。日历日期加时分合成一个值。不要拆成互不共享值的两个无关控件。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "date",
+      "opts": {
+        "kind": "datetime"
+      }
+    },
+    {
+      "id": "dt-cal",
+      "category": "datetime",
+      "zh": "日历",
+      "en": "Calendar",
+      "aliases": "Month calendar",
+      "when": "月视图点选。",
+      "prompt": "Build an inline Calendar month view, not a popover field. Structure: month grid with weekday headers; click a day to select it in place. Interaction: prev/next month. Do not hide the grid behind a text field. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成行内月历，不是弹出字段。星期表头，点选某日，可翻月。不要把格子藏在输入框后面。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "date",
+      "opts": {
+        "kind": "calendar"
+      }
+    },
+    {
+      "id": "dt-week",
+      "category": "datetime",
+      "zh": "周选择",
+      "en": "Week Picker",
+      "aliases": "Week field",
+      "when": "选一整周。",
+      "prompt": "Build a Week Picker that selects a full ISO week. Structure: field like 2026-W35; picking any day in the calendar highlights the whole week. Do not select a single day only. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成周选择。显示如 2026-W35，点任一天高亮整周。不要只选单日。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "date",
+      "opts": {
+        "kind": "week"
+      }
+    },
+    {
+      "id": "dt-month",
+      "category": "datetime",
+      "zh": "月选择",
+      "en": "Month Picker",
+      "aliases": "Month field",
+      "when": "选年月。",
+      "prompt": "Build a Month Picker. Structure: year-month grid or list (2026-08). Interaction: pick month, optional year switcher. Do not show a full day grid as the primary UI. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成月选择。选年月（2026-08），可切换年。不要以日网格为主界面。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "date",
+      "opts": {
+        "kind": "month"
+      }
+    },
+    {
+      "id": "dt-year",
+      "category": "datetime",
+      "zh": "年选择",
+      "en": "Year Picker",
+      "aliases": "Year field",
+      "when": "选年份。",
+      "prompt": "Build a Year Picker. Structure: a grid of years; click one year. Interaction: page of years with prev/next. Do not require picking month/day. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成年选择。年份网格点选，可翻页。不要再选月日。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "date",
+      "opts": {
+        "kind": "year"
+      }
+    },
+    {
+      "id": "sp-otp",
+      "category": "special",
+      "zh": "验证码输入",
+      "en": "OTP Input",
+      "aliases": "PIN Input",
+      "when": "分格输入，自动跳格。",
+      "prompt": "Build a six-digit OTP Input. Structure: six separate single-character boxes. Interaction: type a digit advances focus; backspace goes back; paste fills all. States: empty, filled, error. Do not use one normal text field. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成六格验证码。每格一字，输入自动跳下一格，退格回上格，粘贴可填满。不要用一个普通文本框。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "otp",
+      "opts": {}
+    },
+    {
+      "id": "sp-tag",
+      "category": "special",
+      "zh": "标签输入",
+      "en": "Tag Input",
+      "aliases": "Token field",
+      "when": "回车生成标签。",
+      "prompt": "Build a Tag Input. Structure: a field where Enter creates a token from typed text (e.g. design, ui). Interaction: Enter adds; X on token removes. Do not use a closed multi-select list only. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成标签输入。回车把当前文字变成标签。芯片 X 删除。不要做成只能从固定列表多选。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "chips",
+      "opts": {}
+    },
+    {
+      "id": "sp-chip",
+      "category": "special",
+      "zh": "芯片输入",
+      "en": "Chip Input",
+      "aliases": "Chips input",
+      "when": "以 Chip 展示已输入项。",
+      "prompt": "Build a Chip Input where values render as removable chips inside the field (same family as tag input, chip-forward). Structure: chips plus a trailing caret to type the next value. Do not use static category tags that cannot be removed. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成芯片输入。已输入项以可删芯片显示在框内，后面可继续键入。不要做成不可删的类别标签。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "chips",
+      "opts": {}
+    },
+    {
+      "id": "sp-mentions",
+      "category": "special",
+      "zh": "提及输入",
+      "en": "Mentions Input",
+      "aliases": "At-mention",
+      "when": "输入 @ 出人列表。",
+      "prompt": "Build a Mentions Input. Structure: a text field; typing @ opens a people list (Ada, Linus) to insert a mention token. Interaction: pick a person inserts @name. Do not use a generic autocomplete without the @ trigger. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成提及输入。输入 @ 出人员列表（Ada、Linus），选中插入 @name。不要做成没有 @ 触发的普通自动完成。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "mentions",
+      "opts": {}
+    },
+    {
+      "id": "sp-rte",
+      "category": "special",
+      "zh": "富文本编辑器",
+      "en": "Rich Text Editor",
+      "aliases": "WYSIWYG Editor",
+      "when": "所见即所得排版。",
+      "prompt": "Build a compact Rich Text Editor (WYSIWYG). Structure: toolbar Bold, Italic, Lists plus a contenteditable area with sample sentence. Interaction: toggling toolbar formats the selection. Do not use a markdown-only textarea. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成紧凑所见即所得编辑器。工具栏粗体斜体列表，加可编辑区。不要做成纯 Markdown 文本域。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "editor",
+      "opts": {
+        "kind": "rte"
+      }
+    },
+    {
+      "id": "sp-md",
+      "category": "special",
+      "zh": "Markdown 编辑器",
+      "en": "Markdown Editor",
+      "aliases": "MD editor",
+      "when": "写 Markdown。",
+      "prompt": "Build a Markdown Editor with a preview toggle. Structure: textarea of markdown and a Preview control that shows rendered bold/heading. Interaction: toggle edit/preview. Do not use a full WYSIWYG toolbar as the only mode. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成带预览切换的 Markdown 编辑器。文本域写 md，Preview 显示渲染。不要只有所见即所得工具栏。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "editor",
+      "opts": {
+        "kind": "md"
+      }
+    },
+    {
+      "id": "sp-code",
+      "category": "special",
+      "zh": "代码编辑器",
+      "en": "Code Editor",
+      "aliases": "Code textarea",
+      "when": "编辑代码。",
+      "prompt": "Build a compact Code Editor. Structure: monospace area with a few lines of code, line-oriented caret. Interaction: type/edit code. Do not render as a read-only highlighted block. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成等宽代码编辑器。可按行编辑几行代码。不要做成只读高亮代码块。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "editor",
+      "opts": {
+        "kind": "code"
+      }
+    },
+    {
+      "id": "sp-inline",
+      "category": "special",
+      "zh": "行内编辑",
+      "en": "Inline Edit",
+      "aliases": "Click-to-edit",
+      "when": "点文字即编辑。",
+      "prompt": "Build Inline Edit. Structure: a text value (Project name); click turns it into an input; blur or Enter saves. Interaction: click-to-edit. States: read, editing. Do not use a permanently visible input. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成行内编辑。显示文字 Project name，点击变输入框，失焦或回车保存。不要一直露出输入框。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "inline",
+      "opts": {}
+    },
+    {
+      "id": "sp-mask",
+      "category": "special",
+      "zh": "遮罩输入",
+      "en": "Masked Input",
+      "aliases": "Input mask",
+      "when": "格式锁定。",
+      "prompt": "Build a Masked Input with a visible pattern. Structure: label Code, pattern like 000-000 shown while typing. Interaction: only allowed characters fill slots. Do not use an unconstrained text field. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成遮罩输入。标签 Code，可见模板如 000-000，只填允许字符。不要无约束文本框。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "masked",
+      "opts": {
+        "kind": "mask"
+      }
+    },
+    {
+      "id": "sp-phone",
+      "category": "special",
+      "zh": "电话输入",
+      "en": "Phone Input",
+      "aliases": "Tel field",
+      "when": "区号加号码。",
+      "prompt": "Build a Phone Input. Structure: country code prefix plus grouped national number. Interaction: digits group as typed. Do not use a generic text field with no grouping. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成电话输入。区号加分组号码。不要无分组的普通文本。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "masked",
+      "opts": {
+        "kind": "phone"
+      }
+    },
+    {
+      "id": "sp-cur",
+      "category": "special",
+      "zh": "金额输入",
+      "en": "Currency Input",
+      "aliases": "Money field",
+      "when": "货币符号与小数。",
+      "prompt": "Build a Currency Input. Structure: leading currency symbol, decimal value (e.g. 12.00). Interaction: numeric entry with two decimals. Do not use a plain number without the symbol. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成金额输入。前导货币符号，两位小数。不要无符号的纯数字。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "masked",
+      "opts": {
+        "kind": "currency"
+      }
+    },
+    {
+      "id": "sp-url",
+      "category": "special",
+      "zh": "URL 输入",
+      "en": "URL Input",
+      "aliases": "Link field",
+      "when": "网址。",
+      "prompt": "Build a URL Input. Structure: field with protocol hint (https://) and validation state. Interaction: invalid URL shows error. Do not use an unvalidated text field. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成 URL 输入。带 https:// 提示和校验态，非法变错误。不要无校验文本。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "masked",
+      "opts": {
+        "kind": "url"
+      }
+    },
+    {
+      "id": "sp-color",
+      "category": "special",
+      "zh": "颜色选择器",
+      "en": "Color Picker",
+      "aliases": "Swatch picker",
+      "when": "选颜色。",
+      "prompt": "Build a Color Picker. Structure: a swatch plus hex value; click opens a simple palette or native color. Interaction: picking updates swatch and hex. Do not use text-only without a swatch. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成颜色选择。色块加十六进制，点选更新。不要只有文字没有色块。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "color",
+      "opts": {}
+    },
+    {
+      "id": "sp-rating",
+      "category": "special",
+      "zh": "星级评分",
+      "en": "Rating Control",
+      "aliases": "Star rating",
+      "when": "1 到 5 分。",
+      "prompt": "Build a star Rating Control 1–5. Structure: five stars. Interaction: hover previews, click sets value. States: 0–5. Do not use a numeric slider as the only UI. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成 1 到 5 星评分。悬停预览，点击打分。不要只用数字滑块。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "rating",
+      "opts": {}
+    },
+    {
+      "id": "up-file",
+      "category": "upload",
+      "zh": "文件选择",
+      "en": "File Input",
+      "aliases": "Choose file",
+      "when": "系统文件框。",
+      "prompt": "Build a native-style File Input. Structure: Choose file control that selects one file and shows the filename. Interaction: click opens picker (or mock a name). Do not use a large dropzone. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成系统风格文件选择。选一个文件并显示文件名。不要做成大拖放区。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "file",
+      "opts": {
+        "kind": "input"
+      }
+    },
+    {
+      "id": "up-btn",
+      "category": "upload",
+      "zh": "上传按钮",
+      "en": "Upload Button",
+      "aliases": "Upload CTA",
+      "when": "按钮触发选择。",
+      "prompt": "Build an Upload Button. Structure: a button Upload that triggers the file picker and then shows the chosen name. Do not use a hidden unlabeled native input as the only visible UI. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成上传按钮。按钮 Upload 打开选择器并显示文件名。不要只露一个无标签原生控件。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "file",
+      "opts": {
+        "kind": "button"
+      }
+    },
+    {
+      "id": "up-drop",
+      "category": "upload",
+      "zh": "拖放上传区",
+      "en": "Dropzone",
+      "aliases": "Drag-and-drop Uploader",
+      "when": "大虚线区域拖文件。",
+      "prompt": "Build a Dropzone. Structure: a large dashed area Drop files here. Interaction: click or drag-over highlight; drop accepts a file name. States: idle, dragging, has-file. Do not use a tiny file button only. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成大虚线拖放上传区。可点击或拖入，拖入时高亮。不要只有小文件按钮。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "file",
+      "opts": {
+        "kind": "drop"
+      }
+    },
+    {
+      "id": "up-list",
+      "category": "upload",
+      "zh": "上传列表",
+      "en": "Upload List",
+      "aliases": "File Queue",
+      "when": "显示进度与完成。",
+      "prompt": "Build an Upload List / queue. Structure: rows with filename, progress bar, and complete/error. Interaction: at least one row animates progress to done. Do not show only a dropzone with no list. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成上传列表。每行文件名、进度、完成或失败。至少一行能看到进度到完成。不要只有拖放区没有列表。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "file",
+      "opts": {
+        "kind": "list"
+      }
+    },
+    {
+      "id": "mn-drop",
+      "category": "menu",
+      "zh": "下拉菜单",
+      "en": "Dropdown Menu",
+      "aliases": "Action menu",
+      "when": "按钮下展开操作。",
+      "prompt": "Use a dropdown menu anchored to an actions button.",
+      "promptZh": "使用锚定在操作按钮下的下拉菜单。",
+      "demo": "menu",
+      "opts": {
+        "kind": "dropdown"
+      }
+    },
+    {
+      "id": "mn-ctx",
+      "category": "menu",
+      "zh": "上下文菜单",
+      "en": "Context Menu",
+      "aliases": "Right-click menu",
+      "when": "右键出现。",
+      "prompt": "Use a context menu on right-click with copy rename and delete.",
+      "promptZh": "使用右键出现的上下文菜单，含复制、重命名、删除。",
+      "demo": "menu",
+      "opts": {
+        "kind": "context"
+      }
+    },
+    {
+      "id": "mn-bar",
+      "category": "menu",
+      "zh": "菜单栏",
+      "en": "Menubar",
+      "aliases": "Application menu",
+      "when": "File Edit View Help。",
+      "prompt": "Use a menubar with File Edit View Help and nested menus.",
+      "promptZh": "使用文件/编辑/视图/帮助及嵌套项的菜单栏。",
+      "demo": "menu",
+      "opts": {
+        "kind": "bar"
+      }
+    },
+    {
+      "id": "mn-nav",
+      "category": "menu",
+      "zh": "导航菜单",
+      "en": "Navigation Menu",
+      "aliases": "Nav dropdown",
+      "when": "站点主导航下拉。",
+      "prompt": "Use a navigation menu with section dropdowns.",
+      "promptZh": "使用带分节下拉的导航菜单。",
+      "demo": "menu",
+      "opts": {
+        "kind": "nav"
+      }
+    },
+    {
+      "id": "mn-mega",
+      "category": "menu",
+      "zh": "巨型导航菜单",
+      "en": "Mega Menu",
+      "aliases": "Mega nav",
+      "when": "大站多列导航。",
+      "prompt": "Use a mega menu with grouped product columns.",
+      "promptZh": "使用按产品分列的巨型导航菜单。",
+      "demo": "menu",
+      "opts": {
+        "kind": "mega"
+      }
+    },
+    {
+      "id": "mn-overflow",
+      "category": "menu",
+      "zh": "溢出菜单",
+      "en": "Overflow Menu",
+      "aliases": "Kebab Menu",
+      "when": "空间不够时收进更多。",
+      "prompt": "Use an overflow menu triggered by a kebab icon.",
+      "promptZh": "使用竖三点触发的溢出菜单。",
+      "demo": "menu",
+      "opts": {
+        "kind": "overflow"
+      }
+    },
+    {
+      "id": "nv-bc",
+      "category": "nav",
+      "zh": "面包屑",
+      "en": "Breadcrumb",
+      "aliases": "Breadcrumbs",
+      "when": "显示层级位置。",
+      "prompt": "Use breadcrumbs for hierarchical location.",
+      "promptZh": "使用面包屑展示层级位置。",
+      "demo": "nav",
+      "opts": {
+        "kind": "crumb"
+      }
+    },
+    {
+      "id": "nv-page",
+      "category": "nav",
+      "zh": "分页",
+      "en": "Pagination",
+      "aliases": "Pager",
+      "when": "翻页浏览。",
+      "prompt": "Use pagination with page numbers and previous/next controls.",
+      "promptZh": "使用带页码和上一页/下一页的分页。",
+      "demo": "nav",
+      "opts": {
+        "kind": "page"
+      }
+    },
+    {
+      "id": "nv-side",
+      "category": "nav",
+      "zh": "侧边导航",
+      "en": "Sidebar Navigation",
+      "aliases": "Side Navigation",
+      "when": "后台主导航。",
+      "prompt": "Use a sidebar navigation with Dashboard Projects Analytics Settings.",
+      "promptZh": "使用含总览、项目、分析、设置的侧边导航。",
+      "demo": "nav",
+      "opts": {
+        "kind": "side"
+      }
+    },
+    {
+      "id": "nv-rail",
+      "category": "nav",
+      "zh": "导航轨",
+      "en": "Navigation Rail",
+      "aliases": "Narrow rail",
+      "when": "比侧栏更窄的图标轨。",
+      "prompt": "Use a compact navigation rail with icon destinations.",
+      "promptZh": "使用更窄的图标导航轨。",
+      "demo": "nav",
+      "opts": {
+        "kind": "rail"
+      }
+    },
+    {
+      "id": "nv-bottom",
+      "category": "nav",
+      "zh": "底部导航",
+      "en": "Bottom Navigation",
+      "aliases": "Tab bar",
+      "when": "移动端主入口。",
+      "prompt": "Use bottom navigation with Home Search Create and Profile.",
+      "promptZh": "使用首页、搜索、创建、我的底部导航。",
+      "demo": "nav",
+      "opts": {
+        "kind": "bottom"
+      }
+    },
+    {
+      "id": "nv-top",
+      "category": "nav",
+      "zh": "顶部导航",
+      "en": "Top Navigation",
+      "aliases": "Navbar",
+      "when": "站点顶栏。",
+      "prompt": "Use a top navigation bar with logo, links and a login action.",
+      "promptZh": "使用带 Logo、链接和登录的顶部导航。",
+      "demo": "nav",
+      "opts": {
+        "kind": "top"
+      }
+    },
+    {
+      "id": "nv-anchor",
+      "category": "nav",
+      "zh": "锚点导航",
+      "en": "Anchor Navigation",
+      "aliases": "In-page Navigation",
+      "when": "点击滚动到页内章节。",
+      "prompt": "Use in-page anchor navigation that scrolls between sections.",
+      "promptZh": "使用点击后滚到页内章节的锚点导航。",
+      "demo": "nav",
+      "opts": {
+        "kind": "anchor"
+      }
+    },
+    {
+      "id": "cd-basic",
+      "category": "card",
+      "zh": "基础卡片",
+      "en": "Card",
+      "aliases": "Basic Card",
+      "when": "内容分组容器。",
+      "prompt": "Use a basic card with title and body.",
+      "promptZh": "使用带标题和正文的基础卡片。",
+      "demo": "card",
+      "opts": {
+        "kind": "basic"
+      }
+    },
+    {
+      "id": "cd-elev",
+      "category": "card",
+      "zh": "悬浮卡片",
+      "en": "Elevated Card",
+      "aliases": "Shadow card",
+      "when": "带一点阴影抬起。",
+      "prompt": "Use elevated cards with subtle shadows and rounded corners.",
+      "promptZh": "使用带轻微阴影和圆角的悬浮卡片。",
+      "demo": "card",
+      "opts": {
+        "kind": "elevated"
+      }
+    },
+    {
+      "id": "cd-out",
+      "category": "card",
+      "zh": "描边卡片",
+      "en": "Outlined Card",
+      "aliases": "Bordered card",
+      "when": "靠描边分层。",
+      "prompt": "Use an outlined card with a 1px border and no shadow.",
+      "promptZh": "使用 1px 描边、无阴影的描边卡片。",
+      "demo": "card",
+      "opts": {
+        "kind": "outlined"
+      }
+    },
+    {
+      "id": "cd-int",
+      "category": "card",
+      "zh": "可点击卡片",
+      "en": "Interactive Card",
+      "aliases": "Clickable Card",
+      "when": "整卡可点。",
+      "prompt": "Use an interactive clickable card with hover and pressed states.",
+      "promptZh": "使用整卡可点、有悬停和按下态的交互卡片。",
+      "demo": "card",
+      "opts": {
+        "kind": "interactive"
+      }
+    },
+    {
+      "id": "cd-sel",
+      "category": "card",
+      "zh": "可选中卡片",
+      "en": "Selectable Card",
+      "aliases": "Choice card",
+      "when": "套餐选择等。",
+      "prompt": "Use a selectable card with a selected treatment.",
+      "promptZh": "使用带选中样式的可选中卡片。",
+      "demo": "card",
+      "opts": {
+        "kind": "selectable"
+      }
+    },
+    {
+      "id": "cd-metric",
+      "category": "card",
+      "zh": "指标卡片",
+      "en": "Metric Card",
+      "aliases": "Stat Card",
+      "when": "关键数字和涨跌。",
+      "prompt": "Use a metric / stat card with value, label and delta.",
+      "promptZh": "使用展示数值、标签和涨跌的指标卡片。",
+      "demo": "card",
+      "opts": {
+        "kind": "metric"
+      }
+    },
+    {
+      "id": "cd-media",
+      "category": "card",
+      "zh": "媒体卡片",
+      "en": "Media Card",
+      "aliases": "Image card",
+      "when": "上图下文。",
+      "prompt": "Use a media card with image on top and text below.",
+      "promptZh": "使用上图下文的媒体卡片。",
+      "demo": "card",
+      "opts": {
+        "kind": "media"
+      }
+    },
+    {
+      "id": "cd-h",
+      "category": "card",
+      "zh": "横向卡片",
+      "en": "Horizontal Card",
+      "aliases": "Split card",
+      "when": "左右布局。",
+      "prompt": "Use a horizontal card with media on the left and content on the right.",
+      "promptZh": "使用左媒体右内容的横向卡片。",
+      "demo": "card",
+      "opts": {
+        "kind": "horizontal"
+      }
+    },
+    {
+      "id": "cd-dash",
+      "category": "card",
+      "zh": "仪表卡片",
+      "en": "Dashboard Card",
+      "aliases": "Widget Card",
+      "when": "仪表盘小部件。",
+      "prompt": "Use a dashboard widget card with a title and metric.",
+      "promptZh": "使用带标题和指标的仪表盘小部件卡片。",
+      "demo": "card",
+      "opts": {
+        "kind": "dashboard"
+      }
+    },
+    {
+      "id": "da-table",
+      "category": "data",
+      "zh": "表格",
+      "en": "Table",
+      "aliases": "Static table",
+      "when": "静态数据表。",
+      "prompt": "Use a static table for read-only tabular data.",
+      "promptZh": "使用只读的静态表格。",
+      "demo": "table",
+      "opts": {
+        "kind": "table"
+      }
+    },
+    {
+      "id": "da-dt",
+      "category": "data",
+      "zh": "数据表",
+      "en": "Data Table",
+      "aliases": "Sortable table",
+      "when": "可排序筛选的业务表。",
+      "prompt": "Use a data table with sortable headers.",
+      "promptZh": "使用表头可排序的数据表。",
+      "demo": "table",
+      "opts": {
+        "kind": "datatable"
+      }
+    },
+    {
+      "id": "da-grid",
+      "category": "data",
+      "zh": "数据网格",
+      "en": "Data Grid",
+      "aliases": "Interactive grid",
+      "when": "键盘导航、单元格交互。不是静态 Table。",
+      "prompt": "Use an interactive data grid with cell focus.",
+      "promptZh": "使用单元格可聚焦的交互数据网格，不是静态表。",
+      "demo": "table",
+      "opts": {
+        "kind": "grid"
+      }
+    },
+    {
+      "id": "da-edit",
+      "category": "data",
+      "zh": "可编辑表格",
+      "en": "Editable Table",
+      "aliases": "Spreadsheet table",
+      "when": "单元格内编辑。",
+      "prompt": "Use an editable table where cells become inputs on click.",
+      "promptZh": "使用点击单元格即可编辑的表格。",
+      "demo": "table",
+      "opts": {
+        "kind": "edit"
+      }
+    },
+    {
+      "id": "da-exp",
+      "category": "data",
+      "zh": "展开表格",
+      "en": "Expandable Table",
+      "aliases": "Row expand table",
+      "when": "行可展开详情。",
+      "prompt": "Use an expandable table with nested row details.",
+      "promptZh": "使用行可展开详情的表格。",
+      "demo": "table",
+      "opts": {
+        "kind": "expand"
+      }
+    },
+    {
+      "id": "da-tt",
+      "category": "data",
+      "zh": "树形表格",
+      "en": "Tree Table",
+      "aliases": "Treegrid table",
+      "when": "行可展开子行。",
+      "prompt": "Use a tree table with expandable hierarchical rows.",
+      "promptZh": "使用行可展开子行的树形表格。",
+      "demo": "table",
+      "opts": {
+        "kind": "treetable"
+      }
+    },
+    {
+      "id": "da-list",
+      "category": "data",
+      "zh": "列表",
+      "en": "List",
+      "aliases": "Action list",
+      "when": "线性条目。",
+      "prompt": "Use a simple selectable list.",
+      "promptZh": "使用可点选的简单列表。",
+      "demo": "list",
+      "opts": {
+        "kind": "list"
+      }
+    },
+    {
+      "id": "da-struct",
+      "category": "data",
+      "zh": "结构列表",
+      "en": "Structured List",
+      "aliases": "Definition-style list",
+      "when": "带固定栏位的列表。",
+      "prompt": "Use a structured list with consistent columns per row.",
+      "promptZh": "使用每行栏位对齐的结构列表。",
+      "demo": "list",
+      "opts": {
+        "kind": "structured"
+      }
+    },
+    {
+      "id": "da-tree",
+      "category": "data",
+      "zh": "树",
+      "en": "Tree View",
+      "aliases": "Tree",
+      "when": "文件夹式层级。",
+      "prompt": "Use a tree view with expand/collapse disclosure.",
+      "promptZh": "使用可展开/收起的树视图。",
+      "demo": "tree",
+      "opts": {}
+    },
+    {
+      "id": "da-dl",
+      "category": "data",
+      "zh": "描述列表",
+      "en": "Description List",
+      "aliases": "Key-value list",
+      "when": "字段名加值。",
+      "prompt": "Use a description list for label-value pairs.",
+      "promptZh": "使用标签加值的描述列表。",
+      "demo": "list",
+      "opts": {
+        "kind": "desc"
+      }
+    },
+    {
+      "id": "da-time",
+      "category": "data",
+      "zh": "时间线",
+      "en": "Timeline",
+      "aliases": "Activity timeline",
+      "when": "事件按时间排列。",
+      "prompt": "Use a vertical timeline of events.",
+      "promptZh": "使用事件按时间排列的纵向时间线。",
+      "demo": "timeline",
+      "opts": {}
+    },
+    {
+      "id": "da-kanban",
+      "category": "data",
+      "zh": "看板",
+      "en": "Kanban Board",
+      "aliases": "Board",
+      "when": "列中拖卡片。",
+      "prompt": "Use a kanban board with draggable cards across columns.",
+      "promptZh": "使用卡片可跨列拖动的看板。",
+      "demo": "kanban",
+      "opts": {}
+    },
+    {
+      "id": "da-gantt",
+      "category": "data",
+      "zh": "甘特图",
+      "en": "Gantt Chart",
+      "aliases": "Timeline bars",
+      "when": "工期条。",
+      "prompt": "Use a compact gantt chart with time bars.",
+      "promptZh": "使用带工期条的紧凑甘特图。",
+      "demo": "gantt",
+      "opts": {}
+    },
+    {
+      "id": "da-sched",
+      "category": "data",
+      "zh": "日程表",
+      "en": "Scheduler",
+      "aliases": "Resource calendar",
+      "when": "资源乘时间。",
+      "prompt": "Use a scheduler with hours as columns.",
+      "promptZh": "使用小时为列的日程表。",
+      "demo": "scheduler",
+      "opts": {}
+    },
+    {
+      "id": "da-calv",
+      "category": "data",
+      "zh": "日历视图",
+      "en": "Calendar View",
+      "aliases": "Month agenda",
+      "when": "月历展示事件。",
+      "prompt": "Use a calendar view with events on dates.",
+      "promptZh": "使用日期上展示事件的日历视图。",
+      "demo": "date",
+      "opts": {
+        "kind": "calview"
+      }
+    },
+    {
+      "id": "da-mas",
+      "category": "data",
+      "zh": "瀑布流",
+      "en": "Masonry Grid",
+      "aliases": "Uneven grid",
+      "when": "不等高图片流。",
+      "prompt": "Use a masonry grid of uneven image tiles.",
+      "promptZh": "使用不等高图片块的瀑布流。",
+      "demo": "masonry",
+      "opts": {}
+    },
+    {
+      "id": "da-car",
+      "category": "data",
+      "zh": "图片轮播",
+      "en": "Carousel",
+      "aliases": "Slideshow",
+      "when": "水平轮播。",
+      "prompt": "Use a carousel with previous/next controls.",
+      "promptZh": "使用带上一张/下一张的图片轮播。",
+      "demo": "carousel",
+      "opts": {}
+    },
+    {
+      "id": "da-gal",
+      "category": "data",
+      "zh": "图片画廊",
+      "en": "Gallery",
+      "aliases": "Image gallery",
+      "when": "点击切换大图。",
+      "prompt": "Use a gallery grid that selects a featured image.",
+      "promptZh": "使用点击缩略图切换大图的画廊。",
+      "demo": "gallery",
+      "opts": {}
+    },
+    {
+      "id": "tg-badge",
+      "category": "tag",
+      "zh": "徽章",
+      "en": "Badge",
+      "aliases": "Count badge",
+      "when": "数字或状态点，常挂在图标上。",
+      "prompt": "Use a numeric badge on a host control, not as a category tag.",
+      "promptZh": "使用挂在宿主控件上的数字徽章，不要当成类别标签。",
+      "demo": "tags",
+      "opts": {
+        "kind": "badge"
+      }
+    },
+    {
+      "id": "tg-tag",
+      "category": "tag",
+      "zh": "类别标签",
+      "en": "Tag",
+      "aliases": "Category tag",
+      "when": "表示类别，通常不可点删。",
+      "prompt": "Use a tag to represent a category.",
+      "promptZh": "使用表示类别的标签，通常不可点删。",
+      "demo": "tags",
+      "opts": {
+        "kind": "tag"
+      }
+    },
+    {
+      "id": "tg-chip",
+      "category": "tag",
+      "zh": "芯片",
+      "en": "Chip",
+      "aliases": "Dismissible chip",
+      "when": "可交互、常可关闭。不是 Tag。",
+      "prompt": "Use a chip that can be dismissed.",
+      "promptZh": "使用可关闭的交互芯片，不是 Tag。",
+      "demo": "tags",
+      "opts": {
+        "kind": "chip"
+      }
+    },
+    {
+      "id": "tg-filter",
+      "category": "tag",
+      "zh": "筛选芯片",
+      "en": "Filter Chip",
+      "aliases": "Choice chip",
+      "when": "筛选条件开关。",
+      "prompt": "Use filter chips with a selected check treatment.",
+      "promptZh": "使用带选中勾选态的筛选芯片。",
+      "demo": "tags",
+      "opts": {
+        "kind": "filter"
+      }
+    },
+    {
+      "id": "tg-status",
+      "category": "tag",
+      "zh": "状态徽章",
+      "en": "Status Badge",
+      "aliases": "Presence badge",
+      "when": "运行中等状态。",
+      "prompt": "Use a status badge with a color dot and short label.",
+      "promptZh": "使用带色点和短文案的状态徽章。",
+      "demo": "tags",
+      "opts": {
+        "kind": "status"
+      }
+    },
+    {
+      "id": "tg-loz",
+      "category": "tag",
+      "zh": "胶囊状态",
+      "en": "Lozenge",
+      "aliases": "Compact status tag",
+      "when": "紧凑状态文字。",
+      "prompt": "Use a lozenge for compact status text such as IN PROGRESS.",
+      "promptZh": "使用如 IN PROGRESS 的紧凑胶囊状态文字。",
+      "demo": "tags",
+      "opts": {
+        "kind": "lozenge"
+      }
+    },
+    {
+      "id": "ac-acc",
+      "category": "accordion",
+      "zh": "手风琴",
+      "en": "Accordion",
+      "aliases": "Disclosure group",
+      "when": "多个垂直折叠项。",
+      "prompt": "Use an accordion of stacked disclosures.",
+      "promptZh": "使用多项垂直堆叠的手风琴。",
+      "demo": "accordion",
+      "opts": {
+        "kind": "acc"
+      }
+    },
+    {
+      "id": "ac-col",
+      "category": "accordion",
+      "zh": "可折叠块",
+      "en": "Collapsible",
+      "aliases": "Collapse panel",
+      "when": "单个展开收起区。",
+      "prompt": "Use a single collapsible section for advanced settings.",
+      "promptZh": "使用单个可折叠区块，适合高级设置。",
+      "demo": "accordion",
+      "opts": {
+        "kind": "col"
+      }
+    },
+    {
+      "id": "ac-dis",
+      "category": "accordion",
+      "zh": "显隐控件",
+      "en": "Disclosure",
+      "aliases": "Show-hide control",
+      "when": "接近 Collapsible 的独立模式。",
+      "prompt": "Use a disclosure / show-hide control with a chevron.",
+      "promptZh": "使用带箭头的显隐/披露控件。",
+      "demo": "accordion",
+      "opts": {
+        "kind": "dis"
+      }
+    },
+    {
+      "id": "ov-tip",
+      "category": "overlay",
+      "zh": "工具提示",
+      "en": "Tooltip",
+      "aliases": "Hint",
+      "when": "短说明，不能放复杂交互。",
+      "prompt": "Build a single Tooltip. Structure: a short trigger labeled Name and a tiny floating label with one line of help (Display name shown on invoices). Visual: dark or inverse small chip, no buttons inside. Interaction: show on hover and keyboard focus, hide on blur/leave; delay about 200ms. States: hidden, visible. Do not put forms or actions inside, and do not use a popover or modal. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成工具提示。触发器文字 Name，浮层只有一行短说明（如发票上显示的名称）。小块反色，里面不能有按钮。悬停和键盘聚焦约 200ms 后出现，离开即关。不要放表单或操作，也不要做成气泡卡片或对话框。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "overlay",
+      "opts": {
+        "kind": "tooltip"
+      }
+    },
+    {
+      "id": "ov-pop",
+      "category": "overlay",
+      "zh": "气泡卡片",
+      "en": "Popover",
+      "aliases": "Rich popover",
+      "when": "可含按钮和表单。",
+      "prompt": "Build a single Popover that can hold actions, not just text. Structure: a trigger button Share; the floating panel contains a short title, a compact field or two actions (Copy link, Embed). Interaction: click trigger to toggle; click outside or Escape closes; focus stays in the panel while open. States: closed, open. Do not auto-open on hover only, do not dim the whole page like a modal, and do not limit content to one tooltip sentence. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成可放操作的气泡卡片，不要只有一句话。触发按钮 Share；浮层里有短标题、一两个操作（Copy link、Embed）。点击开关；点外部或 Escape 关闭；打开时焦点在面板内。不要只靠悬停、不要整页遮罩（那是对话框），也不要做成纯 tooltip。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "overlay",
+      "opts": {
+        "kind": "popover"
+      }
+    },
+    {
+      "id": "ov-hover",
+      "category": "overlay",
+      "zh": "悬停卡片",
+      "en": "Hover Card",
+      "aliases": "Preview card",
+      "when": "悬停预览资料。",
+      "prompt": "Build a single Hover Card that previews a person. Structure: a text trigger (Ada Lovelace); on hover a card appears with name, role, and one action (Message). Interaction: open on hover with a short delay; keep open while moving into the card; close when leaving both. States: hidden, visible. Do not require a click to open, do not use a blocking modal, and do not use a one-line tooltip. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成悬停预览人物的卡片。触发文字 Ada Lovelace；悬停出现姓名、角色和操作 Message。稍延迟出现，移进卡片保持打开，都离开才关。不要靠点击才打开，不要阻断式对话框，也不要做成一行 tooltip。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "overlay",
+      "opts": {
+        "kind": "hover"
+      }
+    },
+    {
+      "id": "ov-modal",
+      "category": "overlay",
+      "zh": "对话框",
+      "en": "Modal",
+      "aliases": "Dialog",
+      "when": "阻断式编辑或确认。",
+      "prompt": "Build a single Modal Dialog. Structure: a dimmed overlay, a centered panel with title Edit project, body text or a simple field, primary Save and secondary Cancel, plus a close control. Interaction: open from a trigger; trap focus inside; Escape and overlay click close; Cancel/Save close. States: closed, open. Motion: overlay fade, panel ~180ms. Do not use a side drawer, and do not open without a scrim. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成对话框。有变暗遮罩、居中面板、标题 Edit project、正文或简单字段、主按钮 Save 和次按钮 Cancel、关闭。从触发器打开；焦点锁在内部；Escape 和点遮罩关闭。遮罩淡入，面板约 180ms。不要做成侧抽屉，也不要没有遮罩。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "overlay",
+      "opts": {
+        "kind": "modal"
+      }
+    },
+    {
+      "id": "ov-alert",
+      "category": "overlay",
+      "zh": "警告对话框",
+      "en": "Alert Dialog",
+      "aliases": "Confirm dialog",
+      "when": "必须回应才能继续。",
+      "prompt": "Build a single Alert Dialog that must be answered. Structure: overlay plus panel titled Delete file?, short warning copy, danger Confirm and Cancel. Interaction: open from Delete; the rest of the UI is inert; Escape may cancel; there is no click-away-to-dismiss, or overlay click maps to Cancel only. States: closed, open. Do not include extra form fields, and do not use a non-blocking toast. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成必须回应的警告对话框。标题 Delete file?，短警告，危险色 Confirm 和 Cancel。打开后其余界面不可用；不能点空白处当没看见（或点遮罩只等于 Cancel）。不要加额外表单，也不要用非阻断 Toast。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "overlay",
+      "opts": {
+        "kind": "alert"
+      }
+    },
+    {
+      "id": "ov-popc",
+      "category": "overlay",
+      "zh": "气泡确认",
+      "en": "Popconfirm",
+      "aliases": "Confirmation Popover",
+      "when": "删除前的小确认。",
+      "prompt": "Build a single Popconfirm anchored to a dangerous action. Structure: a Delete text/button; beside it a small bubble with Confirm deletion? plus Yes and No. Interaction: click Delete to open the bubble; Yes/No or outside click closes; no full-screen dim. States: closed, open. Do not use a centered modal, and do not use a tooltip-only sentence without buttons. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成锚定在危险操作旁的气泡确认。Delete 旁小气泡：Confirm deletion? 加 Yes / No。点 Delete 打开；选完或点外部关闭；不要全屏变暗。不要做成居中对话框，也不要做成没有按钮的纯 tooltip。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "overlay",
+      "opts": {
+        "kind": "popconfirm"
+      }
+    },
+    {
+      "id": "ov-drawer",
+      "category": "overlay",
+      "zh": "抽屉",
+      "en": "Drawer",
+      "aliases": "Side panel",
+      "when": "从边缘滑入的面板。",
+      "prompt": "Build a single right-side Drawer. Structure: a trigger Open; a fixed-width panel slides from the right over a dim overlay, with title Details, body content, and close. Interaction: open/close; Escape and overlay click close; focus in the drawer. Motion: panel slides ~200ms. Do not center a modal, do not rise from the bottom (bottom sheet), and do not use a persistent sidebar that never overlays. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成从右侧滑入的固定宽度抽屉。触发 Open；遮罩上从右滑入，标题 Details、正文、关闭。Escape 和点遮罩关闭。约 200ms 滑入。不要居中对话框，不要从底部升起，也不要做成从不盖住内容的常驻侧栏。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "overlay",
+      "opts": {
+        "kind": "drawer"
+      }
+    },
+    {
+      "id": "ov-sheet",
+      "category": "overlay",
+      "zh": "滑入面板",
+      "en": "Sheet",
+      "aliases": "Edge sheet",
+      "when": "从边缘滑入。",
+      "prompt": "Build a single edge Sheet (not a modal, not a bottom sheet). Structure: a panel that slides in from the right or left edge with title Filters and a few controls, optional overlay. Interaction: open from a trigger, close via close control or Escape. Motion: edge slide ~200ms. Do not center the panel, and do not attach it to the bottom of the screen. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成从左右边缘滑入的面板，不是居中对话框，也不是底部弹层。标题 Filters 加几个控件，可有遮罩。触发打开，关闭钮或 Escape 关闭。约 200ms。不要居中，也不要贴屏幕底边。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "overlay",
+      "opts": {
+        "kind": "sheet"
+      }
+    },
+    {
+      "id": "ov-bs",
+      "category": "overlay",
+      "zh": "底部弹层",
+      "en": "Bottom Sheet",
+      "aliases": "Action sheet",
+      "when": "从底部升起。",
+      "prompt": "Build a single Bottom Sheet. Structure: a panel that rises from the bottom with a grab handle, title Actions, and stacked actions (Share, Copy, Delete). Interaction: open from a trigger; close by swipe down, overlay click, or a cancel row. Motion: ~200ms rise. Do not slide from the side (drawer), and do not center a desktop modal. If a design system exists, map colors to its tokens but keep this structure. No extra page chrome, no emoji.",
+      "promptZh": "做成从底部升起的弹层。有拖动手柄、标题 Actions、纵向操作 Share、Copy、Delete。可下扫、点遮罩或取消行关闭。约 200ms 升起。不要从侧面滑入，也不要做成桌面居中对话框。 若项目已有设计系统，颜色跟 token，结构和交互保持不变。不要整页壳，不要 emoji。",
+      "demo": "overlay",
+      "opts": {
+        "kind": "bottom"
+      }
+    },
+    {
+      "id": "fb-alert",
+      "category": "feedback",
+      "zh": "警告条",
+      "en": "Alert",
+      "aliases": "Page alert",
+      "when": "块级结果提示。",
+      "prompt": "Use an alert with an icon and short warning copy.",
+      "promptZh": "使用带图标和短警告文案的警告条。",
+      "demo": "feedback",
+      "opts": {
+        "kind": "alert"
+      }
+    },
+    {
+      "id": "fb-inline",
+      "category": "feedback",
+      "zh": "行内提示",
+      "en": "Inline Alert",
+      "aliases": "Inline Message",
+      "when": "嵌在表单字段旁。",
+      "prompt": "Use an inline message next to the related field.",
+      "promptZh": "使用嵌在相关字段旁的行内提示。",
+      "demo": "feedback",
+      "opts": {
+        "kind": "inline"
+      }
+    },
+    {
+      "id": "fb-banner",
+      "category": "feedback",
+      "zh": "横幅",
+      "en": "Banner",
+      "aliases": "System banner",
+      "when": "跨页宽系统通知。",
+      "prompt": "Use a full-width banner for system maintenance messaging.",
+      "promptZh": "使用通栏系统维护横幅。",
+      "demo": "feedback",
+      "opts": {
+        "kind": "banner"
+      }
+    },
+    {
+      "id": "fb-toast",
+      "category": "feedback",
+      "zh": "轻提示",
+      "en": "Toast",
+      "aliases": "Timed toast",
+      "when": "短暂出现，弱打断。",
+      "prompt": "Use a toast in the corner that auto-dismisses.",
+      "promptZh": "使用角落自动消失的轻提示。",
+      "demo": "feedback",
+      "opts": {
+        "kind": "toast"
+      }
+    },
+    {
+      "id": "fb-snack",
+      "category": "feedback",
+      "zh": "快餐条",
+      "en": "Snackbar",
+      "aliases": "Undo bar",
+      "when": "可带一个操作如撤销。",
+      "prompt": "Use a snackbar with a single action such as Undo.",
+      "promptZh": "使用可带「撤销」等单一操作的快餐条。",
+      "demo": "feedback",
+      "opts": {
+        "kind": "snack"
+      }
+    },
+    {
+      "id": "fb-note",
+      "category": "feedback",
+      "zh": "通知卡片",
+      "en": "Notification",
+      "aliases": "Notification item",
+      "when": "比 Toast 信息更多。",
+      "prompt": "Use a notification card with title and body.",
+      "promptZh": "使用带标题和正文的通知卡片。",
+      "demo": "feedback",
+      "opts": {
+        "kind": "note"
+      }
+    },
+    {
+      "id": "ld-spin",
+      "category": "loading",
+      "zh": "旋转加载",
+      "en": "Spinner",
+      "aliases": "Loading spinner",
+      "when": "不知道结构时的等待。",
+      "prompt": "Use a spinner for indeterminate short waits.",
+      "promptZh": "使用转圈表示时长未知的短暂等待。",
+      "demo": "loading",
+      "opts": {
+        "kind": "spin"
+      }
+    },
+    {
+      "id": "ld-skel",
+      "category": "loading",
+      "zh": "骨架屏",
+      "en": "Skeleton Loader",
+      "aliases": "Placeholder skeleton",
+      "when": "先占位内容结构。",
+      "prompt": "Use skeleton placeholders matching the final layout.",
+      "promptZh": "使用与最终布局同结构的骨架占位。",
+      "demo": "loading",
+      "opts": {
+        "kind": "skel"
+      }
+    },
+    {
+      "id": "ld-shim",
+      "category": "loading",
+      "zh": "微光加载",
+      "en": "Shimmer Loading",
+      "aliases": "Shimmer skeleton",
+      "when": "骨架上有流动高光。",
+      "prompt": "Use shimmer loading with a moving highlight.",
+      "promptZh": "使用带流动高光的微光骨架加载。",
+      "demo": "loading",
+      "opts": {
+        "kind": "shim"
+      }
+    },
+    {
+      "id": "ld-bar",
+      "category": "loading",
+      "zh": "进度条",
+      "en": "Progress Bar",
+      "aliases": "Linear progress",
+      "when": "线性进度。",
+      "prompt": "Use a labeled progress bar showing percent complete.",
+      "promptZh": "使用显示完成百分比的线性进度条。",
+      "demo": "loading",
+      "opts": {
+        "kind": "bar"
+      }
+    },
+    {
+      "id": "ld-circ",
+      "category": "loading",
+      "zh": "环形进度",
+      "en": "Circular Progress",
+      "aliases": "Donut progress",
+      "when": "环形百分比。",
+      "prompt": "Use circular progress with a percent label.",
+      "promptZh": "使用带百分比文字的环形进度。",
+      "demo": "loading",
+      "opts": {
+        "kind": "circ"
+      }
+    },
+    {
+      "id": "ld-indet",
+      "category": "loading",
+      "zh": "不确定进度",
+      "en": "Indeterminate Progress",
+      "aliases": "Unknown progress",
+      "when": "不知还要多久。",
+      "prompt": "Use an indeterminate progress animation when percent is unknown.",
+      "promptZh": "百分比未知时使用不确定进度动画。",
+      "demo": "loading",
+      "opts": {
+        "kind": "indet"
+      }
+    },
+    {
+      "id": "ld-det",
+      "category": "loading",
+      "zh": "确定进度",
+      "en": "Determinate Progress",
+      "aliases": "Percent progress",
+      "when": "已知百分比。",
+      "prompt": "Use determinate progress bound to a known percentage.",
+      "promptZh": "使用绑定已知百分比的确定进度。",
+      "demo": "loading",
+      "opts": {
+        "kind": "det"
+      }
+    },
+    {
+      "id": "em-empty",
+      "category": "empty",
+      "zh": "空状态",
+      "en": "Empty State",
+      "aliases": "Zero data",
+      "when": "还没有数据，给下一步。",
+      "prompt": "Use an empty state with explanation and a create action.",
+      "promptZh": "使用带说明和创建操作的空状态。",
+      "demo": "empty",
+      "opts": {
+        "kind": "empty"
+      }
+    },
+    {
+      "id": "em-err",
+      "category": "empty",
+      "zh": "错误状态",
+      "en": "Error State",
+      "aliases": "Load error",
+      "when": "加载失败可重试。",
+      "prompt": "Use an error state with retry.",
+      "promptZh": "使用带重试的加载失败状态。",
+      "demo": "empty",
+      "opts": {
+        "kind": "error"
+      }
+    },
+    {
+      "id": "em-ok",
+      "category": "empty",
+      "zh": "成功结果",
+      "en": "Success Result",
+      "aliases": "Result page",
+      "when": "流程完成页。",
+      "prompt": "Use a success result page with a confirmation and next step.",
+      "promptZh": "使用带确认和下一步的成功结果页。",
+      "demo": "empty",
+      "opts": {
+        "kind": "ok"
+      }
+    },
+    {
+      "id": "em-404",
+      "category": "empty",
+      "zh": "异常页面",
+      "en": "Error Page",
+      "aliases": "404 / 500",
+      "when": "整页错误。",
+      "prompt": "Use an exception page for 404 or 500.",
+      "promptZh": "使用 404 或 500 的整页异常页。",
+      "demo": "empty",
+      "opts": {
+        "kind": "404"
+      }
+    },
+    {
+      "id": "ly-res",
+      "category": "layout",
+      "zh": "可调整面板",
+      "en": "Resizable Panels",
+      "aliases": "Resize panes",
+      "when": "拖分隔条改宽度。",
+      "prompt": "Use resizable panels with a draggable gutter.",
+      "promptZh": "使用带可拖分隔条的可调整面板。",
+      "demo": "layout",
+      "opts": {
+        "kind": "resize"
+      }
+    },
+    {
+      "id": "ly-split",
+      "category": "layout",
+      "zh": "分栏",
+      "en": "Split Pane",
+      "aliases": "Split View",
+      "when": "左右或上下分屏。",
+      "prompt": "Use a split pane / split view for tree and editor.",
+      "promptZh": "使用树和编辑器那种左右或上下分栏。",
+      "demo": "layout",
+      "opts": {
+        "kind": "split"
+      }
+    },
+    {
+      "id": "ly-splitr",
+      "category": "layout",
+      "zh": "窗口分隔条",
+      "en": "Window Splitter",
+      "aliases": "Splitter",
+      "when": "专门指可拖分隔线。",
+      "prompt": "Use a window splitter pattern with a keyboard-accessible gutter.",
+      "promptZh": "使用键盘也可操作的窗口分隔条。",
+      "demo": "layout",
+      "opts": {
+        "kind": "splitter"
+      }
+    },
+    {
+      "id": "ly-drag",
+      "category": "layout",
+      "zh": "可拖列表",
+      "en": "Draggable List",
+      "aliases": "Sortable List",
+      "when": "手柄拖排序。",
+      "prompt": "Use a draggable sortable list with drag handles.",
+      "promptZh": "使用带拖动手柄的可排序列表。",
+      "demo": "layout",
+      "opts": {
+        "kind": "drag"
+      }
+    },
+    {
+      "id": "ly-reo",
+      "category": "layout",
+      "zh": "可重排列表",
+      "en": "Reorderable List",
+      "aliases": "Reorder list",
+      "when": "顺序可改。",
+      "prompt": "Use a reorderable list with up/down or drag.",
+      "promptZh": "使用可上移下移或拖拽改序的列表。",
+      "demo": "layout",
+      "opts": {
+        "kind": "reorder"
+      }
+    },
+    {
+      "id": "ly-rss",
+      "category": "layout",
+      "zh": "可调整侧栏",
+      "en": "Resizable Sidebar",
+      "aliases": "Resize nav",
+      "when": "侧栏宽度可拖。",
+      "prompt": "Use a resizable sidebar with a drag edge.",
+      "promptZh": "使用边缘可拖改宽度的侧栏。",
+      "demo": "layout",
+      "opts": {
+        "kind": "sidebar"
+      }
+    },
+    {
+      "id": "ai-md",
+      "category": "saas",
+      "zh": "主从布局",
+      "en": "Master-detail Layout",
+      "aliases": "List-detail",
+      "when": "左列表右详情。",
+      "prompt": "Use a master-detail layout with a selectable list and a detail pane.",
+      "promptZh": "使用左列表右详情的主从布局。",
+      "demo": "saas",
+      "opts": {
+        "kind": "master"
+      }
+    },
+    {
+      "id": "ai-ins",
+      "category": "saas",
+      "zh": "属性编辑栏",
+      "en": "Inspector Panel",
+      "aliases": "Property Panel",
+      "when": "选中对象的属性。",
+      "prompt": "Use an inspector / property panel with collapsible sections.",
+      "promptZh": "使用带可折叠分区的属性检查器。",
+      "demo": "saas",
+      "opts": {
+        "kind": "inspector"
+      }
+    },
+    {
+      "id": "ai-fb",
+      "category": "saas",
+      "zh": "筛选栏",
+      "en": "Filter Bar",
+      "aliases": "Toolbar filters",
+      "when": "一排筛选控件。",
+      "prompt": "Use a filter bar of compact controls above a table.",
+      "promptZh": "使用表格上方一排紧凑筛选控件。",
+      "demo": "saas",
+      "opts": {
+        "kind": "filterbar"
+      }
+    },
+    {
+      "id": "ai-facet",
+      "category": "saas",
+      "zh": "多条件筛选",
+      "en": "Faceted Filter",
+      "aliases": "Facet filters",
+      "when": "多面筛选。",
+      "prompt": "Use faceted filters with counts per facet.",
+      "promptZh": "使用带每项计数的多面筛选。",
+      "demo": "saas",
+      "opts": {
+        "kind": "facet"
+      }
+    },
+    {
+      "id": "ai-qb",
+      "category": "saas",
+      "zh": "查询构建器",
+      "en": "Query Builder",
+      "aliases": "Advanced query",
+      "when": "组合条件查询。",
+      "prompt": "Use a query builder with field operator value rows.",
+      "promptZh": "使用字段、运算符、值成行的查询构建器。",
+      "demo": "saas",
+      "opts": {
+        "kind": "query"
+      }
+    },
+    {
+      "id": "ai-pal",
+      "category": "saas",
+      "zh": "命令面板",
+      "en": "Command Palette",
+      "aliases": "Cmd+K palette",
+      "when": "模糊搜命令。",
+      "prompt": "Add a Cmd+K command palette with fuzzy search, keyboard navigation and grouped commands.",
+      "promptZh": "加入 Cmd+K 命令面板：模糊搜索、键盘导航、分组命令。",
+      "demo": "saas",
+      "opts": {
+        "kind": "palette"
+      }
+    },
+    {
+      "id": "ai-cmd",
+      "category": "saas",
+      "zh": "命令菜单",
+      "en": "Command Menu",
+      "aliases": "Command dialog",
+      "when": "偏菜单分组的命令窗。",
+      "prompt": "Use a command menu dialog grouped by category.",
+      "promptZh": "使用按类别分组的命令菜单对话框。",
+      "demo": "saas",
+      "opts": {
+        "kind": "cmdmenu"
+      }
+    },
+    {
+      "id": "ai-chat",
+      "category": "saas",
+      "zh": "聊天输入框",
+      "en": "Chat Composer",
+      "aliases": "Chat input",
+      "when": "对话底部输入。",
+      "prompt": "Use a chat composer with send.",
+      "promptZh": "使用带发送的对话底部输入框。",
+      "demo": "saas",
+      "opts": {
+        "kind": "chat"
+      }
+    },
+    {
+      "id": "ai-bub",
+      "category": "saas",
+      "zh": "消息气泡",
+      "en": "Message Bubble",
+      "aliases": "Chat bubble",
+      "when": "对话气泡。",
+      "prompt": "Use message bubbles for assistant and user turns.",
+      "promptZh": "使用助手和用户回合的消息气泡。",
+      "demo": "saas",
+      "opts": {
+        "kind": "bubble"
+      }
+    },
+    {
+      "id": "ai-conv",
+      "category": "saas",
+      "zh": "对话列表",
+      "en": "Conversation List",
+      "aliases": "Thread list",
+      "when": "历史会话。",
+      "prompt": "Use a conversation list with title and timestamp.",
+      "promptZh": "使用带标题和时间的历史会话列表。",
+      "demo": "saas",
+      "opts": {
+        "kind": "conv"
+      }
+    },
+    {
+      "id": "ai-pr",
+      "category": "saas",
+      "zh": "Prompt 输入",
+      "en": "Prompt Composer",
+      "aliases": "Prompt box",
+      "when": "给模型的主输入。",
+      "prompt": "Use a prompt composer with a large field and send.",
+      "promptZh": "使用大输入区加发送的 Prompt 编写框。",
+      "demo": "saas",
+      "opts": {
+        "kind": "prompt"
+      }
+    },
+    {
+      "id": "ai-ag",
+      "category": "saas",
+      "zh": "Agent 状态",
+      "en": "Agent Status Indicator",
+      "aliases": "Agent state",
+      "when": "运行、等待、出错。",
+      "prompt": "Use an agent status indicator with Running Thinking and Idle.",
+      "promptZh": "使用运行中、思考中、空闲的 Agent 状态指示。",
+      "demo": "saas",
+      "opts": {
+        "kind": "agent"
+      }
+    },
+    {
+      "id": "ai-tool",
+      "category": "saas",
+      "zh": "工具调用卡",
+      "en": "Tool Call Card",
+      "aliases": "Function call card",
+      "when": "展示工具名与参数。",
+      "prompt": "Use a tool call card showing tool name and compact arguments.",
+      "promptZh": "使用展示工具名和简短参数的工具调用卡。",
+      "demo": "saas",
+      "opts": {
+        "kind": "tool"
+      }
+    },
+    {
+      "id": "ai-think",
+      "category": "saas",
+      "zh": "思考过程",
+      "en": "Thinking Panel",
+      "aliases": "Reasoning panel",
+      "when": "可展开的推理过程。",
+      "prompt": "Use a collapsible reasoning / thinking panel.",
+      "promptZh": "使用可展开的推理/思考过程面板。",
+      "demo": "saas",
+      "opts": {
+        "kind": "think"
+      }
+    },
+    {
+      "id": "ai-term",
+      "category": "saas",
+      "zh": "终端面板",
+      "en": "Terminal Panel",
+      "aliases": "Console",
+      "when": "命令输出。",
+      "prompt": "Use a terminal panel with monospace output.",
+      "promptZh": "使用等宽输出的终端面板。",
+      "demo": "saas",
+      "opts": {
+        "kind": "term"
+      }
+    },
+    {
+      "id": "ai-diff",
+      "category": "saas",
+      "zh": "差异对比",
+      "en": "Diff Viewer",
+      "aliases": "Code diff",
+      "when": "加减行对比。",
+      "prompt": "Use a diff viewer with added and removed lines.",
+      "promptZh": "使用带增行和删行的差异对比。",
+      "demo": "saas",
+      "opts": {
+        "kind": "diff"
+      }
+    },
+    {
+      "id": "ai-ft",
+      "category": "saas",
+      "zh": "文件树",
+      "en": "File Tree",
+      "aliases": "Explorer Tree",
+      "when": "项目文件。",
+      "prompt": "Use a file tree / explorer tree.",
+      "promptZh": "使用项目文件树/资源管理树。",
+      "demo": "tree",
+      "opts": {}
+    },
+    {
+      "id": "ai-json",
+      "category": "saas",
+      "zh": "JSON 树",
+      "en": "JSON Tree Viewer",
+      "aliases": "JSON explorer",
+      "when": "可展开 JSON。",
+      "prompt": "Use a JSON tree viewer with expandable keys.",
+      "promptZh": "使用键可展开的 JSON 树查看器。",
+      "demo": "tree",
+      "opts": {}
+    },
+    {
+      "id": "ai-log",
+      "category": "saas",
+      "zh": "日志查看",
+      "en": "Log Viewer",
+      "aliases": "Logs",
+      "when": "可滚日志。",
+      "prompt": "Use a log viewer with timestamp and level.",
+      "promptZh": "使用带时间和级别的日志查看。",
+      "demo": "saas",
+      "opts": {
+        "kind": "log"
+      }
+    },
+    {
+      "id": "ai-mdv",
+      "category": "saas",
+      "zh": "Markdown 预览",
+      "en": "Markdown Preview",
+      "aliases": "MD preview",
+      "when": "渲染 Markdown。",
+      "prompt": "Use a markdown preview pane.",
+      "promptZh": "使用渲染 Markdown 的预览面板。",
+      "demo": "saas",
+      "opts": {
+        "kind": "md"
+      }
+    },
+    {
+      "id": "ai-cb",
+      "category": "saas",
+      "zh": "代码块",
+      "en": "Code Block",
+      "aliases": "Fenced code",
+      "when": "展示代码。",
+      "prompt": "Use a code block with language label.",
+      "promptZh": "使用带语言标签的代码块。",
+      "demo": "saas",
+      "opts": {
+        "kind": "codeblock"
+      }
+    },
+    {
+      "id": "ai-snip",
+      "category": "saas",
+      "zh": "可复制代码",
+      "en": "Code Snippet",
+      "aliases": "Copyable snippet",
+      "when": "带复制。",
+      "prompt": "Use a code snippet with a copy button.",
+      "promptZh": "使用带复制按钮的代码片段。",
+      "demo": "saas",
+      "opts": {
+        "kind": "snip"
+      }
+    },
+    {
+      "id": "ai-sug",
+      "category": "saas",
+      "zh": "输入建议",
+      "en": "Prompt Suggestions",
+      "aliases": "Suggestion Chips",
+      "when": "点芯片填 Prompt。",
+      "prompt": "Use suggestion chips that fill the composer.",
+      "promptZh": "使用点击后填入编写框的建议芯片。",
+      "demo": "saas",
+      "opts": {
+        "kind": "suggest"
+      }
+    },
+    {
+      "id": "ai-cite",
+      "category": "saas",
+      "zh": "引用芯片",
+      "en": "Citation Chip",
+      "aliases": "Source Card",
+      "when": "引用源。",
+      "prompt": "Use citation chips / source cards linking to evidence.",
+      "promptZh": "使用指向证据的引用芯片/来源卡。",
+      "demo": "saas",
+      "opts": {
+        "kind": "cite"
+      }
+    },
+    {
+      "id": "tr-view",
+      "category": "tree",
+      "zh": "树视图",
+      "en": "Tree View",
+      "aliases": "ARIA tree",
+      "when": "通用层级树。",
+      "prompt": "Use a tree view with expand and collapse.",
+      "promptZh": "使用可展开收起的树视图。",
+      "demo": "tree",
+      "opts": {}
+    },
+    {
+      "id": "tr-file",
+      "category": "tree",
+      "zh": "文件树",
+      "en": "File Tree",
+      "aliases": "File Explorer",
+      "when": "文件资源管理。",
+      "prompt": "Use a file explorer tree.",
+      "promptZh": "使用文件资源管理树。",
+      "demo": "tree",
+      "opts": {}
+    },
+    {
+      "id": "tr-grid",
+      "category": "tree",
+      "zh": "树网格",
+      "en": "Treegrid",
+      "aliases": "Hierarchical grid",
+      "when": "树加表头列。",
+      "prompt": "Build a treegrid with name and size columns and expandable rows.",
+      "promptZh": "构建带名称、大小列且行可展开的树网格。",
+      "demo": "table",
+      "opts": {
+        "kind": "treegrid"
+      }
+    },
+    {
+      "id": "mb-pull",
+      "category": "mobile",
+      "zh": "下拉刷新",
+      "en": "Pull-to-refresh",
+      "aliases": "PTR",
+      "when": "列表下拉刷新。",
+      "prompt": "Use pull-to-refresh on a mobile list.",
+      "promptZh": "在移动列表上使用下拉刷新。",
+      "demo": "mobile",
+      "opts": {
+        "kind": "pull"
+      }
+    },
+    {
+      "id": "mb-swipe",
+      "category": "mobile",
+      "zh": "左滑操作",
+      "en": "Swipe Actions",
+      "aliases": "Swipe row",
+      "when": "左滑出删除。",
+      "prompt": "Use swipe actions revealing Delete behind a row.",
+      "promptZh": "使用左滑露出删除的滑动操作。",
+      "demo": "mobile",
+      "opts": {
+        "kind": "swipe"
+      }
+    },
+    {
+      "id": "mb-long",
+      "category": "mobile",
+      "zh": "长按菜单",
+      "en": "Long-press Context Menu",
+      "aliases": "Press menu",
+      "when": "长按出菜单。",
+      "prompt": "Use a long-press context menu on a list item.",
+      "promptZh": "在列表项上使用长按上下文菜单。",
+      "demo": "mobile",
+      "opts": {
+        "kind": "long"
+      }
+    },
+    {
+      "id": "mb-dots",
+      "category": "mobile",
+      "zh": "页面指示点",
+      "en": "Page Indicator",
+      "aliases": "Pagination Dots",
+      "when": "轮播页点。",
+      "prompt": "Use pagination dots for paged cards.",
+      "promptZh": "使用分页指示点表示多页卡片。",
+      "demo": "mobile",
+      "opts": {
+        "kind": "dots"
+      }
+    },
+    {
+      "id": "mb-cards",
+      "category": "mobile",
+      "zh": "滑动卡片",
+      "en": "Swipeable Cards",
+      "aliases": "Card stack",
+      "when": "卡片可滑走。",
+      "prompt": "Use swipeable cards with left/right actions.",
+      "promptZh": "使用可左右滑走的滑动卡片。",
+      "demo": "mobile",
+      "opts": {
+        "kind": "cards"
+      }
+    },
+    {
+      "id": "mb-safe",
+      "category": "mobile",
+      "zh": "安全区域",
+      "en": "Safe Area",
+      "aliases": "Inset padding",
+      "when": "避开刘海与底部横条。",
+      "prompt": "Use safe-area padding for notch and home indicator.",
+      "promptZh": "使用避开刘海和底部横条的安全区留白。",
+      "demo": "mobile",
+      "opts": {
+        "kind": "safe"
+      }
+    },
+    {
+      "id": "mb-nav",
+      "category": "mobile",
+      "zh": "顶部导航栏",
+      "en": "Navigation Bar",
+      "aliases": "Mobile nav bar",
+      "when": "移动端顶栏。",
+      "prompt": "Use a mobile navigation bar with back title and action.",
+      "promptZh": "使用带返回、标题和操作的移动端顶栏。",
+      "demo": "mobile",
+      "opts": {
+        "kind": "navbar"
+      }
+    },
+    {
+      "id": "mb-lg",
+      "category": "mobile",
+      "zh": "大标题导航",
+      "en": "Large-title Navigation Bar",
+      "aliases": "Large title",
+      "when": "滚动时可收成小标题。",
+      "prompt": "Use a large-title navigation bar that compacts on scroll.",
+      "promptZh": "使用滚动后收成小标题的大标题导航栏。",
+      "demo": "mobile",
+      "opts": {
+        "kind": "large"
+      }
+    },
+    {
+      "id": "dk-3",
+      "category": "desktop",
+      "zh": "三栏布局",
+      "en": "Three-pane Layout",
+      "aliases": "IDE layout",
+      "when": "侧栏、编辑器、检查器。",
+      "prompt": "Use a three-pane layout: sidebar, editor and inspector.",
+      "promptZh": "使用侧栏、编辑器、检查器的三栏布局。",
+      "demo": "desktop",
+      "opts": {
+        "kind": "three"
+      }
+    },
+    {
+      "id": "dk-act",
+      "category": "desktop",
+      "zh": "活动栏",
+      "en": "Activity Bar",
+      "aliases": "Icon rail",
+      "when": "最左侧图标栏。",
+      "prompt": "Use an activity bar of icon destinations.",
+      "promptZh": "使用最左侧图标目的地的活动栏。",
+      "demo": "desktop",
+      "opts": {
+        "kind": "activity"
+      }
+    },
+    {
+      "id": "dk-exp",
+      "category": "desktop",
+      "zh": "资源管理面板",
+      "en": "Explorer Panel",
+      "aliases": "Side explorer",
+      "when": "文件或图层列表。",
+      "prompt": "Use an explorer panel listing files.",
+      "promptZh": "使用列出文件的资源管理面板。",
+      "demo": "desktop",
+      "opts": {
+        "kind": "explorer"
+      }
+    },
+    {
+      "id": "dk-et",
+      "category": "desktop",
+      "zh": "编辑器标签",
+      "en": "Editor Tabs",
+      "aliases": "Open editors",
+      "when": "打开文件的页签。",
+      "prompt": "Use editor tabs for open documents.",
+      "promptZh": "使用打开文档的编辑器页签。",
+      "demo": "desktop",
+      "opts": {
+        "kind": "edtabs"
+      }
+    },
+    {
+      "id": "dk-ep",
+      "category": "desktop",
+      "zh": "编辑器面板",
+      "en": "Editor Pane",
+      "aliases": "Code pane",
+      "when": "主编辑区。",
+      "prompt": "Use an editor pane with a monospace canvas.",
+      "promptZh": "使用等宽画布的主编辑器面板。",
+      "demo": "desktop",
+      "opts": {
+        "kind": "edpane"
+      }
+    },
+    {
+      "id": "dk-prop",
+      "category": "desktop",
+      "zh": "属性面板",
+      "en": "Property Panel",
+      "aliases": "Props inspector",
+      "when": "检查器里的属性表。",
+      "prompt": "Use a property panel of labeled fields.",
+      "promptZh": "使用带标签字段的属性面板。",
+      "demo": "desktop",
+      "opts": {
+        "kind": "prop"
+      }
+    },
+    {
+      "id": "dk-st",
+      "category": "desktop",
+      "zh": "状态栏",
+      "en": "Status Bar",
+      "aliases": "Bottom status",
+      "when": "底部状态。",
+      "prompt": "Use a status bar with branch, problems and encoding.",
+      "promptZh": "使用展示分支、问题和编码的状态栏。",
+      "demo": "desktop",
+      "opts": {
+        "kind": "status"
+      }
+    },
+    {
+      "id": "dk-cb",
+      "category": "desktop",
+      "zh": "命令栏",
+      "en": "Command Bar",
+      "aliases": "App command bar",
+      "when": "一排命令按钮。",
+      "prompt": "Use a command bar of labeled icon actions.",
+      "promptZh": "使用一排带图标和文字的命令栏。",
+      "demo": "desktop",
+      "opts": {
+        "kind": "cmdbar"
+      }
+    },
+    {
+      "id": "dk-dock",
+      "category": "desktop",
+      "zh": "可停靠面板",
+      "en": "Dockable Panel",
+      "aliases": "Dock panel",
+      "when": "可停左右底。",
+      "prompt": "Use a dockable panel that can pin to an edge.",
+      "promptZh": "使用可钉在边缘的可停靠面板。",
+      "demo": "desktop",
+      "opts": {
+        "kind": "dock"
+      }
+    },
+    {
+      "id": "dk-float",
+      "category": "desktop",
+      "zh": "浮动面板",
+      "en": "Floating Panel",
+      "aliases": "Floating window",
+      "when": "可拖动的浮层工具。",
+      "prompt": "Use a floating panel with a drag handle.",
+      "promptZh": "使用带拖动手柄的浮动面板。",
+      "demo": "desktop",
+      "opts": {
+        "kind": "float"
+      }
+    }
+  ]
+}

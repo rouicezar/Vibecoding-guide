@@ -1,0 +1,50 @@
+---
+import dictionary from '../data/dictionary.json';
+import {t,url,type Locale,type Copy} from '../data/site';
+import {journey} from '../data/journey';
+import PromptTemplate from './PromptTemplate.astro';
+import ComponentDemo from './ComponentDemo.astro';
+const {locale,entryId}=Astro.props as {locale:Locale;entryId?:string};
+const entry=dictionary.entries.find(e=>e.id===entryId);
+const prompt:Copy=entry?[`【背景】在现有产品中制作一个${entry.zh}，以烘焙预约页面为示例，替换为实际场景。
+【给谁用】需要完成预约或管理预约的人。
+【问题与用途】${entry.when}
+【输入】现有页面、品牌样式、目标设备和参考截图；缺失时先索取，不编造。
+【组件要求】${entry.promptZh}
+【标准名称】${entry.en}；别名：${entry.aliases}
+【原始细节】下方原始英文规格保留更细的交互要求，实施前逐项解释并核对。
+【约束】只做该组件，不重做全页；遵守现有样式，不连接真实支付或通知。
+【输出】可操作组件、使用位置、状态说明、实际检查记录和未完成项。
+【检查标准】鼠标、键盘和触屏可操作；检查默认、选中、禁用、空白与失败状态；缺少适用状态时说明原因。
+【缺失信息处理】先问一个会改变结果的问题；示例不是已确认需求。
+【下一步】实际试用后对照原始描述核验，不将静态画面当作交互已完成。`,
+`[Background] Build one ${entry.en} in an existing product, using a bakery reservation page as the replaceable example.
+[Audience] People making or managing reservations.
+[Problem] Provide the interaction described below within the agreed user flow.
+[Inputs] Current page, brand styles, target devices, and reference images; request missing material.
+[Component specification] ${entry.prompt}
+[Aliases] ${entry.aliases}
+[Constraints] Build only this component, not a whole page. Preserve existing styles. Do not connect real payments or notifications.
+[Output] An operable component, placement instructions, state descriptions, actual checks, and unfinished items.
+[Acceptance] Check pointer, keyboard, and touch use; default, selected, disabled, empty, and failure states where applicable. Explain omissions.
+[Missing information] Ask one decision-changing question first; examples are not confirmed requirements.
+[Next step] Try the result and compare it with the specification. A static picture does not prove interaction works.`]:journey.find(s=>s.id==='ui')!.prompt;
+---
+{entry?<>
+<div class="breadcrumb"><a href={url(locale,'components')}>{t(['前端与 UI','Frontend & UI'],locale)}</a><span> / {entry.en}</span></div><header class="journey-intro"><p class="eyebrow">{entry.category.toUpperCase()}</p><h1>{locale==='en'?entry.en:entry.zh}</h1><p>{locale==='en'?entry.prompt.split('. ')[0]+'.':entry.when}</p><p class="muted">{entry.en} · {entry.aliases}</p></header>
+<ComponentDemo id={entry.id} locale={locale}/>
+<PromptTemplate id={`component-${entry.id}`} title={['复刻提示词 · 替换场景后使用','Recreation prompt · replace the context']} prompt={prompt} locale={locale}/>
+<details class="example-box"><summary>{t(['查看保留的原始规格','Read the preserved source specification'],locale)}</summary><p>{entry.prompt}</p>{locale==='zh-cn'&&<p>{entry.promptZh}</p>}</details>
+<section class="section"><h2>{t(['效果不一致时','When the result differs'],locale)}</h2><p>{t(['只画出了样子 → 把缺失的点击、键盘或状态变化逐项交给 AI；交互已存在但行为不同 → 提供实际步骤、预期和结果，要求只修正差异。先在示例资料上验证，再接入产品。','Appearance only → give AI the missing click, keyboard, or state changes. Interaction exists but behaves differently → provide steps, expected behavior, and actual results and request a focused correction. Verify with sample data before integration.'],locale)}</p><a href={url(locale,'communicate')+'#component'}>{t(['继续描述组件 →','Continue describing the component →'],locale)}</a></section>
+</>:<>
+<header class="journey-intro"><p class="eyebrow">FRONTEND & UI</p><h1>{t(['前端与 UI','Frontend & UI'],locale)}</h1><p>{t(['UI 是打开产品后看到和操作的界面；前端负责呈现这些内容与交互。先排清一条使用流程，再选需要的组件。','UI is the interface people see and operate; the frontend presents its content and interactions. Map one user flow before choosing components.'],locale)}</p></header>
+<section class="section"><h2>{t(['先做页面，再挑组件','Start with the page, then choose components'],locale)}</h2><ol><li>{t(['写出“打开 → 选择日期 → 提交 → 查看结果”，让 AI 画出内容顺序。','Describe “open → choose a date → submit → see the result” and ask AI for a content outline.'],locale)}</li><li>{t(['每个操作说明等待、成功、失败和空白时显示什么。','Specify waiting, success, failure, and empty states for each action.'],locale)}</li><li>{t(['在手机与电脑上用真实长度文字检查，再接数据与完整流程。','Check realistic text lengths on phones and computers before connecting data and the full flow.'],locale)}</li></ol></section>
+<section class="section"><h2>{t(['组件词典 · 212 项 / 25 类','Component dictionary · 212 entries / 25 categories'],locale)}</h2><p>{t(['按名称、别名或用途搜索，打开详情查看提示词与可用示例。12 项提供新站交互示例，其余只完成词条迁移，验证状态在详情说明。','Search names, aliases, or descriptions. Open an entry for its prompt and available example. Twelve entries have new interactive examples; the remaining entries have migrated descriptions only. Details state the limits.'],locale)}</p><div class="dictionary-controls"><label>{t(['搜索组件','Search components'],locale)}<input type="search" id="dictionary-query" placeholder={t(['例如：标签、Slider、保存','Try tabs, Slider, save'],locale)}/></label><label>{t(['分类','Category'],locale)}<select id="dictionary-category"><option value="all">{t(['全部','All'],locale)}</option>{dictionary.categories.map(c=><option value={c[0]}>{locale==='en'?c[1]:c[2]}</option>)}</select></label></div><p role="status" id="dictionary-count" data-locale={locale}>212</p><p id="dictionary-empty" hidden>{t(['没有匹配。清空分类或试试更短的名称，如“标签”或“输入”。','No match. Clear the category or try a shorter name such as tabs or input.'],locale)}</p><div class="dictionary-list">{dictionary.entries.map(e=><a href={url(locale,`components/${e.id}`)} data-entry data-category={e.category} data-search={[e.zh,e.en,e.aliases,e.when,e.prompt,e.promptZh].join(' ').toLowerCase()}><strong>{locale==='en'?e.en:e.zh}</strong><span>{e.en}</span><p>{locale==='en'?e.prompt.split('. ')[0]+'.':e.when}</p></a>)}</div></section>
+<PromptTemplate id="ui-plan" title={['让 AI 安排页面与状态','Ask AI to plan pages and states']} prompt={prompt} locale={locale}/>
+<section class="section"><h2>{t(['常见混淆与下一步','Common confusion and next steps'],locale)}</h2><p>{t(['切换不同内容用 Tabs（标签切换）；调整数值用 Slider（滑块）。若只有视觉变化但内容没变，先明确需要切内容还是改样式，再让 AI 修正。组件可用后回到完整流程检查真实提交和结果。','Tabs switch content; a Slider changes a value. If appearance changes without content, clarify whether content or styling should change, then ask AI to fix it. After components work, test actual submission and results in the complete flow.'],locale)}</p><a href={`${url(locale)}#stage-flow`}>{t(['连接完整使用流程 →','Connect the complete flow →'],locale)}</a></section>
+</>}
+<script>
+const query=document.querySelector<HTMLInputElement>('#dictionary-query');const category=document.querySelector<HTMLSelectElement>('#dictionary-category');
+if(query&&category){const apply=()=>{let count=0;document.querySelectorAll<HTMLElement>('[data-entry]').forEach(entry=>{entry.hidden=!(category.value==='all'||entry.dataset.category===category.value)||!entry.dataset.search!.includes(query.value.trim().toLowerCase());if(!entry.hidden)count++;});document.querySelector('#dictionary-count')!.textContent=`${count} / 212`;document.querySelector<HTMLElement>('#dictionary-empty')!.hidden=count>0;const params=new URLSearchParams();if(query.value)params.set('q',query.value);if(category.value!=='all')params.set('category',category.value);history.replaceState(null,'',location.pathname+(params.size?'?'+params:''));document.querySelectorAll<HTMLAnchorElement>('.languages a').forEach(a=>a.search=params.toString());};const params=new URLSearchParams(location.search);query.value=params.get('q')||'';const requested=params.get('category');if(requested&&Array.from(category.options).some(o=>o.value===requested))category.value=requested;query.addEventListener('input',apply);category.addEventListener('change',apply);apply();}
+</script>
+<style>.dictionary-controls{display:flex;gap:20px;flex-wrap:wrap}.dictionary-controls label{flex:1;min-width:180px}.dictionary-controls input,.dictionary-controls select{display:block;width:100%;padding:10px;border:1px solid #9aa5b5;border-radius:6px;margin-top:6px}.dictionary-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px}.dictionary-list a{padding:16px 0;border-bottom:1px solid #e2e6ec;color:inherit}.dictionary-list span{display:block;color:#64748b;font-size:12px}.dictionary-list p{font-size:14px}.dictionary-list [hidden]{display:none}@media(max-width:650px){.dictionary-list{grid-template-columns:1fr}}</style>
