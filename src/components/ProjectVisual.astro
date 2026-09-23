@@ -5,5 +5,5 @@ interface Props {project:Project;locale:Locale;}
 const {project:p,locale}=Astro.props;
 ---
 <div class:list={['project-visual',p.id]} aria-label={t(['应用界面示意','Illustrative app interface'],locale)}>
-<div class="mock-window"><div class="mock-bar"><i></i><i></i><i></i><span>{p.id==='web'?'your-idea.site':t(p.title,locale)}</span></div><div class="mock-content"><div class="mock-symbol"><Icon name={p.icon} size={24}/></div><strong>{t(p.example,locale)}</strong><div class="mock-line"></div><div class="mock-line short"></div><div class="mock-tiles"><span></span><span></span><span></span></div><span class="mock-action">{t(['从这里开始','Start here'],locale)} →</span></div></div><span class="visual-caption">{t(['界面示意','INTERFACE EXAMPLE'],locale)}</span>
+<div class="mock-window"><div class="mock-bar"><i></i><i></i><i></i><span>{p.id==='web'?'the-idea.site':t(p.title,locale)}</span></div><div class="mock-content"><div class="mock-symbol"><Icon name={p.icon} size={24}/></div><strong>{t(p.example,locale)}</strong><div class="mock-line"></div><div class="mock-line short"></div><div class="mock-tiles"><span></span><span></span><span></span></div><span class="mock-action">{t(['从这里开始','Start here'],locale)} →</span></div></div><span class="visual-caption">{t(['界面示意','INTERFACE EXAMPLE'],locale)}</span>
 </div>
