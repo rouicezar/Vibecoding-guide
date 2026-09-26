@@ -4,23 +4,24 @@ import {t,type Locale,type Copy} from '../data/site';
 interface Props {id:string; title:Copy; prompt:Copy; locale:Locale; kind?:"worksheet"|"handoff"|"prompt"|"file";}
 const {id,title,prompt,locale,kind='prompt'}=Astro.props;
 const worksheet=kind==='worksheet';
-const instruction:Copy=kind==='file'?['这是文件正文，不是对话提示词。交给 AI 合并到项目规则文件；待确认字段由 AI 读取真实项目后补齐。','This is file content, not a chat prompt. Ask AI to merge it into project instructions and fill unknowns from the actual project.']:worksheet?['先复制到自己的笔记，填写实际情况；这一步是本人记录想法，下一步才交给 AI。','Copy into personal notes and enter actual details. This step records the idea; share it with AI in the next step.']:['在当前项目的 AI 对话中发送。把待填字段换成实际材料，已有文件可直接附上；不确定项明确写“尚未确定”。单独标出的“比如”只用于帮助理解。','Send this in the current project conversation. Replace placeholders with actual material or attach existing files. Mark unknowns as undecided. Separately labeled examples are only for illustration.'];
+const instruction:Copy=kind==='file'?['这是文件正文，不是对话提示词。交给 AI 合并到项目规则文件；待确认字段由 AI 读取真实项目后补齐。','This is file content, not a chat prompt. Ask AI to merge it into project instructions and fill unknowns from the actual project.']:worksheet?['直接编辑下方模板，确认后生成可复制草稿；下一步再交给 AI。','Edit the template below and confirm to prepare a copyable draft. Share it with AI in the next step.']:['先在模板中补充实际材料，确认生成后再复制到当前项目的 AI 对话。不确定项写“尚未确定”，示例可以自行替换。','Edit the template with actual material, confirm, then copy into the current project conversation. Mark unknowns as undecided and replace examples as needed.'];
 ---
-<div id={`template-${id}`} class="prompt-template" data-pagefind-weight="0.2">
-  <div class="template-toolbar"><h3 id={`prompt-title-${id}`}><Icon name={worksheet?"book":"message"} size={15}/>{t(title,locale)}</h3><button class="template-copy" data-copy-template={id} data-copied={t(['已复制','Copied'],locale)} data-failed={t(['复制失败，请在代码框内手动选择并复制。','Copy failed. Select and copy the text in the code box.'],locale)}><Icon name="copy" size={14}/><span>{t(kind==='file'?['复制文件模板','Copy file template']:worksheet?['复制填写模板','Copy worksheet']:['复制提示词','Copy prompt'],locale)}</span></button></div>
+<div id={`template-${id}`} class="prompt-template" data-template-kind={kind} data-pagefind-weight="0.2">
+  <div class="template-toolbar"><h3 id={`prompt-title-${id}`}><Icon name={worksheet?"book":"message"} size={15}/>{t(title,locale)}</h3></div>
   <p class="template-instruction">{t(instruction,locale)}</p>
-  <pre tabindex="0" aria-labelledby={`prompt-title-${id}`}><code data-template-text={id}>{t(prompt,locale)}</code></pre>
+  <div class="template-editor-panel">
+    <label for={`edit-${id}`}>{t(['① 按模板补充实际情况，不确定的地方写“尚未确定”','1. Adapt the template; mark unknowns as undecided'],locale)}</label>
+    <textarea id={`edit-${id}`} data-template-editor={id} rows="8" spellcheck="false">{t(prompt,locale)}</textarea>
+    <button type="button" class="button primary" data-confirm-template={id}>{t(['② 确认，生成我的专属内容','2. Confirm and generate my version'],locale)}</button>
+    <p class="small" data-template-save={id} role="status"></p>
+  </div>
+  <div data-template-result={id} hidden><p class="personalized-label">{t(['已确认 · 以下是本次专属内容，可一键复制','Confirmed · personalized content ready to copy'],locale)}</p><pre tabindex="0" aria-labelledby={`prompt-title-${id}`}><code data-template-text={id}>{t(prompt,locale)}</code></pre><button class="template-copy" disabled data-copy-template={id} data-copied={t(['已复制','Copied'],locale)} data-failed={t(['复制失败，请在代码框内手动选择并复制。','Copy failed. Select and copy the text in the code box.'],locale)}><Icon name="copy" size={14}/><span>{t(kind==='file'?['复制我的文件内容','Copy my file content']:worksheet?['复制我的草稿','Copy my draft']:['复制我的提示词','Copy my prompt'],locale)}</span></button></div>
   <div class="template-footer"><span>{t(kind==='file'?['文件正文 · 合并到项目规则文件','File content · Merge into project instructions']:worksheet?['填写草稿 → 下一站再交给 AI','Complete the draft → Share with AI in the next step']:['纯文本 · 补齐实际材料后发送给 AI','Plain text · Add actual material before sending to AI'],locale)}</span><span role="status" data-template-status={id}></span></div>
 </div>
 <script>
-document.querySelectorAll<HTMLButtonElement>('[data-copy-template]').forEach(button=>button.addEventListener('click',async()=>{
- const id=button.dataset.copyTemplate!;
- const text=document.querySelector<HTMLElement>(`[data-template-text="${id}"]`)!.textContent!;
- const status=document.querySelector<HTMLElement>(`[data-template-status="${id}"]`)!;
- const en=document.documentElement.lang==='en';status.textContent=en?'Copying…':'正在复制…';
- let timer:ReturnType<typeof setTimeout>|undefined;
- try{await Promise.race([navigator.clipboard.writeText(text),new Promise((_,reject)=>{timer=setTimeout(()=>reject(new Error('clipboard timeout')),1800);})]);status.textContent=button.dataset.copied!;}
- catch{const code=document.querySelector<HTMLElement>(`[data-template-text="${id}"]`)!;const range=document.createRange();range.selectNodeContents(code);const selection=window.getSelection();selection?.removeAllRanges();selection?.addRange(range);status.textContent=en?'Text selected. Press Ctrl+C or ⌘C, or long-press to copy.':'已选中文字，请按 Ctrl+C / ⌘C，或长按复制。';}
- finally{if(timer)clearTimeout(timer);}
-}));
+import {initTemplates} from '../scripts/templates';
+initTemplates();
 </script>
+<style>
+.template-editor-panel label{display:block;font-size:13px;font-weight:600;line-height:1.7;margin:16px 0 10px}.template-editor-panel textarea{display:block;width:100%;box-sizing:border-box;border:1px solid #bdcadb;border-radius:8px;background:#fff;color:#243952;padding:14px;font:14px/1.8 system-ui;resize:vertical;min-height:180px;max-height:560px}.template-editor-panel .button{margin-top:14px;font-size:13px}.personalized-label{color:#36764f;font-size:12px;font-weight:600;margin-top:22px}.template-copy:disabled{opacity:.4;cursor:not-allowed}.template-editor-panel [role=status]{font-size:12px;color:#60738e;line-height:1.7}
+</style>

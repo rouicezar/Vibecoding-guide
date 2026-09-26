@@ -35,6 +35,12 @@ for(const locale of ['zh-cn','en'])for(const path of paths){
  assert(html.includes(`lang="${locale==='en'?'en':'zh-CN'}"`));
  assert.equal((html.match(/<h1[ >]/g)||[]).length,1);
  assert(html.includes(`href="/en/${path}"`)&&html.includes(`href="/zh-cn/${path}"`));
+ // Every shared prompt must expose an editable source and explicit confirmation.
+ for(const [,id] of html.matchAll(/data-template-text="([^"]+)"/g)){
+  assert(html.includes(`data-template-editor="${id}"`),`Missing editable template: ${locale}/${path}/${id}`);
+  assert(html.includes('data-confirm-template'),`Missing confirmation: ${locale}/${path}/${id}`);
+  assert(html.includes(`data-template-result="${id}" hidden`),`Result shown before confirmation: ${locale}/${path}/${id}`);
+ }
  for(const match of html.matchAll(/(?:href|src)="(\/[^"#?]*)(?:[?#][^"]*)?"/g)){
   const target=match[1];await access(`dist${target}${target.endsWith('/')?'index.html':''}`);
  }
