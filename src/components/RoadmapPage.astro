@@ -1,10 +1,11 @@
 ---
 import '../styles/learning.css';
 import Roadmap from './Roadmap.astro';
+import ProjectRoadmap from './ProjectRoadmap.astro';
 import PromptTemplate from './PromptTemplate.astro';
 import StageTroubleshooting from './StageTroubleshooting.astro';
 import {journey,mainJourney} from '../data/journey';
-import {phases,lessons,legacyLessons} from '../data/learning';
+import {lessons,legacyLessons} from '../data/learning';
 import {modules,t,url,type Locale} from '../data/site';
 const {locale,path}=Astro.props as {locale:Locale;path:string};
 const stage=journey.find(s=>s.id===path.split('/')[1]);
@@ -13,8 +14,7 @@ const label=(zh:string,en:string)=>t([zh,en],locale);
 ---
 {!stage?<>
 <header class="page-intro"><span class="eyebrow">VIBE CODING ROADMAP</span><h1>{label('从想法到作品，完整路线图','The complete path from idea to product')}</h1><p class="lead">{label('先看每一站的关系，再进入当前要做的事。所有知识点都挂在对应节点下面。','See how the stages connect, then enter the current task. Related knowledge lives under each node.')}</p></header>
-<div class="outcome-map">{phases.map((phase,i)=><a class={`outcome-stage stage-${i}`} href={url(locale,`learn/stage/${phase.id}`)}><span class="outcome-number">0{i+1}</span><div><h2>{t(phase.title,locale)}</h2><p>{t(phase.result,locale)}</p><small>{lessons.filter(l=>l.phase===phase.id).length} {label('个具体动作 · 进入后逐步做','guided actions · one at a time')}</small></div><span aria-hidden="true">→</span></a>)}</div>
-<p class="local-note">{label('每一步都有：为什么做 → 在哪里操作 → 填写模板 → 核对结果 → 解决卡点。','Each step: purpose → location → template → verification → recovery.')}</p>
+<ProjectRoadmap locale={locale}/>
 <details class="learn-details"><summary>{label('查看完整知识路线与制作分支','Explore the full knowledge map and branches')}</summary><Roadmap locale={locale} compact/></details>
 </>:<article class="node-guide">
 <nav class="node-crumb"><a href={url(locale,'roadmap')}>{label('完整路线图','Complete roadmap')}</a><span> / </span>{stage.parent&&<><a href={url(locale,`roadmap/${stage.parent}`)}>{t(journey.find(s=>s.id===stage.parent)!.title,locale)}</a><span> / </span></>}{t(stage.title,locale)}</nav>
