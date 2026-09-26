@@ -1,3 +1,4 @@
+import {advancedLessons} from './advanced-lessons.ts';
 import type {Copy} from './site';
 export const demoLessons:Record<string,{action:Copy;check:Copy}>={
  tabs:{action:['切换两个栏目，再回到第一个；关闭或拖动变体可试对应操作。','Switch panels and return; try closing or dragging where shown.'],check:['选中项与内容一致；关闭后仍有可用入口。','Selection matches content and closing preserves a usable entry.']},
@@ -29,7 +30,7 @@ export const demoLessons:Record<string,{action:Copy;check:Copy}>={
 export const nativeDemoIds=['tabs-underlined','tabs-sliding','btn-primary','in-text','sel-single','sel-combo','ck-switch','sl-h','ov-modal','ov-drawer','fb-toast','da-table'];
 // A visual reference is useful without pretending it implements a complete widget.
 export const visualDemoIds=['cd-basic','cd-elev','cd-out','cd-metric','cd-media','cd-h','cd-dash','da-dl','da-time','da-gantt','da-sched','da-mas','tg-badge','tg-tag','tg-status','tg-loz','fb-alert','fb-inline','fb-banner','fb-note','ly-split','ai-bub','ai-term','ai-diff','ai-log','ai-mdv','mb-safe','mb-nav','mb-lg','dk-3','dk-ep','dk-st'];
-export const limitedDemoIds=['ly-res','ly-splitr','ly-rss','sp-rte','sp-md','sp-code','sp-mask','sp-phone','sp-cur','sp-url','sp-mentions','sel-tree','nv-anchor','ai-qb','ai-facet','ai-json','dk-float','dk-dock','tabs-draggable','mn-ctx'];
+export const limitedDemoIds=['sp-rte','sp-md','sp-code'];
 export function demoLevel(id:string){return visualDemoIds.includes(id)?'visual':limitedDemoIds.includes(id)?'simplified':'exercise';}
 const focused:Record<string,{action:Copy;check:Copy}>={
  'da-kanban':{action:['把卡片 A 从待办移到完成；可拖动，也可使用卡片上的选择框。','Move card A from To do to Done by dragging or using its selector.'],check:['卡片只出现在目标列，原列不再保留副本。','The card appears only in the destination column, without a duplicate.']},
@@ -50,6 +51,7 @@ const focused:Record<string,{action:Copy;check:Copy}>={
  'fb-snack':{action:['删除示例条目，再点撤销。','Delete the example item, then Undo.'],check:['条目重新出现；撤销完成后撤销入口收起。','The item returns and the undo action is dismissed.']}
 };
 export function lessonFor(entry:{id:string;category:string;demo:string;opts?:{kind?:string}}){
+ if(advancedLessons[entry.id])return advancedLessons[entry.id];
  if(focused[entry.id])return focused[entry.id];
  const kind=entry.opts?.kind;
  if(entry.demo==='date')return {action:['用浏览器日期控件选择所需值。此处使用原生控件，外观随浏览器变化。','Choose a value with the browser date control; native appearance varies by browser.'] as Copy,check:['输出与选择一致；实际项目另行核对时区和允许范围。','Output matches selection; verify timezone and allowed range in the actual project.'] as Copy};

@@ -4,9 +4,12 @@ import vm from 'node:vm';
 import dictionary from '../src/data/dictionary.json' with {type:'json'};
 import {demoLessons,nativeDemoIds,demoLevel,lessonFor} from '../src/data/demo-lessons.ts';
 import {resourceTasks,resourcePrompt} from '../src/data/resource-tasks.ts';
+import {advancedLessons} from '../src/data/advanced-lessons.ts';
 import {validateTemplate} from '../src/scripts/templates.ts';
-for(const file of ['legacy','improvements'])new vm.Script(await readFile(`src/demos/${file}.js`,'utf8'));
+for(const file of ['legacy','improvements','advanced'])new vm.Script(await readFile(`src/demos/${file}.js`,'utf8'));
 const decode=s=>s.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&amp;/g,'&');
+assert.equal(Object.keys(advancedLessons).length,20);
+for(const [id,lesson] of Object.entries(advancedLessons)){assert(dictionary.entries.some(e=>e.id===id));assert(lesson.action.every(Boolean)&&lesson.check.every(Boolean));}
 const counts={visual:0,simplified:0,exercise:0};
 for(const entry of dictionary.entries){
  assert(demoLessons[entry.category],`${entry.id}: lesson missing`);counts[demoLevel(entry.id)]++;

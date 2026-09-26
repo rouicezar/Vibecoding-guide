@@ -1,0 +1,104 @@
+[
+  {
+    "id": "splitter-keyboard",
+    "pass": true
+  },
+  {
+    "id": "splitter-bound",
+    "pass": true
+  },
+  {
+    "id": "dock-bottom",
+    "pass": true
+  },
+  {
+    "id": "tab-reorder-preserves-selection",
+    "pass": true
+  },
+  {
+    "id": "query-results",
+    "pass": true
+  },
+  {
+    "id": "query-empty",
+    "pass": true
+  },
+  {
+    "id": "facet-intersection",
+    "pass": true
+  },
+  {
+    "id": "facet-reset",
+    "pass": true
+  },
+  {
+    "id": "json-error-preserves-tree",
+    "pass": true
+  },
+  {
+    "id": "json-recovery",
+    "pass": true
+  },
+  {
+    "id": "anchor-scrolls",
+    "pass": true
+  },
+  {
+    "id": "context-button-opens",
+    "pass": true
+  },
+  {
+    "id": "context-escape",
+    "pass": true
+  },
+  {
+    "id": "sp-mask-validation-recovery",
+    "pass": true
+  },
+  {
+    "id": "sp-phone-validation-recovery",
+    "pass": true
+  },
+  {
+    "id": "sp-cur-validation-recovery",
+    "pass": true
+  },
+  {
+    "id": "sp-url-validation-recovery",
+    "pass": true
+  },
+  {
+    "id": "mention-inserts",
+    "pass": true
+  },
+  {
+    "id": "markdown-safe-preview",
+    "pass": true
+  },
+  {
+    "id": "code-lines",
+    "pass": true
+  },
+  {
+    "id": "richtext-empty-selection",
+    "pass": true
+  },
+  {
+    "id": "richtext-format-selection",
+    "pass": true
+  },
+  {
+    "id": "tree-leaf-selection",
+    "pass": true
+  },
+  {
+    "id": "float-keyboard",
+    "pass": true
+  },
+  {
+    "id": "mobile-no-page-overflow",
+    "pass": true,
+    "document": 390,
+    "viewport": 390
+  }
+]

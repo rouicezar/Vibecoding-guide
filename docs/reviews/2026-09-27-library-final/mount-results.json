@@ -1,0 +1,202 @@
+[
+  {
+    "locale": "zh-cn",
+    "id": "ly-res",
+    "state": "ready"
+  },
+  {
+    "locale": "zh-cn",
+    "id": "ly-splitr",
+    "state": "ready"
+  },
+  {
+    "locale": "zh-cn",
+    "id": "ly-rss",
+    "state": "ready"
+  },
+  {
+    "locale": "zh-cn",
+    "id": "sp-rte",
+    "state": "ready"
+  },
+  {
+    "locale": "zh-cn",
+    "id": "sp-md",
+    "state": "ready"
+  },
+  {
+    "locale": "zh-cn",
+    "id": "sp-code",
+    "state": "ready"
+  },
+  {
+    "locale": "zh-cn",
+    "id": "sp-mask",
+    "state": "ready"
+  },
+  {
+    "locale": "zh-cn",
+    "id": "sp-phone",
+    "state": "ready"
+  },
+  {
+    "locale": "zh-cn",
+    "id": "sp-cur",
+    "state": "ready"
+  },
+  {
+    "locale": "zh-cn",
+    "id": "sp-url",
+    "state": "ready"
+  },
+  {
+    "locale": "zh-cn",
+    "id": "sp-mentions",
+    "state": "ready"
+  },
+  {
+    "locale": "zh-cn",
+    "id": "sel-tree",
+    "state": "ready"
+  },
+  {
+    "locale": "zh-cn",
+    "id": "nv-anchor",
+    "state": "ready"
+  },
+  {
+    "locale": "zh-cn",
+    "id": "ai-qb",
+    "state": "ready"
+  },
+  {
+    "locale": "zh-cn",
+    "id": "ai-facet",
+    "state": "ready"
+  },
+  {
+    "locale": "zh-cn",
+    "id": "ai-json",
+    "state": "ready"
+  },
+  {
+    "locale": "zh-cn",
+    "id": "dk-float",
+    "state": "ready"
+  },
+  {
+    "locale": "zh-cn",
+    "id": "dk-dock",
+    "state": "ready"
+  },
+  {
+    "locale": "zh-cn",
+    "id": "tabs-draggable",
+    "state": "ready"
+  },
+  {
+    "locale": "zh-cn",
+    "id": "mn-ctx",
+    "state": "ready"
+  },
+  {
+    "locale": "en",
+    "id": "ly-res",
+    "state": "ready"
+  },
+  {
+    "locale": "en",
+    "id": "ly-splitr",
+    "state": "ready"
+  },
+  {
+    "locale": "en",
+    "id": "ly-rss",
+    "state": "ready"
+  },
+  {
+    "locale": "en",
+    "id": "sp-rte",
+    "state": "ready"
+  },
+  {
+    "locale": "en",
+    "id": "sp-md",
+    "state": "ready"
+  },
+  {
+    "locale": "en",
+    "id": "sp-code",
+    "state": "ready"
+  },
+  {
+    "locale": "en",
+    "id": "sp-mask",
+    "state": "ready"
+  },
+  {
+    "locale": "en",
+    "id": "sp-phone",
+    "state": "ready"
+  },
+  {
+    "locale": "en",
+    "id": "sp-cur",
+    "state": "ready"
+  },
+  {
+    "locale": "en",
+    "id": "sp-url",
+    "state": "ready"
+  },
+  {
+    "locale": "en",
+    "id": "sp-mentions",
+    "state": "ready"
+  },
+  {
+    "locale": "en",
+    "id": "sel-tree",
+    "state": "ready"
+  },
+  {
+    "locale": "en",
+    "id": "nv-anchor",
+    "state": "ready"
+  },
+  {
+    "locale": "en",
+    "id": "ai-qb",
+    "state": "ready"
+  },
+  {
+    "locale": "en",
+    "id": "ai-facet",
+    "state": "ready"
+  },
+  {
+    "locale": "en",
+    "id": "ai-json",
+    "state": "ready"
+  },
+  {
+    "locale": "en",
+    "id": "dk-float",
+    "state": "ready"
+  },
+  {
+    "locale": "en",
+    "id": "dk-dock",
+    "state": "ready"
+  },
+  {
+    "locale": "en",
+    "id": "tabs-draggable",
+    "state": "ready"
+  },
+  {
+    "locale": "en",
+    "id": "mn-ctx",
+    "state": "ready"
+  }
+]
