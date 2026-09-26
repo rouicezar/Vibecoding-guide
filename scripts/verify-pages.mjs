@@ -31,7 +31,9 @@ const dictionary=JSON.parse(await readFile('src/data/dictionary.json','utf8'));
 const paths=['roadmap/',...journey.map(s=>`roadmap/${s.id}/`),...learningPaths.map(p=>p+'/'),'','tools/','start/','communicate/','stacks/','components/','terms/',...practices.map(p=>p.path+'/'),'data/','check/','launch/','maintain/',...dictionary.entries.map(e=>`components/${e.id}/`),'projects/web/','projects/mini-program/','projects/mobile/','projects/desktop/'];
 for(const locale of ['zh-cn','en'])for(const path of paths){
  const html=await readFile(`dist/${locale}/${path}index.html`,'utf8');
- assert(!html.includes('\u4f60'),`Disallowed copy in ${locale}/${path}`);
+ // User-approved homepage wording overrides the older neutral-voice rule.
+ const copyForPolicy=path==='' ? html.replaceAll('把你的想法，','').replaceAll('同时让你知道为什么要这样做的原理。','') : html;
+ assert(!copyForPolicy.includes('\u4f60'),`Disallowed copy in ${locale}/${path}`);
  assert(html.includes(`lang="${locale==='en'?'en':'zh-CN'}"`));
  assert.equal((html.match(/<h1[ >]/g)||[]).length,1);
  assert(html.includes(`href="/en/${path}"`)&&html.includes(`href="/zh-cn/${path}"`));

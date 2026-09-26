@@ -12,3 +12,12 @@
 @media(max-width:900px){.home-opening{grid-template-columns:1fr;gap:24px;padding:12px 0 32px}.start-home h1{font-size:clamp(32px,6.8vw,46px)}.home-description{font-size:16px;max-width:none}.home-journey{max-width:460px;height:404px}.home-section-heading{align-items:flex-start;flex-direction:column;gap:10px}.home-phase-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 22px}.home-library{flex-wrap:wrap;gap:12px}.home-library>div{flex:1}.home-library>a{margin-left:0}.start-home h2{font-size:24px}.home-library h2{font-size:18px}}
 @media(max-width:380px){.home-phase-list{grid-template-columns:1fr}.home-phase-list a{min-height:130px}.journey-note{padding:13px;gap:10px;max-width:96%}.journey-note strong{font-size:14px}.journey-symbol{width:34px;height:34px}.note-project{left:0}.home-actions{gap:8px 16px}.home-library .library-symbol{display:none}}
 @media(prefers-reduced-motion:reduce){.journey-note{animation:none}.home-phase-list a,.phase-enter{transition:none}}
+/* A quiet, locally served background illustration for the homepage opening. */
+.home-opening{background:#f8fbfb url('/images/home-journey-background.svg') center/cover no-repeat;border:1px solid #edf2f2;border-radius:20px;padding:36px 28px;margin-bottom:32px;grid-template-columns:1.2fr 1fr;gap:28px}
+.start-home h1{font-size:clamp(30px,2.8vw,40px);line-height:1.3;overflow-wrap:break-word}.home-description{max-width:620px}.home-journey figcaption{font-size:10px}.home-story{min-width:0}
+@media(min-width:960px) and (max-width:1150px){.home-opening{grid-template-columns:1fr}}
+@media(max-width:900px){.home-opening{grid-template-columns:1fr;padding:28px 20px;gap:28px}.start-home h1{font-size:clamp(29px,5vw,40px)}}
+@media(max-width:480px){.home-opening{padding:24px 14px;border-radius:14px;margin-inline:-6px}.start-home h1{font-size:29px}.home-description{font-size:15px}.home-journey{height:420px}.note-project{left:0}}
+
+.start-home h1>span{text-wrap:balance}
+.start-home h1>span{display:block;text-wrap:balance}
