@@ -1,0 +1,12 @@
+---
+import {t,url,type Locale} from '../data/site';
+import {termDiagrams} from '../data/glossary';
+import Icon from './Icon.astro';
+const {id,locale}=Astro.props as {id:string;locale:Locale};
+const diagram=termDiagrams.find(d=>d.id===id)!;
+---
+<figure class="term-diagram" aria-label={t(diagram.title,locale)}>
+ <figcaption><strong>{t(diagram.title,locale)}</strong><span>{t(['生活角色 → 对应开发概念','Everyday role → development concept'],locale)}</span></figcaption>
+ <ol>{diagram.nodes.map((node,i)=><li><a href={url(locale,`terms/${node.term}`)}><span class={`diagram-icon diagram-tone-${i}`}><Icon name={node.icon} size={26}/></span><strong>{t(node.life,locale)}</strong><span>{t(node.real,locale)}</span></a>{i<diagram.nodes.length-1&&<span class="diagram-arrow" aria-hidden="true">→</span>}</li>)}</ol>
+ <p>{t(diagram.caption,locale)}</p>
+</figure>

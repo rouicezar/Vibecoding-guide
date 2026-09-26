@@ -1,5 +1,6 @@
 import {readFile,access} from 'node:fs/promises';
 import assert from 'node:assert/strict';
+import {glossaryPaths} from '../src/data/glossary/index.ts';
 import {learningPaths} from '../src/data/learning.ts';
 import {journey,mainJourney} from '../src/data/journey.ts';
 import {practices} from '../src/data/practice.ts';
@@ -28,7 +29,7 @@ for(const stage of journey){
  }
 }
 const dictionary=JSON.parse(await readFile('src/data/dictionary.json','utf8'));
-const paths=['roadmap/',...journey.map(s=>`roadmap/${s.id}/`),...learningPaths.map(p=>p+'/'),'','tools/','start/','communicate/','stacks/','components/','terms/',...practices.map(p=>p.path+'/'),'data/','check/','launch/','maintain/',...dictionary.entries.map(e=>`components/${e.id}/`),'projects/web/','projects/mini-program/','projects/mobile/','projects/desktop/'];
+const paths=['roadmap/',...journey.map(s=>`roadmap/${s.id}/`),...learningPaths.map(p=>p+'/'),'','tools/','start/','communicate/','stacks/','components/','terms/',...glossaryPaths.map(p=>p+'/'),...practices.map(p=>p.path+'/'),'data/','check/','launch/','maintain/',...dictionary.entries.map(e=>`components/${e.id}/`),'projects/web/','projects/mini-program/','projects/mobile/','projects/desktop/'];
 for(const locale of ['zh-cn','en'])for(const path of paths){
  const html=await readFile(`dist/${locale}/${path}index.html`,'utf8');
  // User-approved homepage wording overrides the older neutral-voice rule.
