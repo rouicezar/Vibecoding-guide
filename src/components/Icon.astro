@@ -1,8 +1,10 @@
 ---
-import { Wrench, Terminal, Brain, House, LayoutGrid, Globe, Smartphone, Monitor, MessageSquare, Layers, PanelsTopLeft, Database, ListChecks, Upload, Settings, ArrowRight, Search, Menu, X, Check, Copy, BookOpen, ChevronRight, CircleQuestionMark } from '@lucide/astro';
+import { Lightbulb, Users, Target, FolderOpen, FolderPlus, FileText, FileCheck, Save, RefreshCw, MousePointerClick, GitBranch, ShieldCheck, Package, Rocket, ClipboardCheck, Route, MapPin, LogIn, Download, Bug, Pencil, Eye, Power, CircleHelp, Wrench, Terminal, Brain, House, LayoutGrid, Globe, Smartphone, Monitor, MessageSquare, Layers, PanelsTopLeft, Database, ListChecks, Upload, Settings, ArrowRight, Search, Menu, X, Check, Copy, BookOpen, ChevronRight, CircleQuestionMark } from '@lucide/astro';
 interface Props {name:string; size?:number;}
 const {name,size=18}=Astro.props;
-const icons:Record<string,typeof House>={tool:Wrench,code:Terminal,brain:Brain,home:House,grid:LayoutGrid,browser:Globe,phone:Smartphone,monitor:Monitor,message:MessageSquare,layers:Layers,layout:PanelsTopLeft,database:Database,checklist:ListChecks,upload:Upload,settings:Settings,arrow:ArrowRight,search:Search,menu:Menu,close:X,check:Check,copy:Copy,book:BookOpen,chevron:ChevronRight,help:CircleQuestionMark};
+const icons:Record<string,typeof House>={idea:Lightbulb,users:Users,target:Target,folder:FolderOpen,'folder-plus':FolderPlus,document:FileText,'file-check':FileCheck,save:Save,refresh:RefreshCw,click:MousePointerClick,git:GitBranch,shield:ShieldCheck,package:Package,rocket:Rocket,verify:ClipboardCheck,route:Route,location:MapPin,login:LogIn,download:Download,bug:Bug,edit:Pencil,eye:Eye,power:Power,question:CircleHelp,tool:Wrench,code:Terminal,brain:Brain,home:House,grid:LayoutGrid,browser:Globe,phone:Smartphone,monitor:Monitor,message:MessageSquare,layers:Layers,layout:PanelsTopLeft,database:Database,checklist:ListChecks,upload:Upload,settings:Settings,arrow:ArrowRight,search:Search,menu:Menu,close:X,check:Check,copy:Copy,book:BookOpen,chevron:ChevronRight,help:CircleQuestionMark};
 const Glyph=icons[name]??CircleQuestionMark;
 ---
-<Glyph size={size} stroke-width={1.65} aria-hidden="true" />
+<Glyph size={size} stroke-width={1.8} focusable="false" class="semantic-icon" aria-hidden="true" />
+
+<style>.semantic-icon{flex-shrink:0;vertical-align:middle}</style>

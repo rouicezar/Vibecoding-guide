@@ -1,14 +1,15 @@
 ---
+import Icon from './Icon.astro';
 import {t,url,type Locale} from '../data/site';
 import {phases,lessons} from '../data/learning';
 const {locale,path}=Astro.props as {locale:Locale;path:string};
 const current=lessons.find(l=>l.id===path.split('/')[1]);
 ---
 <nav aria-label={t(['学习导航','Learning navigation'],locale)}>
-<a class:list={['nav-item',{active:path===''}]} href={url(locale)} aria-current={path===''?'page':undefined}>{t(['从这里开始','Start here'],locale)}</a>
-<a class:list={['nav-item',{active:path.startsWith('roadmap')}]} href={url(locale,'roadmap')} aria-current={path==='roadmap'?'page':undefined}><span aria-hidden="true">◇</span><strong>{t(['完整路线图','Complete roadmap'],locale)}</strong></a>
+<a class:list={['nav-item',{active:path===''}]} href={url(locale)} aria-current={path===''?'page':undefined}><Icon name="home" size={20}/>{t(['从这里开始','Start here'],locale)}</a>
+<a class:list={['nav-item',{active:path.startsWith('roadmap')}]} href={url(locale,'roadmap')} aria-current={path==='roadmap'?'page':undefined}><Icon name="route" size={20}/><strong>{t(['完整路线图','Complete roadmap'],locale)}</strong></a>
 <div class="nav-label">{t(['一步一步做','BUILD STEP BY STEP'],locale)}</div>
 {phases.map((p,i)=><a class:list={['nav-item',{active:current?.phase===p.id||path===`learn/stage/${p.id}`}]} href={url(locale,`learn/stage/${p.id}`)} aria-current={path===`learn/stage/${p.id}`?'page':undefined}><span class="phase-number">{i+1}</span><span>{t(p.title,locale)}</span></a>)}
-<div class="nav-secondary"><a class="nav-item" href={url(locale,'library')}>{t(['查资料','Reference library'],locale)}<span aria-hidden="true">↗</span></a><a class="nav-item" href={url(locale,'terms')}>{t(['遇到不懂的词','Look up a word'],locale)}</a></div>
+<div class="nav-secondary"><a class="nav-item" href={url(locale,'library')}><Icon name="book" size={20}/>{t(['查资料','Reference library'],locale)}<span aria-hidden="true">↗</span></a><a class="nav-item" href={url(locale,'terms')}><Icon name="question" size={20}/>{t(['遇到不懂的词','Look up a word'],locale)}</a></div>
 </nav>
 <style>.nav-label{margin:30px 10px 12px;font-size:10px}.nav-item{font-size:13px;min-height:46px;gap:12px}.phase-number{font-size:11px;display:grid;place-items:center;width:22px;height:22px;border:1px solid #d9e1ec;border-radius:50%;flex-shrink:0}.nav-secondary{border-top:1px solid #e2e8f0;margin-top:32px;padding-top:16px}.nav-secondary a{color:#64748b;font-size:12px}</style>
