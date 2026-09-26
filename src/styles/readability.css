@@ -1,0 +1,41 @@
+/* Align reading surfaces with navigation; keep natural wrapping on small screens. */
+main .learning, main .node-guide{max-width:none;width:100%;margin-inline:0}
+main .learning{padding-bottom:28px;font-size:17px;line-height:1.75}
+main .learning h1,main .node-guide h1{font-size:clamp(29px,2.6vw,42px);line-height:1.25;letter-spacing:-.025em;margin:12px 0 18px;color:#18243a}
+main .lesson-crumb{font-size:14px;margin-bottom:24px;gap:12px}
+main .learning>.eyebrow{font-size:12px;font-weight:650;letter-spacing:.06em;margin:0 0 10px;color:#62738b}
+main .lesson-lead,main .node-question,main .reference-orientation{max-width:none;font-size:18px;line-height:1.75;color:#4b5d76;margin:0 0 24px;text-wrap:wrap}
+main .route-list{margin:24px 0;border-top:1px solid #dbe3ec}
+main .route-list>a{min-height:70px;padding:16px 12px;gap:18px;font-size:17px;transition:color .18s,border-color .18s}
+main .route-list>a:hover{background:#fff;color:#245cac;border-bottom-color:#4385e8}
+main .route-number{font-size:15px;font-weight:650;color:#5279ad;min-width:28px}
+main .route-list strong{font-size:18px;color:#24344e}
+main .route-list small{font-size:15px;margin-top:3px}
+main .route-status{font-size:14px;color:#50705d}
+main .action-location{font-size:15px;margin:16px 0;color:#62738b}
+main .lesson-actions{font-size:17px;line-height:1.85;margin:22px 0}
+main .lesson-actions li{padding-bottom:10px}
+main .learning h2{font-size:19px}
+main .learn-details{margin-top:16px;padding:16px 0}
+main .learn-details summary{font-size:17px;line-height:1.6}
+main .learn-details p,main .success-check p,main .rescue-flow p{font-size:16px;line-height:1.8}
+main .success-check{padding:20px 24px;margin:24px 0}
+main .local-note{font-size:14px;line-height:1.7;margin-top:18px;color:#67778e}
+main .idea-draft label{font-size:17px}
+main .learn-primary,main .learn-help{font-size:16px}
+main .entry-return{font-size:14px;margin-bottom:24px}
+main .entry-return .return-overview{font-size:13px}
+main .node-knowledge p,main .node-knowledge li{font-size:16px}
+main .node-knowledge h2,main .node-knowledge>details>summary{font-size:18px}
+@media(min-width:960px){.sidebar .nav-item{font-size:14px;min-height:42px}.sidebar .nav-label{font-size:12px}}
+@media(max-width:639px){
+ main .learning{font-size:16px}
+ main .lesson-lead,main .node-question,main .reference-orientation{font-size:16px;line-height:1.75}
+ main .lesson-crumb{font-size:13px;margin-bottom:20px}
+ main .route-list>a{padding:14px 4px;gap:12px;font-size:16px;min-height:64px}
+ main .route-status{font-size:12px}
+ main .lesson-actions{font-size:16px}
+ main .success-check{padding:16px}
+ main .entry-return{font-size:13px}
+}
+@media(prefers-reduced-motion:reduce){main .route-list>a{transition:none}}
