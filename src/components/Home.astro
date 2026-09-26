@@ -1,23 +1,38 @@
 ---
-import Roadmap from './Roadmap.astro';
+import Icon from './Icon.astro';
 import {t,url,type Locale} from '../data/site';
-import {legacyLessons} from '../data/learning';
+import {legacyLessons, phases} from '../data/learning';
 import '../styles/learning.css';
+import '../styles/home.css';
 const {locale}=Astro.props as {locale:Locale};
+const icons=['idea','folder','checklist','layout','verify','rocket'];
+const outcomes=[['一份清楚的项目描述','A clear project brief'],['工具就绪，项目已创建','A tool and a project ready to go'],['明确的需求与开发计划','Defined requirements and a plan'],['可以亲手操作的第一版','A first version to use'],['经过试用与修复的版本','A tried and improved version'],['交付作品，留下维护说明','Delivery and maintenance notes']];
 ---
-<div class="learning start-home" data-home-locale={locale} data-legacy={JSON.stringify(legacyLessons)}>
+<div class="start-home" data-home-locale={locale} data-legacy={JSON.stringify(legacyLessons)}>
 {Object.keys(legacyLessons).map(id=><span id={`stage-${id}`} hidden></span>)}
-<p class="eyebrow">{t(['给第一次用 AI 做项目的人','FOR A FIRST PROJECT WITH AI'],locale)}</p>
-<h1>{t(['从一个小想法，\n到第一个小作品。','A small idea.\nA first working project.'],locale)}</h1>
-<p class="home-intro">{t(['不需要先学会编程。跟着一个动作做，看到结果，再走下一步。卡住时，就在原地找帮助。','Start without coding experience. Do one action, check its result, then continue. Find help exactly where progress stops.'],locale)}</p>
-<a class="learn-primary" data-resume href={url(locale,'learn/idea')}>{t(['开始第一步','Start the first step'],locale)} →</a>
-<a class="home-route" href={url(locale,'roadmap')}>{t(['先看完整路线','See the learning route'],locale)} ↗</a>
-<Roadmap locale={locale}/>
-<p class="local-note">{t(['围绕自己的项目逐步完成。遇到具体问题时，再按需查资料。','Build your own project step by step. Use the library when a specific question arises.'],locale)} <a href={url(locale,'library')}>{t(['查资料 →','Reference library →'],locale)}</a></p>
+<section class="home-opening" aria-labelledby="home-title">
+  <div class="home-story">
+    <p class="home-kicker"><span></span>{t(['零基础 · 用 AI 做第一个项目','NO CODING EXPERIENCE NEEDED'],locale)}</p>
+    <h1 id="home-title">{t(['让想法，','Take an idea.'],locale)}<br/><span>{t(['有一个作品的样子。','Make it real.'],locale)}</span></h1>
+    <p class="home-description">{t(['从说清一个想法，到亲手做出能用的第一版。每一步都有方法、提示词和检查标准，理解为什么，也知道怎么做。','Turn an idea into a working first version. Follow clear steps, adapt prompts, and check the result—with the why behind every action.'],locale)}</p>
+    <div class="home-actions"><a class="learn-primary" data-resume href={url(locale,'learn/idea')}>{t(['开始第一步','Start the first step'],locale)} →</a><a class="home-route" href={url(locale,'roadmap')}>{t(['探索完整路线','Explore the full route'],locale)} <Icon name="arrow" size={17}/></a></div>
+    <p class="home-start-note">{t(['从自己的想法开始，不必先掌握技术名词。','Start with an idea. Technical vocabulary can come later.'],locale)}</p>
+  </div>
+  <figure class="home-journey" aria-label={t(['从想法、项目描述到可用作品的流程示意','An illustration of idea, project brief, and working project'],locale)}>
+    <svg class="journey-thread" viewBox="0 0 440 360" fill="none" aria-hidden="true"><path d="M55 54H330C420 54 420 180 330 180H110C20 180 20 306 110 306H392" stroke="var(--home-line)" stroke-width="2"/><path class="thread-color" d="M55 54H330C420 54 420 180 330 180" stroke="var(--accent-coral)" stroke-width="2"/><path d="M110 180C20 180 20 306 110 306H392" stroke="var(--accent-teal)" stroke-width="2"/></svg>
+    <div class="journey-note note-idea"><span class="journey-symbol"><Icon name="idea" size={26}/></span><div><small>01 / {t(['从想法出发','AN IDEA'],locale)}</small><strong>{t(['“这件事，能不能更简单？”','“Could this be easier?”'],locale)}</strong></div></div>
+    <div class="journey-note note-brief"><span class="journey-symbol"><Icon name="document" size={26}/></span><div><small>02 / {t(['把想法说清楚','A CLEAR BRIEF'],locale)}</small><strong>{t(['给谁用 · 解决什么问题','Who it helps · What it solves'],locale)}</strong><span class="brief-lines" aria-hidden="true"><i></i><i></i></span></div></div>
+    <div class="journey-note note-project"><span class="journey-symbol"><Icon name="layout" size={26}/></span><div><small>03 / {t(['一步步实现','A WORKING PROJECT'],locale)}</small><strong>{t(['从“我想做”，到“可以用了”','From “what if” to “it works”'],locale)}</strong><span class="journey-result"><Icon name="check" size={14}/>{t(['制作 → 试用 → 改进','Build → Try → Improve'],locale)}</span></div></div>
+    <figcaption>{t(['学习过程示意 · 按自己的项目逐步实现','The learning journey · build at your own pace'],locale)}</figcaption>
+  </figure>
+</section>
+<section class="home-path" aria-labelledby="home-path-title">
+  <header class="home-section-heading"><div><p class="home-kicker">{t(['一步一步，积累看得见的成果','SMALL STEPS. VISIBLE PROGRESS.'],locale)}</p><h2 id="home-path-title">{t(['每走一段，都有收获。','Make progress at every stage.'],locale)}</h2></div><span class="home-path-meta">{t(['6 个阶段 / 31 个具体动作','6 stages / 31 practical actions'],locale)}</span></header>
+  <ol class="home-phase-list">{phases.map((phase,i)=><li><a href={url(locale,`learn/stage/${phase.id}`)}><span class={`phase-symbol phase-${i}`}><Icon name={icons[i]} size={24}/></span><span class="phase-order">0{i+1}</span><h3>{t(phase.title,locale)}</h3><p>{t(outcomes[i] as [string,string],locale)}</p><span class="phase-enter"><Icon name="arrow" size={18}/></span></a></li>)}</ol>
+</section>
+<aside class="home-library"><span class="library-symbol"><Icon name="book" size={27}/></span><div><h2>{t(['遇到问题，资料就在手边。','Help when a question comes up.'],locale)}</h2><p>{t(['选项目、选工具、看组件、查术语。需要哪一项，再展开哪一项。','Project choices, tools, components, and terminology. Open only what is needed.'],locale)}</p></div><a href={url(locale,'library')}>{t(['按问题查资料','Browse by question'],locale)} <Icon name="arrow" size={18}/></a></aside>
 </div>
 <script>
 import {parseLearning} from '../scripts/learning';
 const home=document.querySelector<HTMLElement>('[data-home-locale]');if(home){const locale=home.dataset.homeLocale!;const legacy=JSON.parse(home.dataset.legacy!);const redirect=()=>{const id=legacy[location.hash.replace('#stage-','')];if(id)location.replace(`/${locale}/roadmap/${location.hash.replace('#stage-','')}/${location.search}`);};redirect();addEventListener('hashchange',redirect);try{const state=parseLearning(localStorage.getItem('vibe-guide-learning-v1'));if(state.idea||state.completed.length){const a=home.querySelector<HTMLAnchorElement>('[data-resume]')!;a.href=`/${locale}/learn/${state.current}/`;a.textContent=locale==='en'?'Continue where I left off →':'接着上次的步骤做 →';}}catch{}}
 </script>
-<style>.start-home{padding-top:16px;max-width:1100px}.start-home h1{white-space:pre-line;font-size:clamp(32px,4vw,50px);line-height:1.28;max-width:680px;margin:24px 0}.home-intro{font-size:16px;line-height:1.9;color:#64748b;max-width:530px;margin-bottom:30px}.home-route{display:inline-block;margin:16px 22px;font-size:13px}.project-preview{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;border-top:1px solid #e2e8f0;margin-top:64px;padding-top:32px}.preview-label{font-size:10px;letter-spacing:.08em;color:#64748b}.project-preview h2{font-size:20px;margin:18px 0}.project-preview p,.project-preview a{font-size:13px;color:#64748b;line-height:1.8}.journal-mock{background:#fff;border:1px solid #dce3ec;border-radius:12px;padding:20px;transform:rotate(-2deg);box-shadow:0 12px 32px #263b5710;font-size:12px}.mock-dots{font-size:8px;color:#a7b2c4;margin-bottom:22px}.mock-dots span{float:right;font-size:10px}.journal-mock strong{font-size:14px}.mock-input{background:#f5f7fa;padding:14px 10px;margin:14px 0;color:#64748b;border-radius:5px}.mock-save{display:inline-block;background:#df3044;color:white;border-radius:5px;padding:8px 14px}.mock-note{border-top:1px solid #e2e8f0;margin-top:20px;padding-top:12px;color:#527916}@media(max-width:600px){.start-home{padding-top:10px}.project-preview{grid-template-columns:1fr;margin-top:36px;gap:24px}.journal-mock{transform:none}.home-route{margin-left:0}.start-home>.learn-primary{width:auto}}
-</style>
