@@ -1,15 +1,12 @@
 ---
-import {journey,mainJourney} from '../data/journey';
+import {lessons,legacyLessons,lessonPath} from '../data/learning';
 import {t,url,type Locale} from '../data/site';
 const {path,locale}=Astro.props as {path:string;locale:Locale};
-const mapping:Record<string,string>={tools:'tell',start:'idea',projects:'build',communicate:'tell',stacks:'stack',components:'ui',data:'backend',check:'test',launch:'launch',maintain:'maintain',terms:'idea'};
+const mapping:Record<string,string>={tools:'tool',start:'idea',projects:'preview',communicate:'clarify',stacks:'choose-stack',components:'interface',data:'save',check:'test',launch:'delivery',maintain:'maintain',terms:'idea'};
 const defaultId=mapping[path.split('/')[0]]??'idea';
-const stage=journey.find(s=>s.id===defaultId)!;
-const routes=journey.map(s=>({id:s.id,title:t(s.title,locale),number:mainJourney.findIndex(m=>m.id===(s.parent??s.id))+1,parent:s.parent}));
-const number=mainJourney.findIndex(s=>s.id===(stage.parent??stage.id))+1;
 ---
-<div class="journey-context" data-journey-context data-routes={JSON.stringify(routes)} data-default={defaultId} data-home={url(locale)} data-locale={locale}><div><span class="small muted">{t(['这页在制作流程中的位置','Where this page fits'],locale)}</span><p data-context-title>{number}. {t(stage.title,locale)}</p></div><a data-context-return href={`${url(locale)}#stage-${defaultId}`}>{t(['返回这一步，接着往下做 →','Return to this step and continue →'],locale)}</a></div>
+<div class="journey-context" data-journey-context data-routes={JSON.stringify(lessons.map(l=>({id:l.id,title:t(l.title,locale)})))} data-legacy={JSON.stringify(legacyLessons)} data-default={defaultId} data-locale={locale}><span>{t(['按需参考 · 看完回到当前动作','Reference · return to the current action when ready'],locale)}</span><a data-context-return href={url(locale,lessonPath(defaultId))}>{t(['返回学习步骤 →','Return to the learning step →'],locale)}</a></div>
 <script>
-const context=document.querySelector<HTMLElement>('[data-journey-context]');if(context){const routes=JSON.parse(context.dataset.routes!) as {id:string;title:string;number:number}[];const requested=new URLSearchParams(location.search).get('stage');const stage=routes.find(s=>s.id===requested)||routes.find(s=>s.id===context.dataset.default)!;context.querySelector('[data-context-title]')!.textContent=`${stage.number}. ${stage.title}`;(context.querySelector('[data-context-return]') as HTMLAnchorElement).href=context.dataset.home+'#stage-'+stage.id;if(requested&&routes.some(s=>s.id===requested))document.querySelectorAll<HTMLAnchorElement>('.languages a').forEach(a=>a.search=new URLSearchParams({stage:stage.id}).toString());}
+const context=document.querySelector<HTMLElement>('[data-journey-context]');if(context){const routes=JSON.parse(context.dataset.routes!) as {id:string;title:string}[];const query=new URLSearchParams(location.search);const legacy=JSON.parse(context.dataset.legacy!);const requested=query.get('lesson')||legacy[query.get('stage')??''];const lesson=routes.find(l=>l.id===requested)||routes.find(l=>l.id===context.dataset.default)!;const a=context.querySelector<HTMLAnchorElement>('[data-context-return]')!;a.href=`/${context.dataset.locale}/learn/${lesson.id}/`;a.textContent=(context.dataset.locale==='en'?'Return: ':'返回：')+lesson.title+' →';document.querySelectorAll<HTMLAnchorElement>('.languages a,main a').forEach(link=>{const target=new URL(link.href);if(target.origin===location.origin&&!target.pathname.includes('/learn/')&&target.pathname!==`/${context.dataset.locale}/`){target.searchParams.set('lesson',lesson.id);link.href=target.href;}});}
 </script>
-<style>.journey-context{display:flex;align-items:center;justify-content:space-between;gap:18px;border-bottom:1px solid #e2e8f0;margin-bottom:24px;padding-bottom:14px;font-size:13px}.journey-context p{margin:4px 0 0;font-weight:600}.journey-context a{max-width:48%}</style>
+<style>.journey-context{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;border-bottom:1px solid #e2e8f0;margin-bottom:24px;padding-bottom:14px;font-size:12px;color:#64748b}.journey-context a{font-weight:600}</style>

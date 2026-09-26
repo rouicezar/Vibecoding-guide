@@ -1,13 +1,13 @@
 ---
-import {modules,t,url,type Locale} from '../data/site';
-import Icon from './Icon.astro';
-interface Props {locale:Locale; path:string;}
-const {locale,path}=Astro.props;
-const groups=[{title:['从这里开始','START HERE'] as const,ids:['home','types','tools','agent']},{title:['制作项目','BUILD THE PROJECT'] as const,ids:['web','mobile','desktop','stack','ui','backend']},{title:['检查与交付','CHECK & DELIVER'] as const,ids:['test','launch','ops']}];
+import {t,url,type Locale} from '../data/site';
+import {phases,lessons} from '../data/learning';
+const {locale,path}=Astro.props as {locale:Locale;path:string};
+const current=lessons.find(l=>l.id===path.split('/')[1]);
 ---
-<nav aria-label={t(['主要导航','Main navigation'],locale)}>
-{groups.map(group=><div class="nav-group"><div class="nav-label">{t(group.title,locale)}</div>{group.ids.map(id=>modules.find(m=>m.id===id)!).map(item=> <a class:list={['nav-item',{active:(item.path===path||Boolean(item.path&&path.startsWith(item.path+'/')))}]} href={url(locale,item.path)} aria-current={(item.path===path||Boolean(item.path&&path.startsWith(item.path+'/')))?'page':undefined}><span class={`nav-glyph glyph-${item.id}`}><Icon name={item.icon} size={16}/></span><span>{t(item.title,locale)}</span></a>)}</div>)}
+<nav aria-label={t(['学习导航','Learning navigation'],locale)}>
+<a class:list={['nav-item',{active:path===''}]} href={url(locale)} aria-current={path===''?'page':undefined}>{t(['从这里开始','Start here'],locale)}</a>
+<div class="nav-label">{t(['一步一步做','BUILD STEP BY STEP'],locale)}</div>
+{phases.map((p,i)=><a class:list={['nav-item',{active:current?.phase===p.id||path===`learn/stage/${p.id}`}]} href={url(locale,`learn/stage/${p.id}`)} aria-current={path===`learn/stage/${p.id}`?'page':undefined}><span class="phase-number">{i+1}</span><span>{t(p.title,locale)}</span></a>)}
+<div class="nav-secondary"><a class="nav-item" href={url(locale,'library')}>{t(['查资料','Reference library'],locale)}<span aria-hidden="true">↗</span></a><a class="nav-item" href={url(locale,'terms')}>{t(['遇到不懂的词','Look up a word'],locale)}</a></div>
 </nav>
-<div class="nav-footer"><a href={url(locale,'terms')}>{t(['白话术语','Plain-language glossary'],locale)}</a><br/><span class="status-dot"></span>{t(['本地预览 · 全部板块已开放','Local preview · all modules open'],locale)}<p>{t(['从一个小想法开始。','Start with one small idea.'],locale)}</p></div>
-
-<style>.nav-group+.nav-group{margin-top:22px}.nav-group .nav-label{font-size:11px;font-weight:600;margin-bottom:7px}.nav-item{font-size:13px;min-height:40px}</style>
+<style>.nav-label{margin:30px 10px 12px;font-size:10px}.nav-item{font-size:13px;min-height:46px;gap:12px}.phase-number{font-size:11px;display:grid;place-items:center;width:22px;height:22px;border:1px solid #d9e1ec;border-radius:50%;flex-shrink:0}.nav-secondary{border-top:1px solid #e2e8f0;margin-top:32px;padding-top:16px}.nav-secondary a{color:#64748b;font-size:12px}</style>
