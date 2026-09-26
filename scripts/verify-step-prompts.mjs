@@ -6,6 +6,9 @@ const source=await readFile('src/scripts/templates.ts','utf8');
 const compiled=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.ESNext}}).outputText;
 const {validateTemplate}=await import('data:text/javascript;base64,'+Buffer.from(compiled).toString('base64'));
 assert.throws(()=>validateTemplate(''));
+assert.equal(validateTemplate('【背景】已有项目\n用途：个人记录','【背景】已有项目\n用途：【填写】'),'【背景】已有项目\n用途：个人记录');
+assert.throws(()=>validateTemplate('【背景】已有项目\n用途：【填写】','【背景】已有项目\n用途：【填写】'));
+assert.equal(validateTemplate('[Background] Existing project\nPurpose: personal notes','[Background] Existing project\nPurpose: [fill in]'),'[Background] Existing project\nPurpose: personal notes');
 for(const lesson of lessons){
  if(lesson.id==='idea')continue;
  assert(lesson.prompt?.length===2,`${lesson.id}: missing bilingual template`);

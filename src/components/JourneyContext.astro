@@ -1,4 +1,5 @@
 ---
+import ResourceAdvice from './ResourceAdvice.astro';
 import {t,url,type Locale} from '../data/site';
 const {path,locale}=Astro.props as {path:string;locale:Locale};
 const parts=path.split('/');
@@ -22,4 +23,5 @@ const fallback=path==='library'||path==='roadmap'||path==='learn'?'':parent;
 <nav class="entry-return" aria-label={t(['返回导航','Return navigation'],locale)}><a data-entry-back href={url(locale,fallback)}>{t(fallback?['← 返回上一级','← Back to parent']:['← 返回首页','← Back to home'],locale)}</a><a class="return-overview" href={url(locale,'roadmap')}>{t(['完整路线图','Complete roadmap'],locale)} <span aria-hidden="true">↗</span></a></nav>
 <!-- Reference pages explain when to use them; they are not extra required steps. -->
 {resourceIntro&&<p class="reference-orientation" data-orientation>{t(resourceIntro,locale)}</p>}
+{resourceIntro&&path!=='start'&&!path.startsWith('projects/')&&<ResourceAdvice path={path} locale={locale}/>}
 <style>.reference-orientation{font-size:15px;line-height:1.8;color:#53647c;max-width:760px;margin:0 0 28px}.entry-return{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid #e4eaf2;font-size:12px}.entry-return a{text-decoration:none;color:#4c668b;line-height:1.6}.entry-return a:first-child{max-width:75%}.entry-return .return-overview{font-size:11px;color:#79889e;white-space:nowrap}@media(max-width:560px){.entry-return{gap:12px}.entry-return a:first-child{max-width:68%}.return-overview{font-size:10px!important}}</style>
