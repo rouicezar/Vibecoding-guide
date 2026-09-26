@@ -3,7 +3,23 @@ import {t,url,type Locale} from '../data/site';
 const {path,locale}=Astro.props as {path:string;locale:Locale};
 const parts=path.split('/');
 const parent=path.startsWith('roadmap/')?'roadmap':path.startsWith('learn/stage/')?'learn':path.startsWith('learn/')?parts.length>2?parts.slice(0,-1).join('/'):'learn':path.startsWith('projects/')?'start':path.startsWith('components/')?'components':'library';
+const resourcePurpose:Record<string,[string,string]>={
+ data:['项目需要保存或读取数据时，用这里确认数据放在哪里、谁能访问，再将要求交给 AI 实现并亲自检查。','When a project stores or reads data, clarify its location and access rules here, then ask AI to implement them and verify the result.'],
+ check:['准备测试作品时，用这里设计具体操作和通过条件，将实际结果写成反馈，再回到测试或修复步骤。','Use this guide to plan concrete tests and passing criteria, record actual results, then return to testing or repair.'],
+ launch:['准备交付作品时，用这里核对发布条件和操作方法，再回到交付步骤检查实际入口是否可用。','Consult release requirements and instructions here, then return to delivery and verify the real entry point.'],
+ maintain:['准备继续修改已完成的版本时，用这里整理现状和下一次任务，让 AI 接着已有成果工作。','Use this guide to record the current state and next task so AI can continue from the existing version.'],
+ tools:['选择 AI 工具时，用这里比较上手难度、免费额度、订阅费用和实际能力，再回到学习步骤打开选定工具。','When choosing an AI tool, compare ease, free allowance, subscription costs and capability here, then return to open the chosen tool.'],
+ start:['还不确定项目属于哪一类时，在这里了解不同作品的用途，把适合自己的方向写进项目描述。','Explore project types when the direction is unclear, then put the chosen direction into the project brief.'],
+ projects:['这里帮助理解这类项目需要哪些能力，把符合自身目标的功能带回项目描述，不必照搬所有功能。','Understand the capabilities this project type needs and take relevant features back to the project brief.'],
+ communicate:['需要给 AI 交代任务或反馈问题时，在这里选择话术，补充当前项目材料，再发到该项目的 AI 对话。','When assigning work or reporting problems, adapt a template with current project material and send it in the project chat.'],
+ stacks:['讨论技术方案时，用这里把实际条件说明白，再请 AI 解释推荐方案和取舍，确认后继续开发计划。','Use this reference during technical planning to state constraints and ask AI to explain its recommendation before continuing the plan.'],
+ components:['制作界面时，用这里认识组件并描述想要的效果，将选中的组件和要求交给当前项目的 AI。','While building the interface, identify components and describe the desired behavior to the project AI.'],
+ terms:['遇到不懂的术语时，在这里查含义，再回到刚才的操作中理解它的用途；无需先背完整份词表。','Look up unfamiliar terms, then return to the action to understand their use; there is no need to memorize the glossary.']
+};
+const resourceIntro=resourcePurpose[parts[0]];
 const fallback=path==='library'||path==='roadmap'||path==='learn'?'':parent;
 ---
 <nav class="entry-return" aria-label={t(['返回导航','Return navigation'],locale)}><a data-entry-back href={url(locale,fallback)}>{t(fallback?['← 返回上一级','← Back to parent']:['← 返回首页','← Back to home'],locale)}</a><a class="return-overview" href={url(locale,'roadmap')}>{t(['完整路线图','Complete roadmap'],locale)} <span aria-hidden="true">↗</span></a></nav>
-<style>.entry-return{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid #e4eaf2;font-size:12px}.entry-return a{text-decoration:none;color:#4c668b;line-height:1.6}.entry-return a:first-child{max-width:75%}.entry-return .return-overview{font-size:11px;color:#79889e;white-space:nowrap}@media(max-width:560px){.entry-return{gap:12px}.entry-return a:first-child{max-width:68%}.return-overview{font-size:10px!important}}</style>
+<!-- Reference pages explain when to use them; they are not extra required steps. -->
+{resourceIntro&&<p class="reference-orientation" data-orientation>{t(resourceIntro,locale)}</p>}
+<style>.reference-orientation{font-size:15px;line-height:1.8;color:#53647c;max-width:760px;margin:0 0 28px}.entry-return{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid #e4eaf2;font-size:12px}.entry-return a{text-decoration:none;color:#4c668b;line-height:1.6}.entry-return a:first-child{max-width:75%}.entry-return .return-overview{font-size:11px;color:#79889e;white-space:nowrap}@media(max-width:560px){.entry-return{gap:12px}.entry-return a:first-child{max-width:68%}.return-overview{font-size:10px!important}}</style>

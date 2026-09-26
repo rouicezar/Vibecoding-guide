@@ -18,7 +18,7 @@ const label=(zh:string,en:string)=>t([zh,en],locale);
 <details class="learn-details"><summary>{label('查看完整知识路线与制作分支','Explore the full knowledge map and branches')}</summary><Roadmap locale={locale} compact/></details>
 </>:<article class="node-guide">
 <nav class="node-crumb"><a href={url(locale,'roadmap')}>{label('完整路线图','Complete roadmap')}</a><span> / </span>{stage.parent&&<><a href={url(locale,`roadmap/${stage.parent}`)}>{t(journey.find(s=>s.id===stage.parent)!.title,locale)}</a><span> / </span></>}{t(stage.title,locale)}</nav>
-<span class="eyebrow">{stage.term}</span><h1>{t(stage.title,locale)}</h1><p class="node-question">{t(stage.question,locale)}</p>
+<span class="eyebrow">{stage.term}</span><h1>{t(stage.title,locale)}</h1><p class="node-question" data-orientation>{label(`这里是“${t(stage.title,locale)}”的补充知识，帮助理解对应操作并准备所需材料。需要跟着制作时，进入下方第 ${lessons.findIndex(l=>l.id===legacyLessons[stage.id])+1} 步；查完资料后回到该步骤继续。`,`This reference explains “${t(stage.title,locale)}” and its inputs. For guided work, open step ${lessons.findIndex(l=>l.id===legacyLessons[stage.id])+1} below, then continue there after reading.`)}</p>
 <a class="learn-primary" href={url(locale,`learn/${legacyLessons[stage.id]}`)}>{label('带着做：进入当前小步骤','Walk me through the next action')} →</a>
 <section class="node-outcome"><span>{label('这一站的完成结果','THE OUTCOME')}</span><p>{t(stage.output,locale)}</p></section>
 {stage.id==='build'&&<nav class="node-branches" aria-label={label('制作分支','Build branches')}>{journey.filter(s=>s.parent==='build').map(s=><a href={url(locale,`roadmap/${s.id}`)}>{t(s.title,locale)} →</a>)}</nav>}
