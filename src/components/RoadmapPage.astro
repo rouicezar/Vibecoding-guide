@@ -1,0 +1,36 @@
+---
+import '../styles/learning.css';
+import Roadmap from './Roadmap.astro';
+import PromptTemplate from './PromptTemplate.astro';
+import StageTroubleshooting from './StageTroubleshooting.astro';
+import {journey,mainJourney} from '../data/journey';
+import {legacyLessons} from '../data/learning';
+import {modules,t,url,type Locale} from '../data/site';
+const {locale,path}=Astro.props as {locale:Locale;path:string};
+const stage=journey.find(s=>s.id===path.split('/')[1]);
+const next=stage?mainJourney[mainJourney.findIndex(s=>s.id===(stage.parent??stage.id))+1]:undefined;
+const label=(zh:string,en:string)=>t([zh,en],locale);
+---
+{!stage?<>
+<header class="page-intro"><span class="eyebrow">VIBE CODING ROADMAP</span><h1>{label('从想法到作品，完整路线图','The complete path from idea to product')}</h1><p class="lead">{label('先看每一站的关系，再进入当前要做的事。所有知识点都挂在对应节点下面。','See how the stages connect, then enter the current task. Related knowledge lives under each node.')}</p></header>
+<Roadmap locale={locale} compact/>
+</>:<article class="node-guide">
+<nav class="node-crumb"><a href={url(locale,'roadmap')}>{label('完整路线图','Complete roadmap')}</a><span> / </span>{stage.parent&&<><a href={url(locale,`roadmap/${stage.parent}`)}>{t(journey.find(s=>s.id===stage.parent)!.title,locale)}</a><span> / </span></>}{t(stage.title,locale)}</nav>
+<span class="eyebrow">{stage.term}</span><h1>{t(stage.title,locale)}</h1><p class="node-question">{t(stage.question,locale)}</p>
+<a class="learn-primary" href={url(locale,`learn/${legacyLessons[stage.id]}`)}>{label('带着做：进入当前小步骤','Walk me through the next action')} →</a>
+<section class="node-outcome"><span>{label('这一站的完成结果','THE OUTCOME')}</span><p>{t(stage.output,locale)}</p></section>
+{stage.id==='build'&&<nav class="node-branches" aria-label={label('制作分支','Build branches')}>{journey.filter(s=>s.parent==='build').map(s=><a href={url(locale,`roadmap/${s.id}`)}>{t(s.title,locale)} →</a>)}</nav>}
+<div class="node-knowledge">
+<details><summary><span>01</span>{label('操作与准备材料','Actions and preparation')}</summary><div><h2>{label('先带上这些材料','Bring these inputs')}</h2><p>{t(stage.incoming,locale)}</p><h2>{label('具体怎么做','What to do')}</h2><ol>{stage.actions.map(a=><li>{t(a,locale)}</li>)}</ol></div></details>
+<details><summary><span>02</span>{label('看一个例子与常见疑问','Example and common question')}</summary><div><p>{t(stage.example,locale)}</p><h2>{t(stage.problem,locale)}</h2><p>{t(stage.answer,locale)}</p></div></details>
+<details><summary><span>03</span>{label('完整提示词与填写模板','Full prompt and worksheet')}</summary><PromptTemplate id={`roadmap-${stage.id}`} title={stage.promptTitle} prompt={stage.prompt} locale={locale} kind={stage.id==='idea'?'worksheet':'prompt'}/></details>
+<details><summary><span>04</span>{label('相关知识与操作资料','Related knowledge and guides')}</summary><div class="node-resources">
+{stage.moduleIds.map(id=>modules.find(m=>m.id===id)!).filter(Boolean).map(m=><a href={`${url(locale,m.path)}?lesson=${legacyLessons[stage.id]}`}>{t(m.title,locale)} →</a>)}
+{stage.id==='ui'&&<><a href={url(locale,'components/style')}>{label('整体风格怎么描述','Describe a visual style')} →</a><a href={url(locale,'components/edit')}>{label('只修改一个地方','Edit one part')} →</a></>}
+{['tell','environment'].includes(stage.id)&&<a href={url(locale,'communicate/setup')}>{label('Git 与项目规则准备','Git and project setup')} →</a>}
+</div></details>
+<details><summary><span>05</span>{label('遇到问题，按现象排查','Troubleshoot by symptom')}</summary><StageTroubleshooting stage={stage.id} locale={locale}/></details>
+</div>
+<footer class="node-next"><a href={url(locale,'roadmap')}>{label('查看全程','See the full journey')}</a>{next&&<a href={url(locale,`roadmap/${next.id}`)}>{label('下一站：','Next: ')}{t(next.title,locale)} →</a>}</footer>
+</article>}
+<style>.node-guide{max-width:800px;margin:auto}.node-crumb{font-size:12px;color:#64748b;margin-bottom:30px;line-height:1.8}.node-guide h1{font-size:clamp(30px,4vw,42px);letter-spacing:-.03em;margin:14px 0}.node-question{font-size:17px;color:#53647c;line-height:1.8;margin-bottom:26px;max-width:650px}.node-outcome{margin:30px 0;padding:20px 24px;background:#f3fadf;border:0;border-radius:10px}.node-outcome>span{font-size:10px;font-weight:700;color:#577819;letter-spacing:.08em}.node-outcome p{font-size:15px;line-height:1.8;margin:8px 0 0;color:#344b12}.node-knowledge>details{border-top:1px solid #dce4ee}.node-knowledge>details:last-child{border-bottom:1px solid #dce4ee}.node-knowledge>details>summary{padding:22px 4px;font-size:16px;font-weight:600;color:#263953;cursor:pointer}.node-knowledge>details>summary>span{font-size:11px;color:#7a8aa0;margin-right:18px}.node-knowledge>details>div:not(.prompt-template){padding:0 24px 22px}.node-knowledge h2{font-size:15px;margin-top:20px}.node-knowledge p,.node-knowledge li{font-size:14px;line-height:1.9;color:#4b5b72}.node-resources a{display:block;padding:12px 0}.node-branches,.node-next{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:13px;margin:24px 0}.node-branches a{padding:12px 16px;border:1px solid #dce4ee;border-radius:8px}.node-guide .prompt-template pre{max-height:380px;overflow:auto}</style>

@@ -1,5 +1,5 @@
 ---
-import {phases,lessons,lessonPath} from '../data/learning';
+import {phases,lessons,lessonPath,legacyLessons} from '../data/learning';
 import {t,url,modules,type Locale} from '../data/site';
 import StepVisual from './StepVisual.astro';
 import PromptTemplate from './PromptTemplate.astro';
@@ -12,6 +12,7 @@ const issue=lesson?.issues.find(i=>i.id===bits[3]);
 const help=bits[2]==='help';
 const index=lesson?lessons.indexOf(lesson):-1;
 const next=lessons[index+1];
+const knowledgeStage=lesson?.stage??Object.entries(legacyLessons).find(([,id])=>id===lesson?.id)?.[0]??({idea:'idea',prepare:'tell',scope:'scope',build:'build',check:'test',use:'launch'}[lesson?.phase??'idea']);
 const label=(zh:string,en:string)=>t([zh,en],locale);
 ---
 <div class="learning" data-learning data-lesson={lesson?.id} data-locale={locale}>
@@ -27,6 +28,7 @@ const label=(zh:string,en:string)=>t([zh,en],locale);
 <div class="lesson-footer"><a class="learn-help" href={url(locale,`${lessonPath(lesson.id)}/help`)}>{label('没做到 / 我卡住了','It didn’t work / I’m stuck')} →</a>{next&&lesson.id!=='delivery'&&<a class="learn-primary" data-complete={lesson.id} href={url(locale,lessonPath(next.id))}>{label('已核对，下一步','Checked, continue')} →</a>}{lesson.id==='delivery'&&<div><a class="learn-primary" data-complete={lesson.id} href={url(locale,'learn/maintain')}>{label('先自己用','Keep it personal')} →</a><a class="learn-help" data-complete={lesson.id} href={url(locale,'learn/publish')}>{label('准备公开分享','Prepare to publish')} →</a></div>}{!next&&<button class="learn-primary" data-finish={lesson.id}>{label('已核对，记录完成','Checked, mark complete')}</button>}</div>
 {(lesson.sample||lesson.refs)&&<details class="learn-details"><summary>{label('看示例或查资料','Examples and reference')}</summary>{lesson.sample&&<p>{t(lesson.sample,locale)}</p>}{lesson.refs?.map(r=><p><a href={`${url(locale,r.path)}?lesson=${lesson.id}`}>{t(r.title,locale)} →</a></p>)}</details>}
 </>}
+{lesson&&!help&&<p class="local-note"><a href={url(locale,`roadmap/${knowledgeStage}`)}>{label('查看这一站的完整知识与路线位置 →','See the complete stage knowledge and roadmap →')}</a></p>}
 <p class="local-note" data-learning-status role="status">{label('草稿与进度只保存在当前浏览器。','Draft and progress stay in this browser.')}</p>
 </div>
 <script>

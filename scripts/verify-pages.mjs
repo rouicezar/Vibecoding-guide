@@ -28,7 +28,7 @@ for(const stage of journey){
  }
 }
 const dictionary=JSON.parse(await readFile('src/data/dictionary.json','utf8'));
-const paths=[...learningPaths.map(p=>p+'/'),'','tools/','start/','communicate/','stacks/','components/','terms/',...practices.map(p=>p.path+'/'),'data/','check/','launch/','maintain/',...dictionary.entries.map(e=>`components/${e.id}/`),'projects/web/','projects/mini-program/','projects/mobile/','projects/desktop/'];
+const paths=['roadmap/',...journey.map(s=>`roadmap/${s.id}/`),...learningPaths.map(p=>p+'/'),'','tools/','start/','communicate/','stacks/','components/','terms/',...practices.map(p=>p.path+'/'),'data/','check/','launch/','maintain/',...dictionary.entries.map(e=>`components/${e.id}/`),'projects/web/','projects/mini-program/','projects/mobile/','projects/desktop/'];
 for(const locale of ['zh-cn','en'])for(const path of paths){
  const html=await readFile(`dist/${locale}/${path}index.html`,'utf8');
  assert(!html.includes('\u4f60'),`Disallowed copy in ${locale}/${path}`);

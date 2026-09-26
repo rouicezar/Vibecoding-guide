@@ -1,0 +1,21 @@
+import assert from 'node:assert/strict';
+import ts from 'typescript';
+import {readFile} from 'node:fs/promises';
+import {journey} from '../src/data/journey.ts';
+import {blockers} from '../src/data/blockers.ts';
+const src=await readFile('src/scripts/navigation.ts','utf8');
+const js=ts.transpileModule(src,{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText;
+const {readTrail,withTrail,cleanPath}=await import('data:text/javascript;base64,'+Buffer.from(js).toString('base64'));
+const origin='http://127.0.0.1:4324';
+assert.deepEqual(readTrail('bad'),[]);
+assert.deepEqual(readTrail(JSON.stringify([{path:'https://evil.example',title:'no'},{path:'//evil.example',title:'no'}])),[]);
+const trail=[{path:'/zh-cn/library/',title:'资料库'},{path:'/zh-cn/start/',title:'项目分类'}];
+const target=new URL(withTrail('/zh-cn/projects/web/',trail,origin),origin);
+assert.deepEqual(readTrail(target.searchParams.get('via')),trail);
+assert.equal(cleanPath(target),'/zh-cn/projects/web/');
+const back=new URL(withTrail(trail.at(-1).path,trail.slice(0,-1),origin),origin);
+assert.equal(back.pathname,'/zh-cn/start/');
+assert.equal(readTrail(back.searchParams.get('via'))[0].path,'/zh-cn/library/');
+assert.equal(readTrail(JSON.stringify(Array(30).fill(trail[0]))).length,8);
+for(const locale of ['zh-cn','en'])for(const s of journey){const html=await readFile(`dist/${locale}/roadmap/${s.id}/index.html`,'utf8');assert(html.includes(`template-roadmap-${s.id}`));for(const b of blockers.filter(b=>b.stage===s.id))assert(html.includes(`blocker-${b.id}`),`Missing blocker ${b.id}`);}
+console.log('PASS: entry-route round trip, refreshable bounded trail, unsafe destination rejection; all 16 original nodes and original blocker prompts reachable in both languages.');
