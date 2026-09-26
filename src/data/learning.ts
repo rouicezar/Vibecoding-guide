@@ -7,12 +7,12 @@ export interface LessonIssue {id:string; title:Copy; check:Copy; action:Copy; ex
 export interface Understanding {why:Copy;concept:Copy;question:Copy;}
 export interface Lesson {templateKind?:'worksheet'|'prompt';understanding?:Understanding;choices?:{id:string;label:Copy}[];id:string; phase:string; title:Copy; where:Copy; actions:Copy[]; expected:Copy; sample?:Copy; prompt?:Copy; stage?:string; issues:LessonIssue[]; refs?:{path:string;title:Copy}[]; source?:string;}
 export const phases = [
- {id:'idea',title:['想清楚先做什么','Start with an idea'],description:['先记下一件想解决的小事。','Write down one small problem.'],result:['可直接交给 AI 的个人项目说明','A personal brief ready for AI']},
- {id:'prepare',title:['让项目真正落地','Create a real project'],description:['从打开工具，到找到第一个文件。','Open a tool and find its first real file.'],result:['能找到 AI 实际创建的文件','A real file created by AI']},
- {id:'scope',title:['确定第一版，提前看见它','Define and preview version one'],description:['只做一条流程，让 AI 安排制作。','Choose one flow and let AI plan the work.'],result:['知道先做什么、暂时不做什么','A small scope and a clear plan']},
- {id:'build',title:['做出能用的小版本','Build something usable'],description:['先看到页面，再把保存接起来。','See a page, then make saving work.'],result:['填写、保存、查看能连起来','A working write–save–view flow']},
- {id:'check',title:['试用、反馈与修复','Try, report and improve'],description:['检查正常结果，也试试出错时怎样。','Check success, failure, and reopening.'],result:['有反馈依据、经过本人复测的版本','A personally retested version with feedback evidence']},
- {id:'use',title:['使用、分享与继续改','Use, share, and improve'],description:['先决定自己用，还是分享给别人。','Choose personal use or a public link.'],result:['明确的交付方式和下一次行动','A delivery choice and a next action']},
+ {id:'idea',title:['想清楚做什么','Decide what to build'],description:['说明项目给谁用、解决什么问题，整理成项目描述。','Identify the users and problem, then write a project brief.'],result:['可直接交给 AI 的项目描述','A project brief ready for AI']},
+ {id:'prepare',title:['选择工具，创建项目','Choose a tool and create a project'],description:['选择 AI 工具，创建项目文件夹，确认文件已保存。','Choose an AI tool, create a project folder, and check saved files.'],result:['已创建的项目文件夹和起始文件','A project folder and initial files']},
+ {id:'scope',title:['明确需求，制定开发计划','Define requirements and plan development'],description:['确认第一版功能，让 AI 整理需求、用户使用流程和开发计划。','Agree on version-one features, then document requirements, user flows, and the development plan with AI.'],result:['明确的需求文档、设计方案和开发计划','Requirements, a design, and a development plan']},
+ {id:'build',title:['按计划开发，实现功能','Follow the plan and build features'],description:['检查环境，让 AI 分步制作页面、接好数据，走通使用流程。','Check the environment, build pages and data features with AI, and complete the user flow.'],result:['能实际打开并操作的第一版项目','A first version that opens and works']},
+ {id:'check',title:['手动测试，反馈并修复问题','Test manually, report issues, and fix them'],description:['亲手试用并记录问题，让 AI 制定修复计划，修复后再次测试。','Try the project, record issues, ask AI to plan fixes, and test again after repair.'],result:['经过本人测试和修复后复测的版本','A version manually tested and retested after fixes']},
+ {id:'use',title:['部署交付，持续维护','Deploy, deliver, and maintain'],description:['检查交付条件，按需要部署上线或制作安装包，再记录后续维护事项。','Check readiness, deploy or package as needed, then record maintenance tasks.'],result:['可使用的项目入口和维护说明','A usable project entry point and maintenance notes']},
 ] satisfies {id:string;title:Copy;description:Copy;result:Copy}[];
 
 const issue=(id:string,title:Copy,check:Copy,action:Copy,expected:Copy,retry?:string):LessonIssue=>({id,title,check,action,expected,retry});
