@@ -39,3 +39,5 @@ main .node-knowledge h2,main .node-knowledge>details>summary{font-size:18px}
  main .entry-return{font-size:13px}
 }
 @media(prefers-reduced-motion:reduce){main .route-list>a{transition:none}}
+/* Fit desktop navigation to its full labels instead of wrapping or truncating. */
+@media(min-width:960px){.app-shell{grid-template-columns:max-content minmax(0,1fr)}.sidebar{min-width:264px;width:max-content}.sidebar .nav-item{white-space:nowrap}.sidebar .nav-item>span{flex-shrink:0}}
