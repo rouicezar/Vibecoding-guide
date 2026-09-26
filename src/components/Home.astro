@@ -12,8 +12,8 @@ const {locale}=Astro.props as {locale:Locale};
 <p class="home-intro">{t(['不需要先学会编程。跟着一个动作做，看到结果，再走下一步。卡住时，就在原地找帮助。','Start without coding experience. Do one action, check its result, then continue. Find help exactly where progress stops.'],locale)}</p>
 <a class="learn-primary" data-resume href={url(locale,'learn/idea')}>{t(['开始第一步','Start the first step'],locale)} →</a>
 <a class="home-route" href={url(locale,'roadmap')}>{t(['先看完整路线','See the learning route'],locale)} ↗</a>
-<Roadmap locale={locale}/><div class="project-preview"><div><span class="preview-label">{t(['贯穿练习 · 学习记录','PRACTICE PROJECT · LEARNING JOURNAL'],locale)}</span><h2>{t(['先做成这件小事','Start with something small'],locale)}</h2><p>{t(['写下一句 → 保存 → 下次还能找到','Write a note → save → find it next time'],locale)}</p><a href={`/examples/journal-${locale}.html`} target="_blank" rel="noopener">{t(['试用成品示例','Try the finished example'],locale)} ↗</a></div><div class="journal-mock" aria-label={t(['学习记录外观示意','Illustration of a learning journal'],locale)}><div class="mock-dots">● ● ● <span>{t(['外观示意','Illustration'],locale)}</span></div><strong>{t(['今天，学到了什么？','What did I learn today?'],locale)}</strong><div class="mock-input">{t(['我让 AI 做出了第一个页面。','I made my first page with AI.'],locale)}</div><span class="mock-save">{t(['保存记录','Save note'],locale)}</span><div class="mock-note">✓ {t(['下次打开，还能看到','Still here when reopened'],locale)}</div></div></div>
-<p class="local-note">{t(['保留自己的想法，也可以跟着示例做。已有经验？按需查资料。','Bring a personal idea or follow the example. Already experienced? Browse the reference library.'],locale)} <a href={url(locale,'library')}>{t(['查资料 →','Reference library →'],locale)}</a></p>
+<Roadmap locale={locale}/>
+<p class="local-note">{t(['围绕自己的项目逐步完成。遇到具体问题时，再按需查资料。','Build your own project step by step. Use the library when a specific question arises.'],locale)} <a href={url(locale,'library')}>{t(['查资料 →','Reference library →'],locale)}</a></p>
 </div>
 <script>
 import {parseLearning} from '../scripts/learning';

@@ -65,7 +65,7 @@ export const additions=[
         ]
       }
     ],
-    "after": "goal"
+    "after": "idea"
   },
   {
     "id": "stories",
