@@ -1,4 +1,5 @@
 ---
+import {lessonFor,demoLevel} from '../data/demo-lessons';
 import {componentFit} from '../data/component-fit';
 import dictionary from '../data/dictionary.json';
 import {t,url,type Locale,type Copy} from '../data/site';
@@ -7,29 +8,31 @@ import PromptTemplate from './PromptTemplate.astro';
 import ComponentDemo from './ComponentDemo.astro';
 const {locale,entryId}=Astro.props as {locale:Locale;entryId?:string};
 const entry=dictionary.entries.find(e=>e.id===entryId);
-const prompt:Copy=entry?[`【背景】在现有产品中制作一个${entry.zh}。填写项目用途与页面位置。
-【给谁用】填写实际使用者及希望完成的操作。
-【问题与用途】${entry.when}
-【输入】现有页面、品牌样式、目标设备和参考截图；缺失时先索取，不编造。
-【组件要求】${entry.promptZh}
-【标准名称】${entry.en}；别名：${entry.aliases}
-【原始细节】下方保留中英文原始规格供对照，实施前逐项解释并核对。
-【约束】只做该组件，不重做全页；遵守现有样式，不连接真实支付或通知。
-【输出】可操作组件、使用位置、状态说明、实际检查记录和未完成项。
-【检查标准】鼠标、键盘和触屏可操作；检查默认、选中、禁用、空白与失败状态；缺少适用状态时说明原因。
-【缺失信息处理】先问一个会改变结果的问题；示例不是已确认需求。
-【下一步】实际试用后对照原始描述核验，不将静态画面当作交互已完成。`,
-`[Background] Build one ${entry.en} in an existing product. Enter the purpose and page location.
-[Audience] Enter actual users and their intended action.
-[Problem] Provide the interaction described below within the agreed user flow.
-[Inputs] Current page, brand styles, target devices, and reference images; request missing material.
-[Component specification] ${entry.prompt}
-[Aliases] ${entry.aliases}
-[Constraints] Build only this component, not a whole page. Preserve existing styles. Do not connect real payments or notifications.
-[Output] An operable component, placement instructions, state descriptions, actual checks, and unfinished items.
-[Acceptance] Check pointer, keyboard, and touch use; default, selected, disabled, empty, and failure states where applicable. Explain omissions.
-[Missing information] Ask one decision-changing question first; examples are not confirmed requirements.
-[Next step] Try the result and compare it with the specification. A static picture does not prove interaction works.`]:journey.find(s=>s.id==='ui')!.prompt;
+const prompt:Copy=entry?[
+`本次只制作一个${entry.zh}（${entry.en}），不重做整页。
+项目用途与使用人群：【填写】
+组件所在页面和位置：【填写】
+用户操作前看到什么：【填写】
+用户点击、输入或选择后，应发生什么：【填写】
+本项目实际文案、选项和资料：【填写】
+目标设备与已有样式：【填写】
+不允许改变的内容：【填写，无则写无】
+
+先核对组件是否适合上述任务。不要照搬词典示例的姓名、品牌、条数或尺寸；需要补充时先问。
+${lessonFor(entry).check[0]}
+只实现确认范围，并列出操作步骤、预期和实际结果。默认、选中、禁用、空白、失败状态按本组件需要检查，不适用则解释原因。不把示例成功提示当作业务已接通。`,
+`Build one ${entry.en} only, not a whole page.
+Project purpose and audience: [fill in]
+Page and component location: [fill in]
+What appears before interaction: [fill in]
+What should happen after clicking, typing or selecting: [fill in]
+Actual text, options and data: [fill in]
+Devices and existing style: [fill in]
+What must stay unchanged: [fill in or none]
+
+Check fit for the task first. Do not copy sample names, brands, counts or sizes; ask about necessary gaps.
+${lessonFor(entry).check[1]}
+Implement only the agreed scope and record steps, expected and actual results. Check default, selected, disabled, empty and failure states as applicable, explaining omissions. Demo feedback does not prove production integration.`]:journey.find(s=>s.id==='ui')!.prompt;
 ---
 {entry?<>
 <div class="breadcrumb"><a href={url(locale,'components')}>{t(['前端与 UI','Frontend & UI'],locale)}</a><span> / {entry.en}</span></div><header class="journey-intro"><p class="eyebrow">{entry.category.toUpperCase()}</p><h1>{locale==='en'?entry.en:entry.zh}</h1><p>{locale==='en'?entry.prompt.split('. ')[0]+'.':entry.when}</p><p class="muted">{entry.en} · {entry.aliases}</p></header>
@@ -43,7 +46,7 @@ const prompt:Copy=entry?[`【背景】在现有产品中制作一个${entry.zh}�
 </>:<>
 <header class="journey-intro"><p class="eyebrow">FRONTEND & UI</p><h1>{t(['前端与 UI','Frontend & UI'],locale)}</h1><p>{t(['UI 是打开产品后看到和操作的界面；前端负责呈现这些内容与交互。先排清一条使用流程，再选需要的组件。','UI is the interface people see and operate; the frontend presents its content and interactions. Map one user flow before choosing components.'],locale)}</p></header>
 <section class="section"><h2>{t(['先选当前要完成的事','Choose the task to complete now'],locale)}</h2><div class="ui-task-links"><a href={url(locale,'components/style')}><strong>{t(['① 还没确定整体风格','① Decide the overall style'],locale)}</strong><p>{t(['说明用途、颜色、间距和参考图，让 AI 先做一个页面。包含完整风格模板。','Describe purpose, colors, spacing, and references. Ask AI for one page first. Includes a complete style prompt.'],locale)}</p></a><a href={url(locale,'components/edit')}><strong>{t(['② 已有页面，只改一处','② Edit one part of an existing page'],locale)}</strong><p>{t(['标明位置、现状、期望和不改的内容。包含局部修改与组件修改模板。','Identify location, current and desired behavior, and what stays unchanged. Includes focused-edit and component prompts.'],locale)}</p></a><a href="#dictionary"><strong>{t(['③ 不知道组件叫什么','③ Find a component name'],locale)}</strong><p>{t(['再到下方词典按名称或用途查找，查看示例并补充给 AI。','Use the dictionary below to find a name or use, inspect an example, and provide it to AI.'],locale)}</p></a></div><p>{t(['先做清楚的一页，再扩展其他页。比如：一个记录工具先把“填写→保存→查看”排顺，不必先挑几十个组件。','Start with one clear page, then expand. For example, a journal can start with write → save → view without selecting dozens of components first.'],locale)}</p></section>
-<section class="section" id="dictionary"><h2>{t(['组件词典 · 212 项 / 25 类','Component dictionary · 212 entries / 25 categories'],locale)}</h2><p>{t(['按名称、别名或用途搜索，打开详情查看提示词与可用示例。12 项提供新站交互示例，其余只完成词条迁移，验证状态在详情说明。','Search names, aliases, or descriptions. Open an entry for its prompt and available example. Twelve entries have new interactive examples; the remaining entries have migrated descriptions only. Details state the limits.'],locale)}</p><div class="dictionary-controls"><label>{t(['搜索组件','Search components'],locale)}<input type="search" id="dictionary-query" placeholder={t(['例如：标签、Slider、保存','Try tabs, Slider, save'],locale)}/></label><label>{t(['分类','Category'],locale)}<select id="dictionary-category"><option value="all">{t(['全部','All'],locale)}</option>{dictionary.categories.map(c=><option value={c[0]}>{locale==='en'?c[1]:c[2]}</option>)}</select></label></div><p role="status" id="dictionary-count" data-locale={locale}>212</p><p id="dictionary-empty" hidden>{t(['没有匹配。清空分类或试试更短的名称，如“标签”或“输入”。','No match. Clear the category or try a shorter name such as tabs or input.'],locale)}</p><div class="dictionary-list" data-pagefind-ignore>{dictionary.entries.map(e=><a href={url(locale,`components/${e.id}`)} data-entry data-category={e.category} data-search={[e.zh,e.en,e.aliases,e.when,e.prompt,e.promptZh].join(' ').toLowerCase()}><strong>{locale==='en'?e.en:e.zh}</strong><span>{e.en}</span><p>{locale==='en'?e.prompt.split('. ')[0]+'.':e.when}</p></a>)}</div><button class="button" id="dictionary-more" hidden>{t(['再显示 24 项','Show 24 more'],locale)}</button></section>
+<section class="section" id="dictionary"><h2>{t(['组件词典 · 212 项 / 25 类','Component dictionary · 212 entries / 25 categories'],locale)}</h2><p>{t(['按名称、别名或用途搜索，打开详情查看提示词与可用示例。每项都有对应示例，并区分外观示意、操作练习和简化示例；示例不连接真实业务。','Search names, aliases, or descriptions. Open an entry for its prompt and available example. Each entry includes a visual reference, local exercise or simplified example; none connects to real business services.'],locale)}</p><div class="dictionary-controls"><label>{t(['搜索组件','Search components'],locale)}<input type="search" id="dictionary-query" placeholder={t(['例如：标签、Slider、保存','Try tabs, Slider, save'],locale)}/></label><label>{t(['分类','Category'],locale)}<select id="dictionary-category"><option value="all">{t(['全部','All'],locale)}</option>{dictionary.categories.map(c=><option value={c[0]}>{locale==='en'?c[1]:c[2]}</option>)}</select></label></div><p role="status" id="dictionary-count" data-locale={locale}>212</p><p id="dictionary-empty" hidden>{t(['没有匹配。清空分类或试试更短的名称，如“标签”或“输入”。','No match. Clear the category or try a shorter name such as tabs or input.'],locale)}</p><div class="dictionary-list" data-pagefind-ignore>{dictionary.entries.map(e=><a href={url(locale,`components/${e.id}`)} data-entry data-category={e.category} data-search={[e.zh,e.en,e.aliases,e.when,e.prompt,e.promptZh].join(' ').toLowerCase()}><strong>{locale==='en'?e.en:e.zh}</strong><span>{e.en} · {t(demoLevel(e.id)==='visual'?['外观示意','Visual reference']:demoLevel(e.id)==='simplified'?['简化示例','Simplified example']:['操作练习','Local exercise'],locale)}</span><p>{locale==='en'?e.prompt.split('. ')[0]+'.':e.when}</p></a>)}</div><button class="button" id="dictionary-more" hidden>{t(['再显示 24 项','Show 24 more'],locale)}</button></section>
 <PromptTemplate id="ui-plan" title={['让 AI 安排页面与状态','Ask AI to plan pages and states']} prompt={prompt} locale={locale}/>
 <section class="section"><h2>{t(['常见混淆与下一步','Common confusion and next steps'],locale)}</h2><p>{t(['切换不同内容用 Tabs（标签切换）；调整数值用 Slider（滑块）。若只有视觉变化但内容没变，先明确需要切内容还是改样式，再让 AI 修正。组件可用后回到完整流程检查真实提交和结果。','Tabs switch content; a Slider changes a value. If appearance changes without content, clarify whether content or styling should change, then ask AI to fix it. After components work, test actual submission and results in the complete flow.'],locale)}</p><a href={url(locale,'learn/flow')}>{t(['连接完整使用流程 →','Connect the complete flow →'],locale)}</a></section>
 </>}

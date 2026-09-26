@@ -1,0 +1,74 @@
+[
+  {
+    "id": "table-sort",
+    "pass": true,
+    "beforeSort": "Ada\t12\nLin\t9\nSam\t4",
+    "afterSort": "Ada\t12\nLin\t9\nSam\t4",
+    "reverseSort": "Sam\t4\nLin\t9\nAda\t12"
+  },
+  {
+    "id": "kanban-move",
+    "pass": true,
+    "board": [
+      "待办",
+      "进行中B待办进行中完成",
+      "完成A待办进行中完成"
+    ]
+  },
+  {
+    "id": "alert-open",
+    "pass": true
+  },
+  {
+    "id": "alert-escape",
+    "pass": true
+  },
+  {
+    "id": "progress",
+    "pass": true
+  },
+  {
+    "id": "date-range-invalid",
+    "pass": true
+  },
+  {
+    "id": "date-range-recovery",
+    "pass": true
+  },
+  {
+    "id": "editable-cell",
+    "pass": true
+  },
+  {
+    "id": "search-empty",
+    "pass": true
+  },
+  {
+    "id": "mixed-selection",
+    "pass": true
+  },
+  {
+    "id": "record-unfilled-blocked",
+    "pass": true
+  },
+  {
+    "id": "record-copy",
+    "pass": true
+  },
+  {
+    "id": "record-invalidates",
+    "pass": true
+  },
+  {
+    "id": "english-example",
+    "pass": true
+  },
+  {
+    "id": "chat-local-only",
+    "pass": true
+  },
+  {
+    "id": "retry-result",
+    "pass": true
+  }
+]

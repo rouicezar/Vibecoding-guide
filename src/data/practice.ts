@@ -1,8 +1,8 @@
 import type {Copy} from './site';
 export interface Practice {path:string;stage:string;title:Copy;intro:Copy;input:Copy;steps:{title:Copy;body:Copy;check:Copy;example?:Copy}[];templates:{id:string;title:Copy;text:Copy;kind?:'file'|'prompt'}[];next:string;nextLabel:Copy;sources?:{label:string;href:string}[]}
 const handoff=(task:Copy,inputs:Copy,output:Copy):Copy=>[
-`【背景】填写项目用途与给谁使用。
-【当前问题】填写正在遇到的困难，或希望完成的变化。
+`【背景】【填写项目用途与给谁使用】
+【当前问题】【填写正在遇到的困难或希望完成的变化】
 【输入材料】${inputs[0]}
 【本次任务】${task[0]}
 【约束】保留已确认范围和现有工作，不做无关修改。
@@ -14,8 +14,8 @@ const handoff=(task:Copy,inputs:Copy,output:Copy):Copy=>[
 4. 给出实际产物、文件位置与当前预览，不把方案当作已经执行。
 【需要交付】${output[0]}
 【检查标准】逐项对照本次目标，报告实际检查、未验证项和下一步。删除资料、付费、扩大访问或公开发布前等待明确确认。`,
-`[Background] Enter the product purpose and audience.
-[Problem] Enter the current difficulty or desired change.
+`[Background] [fill in product purpose and audience]
+[Problem] [fill in current difficulty or desired change]
 [Inputs] ${inputs[1]}
 [Task] ${task[1]}
 [Limits] Preserve approved scope and existing work; avoid unrelated changes.
