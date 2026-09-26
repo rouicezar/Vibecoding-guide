@@ -1,10 +1,11 @@
+import {applyPromptReview} from './learning-prompt-review.ts';
 import {understanding} from './learning-understanding.ts';
 import {additions} from './learning-additions.ts';
 import type {Copy} from './site';
 
 export interface LessonIssue {id:string; title:Copy; check:Copy; action:Copy; expected:Copy; retry?:string;}
 export interface Understanding {why:Copy;concept:Copy;question:Copy;}
-export interface Lesson {understanding?:Understanding;choices?:{id:string;label:Copy}[];id:string; phase:string; title:Copy; where:Copy; actions:Copy[]; expected:Copy; sample?:Copy; prompt?:Copy; stage?:string; issues:LessonIssue[]; refs?:{path:string;title:Copy}[]; source?:string;}
+export interface Lesson {templateKind?:'worksheet'|'prompt';understanding?:Understanding;choices?:{id:string;label:Copy}[];id:string; phase:string; title:Copy; where:Copy; actions:Copy[]; expected:Copy; sample?:Copy; prompt?:Copy; stage?:string; issues:LessonIssue[]; refs?:{path:string;title:Copy}[]; source?:string;}
 export const phases = [
  {id:'idea',title:['想清楚先做什么','Start with an idea'],description:['先记下一件想解决的小事。','Write down one small problem.'],result:['可直接交给 AI 的个人项目说明','A personal brief ready for AI']},
  {id:'prepare',title:['让项目真正落地','Create a real project'],description:['从打开工具，到找到第一个文件。','Open a tool and find its first real file.'],result:['能找到 AI 实际创建的文件','A real file created by AI']},
@@ -53,9 +54,7 @@ lessons.find(l=>l.id==='release-review')!.choices=[{id:'repair-plan',label:['条
 lessons.find(l=>l.id==='package')!.choices=[{id:'feedback',label:['试运行失败，记录问题','Record trial failures']},{id:'live-check',label:['试运行通过，确认交付','Trial passed; review delivery']}];
 lessons.find(l=>l.id==='delivery')!.choices=[{id:'release-review',label:['已选好交付方式，检查条件','Check delivery readiness']}];
 lessons.find(l=>l.id==='live-check')!.choices=[{id:'feedback',label:['实际入口有问题','Report delivery issues']},{id:'maintain',label:['已核对，留下维护说明','Record maintenance instructions']}];
-for(const lesson of lessons){if(lesson.prompt&&lesson.id!=='description'){
- lesson.prompt=[lesson.prompt[0]+'\n\n开始前先读取现有材料；找不到或互相冲突时说明缺口，不编造已确认信息。完成后报告实际产物位置、执行过的检查、未验证项和本人的下一步操作。',lesson.prompt[1]+'\n\nRead existing material first; report missing or conflicting inputs rather than inventing agreement. Report actual outputs, executed checks, unverified work and the next personal action.'];
-}}
+applyPromptReview(lessons);
 export const legacyLessons:Record<string,string>={idea:'idea',tell:'tool',refine:'clarify',scope:'scope',requirements:'requirements',stack:'choose-stack',plan:'plan',environment:'environment',build:'preview',ui:'interface',backend:'save',flow:'flow',test:'test',accept:'accept',launch:'delivery',maintain:'maintain'};
 export const lessonPath=(id:string)=>`learn/${id}`;
 export const learningPaths=['learn','library',...phases.map(p=>`learn/stage/${p.id}`),...lessons.flatMap(l=>[lessonPath(l.id),`${lessonPath(l.id)}/help`,...l.issues.map(i=>`${lessonPath(l.id)}/help/${i.id}`)])];

@@ -1,0 +1,126 @@
+[
+  {
+    "id": "idea",
+    "result": "PASS: confirm, copy, edit invalidation"
+  },
+  {
+    "id": "description",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "tool",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "folder",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "open-project",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "checkpoint",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "first-file",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "clarify",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "scope",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "requirements",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "stories",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "prototype",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "choose-stack",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "plan",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "environment",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "preview",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "interface",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "save",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "flow",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "test",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "restart",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "accept",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "feedback",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "repair-plan",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "repair",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "delivery",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "release-review",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "package",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "live-check",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "publish",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  },
+  {
+    "id": "maintain",
+    "result": "PASS: step-only output, confirm, copy, edit invalidation"
+  }
+]

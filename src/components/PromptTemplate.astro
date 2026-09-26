@@ -4,7 +4,7 @@ import {t,type Locale,type Copy} from '../data/site';
 interface Props {id:string; title:Copy; prompt:Copy; locale:Locale; kind?:"worksheet"|"handoff"|"prompt"|"file";}
 const {id,title,prompt,locale,kind='prompt'}=Astro.props;
 const worksheet=kind==='worksheet';
-const instruction:Copy=kind==='file'?['这是文件正文，不是对话提示词。交给 AI 合并到项目规则文件；待确认字段由 AI 读取真实项目后补齐。','This is file content, not a chat prompt. Ask AI to merge it into project instructions and fill unknowns from the actual project.']:worksheet?['直接编辑下方模板，确认后生成可复制草稿；下一步再交给 AI。','Edit the template below and confirm to prepare a copyable draft. Share it with AI in the next step.']:['先在模板中补充实际材料，确认生成后再复制到当前项目的 AI 对话。不确定项写“尚未确定”，示例可以自行替换。','Edit the template with actual material, confirm, then copy into the current project conversation. Mark unknowns as undecided and replace examples as needed.'];
+const instruction:Copy=kind==='file'?['这是文件正文，不是对话提示词。交给 AI 合并到项目规则文件；待确认字段由 AI 读取真实项目后补齐。','This is file content, not a chat prompt. Ask AI to merge it into project instructions and fill unknowns from the actual project.']:worksheet?['直接编辑下方模板，确认后生成可复制草稿；按当前步骤说明使用，不必立即发给 AI。','Edit the template below and confirm to prepare a copyable draft. Use it as directed by this step; sending it to AI is not required.']:['先在模板中补充实际材料，确认生成后再复制到当前项目的 AI 对话。不确定项写“尚未确定”，示例可以自行替换。','Edit the template with actual material, confirm, then copy into the current project conversation. Mark unknowns as undecided and replace examples as needed.'];
 ---
 <div id={`template-${id}`} class="prompt-template" data-template-kind={kind} data-pagefind-weight="0.2">
   <div class="template-toolbar"><h3 id={`prompt-title-${id}`}><Icon name={worksheet?"book":"message"} size={15}/>{t(title,locale)}</h3></div>
@@ -13,10 +13,11 @@ const instruction:Copy=kind==='file'?['这是文件正文，不是对话提示�
     <label for={`edit-${id}`}>{t(['① 按模板补充实际情况，不确定的地方写“尚未确定”','1. Adapt the template; mark unknowns as undecided'],locale)}</label>
     <textarea id={`edit-${id}`} data-template-editor={id} rows="8" spellcheck="false">{t(prompt,locale)}</textarea>
     <button type="button" class="button primary" data-confirm-template={id}>{t(['② 确认，生成我的专属内容','2. Confirm and generate my version'],locale)}</button>
+    <button type="button" class="button" data-reset-template hidden>{t(['使用本步新版模板（替换当前编辑内容）','Use the current step template (replace editor content)'],locale)}</button>
     <p class="small" data-template-save={id} role="status"></p>
   </div>
   <div data-template-result={id} hidden><p class="personalized-label">{t(['已确认 · 以下是本次专属内容，可一键复制','Confirmed · personalized content ready to copy'],locale)}</p><pre tabindex="0" aria-labelledby={`prompt-title-${id}`}><code data-template-text={id}>{t(prompt,locale)}</code></pre><button class="template-copy" disabled data-copy-template={id} data-copied={t(['已复制','Copied'],locale)} data-failed={t(['复制失败，请在代码框内手动选择并复制。','Copy failed. Select and copy the text in the code box.'],locale)}><Icon name="copy" size={14}/><span>{t(kind==='file'?['复制我的文件内容','Copy my file content']:worksheet?['复制我的草稿','Copy my draft']:['复制我的提示词','Copy my prompt'],locale)}</span></button></div>
-  <div class="template-footer"><span>{t(kind==='file'?['文件正文 · 合并到项目规则文件','File content · Merge into project instructions']:worksheet?['填写草稿 → 下一站再交给 AI','Complete the draft → Share with AI in the next step']:['纯文本 · 补齐实际材料后发送给 AI','Plain text · Add actual material before sending to AI'],locale)}</span><span role="status" data-template-status={id}></span></div>
+  <div class="template-footer"><span>{t(kind==='file'?['文件正文 · 合并到项目规则文件','File content · Merge into project instructions']:worksheet?['填写记录 → 核对后用于对应步骤','Complete the record → Use in the relevant step']:['纯文本 · 补齐实际材料后发送给 AI','Plain text · Add actual material before sending to AI'],locale)}</span><span role="status" data-template-status={id}></span></div>
 </div>
 <script>
 import {initTemplates} from '../scripts/templates';
