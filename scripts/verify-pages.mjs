@@ -1,3 +1,4 @@
+import {explorePaths} from '../src/data/explore/index.ts';
 import {readFile,access} from 'node:fs/promises';
 import assert from 'node:assert/strict';
 import {glossaryPaths} from '../src/data/glossary/index.ts';
@@ -29,7 +30,7 @@ for(const stage of journey){
  }
 }
 const dictionary=JSON.parse(await readFile('src/data/dictionary.json','utf8'));
-const paths=['roadmap/',...journey.map(s=>`roadmap/${s.id}/`),...learningPaths.map(p=>p+'/'),'','tools/','start/','communicate/','stacks/','components/','terms/',...glossaryPaths.map(p=>p+'/'),...practices.map(p=>p.path+'/'),'data/','check/','launch/','maintain/',...dictionary.entries.map(e=>`components/${e.id}/`),'projects/web/','projects/mini-program/','projects/mobile/','projects/desktop/'];
+const paths=[...explorePaths.map(p=>p+'/'),'roadmap/',...journey.map(s=>`roadmap/${s.id}/`),...learningPaths.map(p=>p+'/'),'','tools/','start/','communicate/','stacks/','components/','terms/',...glossaryPaths.map(p=>p+'/'),...practices.map(p=>p.path+'/'),'data/','check/','launch/','maintain/',...dictionary.entries.map(e=>`components/${e.id}/`),'projects/web/','projects/mini-program/','projects/mobile/','projects/desktop/'];
 for(const locale of ['zh-cn','en'])for(const path of paths){
  const html=await readFile(`dist/${locale}/${path}index.html`,'utf8');
  // Direct second-person guidance is intentional in the approved beginner walkthrough.

@@ -3,7 +3,7 @@ import ResourceAdvice from './ResourceAdvice.astro';
 import {t,url,type Locale} from '../data/site';
 const {path,locale}=Astro.props as {path:string;locale:Locale};
 const parts=path.split('/');
-const parent=path.startsWith('roadmap/')?'roadmap':path.startsWith('learn/stage/')?'learn':path.startsWith('learn/')?parts.length>2?parts.slice(0,-1).join('/'):'learn':path.startsWith('projects/')?'start':path.startsWith('components/')?'components':path.startsWith('terms/')?'terms':'library';
+const parent=path.startsWith('explore/')?parts.slice(0,-1).join('/'):path.startsWith('roadmap/')?'roadmap':path.startsWith('learn/stage/')?'learn':path.startsWith('learn/')?parts.length>2?parts.slice(0,-1).join('/'):'learn':path.startsWith('projects/')?'start':path.startsWith('components/')?'components':path.startsWith('terms/')?'terms':'library';
 const resourcePurpose:Record<string,[string,string]>={
  data:['项目需要保存或读取数据时，用这里确认数据放在哪里、谁能访问，再将要求交给 AI 实现并亲自检查。','When a project stores or reads data, clarify its location and access rules here, then ask AI to implement them and verify the result.'],
  check:['准备测试作品时，用这里设计具体操作和通过条件，将实际结果写成反馈，再回到测试或修复步骤。','Use this guide to plan concrete tests and passing criteria, record actual results, then return to testing or repair.'],
@@ -18,7 +18,7 @@ const resourcePurpose:Record<string,[string,string]>={
  terms:['遇到不懂的术语时，在这里查含义，再回到刚才的操作中理解它的用途；无需先背完整份词表。','Look up unfamiliar terms, then return to the action to understand their use; there is no need to memorize the glossary.']
 };
 const resourceIntro=resourcePurpose[parts[0]];
-const fallback=path==='library'||path==='roadmap'||path==='learn'?'':parent;
+const fallback=path==='explore'||path==='library'||path==='roadmap'||path==='learn'?'':parent;
 ---
 <nav class="entry-return" aria-label={t(['返回导航','Return navigation'],locale)}><a data-entry-back href={url(locale,fallback)}>{t(fallback?['← 返回上一级','← Back to parent']:['← 返回首页','← Back to home'],locale)}</a><a class="return-overview" href={url(locale,'roadmap')}>{t(['完整路线图','Complete roadmap'],locale)} <span aria-hidden="true">↗</span></a></nav>
 <!-- Reference pages explain when to use them; they are not extra required steps. -->

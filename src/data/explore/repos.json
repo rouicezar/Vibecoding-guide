@@ -1,0 +1,192 @@
+[
+  {
+    "repo": "activepieces/activepieces",
+    "url": "https://github.com/activepieces/activepieces",
+    "description": "AI Agents & MCPs & AI Workflow Automation • (~400 MCP servers for AI agents) • AI Automation / AI Agent with MCPs • AI Workflows & AI Agents • MCPs for AI Agents",
+    "archived": false,
+    "pushedAt": "2026-09-26T21:35:28Z",
+    "license": "NOASSERTION",
+    "branch": "main",
+    "checked": "2026-09-27"
+  },
+  {
+    "repo": "langgenius/dify",
+    "url": "https://github.com/langgenius/dify",
+    "description": "Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack.",
+    "archived": false,
+    "pushedAt": "2026-09-26T18:41:17Z",
+    "license": "NOASSERTION",
+    "branch": "main",
+    "checked": "2026-09-27"
+  },
+  {
+    "repo": "n8n-io/n8n",
+    "url": "https://github.com/n8n-io/n8n",
+    "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
+    "archived": false,
+    "pushedAt": "2026-09-27T03:39:28Z",
+    "license": "NOASSERTION",
+    "branch": "master",
+    "checked": "2026-09-27"
+  },
+  {
+    "repo": "formbricks/formbricks",
+    "url": "https://github.com/formbricks/formbricks",
+    "description": "Open Source Qualtrics Alternative",
+    "archived": false,
+    "pushedAt": "2026-09-26T11:19:45Z",
+    "license": "NOASSERTION",
+    "branch": "main",
+    "checked": "2026-09-27"
+  },
+  {
+    "repo": "usememos/memos",
+    "url": "https://github.com/usememos/memos",
+    "description": "Open-source, self-hosted note-taking tool built for quick capture. Markdown-native, lightweight, and fully yours.",
+    "archived": false,
+    "pushedAt": "2026-09-27T02:01:13Z",
+    "license": "MIT",
+    "branch": "main",
+    "checked": "2026-09-27"
+  },
+  {
+    "repo": "paperless-ngx/paperless-ngx",
+    "url": "https://github.com/paperless-ngx/paperless-ngx",
+    "description": "A community-supported supercharged document management system: scan, index and archive all your documents",
+    "archived": false,
+    "pushedAt": "2026-09-27T01:01:49Z",
+    "license": "GPL-3.0",
+    "branch": "dev",
+    "checked": "2026-09-27"
+  },
+  {
+    "repo": "simonw/datasette",
+    "url": "https://github.com/simonw/datasette",
+    "description": "An open source multi-tool for exploring and publishing data",
+    "archived": false,
+    "pushedAt": "2026-09-26T23:09:49Z",
+    "license": "Apache-2.0",
+    "branch": "main",
+    "checked": "2026-09-27"
+  },
+  {
+    "repo": "immich-app/immich",
+    "url": "https://github.com/immich-app/immich",
+    "description": "High performance self-hosted photo and video management solution.",
+    "archived": false,
+    "pushedAt": "2026-09-27T03:51:32Z",
+    "license": "AGPL-3.0",
+    "branch": "main",
+    "checked": "2026-09-27"
+  },
+  {
+    "repo": "makeplane/plane",
+    "url": "https://github.com/makeplane/plane",
+    "description": "🔥🔥🔥 Open-source Jira, Linear, Monday, and ClickUp alternative. Plane is a modern project management platform to manage tasks, sprints, docs, and triage.",
+    "archived": false,
+    "pushedAt": "2026-09-25T11:51:51Z",
+    "license": "AGPL-3.0",
+    "branch": "preview",
+    "checked": "2026-09-27"
+  },
+  {
+    "repo": "outline/outline",
+    "url": "https://github.com/outline/outline",
+    "description": "The fastest knowledge base for growing teams. Beautiful, realtime collaborative, feature packed, and markdown compatible.",
+    "archived": false,
+    "pushedAt": "2026-09-27T03:39:19Z",
+    "license": "NOASSERTION",
+    "branch": "main",
+    "checked": "2026-09-27"
+  },
+  {
+    "repo": "calcom/cal.diy",
+    "url": "https://github.com/calcom/cal.diy",
+    "description": "Scheduling infrastructure for absolutely everyone.",
+    "archived": false,
+    "pushedAt": "2026-09-26T07:48:40Z",
+    "license": "MIT",
+    "branch": "main",
+    "checked": "2026-09-27"
+  },
+  {
+    "repo": "Stirling-Tools/Stirling-PDF",
+    "url": "https://github.com/Stirling-Tools/Stirling-PDF",
+    "description": "#1 PDF Application on GitHub that lets you edit PDFs on any device anywhere",
+    "archived": false,
+    "pushedAt": "2026-09-27T02:45:10Z",
+    "license": "NOASSERTION",
+    "branch": "main",
+    "checked": "2026-09-27"
+  },
+  {
+    "repo": "GoogleChromeLabs/squoosh",
+    "url": "https://github.com/GoogleChromeLabs/squoosh",
+    "description": "Make images smaller using best-in-class codecs, right in the browser.",
+    "archived": false,
+    "pushedAt": "2026-09-23T14:22:01Z",
+    "license": "Apache-2.0",
+    "branch": "dev",
+    "checked": "2026-09-27"
+  },
+  {
+    "repo": "DIYgod/RSSHub",
+    "url": "https://github.com/DIYgod/RSSHub",
+    "description": "🧡 Everything is RSSible",
+    "archived": false,
+    "pushedAt": "2026-09-27T02:15:14Z",
+    "license": "AGPL-3.0",
+    "branch": "master",
+    "checked": "2026-09-27"
+  },
+  {
+    "repo": "homarr-labs/homarr",
+    "url": "https://github.com/homarr-labs/homarr",
+    "description": "A modern and easy to use dashboard. 40+ integrations. 20K+ icons built in. Authentication out of the box. No YAML, drag and drop configuration.",
+    "archived": false,
+    "pushedAt": "2026-09-26T09:51:44Z",
+    "license": "Apache-2.0",
+    "branch": "dev",
+    "checked": "2026-09-27"
+  },
+  {
+    "repo": "umami-software/umami",
+    "url": "https://github.com/umami-software/umami",
+    "description": "Umami is a privacy-first analytics platform. Traffic, campaigns, behavior, conversions, and revenue in one place — no cookies, no surveillance, self-hosted or in the cloud.",
+    "archived": false,
+    "pushedAt": "2026-09-26T22:28:01Z",
+    "license": "MIT",
+    "branch": "master",
+    "checked": "2026-09-27"
+  },
+  {
+    "repo": "karakeep-app/karakeep",
+    "url": "https://github.com/karakeep-app/karakeep",
+    "description": "A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search",
+    "archived": false,
+    "pushedAt": "2026-09-27T01:00:26Z",
+    "license": "AGPL-3.0",
+    "branch": "main",
+    "checked": "2026-09-27"
+  },
+  {
+    "repo": "louislam/uptime-kuma",
+    "url": "https://github.com/louislam/uptime-kuma",
+    "description": "A fancy self-hosted monitoring tool",
+    "archived": false,
+    "pushedAt": "2026-09-27T00:08:21Z",
+    "license": "MIT",
+    "branch": "master",
+    "checked": "2026-09-27"
+  },
+  {
+    "repo": "actualbudget/actual",
+    "url": "https://github.com/actualbudget/actual",
+    "description": "A local-first personal finance app",
+    "archived": false,
+    "pushedAt": "2026-09-25T17:03:54Z",
+    "license": "MIT",
+    "branch": "master",
+    "checked": "2026-09-27"
+  }
+]
