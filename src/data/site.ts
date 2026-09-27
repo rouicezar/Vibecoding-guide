@@ -1,8 +1,9 @@
+import {base} from './base.ts';
 export const locales = ['zh-cn', 'en'] as const;
 export type Locale = typeof locales[number];
 export type Copy = readonly [string, string];
 export const t = (text: Copy, locale: Locale) => text[locale === 'zh-cn' ? 0 : 1];
-export const url = (locale: Locale, path = '') => `/${locale}/${path ? `${path}/` : ''}`;
+export const url = (locale: Locale, path = '') => `${base}/${locale}/${path ? `${path}/` : ''}`;
 export const slogan: Copy = ['AI 时代，即使零基础不懂代码，也能 Vibe Coding。', 'Vibe coding in the AI era—even with zero coding experience.'];
 export const modules = [
   { id:'home', path:'', icon:'home', title:['首页','Home'], term:'Vibe Coding', desc:['和 AI 讲清需求、检查结果，逐步做出软件。','Describe the idea, check the results, and build with AI.'] },
