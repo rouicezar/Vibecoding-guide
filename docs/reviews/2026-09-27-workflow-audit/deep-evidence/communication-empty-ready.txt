@@ -1,0 +1,122 @@
+- link "跳到内容":
+  - /url: "#main"
+- banner:
+  - link "Vibe Guide BETA":
+    - /url: /zh-cn/
+    - text: Vibe Guide
+    - generic: BETA
+  - button "搜索学习步骤与问题":
+    - generic: 搜索想做的事…
+    - generic: ⌘ K
+  - generic "语言":
+    - link "中文":
+      - /url: http://127.0.0.1:4335/zh-cn/communicate/#first
+    - link "EN":
+      - /url: http://127.0.0.1:4335/en/communicate/#first
+  - button "关于预览":
+- complementary:
+  - navigation "学习导航":
+    - link "从这里开始":
+      - /url: /zh-cn/
+      - text: 从这里开始
+    - link "完整路线图":
+      - /url: /zh-cn/roadmap/
+      - strong: 完整路线图
+    - generic: 一步一步做
+    - link "1 想清楚做什么":
+      - /url: /zh-cn/learn/stage/idea/
+      - generic: "1"
+      - generic: 想清楚做什么
+    - link "2 选择工具，创建项目":
+      - /url: /zh-cn/learn/stage/prepare/
+      - generic: "2"
+      - generic: 选择工具，创建项目
+    - link "3 明确需求，制定开发计划":
+      - /url: /zh-cn/learn/stage/scope/
+      - generic: "3"
+      - generic: 明确需求，制定开发计划
+    - link "4 按计划开发，实现功能":
+      - /url: /zh-cn/learn/stage/build/
+      - generic: "4"
+      - generic: 按计划开发，实现功能
+    - link "5 手动测试，反馈并修复问题":
+      - /url: /zh-cn/learn/stage/check/
+      - generic: "5"
+      - generic: 手动测试，反馈并修复问题
+    - link "6 部署交付，持续维护":
+      - /url: /zh-cn/learn/stage/use/
+      - generic: "6"
+      - generic: 部署交付，持续维护
+    - link "查资料":
+      - /url: /zh-cn/library/
+      - text: 查资料
+      - generic: ↗
+    - link "遇到不懂的词":
+      - /url: /zh-cn/terms/
+      - text: 遇到不懂的词
+- main:
+  - navigation "返回导航":
+    - link "← 返回上一级":
+      - /url: /zh-cn/library/
+    - link "完整路线图":
+      - /url: /zh-cn/roadmap/
+      - text: 完整路线图 ↗
+  - paragraph: 需要给 AI 交代任务或反馈问题时，在这里选择话术，补充当前项目材料，再发到该项目的 AI 对话。
+  - generic "用这页做出判断：适用条件、限制与检查"
+  - paragraph: AGENT COMMUNICATION
+  - heading "和 Agent 沟通" [level=1]
+  - paragraph: Agent 是能使用工具、执行多步工作的 AI 助手。选一个当前任务，把背景和完成标准一起交给 AI。
+  - generic "第一次使用？看准备说明和表达示例"
+  - generic "选择或更换任务场景"
+  - heading "想法变第一版" [level=2]
+  - paragraph: 根据已填写的想法草稿，一次提出一个影响范围的问题，整理必做、暂缓和不做清单。
+  - paragraph: 比如：只需选择日期并提交预约，不做支付。
+  - paragraph: 这样说明的原因：AI 能把本次目标与已有工作分开，交付后也有明确依据检查。
+  - heading "填写实际材料" [level=3]
+  - paragraph: 下方提供可编辑模板。先填好实际材料，再生成本次话术；材料保存在当前浏览器，不上传。未知项可填写“尚未确定”。
+  - text: 背景与现状
+  - textbox "背景与现状":
+    - /placeholder: 填写实际情况或尚未确定
+  - text: 给谁用
+  - textbox "给谁用":
+    - /placeholder: 填写实际情况或尚未确定
+  - text: 问题与希望结果
+  - textbox "问题与希望结果":
+    - /placeholder: 只需选择日期并提交预约，不做支付。
+  - text: 输入材料
+  - textbox "输入材料":
+    - /placeholder: 填写实际情况或尚未确定
+  - text: 限制与不做的事
+  - textbox "限制与不做的事":
+    - /placeholder: 填写实际情况或尚未确定
+  - button "生成本次提示词"
+  - status
+  - generic "查看提示词与检查标准"
+  - heading "通用模板 · 填写后发送" [level=3]:
+    - text: 通用模板 · 填写后发送
+  - paragraph: 先在模板中补充实际材料，确认生成后再复制到当前项目的 AI 对话。不确定项写“尚未确定”，示例可以自行替换。
+  - generic: ① 按模板补充实际情况，不确定的地方写“尚未确定”
+  - textbox "① 按模板补充实际情况，不确定的地方写“尚未确定”": 【背景】填写项目用途、当前进度与已有页面。 【这个项目主要给谁使用】填写项目面向的人群，以及他们希望通过项目完成的事情。 【当前问题与目标】填写当前问题和希望达到的结果；参考上方单独标明的例子。 【输入材料】粘贴已确认范围、相关截图或复现步骤；未提供的材料请先索取。 【约束】只做本次目标；预算与发布时间尚未确定。 本次任务：根据已填写的想法草稿，一次提出一个影响范围的问题，整理必做、暂缓和不做清单。 请按以下方式配合： 1. 先复述目标、范围与完成标准；区分事实、推断和未知项。 2. 缺少会改变结果的材料时，先提出一个关键问题，不自行编造。 3. 输出具体操作顺序、预期交付物和检查办法，用普通话解释专业词。 4. 实施前保留可恢复版本；删除资料、付费、扩大权限或发布前等待确认。 5. 交付时列出改动、实际检查动作、结果、未验证项和下一步。 【检查标准】逐项核对上述目标；正常操作与失败情况都有明确结果。若无法实际执行，明确标记建议或待验证，不宣称已完成。
+  - button "② 确认，生成我的专属内容" [active]
+  - status: 草稿已保存到当前浏览器。确认后生成可复制内容。
+  - paragraph: 已确认 · 以下是本次专属内容，可一键复制
+  - generic "通用模板 · 填写后发送":
+    - code: 【背景】填写项目用途、当前进度与已有页面。 【这个项目主要给谁使用】填写项目面向的人群，以及他们希望通过项目完成的事情。 【当前问题与目标】填写当前问题和希望达到的结果；参考上方单独标明的例子。 【输入材料】粘贴已确认范围、相关截图或复现步骤；未提供的材料请先索取。 【约束】只做本次目标；预算与发布时间尚未确定。 本次任务：根据已填写的想法草稿，一次提出一个影响范围的问题，整理必做、暂缓和不做清单。 请按以下方式配合： 1. 先复述目标、范围与完成标准；区分事实、推断和未知项。 2. 缺少会改变结果的材料时，先提出一个关键问题，不自行编造。 3. 输出具体操作顺序、预期交付物和检查办法，用普通话解释专业词。 4. 实施前保留可恢复版本；删除资料、付费、扩大权限或发布前等待确认。 5. 交付时列出改动、实际检查动作、结果、未验证项和下一步。 【检查标准】逐项核对上述目标；正常操作与失败情况都有明确结果。若无法实际执行，明确标记建议或待验证，不宣称已完成。
+  - button "复制我的提示词":
+    - generic: 复制我的提示词
+  - generic: 纯文本 · 补齐实际材料后发送给 AI
+  - status: 已生成，可以复制。
+  - heading "收到结果后检查" [level=3]
+  - list:
+    - listitem: 是否对应本次目标，而非自行增加功能？
+    - listitem: 是否给出实际证据，并把未执行的事项标清？
+    - listitem: 不满足时，指出具体偏离项，要求只修正这一项再复查。
+  - generic "卡住时按结果继续"
+  - generic "还没有可用的 AI 工具？"
+  - option "尚未确定" [selected]
+  - option "可以"
+  - option "不能"
+  - option "尚未确定" [selected]
+  - option "必须"
+  - option "可接受已确认的云端处理"
+  - generic "准备工具与材料"

@@ -8,10 +8,11 @@ const instruction:Copy=kind==='file'?['这是文件正文，不是对话提示�
 ---
 <div id={`template-${id}`} class="prompt-template" data-template-kind={kind} data-pagefind-weight="0.2">
   <div class="template-toolbar"><h3 id={`prompt-title-${id}`}><Icon name={worksheet?"book":"message"} size={15}/>{t(title,locale)}</h3></div>
-  <p class="template-instruction">{t(instruction,locale)}</p>
+  <p class="small" data-template-owner></p><p class="template-instruction">{t(instruction,locale)}</p>
   <div class="template-editor-panel">
     <label for={`edit-${id}`}>{t(['① 按模板补充实际情况，不确定的地方写“尚未确定”','1. Adapt the template; mark unknowns as undecided'],locale)}</label>
     <textarea id={`edit-${id}`} data-template-editor={id} rows="8" spellcheck="false">{t(prompt,locale)}</textarea>
+    {['learn-description','learn-checkpoint','learn-open-project'].includes(id)&&<button type="button" class="button" data-use-material>{t(['带入前面已确认的材料','Use previously confirmed material'],locale)}</button>}
     <button type="button" class="button primary" data-confirm-template={id}>{t(['② 确认，生成我的专属内容','2. Confirm and generate my version'],locale)}</button>
     <button type="button" class="button" data-reset-template hidden>{t(['使用本步新版模板（替换当前编辑内容）','Use the current step template (replace editor content)'],locale)}</button>
     <p class="small" data-template-save={id} role="status"></p>

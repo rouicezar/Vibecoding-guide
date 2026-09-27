@@ -1,0 +1,478 @@
+[
+  {
+    "page": "description",
+    "id": "edit-learn-description",
+    "originalAccepted": true,
+    "hasWrittenInstructions": false,
+    "length": 135
+  },
+  {
+    "page": "tool",
+    "id": "edit-learn-tool",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 123
+  },
+  {
+    "page": "folder",
+    "id": "edit-learn-folder",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 67
+  },
+  {
+    "page": "open-project",
+    "id": "edit-learn-open-project",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 91
+  },
+  {
+    "page": "checkpoint",
+    "id": "edit-learn-checkpoint",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 230
+  },
+  {
+    "page": "first-file",
+    "id": "edit-learn-first-file",
+    "originalAccepted": true,
+    "hasWrittenInstructions": false,
+    "length": 69
+  },
+  {
+    "page": "clarify",
+    "id": "edit-learn-clarify",
+    "originalAccepted": true,
+    "hasWrittenInstructions": false,
+    "length": 125
+  },
+  {
+    "page": "scope",
+    "id": "edit-learn-scope",
+    "originalAccepted": true,
+    "hasWrittenInstructions": false,
+    "length": 111
+  },
+  {
+    "page": "requirements",
+    "id": "edit-learn-requirements",
+    "originalAccepted": true,
+    "hasWrittenInstructions": false,
+    "length": 153
+  },
+  {
+    "page": "stories",
+    "id": "edit-learn-stories",
+    "originalAccepted": true,
+    "hasWrittenInstructions": false,
+    "length": 186
+  },
+  {
+    "page": "prototype",
+    "id": "edit-learn-prototype",
+    "originalAccepted": true,
+    "hasWrittenInstructions": false,
+    "length": 162
+  },
+  {
+    "page": "choose-stack",
+    "id": "edit-learn-choose-stack",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 228
+  },
+  {
+    "page": "plan",
+    "id": "edit-learn-plan",
+    "originalAccepted": true,
+    "hasWrittenInstructions": false,
+    "length": 140
+  },
+  {
+    "page": "environment",
+    "id": "edit-learn-environment",
+    "originalAccepted": true,
+    "hasWrittenInstructions": false,
+    "length": 183
+  },
+  {
+    "page": "preview",
+    "id": "edit-learn-preview",
+    "originalAccepted": true,
+    "hasWrittenInstructions": false,
+    "length": 166
+  },
+  {
+    "page": "interface",
+    "id": "edit-learn-interface",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 106
+  },
+  {
+    "page": "save",
+    "id": "edit-learn-save",
+    "originalAccepted": true,
+    "hasWrittenInstructions": false,
+    "length": 139
+  },
+  {
+    "page": "flow",
+    "id": "edit-learn-flow",
+    "originalAccepted": true,
+    "hasWrittenInstructions": false,
+    "length": 132
+  },
+  {
+    "page": "test",
+    "id": "edit-learn-test",
+    "originalAccepted": true,
+    "hasWrittenInstructions": false,
+    "length": 134
+  },
+  {
+    "page": "restart",
+    "id": "edit-learn-restart",
+    "originalAccepted": true,
+    "hasWrittenInstructions": false,
+    "length": 73
+  },
+  {
+    "page": "accept",
+    "id": "edit-learn-accept",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 105
+  },
+  {
+    "page": "feedback",
+    "id": "edit-learn-feedback",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 253
+  },
+  {
+    "page": "repair-plan",
+    "id": "edit-learn-repair-plan",
+    "originalAccepted": true,
+    "hasWrittenInstructions": false,
+    "length": 166
+  },
+  {
+    "page": "repair",
+    "id": "edit-learn-repair",
+    "originalAccepted": true,
+    "hasWrittenInstructions": false,
+    "length": 150
+  },
+  {
+    "page": "delivery",
+    "id": "edit-learn-delivery",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 77
+  },
+  {
+    "page": "release-review",
+    "id": "edit-learn-release-review",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 186
+  },
+  {
+    "page": "package",
+    "id": "edit-learn-package",
+    "originalAccepted": true,
+    "hasWrittenInstructions": false,
+    "length": 162
+  },
+  {
+    "page": "live-check",
+    "id": "edit-learn-live-check",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 187
+  },
+  {
+    "page": "publish",
+    "id": "edit-learn-publish",
+    "originalAccepted": true,
+    "hasWrittenInstructions": false,
+    "length": 176
+  },
+  {
+    "page": "maintain",
+    "id": "edit-learn-maintain",
+    "originalAccepted": true,
+    "hasWrittenInstructions": false,
+    "length": 104
+  },
+  {
+    "page": "projects/web",
+    "id": "edit-project-web",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 250
+  },
+  {
+    "page": "projects/mobile",
+    "id": "edit-project-mobile",
+    "originalAccepted": true,
+    "hasWrittenInstructions": false,
+    "length": 10
+  },
+  {
+    "page": "projects/desktop",
+    "id": "edit-project-desktop",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 254
+  },
+  {
+    "page": "projects/mini-program",
+    "id": "edit-project-mini-program",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 259
+  },
+  {
+    "page": "tools",
+    "id": "edit-resource-tools",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 204
+  },
+  {
+    "page": "communicate",
+    "id": "edit-resource-communicate",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 176
+  },
+  {
+    "page": "communicate",
+    "id": "edit-scene-first",
+    "originalAccepted": true,
+    "hasWrittenInstructions": true,
+    "length": 433
+  },
+  {
+    "page": "communicate",
+    "id": "edit-scene-plan",
+    "originalAccepted": true,
+    "hasWrittenInstructions": true,
+    "length": 426
+  },
+  {
+    "page": "communicate",
+    "id": "edit-scene-page",
+    "originalAccepted": true,
+    "hasWrittenInstructions": true,
+    "length": 442
+  },
+  {
+    "page": "communicate",
+    "id": "edit-scene-component",
+    "originalAccepted": true,
+    "hasWrittenInstructions": true,
+    "length": 424
+  },
+  {
+    "page": "communicate",
+    "id": "edit-scene-reference",
+    "originalAccepted": true,
+    "hasWrittenInstructions": true,
+    "length": 439
+  },
+  {
+    "page": "communicate",
+    "id": "edit-scene-change",
+    "originalAccepted": true,
+    "hasWrittenInstructions": true,
+    "length": 429
+  },
+  {
+    "page": "communicate",
+    "id": "edit-scene-report",
+    "originalAccepted": true,
+    "hasWrittenInstructions": true,
+    "length": 430
+  },
+  {
+    "page": "communicate",
+    "id": "edit-scene-diagnose",
+    "originalAccepted": true,
+    "hasWrittenInstructions": true,
+    "length": 433
+  },
+  {
+    "page": "communicate",
+    "id": "edit-scene-recover",
+    "originalAccepted": true,
+    "hasWrittenInstructions": true,
+    "length": 437
+  },
+  {
+    "page": "communicate",
+    "id": "edit-scene-verify",
+    "originalAccepted": true,
+    "hasWrittenInstructions": true,
+    "length": 438
+  },
+  {
+    "page": "communicate",
+    "id": "edit-scene-handoff",
+    "originalAccepted": true,
+    "hasWrittenInstructions": true,
+    "length": 440
+  },
+  {
+    "page": "communicate",
+    "id": "edit-scene-release",
+    "originalAccepted": true,
+    "hasWrittenInstructions": true,
+    "length": 439
+  },
+  {
+    "page": "communicate/tools",
+    "id": "edit-tool-trial",
+    "originalAccepted": false,
+    "hasWrittenInstructions": true,
+    "length": 449
+  },
+  {
+    "page": "communicate/setup",
+    "id": "edit-git-setup",
+    "originalAccepted": false,
+    "hasWrittenInstructions": true,
+    "length": 649
+  },
+  {
+    "page": "communicate/setup",
+    "id": "edit-agents-file",
+    "originalAccepted": true,
+    "hasWrittenInstructions": true,
+    "length": 871
+  },
+  {
+    "page": "communicate/setup",
+    "id": "edit-agents-create",
+    "originalAccepted": true,
+    "hasWrittenInstructions": true,
+    "length": 1325
+  },
+  {
+    "page": "communicate/setup",
+    "id": "edit-blocker-tell-folder",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 359
+  },
+  {
+    "page": "communicate/setup",
+    "id": "edit-blocker-tell-rules",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 386
+  },
+  {
+    "page": "communicate/setup",
+    "id": "edit-blocker-environment-git",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 373
+  },
+  {
+    "page": "communicate/setup",
+    "id": "edit-blocker-environment-start",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 334
+  },
+  {
+    "page": "stacks",
+    "id": "edit-resource-stacks",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 190
+  },
+  {
+    "page": "stacks",
+    "id": "edit-stack-request",
+    "originalAccepted": true,
+    "hasWrittenInstructions": true,
+    "length": 651
+  },
+  {
+    "page": "data",
+    "id": "edit-external-api-plan",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 175
+  },
+  {
+    "page": "data",
+    "id": "edit-record-backend",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 183
+  },
+  {
+    "page": "data",
+    "id": "edit-guide-backend",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 210
+  },
+  {
+    "page": "check",
+    "id": "edit-record-test",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 260
+  },
+  {
+    "page": "check",
+    "id": "edit-guide-test",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 190
+  },
+  {
+    "page": "launch",
+    "id": "edit-record-launch",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 228
+  },
+  {
+    "page": "launch",
+    "id": "edit-guide-launch",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 217
+  },
+  {
+    "page": "maintain",
+    "id": "edit-record-ops",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 229
+  },
+  {
+    "page": "maintain",
+    "id": "edit-guide-ops",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 195
+  },
+  {
+    "page": "terms",
+    "id": "edit-resource-terms",
+    "originalAccepted": false,
+    "hasWrittenInstructions": false,
+    "length": 140
+  }
+]

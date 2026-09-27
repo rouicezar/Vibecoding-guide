@@ -1,4 +1,4 @@
-import {t, type Locale, type Copy} from "./site";
+import {t, type Locale, type Copy} from "./site.ts";
 export const scenarios = [
 {id:"first", title:["想法变第一版","Shape a first version"], task:["根据已填写的想法草稿，一次提出一个影响范围的问题，整理必做、暂缓和不做清单。","Use the completed idea worksheet. Ask one scope-changing question at a time; list essentials, deferred work, and exclusions."], example:["只需选择日期并提交预约，不做支付。","Select a date and submit a reservation; no payments."]},
 {id:"plan", title:["先出方案","Plan before building"], task:["先比较两种可行做法的成本、限制和维护方式；等待范围确认再实施。","Compare two feasible approaches, costs, limits, and upkeep. Wait for scope confirmation before implementation."], example:["列出页面和制作顺序，暂不改文件。","List pages and build order; do not edit files yet."]},
@@ -16,7 +16,7 @@ export const scenarios = [
 export function makePrompt(index:number,locale:Locale,values?:string[]){
  const scene=scenarios[index];
  const defaults=[t(['填写项目用途、当前进度与已有页面。','Enter the purpose, current progress, and existing page.'],locale),t(['填写项目面向的人群，以及他们希望通过项目完成的事情。','Enter the intended users.'],locale),t(['填写当前问题和希望达到的结果；参考上方单独标明的例子。','Enter the current problem and desired result; refer to the separately labeled example above.'],locale),t(['粘贴已确认范围、相关截图或复现步骤；未提供的材料请先索取。','Attach agreed scope, relevant screenshots, or reproduction steps; request missing material first.'],locale),t(['只做本次目标；预算与发布时间尚未确定。','Limit work to this goal; budget and release date are undecided.'],locale)];
- const v=values??defaults;
+ const v=values??defaults.map(value=>locale==='zh-cn'?`【${value}】`:`[${value}]`);
  return locale==='zh-cn'?`【背景】${v[0]}
 【这个项目主要给谁使用】${v[1]}
 【当前问题与目标】${v[2]}

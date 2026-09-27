@@ -1,3 +1,4 @@
+import {applyLearningContracts} from './learning-contracts.ts';
 import {applyPromptReview} from './learning-prompt-review.ts';
 import {understanding} from './learning-understanding.ts';
 import {additions} from './learning-additions.ts';
@@ -55,6 +56,7 @@ lessons.find(l=>l.id==='package')!.choices=[{id:'feedback',label:['试运行失�
 lessons.find(l=>l.id==='delivery')!.choices=[{id:'release-review',label:['已选好交付方式，检查条件','Check delivery readiness']}];
 lessons.find(l=>l.id==='live-check')!.choices=[{id:'feedback',label:['实际入口有问题','Report delivery issues']},{id:'maintain',label:['已核对，留下维护说明','Record maintenance instructions']}];
 applyPromptReview(lessons);
+applyLearningContracts(lessons);
 export const legacyLessons:Record<string,string>={idea:'idea',tell:'tool',refine:'clarify',scope:'scope',requirements:'requirements',stack:'choose-stack',plan:'plan',environment:'environment',build:'preview',ui:'interface',backend:'save',flow:'flow',test:'test',accept:'accept',launch:'delivery',maintain:'maintain'};
 export const lessonPath=(id:string)=>`learn/${id}`;
 export const learningPaths=['learn','library',...phases.map(p=>`learn/stage/${p.id}`),...lessons.flatMap(l=>[lessonPath(l.id),`${lessonPath(l.id)}/help`,...l.issues.map(i=>`${lessonPath(l.id)}/help/${i.id}`)])];

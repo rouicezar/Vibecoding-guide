@@ -14,7 +14,7 @@ const label=(zh:string,en:string)=>t([zh,en],locale);
 ---
 {!stage?<>
 <header class="page-intro"><span class="eyebrow">VIBE CODING ROADMAP</span><h1>{label('从想法到作品，完整路线图','The complete path from idea to product')}</h1><p class="lead">{label('先看每一站的关系，再进入当前要做的事。所有知识点都挂在对应节点下面。','See how the stages connect, then enter the current task. Related knowledge lives under each node.')}</p></header>
-<ProjectRoadmap locale={locale}/>
+<p class="local-note">{label("主线共6阶段、31个动作；下方知识路线用于查资料，不是额外必做步骤。", "The main route has 6 stages and 31 actions; the knowledge map below is reference, not additional required work.")}</p><ProjectRoadmap locale={locale}/>
 <details class="learn-details"><summary>{label('查看完整知识路线与制作分支','Explore the full knowledge map and branches')}</summary><Roadmap locale={locale} compact/></details>
 </>:<article class="node-guide">
 <nav class="node-crumb"><a href={url(locale,'roadmap')}>{label('完整路线图','Complete roadmap')}</a><span> / </span>{stage.parent&&<><a href={url(locale,`roadmap/${stage.parent}`)}>{t(journey.find(s=>s.id===stage.parent)!.title,locale)}</a><span> / </span></>}{t(stage.title,locale)}</nav>

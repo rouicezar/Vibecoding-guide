@@ -1,0 +1,110 @@
+- link "跳到内容":
+  - /url: "#main"
+- banner:
+  - link "Vibe Guide BETA":
+    - /url: /zh-cn/
+    - text: Vibe Guide
+    - generic: BETA
+  - button "搜索学习步骤与问题":
+    - generic: 搜索想做的事…
+    - generic: ⌘ K
+  - generic "语言":
+    - link "中文":
+      - /url: /zh-cn/learn/package/
+    - link "EN":
+      - /url: /en/learn/package/
+  - button "关于预览":
+- complementary:
+  - navigation "学习导航":
+    - link "从这里开始":
+      - /url: /zh-cn/
+      - text: 从这里开始
+    - link "完整路线图":
+      - /url: /zh-cn/roadmap/
+      - strong: 完整路线图
+    - generic: 一步一步做
+    - link "1 想清楚做什么":
+      - /url: /zh-cn/learn/stage/idea/
+      - generic: "1"
+      - generic: 想清楚做什么
+    - link "2 选择工具，创建项目":
+      - /url: /zh-cn/learn/stage/prepare/
+      - generic: "2"
+      - generic: 选择工具，创建项目
+    - link "3 明确需求，制定开发计划":
+      - /url: /zh-cn/learn/stage/scope/
+      - generic: "3"
+      - generic: 明确需求，制定开发计划
+    - link "4 按计划开发，实现功能":
+      - /url: /zh-cn/learn/stage/build/
+      - generic: "4"
+      - generic: 按计划开发，实现功能
+    - link "5 手动测试，反馈并修复问题":
+      - /url: /zh-cn/learn/stage/check/
+      - generic: "5"
+      - generic: 手动测试，反馈并修复问题
+    - link "6 部署交付，持续维护":
+      - /url: /zh-cn/learn/stage/use/
+      - generic: "6"
+      - generic: 部署交付，持续维护
+    - link "查资料":
+      - /url: /zh-cn/library/
+      - text: 查资料
+      - generic: ↗
+    - link "遇到不懂的词":
+      - /url: /zh-cn/terms/
+      - text: 遇到不懂的词
+- main:
+  - navigation "返回导航":
+    - link "← 返回上一级":
+      - /url: /zh-cn/learn/
+    - link "完整路线图":
+      - /url: /zh-cn/roadmap/
+      - text: 完整路线图 ↗
+  - navigation "当前位置":
+    - link "学习路线":
+      - /url: /zh-cn/learn/
+    - generic: /
+    - link "部署交付，持续维护":
+      - /url: /zh-cn/learn/stage/use/
+  - paragraph: 当前动作 · 28 / 31
+  - heading "准备交付物，并实际试运行" [level=1]
+  - paragraph: 这是制作项目的第 28 步。构建成功只说明生成了文件。实际打开和使用交付物，才能发现目标环境里的问题。
+  - generic: 项目对话和测试环境
+  - figure "操作示意 · 非工具截图":
+    - strong: 准备交付物
+    - generic: →
+    - strong: 试安装或部署
+    - generic: →
+    - strong: 核对运行结果
+    - generic: 操作示意 · 非工具截图
+  - list:
+    - listitem: 让 AI 根据已确认平台准备构建、部署配置或安装包。不要默认所有项目都需要一键脚本。
+    - listitem: 在适当测试环境打开网址或安装包，试用核心流程、重新打开和数据保留，记录结果。
+  - generic "按模板填写，生成给 AI 的话"
+  - heading "发到当前项目的 AI 对话" [level=3]:
+    - text: 发到当前项目的 AI 对话
+  - generic: ① 按模板补充实际情况，不确定的地方写“尚未确定”
+  - textbox "① 按模板补充实际情况，不确定的地方写“尚未确定”": 读取已确认的 docs/release.md，只准备适合本项目的构建/部署配置或目标系统安装包。写清前置条件、执行位置、费用、配置位置、成功现象和恢复方法；真实密钥不写入仓库或包。实际试部署或试安装，检查核心操作、重新打开和数据保留。记录版本及结果；无法验证的内容明确保留。未经本人确认不正式发布，不默认添加 Docker。
+  - button "② 确认，生成我的专属内容" [active]
+  - status: 草稿已保存到当前浏览器。确认后生成可复制内容。
+  - paragraph: 已确认 · 以下是本次专属内容，可一键复制
+  - generic "发到当前项目的 AI 对话":
+    - code: 读取已确认的 docs/release.md，只准备适合本项目的构建/部署配置或目标系统安装包。写清前置条件、执行位置、费用、配置位置、成功现象和恢复方法；真实密钥不写入仓库或包。实际试部署或试安装，检查核心操作、重新打开和数据保留。记录版本及结果；无法验证的内容明确保留。未经本人确认不正式发布，不默认添加 Docker。
+  - button "复制我的提示词":
+    - generic: 复制我的提示词
+  - status: 已生成，可以复制。
+  - heading "看到这个结果，才算完成" [level=2]:
+    - text: 看到这个结果，才算完成
+  - paragraph: 实际交付物试运行通过，有使用及恢复说明，正式发布仍需本人确认。
+  - generic "弄懂原理，再试着自己判断"
+  - link "没做到 / 我卡住了 →":
+    - /url: /zh-cn/learn/package/help/
+  - link "试运行失败，记录问题 →":
+    - /url: /zh-cn/learn/feedback/
+  - link "试运行通过，确认交付 →":
+    - /url: /zh-cn/learn/live-check/
+  - paragraph:
+    - link "查看这一站的完整知识与路线位置 →":
+      - /url: /zh-cn/roadmap/launch/
+  - status: 已保存到当前浏览器。

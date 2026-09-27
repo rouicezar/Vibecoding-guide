@@ -1,0 +1,5008 @@
+[
+  {
+    "path": "roadmap",
+    "links": [
+      {
+        "href": "/zh-cn/",
+        "text": "← 返回首页"
+      },
+      {
+        "href": "/zh-cn/roadmap/",
+        "text": "完整路线图 ↗"
+      },
+      {
+        "href": "/zh-cn/learn/idea/",
+        "text": "01记录项目想法明确用户、问题与预期结果"
+      },
+      {
+        "href": "/zh-cn/learn/description/",
+        "text": "02整理项目描述一份可以交给 AI 的项目说明"
+      },
+      {
+        "href": "/zh-cn/learn/tool/",
+        "text": "03选择 AI 工具比较上手、额度、费用与能力"
+      },
+      {
+        "href": "/zh-cn/learn/folder/",
+        "text": "04创建项目文件夹一个专属于本项目的存放位置"
+      },
+      {
+        "href": "/zh-cn/learn/open-project/",
+        "text": "05在工具中打开项目确认对话关联正确文件夹"
+      },
+      {
+        "href": "/zh-cn/learn/clarify/",
+        "text": "06澄清需求与第一版范围回答疑问，确定先做与暂不做的事"
+      },
+      {
+        "href": "/zh-cn/learn/requirements/",
+        "text": "07形成需求与用户故事说明功能，以及用户怎样完成任务"
+      },
+      {
+        "href": "/zh-cn/learn/prototype/",
+        "text": "08确认界面与技术方案关键页面、交互与实现方案"
+      },
+      {
+        "href": "/zh-cn/learn/plan/",
+        "text": "09制定开发计划与测试标准可逐项执行、可检查的任务清单"
+      },
+      {
+        "href": "/zh-cn/learn/checkpoint/",
+        "text": "10准备 Git 与项目规则可恢复的起点与 AI 工作约定"
+      },
+      {
+        "href": "/zh-cn/learn/environment/",
+        "text": "11检查环境并初始化项目能启动的项目与再次打开的方法"
+      },
+      {
+        "href": "/zh-cn/learn/preview/",
+        "text": "12按计划分步开发并测试走通核心操作，核对正常与异常结果"
+      },
+      {
+        "href": "/zh-cn/learn/accept/",
+        "text": "13亲自测试完整使用过程对照最初目标，记录真实结果"
+      },
+      {
+        "href": "/zh-cn/learn/delivery/",
+        "text": "14选择交付方式自己用、网址或安装包"
+      },
+      {
+        "href": "/zh-cn/learn/release-review/",
+        "text": "15评估上线与交付条件确认功能、数据、权限和恢复条件"
+      },
+      {
+        "href": "/zh-cn/learn/package/",
+        "text": "16准备部署脚本或安装包按交付方式生成产物并试运行"
+      },
+      {
+        "href": "/zh-cn/learn/live-check/",
+        "text": "17交付上线，检查实际入口从用户入口完成一次真实操作"
+      },
+      {
+        "href": "/zh-cn/learn/maintain/",
+        "text": "18记录维护与下一次迭代留下启动、恢复与后续任务说明"
+      },
+      {
+        "href": "/zh-cn/learn/feedback/",
+        "text": "记录反馈"
+      },
+      {
+        "href": "/zh-cn/learn/repair-plan/",
+        "text": "修复计划与测试标准"
+      },
+      {
+        "href": "/zh-cn/learn/repair/",
+        "text": "修复与复测"
+      },
+      {
+        "href": "/zh-cn/learn/accept/",
+        "text": "↶ 回到人工验收"
+      },
+      {
+        "href": "/zh-cn/learn/release-review/",
+        "text": "↶ 回到上线评估"
+      },
+      {
+        "href": "/zh-cn/learn/delivery/",
+        "text": "本机使用"
+      },
+      {
+        "href": "/zh-cn/learn/package/",
+        "text": "网站部署"
+      },
+      {
+        "href": "/zh-cn/learn/package/",
+        "text": "应用安装包"
+      },
+      {
+        "href": "/zh-cn/learn/publish/",
+        "text": "静态网站可参考 GitHub Pages ↗"
+      },
+      {
+        "href": "/zh-cn/roadmap/idea/",
+        "text": "有一个想法01 · Idea↗"
+      },
+      {
+        "href": "/zh-cn/roadmap/tell/",
+        "text": "准备 AI 工具并开始对话02 · Conversation↗"
+      },
+      {
+        "href": "/zh-cn/roadmap/refine/",
+        "text": "让 AI 提问补全03 · Clarification↗"
+      },
+      {
+        "href": "/zh-cn/roadmap/scope/",
+        "text": "确认第一版范围04 · Scope / MVP↗"
+      },
+      {
+        "href": "/zh-cn/roadmap/requirements/",
+        "text": "让 AI 生成需求文档05 · Requirements / PRD↗"
+      },
+      {
+        "href": "/zh-cn/roadmap/stack/",
+        "text": "让 AI 推荐技术选型06 · Tech Stack↗"
+      },
+      {
+        "href": "/zh-cn/roadmap/plan/",
+        "text": "让 AI 制定可跟踪的开发计划07 · Development Plan↗"
+      },
+      {
+        "href": "/zh-cn/roadmap/environment/",
+        "text": "让 AI 准备项目环境08 · Setup / Environment↗"
+      },
+      {
+        "href": "/zh-cn/roadmap/build/",
+        "text": "让 AI 分步制作09 · Implementation↗"
+      },
+      {
+        "href": "/zh-cn/roadmap/ui/",
+        "text": "↳ 让 AI 制作界面与组件 →"
+      },
+      {
+        "href": "/zh-cn/roadmap/backend/",
+        "text": "↳ 让 AI 接好数据与权限 →"
+      },
+      {
+        "href": "/zh-cn/roadmap/flow/",
+        "text": "↳ 接通完整使用流程 →"
+      },
+      {
+        "href": "/zh-cn/roadmap/test/",
+        "text": "让 AI 测试并修复10 · Testing↗"
+      },
+      {
+        "href": "/zh-cn/roadmap/accept/",
+        "text": "实际试用并确认发布11 · Acceptance↗"
+      },
+      {
+        "href": "/zh-cn/roadmap/launch/",
+        "text": "让 AI 协助部署上线12 · Deployment / Release↗"
+      },
+      {
+        "href": "/zh-cn/roadmap/maintain/",
+        "text": "收集反馈并维护迭代13 · Maintenance当前"
+      },
+      {
+        "href": "/zh-cn/learn/idea/",
+        "text": "零基础？从第一个小动作开始 →"
+      }
+    ],
+    "templates": [],
+    "text": "← 返回首页\n完整路线图 ↗\nVIBE CODING ROADMAP\n从想法到作品，完整路线图\n\n先看每一站的关系，再进入当前要做的事。所有知识点都挂在对应节点下面。\n\n沿彩色路线，从想法走到交付。18 个关键节点串起 31 个教学动作，点击节点开始这一段。\n\n阶段 1\n把想法说清楚\n→\n01\n记录项目想法\n\n明确用户、问题与预期结果\n\n02\n整理项目描述\n\n一份可以交给 AI 的项目说明\n\n阶段 2\n准备协作空间\n←\n03\n选择 AI 工具\n\n比较上手、额度、费用与能力\n\n04\n创建项目文件夹\n\n一个专属于本项目的存放位置\n\n05\n在工具中打开项目\n\n确认对话关联正确文件夹\n\n阶段 3\n把需求变成计划\n→\n06\n澄清需求与第一版范围\n\n回答疑问，确定先做与暂不做的事\n\n07\n形成需求与用户故事\n\n说明功能，以及用户怎样完成任务\n\n08\n确认界面与技术方案\n\n关键页面、交互与实现方案\n\n09\n制定开发计划与测试标准\n\n可逐项执行、可检查的任务清单\n\n阶段 4\n制作并验证功能\n←\n10\n准备 Git 与项目规则\n\n可恢复的起点与 AI 工作约定\n\n11\n检查环境并初始化项目\n\n能启动的项目与再次打开的方法\n\n12\n按计划分步开发并测试\n\n走通核心操作，核对正常与异常结果\n\n阶段 5\n验收与修复\n→\n13\n亲自测试完整使用过程\n\n对照最初目标，记录真实结果\n\n14\n选择交付方式\n\n自己用、网址或安装包\n\n15\n评估上线与交付条件\n\n确认功能、数据、权限和恢复条件\n\n阶段 6\n交付与持续维护\n←\n16\n准备部署脚本或安装包\n\n按交付方式生成产物并试运行\n\n17\n交付上线，检查实际入口\n\n从用户入口完成一次真实操作\n\n18\n记录维护与下一次迭代\n\n留下启动、恢复与后续任务说明\n\n没通过？沿这条路修好再继续\n\n人工验收或上线评估发现问题时：\n\n记录反馈\n→\n修复计划与测试标准\n→\n修复与复测\n\n↶ 回到人工验收 · ↶ 回到上线评估\n\n选择适合项目的交付方式\n本机使用\n网站部署\n应用安装包\n\n静态网站可参考 GitHub Pages ↗\n\n交付后仍需检查实际入口，有问题就返回反馈与修复。\n\nGit 与项目规则在第一次改文件前准备；进入节点后，按具体动作顺序操作。\n\n查看完整知识路线与制作分支",
+    "title": "从想法到作品，完整路线图"
+  },
+  {
+    "path": "library",
+    "links": [
+      {
+        "href": "/zh-cn/",
+        "text": "← 返回首页"
+      },
+      {
+        "href": "/zh-cn/roadmap/",
+        "text": "完整路线图 ↗"
+      },
+      {
+        "href": "/zh-cn/learn/",
+        "text": "学习路线"
+      },
+      {
+        "href": "/zh-cn/terms/",
+        "text": "AI 与项目开发术语库大模型、Skill、Agent、MCP、前后端、API……一句解释，配上生活例子和图解。"
+      },
+      {
+        "href": "/zh-cn/start/",
+        "text": "到底做网站、小程序还是 App？还没确定用户从哪里打开项目时。读完得到：带理由的项目形式选择"
+      },
+      {
+        "href": "/zh-cn/tools/",
+        "text": "选哪个 AI 工具，先花多少钱？准备开始项目，或当前工具无法完成实际任务时。读完得到：可用工具和实际预算记录"
+      },
+      {
+        "href": "/zh-cn/stacks/",
+        "text": "怎么选技术，不被名词绕晕？范围与关键交互明确，需要确认实现方式时。读完得到：有约束和验证依据的技术方案"
+      },
+      {
+        "href": "/zh-cn/communicate/",
+        "text": "怎么让 AI 理解任务，避免越做越偏？准备发新任务、修改一处或反馈错误时。读完得到：只处理当前任务的提示词"
+      },
+      {
+        "href": "/zh-cn/components/",
+        "text": "如何描述界面，需要哪种组件？已知道用户要做的动作，需要安排界面时。读完得到：适合任务的组件与可检查交互"
+      },
+      {
+        "href": "/zh-cn/data/",
+        "text": "数据存哪里，是否需要账号和后端？项目需要保存、共享资料或连接外部服务时。读完得到：保存、访问与恢复规则"
+      },
+      {
+        "href": "/zh-cn/check/",
+        "text": "怎样判断做对了，失败怎么反馈？功能可操作，准备人工验收或修复后复测时。读完得到：可复现的验收与问题记录"
+      },
+      {
+        "href": "/zh-cn/launch/",
+        "text": "现在能交付吗，选网址还是安装包？人工验收通过，准备让目标用户实际使用时。读完得到：带证据的交付决定"
+      },
+      {
+        "href": "/zh-cn/maintain/",
+        "text": "上线以后怎么继续用、继续改？作品已交付，或准备开始下一次修改时。读完得到：可执行的维护与交接记录"
+      },
+      {
+        "href": "/zh-cn/terms/",
+        "text": "这个词会影响当前哪一步？遇到不懂的术语，无法判断下一步时。读完得到：理解当前决定后回到操作"
+      },
+      {
+        "href": "/zh-cn/communicate/tools/",
+        "text": "打开工具并检查项目访问 →"
+      },
+      {
+        "href": "/zh-cn/communicate/setup/",
+        "text": "Git 与项目规则 →"
+      },
+      {
+        "href": "/zh-cn/components/style/",
+        "text": "描述界面风格 →"
+      },
+      {
+        "href": "/zh-cn/components/edit/",
+        "text": "只改一处界面 →"
+      }
+    ],
+    "templates": [],
+    "text": "← 返回首页\n完整路线图 ↗\n学习路线\n带着问题来，拿着方法走\n\n不必把资料库读完。选择当前卡住的问题，看适用条件与方法，带着结果回到项目。\n\nAI 与项目开发术语库\n大模型、Skill、Agent、MCP、前后端、API……一句解释，配上生活例子和图解。\n决定做什么、用什么\n到底做网站、小程序还是 App？\n\n还没确定用户从哪里打开项目时。\n\n读完得到：带理由的项目形式选择\n选哪个 AI 工具，先花多少钱？\n\n准备开始项目，或当前工具无法完成实际任务时。\n\n读完得到：可用工具和实际预算记录\n怎么选技术，不被名词绕晕？\n\n范围与关键交互明确，需要确认实现方式时。\n\n读完得到：有约束和验证依据的技术方案\n把当前任务做出来\n怎么让 AI 理解任务，避免越做越偏？\n\n准备发新任务、修改一处或反馈错误时。\n\n读完得到：只处理当前任务的提示词\n如何描述界面，需要哪种组件？\n\n已知道用户要做的动作，需要安排界面时。\n\n读完得到：适合任务的组件与可检查交互\n数据存哪里，是否需要账号和后端？\n\n项目需要保存、共享资料或连接外部服务时。\n\n读完得到：保存、访问与恢复规则\n检查、交付、继续维护\n怎样判断做对了，失败怎么反馈？\n\n功能可操作，准备人工验收或修复后复测时。\n\n读完得到：可复现的验收与问题记录\n现在能交付吗，选网址还是安装包？\n\n人工验收通过，准备让目标用户实际使用时。\n\n读完得到：带证据的交付决定\n上线以后怎么继续用、继续改？\n\n作品已交付，或准备开始下一次修改时。\n\n读完得到：可执行的维护与交接记录\n这个词会影响当前哪一步？\n\n遇到不懂的术语，无法判断下一步时。\n\n读完得到：理解当前决定后回到操作\n已有明确操作？直接查专项方法\n\n草稿与进度只保存在当前浏览器。",
+    "title": "带着问题来，拿着方法走"
+  },
+  {
+    "path": "start",
+    "links": [
+      {
+        "href": "/zh-cn/library/",
+        "text": "← 返回上一级"
+      },
+      {
+        "href": "/zh-cn/roadmap/",
+        "text": "完整路线图 ↗"
+      },
+      {
+        "href": "/zh-cn/projects/web/",
+        "text": "the-idea.site个人作品展示站从这里开始 →界面示意"
+      },
+      {
+        "href": "/zh-cn/projects/web/",
+        "text": "查看适用条件与下一步"
+      },
+      {
+        "href": "/zh-cn/projects/mini-program/",
+        "text": "‹小程序活动介绍与报名从这里开始 →界面示意"
+      },
+      {
+        "href": "/zh-cn/projects/mini-program/",
+        "text": "查看适用条件与下一步"
+      },
+      {
+        "href": "/zh-cn/projects/mobile/",
+        "text": "‹手机 App每日记录应用从这里开始 →界面示意"
+      },
+      {
+        "href": "/zh-cn/projects/mobile/",
+        "text": "查看适用条件与下一步"
+      },
+      {
+        "href": "/zh-cn/projects/desktop/",
+        "text": "桌面 App文件整理助手从这里开始 →界面示意"
+      },
+      {
+        "href": "/zh-cn/projects/desktop/",
+        "text": "查看适用条件与下一步"
+      },
+      {
+        "href": "/zh-cn/projects/web/",
+        "text": "Web 网站与应用"
+      },
+      {
+        "href": "/zh-cn/projects/mini-program/",
+        "text": "小程序"
+      },
+      {
+        "href": "/zh-cn/projects/mobile/",
+        "text": "手机 App"
+      },
+      {
+        "href": "/zh-cn/projects/desktop/",
+        "text": "桌面 App"
+      }
+    ],
+    "templates": [],
+    "text": "← 返回上一级\n完整路线图 ↗\n\n还不确定项目属于哪一类时，在这里了解不同作品的用途，把适合自己的方向写进项目描述。\n\nPROJECT TYPES\n想做一个什么产品？\n\n先判断用户从哪里打开、是否需要安装、关键能力是什么，再比较四种形式。不确定时先验证关键能力。\n\n项目分类 · Project Types\n\n同一个想法，可以做成不同形式。区别在于用户在哪里打开、是否需要安装，以及使用者要准备什么。\n\n还是不知道怎么选？先回答这四个问题\nthe-idea.site\n个人作品展示站\n从这里开始 →\n界面示意\n通过网址使用\nWeb 网站与应用\n\n把想法变成一个网址。\n\n用户点开网址就能完成任务，不要求先安装。\n\n是否适合？看这四点\n查看适用条件与下一步\n‹\n小程序\n活动介绍与报名\n从这里开始 →\n界面示意\n从一个平台开始\n小程序\n\n在用户熟悉的地方，做一个小工具。\n\n用户已集中在某个平台，服务直接在平台里打开。\n\n是否适合？看这四点\n查看适用条件与下一步\n‹\n手机 App\n每日记录应用\n从这里开始 →\n界面示意\n先核对真机与分发条件\n手机 App\n\n让一个好想法，成为日常习惯。\n\n手机是主要使用场景，安装后的持续使用确有价值。\n\n是否适合？看这四点\n查看适用条件与下一步\n桌面 App\n文件整理助手\n从这里开始 →\n界面示意\n先核对目标系统与安装\n桌面 App\n\n把重复的电脑工作，交给自己的工具。\n\n主要在电脑工作，需要处理本机文件或系统能力。\n\n是否适合？看这四点\n查看适用条件与下一步\n放在一起，更容易选\n项目\t适合谁\t最后得到什么\nWeb 网站与应用\t需要链接分享与浏览器使用\t一个可分享的网址\n小程序\t已有明确的平台用户\t一个平台内的正式入口\n手机 App\t能准备目标真机并验证安装与更新\t能在真手机上使用的应用\n桌面 App\t想解决电脑上的重复工作\t别人也能安装的电脑工具",
+    "title": "想做一个什么产品？"
+  },
+  {
+    "path": "projects/web",
+    "links": [
+      {
+        "href": "/zh-cn/start/",
+        "text": "← 返回上一级"
+      },
+      {
+        "href": "/zh-cn/roadmap/",
+        "text": "完整路线图 ↗"
+      },
+      {
+        "href": "/zh-cn/start/",
+        "text": "项目分类"
+      },
+      {
+        "href": "/zh-cn/projects/desktop/",
+        "text": "比较另一种形式 →"
+      },
+      {
+        "href": "https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/What_is_a_progressive_web_app",
+        "text": "MDN · Web / PWA 能力 ↗"
+      },
+      {
+        "href": "#overview",
+        "text": "开始之前"
+      },
+      {
+        "href": "#steps",
+        "text": "制作路线"
+      },
+      {
+        "href": "#prompt",
+        "text": "对 AI 这样说"
+      },
+      {
+        "href": "#terms",
+        "text": "认识几个词"
+      },
+      {
+        "href": "/zh-cn/learn/description/",
+        "text": "选好形式后：更新项目描述，再按主线制作 →"
+      },
+      {
+        "href": "/zh-cn/learn/accept/",
+        "text": "打开实际试用与发布确认模板 →"
+      },
+      {
+        "href": "#prompt",
+        "text": "核对项目形式"
+      },
+      {
+        "href": "/zh-cn/start/",
+        "text": "← 比较其他项目"
+      }
+    ],
+    "templates": [
+      {
+        "id": "edit-project-web",
+        "value": "本次只判断项目形式，不开始开发。\n候选形式：web\n用户群体与常用设备：【填写】\n要完成的核心操作：【填写】\n用户从哪里打开、是否接受安装：【填写】\n必须使用的设备或平台能力：【填写或无】\n离线、保存与跨设备要求：【填写或尚未确定】\n已有电脑、手机、平台账号与测试条件：【填写】\n预算与维护投入：【填写】\n请逐项说明：适合的理由、不适合的条件、尚需验证的关键能力，以及一种替代形式。信息不足先问影响选择的问题，不把零基础等同于不能开发。最后给出一个最小验证任务和通过标准；不安装、不生成项目、不发布。"
+      }
+    ],
+    "text": "← 返回上一级\n完整路线图 ↗\n\n这里帮助理解这类项目需要哪些能力，把符合自身目标的功能带回项目描述，不必照搬所有功能。\n\n项目分类\nWeb 网站与应用\nWEB DEVELOPMENT\n把想法变成一个网址。\n\n不需要安装。别人用手机或电脑打开网址，就能看到和使用作品。第一次尝试 Vibe Coding，可以从这里开始。\n\n通过网址使用\nthe-idea.site\n个人作品展示站\n从这里开始 →\n界面示意\n先判断是否适合，再开始制作\n01\n适合什么项目\n\n作品展示、内容资料站、报名表、计算器、预约和团队管理工具；主要操作能在浏览器中完成，重视链接分享与跨设备访问。\n\n02\n适合谁来开发\n\n想先验证需求、用户同时使用手机和电脑、希望降低安装门槛的人；愿意测试不同屏幕，并维护实际需要的托管和数据服务。零基础可从一条小流程开始。\n\n03\n不适合什么项目\n\n核心功能必须深度控制系统、长期后台运行或直接批量操作本机文件，且浏览器能力无法满足的项目。离线、相机或桌面图标本身不代表必须做 App，先测试 PWA 和目标浏览器的实际支持。\n\n04\n哪些人暂不宜选\n\n核心诉求是操作系统能力，却不愿先验证浏览器限制的人；希望多人共享资料，但完全不准备数据服务、访问规则和后续维护的人。\n\n还拿不准：先做一个最小验证\n开始之前\n制作路线\n对 AI 这样说\n认识几个词\n从一个足够小的版本开始\n01 / START\n比如 · 帮助理解的项目示例\n个人作品展示站\n\n介绍自己，展示三件作品，留下一个联系入口。先把这一件事做好。\n\n准备这三件事\n一个想解决的问题\n一台能使用 AI 工具的电脑\n第一版要展示的文字和图片\n一步一步，把它做出来\n02 / BUILD\n\n每次完成一小步，亲手检查后再继续。点击步骤查看完成标准。\n\n01\n讲清用途\n\n告诉 AI：给谁用，帮助对方完成什么。\n\n完成时：一句清楚的项目目标。\n02\n缩小第一版\n03\n选择制作方式\n04\n安排页面\n05\n先走通一个操作\n06\n补内容，请人试\n07\n分享网址，持续照看\n让 AI 核对这类项目是否适合\n03 / PROMPT\n只判断形式，不开始开发\n\n先在模板中补充实际材料，确认生成后再复制到当前项目的 AI 对话。不确定项写“尚未确定”，示例可以自行替换。\n\n① 按模板补充实际情况，不确定的地方写“尚未确定”\n② 确认，生成我的专属内容\n\n纯文本 · 补齐实际材料后发送给 AI\n\n选好形式后：更新项目描述，再按主线制作 →\n\n卡住时先检查什么\n按钮看起来能点，却没结果\n手机上内容挤在一起\n\n验收记录至少包含：版本、设备、测试材料、操作步骤、预期、实际结果和未通过项。AI 执行记录与本人实际试用分开填写。\n\n打开实际试用与发布确认模板 →\n顺便认识这几个词\n04 / UNDERSTAND\n域名 · Domain\n网址里方便别人记住的名字。\n响应式 · Responsive\n让同一个页面在手机和电脑上调整排列。\n最小可用产品 · MVP\n先能完成最重要一件事的第一版。\nPROJECT\nWeb 网站与应用\n适合\n需要链接分享与浏览器使用\n做完得到\n一个可分享的网址\n核对项目形式\n亲手检查这三件事\n\n自检清单，不是自动检测结果。\n\n别人能从网址打开\n手机上文字和按钮清楚可用\n每个主要按钮都有真实结果\n← 比较其他项目",
+    "title": "把想法变成一个网址。"
+  },
+  {
+    "path": "projects/mobile",
+    "links": [
+      {
+        "href": "/zh-cn/start/",
+        "text": "← 返回上一级"
+      },
+      {
+        "href": "/zh-cn/roadmap/",
+        "text": "完整路线图 ↗"
+      },
+      {
+        "href": "/zh-cn/start/",
+        "text": "项目分类"
+      },
+      {
+        "href": "/zh-cn/projects/web/",
+        "text": "比较另一种形式 →"
+      },
+      {
+        "href": "https://developer.apple.com/documentation/xcode/distributing-your-app-for-beta-testing-and-releases",
+        "text": "Apple · 测试与分发条件 ↗"
+      },
+      {
+        "href": "#overview",
+        "text": "开始之前"
+      },
+      {
+        "href": "#steps",
+        "text": "制作路线"
+      },
+      {
+        "href": "#prompt",
+        "text": "对 AI 这样说"
+      },
+      {
+        "href": "#terms",
+        "text": "认识几个词"
+      },
+      {
+        "href": "/zh-cn/learn/description/",
+        "text": "选好形式后：更新项目描述，再按主线制作 →"
+      },
+      {
+        "href": "/zh-cn/learn/accept/",
+        "text": "打开实际试用与发布确认模板 →"
+      },
+      {
+        "href": "#prompt",
+        "text": "核对项目形式"
+      },
+      {
+        "href": "/zh-cn/start/",
+        "text": "← 比较其他项目"
+      }
+    ],
+    "templates": [
+      {
+        "id": "edit-project-mobile",
+        "value": "<redacted>"
+      }
+    ],
+    "text": "← 返回上一级\n完整路线图 ↗\n\n这里帮助理解这类项目需要哪些能力，把符合自身目标的功能带回项目描述，不必照搬所有功能。\n\n项目分类\n手机 App\nMOBILE APP DEVELOPMENT\n让一个好想法，成为日常习惯。\n\n安装在手机里的应用。先确认安装后的价值，再核对设备能力、真机测试和分发条件；无需先做过网站。\n\n先核对真机与分发条件\n‹\n手机 App\n每日记录应用\n从这里开始 →\n界面示意\n先判断是否适合，再开始制作\n01\n适合什么项目\n\n频繁使用的手机工具、需要可靠设备集成或复杂手机交互的项目；例如现场拍摄处理、离线工作流程。先验证这些需求是否超出手机网页能提供的体验。\n\n02\n适合谁来开发\n\n有目标真机可测试、愿意先选 Android 或 iPhone，并承担打包、权限、分发与更新检查的人。无需先做过网站，但必须准备目标平台的开发或云构建条件。\n\n03\n不适合什么项目\n\n仅展示少量内容、偶尔填写一次表单、靠链接临时访问的项目；若安装成本高于使用收益，手机网页通常更值得先验证。\n\n04\n哪些人暂不宜选\n\n没有目标设备或可用测试渠道、不愿处理权限和安装问题，或必须立即公开交付却没有准备分发条件的人。\n\n还拿不准：先做一个最小验证\n开始之前\n制作路线\n对 AI 这样说\n认识几个词\n从一个足够小的版本开始\n01 / START\n比如 · 帮助理解的项目示例\n每日记录应用\n\n记录今天、查看历史、修改自己的记录。第一版先不加入社交和付费。\n\n先选一个平台\nAndroid\niPhone\n\n先用一部实际 Android 手机试用。不同发布渠道的要求分别核对。\n\n准备这三件事\n先选 Android 或 iPhone\n一部可用于试用的真手机\n明确记录只存本机还是需要同步\n一步一步，把它做出来\n02 / BUILD\n\n每次完成一小步，亲手检查后再继续。点击步骤查看完成标准。\n\n01\n明确为什么需要 App\n\n说清安装、离线或手机能力带来的实际价值。\n\n完成时：知道手机网站是否已经足够。\n02\n准备一台目标设备\n03\n先完成一条记录\n04\n检查手机特有情况\n05\n请别人安装试用\n06\n发布并检查下一次更新\n让 AI 核对这类项目是否适合\n03 / PROMPT\n只判断形式，不开始开发\n\n先在模板中补充实际材料，确认生成后再复制到当前项目的 AI 对话。不确定项写“尚未确定”，示例可以自行替换。\n\n① 按模板补充实际情况，不确定的地方写“尚未确定”\n② 确认，生成我的专属内容\n\n纯文本 · 补齐实际材料后发送给 AI\n\n选好形式后：更新项目描述，再按主线制作 →\n\n卡住时先检查什么\n关闭重开后记录不见了\n拒绝权限后无法继续\n\n验收记录至少包含：版本、设备、测试材料、操作步骤、预期、实际结果和未通过项。AI 执行记录与本人实际试用分开填写。\n\n打开实际试用与发布确认模板 →\n顺便认识这几个词\n04 / UNDERSTAND\n离线 · Offline\n没有网络时，应用还能完成哪些事情。\n同步 · Sync\n让多台设备上的资料保持一致。\n试用版 · Beta\n先交给少量人检查的版本。\nPROJECT\n手机 App\n适合\n能准备目标真机并验证安装与更新\n做完得到\n能在真手机上使用的应用\n核对项目形式\n亲手检查这三件事\n\n自检清单，不是自动检测结果。\n\n真手机能完成记录和查看\n拒绝非必要权限也能继续使用\n更新后原有记录仍在\n← 比较其他项目",
+    "title": "让一个好想法，成为日常习惯。"
+  },
+  {
+    "path": "projects/desktop",
+    "links": [
+      {
+        "href": "/zh-cn/start/",
+        "text": "← 返回上一级"
+      },
+      {
+        "href": "/zh-cn/roadmap/",
+        "text": "完整路线图 ↗"
+      },
+      {
+        "href": "/zh-cn/start/",
+        "text": "项目分类"
+      },
+      {
+        "href": "/zh-cn/projects/web/",
+        "text": "比较另一种形式 →"
+      },
+      {
+        "href": "https://www.electronjs.org/docs/latest/tutorial/code-signing",
+        "text": "Electron · 桌面分发与签名 ↗"
+      },
+      {
+        "href": "#overview",
+        "text": "开始之前"
+      },
+      {
+        "href": "#steps",
+        "text": "制作路线"
+      },
+      {
+        "href": "#prompt",
+        "text": "对 AI 这样说"
+      },
+      {
+        "href": "#terms",
+        "text": "认识几个词"
+      },
+      {
+        "href": "/zh-cn/learn/description/",
+        "text": "选好形式后：更新项目描述，再按主线制作 →"
+      },
+      {
+        "href": "/zh-cn/learn/accept/",
+        "text": "打开实际试用与发布确认模板 →"
+      },
+      {
+        "href": "#prompt",
+        "text": "核对项目形式"
+      },
+      {
+        "href": "/zh-cn/start/",
+        "text": "← 比较其他项目"
+      }
+    ],
+    "templates": [
+      {
+        "id": "edit-project-desktop",
+        "value": "本次只判断项目形式，不开始开发。\n候选形式：desktop\n用户群体与常用设备：【填写】\n要完成的核心操作：【填写】\n用户从哪里打开、是否接受安装：【填写】\n必须使用的设备或平台能力：【填写或无】\n离线、保存与跨设备要求：【填写或尚未确定】\n已有电脑、手机、平台账号与测试条件：【填写】\n预算与维护投入：【填写】\n请逐项说明：适合的理由、不适合的条件、尚需验证的关键能力，以及一种替代形式。信息不足先问影响选择的问题，不把零基础等同于不能开发。最后给出一个最小验证任务和通过标准；不安装、不生成项目、不发布。"
+      }
+    ],
+    "text": "← 返回上一级\n完整路线图 ↗\n\n这里帮助理解这类项目需要哪些能力，把符合自身目标的功能带回项目描述，不必照搬所有功能。\n\n项目分类\n桌面 App\nDESKTOP APP DEVELOPMENT\n把重复的电脑工作，交给自己的工具。\n\n安装在 Windows 或 Mac 上的应用。适合有网站制作经验，想进一步处理本机文件和日常工作的人。\n\n先核对目标系统与安装\n桌面 App\n文件整理助手\n从这里开始 →\n界面示意\n先判断是否适合，再开始制作\n01\n适合什么项目\n\n文件批量整理、媒体处理、本机资料检索、离线办公等；安装程序能够带来浏览器方案难以提供的文件访问或系统集成价值。\n\n02\n适合谁来开发\n\n能先确定 Windows、macOS 或 Linux，有对应电脑可测，愿意学习安装、权限、升级和数据恢复检查的人。先做一种系统比同时适配三种更容易验证。\n\n03\n不适合什么项目\n\n主要给手机用户临时访问、跨设备协作但不需要本机能力，或用户不能安装软件的项目。简单批处理也可能只需要脚本，不必直接做完整桌面界面。\n\n04\n哪些人暂不宜选\n\n无法获得目标系统测试环境，不愿承担安装与更新支持，或准备直接拿重要原文件做破坏性批处理且不设置预览、备份与恢复的人。\n\n还拿不准：先做一个最小验证\n开始之前\n制作路线\n对 AI 这样说\n认识几个词\n从一个足够小的版本开始\n01 / START\n比如 · 帮助理解的项目示例\n文件整理助手\n\n选择文件夹、预览整理结果、确认后保存到新位置。原文件始终保留。\n\n先选一个平台\nWindows\nMac\n\n在目标 Windows 电脑上检查安装、文件访问、取消和更新。\n\n准备这三件事\n先选 Windows 或 Mac\n准备几个可安全试用的文件副本\n明确读取和保存的位置\n一步一步，把它做出来\n02 / BUILD\n\n每次完成一小步，亲手检查后再继续。点击步骤查看完成标准。\n\n01\n选一件重复的工作\n\n说明现在怎样做，以及希望工具代为完成哪部分。\n\n完成时：一个清晰、可重复的使用场景。\n02\n选系统，准备测试副本\n03\n先看到结果，再确认\n04\n检查保存与意外情况\n05\n在另一台电脑安装\n06\n发布、更新与恢复\n让 AI 核对这类项目是否适合\n03 / PROMPT\n只判断形式，不开始开发\n\n先在模板中补充实际材料，确认生成后再复制到当前项目的 AI 对话。不确定项写“尚未确定”，示例可以自行替换。\n\n① 按模板补充实际情况，不确定的地方写“尚未确定”\n② 确认，生成我的专属内容\n\n纯文本 · 补齐实际材料后发送给 AI\n\n选好形式后：更新项目描述，再按主线制作 →\n\n卡住时先检查什么\n批量处理结果不符合预期\n另一台电脑打不开\n\n验收记录至少包含：版本、设备、测试材料、操作步骤、预期、实际结果和未通过项。AI 执行记录与本人实际试用分开填写。\n\n打开实际试用与发布确认模板 →\n顺便认识这几个词\n04 / UNDERSTAND\n本地 · Local\n当前这台电脑上的资料和操作。\n安装包 · Installer\n用来把软件安装到电脑上的文件。\n备份 · Backup\n另存一份以后能用于恢复的资料。\nPROJECT\n桌面 App\n适合\n想解决电脑上的重复工作\n做完得到\n别人也能安装的电脑工具\n核对项目形式\n亲手检查这三件事\n\n自检清单，不是自动检测结果。\n\n原文件没有被覆盖或删除\n取消与保存失败都有清楚提示\n另一台电脑能安装并完成任务\n← 比较其他项目",
+    "title": "把重复的电脑工作，交给自己的工具。"
+  },
+  {
+    "path": "projects/mini-program",
+    "links": [
+      {
+        "href": "/zh-cn/start/",
+        "text": "← 返回上一级"
+      },
+      {
+        "href": "/zh-cn/roadmap/",
+        "text": "完整路线图 ↗"
+      },
+      {
+        "href": "/zh-cn/start/",
+        "text": "项目分类"
+      },
+      {
+        "href": "/zh-cn/projects/web/",
+        "text": "比较另一种形式 →"
+      },
+      {
+        "href": "#overview",
+        "text": "开始之前"
+      },
+      {
+        "href": "#steps",
+        "text": "制作路线"
+      },
+      {
+        "href": "#prompt",
+        "text": "对 AI 这样说"
+      },
+      {
+        "href": "#terms",
+        "text": "认识几个词"
+      },
+      {
+        "href": "/zh-cn/learn/description/",
+        "text": "选好形式后：更新项目描述，再按主线制作 →"
+      },
+      {
+        "href": "/zh-cn/learn/accept/",
+        "text": "打开实际试用与发布确认模板 →"
+      },
+      {
+        "href": "#prompt",
+        "text": "核对项目形式"
+      },
+      {
+        "href": "/zh-cn/start/",
+        "text": "← 比较其他项目"
+      }
+    ],
+    "templates": [
+      {
+        "id": "edit-project-mini-program",
+        "value": "本次只判断项目形式，不开始开发。\n候选形式：mini-program\n用户群体与常用设备：【填写】\n要完成的核心操作：【填写】\n用户从哪里打开、是否接受安装：【填写】\n必须使用的设备或平台能力：【填写或无】\n离线、保存与跨设备要求：【填写或尚未确定】\n已有电脑、手机、平台账号与测试条件：【填写】\n预算与维护投入：【填写】\n请逐项说明：适合的理由、不适合的条件、尚需验证的关键能力，以及一种替代形式。信息不足先问影响选择的问题，不把零基础等同于不能开发。最后给出一个最小验证任务和通过标准；不安装、不生成项目、不发布。"
+      }
+    ],
+    "text": "← 返回上一级\n完整路线图 ↗\n\n这里帮助理解这类项目需要哪些能力，把符合自身目标的功能带回项目描述，不必照搬所有功能。\n\n项目分类\n小程序\nMINI PROGRAM DEVELOPMENT\n在用户熟悉的地方，做一个小工具。\n\n在微信、支付宝或抖音里打开的小工具。先选定一个平台，再围绕那里的用户做好一件事。\n\n从一个平台开始\n‹\n小程序\n活动介绍与报名\n从这里开始 →\n界面示意\n先判断是否适合，再开始制作\n01\n适合什么项目\n\n已有微信、支付宝或抖音用户来源的活动报名、门店预约、会员服务等；目标平台支持所需功能，账号条件能够满足。\n\n02\n适合谁来开发\n\n能明确选择一个平台、接触到该平台真实用户，并愿意核对账号、功能权限、审核与发布条件的人。\n\n03\n不适合什么项目\n\n用户分散在多个平台、需要通用网址自由访问，或关键功能不被目标平台支持的项目；不能假定同一份代码与资格在所有平台通用。\n\n04\n哪些人暂不宜选\n\n还不知道用户在哪个平台，无法取得所需账号条件，或希望完全避开平台审核与规则约束的人。先补齐条件，不宜直接进入开发。\n\n还拿不准：先做一个最小验证\n开始之前\n制作路线\n对 AI 这样说\n认识几个词\n从一个足够小的版本开始\n01 / START\n比如 · 帮助理解的项目示例\n活动介绍与报名\n\n查看活动、选择场次、填写信息、看到报名结果。先完成这条流程。\n\n先选一个平台\n微信\n支付宝\n抖音\n\n面向微信里的用户。具体开通与发布要求需按微信当前官方说明核对。\n\n准备这三件事\n确定使用者在哪个平台\n核对当前账号和功能要求\n活动文案与测试资料\n一步一步，把它做出来\n02 / BUILD\n\n每次完成一小步，亲手检查后再继续。点击步骤查看完成标准。\n\n01\n先选一个平台\n\n确认使用者在哪里，第一版不同时做三个平台。\n\n完成时：一个明确的目标平台。\n02\n检查开始条件\n03\n做出主要流程\n04\n在平台里实际试用\n05\n准备材料，提交检查\n06\n正式开放后再检查\n让 AI 核对这类项目是否适合\n03 / PROMPT\n只判断形式，不开始开发\n\n先在模板中补充实际材料，确认生成后再复制到当前项目的 AI 对话。不确定项写“尚未确定”，示例可以自行替换。\n\n① 按模板补充实际情况，不确定的地方写“尚未确定”\n② 确认，生成我的专属内容\n\n纯文本 · 补齐实际材料后发送给 AI\n\n选好形式后：更新项目描述，再按主线制作 →\n\n卡住时先检查什么\n开发预览可用，平台里不行\n提交审核后是否已经上线\n\n验收记录至少包含：版本、设备、测试材料、操作步骤、预期、实际结果和未通过项。AI 执行记录与本人实际试用分开填写。\n\n打开实际试用与发布确认模板 →\n顺便认识这几个词\n04 / UNDERSTAND\n小程序 · Mini Program\n依托一个现有平台运行的应用。\n授权 · Permission\n用户同意提供某项资料或使用某种能力。\n审核 · Review\n平台在开放前按自己的要求进行检查。\nPROJECT\n小程序\n适合\n已有明确的平台用户\n做完得到\n一个平台内的正式入口\n核对项目形式\n亲手检查这三件事\n\n自检清单，不是自动检测结果。\n\n在所选平台实际使用过\n报名资料真正保存下来\n正式入口可以完成主要操作\n← 比较其他项目",
+    "title": "在用户熟悉的地方，做一个小工具。"
+  },
+  {
+    "path": "tools",
+    "links": [
+      {
+        "href": "/zh-cn/library/",
+        "text": "← 返回上一级"
+      },
+      {
+        "href": "/zh-cn/roadmap/",
+        "text": "完整路线图 ↗"
+      },
+      {
+        "href": "/zh-cn/learn/tool/",
+        "text": "带着结果回到操作 →"
+      },
+      {
+        "href": "/zh-cn/stacks/",
+        "text": "查看区别 →"
+      },
+      {
+        "href": "/zh-cn/communicate/setup/",
+        "text": "已经选好？直接复制 Git 初始化与完整规则文件提示词 →"
+      },
+      {
+        "href": "#forms",
+        "text": "01认识使用方式"
+      },
+      {
+        "href": "#recommend",
+        "text": "02按项目选"
+      },
+      {
+        "href": "#catalog",
+        "text": "03对比工具与价格"
+      },
+      {
+        "href": "#reviews",
+        "text": "04使用评价"
+      },
+      {
+        "href": "#begin",
+        "text": "05选好后开始"
+      },
+      {
+        "href": "https://openai.com/codex/",
+        "text": "打开官网 ↗"
+      },
+      {
+        "href": "https://developers.openai.com/codex/pricing",
+        "text": "Pricing ↗"
+      },
+      {
+        "href": "https://developers.openai.com/codex/app",
+        "text": "App ↗"
+      },
+      {
+        "href": "https://marketplace.visualstudio.com/items?itemName=openai.chatgpt",
+        "text": "IDE ↗"
+      },
+      {
+        "href": "https://claude.com/product/claude-code",
+        "text": "打开官网 ↗"
+      },
+      {
+        "href": "https://claude.com/pricing",
+        "text": "Pricing ↗"
+      },
+      {
+        "href": "https://code.claude.com/docs/en/overview",
+        "text": "Setup & surfaces ↗"
+      },
+      {
+        "href": "https://cursor.com",
+        "text": "打开官网 ↗"
+      },
+      {
+        "href": "https://cursor.com/pricing",
+        "text": "Pricing ↗"
+      },
+      {
+        "href": "https://cursor.com/cli",
+        "text": "CLI ↗"
+      },
+      {
+        "href": "https://qoder.com",
+        "text": "打开官网 ↗"
+      },
+      {
+        "href": "https://docs.qoder.cn/product-overview/account-and-subscription",
+        "text": "CN pricing ↗"
+      },
+      {
+        "href": "https://docs.qoder.com/account/pricing",
+        "text": "Global pricing ↗"
+      },
+      {
+        "href": "https://docs.qoder.com/product-series/quick-start",
+        "text": "Products ↗"
+      },
+      {
+        "href": "https://www.trae.cn",
+        "text": "打开官网 ↗"
+      },
+      {
+        "href": "https://docs.trae.cn/ide_plans-and-billing",
+        "text": "CN pricing ↗"
+      },
+      {
+        "href": "https://www.trae.ai/pricing",
+        "text": "Global pricing ↗"
+      },
+      {
+        "href": "https://docs.trae.cn/ide_solo-mode",
+        "text": "SOLO ↗"
+      },
+      {
+        "href": "https://docs.trae.cn/cli_about-trae-code-cli-2",
+        "text": "CN CLI 2.0 ↗"
+      },
+      {
+        "href": "https://www.trae.ai/enterprise",
+        "text": "Global CLI status ↗"
+      },
+      {
+        "href": "https://www.kimi.com/code",
+        "text": "打开官网 ↗"
+      },
+      {
+        "href": "https://www.kimi.com/code/docs/en/",
+        "text": "Clients ↗"
+      },
+      {
+        "href": "https://www.kimi.com/help/membership/membership-pricing",
+        "text": "CN membership ↗"
+      },
+      {
+        "href": "https://github.com/features/copilot",
+        "text": "打开官网 ↗"
+      },
+      {
+        "href": "https://github.com/features/copilot/plans",
+        "text": "Plans ↗"
+      },
+      {
+        "href": "https://github.com/features/ai/github-app",
+        "text": "Desktop ↗"
+      },
+      {
+        "href": "https://geminicli.com",
+        "text": "打开官网 ↗"
+      },
+      {
+        "href": "https://geminicli.com/docs/resources/quota-and-pricing/",
+        "text": "Quota & billing ↗"
+      },
+      {
+        "href": "https://gemini.google/subscriptions/",
+        "text": "Subscriptions ↗"
+      },
+      {
+        "href": "https://lovable.dev",
+        "text": "打开官网 ↗"
+      },
+      {
+        "href": "https://docs.lovable.dev/introduction/subscription-plans",
+        "text": "Plans ↗"
+      },
+      {
+        "href": "https://lovable.dev/pricing",
+        "text": "Usage ↗"
+      },
+      {
+        "href": "https://replit.com",
+        "text": "打开官网 ↗"
+      },
+      {
+        "href": "https://replit.com/pricing",
+        "text": "Pricing ↗"
+      },
+      {
+        "href": "https://docs.replit.com/billing/plans/replit-core",
+        "text": "Core ↗"
+      },
+      {
+        "href": "https://devin.ai",
+        "text": "打开官网 ↗"
+      },
+      {
+        "href": "https://devin.ai/pricing",
+        "text": "Pricing ↗"
+      },
+      {
+        "href": "https://windsurf.com",
+        "text": "Windsurf redirect ↗"
+      },
+      {
+        "href": "https://kiro.dev",
+        "text": "打开官网 ↗"
+      },
+      {
+        "href": "https://kiro.dev/pricing/",
+        "text": "Pricing & surfaces ↗"
+      },
+      {
+        "href": "https://kiro.dev/",
+        "text": "Product ↗"
+      },
+      {
+        "href": "https://cline.bot",
+        "text": "打开官网 ↗"
+      },
+      {
+        "href": "https://cline.bot/pricing",
+        "text": "Pricing & surfaces ↗"
+      },
+      {
+        "href": "https://cline.bot/get-cline",
+        "text": "Get started ↗"
+      },
+      {
+        "href": "https://opencode.ai",
+        "text": "打开官网 ↗"
+      },
+      {
+        "href": "https://opencode.ai/",
+        "text": "Forms & providers ↗"
+      },
+      {
+        "href": "https://opencode.ai/go",
+        "text": "Go pricing ↗"
+      },
+      {
+        "href": "https://aider.chat",
+        "text": "打开官网 ↗"
+      },
+      {
+        "href": "https://aider.chat/docs/usage.html",
+        "text": "Usage & Git ↗"
+      },
+      {
+        "href": "https://aider.chat/docs/llms.html",
+        "text": "Models ↗"
+      },
+      {
+        "href": "https://qwenlm.github.io/qwen-code-docs/",
+        "text": "打开官网 ↗"
+      },
+      {
+        "href": "https://qwenlm.github.io/qwen-code-docs/en/users/configuration/auth/",
+        "text": "Authentication & billing ↗"
+      },
+      {
+        "href": "https://github.com/QwenLM/qwen-code",
+        "text": "Repository ↗"
+      },
+      {
+        "href": "https://github.com/QwenLM/qwen-code/blob/main/docs/users/integration-vscode.md",
+        "text": "IDE integration ↗"
+      },
+      {
+        "href": "https://www.codebuddy.cn",
+        "text": "打开官网 ↗"
+      },
+      {
+        "href": "https://www.codebuddy.cn/docs/ide/Account/pricing",
+        "text": "CN pricing ↗"
+      },
+      {
+        "href": "https://www.codebuddy.ai/docs/ide/Account/pricing",
+        "text": "Global pricing ↗"
+      },
+      {
+        "href": "https://www.codebuddy.cn/docs/cli/quickstart",
+        "text": "CLI ↗"
+      },
+      {
+        "href": "https://bolt.new",
+        "text": "打开官网 ↗"
+      },
+      {
+        "href": "https://bolt.new/pricing",
+        "text": "Pricing ↗"
+      },
+      {
+        "href": "https://support.bolt.new/",
+        "text": "Help ↗"
+      },
+      {
+        "href": "https://v0.app",
+        "text": "打开官网 ↗"
+      },
+      {
+        "href": "https://v0.app/pricing",
+        "text": "Pricing ↗"
+      },
+      {
+        "href": "https://v0.app/docs",
+        "text": "Docs ↗"
+      },
+      {
+        "href": "https://zed.dev",
+        "text": "打开官网 ↗"
+      },
+      {
+        "href": "https://zed.dev/pricing",
+        "text": "Pricing ↗"
+      },
+      {
+        "href": "https://zed.dev/download",
+        "text": "Download ↗"
+      },
+      {
+        "href": "https://www.augmentcode.com",
+        "text": "打开官网 ↗"
+      },
+      {
+        "href": "https://www.augmentcode.com/pricing",
+        "text": "Current pricing ↗"
+      },
+      {
+        "href": "https://marketplace.visualstudio.com/items?itemName=augment.vscode-augment",
+        "text": "Official IDE extension ↗"
+      },
+      {
+        "href": "https://zcode.z.ai/cn",
+        "text": "打开官网 ↗"
+      },
+      {
+        "href": "https://zcode.z.ai/cn",
+        "text": "Product & plans ↗"
+      },
+      {
+        "href": "https://zcode.z.ai/cn/docs/install",
+        "text": "Install ↗"
+      },
+      {
+        "href": "https://zcode.z.ai/cn/docs/configuration",
+        "text": "Model configuration ↗"
+      },
+      {
+        "href": "https://zcode.z.ai/cn/docs/qa",
+        "text": "FAQ & billing ↗"
+      },
+      {
+        "href": "https://ampcode.com",
+        "text": "打开官网 ↗"
+      },
+      {
+        "href": "https://ampcode.app/pricing",
+        "text": "Pricing ↗"
+      },
+      {
+        "href": "https://ampcode.app/docs/pricing",
+        "text": "Billing detail ↗"
+      },
+      {
+        "href": "https://ampcode.com/docs",
+        "text": "Surfaces ↗"
+      },
+      {
+        "href": "https://kilo.ai",
+        "text": "打开官网 ↗"
+      },
+      {
+        "href": "https://kilo.ai/pricing",
+        "text": "Pricing ↗"
+      },
+      {
+        "href": "https://kilo.ai/",
+        "text": "Surfaces ↗"
+      },
+      {
+        "href": "https://antigravity.google",
+        "text": "打开官网 ↗"
+      },
+      {
+        "href": "https://antigravity.google/pricing",
+        "text": "Pricing ↗"
+      },
+      {
+        "href": "https://antigravity.google/blog/changes-to-antigravity-plans",
+        "text": "Plan changes ↗"
+      },
+      {
+        "href": "https://www.antigravity.google/docs/ide/extensions/",
+        "text": "IDE & desktop ↗"
+      },
+      {
+        "href": "https://antigravity.google/product/antigravity-cli",
+        "text": "CLI ↗"
+      },
+      {
+        "href": "https://base44.com",
+        "text": "打开官网 ↗"
+      },
+      {
+        "href": "https://base44.com/pricing",
+        "text": "Plans & product features ↗"
+      },
+      {
+        "href": "https://docs.base44.com",
+        "text": "Docs ↗"
+      },
+      {
+        "href": "https://github.com/RooCodeInc/Roo-Code",
+        "text": "官方说明 ↗"
+      },
+      {
+        "href": "https://github.com/continuedev/continue",
+        "text": "官方说明 ↗"
+      },
+      {
+        "href": "https://firebase.google.com/docs/studio/pricing",
+        "text": "官方说明 ↗"
+      },
+      {
+        "href": "https://help.aliyun.com/zh/lingma/billing-description",
+        "text": "官方说明 ↗"
+      },
+      {
+        "href": "https://arstechnica.com/ai/2025/12/the-ars-technica-ai-coding-agent-test-minesweeper-edition/",
+        "text": "Ars Technica: four coding agents build Minesweeper ↗"
+      },
+      {
+        "href": "https://forum.trae.cn/t/topic/175108",
+        "text": "TRAE 社区：我的 AI Coding 启蒙经历 ↗"
+      },
+      {
+        "href": "https://forum.cursor.com/t/questions-from-a-new/148900",
+        "text": "Cursor forum: Questions from a new ↗"
+      },
+      {
+        "href": "https://forum.qoder.com/t/qoder-is-amazing-any-chance-for-a-small-credit-boost/1876",
+        "text": "Qoder is amazing! Any chance for a small credit boost? ↗"
+      },
+      {
+        "href": "https://github.com/cline/cline/discussions/1727",
+        "text": "Cline discussion #1727: Is it just me or Cline became more expensive? ↗"
+      },
+      {
+        "href": "https://github.com/MoonshotAI/kimi-cli/discussions/926",
+        "text": "Kimi CLI discussion #926: Authorization failed ↗"
+      },
+      {
+        "href": "https://www.reddit.com/r/boltnewbuilders/comments/1uiqg4s/boltnew_stuck_in_this_message_your_preview_will/",
+        "text": "Bolt blank-preview report with terminal logs ↗"
+      },
+      {
+        "href": "https://github.com/stackblitz/webcontainer-core/issues/1850",
+        "text": "WebContainer issue #1850: Missing Bolt integration ↗"
+      },
+      {
+        "href": "https://github.com/anthropics/claude-code/issues/44470",
+        "text": "Claude Code issue #44470: Change plugin scope from TUI ↗"
+      },
+      {
+        "href": "https://simonwillison.net/guides/agentic-engineering-patterns/first-run-the-tests/",
+        "text": "Simon Willison: First run the tests ↗"
+      },
+      {
+        "href": "https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/",
+        "text": "METR: Early-2025 AI and experienced developer productivity ↗"
+      },
+      {
+        "href": "/zh-cn/communicate/tools/",
+        "text": "开始：打开项目并验证工具 →"
+      },
+      {
+        "href": "/zh-cn/communicate/setup/",
+        "text": "已能操作：设置 Git 与 AGENTS.md →"
+      }
+    ],
+    "templates": [
+      {
+        "id": "edit-resource-tools",
+        "value": "准备制作的项目与核心任务：【填写】\n电脑系统与可使用账号：【填写】\n每月可接受的总费用：【填写或尚未确定】\n候选工具及看到的官方方案链接：【填写】\n\n只比较工具，不开始制作项目。按上手步骤、免费额度、订阅与额外支出、实际能力逐项对比；核实来源和日期，不把未知写成免费。\n\n本次产物：推荐一个先试的工具、推荐依据、不适合的条件，以及让候选工具完成同一项小任务的试用步骤与通过标准。由本人试用后决定，不代为购买。"
+      }
+    ],
+    "text": "← 返回上一级\n完整路线图 ↗\n\n选择 AI 工具时，用这里比较上手难度、免费额度、订阅费用和实际能力，再回到学习步骤打开选定工具。\n\n用这页做出判断：适用条件、限制与检查\nBUILD WITH AI\n选择工具\n\n先选顺手的工作方式，再选一个能陪项目走下去的工具。\n\n这里选的是帮忙制作的 AI 工具；产品使用什么技术，下一阶段再决定。 查看区别 →\n\n已经选好？直接复制 Git 初始化与完整规则文件提示词 →\n\n01\n认识使用方式\n02\n按项目选\n03\n对比工具与价格\n04\n使用评价\n05\n选好后开始\n先比较这四件事，再试一个小任务\n上手难度\n\n先看是否能找到项目、对话、预览和错误；桌面任务界面通常比终端更容易开始。这是操作负担判断，不是能力排名。\n\n免费额度\n\n核对免费的是安装还是制作额度、何时重置、耗尽后怎样继续。未明确的额度不当作无限免费。\n\n订阅开销\n\n分别核对月付、年付、续费、超额费用；模型费用与项目上线后的托管费用也可能另计。先试用，不为完成课程盲目购买。\n\n实际能力\n\n用同一小任务比较：保存一个文件、修改一处、打开预览、处理一个错误、导出并再次打开。能展示结果比笼统说最强更有用。\n\n先排除系统、地区或导出条件不符合的工具；下面目录价格是已标日期的参考，购买前核对当前官方页面和本人账号。\n\n四种入口，做的是同一件事\n\nIDE 也安装在电脑上。这里的“桌面任务界面”特指以任务和对话为主的界面；同一品牌可以同时提供多种入口。\n\n桌面任务界面\n\n想通过对话交代任务、看结果\n\n项目\n任务 → 改动 → 检查\n打开文件夹 → 交代任务 → 审查改动\n\n适合起步；仍要检查文件与运行结果。\n\nIDE · 带 AI 的编辑器\n\n想看文件、改局部、长期维护\n\nFILES\nEDITOR\nAI\n选中文件或组件 → AI 修改 → 对照差异\n\n需要认识文件区、对话区和终端区。\n\nCLI · 终端里的助手\n\n熟悉命令，准备做自动化\n\nproject/ $\n› 完成这一项任务\n✓ 检查结果\n进入目录 → 描述任务 → 运行检查\n\n方便脚本和远程工作；首次接触电脑开发可后学。\n\n网页构建工具\n\n先验证网站想法，不想配置环境\n\n需求\n页面预览\n输入需求 → 页面预览 → 分享试用\n\n先检查导出、托管费用和平台限制。\n\n从当前项目，选出一小组候选\n\n这是按工作方式给出的选型建议，不是能力排行榜。已有订阅先试已有工具，先完成一个小任务再考虑升级。\n\n准备做什么\n网站 / Web 应用\n手机 App / 桌面软件\n接手或长期维护已有项目\n脚本 / 重复任务自动化\n更习惯怎样操作\n对话交代任务，看结果\n同时查看文件与修改\n已经熟悉终端命令\n暂时不能安装软件\n优先比较哪组服务\n国际与中国服务一起看\n优先中国版服务\n查看候选和理由\n还没有偏好？先试桌面任务界面或 IDE。\n\n新手做本地项目可先比较 Codex、Claude Code、Qoder、TRAE、Kimi Code；能成功打开项目并改一处文字，比一次安装所有工具更有帮助。\n\n按需展开工具目录与订阅\n旧教程中的工具为什么不在名单里？\n别人怎样选择，用过后怎样评价\n\n结合独立实测、原始用户讨论与研究，共整理 8 个选型判断。评价反映特定任务和版本，不能替代当前产品规格；点击标题查看依据与局限。\n\n先看项目是否做成，再看排行榜\n＋\n看得懂界面，也是选型条件\n＋\n订阅价格不等于项目总成本\n＋\n先跑通登录，再扩展配置\n＋\n反复修不好时，停止重复付费重试\n＋\n第一次先不用一大套插件\n＋\n能生成，还要能检查和恢复\n＋\n感觉更快，与实际完成更快要分开\n＋\n看总成本，再决定订阅\n1\n工具订阅\n使用助手的固定费用\n+\n2\n额外 AI 用量\n超额或独立 API 费用\n+\n3\n作品运行费用\n域名、托管、数据库等\n\n先用免费或已有额度做同一个小任务，记录消耗和修改次数。偶尔使用选入门档；只有持续碰到用量限制，且任务确有价值时才升级。不同工具的积分不可直接比较。\n\n比如：第一周只做作品展示页，先完成“改标题 → 预览 → 保存版本”。能够独立完成，再决定是否按月订阅，不必为了未来可能做的复杂项目立即买最高档。\n选好一个工具，马上进入实操\n打开官网，确认系统与地区可用\n安装或创建网页项目，登录账号\n做一处小改动，检查预览与用量\n准备 Git 和项目规则，继续需求整理\n开始：打开项目并验证工具 →\n已能操作：设置 Git 与 AGENTS.md →\n\n未来要换工具，优先保留项目文件、Git 历史、需求、运行命令和测试记录。CLI 可以以后再学，不是进阶的必经门槛。",
+    "title": "选择工具"
+  },
+  {
+    "path": "communicate",
+    "links": [
+      {
+        "href": "/zh-cn/library/",
+        "text": "← 返回上一级"
+      },
+      {
+        "href": "/zh-cn/roadmap/",
+        "text": "完整路线图 ↗"
+      },
+      {
+        "href": "/zh-cn/learn/clarify/",
+        "text": "带着结果回到操作 →"
+      },
+      {
+        "href": "/zh-cn/tools/",
+        "text": "选工具并打开项目 →"
+      },
+      {
+        "href": "/zh-cn/communicate/setup/",
+        "text": "初始化 Git 与生成 AGENTS.md →"
+      },
+      {
+        "href": "#first",
+        "text": "想法变第一版"
+      },
+      {
+        "href": "#plan",
+        "text": "先出方案"
+      },
+      {
+        "href": "#page",
+        "text": "描述页面"
+      },
+      {
+        "href": "#component",
+        "text": "描述组件"
+      },
+      {
+        "href": "#reference",
+        "text": "参考图片"
+      },
+      {
+        "href": "#change",
+        "text": "只修改一个地方"
+      },
+      {
+        "href": "#report",
+        "text": "反馈问题"
+      },
+      {
+        "href": "#diagnose",
+        "text": "先排查"
+      },
+      {
+        "href": "#recover",
+        "text": "防止越改越乱"
+      },
+      {
+        "href": "#verify",
+        "text": "检查完成"
+      },
+      {
+        "href": "#handoff",
+        "text": "新会话接手"
+      },
+      {
+        "href": "#release",
+        "text": "上线前确认"
+      },
+      {
+        "href": "/zh-cn/learn/requirements/",
+        "text": "下一步：把确认的范围整理成需求文档 →"
+      }
+    ],
+    "templates": [
+      {
+        "id": "edit-resource-communicate",
+        "value": "当前项目用途：【填写】\n本次只想完成的任务：【填写】\n现有材料的位置与内容摘要：【填写】\n不能改变的内容：【填写】\n希望如何检查结果：【填写】\n\n只把以上材料整理成一条清楚的任务提示词。先指出会影响结果的缺失信息，不自行扩大任务，也不执行提示词里的工作。\n\n本次产物：可直接发给项目 AI 的提示词，包含材料、范围、产物和通过标准；未确定字段明确列出。"
+      },
+      {
+        "id": "edit-scene-first",
+        "value": "【背景】填写项目用途、当前进度与已有页面。\n【这个项目主要给谁使用】填写项目面向的人群，以及他们希望通过项目完成的事情。\n【当前问题与目标】填写当前问题和希望达到的结果；参考上方单独标明的例子。\n【输入材料】粘贴已确认范围、相关截图或复现步骤；未提供的材料请先索取。\n【约束】只做本次目标；预算与发布时间尚未确定。\n\n本次任务：根据已填写的想法草稿，一次提出一个影响范围的问题，整理必做、暂缓和不做清单。\n请按以下方式配合：\n1. 先复述目标、范围与完成标准；区分事实、推断和未知项。\n2. 缺少会改变结果的材料时，先提出一个关键问题，不自行编造。\n3. 输出具体操作顺序、预期交付物和检查办法，用普通话解释专业词。\n4. 实施前保留可恢复版本；删除资料、付费、扩大权限或发布前等待确认。\n5. 交付时列出改动、实际检查动作、结果、未验证项和下一步。\n【检查标准】逐项核对上述目标；正常操作与失败情况都有明确结果。若无法实际执行，明确标记建议或待验证，不宣称已完成。"
+      },
+      {
+        "id": "edit-scene-plan",
+        "value": "【背景】填写项目用途、当前进度与已有页面。\n【这个项目主要给谁使用】填写项目面向的人群，以及他们希望通过项目完成的事情。\n【当前问题与目标】填写当前问题和希望达到的结果；参考上方单独标明的例子。\n【输入材料】粘贴已确认范围、相关截图或复现步骤；未提供的材料请先索取。\n【约束】只做本次目标；预算与发布时间尚未确定。\n\n本次任务：先比较两种可行做法的成本、限制和维护方式；等待范围确认再实施。\n请按以下方式配合：\n1. 先复述目标、范围与完成标准；区分事实、推断和未知项。\n2. 缺少会改变结果的材料时，先提出一个关键问题，不自行编造。\n3. 输出具体操作顺序、预期交付物和检查办法，用普通话解释专业词。\n4. 实施前保留可恢复版本；删除资料、付费、扩大权限或发布前等待确认。\n5. 交付时列出改动、实际检查动作、结果、未验证项和下一步。\n【检查标准】逐项核对上述目标；正常操作与失败情况都有明确结果。若无法实际执行，明确标记建议或待验证，不宣称已完成。"
+      },
+      {
+        "id": "edit-scene-page",
+        "value": "【背景】填写项目用途、当前进度与已有页面。\n【这个项目主要给谁使用】填写项目面向的人群，以及他们希望通过项目完成的事情。\n【当前问题与目标】填写当前问题和希望达到的结果；参考上方单独标明的例子。\n【输入材料】粘贴已确认范围、相关截图或复现步骤；未提供的材料请先索取。\n【约束】只做本次目标；预算与发布时间尚未确定。\n\n本次任务：按内容优先级描述页面结构、手机排列、加载、空白和失败状态。UI 是打开产品后看到和操作的界面。\n请按以下方式配合：\n1. 先复述目标、范围与完成标准；区分事实、推断和未知项。\n2. 缺少会改变结果的材料时，先提出一个关键问题，不自行编造。\n3. 输出具体操作顺序、预期交付物和检查办法，用普通话解释专业词。\n4. 实施前保留可恢复版本；删除资料、付费、扩大权限或发布前等待确认。\n5. 交付时列出改动、实际检查动作、结果、未验证项和下一步。\n【检查标准】逐项核对上述目标；正常操作与失败情况都有明确结果。若无法实际执行，明确标记建议或待验证，不宣称已完成。"
+      },
+      {
+        "id": "edit-scene-component",
+        "value": "【背景】填写项目用途、当前进度与已有页面。\n【这个项目主要给谁使用】填写项目面向的人群，以及他们希望通过项目完成的事情。\n【当前问题与目标】填写当前问题和希望达到的结果；参考上方单独标明的例子。\n【输入材料】粘贴已确认范围、相关截图或复现步骤；未提供的材料请先索取。\n【约束】只做本次目标；预算与发布时间尚未确定。\n\n本次任务：只实现指定界面控件，写清默认、选择、禁用和键盘操作的结果。\n请按以下方式配合：\n1. 先复述目标、范围与完成标准；区分事实、推断和未知项。\n2. 缺少会改变结果的材料时，先提出一个关键问题，不自行编造。\n3. 输出具体操作顺序、预期交付物和检查办法，用普通话解释专业词。\n4. 实施前保留可恢复版本；删除资料、付费、扩大权限或发布前等待确认。\n5. 交付时列出改动、实际检查动作、结果、未验证项和下一步。\n【检查标准】逐项核对上述目标；正常操作与失败情况都有明确结果。若无法实际执行，明确标记建议或待验证，不宣称已完成。"
+      },
+      {
+        "id": "edit-scene-reference",
+        "value": "【背景】填写项目用途、当前进度与已有页面。\n【这个项目主要给谁使用】填写项目面向的人群，以及他们希望通过项目完成的事情。\n【当前问题与目标】填写当前问题和希望达到的结果；参考上方单独标明的例子。\n【输入材料】粘贴已确认范围、相关截图或复现步骤；未提供的材料请先索取。\n【约束】只做本次目标；预算与发布时间尚未确定。\n\n本次任务：先描述实际可见的结构、间距和状态；把图片无法证明的交互列为问题，不复制图片中的个人资料。\n请按以下方式配合：\n1. 先复述目标、范围与完成标准；区分事实、推断和未知项。\n2. 缺少会改变结果的材料时，先提出一个关键问题，不自行编造。\n3. 输出具体操作顺序、预期交付物和检查办法，用普通话解释专业词。\n4. 实施前保留可恢复版本；删除资料、付费、扩大权限或发布前等待确认。\n5. 交付时列出改动、实际检查动作、结果、未验证项和下一步。\n【检查标准】逐项核对上述目标；正常操作与失败情况都有明确结果。若无法实际执行，明确标记建议或待验证，不宣称已完成。"
+      },
+      {
+        "id": "edit-scene-change",
+        "value": "【背景】填写项目用途、当前进度与已有页面。\n【这个项目主要给谁使用】填写项目面向的人群，以及他们希望通过项目完成的事情。\n【当前问题与目标】填写当前问题和希望达到的结果；参考上方单独标明的例子。\n【输入材料】粘贴已确认范围、相关截图或复现步骤；未提供的材料请先索取。\n【约束】只做本次目标；预算与发布时间尚未确定。\n\n本次任务：先定位目标和影响范围，只做这一项修改；保留其余行为与现有未提交工作。\n请按以下方式配合：\n1. 先复述目标、范围与完成标准；区分事实、推断和未知项。\n2. 缺少会改变结果的材料时，先提出一个关键问题，不自行编造。\n3. 输出具体操作顺序、预期交付物和检查办法，用普通话解释专业词。\n4. 实施前保留可恢复版本；删除资料、付费、扩大权限或发布前等待确认。\n5. 交付时列出改动、实际检查动作、结果、未验证项和下一步。\n【检查标准】逐项核对上述目标；正常操作与失败情况都有明确结果。若无法实际执行，明确标记建议或待验证，不宣称已完成。"
+      },
+      {
+        "id": "edit-scene-report",
+        "value": "【背景】填写项目用途、当前进度与已有页面。\n【这个项目主要给谁使用】填写项目面向的人群，以及他们希望通过项目完成的事情。\n【当前问题与目标】填写当前问题和希望达到的结果；参考上方单独标明的例子。\n【输入材料】粘贴已确认范围、相关截图或复现步骤；未提供的材料请先索取。\n【约束】只做本次目标；预算与发布时间尚未确定。\n\n本次任务：根据复现步骤、预期和实际结果定位问题，先确认能否重现，再提出最小修复。\n请按以下方式配合：\n1. 先复述目标、范围与完成标准；区分事实、推断和未知项。\n2. 缺少会改变结果的材料时，先提出一个关键问题，不自行编造。\n3. 输出具体操作顺序、预期交付物和检查办法，用普通话解释专业词。\n4. 实施前保留可恢复版本；删除资料、付费、扩大权限或发布前等待确认。\n5. 交付时列出改动、实际检查动作、结果、未验证项和下一步。\n【检查标准】逐项核对上述目标；正常操作与失败情况都有明确结果。若无法实际执行，明确标记建议或待验证，不宣称已完成。"
+      },
+      {
+        "id": "edit-scene-diagnose",
+        "value": "【背景】填写项目用途、当前进度与已有页面。\n【这个项目主要给谁使用】填写项目面向的人群，以及他们希望通过项目完成的事情。\n【当前问题与目标】填写当前问题和希望达到的结果；参考上方单独标明的例子。\n【输入材料】粘贴已确认范围、相关截图或复现步骤；未提供的材料请先索取。\n【约束】只做本次目标；预算与发布时间尚未确定。\n\n本次任务：先收集证据和提出原因假设，不把猜测写成结论；每个检查给出结果分支与停止条件。\n请按以下方式配合：\n1. 先复述目标、范围与完成标准；区分事实、推断和未知项。\n2. 缺少会改变结果的材料时，先提出一个关键问题，不自行编造。\n3. 输出具体操作顺序、预期交付物和检查办法，用普通话解释专业词。\n4. 实施前保留可恢复版本；删除资料、付费、扩大权限或发布前等待确认。\n5. 交付时列出改动、实际检查动作、结果、未验证项和下一步。\n【检查标准】逐项核对上述目标；正常操作与失败情况都有明确结果。若无法实际执行，明确标记建议或待验证，不宣称已完成。"
+      },
+      {
+        "id": "edit-scene-recover",
+        "value": "【背景】填写项目用途、当前进度与已有页面。\n【这个项目主要给谁使用】填写项目面向的人群，以及他们希望通过项目完成的事情。\n【当前问题与目标】填写当前问题和希望达到的结果；参考上方单独标明的例子。\n【输入材料】粘贴已确认范围、相关截图或复现步骤；未提供的材料请先索取。\n【约束】只做本次目标；预算与发布时间尚未确定。\n\n本次任务：先汇总已尝试改动和证据，找到可恢复版本；说明恢复影响，保留当前材料，再安排单项修复。\n请按以下方式配合：\n1. 先复述目标、范围与完成标准；区分事实、推断和未知项。\n2. 缺少会改变结果的材料时，先提出一个关键问题，不自行编造。\n3. 输出具体操作顺序、预期交付物和检查办法，用普通话解释专业词。\n4. 实施前保留可恢复版本；删除资料、付费、扩大权限或发布前等待确认。\n5. 交付时列出改动、实际检查动作、结果、未验证项和下一步。\n【检查标准】逐项核对上述目标；正常操作与失败情况都有明确结果。若无法实际执行，明确标记建议或待验证，不宣称已完成。"
+      },
+      {
+        "id": "edit-scene-verify",
+        "value": "【背景】填写项目用途、当前进度与已有页面。\n【这个项目主要给谁使用】填写项目面向的人群，以及他们希望通过项目完成的事情。\n【当前问题与目标】填写当前问题和希望达到的结果；参考上方单独标明的例子。\n【输入材料】粘贴已确认范围、相关截图或复现步骤；未提供的材料请先索取。\n【约束】只做本次目标；预算与发布时间尚未确定。\n\n本次任务：逐项对照约定的完成标准，记录执行动作、实际结果与未验证项；构建成功不等于使用流程成功。\n请按以下方式配合：\n1. 先复述目标、范围与完成标准；区分事实、推断和未知项。\n2. 缺少会改变结果的材料时，先提出一个关键问题，不自行编造。\n3. 输出具体操作顺序、预期交付物和检查办法，用普通话解释专业词。\n4. 实施前保留可恢复版本；删除资料、付费、扩大权限或发布前等待确认。\n5. 交付时列出改动、实际检查动作、结果、未验证项和下一步。\n【检查标准】逐项核对上述目标；正常操作与失败情况都有明确结果。若无法实际执行，明确标记建议或待验证，不宣称已完成。"
+      },
+      {
+        "id": "edit-scene-handoff",
+        "value": "【背景】填写项目用途、当前进度与已有页面。\n【这个项目主要给谁使用】填写项目面向的人群，以及他们希望通过项目完成的事情。\n【当前问题与目标】填写当前问题和希望达到的结果；参考上方单独标明的例子。\n【输入材料】粘贴已确认范围、相关截图或复现步骤；未提供的材料请先索取。\n【约束】只做本次目标；预算与发布时间尚未确定。\n\n本次任务：整理目标、范围、文件位置、启动方法、当前状态、验证记录和下一步；新会话先核对原文件再继续。\n请按以下方式配合：\n1. 先复述目标、范围与完成标准；区分事实、推断和未知项。\n2. 缺少会改变结果的材料时，先提出一个关键问题，不自行编造。\n3. 输出具体操作顺序、预期交付物和检查办法，用普通话解释专业词。\n4. 实施前保留可恢复版本；删除资料、付费、扩大权限或发布前等待确认。\n5. 交付时列出改动、实际检查动作、结果、未验证项和下一步。\n【检查标准】逐项核对上述目标；正常操作与失败情况都有明确结果。若无法实际执行，明确标记建议或待验证，不宣称已完成。"
+      },
+      {
+        "id": "edit-scene-release",
+        "value": "【背景】填写项目用途、当前进度与已有页面。\n【这个项目主要给谁使用】填写项目面向的人群，以及他们希望通过项目完成的事情。\n【当前问题与目标】填写当前问题和希望达到的结果；参考上方单独标明的例子。\n【输入材料】粘贴已确认范围、相关截图或复现步骤；未提供的材料请先索取。\n【约束】只做本次目标；预算与发布时间尚未确定。\n\n本次任务：整理待发布版本、正式入口、费用、数据处理、验收与恢复办法；列出阻塞项，等待明确发布决定。\n请按以下方式配合：\n1. 先复述目标、范围与完成标准；区分事实、推断和未知项。\n2. 缺少会改变结果的材料时，先提出一个关键问题，不自行编造。\n3. 输出具体操作顺序、预期交付物和检查办法，用普通话解释专业词。\n4. 实施前保留可恢复版本；删除资料、付费、扩大权限或发布前等待确认。\n5. 交付时列出改动、实际检查动作、结果、未验证项和下一步。\n【检查标准】逐项核对上述目标；正常操作与失败情况都有明确结果。若无法实际执行，明确标记建议或待验证，不宣称已完成。"
+      }
+    ],
+    "text": "← 返回上一级\n完整路线图 ↗\n\n需要给 AI 交代任务或反馈问题时，在这里选择话术，补充当前项目材料，再发到该项目的 AI 对话。\n\n用这页做出判断：适用条件、限制与检查\n\nAGENT COMMUNICATION\n\n和 Agent 沟通\n\nAgent 是能使用工具、执行多步工作的 AI 助手。选一个当前任务，把背景和完成标准一起交给 AI。\n\n第一次使用？看准备说明和表达示例\n选择或更换任务场景\n想法变第一版\n\n根据已填写的想法草稿，一次提出一个影响范围的问题，整理必做、暂缓和不做清单。\n\n比如：只需选择日期并提交预约，不做支付。\n\n这样说明的原因：AI 能把本次目标与已有工作分开，交付后也有明确依据检查。\n\n填写实际材料\n\n下方提供可编辑模板。先填好实际材料，再生成本次话术；材料保存在当前浏览器，不上传。未知项可填写“尚未确定”。\n\n背景与现状\n给谁用\n问题与希望结果\n输入材料\n限制与不做的事\n生成本次提示词\n\n查看提示词与检查标准\n卡住时按结果继续\n还没有可用的 AI 工具？\n准备工具与材料",
+    "title": "和 Agent 沟通"
+  },
+  {
+    "path": "communicate/tools",
+    "links": [
+      {
+        "href": "/zh-cn/library/",
+        "text": "← 返回上一级"
+      },
+      {
+        "href": "/zh-cn/roadmap/",
+        "text": "完整路线图 ↗"
+      },
+      {
+        "href": "/zh-cn/learn/clarify/",
+        "text": "带着结果回到操作 →"
+      },
+      {
+        "href": "/zh-cn/tools/",
+        "text": "还没选工具？先查看工具对比与价格 →"
+      },
+      {
+        "href": "#action-1",
+        "text": "1. 按当前条件选入口"
+      },
+      {
+        "href": "#action-2",
+        "text": "2. 打开一个项目，不在随意的聊天窗口开工"
+      },
+      {
+        "href": "#action-3",
+        "text": "3. 先做一个不会影响业务的小检查"
+      },
+      {
+        "href": "#templates",
+        "text": "可复制材料"
+      },
+      {
+        "href": "https://docs.lovable.dev/introduction/getting-started",
+        "text": "Lovable 官方入门"
+      },
+      {
+        "href": "https://code.visualstudio.com/docs/setup/copilot",
+        "text": "VS Code / GitHub Copilot setup"
+      },
+      {
+        "href": "/zh-cn/communicate/setup/",
+        "text": "工具可用后：准备 Git 与项目规则 →"
+      },
+      {
+        "href": "/zh-cn/roadmap/tell/",
+        "text": "返回本步路线"
+      }
+    ],
+    "templates": [
+      {
+        "id": "edit-tool-trial",
+        "value": "【背景】【填写项目用途与给谁使用】\n【当前问题】【填写正在遇到的困难或希望完成的变化】\n【输入材料】本人填写的想法草稿；当前项目位置：填写项目名或文件夹。\n【本次任务】先确认当前项目位置与可用能力。在项目中新建 tool-check.md，写入“项目准备检查”，再读取内容返回；已有同名文件先读取，不能覆盖。先不制作业务功能。\n【约束】保留已确认范围和现有工作，不做无关修改。\n\n请按以下顺序执行：\n1. 先读取材料并复述目标；缺少会影响结果的信息时，先问一个关键问题。\n2. 能由 AI 完成的读取、整理、修改和检查请直接执行；需要本人操作时说明在哪个页面点击什么。\n3. 实施前保留可恢复版本；不要覆盖现有未确认改动。\n4. 给出实际产物、文件位置与当前预览，不把方案当作已经执行。\n【需要交付】实际文件路径与读回内容；能否修改文件、运行命令和显示预览；不能执行的能力及替代步骤。\n【检查标准】逐项对照本次目标，报告实际检查、未验证项和下一步。删除资料、付费、扩大访问或公开发布前等待明确确认。"
+      }
+    ],
+    "text": "← 返回上一级\n完整路线图 ↗\n\n需要给 AI 交代任务或反馈问题时，在这里选择话术，补充当前项目材料，再发到该项目的 AI 对话。\n\n用这页做出判断：适用条件、限制与检查\n\n跟着操作\n\n打开工具，确认能操作项目\n\n只需要先选一种。已经在用能打开项目、修改文件并运行预览的 AI 助手，可以直接继续准备项目。只会聊天的工具可以帮忙想需求，但还需要制作工具来落实。\n\n还没选工具？先查看工具对比与价格 →\n\n开始前带上\n\n带上刚填写的想法草稿，确认使用电脑、是否愿意安装软件、是否已有项目。\n\n1. 按当前条件选入口\n2. 打开一个项目，不在随意的聊天窗口开工\n3. 先做一个不会影响业务的小检查\n可复制材料\n1. 按当前条件选入口\n\n不愿安装、想先在网页做网站：可以从网页制作工具开始。愿意安装，或已有项目文件：选择能打开本机文件夹的编程助手。先不要同时学习多个工具。\n\n比如：网页路径可参考 Lovable；电脑路径可参考 VS Code + GitHub Copilot。名称是可试用的例子，不是所有项目的唯一答案。\n\n这样就能继续：选择的工具能接收说明、保留项目，并让实际结果可查看；确认账号可用和费用可接受。\n\n2. 打开一个项目，不在随意的聊天窗口开工\n\n网页工具按官方入门页创建项目。电脑工具先新建一个专用文件夹，用工具的“打开文件夹”功能打开，再进入该项目的 AI 对话。已有项目则打开原文件夹，不新建替代品。\n\n这样就能继续：能指出当前项目的名字或完整文件位置；AI 的后续改动落在这个项目。\n\n3. 先做一个不会影响业务的小检查\n\n发送下方提示词，让 AI 创建一份说明文件并重新读出内容。如果只能返回文字，先切换到有文件操作能力的项目或模式。\n\n这样就能继续：在项目文件列表找到说明文件并打开，内容与任务相符；不能只看 AI 回复成功。\n\n复制材料，按实际项目填写\n复制到所选工具：检查能否开始\n\n先在模板中补充实际材料，确认生成后再复制到当前项目的 AI 对话。不确定项写“尚未确定”，示例可以自行替换。\n\n① 按模板补充实际情况，不确定的地方写“尚未确定”\n② 确认，生成我的专属内容\n\n纯文本 · 补齐实际材料后发送给 AI\n工具差异与官方依据 · 2026-09-23 核对\n\n完成上面的检查后再继续；遇到失败，保留报错原文交给当前 AI 对话处理。\n\n工具可用后：准备 Git 与项目规则 →\n返回本步路线",
+    "title": "打开工具，确认能操作项目"
+  },
+  {
+    "path": "communicate/setup",
+    "links": [
+      {
+        "href": "/zh-cn/library/",
+        "text": "← 返回上一级"
+      },
+      {
+        "href": "/zh-cn/roadmap/",
+        "text": "完整路线图 ↗"
+      },
+      {
+        "href": "/zh-cn/learn/clarify/",
+        "text": "带着结果回到操作 →"
+      },
+      {
+        "href": "#template-git-setup",
+        "text": "1 · 初始化 Git 提示词"
+      },
+      {
+        "href": "#template-agents-create",
+        "text": "2 · 生成项目规则提示词"
+      },
+      {
+        "href": "#template-agents-file",
+        "text": "查看 AGENTS.md 文件模板"
+      },
+      {
+        "href": "#action-1",
+        "text": "1. 确认项目位置"
+      },
+      {
+        "href": "#action-2",
+        "text": "2. 让 AI 初始化或检查 Git"
+      },
+      {
+        "href": "#action-3",
+        "text": "3. 生成并确认项目规则文件"
+      },
+      {
+        "href": "#action-4",
+        "text": "4. 保留起点，回到需求对话"
+      },
+      {
+        "href": "#templates",
+        "text": "可复制材料"
+      },
+      {
+        "href": "https://docs.lovable.dev/features/projects/chat",
+        "text": "Lovable · Project chat and debugging ↗"
+      },
+      {
+        "href": "https://code.claude.com/docs/en/memory",
+        "text": "Claude Code · Project instructions ↗"
+      },
+      {
+        "href": "https://www.reddit.com/r/ClaudeCode/comments/1njm40c/claude_ignores_claudemd_instructions_unless/",
+        "text": "Reddit · Original ignored-instructions report ↗"
+      },
+      {
+        "href": "https://git-scm.com/docs/git-init",
+        "text": "Git · git init ↗"
+      },
+      {
+        "href": "https://docs.github.com/en/get-started/git-basics/setting-your-username-in-git",
+        "text": "GitHub · Commit username ↗"
+      },
+      {
+        "href": "https://docs.github.com/en/account-and-profile/how-tos/email-preferences/setting-your-commit-email-address",
+        "text": "GitHub · Commit email ↗"
+      },
+      {
+        "href": "https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/",
+        "text": "npm · Install Node.js and npm ↗"
+      },
+      {
+        "href": "https://docs.astro.build/en/develop-and-build/",
+        "text": "Astro · Develop and build ↗"
+      },
+      {
+        "href": "https://github.com/vitejs/vite/discussions/14754",
+        "text": "Vite · Original connection-refused report ↗"
+      },
+      {
+        "href": "https://git-scm.com/docs/git-init",
+        "text": "Git init"
+      },
+      {
+        "href": "https://agents.md/",
+        "text": "AGENTS.md format"
+      },
+      {
+        "href": "https://code.visualstudio.com/docs/agent-customization/custom-instructions",
+        "text": "VS Code instruction files"
+      },
+      {
+        "href": "https://code.claude.com/docs/en/memory",
+        "text": "Claude Code instruction loading"
+      },
+      {
+        "href": "https://docs.github.com/en/get-started/git-basics/set-up-git",
+        "text": "Git installation and identity"
+      },
+      {
+        "href": "/zh-cn/learn/",
+        "text": "回到学习路线，继续当前步骤 →"
+      },
+      {
+        "href": "/zh-cn/roadmap/tell/",
+        "text": "返回本步路线"
+      }
+    ],
+    "templates": [
+      {
+        "id": "edit-git-setup",
+        "value": "【背景】【填写项目用途与给谁使用】\n【当前问题】【填写正在遇到的困难或希望完成的变化】\n【输入材料】项目完整路径、idea.md 和已经存在的文件。\n【本次任务】核对当前目录与 git --version。使用 git rev-parse --show-toplevel 检查本目录是否已在仓库内，避免把父目录误当项目。已有仓库先运行 git status 并保留历史；确认是新项目后才在其根目录 git init。根据真实文件生成或完善 .gitignore，排除密钥、依赖与构建产物。逐个核对本任务文件再暂存，运行 git diff --cached 检查内容，然后创建初始提交。若缺少提交姓名邮箱，询问实际值，不编造、不擅自改全局配置。不推送远程。\n【约束】保留已确认范围和现有工作，不做无关修改。\n\n请按以下顺序执行：\n1. 先读取材料并复述目标；缺少会影响结果的信息时，先问一个关键问题。\n2. 能由 AI 完成的读取、整理、修改和检查请直接执行；需要本人操作时说明在哪个页面点击什么。\n3. 实施前保留可恢复版本；不要覆盖现有未确认改动。\n4. 给出实际产物、文件位置与当前预览，不把方案当作已经执行。\n【需要交付】git status 的实际结果、git log -1 的实际提交信息、未纳入记录的文件及原因。Git 不可用时给出对应系统的官方安装入口，安装后重新检查。\n【检查标准】逐项对照本次目标，报告实际检查、未验证项和下一步。删除资料、付费、扩大访问或公开发布前等待明确确认。"
+      },
+      {
+        "id": "edit-agents-file",
+        "value": "# 项目协作说明\n\n## 项目目标\n- 项目用途：待填写。\n- 使用者：待填写。\n- 第一版范围：读取 docs/requirements.md；尚不存在时先提问确认。\n- 暂不做的事：以确认的需求为准，不自行增加。\n\n## 开始任务前\n1. 读取本文件、README.md、docs/requirements.md、docs/design.md 和 tasks/todo.md 中已存在的内容。\n2. 核对当前项目目录、Git 状态和未提交变化。不存在的文件先说明，不编造。\n3. 复述本次目标及完成标准，只问会实质影响结果的缺失信息。\n\n## 实施方式\n- 能自动完成的读取、整理、实现和检查直接完成。\n- 每次交付一个可以打开检查的小版本，保留已有工作，不无关重构。\n- 使用当前项目已经采用的技术和样式；变更方案先解释原因与影响。\n- 用普通话解释技术词，提供具体点击步骤和预期画面。\n\n## 项目命令（由 AI 核对后填写，不猜测）\n- 安装依赖：待确认。\n- 启动预览：待确认。\n- 检查代码：待确认。\n- 构建产物：待确认。\n- 项目尚未建立时，以上保持待确认；环境准备完成后补齐。\n\n## 检查与完成\n- 对照需求检查正常操作、空值、失败和受影响的旧功能。\n- 将实际执行、通过、失败和未验证项分别写入 docs/checks.md。\n- 更新 tasks/todo.md 的状态；给出文件位置、当前预览和下一步。\n- 构建成功不能替代人工试用，未执行的检查不能说通过。\n\n## 版本与资料\n- 修改前确认可以找回当前版本；检查通过后提交本任务的文件，并写明改动。\n- 提交前检查暂存内容，不提交密钥、个人资料、依赖目录和构建产物。\n- 不覆盖无关的未提交工作，不随意删除历史或使用强制恢复。\n- Git 只记录纳入版本管理的文件，不等于线上数据库备份。\n\n## 需要本人决定\n- 付费、删除资料、扩大访问权限、推送远程或公开发布前说明影响并等待确认。\n- 遇到无法继续的问题，记录已经尝试的步骤、实际结果和最小待确认事项。\n"
+      },
+      {
+        "id": "edit-agents-create",
+        "value": "我准备在当前项目建立 AI 协作规则，请直接完成以下任务。\n【项目路径】填写已经在工具中打开的项目位置。\n【项目用途】填写用途，或读取 idea.md。\n【正在使用的工具与版本】填写工具名称；版本未知时请先核实。\n\n1. 先说出当前项目根目录，读取已有规则文件与 README，保留原内容。\n2. 根据当前工具官方说明，确认规则文件名、放置位置和加载条件。通用文件名是 AGENTS.md（复数），不要自行使用 AGENT.md。若需 CLAUDE.md、GEMINI.md 或设置页，说明原因并按当前版本接入，避免两套冲突规则。\n3. 把下面的模板合并进真实项目。根据文件填写已知信息，未知命令保持“待确认”，不要猜测。\n4. 保存后重新读取，报告完整路径、改动摘要、三个约束及仍待确认的内容。\n5. 检查当前会话的规则加载记录（工具提供时）；另开新会话后再做一次读取检查。无法观察自动加载时明确写“尚未验证”，不要仅凭自述说自动生效。\n6. 本次不制作业务功能、不推送、不发布。\n\n以下是文件内容模板：\n# 项目协作说明\n\n## 项目目标\n- 项目用途：待填写。\n- 使用者：待填写。\n- 第一版范围：读取 docs/requirements.md；尚不存在时先提问确认。\n- 暂不做的事：以确认的需求为准，不自行增加。\n\n## 开始任务前\n1. 读取本文件、README.md、docs/requirements.md、docs/design.md 和 tasks/todo.md 中已存在的内容。\n2. 核对当前项目目录、Git 状态和未提交变化。不存在的文件先说明，不编造。\n3. 复述本次目标及完成标准，只问会实质影响结果的缺失信息。\n\n## 实施方式\n- 能自动完成的读取、整理、实现和检查直接完成。\n- 每次交付一个可以打开检查的小版本，保留已有工作，不无关重构。\n- 使用当前项目已经采用的技术和样式；变更方案先解释原因与影响。\n- 用普通话解释技术词，提供具体点击步骤和预期画面。\n\n## 项目命令（由 AI 核对后填写，不猜测）\n- 安装依赖：待确认。\n- 启动预览：待确认。\n- 检查代码：待确认。\n- 构建产物：待确认。\n- 项目尚未建立时，以上保持待确认；环境准备完成后补齐。\n\n## 检查与完成\n- 对照需求检查正常操作、空值、失败和受影响的旧功能。\n- 将实际执行、通过、失败和未验证项分别写入 docs/checks.md。\n- 更新 tasks/todo.md 的状态；给出文件位置、当前预览和下一步。\n- 构建成功不能替代人工试用，未执行的检查不能说通过。\n\n## 版本与资料\n- 修改前确认可以找回当前版本；检查通过后提交本任务的文件，并写明改动。\n- 提交前检查暂存内容，不提交密钥、个人资料、依赖目录和构建产物。\n- 不覆盖无关的未提交工作，不随意删除历史或使用强制恢复。\n- Git 只记录纳入版本管理的文件，不等于线上数据库备份。\n\n## 需要本人决定\n- 付费、删除资料、扩大访问权限、推送远程或公开发布前说明影响并等待确认。\n- 遇到无法继续的问题，记录已经尝试的步骤、实际结果和最小待确认事项。\n"
+      },
+      {
+        "id": "edit-blocker-tell-folder",
+        "value": "我在【AI 说改好了，却找不到文件】这一步遇到问题。\n项目与工具：[填写名称、版本和项目路径]\n实际现象：[填写操作步骤、报错原文或附截图；隐去密钥和个人数据]\n期望结果：[填写实际目标]\n请先检查：确认当前工具是聊天模式还是可编辑项目模式，并读出工作目录。\n处理方向：在工具中打开实际项目文件夹；让 AI 新建 tool-check.md 写入一行测试文字，再读回确认。成功后删除这个测试文件。\n请先说明证据和原因，再执行最小范围修复；保留已有改动，不扩展功能。需要我操作时，一次给出一个位置明确的动作，并说明应当看到什么。\n验证标准：在文件列表和 AI 读回结果中都看到同一文件及内容。\n最后列出实际验证结果、未验证项和下一步。\n如需创建检查文件，先确认文件名未被占用；只删除本次新建的检查文件，保留所有已有文件。"
+      },
+      {
+        "id": "edit-blocker-tell-rules",
+        "value": "我在【规则文件存在，但 AI 没按规则做】这一步遇到问题。\n项目与工具：[填写名称、版本和项目路径]\n实际现象：[填写操作步骤、报错原文或附截图；隐去密钥和个人数据]\n期望结果：[填写实际目标]\n请先检查：核对文件名 AGENTS.md（复数）、所在目录、工具版本及实际加载记录。\n处理方向：先让 AI 读规则并复述三条约束。Claude Code 当前版本对 AGENTS.md 的加载有条件；已有 CLAUDE.md 时检查是否导入，旧版可用 CLAUDE.md 中 @AGENTS.md。规则去重并写成能检查的动作。\n请先说明证据和原因，再执行最小范围修复；保留已有改动，不扩展功能。需要我操作时，一次给出一个位置明确的动作，并说明应当看到什么。\n验证标准：新任务能列出规则来源，并按一项小任务验证遵守；复述不等于强制执行。\n最后列出实际验证结果、未验证项和下一步。"
+      },
+      {
+        "id": "edit-blocker-environment-git",
+        "value": "我在【Git 初始化或首次提交失败】这一步遇到问题。\n项目与工具：[填写名称、版本和项目路径]\n实际现象：[填写操作步骤、报错原文或附截图；隐去密钥和个人数据]\n期望结果：[填写实际目标]\n请先检查：确认项目根目录、git --version、git rev-parse --show-toplevel 和 git status。\n处理方向：新项目根目录才执行 git init；父目录已有仓库先确认归属。身份缺失时由本人提供姓名与邮箱，只设置当前仓库；检查忽略文件和暂存差异后再提交。\n请先说明证据和原因，再执行最小范围修复；保留已有改动，不扩展功能。需要我操作时，一次给出一个位置明确的动作，并说明应当看到什么。\n验证标准：仓库根目录正确，git log -1 显示本次提交，密钥和无关文件未被跟踪。\n最后列出实际验证结果、未验证项和下一步。"
+      },
+      {
+        "id": "edit-blocker-environment-start",
+        "value": "我在【依赖安装失败或预览打不开】这一步遇到问题。\n项目与工具：[填写名称、版本和项目路径]\n实际现象：[填写操作步骤、报错原文或附截图；隐去密钥和个人数据]\n期望结果：[填写实际目标]\n请先检查：读取 README、项目版本文件、锁文件和终端第一条错误，确认当前目录。\n处理方向：按项目要求安装运行时和匹配的包管理器；不要混用锁文件。启动项目已定义的命令，保持进程运行，打开终端实际给出的地址与端口。仍失败则检查监听地址与日志。\n请先说明证据和原因，再执行最小范围修复；保留已有改动，不扩展功能。需要我操作时，一次给出一个位置明确的动作，并说明应当看到什么。\n验证标准：同一地址能加载页面；终端无启动失败，记录实际命令和版本。\n最后列出实际验证结果、未验证项和下一步。"
+      }
+    ],
+    "text": "← 返回上一级\n完整路线图 ↗\n\n需要给 AI 交代任务或反馈问题时，在这里选择话术，补充当前项目材料，再发到该项目的 AI 对话。\n\n用这页做出判断：适用条件、限制与检查\n\n跟着操作\n\n把项目、版本记录和 AI 规则准备好\n\n这些准备让后续改动有记录、出错能找回，也让 AI 每次知道项目要求。文件和命令由 AI 处理；本人确认位置、检查结果和必要决定。\n\n直接拿走：按顺序发给正在操作项目的 AI\n\n第一份建立版本记录，第二份生成并验证规则。第二份已包含完整文件模板，不必另外拼接。先等当前任务完成并核对结果，再发送下一份。\n\n1 · 初始化 Git 提示词2 · 生成项目规则提示词\n查看 AGENTS.md 文件模板\n开始前带上\n\n已经选好的工具、打开的项目，以及想法草稿。没有可读写的项目时先返回选工具。\n\n1. 确认项目位置\n2. 让 AI 初始化或检查 Git\n3. 生成并确认项目规则文件\n4. 保留起点，回到需求对话\n可复制材料\n1. 确认项目位置\n\n在工具中打开专用项目文件夹，让 AI 说出当前完整路径和已有文件。把想法草稿保存为 idea.md。项目根目录就是包含整个项目的最外层文件夹。\n\n比如：可以把项目放在“文档/我的第一个产品”；这只是位置示例，不必使用同名文件夹。\n\n这样就能继续：打开 idea.md 能看到本人填写的草稿；目录中没有误混其他项目。\n\n2. 让 AI 初始化或检查 Git\n\nGit 用来保留文件变化，方便回到之前的版本。发送下方 Git 提示词。已有仓库沿用原记录；新目录才执行 git init。网页工具没有终端时，先确认平台的版本历史与恢复入口；导出到本机后再按本步骤建立 Git，不在没有终端的页面硬贴命令。\n\n这样就能继续：本机路径：AI 给出仓库路径、状态和实际提交记录。网页路径：找到可恢复的历史版本；这不等于已经初始化了本机 Git。\n\n3. 生成并确认项目规则文件\n\n把下方 AGENTS.md 模板交给 AI，要求结合真实项目保存。常见文件名是复数 AGENTS.md，并非所有工具自动读取同一名称；让工具确认它支持的规则入口，不能只创建文件就认为已生效。已有规则先合并，不能覆盖。\n\n这样就能继续：打开文件核对目标；再让 AI 复述三个约束和读到的文件位置。不支持自动读取时，在每次新对话附上规则，或按该工具官方入口配置。\n\n4. 保留起点，回到需求对话\n\n让 AI 把草稿和规则纳入第一次已检查的提交，并说明恢复时应该联系它检查哪些变化。当前还不知道的技术命令保持待确认，等环境准备节点再补。\n\n这样就能继续：草稿、规则和起点记录都能找到。返回首页第二步粘贴交接提示词，再进入 AI 提问。\n\n复制材料，按实际项目填写\n让 AI 检查并建立版本记录\n\n先在模板中补充实际材料，确认生成后再复制到当前项目的 AI 对话。不确定项写“尚未确定”，示例可以自行替换。\n\n① 按模板补充实际情况，不确定的地方写“尚未确定”\n② 确认，生成我的专属内容\n\n纯文本 · 补齐实际材料后发送给 AI\nAGENTS.md 文件模板 · 交给 AI 保存\n\n这是文件正文，不是对话提示词。交给 AI 合并到项目规则文件；待确认字段由 AI 读取真实项目后补齐。\n\n① 按模板补充实际情况，不确定的地方写“尚未确定”\n② 确认，生成我的专属内容\n\n文件正文 · 合并到项目规则文件\n生成并验证项目规则 · 完整提示词（含模板）\n\n先在模板中补充实际材料，确认生成后再复制到当前项目的 AI 对话。不确定项写“尚未确定”，示例可以自行替换。\n\n① 按模板补充实际情况，不确定的地方写“尚未确定”\n② 确认，生成我的专属内容\n\n纯文本 · 补齐实际材料后发送给 AI\n工具与规则：遇到问题这样查\n2 种情况\n\n以下路径整理自官方文档与公开求助，不代表发生频率。先按现象检查，再核对处理结果。\n\nAI 说改好了，却找不到文件\n＋\n规则文件存在，但 AI 没按规则做\n＋\nGit 与环境：遇到问题这样查\n2 种情况\n\n以下路径整理自官方文档与公开求助，不代表发生频率。先按现象检查，再核对处理结果。\n\nGit 初始化或首次提交失败\n＋\n依赖安装失败或预览打不开\n＋\n工具差异与官方依据 · 2026-09-23 核对\n\n完成上面的检查后再继续；遇到失败，保留报错原文交给当前 AI 对话处理。\n\n回到学习路线，继续当前步骤 →\n返回本步路线",
+    "title": "把项目、版本记录和 AI 规则准备好"
+  },
+  {
+    "path": "stacks",
+    "links": [
+      {
+        "href": "/zh-cn/library/",
+        "text": "← 返回上一级"
+      },
+      {
+        "href": "/zh-cn/roadmap/",
+        "text": "完整路线图 ↗"
+      },
+      {
+        "href": "/zh-cn/learn/choose-stack/",
+        "text": "带着结果回到操作 →"
+      },
+      {
+        "href": "https://docs.astro.build/en/concepts/why-astro/",
+        "text": "官方说明 ↗"
+      },
+      {
+        "href": "https://react.dev/learn/creating-a-react-app",
+        "text": "官方说明 ↗"
+      },
+      {
+        "href": "https://docs.expo.dev/tutorial/introduction/",
+        "text": "官方说明 ↗"
+      },
+      {
+        "href": "https://v2.tauri.app/start/",
+        "text": "官方说明 ↗"
+      },
+      {
+        "href": "/zh-cn/#stage-plan",
+        "text": "下一步：生成可跟踪开发计划 →"
+      }
+    ],
+    "templates": [
+      {
+        "id": "edit-resource-stacks",
+        "value": "确认后的项目描述与第一版范围：【粘贴或填写路径】\n已有项目及当前技术：【填写，无则写无】\n目标设备、必需能力和资料保存要求：【填写】\n预算、部署与维护条件：【填写或尚未确定】\n\n只核对技术方案，不安装依赖或改写代码。优先判断现有方案能否满足目标；比较至多两种可行方案并解释取舍。\n\n本次产物：建议方案与理由、暂不需要的技术、费用与限制、最难能力的最小验证及通过标准；等待方案确认。"
+      },
+      {
+        "id": "edit-stack-request",
+        "value": "产品形式: 尚未确定\n资料保存: 尚未确定\n设备能力: 尚未确定\n是否需要区分身份: 尚未确定\n运行预算: 尚未确定\n持续照看意愿: 尚未确定\n已有可运行项目: 尚未确定\n\n还有条件未确定。先让 AI 澄清未知项，暂不把任何方案认定为适合。下方目录可用于了解候选。\n\n\n【项目背景】粘贴已确认的项目简介；不确定项保留“尚未确定”。\n【这个项目主要给谁使用】填写项目面向的人群，以及他们希望通过项目完成的事情。\n【当前材料】docs/requirements.md；实际设备、预算和已有工具。 请读取附上的原文，不凭空补齐。\n【本次目标】读取需求，根据实际条件推荐技术与运行方式。解释每项负责什么、费用类型和限制，引用当前官方依据。缺少预算或设备信息先询问，确认后写入 docs/design.md。\n【限制】沿用已确认范围，不擅自增加功能或更换方案。\n\n执行要求：\n1. 先说明材料是否齐全；缺少会改变结果的信息，先问一个关键问题。\n2. 用普通话解释操作，告诉我需要在哪里点击、粘贴或确认；可由AI完成的整理和执行请直接完成。\n3. 每次只完成本步目标，保留已有文件与可恢复版本。\n4. 输出实际产物的位置、我应该看到的结果和具体检查步骤。\n5. 把建议、已执行、已检查和未验证分开；不把文字回复当作已执行。\n【本步完成标准】docs/design.md：选什么、为什么、有什么限制，以及还需要核验什么。\n【继续方式】达到完成标准后说明下一步需要带哪些材料；涉及付费、删除资料或发布时先取得明确确认。"
+      }
+    ],
+    "text": "← 返回上一级\n完整路线图 ↗\n\n讨论技术方案时，用这里把实际条件说明白，再请 AI 解释推荐方案和取舍，确认后继续开发计划。\n\n用这页做出判断：适用条件、限制与检查\n\nTECH STACK\n\n技术栈选择\n\n技术栈是制作与运行产品所需的一组技术和服务。先说明要完成的事情，让 AI 推荐并验证；不必先背技术名字。\n\nAI 助手负责制作 → 技术栈组成产品 → 托管服务放置或运行产品。三者费用和职责分别确认。\n\n先回答实际条件\n产品形式\n尚未确定\n展示或内容网站\n经常操作的网页工具\n手机 App\n桌面 App\n小程序\n资料保存\n尚未确定\n不保存\n只在本机\n多人或多设备共享\n设备能力\n尚未确定\n普通页面操作\n相机、文件或系统能力是核心\n是否需要区分身份\n尚未确定\n不需要\n需要\n运行预算\n尚未确定\n先零预算试验\n可接受核实后的费用\n持续照看意愿\n尚未确定\n希望尽量少照看\n能定期检查与维护\n已有可运行项目\n尚未确定\n没有\n有，优先继续现有项目\n查看条件对应的候选\n\n尚未生成结果。未知项不会被当作满足条件。\n\n候选目录与代价\n展开本次 AI 交接材料\n让 AI 核对并推荐\n\n先在模板中补充实际材料，确认生成后再复制到当前项目的 AI 对话。不确定项写“尚未确定”，示例可以自行替换。\n\n① 按模板补充实际情况，不确定的地方写“尚未确定”\n② 确认，生成我的专属内容使用本步新版模板（替换当前编辑内容）\n\n已恢复旧草稿，可能包含旧版提示词。请先复制留底，再按需使用本步新版模板。\n\n纯文本 · 补齐实际材料后发送给 AI\n遇到分歧或未知项\n两个 AI 推荐不同方案\n不知道是否需要后端\n下一步：生成可跟踪开发计划 →",
+    "title": "技术栈选择"
+  },
+  {
+    "path": "data",
+    "links": [
+      {
+        "href": "/zh-cn/library/",
+        "text": "← 返回上一级"
+      },
+      {
+        "href": "/zh-cn/roadmap/",
+        "text": "完整路线图 ↗"
+      },
+      {
+        "href": "/zh-cn/learn/save/",
+        "text": "带着结果回到操作 →"
+      },
+      {
+        "href": "#actions",
+        "text": "现在做什么"
+      },
+      {
+        "href": "#record",
+        "text": "留下检查记录"
+      },
+      {
+        "href": "#problems",
+        "text": "卡住怎么办"
+      },
+      {
+        "href": "#template",
+        "text": "交给 AI 的材料"
+      },
+      {
+        "href": "/zh-cn/learn/save/help/lost-record/",
+        "text": "保存失败或记录不见了 →"
+      },
+      {
+        "href": "/zh-cn/learn/save/",
+        "text": "带着本页结果回到当前操作 →"
+      },
+      {
+        "href": "/zh-cn/roadmap/backend/",
+        "text": "返回对应知识节点"
+      }
+    ],
+    "templates": [
+      {
+        "id": "edit-external-api-plan",
+        "value": "项目需要的能力：【填写】\n候选服务与官方文档：【填写】\n需要发送的资料：【填写；不要粘贴密钥】\n希望收到的结果：【填写】\n预算与用量：【填写或尚未确定】\n只核对接口方案：输入输出、认证放置位置、测试环境、超时/失败/额度用尽的处理、重复请求是否重复执行。列出一个最小测试和通过标准，未知项先问。本次不写业务代码、不付款、不调用真实交易或对外发送接口。"
+      },
+      {
+        "id": "edit-record-backend",
+        "value": "版本：【填写实际记录，未执行写待验证】\n测试身份：【填写实际记录，未执行写待验证】\n测试记录编号：【填写实际记录，未执行写待验证】\n保存位置：【填写实际记录，未执行写待验证】\n刷新后结果：【填写实际记录，未执行写待验证】\n不同身份访问结果：【填写实际记录，未执行写待验证】\n导出与恢复结果：【填写实际记录，未执行写待验证】\n待验证项：【填写实际记录，未执行写待验证】"
+      },
+      {
+        "id": "edit-guide-backend",
+        "value": "需要保存或展示的内容：【填写】\n谁能新增、查看、修改、删除：【填写】\n是否需要多设备或多人共享：【填写】\n可接受的数据丢失范围与恢复要求：【填写】\n现有项目和保存方式：【填写，无则写无】\n\n只判断不保存、本地保存或共享服务哪种适合，不创建数据库。说明访问检查发生在哪里，以及本地保存、同步和备份的区别。\n\n本次产物：数据去向与权限表、必要账号或服务、费用未知项、保存重开/不同身份/恢复的适用测试；不适用的测试说明原因。"
+      }
+    ],
+    "text": "← 返回上一级\n完整路线图 ↗\n\n项目需要保存或读取数据时，用这里确认数据放在哪里、谁能访问，再将要求交给 AI 实现并亲自检查。\n\n用这页做出判断：适用条件、限制与检查\n\nBACKEND\n\n后端：保存资料与访问规则\n\n后端是在界面背后保存资料、识别身份并检查访问规则的部分。只展示内容的项目可能不需要；多人预约、跨设备查看或私有资料需要先明确规则。\n\n要接 AI、支付或其他外部 API？先做这项准备\n先选资料如何保存\n请选择实际需要\n只在当前浏览器保存\n多人或多设备使用\n只展示内容，不保存\n展开 AI 交接模板",
+    "title": "后端：保存资料与访问规则"
+  },
+  {
+    "path": "check",
+    "links": [
+      {
+        "href": "/zh-cn/library/",
+        "text": "← 返回上一级"
+      },
+      {
+        "href": "/zh-cn/roadmap/",
+        "text": "完整路线图 ↗"
+      },
+      {
+        "href": "/zh-cn/learn/feedback/",
+        "text": "带着结果回到操作 →"
+      },
+      {
+        "href": "#actions",
+        "text": "现在做什么"
+      },
+      {
+        "href": "#record",
+        "text": "留下检查记录"
+      },
+      {
+        "href": "#problems",
+        "text": "卡住怎么办"
+      },
+      {
+        "href": "#template",
+        "text": "交给 AI 的材料"
+      },
+      {
+        "href": "/zh-cn/learn/feedback/",
+        "text": "带着本页结果回到当前操作 →"
+      },
+      {
+        "href": "/zh-cn/roadmap/test/",
+        "text": "返回对应知识节点"
+      }
+    ],
+    "templates": [
+      {
+        "id": "edit-record-test",
+        "value": "版本与设备：【填写实际记录，未执行写待验证】\n任务目标：【填写实际记录，未执行写待验证】\n测试资料：【填写实际记录，未执行写待验证】\n复现步骤：【填写实际记录，未执行写待验证】\n预期结果：【填写实际记录，未执行写待验证】\n实际结果：【填写实际记录，未执行写待验证】\n证据位置：【填写实际记录，未执行写待验证】\n是否可重复：【填写实际记录，未执行写待验证】\n严重程度与受影响人群：【填写实际记录，未执行写待验证】\nAI检查 / 本人试用：【填写实际记录，未执行写待验证】\n待验证项与下一步：【填写实际记录，未执行写待验证】"
+      },
+      {
+        "id": "edit-guide-test",
+        "value": "要检查的版本与入口：【填写】\n已确认的用户需求与通过标准：【填写或粘贴】\n可以使用的测试资料和设备：【填写】\n已有 AI 检查记录：【填写，没有则写未执行】\n\n只制作本人可跟着执行的测试清单，不修改代码，也不把未执行的测试标通过。每项包含操作、预期和记录位置。\n\n本次产物：核心正常流程、必要失败场景和回归检查；结果栏全部留待实际测试。失败时生成含复现信息的反馈记录，不直接修复。"
+      }
+    ],
+    "text": "← 返回上一级\n完整路线图 ↗\n\n准备测试作品时，用这里设计具体操作和通过条件，将实际结果写成反馈，再回到测试或修复步骤。\n\n用这页做出判断：适用条件、限制与检查\n\nTEST\n\n测试：亲手检查是否能用\n\n测试是按具体步骤比较预期与实际结果。先走通最重要的一条任务，再检查失败、换设备和修改后的情况；AI 检查与本人试用分别记录。\n\n现在做什么\n留下检查记录\n卡住怎么办\n交给 AI 的材料\n按实际结果推进\n1. 正常操作走一遍\n2. 试一次意外情况\n3. 换设备与身份\n4. 修改后再复查\n\n勾选只是当前页面的个人标记，不是自动测试或持久保存，刷新会清空。\n\n填写检查记录\n遇到问题时展开\n展开 AI 交接模板",
+    "title": "测试：亲手检查是否能用"
+  },
+  {
+    "path": "launch",
+    "links": [
+      {
+        "href": "/zh-cn/library/",
+        "text": "← 返回上一级"
+      },
+      {
+        "href": "/zh-cn/roadmap/",
+        "text": "完整路线图 ↗"
+      },
+      {
+        "href": "/zh-cn/learn/release-review/",
+        "text": "带着结果回到操作 →"
+      },
+      {
+        "href": "#actions",
+        "text": "现在做什么"
+      },
+      {
+        "href": "#record",
+        "text": "留下检查记录"
+      },
+      {
+        "href": "#problems",
+        "text": "卡住怎么办"
+      },
+      {
+        "href": "#template",
+        "text": "交给 AI 的材料"
+      },
+      {
+        "href": "/zh-cn/learn/release-review/",
+        "text": "带着本页结果回到当前操作 →"
+      },
+      {
+        "href": "/zh-cn/roadmap/launch/",
+        "text": "返回对应知识节点"
+      }
+    ],
+    "templates": [
+      {
+        "id": "edit-record-launch",
+        "value": "发布决定：【填写实际记录，未执行写待验证】\n目标人群：【填写实际记录，未执行写待验证】\n交付版本：【填写实际记录，未执行写待验证】\n正式入口：【填写实际记录，未执行写待验证】\n费用与负责人：【填写实际记录，未执行写待验证】\n验收证据：【填写实际记录，未执行写待验证】\n开放时间：【填写实际记录，未执行写待验证】\n正式入口复查结果：【填写实际记录，未执行写待验证】\n恢复版本与步骤：【填写实际记录，未执行写待验证】\n剩余风险：【填写实际记录，未执行写待验证】"
+      },
+      {
+        "id": "edit-guide-launch",
+        "value": "交付形式与目标人群：【填写】\n版本与人工验收证据：【填写】\n目标系统或托管服务：【填写或尚未确定】\n运行配置、账号、费用与负责人：【填写，不放密钥】\n恢复方案及实测证据：【填写，未测写未验证】\n\n只评估能否交付，不实际部署、打包、公开或付款。按本项目交付方式核对必需条件，不要求每种项目执行所有平台流程。\n\n本次产物：逐项通过/不通过/未验证及证据；阻断项、修复或补证步骤和复测标准。未知关键条件存在时暂缓，不以 AI 自述替代证据。"
+      }
+    ],
+    "text": "← 返回上一级\n完整路线图 ↗\n\n准备交付作品时，用这里核对发布条件和操作方法，再回到交付步骤检查实际入口是否可用。\n\n用这页做出判断：适用条件、限制与检查\n\nLAUNCH\n\n部署上线：交付一个真实入口\n\n部署是把版本放到能运行的位置，发布是决定让目标人群使用。预览网址、测试安装包、平台审核和正式开放是不同状态。\n\n现在做什么\n留下检查记录\n卡住怎么办\n交给 AI 的材料\n按实际结果推进\n1. 确认交付形式与版本\n2. 核对运行材料与费用\n3. 先检查预览或测试安装\n4. 确认开放并复查正式入口\n\n勾选只是当前页面的个人标记，不是自动测试或持久保存，刷新会清空。\n\n填写检查记录\n遇到问题时展开\n展开 AI 交接模板",
+    "title": "部署上线：交付一个真实入口"
+  },
+  {
+    "path": "maintain",
+    "links": [
+      {
+        "href": "/zh-cn/library/",
+        "text": "← 返回上一级"
+      },
+      {
+        "href": "/zh-cn/roadmap/",
+        "text": "完整路线图 ↗"
+      },
+      {
+        "href": "/zh-cn/learn/maintain/",
+        "text": "带着结果回到操作 →"
+      },
+      {
+        "href": "#actions",
+        "text": "现在做什么"
+      },
+      {
+        "href": "#record",
+        "text": "留下检查记录"
+      },
+      {
+        "href": "#problems",
+        "text": "卡住怎么办"
+      },
+      {
+        "href": "#template",
+        "text": "交给 AI 的材料"
+      },
+      {
+        "href": "/zh-cn/learn/maintain/",
+        "text": "带着本页结果回到当前操作 →"
+      },
+      {
+        "href": "/zh-cn/roadmap/maintain/",
+        "text": "返回对应知识节点"
+      }
+    ],
+    "templates": [
+      {
+        "id": "edit-record-ops",
+        "value": "检查日期与负责人：【填写实际记录，未执行写待验证】\n正式入口与版本：【填写实际记录，未执行写待验证】\n主要流程结果：【填写实际记录，未执行写待验证】\n本期费用 / 预算：【填写实际记录，未执行写待验证】\n最近备份与恢复测试：【填写实际记录，未执行写待验证】\n到期事项：【填写实际记录，未执行写待验证】\n真实反馈与证据：【填写实际记录，未执行写待验证】\n故障 / 新需求：【填写实际记录，未执行写待验证】\n处理状态与下一次检查：【填写实际记录，未执行写待验证】"
+      },
+      {
+        "id": "edit-guide-ops",
+        "value": "已交付的版本、入口与启动方法：【填写】\n本次是故障还是新需求：【填写】\n实际反馈和证据：【填写】\n现有备份与恢复验证：【填写或未验证】\n费用、负责人和到期事项：【填写或尚未确定】\n\n只整理维护与下次改动计划，不直接改线上数据。区分紧急故障、普通修复与新需求，保留当前可恢复版本。\n\n本次产物：一次只处理一个问题的计划、测试与回归标准、失败恢复办法和下一次检查时间建议；无法验证的项明确列出。"
+      }
+    ],
+    "text": "← 返回上一级\n完整路线图 ↗\n\n准备继续修改已完成的版本时，用这里整理现状和下一次任务，让 AI 接着已有成果工作。\n\n用这页做出判断：适用条件、限制与检查\n\nOPS\n\n运维：让产品继续可用\n\n运维是在开放后照看运行、费用、资料和更新。先留下可执行的维护记录，不把“已经上线”当作任务终点。\n\n现在做什么\n留下检查记录\n卡住怎么办\n交给 AI 的材料\n按实际结果推进\n1. 定期走主要流程\n2. 照看费用与到期\n3. 验证备份能够恢复\n4. 把反馈分成故障与新需求\n\n勾选只是当前页面的个人标记，不是自动测试或持久保存，刷新会清空。\n\n填写检查记录\n遇到问题时展开\n展开 AI 交接模板",
+    "title": "运维：让产品继续可用"
+  },
+  {
+    "path": "terms",
+    "links": [
+      {
+        "href": "/zh-cn/library/",
+        "text": "← 返回上一级"
+      },
+      {
+        "href": "/zh-cn/roadmap/",
+        "text": "完整路线图 ↗"
+      },
+      {
+        "href": "/zh-cn/terms/llm/",
+        "text": "大语言模型／大模型 · LLM"
+      },
+      {
+        "href": "/zh-cn/terms/prompt/",
+        "text": "提示词 · Prompt"
+      },
+      {
+        "href": "/zh-cn/terms/context/",
+        "text": "上下文 · Context"
+      },
+      {
+        "href": "/zh-cn/terms/agent/",
+        "text": "智能体 · Agent"
+      },
+      {
+        "href": "/zh-cn/terms/skill/",
+        "text": "技能 · Skill"
+      },
+      {
+        "href": "/zh-cn/terms/mcp/",
+        "text": "模型上下文协议 · MCP"
+      },
+      {
+        "href": "/zh-cn/terms/harness/",
+        "text": "智能体运行框架 · Agent harness"
+      },
+      {
+        "href": "/zh-cn/terms/frontend/",
+        "text": "前端 · Frontend"
+      },
+      {
+        "href": "/zh-cn/terms/backend/",
+        "text": "后端 · Backend"
+      },
+      {
+        "href": "/zh-cn/terms/api/",
+        "text": "应用程序接口 · API"
+      },
+      {
+        "href": "/zh-cn/terms/api-key/",
+        "text": "接口密钥 · API key"
+      },
+      {
+        "href": "/zh-cn/terms/git/",
+        "text": "Git版本控制 · Git"
+      },
+      {
+        "href": "/zh-cn/terms/project/",
+        "text": "项目Project"
+      },
+      {
+        "href": "/zh-cn/terms/requirement/",
+        "text": "需求Requirement"
+      },
+      {
+        "href": "/zh-cn/terms/feature/",
+        "text": "功能Feature"
+      },
+      {
+        "href": "/zh-cn/terms/audience/",
+        "text": "用户群体Target audience"
+      },
+      {
+        "href": "/zh-cn/terms/scenario/",
+        "text": "使用场景Use scenario"
+      },
+      {
+        "href": "/zh-cn/terms/first-version/",
+        "text": "第一版Version one"
+      },
+      {
+        "href": "/zh-cn/terms/mvp/",
+        "text": "最小可用产品MVP — Minimum viable product"
+      },
+      {
+        "href": "/zh-cn/terms/product/",
+        "text": "产品Product"
+      },
+      {
+        "href": "/zh-cn/terms/pain-point/",
+        "text": "痛点Pain point"
+      },
+      {
+        "href": "/zh-cn/terms/scope/",
+        "text": "需求范围Scope"
+      },
+      {
+        "href": "/zh-cn/terms/scope-creep/",
+        "text": "范围蔓延Scope creep"
+      },
+      {
+        "href": "/zh-cn/terms/prototype/",
+        "text": "原型Prototype"
+      },
+      {
+        "href": "/zh-cn/terms/poc/",
+        "text": "概念验证POC — Proof of concept"
+      },
+      {
+        "href": "/zh-cn/terms/user-story/",
+        "text": "用户故事User story"
+      },
+      {
+        "href": "/zh-cn/terms/user-flow/",
+        "text": "用户流程User flow"
+      },
+      {
+        "href": "/zh-cn/terms/use-case/",
+        "text": "用例Use case"
+      },
+      {
+        "href": "/zh-cn/terms/business-rule/",
+        "text": "业务规则Business rule"
+      },
+      {
+        "href": "/zh-cn/terms/boundary/",
+        "text": "边界条件Boundary condition"
+      },
+      {
+        "href": "/zh-cn/terms/acceptance-criteria/",
+        "text": "验收标准Acceptance criteria"
+      },
+      {
+        "href": "/zh-cn/terms/milestone/",
+        "text": "里程碑Milestone"
+      },
+      {
+        "href": "/zh-cn/terms/iteration/",
+        "text": "迭代Iteration"
+      },
+      {
+        "href": "/zh-cn/terms/tech-debt/",
+        "text": "技术债Technical debt"
+      },
+      {
+        "href": "/zh-cn/terms/brief/",
+        "text": "项目描述Project brief"
+      },
+      {
+        "href": "/zh-cn/terms/prd/",
+        "text": "需求文档PRD — Product requirements document"
+      },
+      {
+        "href": "/zh-cn/terms/development-doc/",
+        "text": "开发文档Development documentation"
+      },
+      {
+        "href": "/zh-cn/terms/plan/",
+        "text": "开发计划Development plan"
+      },
+      {
+        "href": "/zh-cn/terms/test-criteria/",
+        "text": "测试标准Test criteria"
+      },
+      {
+        "href": "/zh-cn/terms/specification/",
+        "text": "功能规格说明Functional specification"
+      },
+      {
+        "href": "/zh-cn/terms/technical-plan/",
+        "text": "技术方案Technical proposal"
+      },
+      {
+        "href": "/zh-cn/terms/design-doc/",
+        "text": "设计文档Design document"
+      },
+      {
+        "href": "/zh-cn/terms/api-doc/",
+        "text": "接口文档API documentation"
+      },
+      {
+        "href": "/zh-cn/terms/data-dictionary/",
+        "text": "数据字典Data dictionary"
+      },
+      {
+        "href": "/zh-cn/terms/task-breakdown/",
+        "text": "任务拆分Task breakdown"
+      },
+      {
+        "href": "/zh-cn/terms/task-dependency/",
+        "text": "任务依赖Task dependency"
+      },
+      {
+        "href": "/zh-cn/terms/backlog/",
+        "text": "待办清单Backlog"
+      },
+      {
+        "href": "/zh-cn/terms/readme/",
+        "text": "项目说明文件README"
+      },
+      {
+        "href": "/zh-cn/terms/changelog/",
+        "text": "变更日志Changelog"
+      },
+      {
+        "href": "/zh-cn/terms/adr/",
+        "text": "架构决策记录ADR"
+      },
+      {
+        "href": "/zh-cn/terms/test-feedback/",
+        "text": "测试反馈Test feedback"
+      },
+      {
+        "href": "/zh-cn/terms/fix-plan/",
+        "text": "修复计划Fix plan"
+      },
+      {
+        "href": "/zh-cn/terms/release-notes/",
+        "text": "发布说明Release notes"
+      },
+      {
+        "href": "/zh-cn/terms/maintenance-guide/",
+        "text": "维护手册Maintenance guide"
+      },
+      {
+        "href": "/zh-cn/terms/runbook/",
+        "text": "操作手册Runbook"
+      },
+      {
+        "href": "/zh-cn/terms/ai/",
+        "text": "人工智能AI — Artificial intelligence"
+      },
+      {
+        "href": "/zh-cn/terms/llm/",
+        "text": "大语言模型／大模型LLM — Large language model"
+      },
+      {
+        "href": "/zh-cn/terms/model/",
+        "text": "模型Model"
+      },
+      {
+        "href": "/zh-cn/terms/token/",
+        "text": "模型词元Token"
+      },
+      {
+        "href": "/zh-cn/terms/hallucination/",
+        "text": "幻觉Hallucination"
+      },
+      {
+        "href": "/zh-cn/terms/parameter/",
+        "text": "模型参数Model parameter"
+      },
+      {
+        "href": "/zh-cn/terms/training/",
+        "text": "训练Training"
+      },
+      {
+        "href": "/zh-cn/terms/pretraining/",
+        "text": "预训练Pretraining"
+      },
+      {
+        "href": "/zh-cn/terms/inference/",
+        "text": "推理运行Inference"
+      },
+      {
+        "href": "/zh-cn/terms/reasoning-model/",
+        "text": "推理模型Reasoning model"
+      },
+      {
+        "href": "/zh-cn/terms/multimodal/",
+        "text": "多模态Multimodal"
+      },
+      {
+        "href": "/zh-cn/terms/vision-model/",
+        "text": "视觉模型Vision model"
+      },
+      {
+        "href": "/zh-cn/terms/model-version/",
+        "text": "模型版本Model version"
+      },
+      {
+        "href": "/zh-cn/terms/provider/",
+        "text": "模型供应商Model provider"
+      },
+      {
+        "href": "/zh-cn/terms/open-model/",
+        "text": "开源模型Open-source model"
+      },
+      {
+        "href": "/zh-cn/terms/open-weights/",
+        "text": "开放权重Open weights"
+      },
+      {
+        "href": "/zh-cn/terms/closed-model/",
+        "text": "闭源模型Closed model"
+      },
+      {
+        "href": "/zh-cn/terms/knowledge-cutoff/",
+        "text": "知识截止时间Knowledge cutoff"
+      },
+      {
+        "href": "/zh-cn/terms/nondeterminism/",
+        "text": "非确定性Nondeterminism"
+      },
+      {
+        "href": "/zh-cn/terms/temperature/",
+        "text": "温度Temperature"
+      },
+      {
+        "href": "/zh-cn/terms/top-p/",
+        "text": "核采样Top-p"
+      },
+      {
+        "href": "/zh-cn/terms/output-limit/",
+        "text": "输出长度限制Output limit"
+      },
+      {
+        "href": "/zh-cn/terms/streaming/",
+        "text": "流式输出Streaming output"
+      },
+      {
+        "href": "/zh-cn/terms/first-token/",
+        "text": "首字延迟Time to first token"
+      },
+      {
+        "href": "/zh-cn/terms/generation-speed/",
+        "text": "生成速度Generation speed"
+      },
+      {
+        "href": "/zh-cn/terms/prompt/",
+        "text": "提示词Prompt"
+      },
+      {
+        "href": "/zh-cn/terms/prompt-template/",
+        "text": "提示词模板Prompt template"
+      },
+      {
+        "href": "/zh-cn/terms/system-prompt/",
+        "text": "系统提示词System prompt"
+      },
+      {
+        "href": "/zh-cn/terms/user-prompt/",
+        "text": "用户提示词User prompt"
+      },
+      {
+        "href": "/zh-cn/terms/context/",
+        "text": "上下文Context"
+      },
+      {
+        "href": "/zh-cn/terms/context-window/",
+        "text": "上下文窗口Context window"
+      },
+      {
+        "href": "/zh-cn/terms/ai-session/",
+        "text": "AI会话AI session"
+      },
+      {
+        "href": "/zh-cn/terms/prompt-engineering/",
+        "text": "提示词工程Prompt engineering"
+      },
+      {
+        "href": "/zh-cn/terms/context-engineering/",
+        "text": "上下文工程Context engineering"
+      },
+      {
+        "href": "/zh-cn/terms/zero-shot/",
+        "text": "零样本提示Zero-shot prompting"
+      },
+      {
+        "href": "/zh-cn/terms/few-shot/",
+        "text": "少样本提示Few-shot prompting"
+      },
+      {
+        "href": "/zh-cn/terms/structured-output/",
+        "text": "结构化输出Structured output"
+      },
+      {
+        "href": "/zh-cn/terms/json-schema/",
+        "text": "JSON结构约束JSON Schema"
+      },
+      {
+        "href": "/zh-cn/terms/constraint/",
+        "text": "约束Constraint"
+      },
+      {
+        "href": "/zh-cn/terms/role-instruction/",
+        "text": "角色指令Role instruction"
+      },
+      {
+        "href": "/zh-cn/terms/attachment-context/",
+        "text": "附件上下文Attachment context"
+      },
+      {
+        "href": "/zh-cn/terms/code-index/",
+        "text": "代码库索引Codebase index"
+      },
+      {
+        "href": "/zh-cn/terms/compaction/",
+        "text": "上下文压缩Context compaction"
+      },
+      {
+        "href": "/zh-cn/terms/truncation/",
+        "text": "截断Truncation"
+      },
+      {
+        "href": "/zh-cn/terms/resume-session/",
+        "text": "会话恢复Session resume"
+      },
+      {
+        "href": "/zh-cn/terms/long-memory/",
+        "text": "长期记忆Long-term memory"
+      },
+      {
+        "href": "/zh-cn/terms/recall/",
+        "text": "记忆召回Memory recall"
+      },
+      {
+        "href": "/zh-cn/terms/context-pollution/",
+        "text": "上下文污染Context pollution"
+      },
+      {
+        "href": "/zh-cn/terms/reasoning-budget/",
+        "text": "推理预算Reasoning budget"
+      },
+      {
+        "href": "/zh-cn/terms/prompt-cache/",
+        "text": "提示词缓存Prompt cache"
+      },
+      {
+        "href": "/zh-cn/terms/agent/",
+        "text": "智能体Agent"
+      },
+      {
+        "href": "/zh-cn/terms/skill/",
+        "text": "技能Skill"
+      },
+      {
+        "href": "/zh-cn/terms/mcp/",
+        "text": "模型上下文协议MCP — Model Context Protocol"
+      },
+      {
+        "href": "/zh-cn/terms/harness/",
+        "text": "智能体运行框架Agent harness"
+      },
+      {
+        "href": "/zh-cn/terms/tool-call/",
+        "text": "工具调用Tool call"
+      },
+      {
+        "href": "/zh-cn/terms/plugin/",
+        "text": "插件Plugin"
+      },
+      {
+        "href": "/zh-cn/terms/agentic-coding/",
+        "text": "智能体编程Agentic coding"
+      },
+      {
+        "href": "/zh-cn/terms/vibe-coding/",
+        "text": "氛围编程Vibe coding"
+      },
+      {
+        "href": "/zh-cn/terms/workflow/",
+        "text": "工作流Workflow"
+      },
+      {
+        "href": "/zh-cn/terms/function-calling/",
+        "text": "函数调用Function calling"
+      },
+      {
+        "href": "/zh-cn/terms/agent-loop/",
+        "text": "智能体循环Agent loop"
+      },
+      {
+        "href": "/zh-cn/terms/plan-mode/",
+        "text": "规划模式Plan mode"
+      },
+      {
+        "href": "/zh-cn/terms/execute-mode/",
+        "text": "执行模式Execution mode"
+      },
+      {
+        "href": "/zh-cn/terms/subagent/",
+        "text": "子智能体Subagent"
+      },
+      {
+        "href": "/zh-cn/terms/multiagent/",
+        "text": "多智能体Multi-agent system"
+      },
+      {
+        "href": "/zh-cn/terms/delegation/",
+        "text": "任务委派Delegation"
+      },
+      {
+        "href": "/zh-cn/terms/orchestration/",
+        "text": "编排Orchestration"
+      },
+      {
+        "href": "/zh-cn/terms/handoff/",
+        "text": "任务交接Handoff"
+      },
+      {
+        "href": "/zh-cn/terms/approval/",
+        "text": "人工确认Human approval"
+      },
+      {
+        "href": "/zh-cn/terms/hitl/",
+        "text": "人类介入HITL — Human in the loop"
+      },
+      {
+        "href": "/zh-cn/terms/sandbox/",
+        "text": "沙盒Sandbox"
+      },
+      {
+        "href": "/zh-cn/terms/tool-permission/",
+        "text": "工具权限Tool permission"
+      },
+      {
+        "href": "/zh-cn/terms/approval-mode/",
+        "text": "审批模式Approval mode"
+      },
+      {
+        "href": "/zh-cn/terms/checkpoint/",
+        "text": "检查点Checkpoint"
+      },
+      {
+        "href": "/zh-cn/terms/hook/",
+        "text": "钩子Hook"
+      },
+      {
+        "href": "/zh-cn/terms/connector/",
+        "text": "连接器Connector"
+      },
+      {
+        "href": "/zh-cn/terms/extension/",
+        "text": "扩展Extension"
+      },
+      {
+        "href": "/zh-cn/terms/agent-sdk/",
+        "text": "智能体开发包Agent SDK"
+      },
+      {
+        "href": "/zh-cn/terms/agents-md/",
+        "text": "智能体项目说明AGENTS.md"
+      },
+      {
+        "href": "/zh-cn/terms/skill-md/",
+        "text": "技能说明文件SKILL.md"
+      },
+      {
+        "href": "/zh-cn/terms/project-rules/",
+        "text": "项目规则Project rules"
+      },
+      {
+        "href": "/zh-cn/terms/global-rules/",
+        "text": "全局规则Global rules"
+      },
+      {
+        "href": "/zh-cn/terms/instruction-priority/",
+        "text": "指令优先级Instruction priority"
+      },
+      {
+        "href": "/zh-cn/terms/claude-md/",
+        "text": "Claude项目说明CLAUDE.md"
+      },
+      {
+        "href": "/zh-cn/terms/mcp-host/",
+        "text": "MCP宿主MCP host"
+      },
+      {
+        "href": "/zh-cn/terms/mcp-client/",
+        "text": "MCP客户端MCP client"
+      },
+      {
+        "href": "/zh-cn/terms/mcp-server/",
+        "text": "MCP服务端MCP server"
+      },
+      {
+        "href": "/zh-cn/terms/mcp-tool/",
+        "text": "MCP工具MCP tool"
+      },
+      {
+        "href": "/zh-cn/terms/mcp-resource/",
+        "text": "MCP资源MCP resource"
+      },
+      {
+        "href": "/zh-cn/terms/mcp-prompt/",
+        "text": "MCP提示模板MCP prompt"
+      },
+      {
+        "href": "/zh-cn/terms/stdio/",
+        "text": "标准输入输出传输stdio transport"
+      },
+      {
+        "href": "/zh-cn/terms/streamable-http/",
+        "text": "可流式HTTP传输Streamable HTTP"
+      },
+      {
+        "href": "/zh-cn/terms/tool-discovery/",
+        "text": "工具发现Tool discovery"
+      },
+      {
+        "href": "/zh-cn/terms/capability-negotiation/",
+        "text": "能力协商Capability negotiation"
+      },
+      {
+        "href": "/zh-cn/terms/acp/",
+        "text": "智能体客户端协议ACP — Agent Client Protocol"
+      },
+      {
+        "href": "/zh-cn/terms/a2a/",
+        "text": "智能体间协议A2A — Agent2Agent"
+      },
+      {
+        "href": "/zh-cn/terms/free-tier/",
+        "text": "免费额度Free tier"
+      },
+      {
+        "href": "/zh-cn/terms/subscription/",
+        "text": "订阅Subscription"
+      },
+      {
+        "href": "/zh-cn/terms/api-billing/",
+        "text": "接口计费API billing"
+      },
+      {
+        "href": "/zh-cn/terms/usage-limit/",
+        "text": "用量限制Usage limit"
+      },
+      {
+        "href": "/zh-cn/terms/pay-as-you-go/",
+        "text": "按量付费Pay as you go"
+      },
+      {
+        "href": "/zh-cn/terms/input-output-cost/",
+        "text": "输入／输出费用Input and output cost"
+      },
+      {
+        "href": "/zh-cn/terms/cache-billing/",
+        "text": "缓存计费Cache billing"
+      },
+      {
+        "href": "/zh-cn/terms/request-count/",
+        "text": "请求次数Request count"
+      },
+      {
+        "href": "/zh-cn/terms/rate-limit/",
+        "text": "速率限制Rate limit"
+      },
+      {
+        "href": "/zh-cn/terms/rpm/",
+        "text": "每分钟请求数RPM"
+      },
+      {
+        "href": "/zh-cn/terms/tpm/",
+        "text": "每分钟词元数TPM"
+      },
+      {
+        "href": "/zh-cn/terms/concurrency-limit/",
+        "text": "并发限制Concurrency limit"
+      },
+      {
+        "href": "/zh-cn/terms/quota/",
+        "text": "配额Quota"
+      },
+      {
+        "href": "/zh-cn/terms/overage/",
+        "text": "超额计费Overage"
+      },
+      {
+        "href": "/zh-cn/terms/budget-cap/",
+        "text": "预算上限Budget cap"
+      },
+      {
+        "href": "/zh-cn/terms/balance/",
+        "text": "余额Balance"
+      },
+      {
+        "href": "/zh-cn/terms/invoice/",
+        "text": "账单Bill / Invoice"
+      },
+      {
+        "href": "/zh-cn/terms/organization/",
+        "text": "组织Organization"
+      },
+      {
+        "href": "/zh-cn/terms/account-workspace/",
+        "text": "账号工作空间Account workspace"
+      },
+      {
+        "href": "/zh-cn/terms/project-quota/",
+        "text": "项目额度Project quota"
+      },
+      {
+        "href": "/zh-cn/terms/knowledge-base/",
+        "text": "知识库Knowledge base"
+      },
+      {
+        "href": "/zh-cn/terms/rag/",
+        "text": "检索增强生成RAG"
+      },
+      {
+        "href": "/zh-cn/terms/embedding/",
+        "text": "嵌入向量Embedding"
+      },
+      {
+        "href": "/zh-cn/terms/vector-db/",
+        "text": "向量数据库Vector database"
+      },
+      {
+        "href": "/zh-cn/terms/document-parsing/",
+        "text": "文档解析Document parsing"
+      },
+      {
+        "href": "/zh-cn/terms/ocr/",
+        "text": "文字识别OCR"
+      },
+      {
+        "href": "/zh-cn/terms/chunk/",
+        "text": "分块Chunk"
+      },
+      {
+        "href": "/zh-cn/terms/search-index/",
+        "text": "检索索引Search index"
+      },
+      {
+        "href": "/zh-cn/terms/vector/",
+        "text": "向量Vector"
+      },
+      {
+        "href": "/zh-cn/terms/vector-search/",
+        "text": "向量检索Vector search"
+      },
+      {
+        "href": "/zh-cn/terms/keyword-search/",
+        "text": "关键词检索Keyword search"
+      },
+      {
+        "href": "/zh-cn/terms/hybrid-search/",
+        "text": "混合检索Hybrid search"
+      },
+      {
+        "href": "/zh-cn/terms/rerank/",
+        "text": "重排序Rerank"
+      },
+      {
+        "href": "/zh-cn/terms/retrieval-recall/",
+        "text": "检索召回Retrieval recall"
+      },
+      {
+        "href": "/zh-cn/terms/similarity/",
+        "text": "相似度Similarity"
+      },
+      {
+        "href": "/zh-cn/terms/metadata/",
+        "text": "元数据Metadata"
+      },
+      {
+        "href": "/zh-cn/terms/citation/",
+        "text": "来源引用Citation"
+      },
+      {
+        "href": "/zh-cn/terms/fine-tuning/",
+        "text": "微调Fine-tuning"
+      },
+      {
+        "href": "/zh-cn/terms/lora/",
+        "text": "低秩适配LoRA"
+      },
+      {
+        "href": "/zh-cn/terms/distillation/",
+        "text": "蒸馏Distillation"
+      },
+      {
+        "href": "/zh-cn/terms/quantization/",
+        "text": "量化Quantization"
+      },
+      {
+        "href": "/zh-cn/terms/local-model/",
+        "text": "本地模型Local model"
+      },
+      {
+        "href": "/zh-cn/terms/eval/",
+        "text": "模型／智能体评测Eval"
+      },
+      {
+        "href": "/zh-cn/terms/benchmark/",
+        "text": "基准测试Benchmark"
+      },
+      {
+        "href": "/zh-cn/terms/ide/",
+        "text": "集成开发环境IDE"
+      },
+      {
+        "href": "/zh-cn/terms/editor/",
+        "text": "代码编辑器Code editor"
+      },
+      {
+        "href": "/zh-cn/terms/terminal/",
+        "text": "终端Terminal"
+      },
+      {
+        "href": "/zh-cn/terms/cli/",
+        "text": "命令行工具CLI — Command-line interface"
+      },
+      {
+        "href": "/zh-cn/terms/project-folder/",
+        "text": "项目文件夹Project folder"
+      },
+      {
+        "href": "/zh-cn/terms/working-directory/",
+        "text": "工作目录Working directory"
+      },
+      {
+        "href": "/zh-cn/terms/shell/",
+        "text": "命令解释器Shell"
+      },
+      {
+        "href": "/zh-cn/terms/command/",
+        "text": "命令Command"
+      },
+      {
+        "href": "/zh-cn/terms/argument/",
+        "text": "命令参数Argument"
+      },
+      {
+        "href": "/zh-cn/terms/option/",
+        "text": "命令选项Option / Flag"
+      },
+      {
+        "href": "/zh-cn/terms/standard-io/",
+        "text": "标准输入／输出Standard input / output"
+      },
+      {
+        "href": "/zh-cn/terms/exit-code/",
+        "text": "退出码Exit code"
+      },
+      {
+        "href": "/zh-cn/terms/process/",
+        "text": "进程Process"
+      },
+      {
+        "href": "/zh-cn/terms/background-process/",
+        "text": "后台进程Background process"
+      },
+      {
+        "href": "/zh-cn/terms/port/",
+        "text": "端口Port"
+      },
+      {
+        "href": "/zh-cn/terms/path-env/",
+        "text": "程序搜索路径PATH"
+      },
+      {
+        "href": "/zh-cn/terms/file-path/",
+        "text": "绝对／相对路径Absolute / Relative path"
+      },
+      {
+        "href": "/zh-cn/terms/root-directory/",
+        "text": "根目录Root directory"
+      },
+      {
+        "href": "/zh-cn/terms/home-directory/",
+        "text": "主目录Home directory"
+      },
+      {
+        "href": "/zh-cn/terms/hidden-file/",
+        "text": "隐藏文件Hidden file"
+      },
+      {
+        "href": "/zh-cn/terms/file-extension/",
+        "text": "文件扩展名File extension"
+      },
+      {
+        "href": "/zh-cn/terms/file-permission/",
+        "text": "文件权限File permission"
+      },
+      {
+        "href": "/zh-cn/terms/admin/",
+        "text": "管理员权限Administrator privileges"
+      },
+      {
+        "href": "/zh-cn/terms/symlink/",
+        "text": "符号链接Symbolic link"
+      },
+      {
+        "href": "/zh-cn/terms/workspace/",
+        "text": "开发工作区Development workspace"
+      },
+      {
+        "href": "/zh-cn/terms/remote-development/",
+        "text": "远程开发Remote development"
+      },
+      {
+        "href": "/zh-cn/terms/dev-container/",
+        "text": "开发容器Dev container"
+      },
+      {
+        "href": "/zh-cn/terms/wsl/",
+        "text": "Windows Linux子系统WSL"
+      },
+      {
+        "href": "/zh-cn/terms/environment/",
+        "text": "运行环境Environment"
+      },
+      {
+        "href": "/zh-cn/terms/local/",
+        "text": "本地Local"
+      },
+      {
+        "href": "/zh-cn/terms/source-code/",
+        "text": "源代码Source code"
+      },
+      {
+        "href": "/zh-cn/terms/language/",
+        "text": "编程语言Programming language"
+      },
+      {
+        "href": "/zh-cn/terms/variable/",
+        "text": "变量Variable"
+      },
+      {
+        "href": "/zh-cn/terms/function/",
+        "text": "函数Function"
+      },
+      {
+        "href": "/zh-cn/terms/module/",
+        "text": "模块Module"
+      },
+      {
+        "href": "/zh-cn/terms/constant/",
+        "text": "常量Constant"
+      },
+      {
+        "href": "/zh-cn/terms/string/",
+        "text": "字符串String"
+      },
+      {
+        "href": "/zh-cn/terms/number/",
+        "text": "数字Number"
+      },
+      {
+        "href": "/zh-cn/terms/boolean/",
+        "text": "布尔值Boolean"
+      },
+      {
+        "href": "/zh-cn/terms/array/",
+        "text": "数组Array"
+      },
+      {
+        "href": "/zh-cn/terms/object/",
+        "text": "对象Object"
+      },
+      {
+        "href": "/zh-cn/terms/null/",
+        "text": "空值Null"
+      },
+      {
+        "href": "/zh-cn/terms/undefined/",
+        "text": "未定义Undefined"
+      },
+      {
+        "href": "/zh-cn/terms/condition/",
+        "text": "条件判断Conditional"
+      },
+      {
+        "href": "/zh-cn/terms/loop/",
+        "text": "循环Loop"
+      },
+      {
+        "href": "/zh-cn/terms/class/",
+        "text": "类Class"
+      },
+      {
+        "href": "/zh-cn/terms/instance/",
+        "text": "实例Instance"
+      },
+      {
+        "href": "/zh-cn/terms/function-parameter/",
+        "text": "函数参数Function parameter"
+      },
+      {
+        "href": "/zh-cn/terms/return-value/",
+        "text": "返回值Return value"
+      },
+      {
+        "href": "/zh-cn/terms/code-scope/",
+        "text": "作用域Scope in code"
+      },
+      {
+        "href": "/zh-cn/terms/import-export/",
+        "text": "导入／导出Import / Export"
+      },
+      {
+        "href": "/zh-cn/terms/sync-async/",
+        "text": "同步／异步Synchronous / Asynchronous"
+      },
+      {
+        "href": "/zh-cn/terms/promise/",
+        "text": "异步结果承诺Promise"
+      },
+      {
+        "href": "/zh-cn/terms/async-await/",
+        "text": "异步等待语法async / await"
+      },
+      {
+        "href": "/zh-cn/terms/callback/",
+        "text": "回调Callback"
+      },
+      {
+        "href": "/zh-cn/terms/event/",
+        "text": "事件Event"
+      },
+      {
+        "href": "/zh-cn/terms/exception/",
+        "text": "异常Exception"
+      },
+      {
+        "href": "/zh-cn/terms/call-stack/",
+        "text": "调用栈／堆栈Call stack"
+      },
+      {
+        "href": "/zh-cn/terms/type/",
+        "text": "类型Type"
+      },
+      {
+        "href": "/zh-cn/terms/type-check/",
+        "text": "类型检查Type checking"
+      },
+      {
+        "href": "/zh-cn/terms/generic/",
+        "text": "泛型Generic"
+      },
+      {
+        "href": "/zh-cn/terms/serialization/",
+        "text": "序列化／反序列化Serialization / Deserialization"
+      },
+      {
+        "href": "/zh-cn/terms/regex/",
+        "text": "正则表达式Regular expression"
+      },
+      {
+        "href": "/zh-cn/terms/encoding/",
+        "text": "字符编码Character encoding"
+      },
+      {
+        "href": "/zh-cn/terms/unicode/",
+        "text": "统一字符标准Unicode"
+      },
+      {
+        "href": "/zh-cn/terms/utf8/",
+        "text": "UTF-8编码UTF-8"
+      },
+      {
+        "href": "/zh-cn/terms/frontend/",
+        "text": "前端Frontend"
+      },
+      {
+        "href": "/zh-cn/terms/backend/",
+        "text": "后端Backend"
+      },
+      {
+        "href": "/zh-cn/terms/fullstack/",
+        "text": "全栈Full-stack"
+      },
+      {
+        "href": "/zh-cn/terms/stack/",
+        "text": "技术栈Tech stack"
+      },
+      {
+        "href": "/zh-cn/terms/framework/",
+        "text": "框架Framework"
+      },
+      {
+        "href": "/zh-cn/terms/library/",
+        "text": "代码库Library"
+      },
+      {
+        "href": "/zh-cn/terms/dependency/",
+        "text": "依赖Dependency"
+      },
+      {
+        "href": "/zh-cn/terms/client/",
+        "text": "客户端Client"
+      },
+      {
+        "href": "/zh-cn/terms/server-side/",
+        "text": "服务端Server side"
+      },
+      {
+        "href": "/zh-cn/terms/runtime/",
+        "text": "运行时Runtime"
+      },
+      {
+        "href": "/zh-cn/terms/sdk/",
+        "text": "软件开发工具包SDK"
+      },
+      {
+        "href": "/zh-cn/terms/package-manager/",
+        "text": "包管理器Package manager"
+      },
+      {
+        "href": "/zh-cn/terms/version/",
+        "text": "依赖版本Dependency version"
+      },
+      {
+        "href": "/zh-cn/terms/dev-dependency/",
+        "text": "开发依赖Development dependency"
+      },
+      {
+        "href": "/zh-cn/terms/transitive-dependency/",
+        "text": "传递依赖Transitive dependency"
+      },
+      {
+        "href": "/zh-cn/terms/lockfile/",
+        "text": "锁文件Lockfile"
+      },
+      {
+        "href": "/zh-cn/terms/semver/",
+        "text": "语义化版本SemVer"
+      },
+      {
+        "href": "/zh-cn/terms/scaffolding/",
+        "text": "脚手架Scaffolding"
+      },
+      {
+        "href": "/zh-cn/terms/boilerplate/",
+        "text": "样板项目Boilerplate"
+      },
+      {
+        "href": "/zh-cn/terms/entry-file/",
+        "text": "入口文件Entry file"
+      },
+      {
+        "href": "/zh-cn/terms/configuration/",
+        "text": "配置文件Configuration file"
+      },
+      {
+        "href": "/zh-cn/terms/env-var/",
+        "text": "环境变量Environment variable"
+      },
+      {
+        "href": "/zh-cn/terms/dotenv/",
+        "text": "环境配置文件.env"
+      },
+      {
+        "href": "/zh-cn/terms/build-tool/",
+        "text": "构建工具Build tool"
+      },
+      {
+        "href": "/zh-cn/terms/compile/",
+        "text": "编译Compilation"
+      },
+      {
+        "href": "/zh-cn/terms/transpile/",
+        "text": "转译Transpilation"
+      },
+      {
+        "href": "/zh-cn/terms/bundle/",
+        "text": "打包Bundling"
+      },
+      {
+        "href": "/zh-cn/terms/dev-server/",
+        "text": "开发服务器Development server"
+      },
+      {
+        "href": "/zh-cn/terms/hmr/",
+        "text": "热更新HMR — Hot module replacement"
+      },
+      {
+        "href": "/zh-cn/terms/lint/",
+        "text": "静态规范检查Lint"
+      },
+      {
+        "href": "/zh-cn/terms/format/",
+        "text": "代码格式化Formatting"
+      },
+      {
+        "href": "/zh-cn/terms/html/",
+        "text": "网页结构语言HTML"
+      },
+      {
+        "href": "/zh-cn/terms/css/",
+        "text": "网页样式CSS"
+      },
+      {
+        "href": "/zh-cn/terms/javascript/",
+        "text": "JavaScript语言JavaScript"
+      },
+      {
+        "href": "/zh-cn/terms/typescript/",
+        "text": "TypeScript语言TypeScript"
+      },
+      {
+        "href": "/zh-cn/terms/sql/",
+        "text": "结构化查询语言SQL"
+      },
+      {
+        "href": "/zh-cn/terms/python/",
+        "text": "Python语言Python"
+      },
+      {
+        "href": "/zh-cn/terms/nodejs/",
+        "text": "Node.js运行时Node.js"
+      },
+      {
+        "href": "/zh-cn/terms/npm/",
+        "text": "npm包管理器npm"
+      },
+      {
+        "href": "/zh-cn/terms/pnpm/",
+        "text": "pnpm包管理器pnpm"
+      },
+      {
+        "href": "/zh-cn/terms/yarn/",
+        "text": "Yarn包管理器Yarn"
+      },
+      {
+        "href": "/zh-cn/terms/bun/",
+        "text": "Bun工具集Bun"
+      },
+      {
+        "href": "/zh-cn/terms/deno/",
+        "text": "Deno运行时Deno"
+      },
+      {
+        "href": "/zh-cn/terms/react/",
+        "text": "React界面库React"
+      },
+      {
+        "href": "/zh-cn/terms/vue/",
+        "text": "Vue框架Vue"
+      },
+      {
+        "href": "/zh-cn/terms/nextjs/",
+        "text": "Next.js框架Next.js"
+      },
+      {
+        "href": "/zh-cn/terms/nuxt/",
+        "text": "Nuxt框架Nuxt"
+      },
+      {
+        "href": "/zh-cn/terms/astro/",
+        "text": "Astro框架Astro"
+      },
+      {
+        "href": "/zh-cn/terms/vite/",
+        "text": "Vite构建工具Vite"
+      },
+      {
+        "href": "/zh-cn/terms/tailwind/",
+        "text": "Tailwind CSSTailwind CSS"
+      },
+      {
+        "href": "/zh-cn/terms/express/",
+        "text": "Express后端框架Express"
+      },
+      {
+        "href": "/zh-cn/terms/fastapi/",
+        "text": "FastAPI框架FastAPI"
+      },
+      {
+        "href": "/zh-cn/terms/django/",
+        "text": "Django框架Django"
+      },
+      {
+        "href": "/zh-cn/terms/java/",
+        "text": "Java语言Java"
+      },
+      {
+        "href": "/zh-cn/terms/go/",
+        "text": "Go语言Go"
+      },
+      {
+        "href": "/zh-cn/terms/rust/",
+        "text": "Rust语言Rust"
+      },
+      {
+        "href": "/zh-cn/terms/php/",
+        "text": "PHP语言PHP"
+      },
+      {
+        "href": "/zh-cn/terms/csharp/",
+        "text": "C#语言C#"
+      },
+      {
+        "href": "/zh-cn/terms/website/",
+        "text": "网站Website"
+      },
+      {
+        "href": "/zh-cn/terms/webapp/",
+        "text": "Web应用Web application"
+      },
+      {
+        "href": "/zh-cn/terms/mini-program/",
+        "text": "小程序Mini program"
+      },
+      {
+        "href": "/zh-cn/terms/mobile-app/",
+        "text": "移动应用Mobile app"
+      },
+      {
+        "href": "/zh-cn/terms/desktop-app/",
+        "text": "桌面应用Desktop app"
+      },
+      {
+        "href": "/zh-cn/terms/static-site/",
+        "text": "静态网站Static site"
+      },
+      {
+        "href": "/zh-cn/terms/dynamic-site/",
+        "text": "动态网站Dynamic site"
+      },
+      {
+        "href": "/zh-cn/terms/spa/",
+        "text": "单页应用SPA"
+      },
+      {
+        "href": "/zh-cn/terms/mpa/",
+        "text": "多页应用MPA"
+      },
+      {
+        "href": "/zh-cn/terms/pwa/",
+        "text": "渐进式Web应用PWA"
+      },
+      {
+        "href": "/zh-cn/terms/native-app/",
+        "text": "原生应用Native app"
+      },
+      {
+        "href": "/zh-cn/terms/cross-platform/",
+        "text": "跨平台应用Cross-platform app"
+      },
+      {
+        "href": "/zh-cn/terms/hybrid-app/",
+        "text": "混合应用Hybrid app"
+      },
+      {
+        "href": "/zh-cn/terms/browser-extension/",
+        "text": "浏览器扩展Browser extension"
+      },
+      {
+        "href": "/zh-cn/terms/cli-app/",
+        "text": "命令行程序CLI application"
+      },
+      {
+        "href": "/zh-cn/terms/background-service/",
+        "text": "后台服务Background service"
+      },
+      {
+        "href": "/zh-cn/terms/saas/",
+        "text": "软件即服务SaaS"
+      },
+      {
+        "href": "/zh-cn/terms/admin-panel/",
+        "text": "管理后台Admin panel"
+      },
+      {
+        "href": "/zh-cn/terms/cms/",
+        "text": "内容管理系统CMS"
+      },
+      {
+        "href": "/zh-cn/terms/electron/",
+        "text": "Electron框架Electron"
+      },
+      {
+        "href": "/zh-cn/terms/tauri/",
+        "text": "Tauri框架Tauri"
+      },
+      {
+        "href": "/zh-cn/terms/flutter/",
+        "text": "Flutter框架Flutter"
+      },
+      {
+        "href": "/zh-cn/terms/react-native/",
+        "text": "React Native框架React Native"
+      },
+      {
+        "href": "/zh-cn/terms/swift/",
+        "text": "Swift语言Swift"
+      },
+      {
+        "href": "/zh-cn/terms/kotlin/",
+        "text": "Kotlin语言Kotlin"
+      },
+      {
+        "href": "/zh-cn/terms/webview/",
+        "text": "网页视图WebView"
+      },
+      {
+        "href": "/zh-cn/terms/ui/",
+        "text": "用户界面UI"
+      },
+      {
+        "href": "/zh-cn/terms/ux/",
+        "text": "用户体验UX"
+      },
+      {
+        "href": "/zh-cn/terms/page/",
+        "text": "页面Page"
+      },
+      {
+        "href": "/zh-cn/terms/component/",
+        "text": "组件Component"
+      },
+      {
+        "href": "/zh-cn/terms/layout/",
+        "text": "布局Layout"
+      },
+      {
+        "href": "/zh-cn/terms/navigation/",
+        "text": "导航Navigation"
+      },
+      {
+        "href": "/zh-cn/terms/form/",
+        "text": "表单Form"
+      },
+      {
+        "href": "/zh-cn/terms/wireframe/",
+        "text": "线框图Wireframe"
+      },
+      {
+        "href": "/zh-cn/terms/visual-design/",
+        "text": "视觉稿Visual design mockup"
+      },
+      {
+        "href": "/zh-cn/terms/interactive-prototype/",
+        "text": "交互原型Interactive prototype"
+      },
+      {
+        "href": "/zh-cn/terms/design-system/",
+        "text": "设计系统Design system"
+      },
+      {
+        "href": "/zh-cn/terms/design-token/",
+        "text": "设计变量Design token"
+      },
+      {
+        "href": "/zh-cn/terms/information-architecture/",
+        "text": "信息架构Information architecture"
+      },
+      {
+        "href": "/zh-cn/terms/visual-hierarchy/",
+        "text": "视觉层级Visual hierarchy"
+      },
+      {
+        "href": "/zh-cn/terms/spacing/",
+        "text": "间距Spacing"
+      },
+      {
+        "href": "/zh-cn/terms/alignment/",
+        "text": "对齐Alignment"
+      },
+      {
+        "href": "/zh-cn/terms/font-size/",
+        "text": "字号Font size"
+      },
+      {
+        "href": "/zh-cn/terms/font-weight/",
+        "text": "字重Font weight"
+      },
+      {
+        "href": "/zh-cn/terms/contrast/",
+        "text": "对比度Contrast"
+      },
+      {
+        "href": "/zh-cn/terms/responsive/",
+        "text": "响应式Responsive design"
+      },
+      {
+        "href": "/zh-cn/terms/breakpoint/",
+        "text": "断点Responsive breakpoint"
+      },
+      {
+        "href": "/zh-cn/terms/viewport/",
+        "text": "视口Viewport"
+      },
+      {
+        "href": "/zh-cn/terms/mobile-first/",
+        "text": "移动优先Mobile first"
+      },
+      {
+        "href": "/zh-cn/terms/a11y/",
+        "text": "无障碍Accessibility / A11y"
+      },
+      {
+        "href": "/zh-cn/terms/semantic-html/",
+        "text": "语义化HTMLSemantic HTML"
+      },
+      {
+        "href": "/zh-cn/terms/aria/",
+        "text": "辅助语义属性ARIA"
+      },
+      {
+        "href": "/zh-cn/terms/focus/",
+        "text": "键盘焦点Keyboard focus"
+      },
+      {
+        "href": "/zh-cn/terms/tab-order/",
+        "text": "Tab顺序Tab order"
+      },
+      {
+        "href": "/zh-cn/terms/screen-reader/",
+        "text": "屏幕阅读器Screen reader"
+      },
+      {
+        "href": "/zh-cn/terms/dark-mode/",
+        "text": "暗色模式Dark mode"
+      },
+      {
+        "href": "/zh-cn/terms/i18n/",
+        "text": "国际化Internationalization / i18n"
+      },
+      {
+        "href": "/zh-cn/terms/l10n/",
+        "text": "本地化Localization / l10n"
+      },
+      {
+        "href": "/zh-cn/terms/button/",
+        "text": "按钮Button"
+      },
+      {
+        "href": "/zh-cn/terms/input/",
+        "text": "输入框Input field"
+      },
+      {
+        "href": "/zh-cn/terms/select/",
+        "text": "下拉选择Select / Dropdown"
+      },
+      {
+        "href": "/zh-cn/terms/modal/",
+        "text": "模态弹窗Modal"
+      },
+      {
+        "href": "/zh-cn/terms/dialog/",
+        "text": "对话框Dialog"
+      },
+      {
+        "href": "/zh-cn/terms/loading/",
+        "text": "加载状态Loading state"
+      },
+      {
+        "href": "/zh-cn/terms/empty-state/",
+        "text": "空状态Empty state"
+      },
+      {
+        "href": "/zh-cn/terms/error-state/",
+        "text": "错误状态Error state"
+      },
+      {
+        "href": "/zh-cn/terms/success-state/",
+        "text": "成功状态Success state"
+      },
+      {
+        "href": "/zh-cn/terms/disabled-state/",
+        "text": "禁用状态Disabled state"
+      },
+      {
+        "href": "/zh-cn/terms/selected-state/",
+        "text": "选中状态Selected state"
+      },
+      {
+        "href": "/zh-cn/terms/hover/",
+        "text": "悬停Hover"
+      },
+      {
+        "href": "/zh-cn/terms/skeleton/",
+        "text": "骨架屏Skeleton screen"
+      },
+      {
+        "href": "/zh-cn/terms/toast/",
+        "text": "轻提示Toast"
+      },
+      {
+        "href": "/zh-cn/terms/tooltip/",
+        "text": "悬浮说明Tooltip"
+      },
+      {
+        "href": "/zh-cn/terms/drawer/",
+        "text": "抽屉面板Drawer"
+      },
+      {
+        "href": "/zh-cn/terms/tabs/",
+        "text": "标签页Tabs"
+      },
+      {
+        "href": "/zh-cn/terms/accordion/",
+        "text": "折叠面板Accordion"
+      },
+      {
+        "href": "/zh-cn/terms/breadcrumb/",
+        "text": "面包屑导航Breadcrumb"
+      },
+      {
+        "href": "/zh-cn/terms/pagination/",
+        "text": "分页Pagination"
+      },
+      {
+        "href": "/zh-cn/terms/infinite-scroll/",
+        "text": "无限滚动Infinite scroll"
+      },
+      {
+        "href": "/zh-cn/terms/filter/",
+        "text": "筛选Filter"
+      },
+      {
+        "href": "/zh-cn/terms/sort/",
+        "text": "排序Sort"
+      },
+      {
+        "href": "/zh-cn/terms/search/",
+        "text": "搜索Search"
+      },
+      {
+        "href": "/zh-cn/terms/debounce/",
+        "text": "防抖Debounce"
+      },
+      {
+        "href": "/zh-cn/terms/throttle/",
+        "text": "节流Throttle"
+      },
+      {
+        "href": "/zh-cn/terms/optimistic-update/",
+        "text": "乐观更新Optimistic update"
+      },
+      {
+        "href": "/zh-cn/terms/state/",
+        "text": "状态State"
+      },
+      {
+        "href": "/zh-cn/terms/url/",
+        "text": "统一资源定位符URL"
+      },
+      {
+        "href": "/zh-cn/terms/domain/",
+        "text": "域名Domain"
+      },
+      {
+        "href": "/zh-cn/terms/browser-cache/",
+        "text": "浏览器缓存Browser cache"
+      },
+      {
+        "href": "/zh-cn/terms/cookie/",
+        "text": "浏览器小型数据Cookie"
+      },
+      {
+        "href": "/zh-cn/terms/localstorage/",
+        "text": "本地网页存储LocalStorage"
+      },
+      {
+        "href": "/zh-cn/terms/dom/",
+        "text": "文档对象模型DOM"
+      },
+      {
+        "href": "/zh-cn/terms/css-selector/",
+        "text": "CSS选择器CSS selector"
+      },
+      {
+        "href": "/zh-cn/terms/box-model/",
+        "text": "盒模型Box model"
+      },
+      {
+        "href": "/zh-cn/terms/flexbox/",
+        "text": "弹性布局Flexbox"
+      },
+      {
+        "href": "/zh-cn/terms/grid/",
+        "text": "网格布局CSS Grid"
+      },
+      {
+        "href": "/zh-cn/terms/event-bubbling/",
+        "text": "事件冒泡Event bubbling"
+      },
+      {
+        "href": "/zh-cn/terms/event-delegation/",
+        "text": "事件委托Event delegation"
+      },
+      {
+        "href": "/zh-cn/terms/route/",
+        "text": "路由Route"
+      },
+      {
+        "href": "/zh-cn/terms/dynamic-route/",
+        "text": "动态路由Dynamic route"
+      },
+      {
+        "href": "/zh-cn/terms/route-params/",
+        "text": "路由参数Route parameters"
+      },
+      {
+        "href": "/zh-cn/terms/query-params/",
+        "text": "查询参数Query parameters"
+      },
+      {
+        "href": "/zh-cn/terms/url-hash/",
+        "text": "地址片段URL hash / Fragment"
+      },
+      {
+        "href": "/zh-cn/terms/props/",
+        "text": "组件传入属性Props"
+      },
+      {
+        "href": "/zh-cn/terms/render/",
+        "text": "渲染／重渲染Rendering / Re-rendering"
+      },
+      {
+        "href": "/zh-cn/terms/csr/",
+        "text": "客户端渲染CSR"
+      },
+      {
+        "href": "/zh-cn/terms/ssr/",
+        "text": "服务端渲染SSR"
+      },
+      {
+        "href": "/zh-cn/terms/ssg/",
+        "text": "静态生成SSG"
+      },
+      {
+        "href": "/zh-cn/terms/hydration/",
+        "text": "水合Hydration"
+      },
+      {
+        "href": "/zh-cn/terms/hydration-mismatch/",
+        "text": "水合不匹配Hydration mismatch"
+      },
+      {
+        "href": "/zh-cn/terms/sessionstorage/",
+        "text": "会话存储SessionStorage"
+      },
+      {
+        "href": "/zh-cn/terms/indexeddb/",
+        "text": "浏览器数据库IndexedDB"
+      },
+      {
+        "href": "/zh-cn/terms/service-worker/",
+        "text": "服务工作线程Service worker"
+      },
+      {
+        "href": "/zh-cn/terms/same-origin/",
+        "text": "同源／跨域Same origin / Cross-origin"
+      },
+      {
+        "href": "/zh-cn/terms/cors/",
+        "text": "跨源资源共享CORS"
+      },
+      {
+        "href": "/zh-cn/terms/api/",
+        "text": "应用程序接口API"
+      },
+      {
+        "href": "/zh-cn/terms/request/",
+        "text": "请求Request"
+      },
+      {
+        "href": "/zh-cn/terms/response/",
+        "text": "响应Response"
+      },
+      {
+        "href": "/zh-cn/terms/http/",
+        "text": "超文本传输协议HTTP"
+      },
+      {
+        "href": "/zh-cn/terms/https/",
+        "text": "安全HTTPHTTPS"
+      },
+      {
+        "href": "/zh-cn/terms/json/",
+        "text": "JSON数据格式JSON"
+      },
+      {
+        "href": "/zh-cn/terms/endpoint/",
+        "text": "接口端点Endpoint"
+      },
+      {
+        "href": "/zh-cn/terms/base-url/",
+        "text": "基础地址Base URL"
+      },
+      {
+        "href": "/zh-cn/terms/header/",
+        "text": "请求／响应头Header"
+      },
+      {
+        "href": "/zh-cn/terms/body/",
+        "text": "请求／响应体Body"
+      },
+      {
+        "href": "/zh-cn/terms/http-method/",
+        "text": "HTTP方法GET / POST / PUT / PATCH / DELETE"
+      },
+      {
+        "href": "/zh-cn/terms/status-code/",
+        "text": "状态码HTTP status code"
+      },
+      {
+        "href": "/zh-cn/terms/rest/",
+        "text": "REST风格REST"
+      },
+      {
+        "href": "/zh-cn/terms/graphql/",
+        "text": "GraphQL查询语言GraphQL"
+      },
+      {
+        "href": "/zh-cn/terms/rpc/",
+        "text": "远程过程调用RPC"
+      },
+      {
+        "href": "/zh-cn/terms/grpc/",
+        "text": "gRPC框架gRPC"
+      },
+      {
+        "href": "/zh-cn/terms/websocket/",
+        "text": "双向持续连接WebSocket"
+      },
+      {
+        "href": "/zh-cn/terms/sse/",
+        "text": "服务端事件流SSE"
+      },
+      {
+        "href": "/zh-cn/terms/webhook/",
+        "text": "事件回调通知Webhook"
+      },
+      {
+        "href": "/zh-cn/terms/polling/",
+        "text": "轮询Polling"
+      },
+      {
+        "href": "/zh-cn/terms/api-pagination/",
+        "text": "接口分页／游标API pagination / Cursor"
+      },
+      {
+        "href": "/zh-cn/terms/timeout/",
+        "text": "超时Timeout"
+      },
+      {
+        "href": "/zh-cn/terms/retry/",
+        "text": "重试Retry"
+      },
+      {
+        "href": "/zh-cn/terms/backoff/",
+        "text": "退避Backoff"
+      },
+      {
+        "href": "/zh-cn/terms/idempotency/",
+        "text": "幂等性Idempotency"
+      },
+      {
+        "href": "/zh-cn/terms/signature/",
+        "text": "请求签名Request signature"
+      },
+      {
+        "href": "/zh-cn/terms/callback-url/",
+        "text": "回调地址Callback URL"
+      },
+      {
+        "href": "/zh-cn/terms/proxy/",
+        "text": "代理Proxy"
+      },
+      {
+        "href": "/zh-cn/terms/reverse-proxy/",
+        "text": "反向代理Reverse proxy"
+      },
+      {
+        "href": "/zh-cn/terms/tls/",
+        "text": "传输层安全TLS"
+      },
+      {
+        "href": "/zh-cn/terms/dns/",
+        "text": "域名系统DNS"
+      },
+      {
+        "href": "/zh-cn/terms/tcp-udp/",
+        "text": "TCP／UDPTCP / UDP"
+      },
+      {
+        "href": "/zh-cn/terms/database/",
+        "text": "数据库Database"
+      },
+      {
+        "href": "/zh-cn/terms/table/",
+        "text": "数据表Table"
+      },
+      {
+        "href": "/zh-cn/terms/field/",
+        "text": "字段Field / Column"
+      },
+      {
+        "href": "/zh-cn/terms/record/",
+        "text": "记录Record / Row"
+      },
+      {
+        "href": "/zh-cn/terms/primary-key/",
+        "text": "主键Primary key"
+      },
+      {
+        "href": "/zh-cn/terms/crud/",
+        "text": "增删改查CRUD"
+      },
+      {
+        "href": "/zh-cn/terms/foreign-key/",
+        "text": "外键Foreign key"
+      },
+      {
+        "href": "/zh-cn/terms/relation/",
+        "text": "数据关联Relationship"
+      },
+      {
+        "href": "/zh-cn/terms/db-constraint/",
+        "text": "数据约束Database constraint"
+      },
+      {
+        "href": "/zh-cn/terms/db-index/",
+        "text": "数据库索引Database index"
+      },
+      {
+        "href": "/zh-cn/terms/query/",
+        "text": "查询Query"
+      },
+      {
+        "href": "/zh-cn/terms/join/",
+        "text": "连接查询Join"
+      },
+      {
+        "href": "/zh-cn/terms/transaction/",
+        "text": "事务Transaction"
+      },
+      {
+        "href": "/zh-cn/terms/acid/",
+        "text": "事务性质ACID"
+      },
+      {
+        "href": "/zh-cn/terms/relational-db/",
+        "text": "关系型数据库Relational database"
+      },
+      {
+        "href": "/zh-cn/terms/nosql/",
+        "text": "非关系型数据库NoSQL"
+      },
+      {
+        "href": "/zh-cn/terms/document-db/",
+        "text": "文档数据库Document database"
+      },
+      {
+        "href": "/zh-cn/terms/key-value/",
+        "text": "键值存储Key-value store"
+      },
+      {
+        "href": "/zh-cn/terms/schema/",
+        "text": "数据结构定义Schema"
+      },
+      {
+        "href": "/zh-cn/terms/orm/",
+        "text": "对象关系映射ORM"
+      },
+      {
+        "href": "/zh-cn/terms/migration/",
+        "text": "数据库迁移Database migration"
+      },
+      {
+        "href": "/zh-cn/terms/seed/",
+        "text": "种子数据Seed data"
+      },
+      {
+        "href": "/zh-cn/terms/connection-string/",
+        "text": "连接字符串Connection string"
+      },
+      {
+        "href": "/zh-cn/terms/connection-pool/",
+        "text": "连接池Connection pool"
+      },
+      {
+        "href": "/zh-cn/terms/sqlite/",
+        "text": "SQLite数据库SQLite"
+      },
+      {
+        "href": "/zh-cn/terms/postgresql/",
+        "text": "PostgreSQL数据库PostgreSQL"
+      },
+      {
+        "href": "/zh-cn/terms/mysql/",
+        "text": "MySQL数据库MySQL"
+      },
+      {
+        "href": "/zh-cn/terms/redis/",
+        "text": "Redis数据存储Redis"
+      },
+      {
+        "href": "/zh-cn/terms/mongodb/",
+        "text": "MongoDB数据库MongoDB"
+      },
+      {
+        "href": "/zh-cn/terms/object-storage/",
+        "text": "对象存储Object storage"
+      },
+      {
+        "href": "/zh-cn/terms/file-storage/",
+        "text": "文件存储File storage"
+      },
+      {
+        "href": "/zh-cn/terms/bucket/",
+        "text": "存储桶Bucket"
+      },
+      {
+        "href": "/zh-cn/terms/backup/",
+        "text": "备份Backup"
+      },
+      {
+        "href": "/zh-cn/terms/restore/",
+        "text": "恢复Restore"
+      },
+      {
+        "href": "/zh-cn/terms/retention/",
+        "text": "数据保留Data retention"
+      },
+      {
+        "href": "/zh-cn/terms/soft-delete/",
+        "text": "软删除Soft delete"
+      },
+      {
+        "href": "/zh-cn/terms/service/",
+        "text": "服务Service"
+      },
+      {
+        "href": "/zh-cn/terms/business-logic/",
+        "text": "业务逻辑Business logic"
+      },
+      {
+        "href": "/zh-cn/terms/validation/",
+        "text": "数据校验Validation"
+      },
+      {
+        "href": "/zh-cn/terms/middleware/",
+        "text": "中间件Middleware"
+      },
+      {
+        "href": "/zh-cn/terms/cache/",
+        "text": "缓存Cache"
+      },
+      {
+        "href": "/zh-cn/terms/controller/",
+        "text": "控制器Controller"
+      },
+      {
+        "href": "/zh-cn/terms/service-layer/",
+        "text": "服务层Service layer"
+      },
+      {
+        "href": "/zh-cn/terms/data-access/",
+        "text": "数据访问层Data access layer"
+      },
+      {
+        "href": "/zh-cn/terms/monolith/",
+        "text": "单体架构Monolith"
+      },
+      {
+        "href": "/zh-cn/terms/frontend-backend-separation/",
+        "text": "前后端分离Frontend-backend separation"
+      },
+      {
+        "href": "/zh-cn/terms/microservices/",
+        "text": "微服务Microservices"
+      },
+      {
+        "href": "/zh-cn/terms/serverless/",
+        "text": "无服务器Serverless"
+      },
+      {
+        "href": "/zh-cn/terms/baas/",
+        "text": "后端即服务BaaS"
+      },
+      {
+        "href": "/zh-cn/terms/job-queue/",
+        "text": "任务队列Job queue"
+      },
+      {
+        "href": "/zh-cn/terms/message-queue/",
+        "text": "消息队列Message queue"
+      },
+      {
+        "href": "/zh-cn/terms/cron/",
+        "text": "定时任务Cron / Scheduled job"
+      },
+      {
+        "href": "/zh-cn/terms/background-job/",
+        "text": "后台任务Background job"
+      },
+      {
+        "href": "/zh-cn/terms/event-driven/",
+        "text": "事件驱动Event-driven architecture"
+      },
+      {
+        "href": "/zh-cn/terms/pubsub/",
+        "text": "发布订阅Publish / Subscribe"
+      },
+      {
+        "href": "/zh-cn/terms/state-machine/",
+        "text": "状态机State machine"
+      },
+      {
+        "href": "/zh-cn/terms/stateful-stateless/",
+        "text": "有状态／无状态Stateful / Stateless"
+      },
+      {
+        "href": "/zh-cn/terms/multitenancy/",
+        "text": "多租户Multi-tenancy"
+      },
+      {
+        "href": "/zh-cn/terms/concurrency/",
+        "text": "并发Concurrency"
+      },
+      {
+        "href": "/zh-cn/terms/load-balancing/",
+        "text": "负载均衡Load balancing"
+      },
+      {
+        "href": "/zh-cn/terms/circuit-breaker/",
+        "text": "熔断Circuit breaker"
+      },
+      {
+        "href": "/zh-cn/terms/eventual-consistency/",
+        "text": "最终一致性Eventual consistency"
+      },
+      {
+        "href": "/zh-cn/terms/race-condition/",
+        "text": "竞态条件Race condition"
+      },
+      {
+        "href": "/zh-cn/terms/deadlock/",
+        "text": "死锁Deadlock"
+      },
+      {
+        "href": "/zh-cn/terms/authentication/",
+        "text": "身份验证Authentication"
+      },
+      {
+        "href": "/zh-cn/terms/authorization/",
+        "text": "授权／权限Authorization"
+      },
+      {
+        "href": "/zh-cn/terms/api-key/",
+        "text": "接口密钥API key"
+      },
+      {
+        "href": "/zh-cn/terms/secret/",
+        "text": "机密配置Secret"
+      },
+      {
+        "href": "/zh-cn/terms/login-session/",
+        "text": "登录会话Login session"
+      },
+      {
+        "href": "/zh-cn/terms/access-token/",
+        "text": "访问令牌Access token"
+      },
+      {
+        "href": "/zh-cn/terms/refresh-token/",
+        "text": "刷新令牌Refresh token"
+      },
+      {
+        "href": "/zh-cn/terms/bearer-token/",
+        "text": "持有者令牌Bearer token"
+      },
+      {
+        "href": "/zh-cn/terms/jwt/",
+        "text": "JSON网络令牌JWT"
+      },
+      {
+        "href": "/zh-cn/terms/oauth/",
+        "text": "OAuth授权框架OAuth"
+      },
+      {
+        "href": "/zh-cn/terms/openid-connect/",
+        "text": "身份层协议OpenID Connect"
+      },
+      {
+        "href": "/zh-cn/terms/sso/",
+        "text": "单点登录SSO"
+      },
+      {
+        "href": "/zh-cn/terms/mfa/",
+        "text": "多因素认证MFA"
+      },
+      {
+        "href": "/zh-cn/terms/verification-code/",
+        "text": "验证码Verification code / CAPTCHA"
+      },
+      {
+        "href": "/zh-cn/terms/rbac/",
+        "text": "基于角色的权限RBAC"
+      },
+      {
+        "href": "/zh-cn/terms/least-privilege/",
+        "text": "最小权限Least privilege"
+      },
+      {
+        "href": "/zh-cn/terms/key-rotation/",
+        "text": "密钥轮换Key rotation"
+      },
+      {
+        "href": "/zh-cn/terms/encryption/",
+        "text": "加密Encryption"
+      },
+      {
+        "href": "/zh-cn/terms/hash/",
+        "text": "哈希Hash"
+      },
+      {
+        "href": "/zh-cn/terms/salt/",
+        "text": "加盐Salt"
+      },
+      {
+        "href": "/zh-cn/terms/password-hash/",
+        "text": "密码哈希Password hashing"
+      },
+      {
+        "href": "/zh-cn/terms/sql-injection/",
+        "text": "SQL注入SQL injection"
+      },
+      {
+        "href": "/zh-cn/terms/xss/",
+        "text": "跨站脚本XSS"
+      },
+      {
+        "href": "/zh-cn/terms/csrf/",
+        "text": "跨站请求伪造CSRF"
+      },
+      {
+        "href": "/zh-cn/terms/ssrf/",
+        "text": "服务端请求伪造SSRF"
+      },
+      {
+        "href": "/zh-cn/terms/path-traversal/",
+        "text": "路径穿越Path traversal"
+      },
+      {
+        "href": "/zh-cn/terms/command-injection/",
+        "text": "命令注入Command injection"
+      },
+      {
+        "href": "/zh-cn/terms/prompt-injection/",
+        "text": "提示词注入Prompt injection"
+      },
+      {
+        "href": "/zh-cn/terms/sensitive-data/",
+        "text": "敏感信息Sensitive data"
+      },
+      {
+        "href": "/zh-cn/terms/pii/",
+        "text": "个人可识别信息PII"
+      },
+      {
+        "href": "/zh-cn/terms/redaction/",
+        "text": "脱敏Redaction / Masking"
+      },
+      {
+        "href": "/zh-cn/terms/vulnerability/",
+        "text": "依赖漏洞Dependency vulnerability"
+      },
+      {
+        "href": "/zh-cn/terms/security-audit/",
+        "text": "安全审计Security audit"
+      },
+      {
+        "href": "/zh-cn/terms/git/",
+        "text": "Git版本控制Git"
+      },
+      {
+        "href": "/zh-cn/terms/github/",
+        "text": "GitHub平台GitHub"
+      },
+      {
+        "href": "/zh-cn/terms/repository/",
+        "text": "仓库Repository"
+      },
+      {
+        "href": "/zh-cn/terms/commit/",
+        "text": "提交Commit"
+      },
+      {
+        "href": "/zh-cn/terms/branch/",
+        "text": "分支Branch"
+      },
+      {
+        "href": "/zh-cn/terms/push/",
+        "text": "推送Push"
+      },
+      {
+        "href": "/zh-cn/terms/pull/",
+        "text": "拉取并整合Pull"
+      },
+      {
+        "href": "/zh-cn/terms/local-repo/",
+        "text": "本地仓库Local repository"
+      },
+      {
+        "href": "/zh-cn/terms/remote-repo/",
+        "text": "远端仓库Remote repository"
+      },
+      {
+        "href": "/zh-cn/terms/clone/",
+        "text": "克隆Clone"
+      },
+      {
+        "href": "/zh-cn/terms/working-tree/",
+        "text": "工作树Working tree"
+      },
+      {
+        "href": "/zh-cn/terms/stage/",
+        "text": "暂存区／暂存Staging area / Stage"
+      },
+      {
+        "href": "/zh-cn/terms/diff/",
+        "text": "差异Diff"
+      },
+      {
+        "href": "/zh-cn/terms/head/",
+        "text": "当前位置引用HEAD"
+      },
+      {
+        "href": "/zh-cn/terms/main-branch/",
+        "text": "主分支Main branch"
+      },
+      {
+        "href": "/zh-cn/terms/upstream/",
+        "text": "上游分支Upstream branch"
+      },
+      {
+        "href": "/zh-cn/terms/fetch/",
+        "text": "获取远端更新Fetch"
+      },
+      {
+        "href": "/zh-cn/terms/merge/",
+        "text": "合并Merge"
+      },
+      {
+        "href": "/zh-cn/terms/merge-conflict/",
+        "text": "合并冲突Merge conflict"
+      },
+      {
+        "href": "/zh-cn/terms/pull-request/",
+        "text": "合并请求Pull request / Merge request"
+      },
+      {
+        "href": "/zh-cn/terms/code-review/",
+        "text": "代码审查Code review"
+      },
+      {
+        "href": "/zh-cn/terms/rebase/",
+        "text": "变基Rebase"
+      },
+      {
+        "href": "/zh-cn/terms/cherry-pick/",
+        "text": "挑选提交Cherry-pick"
+      },
+      {
+        "href": "/zh-cn/terms/stash/",
+        "text": "暂存工作改动Stash"
+      },
+      {
+        "href": "/zh-cn/terms/reset/",
+        "text": "重置Reset"
+      },
+      {
+        "href": "/zh-cn/terms/revert/",
+        "text": "反向提交Revert"
+      },
+      {
+        "href": "/zh-cn/terms/tag/",
+        "text": "标签Tag"
+      },
+      {
+        "href": "/zh-cn/terms/detached-head/",
+        "text": "分离头指针Detached HEAD"
+      },
+      {
+        "href": "/zh-cn/terms/worktree/",
+        "text": "独立工作树Git worktree"
+      },
+      {
+        "href": "/zh-cn/terms/gitignore/",
+        "text": "忽略规则.gitignore"
+      },
+      {
+        "href": "/zh-cn/terms/git-lfs/",
+        "text": "大文件存储Git LFS"
+      },
+      {
+        "href": "/zh-cn/terms/protected-branch/",
+        "text": "受保护分支Protected branch"
+      },
+      {
+        "href": "/zh-cn/terms/bug/",
+        "text": "程序缺陷Bug"
+      },
+      {
+        "href": "/zh-cn/terms/error/",
+        "text": "报错Error message"
+      },
+      {
+        "href": "/zh-cn/terms/log/",
+        "text": "日志Log"
+      },
+      {
+        "href": "/zh-cn/terms/debug/",
+        "text": "调试Debugging"
+      },
+      {
+        "href": "/zh-cn/terms/test-case/",
+        "text": "测试用例Test case"
+      },
+      {
+        "href": "/zh-cn/terms/manual-test/",
+        "text": "手动测试Manual testing"
+      },
+      {
+        "href": "/zh-cn/terms/regression/",
+        "text": "回归测试Regression testing"
+      },
+      {
+        "href": "/zh-cn/terms/unit-test/",
+        "text": "单元测试Unit test"
+      },
+      {
+        "href": "/zh-cn/terms/integration-test/",
+        "text": "集成测试Integration test"
+      },
+      {
+        "href": "/zh-cn/terms/e2e/",
+        "text": "端到端测试E2E test"
+      },
+      {
+        "href": "/zh-cn/terms/smoke-test/",
+        "text": "冒烟测试Smoke test"
+      },
+      {
+        "href": "/zh-cn/terms/uat/",
+        "text": "用户验收测试UAT"
+      },
+      {
+        "href": "/zh-cn/terms/exploratory-test/",
+        "text": "探索性测试Exploratory testing"
+      },
+      {
+        "href": "/zh-cn/terms/boundary-test/",
+        "text": "边界测试Boundary testing"
+      },
+      {
+        "href": "/zh-cn/terms/failure-path/",
+        "text": "异常路径Failure path"
+      },
+      {
+        "href": "/zh-cn/terms/compatibility-test/",
+        "text": "兼容性测试Compatibility testing"
+      },
+      {
+        "href": "/zh-cn/terms/accessibility-test/",
+        "text": "无障碍测试Accessibility testing"
+      },
+      {
+        "href": "/zh-cn/terms/performance-test/",
+        "text": "性能测试Performance testing"
+      },
+      {
+        "href": "/zh-cn/terms/load-test/",
+        "text": "负载测试Load testing"
+      },
+      {
+        "href": "/zh-cn/terms/mock/",
+        "text": "模拟对象Mock"
+      },
+      {
+        "href": "/zh-cn/terms/stub/",
+        "text": "桩Stub"
+      },
+      {
+        "href": "/zh-cn/terms/fixture/",
+        "text": "测试夹具Fixture"
+      },
+      {
+        "href": "/zh-cn/terms/coverage/",
+        "text": "测试覆盖率Test coverage"
+      },
+      {
+        "href": "/zh-cn/terms/assertion/",
+        "text": "断言Assertion"
+      },
+      {
+        "href": "/zh-cn/terms/snapshot-test/",
+        "text": "快照测试Snapshot testing"
+      },
+      {
+        "href": "/zh-cn/terms/test-double/",
+        "text": "测试替身Test double"
+      },
+      {
+        "href": "/zh-cn/terms/flaky-test/",
+        "text": "不稳定测试Flaky test"
+      },
+      {
+        "href": "/zh-cn/terms/reproduction/",
+        "text": "复现步骤Reproduction steps"
+      },
+      {
+        "href": "/zh-cn/terms/minimal-repro/",
+        "text": "最小复现Minimal reproduction"
+      },
+      {
+        "href": "/zh-cn/terms/expected-actual/",
+        "text": "预期／实际结果Expected / Actual result"
+      },
+      {
+        "href": "/zh-cn/terms/root-cause/",
+        "text": "根因Root cause"
+      },
+      {
+        "href": "/zh-cn/terms/debug-breakpoint/",
+        "text": "调试断点Debugger breakpoint"
+      },
+      {
+        "href": "/zh-cn/terms/tdd/",
+        "text": "测试驱动开发TDD"
+      },
+      {
+        "href": "/zh-cn/terms/build/",
+        "text": "构建Build"
+      },
+      {
+        "href": "/zh-cn/terms/deploy/",
+        "text": "部署Deploy"
+      },
+      {
+        "href": "/zh-cn/terms/go-live/",
+        "text": "上线Go live"
+      },
+      {
+        "href": "/zh-cn/terms/installer/",
+        "text": "安装包Installer"
+      },
+      {
+        "href": "/zh-cn/terms/production/",
+        "text": "生产环境Production environment"
+      },
+      {
+        "href": "/zh-cn/terms/local-preview/",
+        "text": "本地运行／预览Local run / Preview"
+      },
+      {
+        "href": "/zh-cn/terms/dev-environment/",
+        "text": "开发环境Development environment"
+      },
+      {
+        "href": "/zh-cn/terms/test-environment/",
+        "text": "测试环境Test environment"
+      },
+      {
+        "href": "/zh-cn/terms/staging/",
+        "text": "预发布环境Staging"
+      },
+      {
+        "href": "/zh-cn/terms/preview-deployment/",
+        "text": "预览部署Preview deployment"
+      },
+      {
+        "href": "/zh-cn/terms/release/",
+        "text": "版本发布Release"
+      },
+      {
+        "href": "/zh-cn/terms/artifact/",
+        "text": "构建产物Artifact"
+      },
+      {
+        "href": "/zh-cn/terms/app-version/",
+        "text": "应用版本号Application version"
+      },
+      {
+        "href": "/zh-cn/terms/ci/",
+        "text": "持续集成CI"
+      },
+      {
+        "href": "/zh-cn/terms/cd/",
+        "text": "持续交付／部署CD"
+      },
+      {
+        "href": "/zh-cn/terms/pipeline/",
+        "text": "流水线Pipeline"
+      },
+      {
+        "href": "/zh-cn/terms/env-config/",
+        "text": "环境配置Environment configuration"
+      },
+      {
+        "href": "/zh-cn/terms/build-command/",
+        "text": "构建命令Build command"
+      },
+      {
+        "href": "/zh-cn/terms/start-command/",
+        "text": "启动命令Start command"
+      },
+      {
+        "href": "/zh-cn/terms/health-check/",
+        "text": "健康检查Health check"
+      },
+      {
+        "href": "/zh-cn/terms/rollback/",
+        "text": "回滚Rollback"
+      },
+      {
+        "href": "/zh-cn/terms/staged-rollout/",
+        "text": "灰度发布Staged rollout"
+      },
+      {
+        "href": "/zh-cn/terms/canary/",
+        "text": "金丝雀发布Canary release"
+      },
+      {
+        "href": "/zh-cn/terms/blue-green/",
+        "text": "蓝绿部署Blue-green deployment"
+      },
+      {
+        "href": "/zh-cn/terms/feature-flag/",
+        "text": "功能开关Feature flag"
+      },
+      {
+        "href": "/zh-cn/terms/migration-order/",
+        "text": "迁移顺序Migration order"
+      },
+      {
+        "href": "/zh-cn/terms/code-signing/",
+        "text": "代码签名Code signing"
+      },
+      {
+        "href": "/zh-cn/terms/notarization/",
+        "text": "软件公证Notarization"
+      },
+      {
+        "href": "/zh-cn/terms/app-review/",
+        "text": "应用审核App review"
+      },
+      {
+        "href": "/zh-cn/terms/server/",
+        "text": "服务器Server"
+      },
+      {
+        "href": "/zh-cn/terms/cloud/",
+        "text": "云服务Cloud service"
+      },
+      {
+        "href": "/zh-cn/terms/hosting/",
+        "text": "托管Hosting"
+      },
+      {
+        "href": "/zh-cn/terms/docker/",
+        "text": "DockerDocker"
+      },
+      {
+        "href": "/zh-cn/terms/container/",
+        "text": "容器Container"
+      },
+      {
+        "href": "/zh-cn/terms/vm/",
+        "text": "虚拟机Virtual machine"
+      },
+      {
+        "href": "/zh-cn/terms/vps/",
+        "text": "虚拟专用服务器VPS"
+      },
+      {
+        "href": "/zh-cn/terms/image/",
+        "text": "容器镜像Container image"
+      },
+      {
+        "href": "/zh-cn/terms/dockerfile/",
+        "text": "镜像构建说明Dockerfile"
+      },
+      {
+        "href": "/zh-cn/terms/compose/",
+        "text": "容器组合配置Docker Compose"
+      },
+      {
+        "href": "/zh-cn/terms/registry/",
+        "text": "镜像仓库Container registry"
+      },
+      {
+        "href": "/zh-cn/terms/volume/",
+        "text": "数据卷Volume"
+      },
+      {
+        "href": "/zh-cn/terms/port-mapping/",
+        "text": "端口映射Port mapping"
+      },
+      {
+        "href": "/zh-cn/terms/container-network/",
+        "text": "容器网络Container network"
+      },
+      {
+        "href": "/zh-cn/terms/ssh/",
+        "text": "安全远程连接SSH"
+      },
+      {
+        "href": "/zh-cn/terms/ssh-key/",
+        "text": "SSH密钥SSH key"
+      },
+      {
+        "href": "/zh-cn/terms/nginx/",
+        "text": "Nginx服务Nginx"
+      },
+      {
+        "href": "/zh-cn/terms/cdn/",
+        "text": "内容分发网络CDN"
+      },
+      {
+        "href": "/zh-cn/terms/edge-node/",
+        "text": "边缘节点Edge node"
+      },
+      {
+        "href": "/zh-cn/terms/edge-function/",
+        "text": "边缘函数Edge function"
+      },
+      {
+        "href": "/zh-cn/terms/region/",
+        "text": "区域Region"
+      },
+      {
+        "href": "/zh-cn/terms/availability-zone/",
+        "text": "可用区Availability zone"
+      },
+      {
+        "href": "/zh-cn/terms/bandwidth/",
+        "text": "带宽Bandwidth"
+      },
+      {
+        "href": "/zh-cn/terms/egress/",
+        "text": "出站流量Egress"
+      },
+      {
+        "href": "/zh-cn/terms/persistent-disk/",
+        "text": "持久化磁盘Persistent disk"
+      },
+      {
+        "href": "/zh-cn/terms/autoscaling/",
+        "text": "自动扩缩容Autoscaling"
+      },
+      {
+        "href": "/zh-cn/terms/kubernetes/",
+        "text": "容器编排系统Kubernetes"
+      },
+      {
+        "href": "/zh-cn/terms/iac/",
+        "text": "基础设施即代码IaC"
+      },
+      {
+        "href": "/zh-cn/terms/monitoring/",
+        "text": "监控Monitoring"
+      },
+      {
+        "href": "/zh-cn/terms/alert/",
+        "text": "告警Alert"
+      },
+      {
+        "href": "/zh-cn/terms/error-tracking/",
+        "text": "错误追踪Error tracking"
+      },
+      {
+        "href": "/zh-cn/terms/optimization/",
+        "text": "性能优化Performance optimization"
+      },
+      {
+        "href": "/zh-cn/terms/observability/",
+        "text": "可观测性Observability"
+      },
+      {
+        "href": "/zh-cn/terms/metrics/",
+        "text": "指标Metrics"
+      },
+      {
+        "href": "/zh-cn/terms/trace/",
+        "text": "链路追踪Trace"
+      },
+      {
+        "href": "/zh-cn/terms/apm/",
+        "text": "应用性能监测APM"
+      },
+      {
+        "href": "/zh-cn/terms/error-rate/",
+        "text": "错误率Error rate"
+      },
+      {
+        "href": "/zh-cn/terms/latency/",
+        "text": "延迟Latency"
+      },
+      {
+        "href": "/zh-cn/terms/throughput/",
+        "text": "吞吐量Throughput"
+      },
+      {
+        "href": "/zh-cn/terms/availability/",
+        "text": "可用性Availability"
+      },
+      {
+        "href": "/zh-cn/terms/sla-slo-sli/",
+        "text": "服务协议、目标与指标SLA / SLO / SLI"
+      },
+      {
+        "href": "/zh-cn/terms/p95-p99/",
+        "text": "百分位延迟P95 / P99"
+      },
+      {
+        "href": "/zh-cn/terms/log-level/",
+        "text": "日志级别Log level"
+      },
+      {
+        "href": "/zh-cn/terms/log-rotation/",
+        "text": "日志轮转Log rotation"
+      },
+      {
+        "href": "/zh-cn/terms/audit-log/",
+        "text": "审计日志Audit log"
+      },
+      {
+        "href": "/zh-cn/terms/incident/",
+        "text": "事故Incident"
+      },
+      {
+        "href": "/zh-cn/terms/postmortem/",
+        "text": "事故复盘Postmortem"
+      },
+      {
+        "href": "/zh-cn/terms/rto-rpo/",
+        "text": "恢复时间与数据目标RTO / RPO"
+      },
+      {
+        "href": "/zh-cn/terms/cache-hit/",
+        "text": "缓存命中率Cache hit rate"
+      },
+      {
+        "href": "/zh-cn/terms/cache-invalidation/",
+        "text": "缓存失效Cache invalidation"
+      },
+      {
+        "href": "/zh-cn/terms/memory-leak/",
+        "text": "内存泄漏Memory leak"
+      },
+      {
+        "href": "/zh-cn/terms/resources/",
+        "text": "CPU／内存／磁盘CPU / RAM / Disk"
+      },
+      {
+        "href": "/zh-cn/terms/bottleneck/",
+        "text": "瓶颈Bottleneck"
+      },
+      {
+        "href": "/zh-cn/terms/compression/",
+        "text": "压缩Compression"
+      },
+      {
+        "href": "/zh-cn/terms/lazy-loading/",
+        "text": "懒加载Lazy loading"
+      },
+      {
+        "href": "/zh-cn/terms/code-splitting/",
+        "text": "代码分割Code splitting"
+      },
+      {
+        "href": "/zh-cn/terms/tree-shaking/",
+        "text": "无用代码移除Tree shaking"
+      },
+      {
+        "href": "/zh-cn/terms/web-vitals/",
+        "text": "网页体验指标Core Web Vitals"
+      },
+      {
+        "href": "/zh-cn/terms/lcp/",
+        "text": "最大内容绘制LCP"
+      },
+      {
+        "href": "/zh-cn/terms/inp/",
+        "text": "交互到下一次绘制INP"
+      },
+      {
+        "href": "/zh-cn/terms/cls/",
+        "text": "累计布局偏移CLS"
+      },
+      {
+        "href": "/zh-cn/terms/upload/",
+        "text": "文件上传File upload"
+      },
+      {
+        "href": "/zh-cn/terms/email/",
+        "text": "邮件发送Email delivery"
+      },
+      {
+        "href": "/zh-cn/terms/notification/",
+        "text": "消息通知Notification"
+      },
+      {
+        "href": "/zh-cn/terms/payment/",
+        "text": "支付Payment"
+      },
+      {
+        "href": "/zh-cn/terms/file-limit/",
+        "text": "文件大小限制File size limit"
+      },
+      {
+        "href": "/zh-cn/terms/mime/",
+        "text": "媒体类型MIME type"
+      },
+      {
+        "href": "/zh-cn/terms/presigned-url/",
+        "text": "预签名地址Presigned URL"
+      },
+      {
+        "href": "/zh-cn/terms/multipart-upload/",
+        "text": "分片上传Multipart upload"
+      },
+      {
+        "href": "/zh-cn/terms/resume-upload/",
+        "text": "断点续传Resumable upload"
+      },
+      {
+        "href": "/zh-cn/terms/email-template/",
+        "text": "邮件模板Email template"
+      },
+      {
+        "href": "/zh-cn/terms/smtp/",
+        "text": "邮件传输协议SMTP"
+      },
+      {
+        "href": "/zh-cn/terms/push-notification/",
+        "text": "推送通知Push notification"
+      },
+      {
+        "href": "/zh-cn/terms/payment-sandbox/",
+        "text": "支付沙盒Payment sandbox"
+      },
+      {
+        "href": "/zh-cn/terms/order-state/",
+        "text": "订单状态Order state"
+      },
+      {
+        "href": "/zh-cn/terms/payment-callback/",
+        "text": "支付回调Payment callback"
+      },
+      {
+        "href": "/zh-cn/terms/recurring-billing/",
+        "text": "订阅扣费Recurring billing"
+      },
+      {
+        "href": "/zh-cn/terms/refund/",
+        "text": "退款Refund"
+      },
+      {
+        "href": "/zh-cn/terms/fulltext-search/",
+        "text": "全文搜索Full-text search"
+      },
+      {
+        "href": "/zh-cn/terms/geolocation/",
+        "text": "地图定位Geolocation"
+      },
+      {
+        "href": "/zh-cn/terms/timezone/",
+        "text": "时区Time zone"
+      },
+      {
+        "href": "/zh-cn/terms/utc/",
+        "text": "协调世界时UTC"
+      },
+      {
+        "href": "/zh-cn/terms/date-format/",
+        "text": "日期格式Date format"
+      },
+      {
+        "href": "/zh-cn/terms/csv/",
+        "text": "表格文本格式CSV"
+      },
+      {
+        "href": "/zh-cn/terms/pdf/",
+        "text": "便携文档格式PDF"
+      },
+      {
+        "href": "/zh-cn/terms/rich-text/",
+        "text": "富文本Rich text"
+      },
+      {
+        "href": "/zh-cn/terms/markdown/",
+        "text": "Markdown格式Markdown"
+      },
+      {
+        "href": "/zh-cn/terms/open-source/",
+        "text": "开源Open source"
+      },
+      {
+        "href": "/zh-cn/terms/license/",
+        "text": "许可证License"
+      },
+      {
+        "href": "/zh-cn/terms/copyright/",
+        "text": "版权Copyright"
+      },
+      {
+        "href": "/zh-cn/terms/third-party/",
+        "text": "第三方依赖Third-party dependency"
+      },
+      {
+        "href": "/zh-cn/terms/mit/",
+        "text": "MIT许可证MIT license"
+      },
+      {
+        "href": "/zh-cn/terms/apache-license/",
+        "text": "Apache许可证Apache-2.0"
+      },
+      {
+        "href": "/zh-cn/terms/gpl/",
+        "text": "GPL许可证GPL"
+      },
+      {
+        "href": "/zh-cn/terms/agpl/",
+        "text": "AGPL许可证AGPL"
+      },
+      {
+        "href": "/zh-cn/terms/commercial-use/",
+        "text": "商业使用Commercial use"
+      },
+      {
+        "href": "/zh-cn/terms/attribution/",
+        "text": "署名Attribution"
+      },
+      {
+        "href": "/zh-cn/terms/distribution/",
+        "text": "分发Distribution"
+      },
+      {
+        "href": "/zh-cn/terms/derivative/",
+        "text": "衍生作品Derivative work"
+      },
+      {
+        "href": "/zh-cn/terms/notices/",
+        "text": "版权与许可声明Copyright / License notices"
+      },
+      {
+        "href": "/zh-cn/terms/license-audit/",
+        "text": "依赖许可证检查Dependency license review"
+      },
+      {
+        "href": "/zh-cn/terms/data-ownership/",
+        "text": "数据所有权与控制权Data ownership / Control"
+      },
+      {
+        "href": "/zh-cn/terms/source-handover/",
+        "text": "源码交付Source handover"
+      },
+      {
+        "href": "/zh-cn/terms/account-ownership/",
+        "text": "账号归属Account ownership"
+      },
+      {
+        "href": "/zh-cn/terms/domain-ownership/",
+        "text": "域名归属Domain ownership"
+      },
+      {
+        "href": "/zh-cn/terms/service-cost/",
+        "text": "服务费用Service cost"
+      },
+      {
+        "href": "/zh-cn/terms/shutdown/",
+        "text": "停服Service shutdown"
+      },
+      {
+        "href": "/zh-cn/terms/data-export/",
+        "text": "数据导出Data export"
+      },
+      {
+        "href": "/zh-cn/terms/service-migration/",
+        "text": "服务迁移Service migration"
+      },
+      {
+        "href": "/zh-cn/terms/vendor-lockin/",
+        "text": "供应商锁定Vendor lock-in"
+      },
+      {
+        "href": "/zh-cn/terms/llm/",
+        "text": "大语言模型／大模型 →"
+      },
+      {
+        "href": "/zh-cn/terms/tool-call/",
+        "text": "工具调用 →"
+      },
+      {
+        "href": "/zh-cn/terms/agent/",
+        "text": "智能体 →"
+      },
+      {
+        "href": "/zh-cn/terms/harness/",
+        "text": "智能体运行框架 →"
+      },
+      {
+        "href": "/zh-cn/terms/prompt/",
+        "text": "提示词 →"
+      },
+      {
+        "href": "/zh-cn/terms/skill/",
+        "text": "技能 →"
+      },
+      {
+        "href": "/zh-cn/terms/mcp/",
+        "text": "模型上下文协议 →"
+      },
+      {
+        "href": "/zh-cn/terms/plugin/",
+        "text": "插件 →"
+      },
+      {
+        "href": "/zh-cn/terms/token/",
+        "text": "模型词元 →"
+      },
+      {
+        "href": "/zh-cn/terms/access-token/",
+        "text": "访问令牌 →"
+      },
+      {
+        "href": "/zh-cn/terms/api-key/",
+        "text": "接口密钥 →"
+      },
+      {
+        "href": "/zh-cn/terms/subscription/",
+        "text": "订阅 →"
+      },
+      {
+        "href": "/zh-cn/terms/api-billing/",
+        "text": "接口计费 →"
+      },
+      {
+        "href": "/zh-cn/terms/context/",
+        "text": "上下文 →"
+      },
+      {
+        "href": "/zh-cn/terms/long-memory/",
+        "text": "长期记忆 →"
+      },
+      {
+        "href": "/zh-cn/terms/knowledge-base/",
+        "text": "知识库 →"
+      },
+      {
+        "href": "/zh-cn/terms/rag/",
+        "text": "检索增强生成 →"
+      },
+      {
+        "href": "/zh-cn/terms/frontend/",
+        "text": "前端 →"
+      },
+      {
+        "href": "/zh-cn/terms/backend/",
+        "text": "后端 →"
+      },
+      {
+        "href": "/zh-cn/terms/database/",
+        "text": "数据库 →"
+      },
+      {
+        "href": "/zh-cn/terms/api/",
+        "text": "应用程序接口 →"
+      },
+      {
+        "href": "/zh-cn/terms/website/",
+        "text": "网站 →"
+      },
+      {
+        "href": "/zh-cn/terms/webapp/",
+        "text": "Web应用 →"
+      },
+      {
+        "href": "/zh-cn/terms/mini-program/",
+        "text": "小程序 →"
+      },
+      {
+        "href": "/zh-cn/terms/mobile-app/",
+        "text": "移动应用 →"
+      },
+      {
+        "href": "/zh-cn/terms/library/",
+        "text": "代码库 →"
+      },
+      {
+        "href": "/zh-cn/terms/framework/",
+        "text": "框架 →"
+      },
+      {
+        "href": "/zh-cn/terms/sdk/",
+        "text": "软件开发工具包 →"
+      },
+      {
+        "href": "/zh-cn/terms/runtime/",
+        "text": "运行时 →"
+      },
+      {
+        "href": "/zh-cn/terms/git/",
+        "text": "Git版本控制 →"
+      },
+      {
+        "href": "/zh-cn/terms/github/",
+        "text": "GitHub平台 →"
+      },
+      {
+        "href": "/zh-cn/terms/working-tree/",
+        "text": "工作树 →"
+      },
+      {
+        "href": "/zh-cn/terms/commit/",
+        "text": "提交 →"
+      },
+      {
+        "href": "/zh-cn/terms/push/",
+        "text": "推送 →"
+      },
+      {
+        "href": "/zh-cn/terms/deploy/",
+        "text": "部署 →"
+      },
+      {
+        "href": "/zh-cn/terms/local-preview/",
+        "text": "本地运行／预览 →"
+      },
+      {
+        "href": "/zh-cn/terms/preview-deployment/",
+        "text": "预览部署 →"
+      },
+      {
+        "href": "/zh-cn/terms/go-live/",
+        "text": "上线 →"
+      },
+      {
+        "href": "/zh-cn/terms/authentication/",
+        "text": "身份验证 →"
+      },
+      {
+        "href": "/zh-cn/terms/authorization/",
+        "text": "授权／权限 →"
+      },
+      {
+        "href": "/zh-cn/terms/prototype/",
+        "text": "原型 →"
+      },
+      {
+        "href": "/zh-cn/terms/mvp/",
+        "text": "最小可用产品 →"
+      },
+      {
+        "href": "/zh-cn/terms/production/",
+        "text": "生产环境 →"
+      },
+      {
+        "href": "/zh-cn/terms/assertion/",
+        "text": "断言 →"
+      },
+      {
+        "href": "/zh-cn/terms/e2e/",
+        "text": "端到端测试 →"
+      },
+      {
+        "href": "/zh-cn/terms/uat/",
+        "text": "用户验收测试 →"
+      },
+      {
+        "href": "/zh-cn/terms/build/",
+        "text": "构建 →"
+      },
+      {
+        "href": "/zh-cn/terms/deploy/",
+        "text": "部署 →"
+      },
+      {
+        "href": "/zh-cn/terms/manual-test/",
+        "text": "手动测试 →"
+      },
+      {
+        "href": "/zh-cn/terms/crud/",
+        "text": "增删改查 →"
+      },
+      {
+        "href": "/zh-cn/terms/rollback/",
+        "text": "回滚 →"
+      },
+      {
+        "href": "/zh-cn/terms/restore/",
+        "text": "恢复 →"
+      },
+      {
+        "href": "/zh-cn/terms/cache/",
+        "text": "缓存 →"
+      },
+      {
+        "href": "/zh-cn/terms/database/",
+        "text": "数据库 →"
+      },
+      {
+        "href": "/zh-cn/terms/backup/",
+        "text": "备份 →"
+      },
+      {
+        "href": "/zh-cn/terms/rag/",
+        "text": "检索增强生成 →"
+      },
+      {
+        "href": "/zh-cn/terms/fine-tuning/",
+        "text": "微调 →"
+      },
+      {
+        "href": "/zh-cn/terms/context-window/",
+        "text": "上下文窗口 →"
+      },
+      {
+        "href": "/zh-cn/learn/",
+        "text": "带着结果回到操作 →"
+      }
+    ],
+    "templates": [
+      {
+        "id": "edit-resource-terms",
+        "value": "不理解的词：【填写】\n出现它的原句与当前步骤：【粘贴】\n本项目实际用途：【填写】\n\n只解释这个词如何影响当前操作。用普通语言和本项目例子，区分必须决定的事与暂时不需要了解的细节。\n\n本次产物：白话解释、一个本项目例子、何时需要/不需要、下一步具体动作。不因遇到术语就安装对应技术。"
+      }
+    ],
+    "text": "← 返回上一级\n完整路线图 ↗\n\n读懂术语，再回到项目\n\n把专业术语，讲成明白话\n\n先看一句解释，再看生活例子和图解。不必背完，遇到哪个词，就查哪个词。\n\n755 个词条 · 27 类开发场景\n输入中文、英文或缩写\n按场景查\n全部分类\n项目与产品\n文档与开发计划\nAI与大模型\n提示词与上下文\nAgent、Skill与MCP\nAI规则文件与协议\n账号、费用与额度\n知识库与检索\n开发工具与环境\n编程与代码基础\n前后端与技术栈\n常见语言与框架\n网站、App与项目形态\n界面与体验设计\n组件与交互状态\n浏览器与前端运行\nAPI与网络通信\n数据库与文件存储\n后端与系统结构\n账号、权限与安全\nGit与代码协作\n测试与排错\n构建、部署与发布\n服务器、云与容器\n维护、监控与性能\n第三方能力与业务\n开源、归属与交付\n只看新手常用\n清除筛选\n第一次遇到？先从这些词开始\n大语言模型／大模型 · LLM\n提示词 · Prompt\n上下文 · Context\n智能体 · Agent\n技能 · Skill\n模型上下文协议 · MCP\n智能体运行框架 · Agent harness\n前端 · Frontend\n后端 · Backend\n应用程序接口 · API\n接口密钥 · API key\nGit版本控制 · Git\n按分类展开\n\n755 个词条 · 按需展开分类\n\n01\n项目与产品\n22 个词条\n02\n文档与开发计划\n21 个词条\n03\nAI与大模型\n25 个词条\n04\n提示词与上下文\n25 个词条\n05\nAgent、Skill与MCP\n28 个词条\n06\nAI规则文件与协议\n18 个词条\n07\n账号、费用与额度\n20 个词条\n08\n知识库与检索\n24 个词条\n09\n开发工具与环境\n30 个词条\n10\n编程与代码基础\n36 个词条\n11\n前后端与技术栈\n31 个词条\n12\n常见语言与框架\n27 个词条\n13\n网站、App与项目形态\n26 个词条\n14\n界面与体验设计\n32 个词条\n15\n组件与交互状态\n28 个词条\n16\n浏览器与前端运行\n29 个词条\n17\nAPI与网络通信\n32 个词条\n18\n数据库与文件存储\n36 个词条\n19\n后端与系统结构\n28 个词条\n20\n账号、权限与安全\n33 个词条\n21\nGit与代码协作\n32 个词条\n22\n测试与排错\n33 个词条\n23\n构建、部署与发布\n29 个词条\n24\n服务器、云与容器\n28 个词条\n25\n维护、监控与性能\n33 个词条\n26\n第三方能力与业务\n26 个词条\n27\n开源、归属与交付\n23 个词条\n这些词看起来很像，到底有什么区别？\n用这页做出判断：适用条件、限制与检查\n\n生活类比帮助理解，不能替代真实规则。每个词条都注明开发场景、注意点和进一步阅读入口。",
+    "title": "把专业术语，讲成明白话"
+  }
+]

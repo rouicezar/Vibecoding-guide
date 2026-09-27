@@ -1,0 +1,15 @@
+
+> vibe-coding-guide@0.1.0 verify
+> node scripts/verify-pages.mjs && node scripts/verify-stacks.mjs && node scripts/extract-dictionary.mjs --check && node scripts/verify-learning.mjs && node scripts/verify-navigation.mjs && node scripts/verify-step-prompts.mjs && node scripts/verify-library.mjs && node scripts/verify-demo-library.mjs && node scripts/verify-glossary.mjs && node scripts/verify-learning-handoffs.mjs
+
+PASS: 2208 localized pages, language counterparts, headings, local links/assets section anchors, copy policy, module coverage structured bilingual templates, branch parents and lifecycle ordering.
+PASS: stack rules preserve unknowns, existing projects and device constraints; five product scenarios.
+PASS: 212 entries, 25 categories, all source fields preserved and compared.
+PASS: 6 phases, 31 action/help/return routes; corrupt-state rejection, schema version, draft preservation and unknown-progress filtering.
+PASS: every action explains purpose and concepts; prerequisite order and repair/delivery loops are navigable.
+PASS: entry-route round trip, refreshable bounded trail, unsafe destination rejection; all 16 original nodes and original blocker prompts reachable in both languages.
+PASS: 31 step template coverage, bilingual field validation, scoped context, document handoffs and repair reassessment. Not an external AI execution test.
+PASS: four product types × four fit dimensions in both languages; 25 component categories and 212 entries covered; 10 resource topics have decisions, limits, checks and live return routes.
+PASS: 212 bilingual example pages and templates; {"visual":32,"simplified":3,"exercise":177}; 9 scoped resource prompts and 4 validated records. Runtime interaction is verified separately in browser evidence.
+PASS: 755 bilingual glossary entries, 27 categories, 15 diagrams, 18 comparisons; legacy anchors, task links, aliases, examples and rendered detail pages checked. Human comprehension is not measured by these tests.
+PASS: 31 step links, file contracts, 12 scoped branches; 12 bilingual empty-template rejections; project isolation, full backup, safe restore, locale handoff. Not a real device or AI-run acceptance test.

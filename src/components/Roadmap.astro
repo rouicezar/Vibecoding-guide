@@ -12,6 +12,7 @@ const groups=[{title:['把想法说清楚','Shape the idea'] as const,ids:['idea
 <footer class="map-footer"><span>↶ {t(['检查未通过，回到制作；需求改变，回到范围确认。','Checks failed? Revisit building. Scope changed? Revisit agreement.'],locale)}</span><a href={url(locale,'learn/idea')}>{t(['零基础？从第一个小动作开始 →','New to this? Start with one small action →'],locale)}</a></footer>
 </section>
 <script>
+import {projectStorage as localStorage} from '../scripts/project-storage';
 import {parseLearning} from '../scripts/learning';
 const map=document.querySelector<HTMLElement>('[data-roadmap]');if(map){try{const saved=parseLearning(localStorage.getItem('vibe-guide-learning-v1'));const lookup=JSON.parse(map.dataset.lessonMap!);map.querySelectorAll<HTMLAnchorElement>('[data-map-node]').forEach(a=>{if(lookup[a.dataset.mapNode!]===saved.current&&(saved.idea||saved.completed.length)){a.setAttribute('aria-current','step');const state=a.querySelector('.map-state');if(state)state.textContent=document.documentElement.lang==='en'?'Here':'当前';}});}catch{}}
 </script>

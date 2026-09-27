@@ -1,0 +1,1792 @@
+[
+  {
+    "step": 1,
+    "id": "idea",
+    "title": "先记下自己的想法",
+    "where": "就在这一页的草稿里",
+    "actions": [
+      "按模板说明项目给哪些人用、解决他们的什么问题、准备怎样测试，以及是否计划第二阶段开发。还没想清楚可以写“暂未确定”。",
+      "在下方填写自己的材料。也可以点“填入练习示例”，跟着做一个学习记录网站；示例随时可以改。"
+    ],
+    "prompt": null,
+    "kind": "idea",
+    "fields": [],
+    "expected": "草稿写明项目用户、要解决的问题和试用通过的条件；第二阶段计划可以填“否”或“暂未确定”。草稿已保存或已下载留底。",
+    "understanding": {
+      "why": [
+        "先把自己的目标写清楚，后续才能判断 AI 是否做偏。",
+        "Clarify personal goals to recognize drift."
+      ],
+      "concept": [
+        "想法可以不完整；未知不等于让 AI 自行编造。",
+        "Unknowns are allowed, not permission to invent."
+      ],
+      "question": [
+        "这个项目解决的是谁的哪件事？",
+        "Whose problem does this solve?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "no-idea",
+        "title": [
+          "只有“想做一个网站”，不知道写什么",
+          "I only know I want a website"
+        ],
+        "check": [
+          "先回想今天重复做过的一件小事。",
+          "Think of one repetitive task from today."
+        ],
+        "action": [
+          "可以先用练习示例：记录今天学了什么，下次打开还能看到。不想用示例时，只填写一个真实困难即可。",
+          "Try the practice example: record today’s learning and find it next time. Otherwise write just one real difficulty."
+        ],
+        "expected": [
+          "草稿有实际使用者和一个可观察的结果，其他项可以未知。",
+          "The draft identifies a user and an observable result. Other fields may remain undecided."
+        ]
+      }
+    ],
+    "refs": [],
+    "choices": []
+  },
+  {
+    "step": 2,
+    "id": "description",
+    "title": "整理成可以交给 AI 的项目描述",
+    "where": "本站的想法草稿与下方模板",
+    "actions": [
+      "将上一页草稿中的用户、问题和通过条件填入本步模板，再补充项目名称、设备与使用过程。",
+      "确认生成后复制留底；准备项目起点时，将这份描述粘贴到对应模板。"
+    ],
+    "prompt": "项目名称：【填写名称】\n项目用户群体：【填写实际使用者】\n项目解决的问题：【填写用户使用后能解决的具体问题】\n使用设备：【填写电脑浏览器、手机、桌面应用等】\n第一版使用过程：【填写打开哪里、做什么、得到什么结果】\n测试通过条件：【填写操作和应该看到的结果】\n第二阶段功能：【填写；没有填否，未决定填尚未确定】\n预算及其他限制：【填写或填尚未确定】",
+    "kind": "worksheet",
+    "fields": [
+      "【填写名称】",
+      "【填写实际使用者】",
+      "【填写用户使用后能解决的具体问题】",
+      "【填写电脑浏览器、手机、桌面应用等】",
+      "【填写打开哪里、做什么、得到什么结果】",
+      "【填写操作和应该看到的结果】",
+      "【填写；没有填否，未决定填尚未确定】",
+      "【填写或填尚未确定】"
+    ],
+    "expected": "描述包含目标用户、问题、第一版、通过条件和后续范围，没有把例子当成自己的需求。",
+    "understanding": {
+      "why": [
+        "把想法整理成明确描述，AI 才能少猜一点。此时只说明要做什么，不需要先学技术名词。",
+        "A clear brief reduces guesses. Describe the desired outcome without choosing technical terms yet."
+      ],
+      "concept": [
+        "项目描述是沟通起点，不是最终需求；与 AI 澄清后还会修订。",
+        "A brief starts the discussion; clarification can still change it."
+      ],
+      "question": [
+        "如果 AI 要加一个未提到的功能，应该直接接受，还是先核对它是否解决第一版的问题？",
+        "Should an unrequested feature be accepted immediately, or checked against the first-version goal?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "not-ready",
+        "title": [
+          "不知道第一版的流程怎么写",
+          "Unsure how to describe the first flow"
+        ],
+        "check": [
+          "先选择一个人和一件事，暂时不要列所有功能。",
+          "Choose one person and one task before listing features."
+        ],
+        "action": [
+          "按“打开哪里 → 做什么 → 看到什么”写三段。例如学习记录：打开页面、填写并保存、再次找到记录。无法确定的地方写尚未确定。",
+          "Write “open → act → see a result”. A journal example is opening, saving a note and finding it again. Preserve unknowns."
+        ],
+        "expected": [
+          "重新执行原操作，得到本页要求的实际结果；未执行的检查仍标为未验证。",
+          "Repeat the original action and obtain the expected result; keep unexecuted checks marked unverified."
+        ]
+      }
+    ],
+    "refs": [],
+    "choices": []
+  },
+  {
+    "step": 3,
+    "id": "tool",
+    "title": "打开一个能制作文件的 AI 工具",
+    "where": "电脑上的 AI 制作工具；本路线以 Mac 桌面工具为例",
+    "actions": [
+      "已有能操作项目文件的工具，可以直接打开。尚未安装时，打开下方官方入口，按电脑系统下载桌面应用，打开下载文件并按安装画面完成。",
+      "首次打开按画面登录。核对实际账号权益和费用；遇到需要购买、验证或接受条款的步骤，由本人决定，不为继续课程盲目付费。"
+    ],
+    "prompt": "候选工具：【填写】\n能否安装并登录：【填写实际结果】\n上手难度：【记录是否找到项目和文件入口】\n免费额度与核对日期：【按官方页面和当前账号填写】\n订阅费用与预算：【填写】\n所需能力：【填写是否能读写文件、运行和检查项目】\n最终选择及理由：【填写】",
+    "kind": "worksheet",
+    "fields": [
+      "【填写】",
+      "【填写实际结果】",
+      "【记录是否找到项目和文件入口】",
+      "【按官方页面和当前账号填写】",
+      "【填写】",
+      "【填写是否能读写文件、运行和检查项目】",
+      "【填写】"
+    ],
+    "expected": "工具能打开，能进入制作项目的界面；不是仅有普通网页聊天。",
+    "understanding": {
+      "why": [
+        "工具能否读写和检查项目，比宣传中的能力排名更直接影响下一步。",
+        "File access and checks matter more than rankings for the next action."
+      ],
+      "concept": [
+        "免费安装、免费使用额度和产品运行费用是三回事。",
+        "Free installation, usage allowance and hosting costs are different."
+      ],
+      "question": [
+        "额度用完后，项目文件和进度还能找回吗？",
+        "Can work and progress be recovered after allowance runs out?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "unavailable",
+        "title": [
+          "无法安装、登录，或界面不一样",
+          "Installation, sign-in, or the screen differs"
+        ],
+        "check": [
+          "核对下载来源、电脑系统和官方显示的可用条件，记下报错原文。",
+          "Check the official source, operating system, and eligibility; keep the exact error."
+        ],
+        "action": [
+          "先用下方工具资料选择实际可用的入口。界面改版时按“项目/文件夹”功能寻找，找不到就保留截图向该工具官方帮助求助，别粘贴密码到聊天。",
+          "Use the tool guide to choose an available option. Look for project/folder functions after a redesign. If absent, retain a screenshot and consult official support; do not paste passwords into chat."
+        ],
+        "expected": [
+          "已进入可用的项目界面后再继续；尚不可用时保留本步。",
+          "Continue only after reaching a usable project screen; otherwise stay here."
+        ]
+      }
+    ],
+    "refs": [
+      {
+        "path": "tools",
+        "title": [
+          "想换一种工具？查看选择说明",
+          "Need another tool? Compare options"
+        ]
+      }
+    ],
+    "choices": []
+  },
+  {
+    "step": 4,
+    "id": "folder",
+    "title": "给项目建一个自己的文件夹",
+    "where": "Mac 的访达 → 文稿",
+    "actions": [
+      "打开访达，在侧栏选择“文稿”。按 Shift + Command + N，新建文件夹。",
+      "把文件夹命名为 learning-journal，再双击打开。名称可以自行更换，记住放在哪里即可。"
+    ],
+    "prompt": "项目文件夹名称：【填写】\n完整位置：【填写实际路径】\n是否能够打开：【填写检查结果】\n已有文件：【列出或填空文件夹；不要删除已有文件】",
+    "kind": "worksheet",
+    "fields": [
+      "【填写】",
+      "【填写实际路径】",
+      "【填写检查结果】",
+      "【列出或填空文件夹；不要删除已有文件】"
+    ],
+    "expected": "访达里打开的是 learning-journal，里面暂时没有项目文件。",
+    "understanding": {
+      "why": [
+        "固定项目位置，才能找到实际产物，也避免改错别的项目。",
+        "A stable location makes outputs findable and prevents editing the wrong project."
+      ],
+      "concept": [
+        "文件夹保存本机文件；网页平台的云项目不一定在电脑里。",
+        "A local folder differs from a cloud workspace."
+      ],
+      "question": [
+        "项目文件现在究竟保存在哪里？",
+        "Where are the files actually stored?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "folder-missing",
+        "title": [
+          "侧栏没有“文稿”或找不到文件夹",
+          "Documents or the folder is missing"
+        ],
+        "check": [
+          "先确认正在使用访达，不是浏览器的文件列表。",
+          "Confirm this is Finder, not a browser file list."
+        ],
+        "action": [
+          "在访达菜单选择“前往 → 文稿”。找到刚建的文件夹；如果已经存在，不再建一个同名副本。",
+          "Use Finder’s Go → Documents menu. Find the existing folder rather than creating a duplicate."
+        ],
+        "expected": [
+          "能在访达中打开一个确定的项目文件夹。",
+          "One definite project folder can be opened in Finder."
+        ]
+      }
+    ],
+    "refs": [],
+    "choices": []
+  },
+  {
+    "step": 5,
+    "id": "open-project",
+    "title": "让 AI 打开刚才的文件夹",
+    "where": "AI 工具的项目选择入口",
+    "actions": [
+      "回到 AI 工具，找到添加/打开项目（或 Open folder）入口。选择“文稿”里的 learning-journal，确认打开。",
+      "在该项目下打开对话。先检查界面中的项目名是否正确，不要在另一个已有项目里开始。"
+    ],
+    "prompt": "本次要使用的项目文件夹：【填写完整路径】\n只检查工具实际打开的项目位置与上方是否一致，列出现有文件。无法访问时说明在哪里选择文件夹。不要创建或修改文件，返回路径、文件列表和是否一致。",
+    "kind": "prompt",
+    "fields": [
+      "【填写完整路径】"
+    ],
+    "expected": "对话关联 learning-journal，AI 能指出这个文件夹的位置。",
+    "understanding": {
+      "why": [
+        "对话必须关联正确的项目，AI 才能读到和修改目标文件。",
+        "The chat must target the right project to access its files."
+      ],
+      "concept": [
+        "普通聊天能输出文字，不代表它有当前项目的文件权限。",
+        "Chat output does not prove project file access."
+      ],
+      "question": [
+        "怎样核对 AI 操作的是刚建立的文件夹？",
+        "How can the target folder be verified?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "wrong-project",
+        "title": [
+          "AI 说的是另一个项目",
+          "AI names a different project"
+        ],
+        "check": [
+          "把 AI 返回的文件夹名与访达里刚建的文件夹对照。",
+          "Compare the folder AI reports with the one just created in Finder."
+        ],
+        "action": [
+          "先停止发送制作任务。回到项目选择入口，重新选择 learning-journal，再发送本步检查话术。",
+          "Stop build requests. Select learning-journal in the project picker and repeat the inspection."
+        ],
+        "expected": [
+          "两处显示同一个项目位置。",
+          "Both places identify the same project."
+        ]
+      }
+    ],
+    "refs": [],
+    "choices": []
+  },
+  {
+    "step": 6,
+    "id": "checkpoint",
+    "title": "让 AI 留好起点，出错能找回",
+    "where": "同一个项目对话",
+    "actions": [
+      "先把已确认想法交给 AI，让它检查项目规则入口和 Git 状态，再保存起点；已有规则先读，不覆盖。",
+      "打开 idea.md 核对自己的想法；让 AI 展示保存的版本编号和恢复说明，规则未知项可以暂时保留。"
+    ],
+    "prompt": "已确认的项目描述：\n【粘贴项目描述步骤生成的文本】\n本步只准备项目起点。核对当前文件夹，将以上描述保存为 idea.md；已有文件时先核对差异，不覆盖。检查 Git，已有仓库沿用；没有则初始化并排除密钥及生成文件。按当前工具支持的规则文件入口（如 AGENTS.md）记录：先读项目材料，只执行当前任务，保留已有成果，报告实际检查结果。缺少 Git、身份或写入权限时说明卡点，不编造。读回文件并建立仅包含本步文件的起点提交，报告位置与版本。不开发功能、不推送。",
+    "kind": "prompt",
+    "fields": [
+      "【粘贴项目描述步骤生成的文本】"
+    ],
+    "expected": "能找到想法文件和规则文件，也能指出一个实际保存的起点。",
+    "understanding": {
+      "why": [
+        "修改前保存起点，改坏后才有依据比较和恢复。",
+        "Save a baseline before changes to compare and recover."
+      ],
+      "concept": [
+        "Git 初始化只建立仓库；提交才记录一个版本。规则文件还要放在工具实际读取的位置。",
+        "Git initialization creates a repository; commits record versions. Rules must use a supported location."
+      ],
+      "question": [
+        "有仓库但没有提交，是否已有可恢复版本？",
+        "Does an empty repository contain a recoverable version?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "git-failed",
+        "title": [
+          "提交失败或要求填写姓名邮箱",
+          "Commit fails or asks for identity"
+        ],
+        "check": [
+          "保留报错原文；分清是 Git 未安装，还是缺少提交身份。",
+          "Keep the error; distinguish missing Git from missing author identity."
+        ],
+        "action": [
+          "请 AI 只处理报错对应的问题。身份信息由本人提供，限定当前项目；安装只走官方入口。完成后重做本步，不把“准备提交”当已保存。",
+          "Ask AI to address only the reported issue. Supply author details personally and scope settings to this project. Use official installation sources. Repeat this step afterward; a planned commit is not a saved one."
+        ],
+        "expected": [
+          "AI 给出实际版本编号，idea.md 与规则已纳入记录。",
+          "An actual revision includes idea.md and the instructions."
+        ]
+      }
+    ],
+    "refs": [
+      {
+        "path": "communicate/setup",
+        "title": [
+          "查看 Git 和规则的详细说明",
+          "Git and instruction details"
+        ]
+      }
+    ],
+    "choices": []
+  },
+  {
+    "step": 7,
+    "id": "first-file",
+    "title": "亲手核对 AI 创建的文件",
+    "where": "当前项目的 AI 对话，然后回到访达",
+    "actions": [
+      "发送下方检查提示词，再在工具文件区或文件管理器打开返回的文件。",
+      "将 idea.md 与自己的项目描述对照，确认内容确实存在且属于本项目。"
+    ],
+    "prompt": "只核对当前项目中上一步保存的 idea.md 和项目规则文件。返回真实路径与正文摘要；文件缺失就报告缺失，不新建练习文件、不修改现有文件。",
+    "kind": "prompt",
+    "fields": [],
+    "expected": "能亲自打开 idea.md 和规则文件，内容与上一步保存结果一致。",
+    "understanding": {
+      "why": [
+        "亲手打开真实文件，能区分 AI 的回复与实际执行。",
+        "Opening a real file separates replies from execution."
+      ],
+      "concept": [
+        "文件路径说明文件在哪；只有聊天里的代码块还不是文件。",
+        "A code block in chat is not a saved file."
+      ],
+      "question": [
+        "如果 AI 说保存了，却找不到文件，该核对什么？",
+        "What should be checked if a claimed file is missing?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "missing-file",
+        "title": [
+          "找不到上一步的文件",
+          "Previous files are missing"
+        ],
+        "check": [
+          "核对工具与文件管理器是否打开同一个项目目录。",
+          "Compare the tool and file manager project locations."
+        ],
+        "action": [
+          "回到项目起点步骤，核对 AI 报告的实际路径；不要创建另一份项目代替。",
+          "Return to the baseline step and inspect the reported actual paths; do not create another project."
+        ],
+        "expected": [
+          "能够打开上一步保存的项目描述与规则文件。",
+          "The saved brief and rules can be opened."
+        ],
+        "retry": "checkpoint"
+      }
+    ],
+    "refs": [],
+    "choices": []
+  },
+  {
+    "step": 8,
+    "id": "clarify",
+    "title": "一次回答一个问题",
+    "where": "带着想法草稿的项目对话",
+    "actions": [
+      "让 AI 读 idea.md，先用普通话复述给谁用、一次使用怎样开始和结束。",
+      "理解不对就直接纠正。再让它一次问一个会影响第一版的问题，回答后写回草稿。"
+    ],
+    "prompt": "读取 idea.md，仅澄清影响第一版的问题。先复述项目用户和目标，一次只问一个问题；收到本人回答后再更新 idea.md 的已确认事项和待确认问题。未知项保持未知，不替本人决定，不开发、不制定开发计划。没有阻碍范围确认的问题时说明可以进入范围确认。",
+    "kind": "prompt",
+    "fields": [],
+    "expected": "草稿区分已确定和未确定内容，没有把猜测写成事实。",
+    "understanding": {
+      "why": [
+        "先纠正 AI 的理解，避免它把猜测做成产品。",
+        "Correct misunderstandings before guesses become features."
+      ],
+      "concept": [
+        "澄清是补足影响选择的信息，不是让用户先懂所有技术。",
+        "Clarification fills decision gaps, not technical trivia."
+      ],
+      "question": [
+        "这项未知会改变第一版范围吗？",
+        "Does this unknown change first-version scope?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "jargon",
+        "title": [
+          "AI 问的技术词看不懂",
+          "AI asks about unfamiliar technical terms"
+        ],
+        "check": [
+          "先找到这个问题实际影响的使用场景。",
+          "Find the user-facing choice behind the technical question."
+        ],
+        "action": [
+          "回复：“请把这个问题换成两种实际使用情况，分别说明对我的影响，再让我选；暂时不用技术词。”",
+          "Reply: “Describe two real usage situations and their consequences so I can choose, without technical vocabulary.”"
+        ],
+        "expected": [
+          "能按实际需要回答，而不是猜技术名词。",
+          "The answer follows actual needs rather than guessed terminology."
+        ]
+      }
+    ],
+    "refs": [],
+    "choices": []
+  },
+  {
+    "step": 9,
+    "id": "scope",
+    "title": "确认这版只做哪几件事",
+    "where": "AI 给出的范围清单",
+    "actions": [
+      "让 AI 把需求分成现在做、以后做、不做。先只保留一条完整操作。",
+      "逐条确认，并为每件事写出能亲自检查的结果，再保存为 docs/requirements.md。"
+    ],
+    "prompt": "读取 idea.md，只整理第一版范围：必做功能、暂不做功能和各项可观察的通过条件。先展示清单供本人确认；确认后保存 docs/requirements.md 的范围小节。未知项单列，不添加功能、不写代码、不制定技术方案。",
+    "kind": "prompt",
+    "fields": [],
+    "expected": "清单有具体动作和结果，不只有“好看”“好用”。",
+    "understanding": {
+      "why": [
+        "明确本次边界，才能既做完核心任务，又避免无限加功能。",
+        "A clear boundary enables a useful finish without endless extras."
+      ],
+      "concept": [
+        "暂缓功能并非永远删除，而是本次不作为通过条件。",
+        "Deferred features are excluded from this release, not forever."
+      ],
+      "question": [
+        "删掉这项功能，核心任务还能完成吗？",
+        "Can the core task finish without this feature?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "empty-shell",
+        "title": [
+          "删减以后只剩外观",
+          "Reducing scope left only a picture"
+        ],
+        "check": [
+          "能否从输入走到真实结果？",
+          "Can an input lead to a real result?"
+        ],
+        "action": [
+          "保留一条最短完整流程。记录工具即使不做分类，也要能保存并重新看到记录。",
+          "Keep the shortest complete flow. A journal can omit categories but must save and retrieve a record."
+        ],
+        "expected": [
+          "可以实际完成一件事，而不只是看页面。",
+          "One task can actually finish, rather than only displaying a page."
+        ]
+      }
+    ],
+    "refs": [],
+    "choices": []
+  },
+  {
+    "step": 10,
+    "id": "requirements",
+    "title": "把约定留成看得懂的说明",
+    "where": "项目中的 docs/requirements.md",
+    "actions": [
+      "让 AI 按实际操作补齐正常、空白、失败时怎样回应，不增加功能。",
+      "打开文件按使用顺序读一遍；看不懂就让 AI 改成自己的话。"
+    ],
+    "prompt": "读取 idea.md 和 docs/requirements.md 的已确认范围。只完善需求文档：每个功能的输入、操作、结果、适用的异常情况和通过条件。保留未知项，不擅自加入保存、登录或云服务。保存并读回 docs/requirements.md，报告本次修改和待确认项。本次不写用户故事、技术方案或代码。",
+    "kind": "prompt",
+    "fields": [],
+    "expected": "每个主要操作都有预期结果和异常回应。",
+    "understanding": {
+      "why": [
+        "留下共同依据，换对话后也能知道什么才算做对。",
+        "Save shared criteria across conversations."
+      ],
+      "concept": [
+        "需求写用户行为和结果，技术设计再说明实现方式。",
+        "Requirements describe behavior; design explains implementation."
+      ],
+      "question": [
+        "只写“好用”，别人能一致判断通过吗？",
+        "Can everyone consistently judge “easy to use”?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "too-long",
+        "title": [
+          "说明太长，不知道该确认哪句",
+          "The document is too long to review"
+        ],
+        "check": [
+          "找到与第一条使用流程有关的段落。",
+          "Find the section for the first user flow."
+        ],
+        "action": [
+          "让 AI 先列出三到五条必须本人决定的事项，逐条给生活化例子。其余资料留在文件里按需查。",
+          "Ask AI for three to five decisions that need personal input, with concrete examples. Keep supporting detail in the file."
+        ],
+        "expected": [
+          "能亲自确认范围和结果，未确认项明确保留。",
+          "The scope and result can be personally confirmed, with unknowns left visible."
+        ]
+      }
+    ],
+    "refs": [],
+    "choices": []
+  },
+  {
+    "step": 11,
+    "id": "stories",
+    "title": "把用户怎样使用写清楚",
+    "where": "项目对话与 docs/requirements.md",
+    "actions": [
+      "把下方提示词发给项目里的 AI，让它按真实使用顺序补充用户故事。",
+      "打开文档，选择一个故事，口头走一遍从开始到结束的操作；对不上就先纠正。"
+    ],
+    "prompt": "读取 idea.md 和 docs/requirements.md。只整理已确认范围：按“什么用户，在什么情况下，希望完成什么，为什么”写用户故事；每个故事写开始条件、操作、正常结果、失败提示和通过条件。简单项目合并到 docs/requirements.md 的用户故事小节，不重复创建同内容文档。未知项标待确认，不增加功能。保存后读回并报告文件位置。本次不写业务代码。",
+    "kind": "prompt",
+    "fields": [],
+    "expected": "每个第一版功能都能对应到一个用户操作和通过条件。",
+    "understanding": {
+      "why": [
+        "功能名称不能说明是否好用。把人的操作写清楚，才能发现缺失的入口和失败后的处理。",
+        "Feature names do not describe usability. User actions reveal missing entry points and recovery paths."
+      ],
+      "concept": [
+        "用户故事说明用户想完成什么；验收条件说明怎样证明它完成了。",
+        "A user story describes intent; acceptance criteria describe proof."
+      ],
+      "question": [
+        "“支持保存”和“保存后重新打开仍能找到原文”，哪一句更容易亲手检查？",
+        "Which is easier to check: “supports saving” or “the original text remains after reopening”?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "not-ready",
+        "title": [
+          "AI 只列功能名，没有使用过程",
+          "AI lists features without a user flow"
+        ],
+        "check": [
+          "找出一个故事是否包含开始条件、操作和结果。",
+          "Check one story for prerequisites, actions and results."
+        ],
+        "action": [
+          "回复：“请把第一个功能改写成一个人的实际操作过程，写出正常和失败时分别看到什么；不增加新功能。”",
+          "Reply: “Rewrite the first feature as a person’s real flow, with normal and failed outcomes, without adding features.”"
+        ],
+        "expected": [
+          "重新执行原操作，得到本页要求的实际结果；未执行的检查仍标为未验证。",
+          "Repeat the original action and obtain the expected result; keep unexecuted checks marked unverified."
+        ]
+      }
+    ],
+    "refs": [],
+    "choices": []
+  },
+  {
+    "step": 12,
+    "id": "prototype",
+    "title": "先看关键页面，再决定怎么开发",
+    "where": "项目对话与 AI 给出的原型预览",
+    "actions": [
+      "让 AI 只制作一条核心流程的界面原型；无界面项目用输入输出样例代替。",
+      "打开预览，找到开始入口、主操作、结果和返回；说出最难理解的一处，再核对调整结果。"
+    ],
+    "prompt": "读取 docs/requirements.md 的需求与用户故事。只制作一条核心流程的轻量原型；无界面项目给输入输出样例。说明入口、主操作、结果、返回和适用的失败状态；标注模拟数据及未实现功能。给出查看位置供本人确认，确认后将界面决定记录到 docs/design.md 的交互小节。只做原型，不实现正式业务或选择技术方案。",
+    "kind": "prompt",
+    "fields": [],
+    "expected": "能看懂第一版操作顺序，清楚哪些只是演示、哪些已经实现。",
+    "understanding": {
+      "why": [
+        "先看见操作流程，可以在正式开发前发现理解偏差，减少做完再返工。",
+        "Seeing the flow early exposes misunderstandings before implementation."
+      ],
+      "concept": [
+        "原型用于确认布局和操作，不证明数据保存、权限或真实服务已经接通。",
+        "A prototype validates layout and interaction, not real persistence, permissions or services."
+      ],
+      "question": [
+        "画面显示“保存成功”，怎样确认它不是演示文字？",
+        "How could a “Saved” message be distinguished from a simulation?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "not-ready",
+        "title": [
+          "原型看起来能用，但不清楚哪些是假数据",
+          "The prototype may use simulated behavior"
+        ],
+        "check": [
+          "查看 AI 是否标注了模拟数据、保存位置和真实服务。",
+          "Check for labels identifying simulated data, storage and real services."
+        ],
+        "action": [
+          "要求 AI 按控件列出“仅演示／真实实现／未实现”，然后只验布局和已说明的行为；保存能力留到实际开发时检查。",
+          "Ask AI to label controls as simulated, real or unimplemented. Review layout and declared behavior; verify real persistence during development."
+        ],
+        "expected": [
+          "重新执行原操作，得到本页要求的实际结果；未执行的检查仍标为未验证。",
+          "Repeat the original action and obtain the expected result; keep unexecuted checks marked unverified."
+        ]
+      }
+    ],
+    "refs": [],
+    "choices": []
+  },
+  {
+    "step": 13,
+    "id": "choose-stack",
+    "title": "把实际条件交给 AI 选做法",
+    "where": "技术选择资料页，再回到项目对话",
+    "actions": [
+      "填写本步模板中的设备、预算与数据需求，发送到当前项目对话。工具比较资料按需查阅。",
+      "核对方案的费用与限制，确认后检查 docs/design.md 是否保留交互设计并新增技术方案。"
+    ],
+    "prompt": "实际设备与系统：【填写】\n可接受预算：【填写或尚未确定】\n使用方式与数据要求：【填写本机/多人、是否保存、是否跨设备；未知写尚未确定】\n读取 docs/requirements.md 与 docs/design.md 中的交互决定，只建议满足已确认范围的技术方案。解释推荐理由、费用、限制和数据位置；优先沿用已有项目。关键条件未知时先询问。本人确认后，将方案保存到 docs/design.md 的技术方案小节，保留交互内容。本次不安装、不初始化、不开发。",
+    "kind": "prompt",
+    "fields": [
+      "【填写】",
+      "【填写或尚未确定】",
+      "【填写本机/多人、是否保存、是否跨设备；未知写尚未确定】"
+    ],
+    "expected": "知道记录存在哪里、是否能换设备看、需要哪些费用。",
+    "understanding": {
+      "why": [
+        "保存位置、费用和平台会影响产品能不能按预期交付。",
+        "Storage, costs and platform affect delivery."
+      ],
+      "concept": [
+        "技术栈是一组实现工具；不是用来帮忙写代码的 AI 工具。",
+        "A tech stack builds the product; an AI assistant helps write it."
+      ],
+      "question": [
+        "为什么本机保存不等于手机电脑自动同步？",
+        "Why does local storage not imply device sync?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "local-shared",
+        "title": [
+          "我不知道“本机”和“共享”怎么选",
+          "I do not know local versus shared storage"
+        ],
+        "check": [
+          "是否需要在另一部手机看到同一条记录？",
+          "Must another phone see the same record?"
+        ],
+        "action": [
+          "不需要就先只在当前浏览器保存。需要就记录共享需求，让 AI 说明服务、账号和费用；不要把本机演示当已同步。",
+          "If not, start in one browser. If yes, record sharing needs and ask AI about services, accounts, and costs; a local demo is not sync."
+        ],
+        "expected": [
+          "方案和实际使用方式一致，未知费用没有被当作免费。",
+          "The plan matches real use, and unknown costs are not assumed free."
+        ]
+      }
+    ],
+    "refs": [
+      {
+        "path": "stacks",
+        "title": [
+          "填写实际条件并带回方案",
+          "Enter conditions and bring back a proposal"
+        ]
+      }
+    ],
+    "choices": []
+  },
+  {
+    "step": 14,
+    "id": "plan",
+    "title": "让 AI 列出下一小步",
+    "where": "项目中的 tasks/todo.md",
+    "actions": [
+      "让 AI 读取已确认需求与设计，把本项目的核心流程拆成有先后顺序的任务，每项写清通过条件。",
+      "查看第一项的产物和检查方法；未知前提先澄清，不照搬示例项目的保存流程。"
+    ],
+    "prompt": "读取已确认需求、用户故事和 docs/design.md，先核对有无冲突。保存 tasks/todo.md；只细化当前阶段，其余保留方向。每项写对应需求、开始条件、实际产物、本人试用步骤、通过条件、AI 能实际执行的检查和本次不做的事。优先一条完整可检查流程。本次只计划，不开发。",
+    "kind": "prompt",
+    "fields": [],
+    "expected": "有顺序的任务表，每项都有待做、待检查或完成状态。",
+    "understanding": {
+      "why": [
+        "把任务拆成可检查的小变化，才能及时发现偏差。",
+        "Small inspectable tasks expose drift early."
+      ],
+      "concept": [
+        "通过条件在实现前定义，不能为了显示完成而事后降低。",
+        "Define passing conditions before implementation, not lower them afterward."
+      ],
+      "question": [
+        "第一项做完，具体能打开或操作什么？",
+        "What can be opened or used after the first task?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "vague-task",
+        "title": [
+          "第一项只有“完成前端”",
+          "The first task just says “build frontend”"
+        ],
+        "check": [
+          "这一项完成后具体能打开什么？",
+          "What can actually be opened after this task?"
+        ],
+        "action": [
+          "请 AI 拆成“显示标题和输入框”“阻止空白保存”“保存后显示记录”等可单独检查的任务。",
+          "Ask AI to split it into showing a title and field, rejecting blank saves, and showing a saved record."
+        ],
+        "expected": [
+          "第一项有一个能亲手检查的明确结果。",
+          "The first item has one observable outcome."
+        ]
+      }
+    ],
+    "refs": [],
+    "choices": []
+  },
+  {
+    "step": 15,
+    "id": "environment",
+    "title": "检查运行环境，启动最小项目",
+    "where": "当前项目对话",
+    "actions": [
+      "发送模板，让 AI 先读设计和计划，检查电脑已有的运行工具，不直接安装一堆软件。",
+      "按它给出的确切位置打开最小项目；缺少依赖或权限时，先完成对应处理再继续。"
+    ],
+    "prompt": "先读取规则、docs/design.md 与 tasks/todo.md。检查当前系统、已有文件、运行工具版本和依赖，只准备设计实际需要的环境；已有项目不重建。缺少安装权限、费用或关键配置时说明具体卡点。建立最小可启动结构，实际启动并报告地址/文件位置、启动结果和关闭后重新打开的方法，写入 README.md。更新规则中的实际检查命令；本次不实现额外功能、不发布。",
+    "kind": "prompt",
+    "fields": [],
+    "expected": "最小项目能实际启动，README 写明再次打开的方法，未安装项不冒充完成。",
+    "understanding": {
+      "why": [
+        "代码需要合适的运行环境。先验证能启动，后面的报错才容易区分是环境问题还是功能问题。",
+        "Code needs a suitable runtime. Checking startup first separates environment failures from feature bugs."
+      ],
+      "concept": [
+        "Git 记录文件版本；运行环境负责把程序启动。两者不是同一件事。",
+        "Git records file versions; a runtime executes the program. They are different."
+      ],
+      "question": [
+        "已经有 Git 提交，但预览打不开，能否据此认定环境已经准备好？",
+        "Does a Git commit prove the runtime works when preview cannot open?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "not-ready",
+        "title": [
+          "安装或启动失败，不知道停在哪里",
+          "Installation or startup fails"
+        ],
+        "check": [
+          "保留原报错，核对命令在哪个文件夹执行及实际系统版本。",
+          "Keep the exact error, working folder and OS version."
+        ],
+        "action": [
+          "把原报错和文件位置交给 AI，请它区分缺依赖、版本冲突、权限和端口占用，只处理查明的一项。不要删除项目或反复安装不同工具。",
+          "Give AI the error and location. Distinguish missing dependency, version, permission and port issues; fix the identified cause without deleting the project or repeatedly installing tools."
+        ],
+        "expected": [
+          "重新执行原操作，得到本页要求的实际结果；未执行的检查仍标为未验证。",
+          "Repeat the original action and obtain the expected result; keep unexecuted checks marked unverified."
+        ]
+      }
+    ],
+    "refs": [],
+    "choices": []
+  },
+  {
+    "step": 16,
+    "id": "preview",
+    "title": "打开第一张属于自己的页面",
+    "where": "AI 给出的预览地址或 HTML 文件",
+    "actions": [
+      "发送下方话术，只让 AI 完成计划的第一项。需要安装时先核对来源与费用。",
+      "打开它提供的实际地址或文件，确认页面标题对应自己的项目。让 AI 把下次启动方法写入 README.md。"
+    ],
+    "prompt": "读取项目规则、docs/requirements.md、docs/design.md 和 tasks/todo.md。沿用已验证的运行环境，只实施当前第一项尚未完成的开发任务；任务不明确或超出本步可检查范围时先说明。按该任务的测试标准实际检查，给出真实预览入口和操作方法，更新该任务状态。不要重复初始化，不自动执行后续任务，不发布。",
+    "kind": "prompt",
+    "fields": [],
+    "expected": "浏览器里出现自己的项目页面，能够说明是从哪里打开的。",
+    "understanding": {
+      "why": [
+        "先跑起来一小部分，比一次生成所有功能更容易检查方向。",
+        "A running small part is easier to assess than an entire generated app."
+      ],
+      "concept": [
+        "预览地址依赖正在运行的服务；本机地址不是公开网址。",
+        "A local preview depends on its process and is not public."
+      ],
+      "question": [
+        "关闭启动窗口后，为什么地址可能打不开？",
+        "Why might the URL fail after its process stops?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "cannot-open",
+        "title": [
+          "地址打不开或一直加载",
+          "The preview will not open"
+        ],
+        "check": [
+          "确认使用完整地址；询问 AI 当前服务是否还在运行。",
+          "Use the full URL and check with AI whether the preview service is running."
+        ],
+        "action": [
+          "把地址和浏览器报错一起交给 AI，要求实际检查启动结果和端口；保持启动窗口运行。不要仅更换一个猜测的端口。",
+          "Give AI the URL and exact browser error. Ask for an actual service and port check; keep the start process running rather than guessing another port."
+        ],
+        "expected": [
+          "重新打开同一个已核验地址，可以看到项目标题。",
+          "The verified address opens the project title."
+        ]
+      }
+    ],
+    "refs": [],
+    "choices": []
+  },
+  {
+    "step": 17,
+    "id": "interface",
+    "title": "只调整眼前这一页",
+    "where": "刚打开的项目页面与 AI 对话",
+    "actions": [
+      "找到本项目的核心入口、主操作和结果；无界面项目跳过界面调整。",
+      "按模板指出一处具体调整，修改后核对效果及原功能。"
+    ],
+    "prompt": "要调整的页面与位置：【填写】\n当前表现：【填写】\n希望调整成什么：【填写具体效果】\n只修改上述界面位置，沿用已确认设计，不修改无关功能或数据逻辑。完成后提供预览入口，核对指定效果和受影响的原有操作，报告实际结果。",
+    "kind": "prompt",
+    "fields": [
+      "【填写】",
+      "【填写】",
+      "【填写具体效果】"
+    ],
+    "expected": "适用的界面调整已核对，原功能仍可用；无界面项目记录不适用。",
+    "understanding": {
+      "why": [
+        "界面决定使用者能否找到动作和理解反馈。",
+        "UI determines whether actions and feedback are understandable."
+      ],
+      "concept": [
+        "外观改动也可能影响功能，所以原流程需要再试。",
+        "Visual changes can affect behavior; retry the original flow."
+      ],
+      "question": [
+        "这次调整让哪个具体操作更容易了？",
+        "Which action became easier?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "changed-too-much",
+        "title": [
+          "改外观后其他功能也变了",
+          "A visual edit changed other behavior"
+        ],
+        "check": [
+          "对照上一份可用版本，指出一个具体变化。",
+          "Compare with the previous working version and identify one change."
+        ],
+        "action": [
+          "让 AI 比较改动，只修复受影响行为；恢复版本前先说明影响，不覆盖新写的内容。",
+          "Ask AI to compare changes and fix only the affected behavior. Explain recovery impact before overwriting new work."
+        ],
+        "expected": [
+          "外观符合要求，原保存流程仍能使用。",
+          "The appearance fits and the original save flow still works."
+        ]
+      }
+    ],
+    "refs": [
+      {
+        "path": "components",
+        "title": [
+          "不知道控件叫什么？按用途查找",
+          "Find an unfamiliar control by purpose"
+        ]
+      }
+    ],
+    "choices": []
+  },
+  {
+    "step": 18,
+    "id": "save",
+    "title": "让“保存”真正留下内容",
+    "where": "项目的输入框、保存按钮和历史列表",
+    "actions": [
+      "先核对需求是否要求保存数据；不要求则记录不适用，继续下一步。",
+      "需要保存时发送本步提示词，用测试数据核对保存、重新打开及失败处理。"
+    ],
+    "prompt": "读取需求与设计，先确认本项目是否要求持久保存。没有此需求时说明本步不适用并停止，不添加保存功能。有要求时，只实现已确认的数据保存与读取，使用需求规定的输入和访问规则，不擅自增加历史列表、登录或云服务。以可删除的测试数据验证保存、重新打开及适用的失败处理，报告实际结果和未验证项。",
+    "kind": "prompt",
+    "fields": [],
+    "expected": "需求中的保存与读取结果已实际验证；不需要保存的项目明确记录不适用。",
+    "understanding": {
+      "why": [
+        "真实保存要在刷新或重新打开后仍然有效。",
+        "Persistence must survive refresh or reopening."
+      ],
+      "concept": [
+        "显示成功提示，不证明数据已经写入。",
+        "A success message alone does not prove a write."
+      ],
+      "question": [
+        "怎样证明保存结果不是只留在当前画面？",
+        "How can persistence beyond the current screen be proven?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "lost-record",
+        "title": [
+          "保存不了，或刷新后记录不见了",
+          "Cannot save, or records vanish on refresh"
+        ],
+        "check": [
+          "先比较两次打开的完整地址和浏览器。localhost 与 127.0.0.1、不同端口、隐私窗口可能不是同一份保存空间。",
+          "Compare the full URL and browser. localhost versus 127.0.0.1, different ports, or private windows may use different storage."
+        ],
+        "action": [
+          "回到原来的浏览器和完整地址再查。仍找不到时保留输入和错误，发送本页求助材料，让 AI 核对实际写入和读取；不要清空浏览器资料。",
+          "Return to the original browser and full URL. If still missing, preserve input and errors, send the help material, and ask AI to inspect actual writes and reads. Do not clear browser data."
+        ],
+        "expected": [
+          "在同一位置保存新测试记录，刷新后仍能找到；旧记录恢复情况单独说明。",
+          "A new test record survives refresh in the same location; state separately whether old data was recovered."
+        ]
+      }
+    ],
+    "refs": [
+      {
+        "path": "data",
+        "title": [
+          "需要共享数据？查看另一条保存路径",
+          "Need sharing? See the other storage path"
+        ]
+      }
+    ],
+    "choices": []
+  },
+  {
+    "step": 19,
+    "id": "flow",
+    "title": "从开始到结束走通一次",
+    "where": "实际预览页面",
+    "actions": [
+      "按本项目需求，从实际入口逐步完成一条核心流程。",
+      "记录每步的预期和实际结果；失败保留证据，交给后续反馈与修复步骤。"
+    ],
+    "prompt": "读取 docs/requirements.md 中的一条已确认核心流程，按其入口、操作和结果逐步执行。将预期、实际、证据与通过/失败/未执行状态写入 docs/checks.md。无法操作的环节写明限制并给本人操作方法。本次只检查完整流程，不修改代码、不新增功能。",
+    "kind": "prompt",
+    "fields": [],
+    "expected": "本项目核心流程有逐步检查记录，失败和未执行项没有被记为通过。",
+    "understanding": {
+      "why": [
+        "单个按钮能用不代表它们连接后能完成任务。",
+        "Working buttons may still fail as a complete flow."
+      ],
+      "concept": [
+        "端到端检查从用户入口一直走到最终结果。",
+        "End-to-end checks follow entry to outcome."
+      ],
+      "question": [
+        "从第一次打开开始，能独立完成吗？",
+        "Can the task be completed independently from opening?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "button-no-result",
+        "title": [
+          "按钮能点，但没有结果",
+          "The button responds but nothing happens"
+        ],
+        "check": [
+          "观察是没有提示，还是提示成功却没有记录。",
+          "Check whether feedback is absent or success is shown without a record."
+        ],
+        "action": [
+          "把具体文字和操作交给 AI，要求比较输入、事件和保存结果，不要只改按钮颜色。",
+          "Give AI the text and actions. Ask it to inspect input, events, and storage rather than only the button style."
+        ],
+        "expected": [
+          "同一操作得到真实结果，不只出现动画。",
+          "The action produces a real result, not just an animation."
+        ]
+      }
+    ],
+    "refs": [],
+    "choices": []
+  },
+  {
+    "step": 20,
+    "id": "test",
+    "title": "试试空白和连续点击",
+    "where": "只含测试资料的项目页面",
+    "actions": [
+      "按已确认测试标准选择当前功能适用的异常情况，例如必填项为空、重复提交或无权限。",
+      "逐项记录预期和实际结果，未执行项单列；本步不提前修复。"
+    ],
+    "prompt": "读取需求的异常情况和测试标准，只检查当前功能适用的异常输入与重复操作。不要为无输入或无保存的项目硬加对应功能。逐项在 docs/checks.md 记录操作、预期、实际和通过/失败/未执行；不具备条件时说明限制。本次只测试和记录，不修复；失败项交给后续反馈与修复步骤。",
+    "kind": "prompt",
+    "fields": [],
+    "expected": "适用的异常检查有真实记录，失败和未执行项保持原状态。",
+    "understanding": {
+      "why": [
+        "现实使用包含误操作和失败，不能只检查最顺利的一次。",
+        "Real use includes mistakes and failures."
+      ],
+      "concept": [
+        "边界情况是空白、重复等容易遗漏的输入或操作。",
+        "Edge cases include blank or repeated actions."
+      ],
+      "question": [
+        "除了正常输入，最可能发生哪种误操作？",
+        "Which mistake is most likely besides normal input?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "test-failed",
+        "title": [
+          "出现空记录或重复记录",
+          "Blank or duplicate records appear"
+        ],
+        "check": [
+          "记下点击次数和生成的记录数，不急着删除证据。",
+          "Note the clicks and resulting record count; keep evidence."
+        ],
+        "action": [
+          "让 AI 先复现，再修正校验或重复操作处理。修复后用新测试文字重复原步骤。",
+          "Ask AI to reproduce, then fix validation or repeated-action handling. Repeat the original steps with new test text."
+        ],
+        "expected": [
+          "原来的失败步骤通过，正常保存也仍然可用。",
+          "The failed case passes and normal saving still works."
+        ]
+      }
+    ],
+    "refs": [],
+    "choices": []
+  },
+  {
+    "step": 21,
+    "id": "restart",
+    "title": "关掉以后，还能重新打开",
+    "where": "README.md 的启动说明和原项目",
+    "actions": [
+      "先阅读 README.md 中关闭与重新启动的方法；缺失时用本步提示词补齐并核验。",
+      "按说明重新打开同一项目，核对核心操作；只有需求要求保存时才检查数据保留。"
+    ],
+    "prompt": "请把当前项目关闭后重新启动的动作写入 README.md：打开哪个文件夹、在哪里执行、具体命令或文件、准确地址、该看到什么。请实际核验，不猜端口。",
+    "kind": "prompt",
+    "fields": [],
+    "expected": "能够按说明重新打开原项目，核心操作可用；数据保留按实际需求检查。",
+    "understanding": {
+      "why": [
+        "作品需要下次还能用，不能依赖当前对话一直开着。",
+        "Work must reopen beyond the current conversation."
+      ],
+      "concept": [
+        "启动说明是复现入口，不能依赖猜测端口或重新生成项目。",
+        "Restart instructions reproduce access without guessing or rebuilding."
+      ],
+      "question": [
+        "明天没有这段聊天，还知道怎样打开吗？",
+        "Could it be reopened tomorrow without this chat?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "restart-failed",
+        "title": [
+          "第二天地址打不开",
+          "The address fails the next day"
+        ],
+        "check": [
+          "昨天的预览服务是否已经停止？",
+          "Has yesterday’s preview service stopped?"
+        ],
+        "action": [
+          "打开原项目，让 AI 按 README 重新启动并报告实际地址。不要新建替代项目；原数据位置保持不变。",
+          "Open the original project and ask AI to restart it from README and report the real URL. Do not create a replacement project or change the data location."
+        ],
+        "expected": [
+          "原项目能打开，记录恢复情况已核对。",
+          "The original project opens and its records have been checked."
+        ]
+      }
+    ],
+    "refs": [],
+    "choices": []
+  },
+  {
+    "step": 22,
+    "id": "accept",
+    "title": "对照最初想法，确认真的能用",
+    "where": "想法草稿、需求文件与实际作品",
+    "actions": [
+      "按最初目标亲自操作作品，把实际操作和结果填入下方记录；没有测试的内容写未测试。",
+      "有问题进入反馈步骤；已符合原目标则选择交付方式。本步不让 AI 提前修复。"
+    ],
+    "prompt": "本次试用版本与入口：【填写】\n对应的原始目标：【填写】\n本人实际操作：【填写】\n预期结果：【填写】\n实际结果：【填写，不以 AI 声称完成代替】\n结论：【通过／失败／未测试】\n未通过或未测试的事项：【填写或无】",
+    "kind": "worksheet",
+    "fields": [
+      "【填写】",
+      "【填写】",
+      "【填写】",
+      "【填写】",
+      "【填写，不以 AI 声称完成代替】",
+      "【通过／失败／未测试】",
+      "【填写或无】"
+    ],
+    "expected": "留下本人的试用结果；可以决定先自用，不必马上发布。",
+    "understanding": {
+      "why": [
+        "AI 能检查部分行为，是否解决本人问题仍需亲手判断。",
+        "AI checks some behavior; personal use judges fit."
+      ],
+      "concept": [
+        "自动测试、人工试用和公开发布是不同状态。",
+        "Automated checks, personal acceptance and release are distinct."
+      ],
+      "question": [
+        "是否还有不能接受的问题或未试过的关键步骤？",
+        "Are there blockers or untried core steps?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "not-sure",
+        "title": [
+          "AI 说全部完成，但我仍不会用",
+          "AI says done, but I cannot use it"
+        ],
+        "check": [
+          "能否不看聊天记录，独自完成最重要的操作？",
+          "Can the main task be completed without reading the chat?"
+        ],
+        "action": [
+          "指出第一个需要解释的位置，要求修改界面或补启动说明，再亲手重做，不把困惑归咎于自己。",
+          "Identify the first point needing explanation. Ask for a clearer interface or restart guide, then repeat it personally."
+        ],
+        "expected": [
+          "主流程无需作者额外解释也能完成。",
+          "The main flow works without extra explanation from its author."
+        ]
+      }
+    ],
+    "refs": [],
+    "choices": [
+      {
+        "id": "feedback",
+        "label": [
+          "有问题，记录反馈",
+          "Record issues"
+        ]
+      },
+      {
+        "id": "delivery",
+        "label": [
+          "已达到条件，准备交付",
+          "Ready for delivery"
+        ]
+      }
+    ]
+  },
+  {
+    "step": 23,
+    "id": "feedback",
+    "title": "把试用结果记录成反馈",
+    "where": "实际作品、本页模板与项目对话",
+    "actions": [
+      "先亲自试用，再展开记录模板，逐项填写实际发生的情况。不同问题分别编号，不确定原因也可以提交。",
+      "确认复制后交给 AI，请它保留原始事实，保存到 docs/feedback.md；打开文件核对没有把未测试写成通过。"
+    ],
+    "prompt": "本次测试版本和日期：【填写】\n设备、系统和实际入口：【填写】\n测试的功能：【填写】\n依次做了什么：【填写能重复的操作步骤】\n希望看到什么：【填写原需求中的结果】\n实际发生什么：【填写现象，不必猜原因】\n截图或报错原文：【附上或写无】\n出现频率：【每次／偶尔／只试一次】\n影响：【无法使用／可绕开／外观文字】\n已通过和未测试的部分：【分别填写】\n\n请把以上本人试用记录保存到 docs/feedback.md，按问题编号整理，保留通过、失败和未测试项，不自行改写为已通过。材料缺失先问。本次只记录，不修代码。",
+    "kind": "prompt",
+    "fields": [
+      "【填写】",
+      "【填写】",
+      "【填写】",
+      "【填写能重复的操作步骤】",
+      "【填写原需求中的结果】",
+      "【填写现象，不必猜原因】",
+      "【附上或写无】",
+      "【每次／偶尔／只试一次】",
+      "【无法使用／可绕开／外观文字】",
+      "【分别填写】"
+    ],
+    "expected": "有能让别人重复操作的反馈记录，事实、猜测和新增需求分开。",
+    "understanding": {
+      "why": [
+        "“不能用”很难定位。记录从哪里开始、做了什么和实际结果，才能让 AI 复现同一个问题。",
+        "“It does not work” is hard to reproduce. Starting points, actions and outcomes identify the same issue."
+      ],
+      "concept": [
+        "反馈描述事实；原因需要检查才能确定。新想法也不等于原功能有缺陷。",
+        "Feedback records facts; causes require investigation. New ideas are not necessarily defects."
+      ],
+      "question": [
+        "“按钮没反应”和“数据库坏了”，哪一个是观察，哪一个需要证据？",
+        "Which is an observation and which needs evidence: “button does nothing” or “database is broken”?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "not-ready",
+        "title": [
+          "问题偶尔出现，不能稳定重现",
+          "The issue happens intermittently"
+        ],
+        "check": [
+          "记录出现次数、设备、版本和最近一次完整操作。",
+          "Record occurrence count, device, version and the latest full sequence."
+        ],
+        "action": [
+          "在模板中标“偶尔发生”，附能看到的现象和日志。让 AI 先增加必要诊断或提供复现步骤，不把一次未复现写成修复成功。",
+          "Mark it intermittent and attach observed evidence. Ask for diagnosis or reproduction steps; failure to reproduce once is not a successful fix."
+        ],
+        "expected": [
+          "重新执行原操作，得到本页要求的实际结果；未执行的检查仍标为未验证。",
+          "Repeat the original action and obtain the expected result; keep unexecuted checks marked unverified."
+        ]
+      }
+    ],
+    "refs": [],
+    "choices": []
+  },
+  {
+    "step": 24,
+    "id": "repair-plan",
+    "title": "先确定怎么修、怎样算修好",
+    "where": "项目对话与 docs/repair-plan.md",
+    "actions": [
+      "交给 AI 最新反馈和原需求，让它先复现、区分缺陷与新需求，再提出修复计划。",
+      "核对每个问题的修复范围和通过条件；超出原范围的想法回到需求确认。"
+    ],
+    "prompt": "读取 docs/feedback.md、需求、当前版本及检查记录。先复现问题，区分缺陷、新需求和证据不足；未知原因标推测。保存 docs/repair-plan.md：问题编号、影响、最小修复范围、原失败步骤的通过条件、受影响正常功能的复测和恢复办法。只处理已确认范围；需要改变需求或基础方案时先说明。本次只制定计划，不改业务代码。",
+    "kind": "prompt",
+    "fields": [],
+    "expected": "每项修复对应反馈编号和可重复的通过条件。",
+    "understanding": {
+      "why": [
+        "先定义修好后的结果，避免 AI 一边改一边改变目标，最后虽然不报错却不符合需求。",
+        "Define the expected fix first so the goal does not drift during repairs."
+      ],
+      "concept": [
+        "回归检查是确认修复没有破坏原来正常的功能。",
+        "Regression checks verify previously working behavior still works."
+      ],
+      "question": [
+        "修好了保存按钮，为什么还需要试一下读取历史记录？",
+        "Why check history retrieval after fixing the Save button?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "not-ready",
+        "title": [
+          "AI 没给计划就开始修改",
+          "AI starts fixing without a plan"
+        ],
+        "check": [
+          "检查当前改动与反馈编号是否对应。",
+          "Check whether changes map to feedback IDs."
+        ],
+        "action": [
+          "暂停后续修改，先让 AI 汇报已经改过什么、保存当前状态，再补修复范围和通过条件。不为回到计划阶段强行丢弃现有改动。",
+          "Pause further changes, report and preserve work already done, then define scope and passing checks. Do not discard changes merely to return to planning."
+        ],
+        "expected": [
+          "重新执行原操作，得到本页要求的实际结果；未执行的检查仍标为未验证。",
+          "Repeat the original action and obtain the expected result; keep unexecuted checks marked unverified."
+        ]
+      }
+    ],
+    "refs": [],
+    "choices": []
+  },
+  {
+    "step": 25,
+    "id": "repair",
+    "title": "按计划修复，再交给本人复测",
+    "where": "当前项目对话及实际预览",
+    "actions": [
+      "发送修复模板，让 AI 按问题编号处理，并提供真实测试结果与新版本。",
+      "打开新版本，按原来失败的步骤重做；也检查相关正常功能。本人未操作过的项目保留未验证。"
+    ],
+    "prompt": "读取项目规则和 docs/repair-plan.md，只修复已确认问题，保护已有工作。逐项重跑原失败步骤和相关正常流程，在 docs/checks.md 记录问题编号、版本、预期、实际和未执行项。给出实际预览入口及本人复测步骤。不能代替本人标记人工通过；超出计划先说明影响。保存可追踪版本，不发布。",
+    "kind": "prompt",
+    "fields": [],
+    "expected": "AI 检查与本人复测分别记录；仍失败就继续反馈，不能自动进入发布。",
+    "understanding": {
+      "why": [
+        "修复报告说明 AI 做了什么，本人复测才说明实际问题是否解决。",
+        "A repair report describes AI work; personal retesting confirms the experienced problem is resolved."
+      ],
+      "concept": [
+        "自动检查通过、人工试用通过是两种不同的证据。",
+        "Automated checks and personal acceptance are different evidence."
+      ],
+      "question": [
+        "如果 AI 自测通过，但同样的操作仍失败，下一步应该记录哪个事实？",
+        "If AI checks pass but the same action fails, what fact should be recorded next?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "not-ready",
+        "title": [
+          "AI 说修好了，同样的操作仍失败",
+          "The same action still fails after a claimed fix"
+        ],
+        "check": [
+          "核对正在打开的是新版本，并保留原失败操作。",
+          "Verify the new version is open and retain the failed sequence."
+        ],
+        "action": [
+          "点击“复测仍有问题”，补充当前版本和实际结果。请 AI 用相同步骤复现并更新修复计划，不重新生成整个项目。",
+          "Choose “Retest failed”, add version and actual results, and ask AI to reproduce and update the plan rather than recreate the project."
+        ],
+        "expected": [
+          "重新执行原操作，得到本页要求的实际结果；未执行的检查仍标为未验证。",
+          "Repeat the original action and obtain the expected result; keep unexecuted checks marked unverified."
+        ]
+      }
+    ],
+    "refs": [],
+    "choices": [
+      {
+        "id": "feedback",
+        "label": [
+          "复测仍有问题，更新反馈",
+          "Retest failed: update feedback"
+        ]
+      },
+      {
+        "id": "release-review",
+        "label": [
+          "修复的是交付条件，重新评估",
+          "Delivery conditions repaired: reassess"
+        ]
+      },
+      {
+        "id": "delivery",
+        "label": [
+          "功能验收通过，选择交付方式",
+          "Functional acceptance passed: choose delivery"
+        ]
+      }
+    ]
+  },
+  {
+    "step": 26,
+    "id": "delivery",
+    "title": "先决定：自己用，还是分享",
+    "where": "本页的两种去向",
+    "actions": [
+      "确定实际使用者从哪里打开：本机、公开网址或安装包。只自用也可以完成，不强迫公开发布。",
+      "记录已选方式，再进入交付条件评估。简单静态网页可在资料中查看 Pages；其他项目按实际平台准备。"
+    ],
+    "prompt": "实际使用者：【填写】\n交付方式：【本机自用／网站／安装包／其他】\n目标设备或平台：【填写】\n本人选择这个方式的理由：【填写】\n尚未明确的条件：【填写或无】",
+    "kind": "worksheet",
+    "fields": [
+      "【填写】",
+      "【本机自用／网站／安装包／其他】",
+      "【填写】",
+      "【填写】",
+      "【填写或无】"
+    ],
+    "expected": "知道本机作品已经能用，但本机地址不能发给别人当正式网址。",
+    "understanding": {
+      "why": [
+        "目标用户在哪里使用，决定需要怎样交付。",
+        "Audience and device determine delivery."
+      ],
+      "concept": [
+        "自用也可以是完整成果，不一定需要购买域名或公开代码。",
+        "Personal use can be complete without a domain or public code."
+      ],
+      "question": [
+        "需要一个网址、一个安装包，还是本机启动说明？",
+        "Is the deliverable a URL, installer or local guide?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "local-link",
+        "title": [
+          "发给别人后打不开",
+          "The shared local link does not open"
+        ],
+        "check": [
+          "地址是否以 localhost、127.0.0.1 或 file 开头？",
+          "Does it begin with localhost, 127.0.0.1, or file?"
+        ],
+        "action": [
+          "这些是本机入口。需要分享时选择下方发布路径；无需分享则继续本机使用，不为这个问题安装无关服务。",
+          "These are local entries. Choose the publishing path if sharing is needed; otherwise keep local use without adding unrelated services."
+        ],
+        "expected": [
+          "使用范围和交付入口相符。",
+          "The entry matches the intended audience."
+        ]
+      }
+    ],
+    "refs": [],
+    "choices": [
+      {
+        "id": "release-review",
+        "label": [
+          "已选好交付方式，检查条件",
+          "Check delivery readiness"
+        ]
+      }
+    ]
+  },
+  {
+    "step": 27,
+    "id": "release-review",
+    "title": "检查是否具备交付条件",
+    "where": "项目对话与 docs/release.md",
+    "actions": [
+      "在模板中说明准备自己使用、公开网页还是提供安装包，再让 AI 逐项核对适用条件。",
+      "阅读未满足和未验证项：阻断问题先修，轻微限制由本人明确决定是否接受。"
+    ],
+    "prompt": "已选交付方式与目标平台：【填写】\n读取需求、设计、最新检查和本人反馈，只评估该交付方式适用的条件：核心功能、阻断问题、配置、数据与权限、费用、恢复和使用说明。将已核验、未满足、不适用、未验证及证据保存到 docs/release.md。给未满足项编号，记录到 docs/feedback.md 并注明来源为交付评估，供下一步制定修复计划。本次不修复、不制作交付物、不发布。",
+    "kind": "prompt",
+    "fields": [
+      "【填写】"
+    ],
+    "expected": "知道哪些条件有证据、哪些仍缺失，以及是否允许继续准备交付。",
+    "understanding": {
+      "why": [
+        "本机能跑不代表别人能用。交付前核对使用入口、费用和资料保存，避免把问题带给实际用户。",
+        "Working locally does not establish usability for others. Check access, costs and storage before delivery."
+      ],
+      "concept": [
+        "发布阻断项是会让关键任务失败、资料丢失或访问越权等不能带着上线的问题。",
+        "Release blockers include core task failures, data loss and unauthorized access."
+      ],
+      "question": [
+        "首页能打开，但重新登录后资料丢失，可以只看首页宣布上线吗？",
+        "Can an openable home page establish readiness if data disappears after signing in again?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "not-ready",
+        "title": [
+          "评估说可上线，却没有证据",
+          "Readiness is claimed without evidence"
+        ],
+        "check": [
+          "查看每项是否有实际检查记录、版本和结果。",
+          "Look for actual checks, versions and results."
+        ],
+        "action": [
+          "把没有证据的项改为待验证。若影响核心任务、数据或权限，先完成检查或修复；不是把“待验证”直接改成“通过”。",
+          "Mark unsupported items unverified. Complete checks or repairs for core flow, data and permissions instead of relabeling them passed."
+        ],
+        "expected": [
+          "重新执行原操作，得到本页要求的实际结果；未执行的检查仍标为未验证。",
+          "Repeat the original action and obtain the expected result; keep unexecuted checks marked unverified."
+        ]
+      }
+    ],
+    "refs": [],
+    "choices": [
+      {
+        "id": "repair-plan",
+        "label": [
+          "条件不足，制定修复计划",
+          "Plan fixes for gaps"
+        ]
+      },
+      {
+        "id": "package",
+        "label": [
+          "条件齐全，准备交付物",
+          "Prepare the deliverable"
+        ]
+      }
+    ]
+  },
+  {
+    "step": 28,
+    "id": "package",
+    "title": "准备交付物，并实际试运行",
+    "where": "项目对话和测试环境",
+    "actions": [
+      "让 AI 根据已确认平台准备构建、部署配置或安装包。不要默认所有项目都需要一键脚本。",
+      "在适当测试环境打开网址或安装包，试用核心流程、重新打开和数据保留，记录结果。"
+    ],
+    "prompt": "读取已确认的 docs/release.md，只准备适合本项目的构建/部署配置或目标系统安装包。写清前置条件、执行位置、费用、配置位置、成功现象和恢复方法；真实密钥不写入仓库或包。实际试部署或试安装，检查核心操作、重新打开和数据保留。记录版本及结果；无法验证的内容明确保留。未经本人确认不正式发布，不默认添加 Docker。",
+    "kind": "prompt",
+    "fields": [],
+    "expected": "实际交付物试运行通过，有使用及恢复说明，正式发布仍需本人确认。",
+    "understanding": {
+      "why": [
+        "构建成功只说明生成了文件。实际打开和使用交付物，才能发现目标环境里的问题。",
+        "A successful build produces files; running them reveals target-environment problems."
+      ],
+      "concept": [
+        "部署脚本把步骤自动执行，不会消除配置、费用和恢复责任。",
+        "Deployment scripts automate steps, not configuration, costs or recovery responsibility."
+      ],
+      "question": [
+        "安装包生成了，但没有在目标系统打开过，应记录成功还是待验证？",
+        "If a package has not run on the target OS, is installation verified?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "not-ready",
+        "title": [
+          "安装包打不开或部署后启动失败",
+          "Installer or deployed application fails"
+        ],
+        "check": [
+          "核对目标系统、构建版本和完整错误，不跳过系统安全提示。",
+          "Check target OS, build version and exact errors; do not bypass OS security warnings."
+        ],
+        "action": [
+          "保留交付物和日志，返回反馈记录。请 AI 核对系统兼容、运行依赖和合法签名/平台要求，在测试环境修复再试，不覆盖现有可用版本。",
+          "Keep the artifact and logs, return to feedback, and check compatibility, dependencies and legitimate signing/platform requirements. Retest without replacing a working version."
+        ],
+        "expected": [
+          "重新执行原操作，得到本页要求的实际结果；未执行的检查仍标为未验证。",
+          "Repeat the original action and obtain the expected result; keep unexecuted checks marked unverified."
+        ]
+      }
+    ],
+    "refs": [],
+    "choices": [
+      {
+        "id": "feedback",
+        "label": [
+          "试运行失败，记录问题",
+          "Record trial failures"
+        ]
+      },
+      {
+        "id": "live-check",
+        "label": [
+          "试运行通过，确认交付",
+          "Trial passed; review delivery"
+        ]
+      }
+    ]
+  },
+  {
+    "step": 29,
+    "id": "live-check",
+    "title": "确认交付，再检查实际入口",
+    "where": "正式网址或目标设备",
+    "actions": [
+      "本人确认目标、版本、费用和交付范围后，让 AI 按已审阅方案交付；自用项目保留本机入口即可。",
+      "从目标用户的入口亲手走一次核心操作，记录版本、结果和恢复办法。失败先恢复可用状态再处理问题。"
+    ],
+    "prompt": "已确认的交付目标、版本与允许执行的动作：【填写；未授权则只核对条件】\n核对 docs/release.md 的条件与以上授权，仅执行明确允许的交付动作。随后从真实入口检查需求中的核心流程与适用的数据、访问条件，保存目标、版本、实际结果和未验证项到 docs/release.md。失败时记录问题；仅执行已有且获准的恢复方案。本步不增加功能、不开始新迭代，维护交接留到下一步。",
+    "kind": "prompt",
+    "fields": [
+      "【填写；未授权则只核对条件】"
+    ],
+    "expected": "实际入口能使用；未交付或失败时明确记录，不把准备完成当上线成功。",
+    "understanding": {
+      "why": [
+        "测试环境与正式入口可能不同。上线后再走一遍，才知道实际用户能否完成任务。",
+        "Test and production environments can differ. Check the real user entry after delivery."
+      ],
+      "concept": [
+        "代码版本和用户数据需要分别保护。Git 提交不等于数据库已经备份。",
+        "Code versions and user data need separate protection; a Git commit is not a database backup."
+      ],
+      "question": [
+        "换一个设备或身份，还能完成同一任务吗？哪些限制需要告诉使用者？",
+        "Can another device or identity finish the same task, and which limits should users know?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "not-ready",
+        "title": [
+          "自己的电脑能开，其他人打不开",
+          "It opens locally but not for others"
+        ],
+        "check": [
+          "核对是否发出了 localhost、127.0.0.1 或私有预览地址。",
+          "Check for localhost, 127.0.0.1 or a private preview URL."
+        ],
+        "action": [
+          "从发布平台读取真实访问入口，检查访问权限和部署状态；由目标访问者重新试用。没有正式入口就保留待交付，不把本机地址当公网网址。",
+          "Read the real entry from the platform, check access and deployment state, and retest as the intended visitor. A local address is not a public release."
+        ],
+        "expected": [
+          "重新执行原操作，得到本页要求的实际结果；未执行的检查仍标为未验证。",
+          "Repeat the original action and obtain the expected result; keep unexecuted checks marked unverified."
+        ]
+      }
+    ],
+    "refs": [],
+    "choices": [
+      {
+        "id": "feedback",
+        "label": [
+          "实际入口有问题",
+          "Report delivery issues"
+        ]
+      },
+      {
+        "id": "maintain",
+        "label": [
+          "已核对，留下维护说明",
+          "Record maintenance instructions"
+        ]
+      }
+    ]
+  },
+  {
+    "step": 30,
+    "id": "publish",
+    "title": "可选：把简单网页放到 GitHub Pages",
+    "where": "只适用于不含私密资料、无需服务器的静态网页",
+    "actions": [
+      "仅在选择静态网站交付时填写并发送本步模板，先判断 Pages 是否适用。",
+      "核对方案；适用则回到交付物准备步骤，不适用则重新选择交付方式。"
+    ],
+    "prompt": "请先读取项目类型、构建方式和 docs/release.md。只判断是否适合 GitHub Pages：必须可导出静态文件，不依赖服务器端运行和保密服务端凭据。不适合则说明并返回交付方式选择。适合时列出实际构建命令、输出目录和 Pages 设置操作，供本人核对。本步只准备方案，不创建远程仓库、不推送、不发布。正式执行统一进入交付步骤并确认目标与授权。",
+    "kind": "prompt",
+    "fields": [],
+    "expected": "有经过核对的 Pages 适用结论和设置方案；尚未发布也不能记为上线。",
+    "understanding": {
+      "why": [
+        "静态网页与需要服务器的应用不能用同一发布方法。",
+        "Static sites and server apps need different hosting."
+      ],
+      "concept": [
+        "静态托管提供网页文件，不自动增加共享数据库。",
+        "Static hosting serves files, not shared storage."
+      ],
+      "question": [
+        "为什么换了正式网址后看不到原本的本机记录？",
+        "Why might local records differ at a production URL?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "pages-404",
+        "title": [
+          "正式网址显示 404",
+          "The public URL returns 404"
+        ],
+        "check": [
+          "确认仓库 Pages 显示发布成功，所选分支根目录存在 index.html。",
+          "Check that Pages reports success and index.html exists at the selected branch root."
+        ],
+        "action": [
+          "核对部署状态和实际 Visit site 地址；部署未结束先等状态，失败则保留日志交给 AI 检查。不要根据仓库地址猜网站地址。",
+          "Check deployment status and the actual Visit site URL. If pending, wait for completion; if failed, retain logs for AI. Do not guess the website from the repository URL."
+        ],
+        "expected": [
+          "重新打开官方显示的站点地址，看到目标页面。",
+          "The site URL shown by GitHub opens the intended page."
+        ]
+      }
+    ],
+    "refs": [],
+    "choices": [
+      {
+        "id": "delivery",
+        "label": [
+          "不适合，重选交付方式",
+          "Unsuitable: choose delivery again"
+        ]
+      },
+      {
+        "id": "package",
+        "label": [
+          "适合，准备交付物",
+          "Suitable: prepare the deliverable"
+        ]
+      }
+    ]
+  },
+  {
+    "step": 31,
+    "id": "maintain",
+    "title": "下次继续时，不用从头讲",
+    "where": "原项目和已有任务记录",
+    "actions": [
+      "让 AI 把当前版本、启动方法、检查结果、未完成项和下一步写到项目文件中；下次打开原项目后先读取。",
+      "定期导出自己的记录并检查能否恢复。功能坏了先修复，想加功能再回第一版范围；已上线项目另记账单和到期日。"
+    ],
+    "prompt": "整理本项目交接：实际文件位置、当前版本、准确启动方法、已验证与未验证内容、下一项任务。保存到 README.md 与 tasks/todo.md，不重新创建项目。说明资料导出和恢复步骤；没有实现时明确标待办。",
+    "kind": "prompt",
+    "fields": [],
+    "expected": "能指出下一次从哪个文件、哪一项开始，知道资料如何备份。",
+    "understanding": {
+      "why": [
+        "保存下一步和恢复方法，后续继续才不需要从头再讲。",
+        "Record next actions and recovery to resume without restarting."
+      ],
+      "concept": [
+        "代码备份和用户数据备份需要分别处理。",
+        "Code and user data need separate backups."
+      ],
+      "question": [
+        "只有代码仓库，能恢复用户后续填写的数据吗？",
+        "Can code alone restore data entered later?"
+      ]
+    },
+    "issues": [
+      {
+        "id": "new-chat",
+        "title": [
+          "换对话后 AI 要重新做",
+          "AI wants to start over in a new chat"
+        ],
+        "check": [
+          "确认新对话关联原来的项目文件夹。",
+          "Check that the new conversation belongs to the original folder."
+        ],
+        "action": [
+          "先要求读取 idea.md、需求、README 和任务表，再复述当前状态。复述正确后，只继续下一项未完成任务。",
+          "Ask it to read idea.md, requirements, README, and tasks, then restate the state. Continue only the next unfinished item after a correct restatement."
+        ],
+        "expected": [
+          "原文件和成果保留，下一项任务可辨认。",
+          "Original work is preserved and the next task is identifiable."
+        ]
+      }
+    ],
+    "refs": [],
+    "choices": []
+  }
+]
