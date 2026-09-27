@@ -1,67 +1,89 @@
-# Vibe Guide · Vibe Coding 实践指南
+# Vibe Guide
 
-**AI 时代，即使零基础不懂代码，也能 Vibe Coding。**
+**English** | [简体中文](README.zh-CN.md)
 
-帮助普通人制作网站、小程序、手机应用与电脑工具：把想法讲清楚，选好搭建方式，学会检查、上线和后续照看。
+Turn your idea into a real project with AI, even if you have never written code.
 
-首页和主导航提供 **完整路线图：13 个主节点 + 3 个制作分支**。原知识、材料、示例、模板和排障接回对应节点，按需展开；6 阶段、22 个小动作提供跟做辅助。草稿和手动进度可在同一浏览器恢复并导出。中英文共 644 个站内地址，原资料库与 212 个组件词条保留，旧阶段链接导向新动作。
+Vibe Guide helps beginners describe an idea, choose an AI coding tool, plan development, build and test a first version, and prepare for delivery and maintenance. Each learning step explains what to do, why it matters, what to check, and how to recover when something goes wrong.
 
-12个组件有局部交互示例，其余200个演示未迁移。原始词条字段已完整对照保留，原始中英文规格仍待独立编辑审校；平台真机实操、真实新手验收及公开发布未完成。页面数量不代表这些验收通过。
+**[Visit the website](https://rouicezar.github.io/Vibecoding-guide/en/)** · [中文站点](https://rouicezar.github.io/Vibecoding-guide/zh-cn/)
 
-## 运行新站
+## What you can explore
 
-使用 `.nvmrc` 对应 Node 版本，执行 `npm ci`，再运行 `npm run dev`。以终端打印的地址为准，访问 `/zh-cn/` 或 `/en/`。Astro 7 开发服务在后台运行，可用 `npx astro dev stop` 停止。
+- **A complete roadmap:** six learning stages and 31 actions, with expandable explanations and troubleshooting.
+- **Editable prompt templates:** add your project details, confirm the result, and copy it into your AI tool.
+- **Tools and project choices:** compare workflows, project types, technical options, costs, and limitations.
+- **A resource library:** 212 UI component entries with examples, plus development and delivery guidance.
+- **A plain-language glossary:** 755 terms with everyday examples and supporting diagrams.
+- **What people are building:** research into AI use cases and possible revenue, 19 GitHub references, and 50 project directions grouped by scenario.
 
-验证：`npm run check`、`npm run build`、`npm run verify`。构建产物在 `dist/`，不纳入 Git。`build` 包含 Pagefind Extended 双语索引，`verify` 包含页面规则、选型条件、学习路径/状态恢复测试和词典逐字段对照。
+Project drafts and progress are stored in your browser, with export and restore support. They are not automatically synchronized across devices or between localhost and the public website. Recorded progress is your own confirmation, not an independent assessment of your project.
 
-本工作树构建预览：`http://127.0.0.1:4324/zh-cn/`；英文 `/en/`。复现：`npm run preview -- --port 4324`。开发预览 `npm run dev -- --port 4323` 不提供构建索引，搜索会保留板块入口作为回退。原工作目录4322不属于本批成果。
+The research section currently contains Chinese research content with a notice on English routes. Project ideas are hypotheses to validate; revenue is not guaranteed.
 
-- `/tools/`：26个工具、官方图标及来源、名称/使用形态筛选、项目候选、8项有来源的选型评价与分地区价格（2026-09-23核对）。
-- `/roadmap/`：完整路线图，`/roadmap/ui/` 等节点包含原知识与按需展开内容。站内进入/返回保留实际入口链与展开位置。
-- `/learn/`：六阶段路线；`/learn/stage/prepare/`：准备阶段；`/learn/first-file/`：具体动作；`/learn/first-file/help/missing-file/`：对应卡点。原阶段资料保留在源码，旧入口兼容。
-- `/library/`：按需参考；`/examples/journal-zh-cn.html` 与英文对应文件：可以保存与刷新验证的学习记录成品。
-- [本轮整改与验证记录](docs/reviews/2026-09-26-redesign/implementation.md)：包括 UI 截图、验证范围及未验证项。
-- `/communicate/tools/`、`/communicate/setup/`：打开项目、验证工具、Git与AGENTS.md模板。
-- `/components/style/`、`/components/edit/`：界面风格、局部修改和组件修改提示词。
-- `/communicate/`：12个可填写提示词、六类工具指南和硬条件分流。
-- `/stacks/`：条件候选、限制、费用类型、官方来源与日期。
-- `/components/`：完整词典、分类搜索、详情和可用示例。
-- `/data/`、`/check/`、`/launch/`、`/maintain/`：行动、证据、记录、排查与下一步。
+## Run locally
 
-以上地址均加语言前缀。全文搜索20个预设中英查询前三命中通过，仍不能替代真实用户可用性验收。
+Use the Node.js version specified in `.nvmrc`.
 
-- [双语规范与预览范围](docs/bilingual-preview.md)
-- [页面效果图与验证记录](docs/preview-review.md)
+```sh
+npm ci
+npm run dev
+```
 
-## 从哪里开始
+Open the address printed in the terminal and visit `/en/` or `/zh-cn/`.
 
-- [12 个板块的布局与内容分层](docs/page-content-architecture.md)
-- [五种代表页面线框](docs/layout-wireframes.md)
-- [站点总规划：12 项主题、四条路线与提示词](docs/site-blueprint.md)
-- [产品需求与站点结构](docs/product-requirements.md)
-- [内容规划与写作标准](docs/content-plan.md)
-- [新站视觉规范](docs/design-system.md)
-- [技术选型与架构决策](docs/architecture.md)
-- [实施计划](tasks/plan.md)
-- [任务与进度](tasks/todo.md)
+To build and preview the production site, including the full-text search index:
 
-## 现有文件
+```sh
+npm run build
+npm run preview -- --port 4324
+```
 
-| 路径 | 定位 |
+Build output is written to `dist/` and is not committed. Full-text search requires the production build; development mode provides navigation shortcuts as a fallback.
+
+## Verify changes
+
+```sh
+npm run check
+npm run build
+npm run verify
+```
+
+Checks cover generated pages, internal links, templates, learning-state behavior, content coverage, and research preservation. Passing these checks does not prove that every external tool, device workflow, or project idea has been independently tested by a beginner.
+
+## Deployment
+
+The site is hosted on GitHub Pages. Pushes to `main` trigger [.github/workflows/pages.yml](.github/workflows/pages.yml), which checks the project, builds it, verifies the `/Vibecoding-guide/` deployment paths, and publishes the site over HTTPS.
+
+The local build uses `/`; the Pages build uses `SITE_BASE=/Vibecoding-guide`. The workflow prepares public asset paths and generates the Pagefind index for that deployment.
+
+## Project structure
+
+| Path | Purpose |
 | --- | --- |
-| `vibe-ui-dictionary/index.html` | 保留的迁移真相源；新站数据逐字段对照此文件 |
-| `组件词典/` | 历史副本和一次性补丁工具，保留作参考；不作为新站点构建流程 |
-| `docs/UI 组件大全.md` | 原始内容资料，保留原文；不是逐条核验过的发布稿 |
-| `docs/`、`tasks/` | 新站点的需求、设计与实施记录 |
+| `src/components/` | Site pages and shared UI |
+| `src/data/` | Learning steps, prompts, glossary, and research |
+| `src/scripts/` | Navigation, browser drafts, and interactions |
+| `public/` | Public assets and downloadable research materials |
+| `scripts/` | Content and build verification |
+| `docs/`, `tasks/` | Requirements, design, implementation, and review records |
+| `vibe-ui-dictionary/` | Legacy dictionary retained as a content reference |
+| `组件词典/` | Historical copies and one-time migration tools; not part of the current build |
 
-目前可直接用浏览器打开 `vibe-ui-dictionary/index.html`。需要本地 HTTP 预览时，在仓库根运行 `python3 -m http.server 8000 --bind 127.0.0.1 --directory vibe-ui-dictionary`，访问 `http://127.0.0.1:8000`，结束后按 Ctrl+C。新站预览与旧词典独立。
+## Documentation
 
-历史补丁脚本使用搬动前的绝对路径，且独立演示代码与 HTML 不完全一致，勿将其用于更新正式入口。复制反馈和部分演示交互仍有已知缺口，见任务表。
+Most project documentation is currently in Chinese.
 
-## Git 约定
+- [Requirements](docs/product-requirements.md)
+- [Site blueprint](docs/site-blueprint.md)
+- [Content architecture](docs/page-content-architecture.md)
+- [Writing standards](docs/content-plan.md)
+- [Design system](docs/design-system.md)
+- [Technical architecture](docs/architecture.md)
+- [Implementation plan](tasks/plan.md) and [task records](tasks/todo.md)
+- [Research implementation and verification](docs/reviews/2026-09-27-explore/实施记录.md)
+- [GitHub Pages deployment record](docs/reviews/2026-09-27-pages/发布记录.md)
 
-保留原 `master` 历史，筹备工作位于 `rouice/vibecoding-site-foundation`。新功能使用 `rouice/` 前缀分支，按需求、设计、实现、验证、提交、推送的顺序推进。
+## Development workflow
 
-2026-09-23 整理时发现 `docs/.git` 是无提交、无远程的嵌套仓库，其元数据已移到根仓库 `.git/local-backups/docs.git` 本地备份；文档由根仓库统一跟踪。该备份不随克隆传播，现有文档内容已纳入提交。
-
-当前未配置远程仓库，本次仅本地提交。后续确定远程地址后再关联与推送。操作系统文件、依赖、构建产物、环境密钥和任务临时文件通过 `.gitignore` 排除；不把业务源码加入忽略列表来伪造干净状态。
+Use `rouice/`-prefixed branches and follow requirements → design → implementation → testing → commit → push. Keep credentials, dependencies, generated files, and temporary work out of Git. Historical migration scripts may contain obsolete paths; do not use them to update the current site.
