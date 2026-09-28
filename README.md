@@ -1,5 +1,7 @@
 # Vibe Guide
 
+> Current route: 6 stages, 18 milestones, 31 actions. [Canonical route and terminology](docs/current-route.md).
+
 **English** | [简体中文](README.zh-CN.md)
 
 Turn your idea into a real project with AI, even if you have never written code.
@@ -10,7 +12,7 @@ Vibe Guide helps beginners describe an idea, choose an AI coding tool, plan deve
 
 ## What you can explore
 
-- **A complete roadmap:** six learning stages and 31 actions, with expandable explanations and troubleshooting.
+- **A complete roadmap:** 6 stages, 18 milestones and 31 actions, with expandable explanations and troubleshooting.
 - **Editable prompt templates:** add your project details, confirm the result, and copy it into your AI tool.
 - **Tools and project choices:** compare workflows, project types, technical options, costs, and limitations.
 - **A resource library:** 212 UI component entries with examples, plus development and delivery guidance.

@@ -1,4 +1,5 @@
-import type {Copy} from './site';
+import type {Copy,Locale} from './site';
+import {routeUrl} from './nodes.ts';
 export interface Practice {path:string;stage:string;title:Copy;intro:Copy;input:Copy;steps:{title:Copy;body:Copy;check:Copy;example?:Copy}[];templates:{id:string;title:Copy;text:Copy;kind?:'file'|'prompt'}[];next:string;nextLabel:Copy;sources?:{label:string;href:string}[]}
 const handoff=(task:Copy,inputs:Copy,output:Copy):Copy=>[
 `【背景】【填写项目用途与给谁使用】
@@ -137,7 +138,7 @@ export const practices:Practice[]=[
 ],templates:[{id:'local-edit',title:['页面局部修改提示词','Focused page-edit prompt'],text:handoff(['【目标位置】填写页面地址、区域、可见文字；附带圈出的截图。\n【现在怎样】描述实际现状。\n【希望怎样】描述具体变化。\n【保持不变】列出文字、数据、跳转、品牌或其他不能改的内容。\n【影响范围】只改当前区域，或列明需要同步的位置。\n先定位并复述，不确定时先问。完成最小修改，不顺手重做页面。','[Target] Page URL, region, visible label, and marked screenshot.\n[Current] Observed appearance or behavior.\n[Desired] Specific change.\n[Unchanged] Text, data, navigation, branding, or other invariants.\n[Scope] This region only, or list all locations to update.\nLocate and restate the target, clarify ambiguity, then make the smallest focused edit.'],['当前页面与截图、docs/ui-style.md（若已有）、任务清单。','Current page and screenshot, docs/ui-style.md if present, and task list.'],['改动前后说明、实际预览地址、受影响位置；验证原有操作、手机排列和相邻功能。','Before/after explanation, actual preview, and affected locations; verify original actions, mobile layout, and nearby behavior.'])},
 {id:'component-edit',title:['指定组件修改提示词','Specific component-edit prompt'],text:handoff(['【组件名称】填写认识的名字；不知道时贴图并描述位置，请AI先识别。\n【所在位置】填写页面和区域。\n【当前状态】描述默认、点击或输入后的表现。\n【目标状态】分别说明外观和操作反馈。\n【禁用/空白/失败时】说明应该看到什么，不适用时说明原因。\n【修改范围】仅此处或所有复用位置。\n保留原数据与事件，只实现确认的变化。','[Component] Known name, or provide an image and location for AI to identify.\n[Location] Page and region.\n[Current states] Default, click, or input behavior.\n[Desired states] Appearance and response separately.\n[Disabled/empty/error] Expected feedback, or explain inapplicability.\n[Scope] This occurrence or all reused locations.\nPreserve existing data and events; implement only approved changes.'],['当前组件截图或页面、需求与现有风格；词典名称可作为补充。','Current screenshot or page, requirements, and existing style; dictionary names are optional supporting material.'],['组件修改、受影响页面列表；实际检查鼠标、键盘、手机和关键状态，不用静态截图替代交互验证。','The edited component and affected page list; check pointer, keyboard, mobile, and key states rather than only a screenshot.'])}],next:'learn/flow',nextLabel:['修改通过后：接通完整使用流程','After the edit passes: connect the full flow']}
 ];
-export const practiceHref=(locale:string,path:string)=>path.startsWith('/#')?`/${locale}/${path.slice(1)}`:`/${locale}/${path}/`;
+export const practiceHref=(locale:Locale,path:string)=>path.startsWith('/#')?routeUrl(locale,'')+path.slice(1):routeUrl(locale,path);
 
 // Keep the instruction-creation prompt usable when copied on its own.
 const setupGuide=practices.find(p=>p.path==='communicate/setup')!;

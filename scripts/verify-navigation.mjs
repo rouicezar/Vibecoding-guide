@@ -2,6 +2,9 @@ import assert from 'node:assert/strict';
 import ts from 'typescript';
 import {readFile} from 'node:fs/promises';
 import {journey} from '../src/data/journey.ts';
+import {legacyLessons,phases} from '../src/data/learning.ts';
+import {stepUrl,nodeForStep,nodePhases,routeNodes,nextMainStep,linearStepIds} from '../src/data/nodes.ts';
+import {t} from '../src/data/site.ts';
 import {blockers} from '../src/data/blockers.ts';
 const src=(await readFile('src/scripts/navigation.ts','utf8')).replace('../data/base.ts',new URL('../src/data/base.ts',import.meta.url).href);
 const js=ts.transpileModule(src,{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText;
@@ -17,5 +20,24 @@ const back=new URL(withTrail(trail.at(-1).path,trail.slice(0,-1),origin),origin)
 assert.equal(back.pathname,'/zh-cn/start/');
 assert.equal(readTrail(back.searchParams.get('via'))[0].path,'/zh-cn/library/');
 assert.equal(readTrail(JSON.stringify(Array(30).fill(trail[0]))).length,8);
-for(const locale of ['zh-cn','en'])for(const s of journey){const html=await readFile(`dist/${locale}/roadmap/${s.id}/index.html`,'utf8');assert(html.includes(`template-roadmap-${s.id}`));for(const b of blockers.filter(b=>b.stage===s.id))assert(html.includes(`blocker-${b.id}`),`Missing blocker ${b.id}`);}
-console.log('PASS: entry-route round trip, refreshable bounded trail, unsafe destination rejection; all 16 original nodes and original blocker prompts reachable in both languages.');
+for(const locale of ['zh-cn','en']){
+ const home=await readFile(`dist/${locale}/index.html`,'utf8');
+ const roadmap=await readFile(`dist/${locale}/roadmap/index.html`,'utf8');
+ assert(!roadmap.includes('roadmap-lanes'),'旧知识路线不应再展示');
+ assert(!roadmap.includes('template-roadmap-'),'旧节点模板不应再展示');
+ for(const phase of phases){assert(home.includes(t(phase.title,locale)));assert(roadmap.includes(t(phase.title,locale)));}
+ for(const s of journey){
+  const html=await readFile(`dist/${locale}/roadmap/${s.id}/index.html`,'utf8');
+  assert(html.includes(`content="0;url=${stepUrl(locale,legacyLessons[s.id])}`),`Old route must redirect: ${s.id}`);
+  const node=await readFile(`dist/${locale}/node/${nodeForStep(legacyLessons[s.id])}/index.html`,'utf8');
+  for(const b of blockers.filter(b=>b.stage===s.id))assert(node.includes(`blocker-${b.id}`),`Missing migrated blocker ${b.id}`);
+ }
+ for(const node of routeNodes){
+  const html=await readFile(`dist/${locale}/node/${node.id}/index.html`,'utf8');
+  assert(/data-entry-back[^>]*href="[^"]*roadmap\//.test(html),'Node parent must be roadmap');
+ }
+}
+assert.deepEqual(nodePhases.map(p=>p.title),phases.map(p=>p.title));
+assert.equal(nextMainStep(linearStepIds.slice(0,linearStepIds.indexOf('accept')+1)),'delivery');
+assert.equal(nextMainStep(linearStepIds),undefined);
+console.log('PASS: safe return navigation; unified bilingual phases; legacy routes redirect to current nodes; troubleshooting preserved; optional repairs excluded from resume.');

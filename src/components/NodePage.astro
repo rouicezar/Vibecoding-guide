@@ -1,5 +1,8 @@
 ---
 import Icon from './Icon.astro';
+import StageTroubleshooting from './StageTroubleshooting.astro';
+import {legacyLessons} from '../data/learning';
+import {nodeForStep} from '../data/nodes';
 import NodeStep from './NodeStep.astro';
 import ProjectDraft from './ProjectDraft.astro';
 import {phases, lessons} from '../data/learning';
@@ -96,6 +99,9 @@ const nodeTerms = steps
     </div>
   </nav>
 
+  {Object.values(legacyLessons).some(step=>nodeForStep(step)===node.id) && <details class="learn-details"><summary>{label('更多问题与排障资料', 'More troubleshooting references')}</summary>
+    {Object.entries(legacyLessons).filter(([,step])=>nodeForStep(step)===node.id).map(([stage])=><StageTroubleshooting stage={stage} locale={locale}/>)}
+  </details>}
   <ProjectDraft locale={locale} />
   <p class="local-note" data-learning-status role="status">{label('草稿与进度只保存在当前浏览器。', 'Draft and progress stay in this browser.')}</p>
   <p class="local-note">{label('本页只呈现本节点的操作、术语和卡点，不把其他节点的内容堆在同一屏。', 'This page shows only this milestone’s actions, terms and blockers.')}</p>

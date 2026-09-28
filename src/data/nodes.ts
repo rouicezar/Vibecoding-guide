@@ -1,5 +1,5 @@
 import {url,type Copy,type Locale} from './site.ts';
-import {lessons} from './learning.ts';
+import {lessons,phases,legacyLessons} from './learning.ts';
 
 /**
  * 18 个关键节点 = 学习基线。
@@ -167,14 +167,7 @@ export const linearStepIds = routeNodes.map(node => node.stepIds.filter(id => !b
  * 6 个阶段的分组名称。路线图（ProjectRoadmap.astro）与节点页共用这一处，
  * 避免同一阶段在两个页面出现两个名字。
  */
-export const nodePhases: {id: RouteNode['phaseId']; title: Copy; caption: Copy}[] = [
-  {id: 'idea', title: ['把想法说清楚', 'Define the idea'], caption: ['先明确要解决的问题', 'Start with the problem']},
-  {id: 'prepare', title: ['准备协作空间', 'Prepare the workspace'], caption: ['让 AI 在正确的项目里工作', 'Give AI the right workspace']},
-  {id: 'scope', title: ['把需求变成计划', 'Turn needs into a plan'], caption: ['先确定做什么、怎样算做好', 'Agree on scope and passing criteria']},
-  {id: 'build', title: ['制作并验证功能', 'Build and verify'], caption: ['每次做一小段，完成就检查', 'Build in small, verifiable increments']},
-  {id: 'check', title: ['验收与修复', 'Accept and repair'], caption: ['由实际使用结果决定是否通过', 'Decide from real usage']},
-  {id: 'use', title: ['交付与持续维护', 'Deliver and maintain'], caption: ['从能运行，走到真正能使用', 'Verify the delivered experience']},
-];
+export const nodePhases = phases.map(phase => ({...phase, caption: phase.description}));
 
 export const nodePhaseById = (id: RouteNode['phaseId']) => nodePhases.find(p => p.id === id);
 
@@ -195,24 +188,9 @@ export const nodeById = (id: string) => routeNodes.find(node => node.id === id);
 export const stepUrl = (locale: Locale, stepId: string) => `${url(locale, `node/${nodeForStep(stepId)}`)}#${stepId}`;
 
 /** 旧 16 节点（journey.ts）id → 18 节点 id，用于把旧入口导到新的节点页。 */
-export const legacyNodeMap: Record<string, string> = {
-  idea: 'idea',
-  tell: 'tool',
-  refine: 'clarify',
-  scope: 'clarify',
-  requirements: 'requirements',
-  stack: 'prototype',
-  plan: 'plan',
-  environment: 'environment',
-  build: 'preview',
-  ui: 'preview',
-  backend: 'preview',
-  flow: 'preview',
-  test: 'accept',
-  accept: 'accept',
-  launch: 'live-check',
-  maintain: 'maintain',
-};
+export const legacyNodeMap: Record<string, string> = Object.fromEntries(
+  Object.entries(legacyLessons).map(([id,step]) => [id,nodeForStep(step)])
+);
 
 /** 节点页的步骤数（页面必须显示，用于培养用户对剩余工作量的预期）。 */
 export const stepTitles = (node: RouteNode, locale: 'zh-cn' | 'en') =>
@@ -221,3 +199,16 @@ export const stepTitles = (node: RouteNode, locale: 'zh-cn' | 'en') =>
     if (!lesson) throw new Error(`节点 ${node.id} 引用了不存在的步骤：${id}`);
     return locale === 'zh-cn' ? lesson.title[0] : lesson.title[1];
   });
+
+/** 恢复主线时不把修复回路与可选发布当成必做动作。 */
+export const nextMainStep = (completed: readonly string[]) => linearStepIds.find(id => !completed.includes(id));
+export const phaseUrl = (locale: Locale, phaseId: string) => url(locale, `node/${routeNodes.find(node => node.phaseId === phaseId)!.id}`);
+
+/** 资料页与旧数据中的兼容路径统一生成当前节点入口。 */
+export const routeUrl = (locale: Locale, path: string): string => {
+ if(path === 'learn') return url(locale,'roadmap');
+ if(path.startsWith('learn/stage/')) return phaseUrl(locale,path.split('/')[2]);
+ if(path.startsWith('learn/')) return stepUrl(locale,path.split('/')[1]);
+ if(path.startsWith('roadmap/') && legacyLessons[path.split('/')[1]]) return stepUrl(locale,legacyLessons[path.split('/')[1]]);
+ return url(locale,path);
+};

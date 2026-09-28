@@ -1,7 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import {t,url,type Locale} from '../data/site';
-import {stepUrl} from '../data/nodes';
+import {stepUrl,phaseUrl} from '../data/nodes';
 import {legacyLessons, phases} from '../data/learning';
 import '../styles/learning.css';
 import '../styles/home.css';
@@ -16,7 +16,7 @@ const outcomes=[['一份清楚的项目描述','A clear project brief'],['工具
     <p class="home-kicker"><span></span>{t(['零基础 · 用 AI 做第一个项目','NO CODING EXPERIENCE NEEDED'],locale)}</p>
     <h1 id="home-title">{t(['把你的想法，','Take your idea.'],locale)}<br/><span>{t(['Vibecoding成一个真实的项目','Vibe code a real project.'],locale)}</span></h1>
     <p class="home-description">{t(['从有一个想法，到指挥AI完成开发文档，再到部署上线，每一步都有方法、提示词模板、检查标准。同时让你知道为什么要这样做的原理。','From an idea to directing AI to write development documents, then deployment. Every step includes a method, a prompt template, and checks—along with the reasoning behind it.'],locale)}</p>
-    <div class="home-actions"><a class="learn-primary" data-resume href={stepUrl(locale,'idea')}>{t(['开始第一步','Start the first step'],locale)} →</a><a data-last-viewed hidden></a><a class="home-route" href={url(locale,'roadmap')}>{t(['探索完整路线','Explore the full route'],locale)} <Icon name="arrow" size={17}/></a></div><details class="home-preparation"><summary>{t(['开始前，需要准备什么？','What do I need before starting?'],locale)}</summary><p>{t(['一个自己的想法、一台可用电脑；下一步“选择 AI 工具”再选择能操作项目文件的工具并核对账号条件。现在无需先购买服务。','Bring an idea and a usable computer. Step 3 helps choose a project-capable AI tool and check account access; no purchase is needed now.'],locale)}</p><p>{t(['本站：学习方法与准备材料 → AI工具：读取项目、制作和测试 → 你的作品：亲手打开，核对结果。','This guide: methods and material → AI tool: project work and tests → your project: open and verify it personally.'],locale)}</p></details>
+    <div class="home-actions"><a class="learn-primary" data-resume href={stepUrl(locale,'idea')}>{t(['开始第一步','Start the first step'],locale)} →</a><a data-last-viewed hidden></a><a class="home-route" href={url(locale,'roadmap')}>{t(['探索完整路线','Explore the full route'],locale)} <Icon name="arrow" size={17}/></a></div><details class="home-preparation"><summary>{t(['开始前，需要准备什么？','What do I need before starting?'],locale)}</summary><p>{t(['一个自己的想法、一台可用电脑；进入“选择 AI 工具”节点时，再选择能操作项目文件的工具并核对账号条件。现在无需先购买服务。','Bring an idea and a usable computer. The “Choose an AI tool” milestone helps choose a project-capable AI tool and check account access; no purchase is needed now.'],locale)}</p><p>{t(['本站：学习方法与准备材料 → AI工具：读取项目、制作和测试 → 你的作品：亲手打开，核对结果。','This guide: methods and material → AI tool: project work and tests → your project: open and verify it personally.'],locale)}</p></details>
     <p class="home-start-note">{t(['从自己的想法开始，不必先掌握技术名词。','Start with an idea. Technical vocabulary can come later.'],locale)}</p>
   </div>
   <figure class="home-journey" aria-label={t(['从想法、项目描述到可用作品的流程示意','An illustration of idea, project brief, and working project'],locale)}>
@@ -28,17 +28,36 @@ const outcomes=[['一份清楚的项目描述','A clear project brief'],['工具
   </figure>
 </section>
 <section class="home-path" aria-labelledby="home-path-title">
-  <header class="home-section-heading"><div><p class="home-kicker">{t(['一步一步，积累看得见的成果','SMALL STEPS. VISIBLE PROGRESS.'],locale)}</p><h2 id="home-path-title">{t(['每一个步骤，都清晰可见','Every step, clearly mapped.'],locale)}</h2></div><span class="home-path-meta">{t(['6 个阶段 / 31 个具体动作','6 stages / 31 practical actions'],locale)}</span></header>
-  <ol class="home-phase-list">{phases.map((phase,i)=><li><a href={url(locale,`learn/stage/${phase.id}`)}><span class={`phase-symbol phase-${i}`}><Icon name={icons[i]} size={24}/></span><span class="phase-order">0{i+1}</span><h3>{t(phase.title,locale)}</h3><p>{t(outcomes[i] as [string,string],locale)}</p><span class="phase-enter"><Icon name="arrow" size={18}/></span></a></li>)}</ol>
+  <header class="home-section-heading"><div><p class="home-kicker">{t(['一步一步，积累看得见的成果','SMALL STEPS. VISIBLE PROGRESS.'],locale)}</p><h2 id="home-path-title">{t(['每一个步骤，都清晰可见','Every step, clearly mapped.'],locale)}</h2></div><span class="home-path-meta">{t(['6 个阶段 / 18 个节点 / 31 个动作','6 stages / 18 milestones / 31 actions'],locale)}</span></header>
+  <ol class="home-phase-list">{phases.map((phase,i)=><li><a href={phaseUrl(locale,phase.id)}><span class={`phase-symbol phase-${i}`}><Icon name={icons[i]} size={24}/></span><span class="phase-order">0{i+1}</span><h3>{t(phase.title,locale)}</h3><p>{t(outcomes[i] as [string,string],locale)}</p><span class="phase-enter"><Icon name="arrow" size={18}/></span></a></li>)}</ol>
 </section>
 <aside class="home-library"><span class="library-symbol"><Icon name="book" size={27}/></span><div><h2>{t(['遇到问题，资料就在手边。','Help when a question comes up.'],locale)}</h2><p>{t(['选项目、选工具、看组件、查术语。需要哪一项，再展开哪一项。','Project choices, tools, components, and terminology. Open only what is needed.'],locale)}</p></div><a href={url(locale,'library')}>{t(['按问题查资料','Browse by question'],locale)} <Icon name="arrow" size={18}/></a></aside>
 </div>
 <script>
-import {base} from '../data/base';
+import {stepUrl, nextMainStep} from '../data/nodes';
+import type {Locale} from '../data/site';
 import {projectStorage as localStorage} from '../scripts/project-storage';
 import {lessons} from '../data/learning';
 import {parseLearning} from '../scripts/learning';
-const home=document.querySelector<HTMLElement>('[data-home-locale]');if(home){const locale=home.dataset.homeLocale!;const legacy=JSON.parse(home.dataset.legacy!);const redirect=()=>{const id=legacy[location.hash.replace('#stage-','')];if(id)location.replace(`${base}/${locale}/roadmap/${location.hash.replace('#stage-','')}/${location.search}`);};redirect();addEventListener('hashchange',redirect);try{const state=parseLearning(localStorage.getItem('vibe-guide-learning-v1'));const recent=home.querySelector<HTMLAnchorElement>('[data-last-viewed]')!;if(state.lastViewed&&lessons.some(l=>l.id===state.lastViewed)){recent.href=`${base}/${locale}/learn/${state.lastViewed}/`;recent.textContent=locale==='en'?'Last viewed (reference) →':'最近浏览（查阅位置）→';recent.hidden=false;}if(state.idea||state.completed.length){const a=home.querySelector<HTMLAnchorElement>('[data-resume]')!;a.href=`${base}/${locale}/learn/${(lessons.find(l=>!state.completed.includes(l.id)&&l.id!=='publish')?.id??'maintain')}/`;a.textContent=locale==='en'?'Continue where I left off →':'接着上次的步骤做 →';}}catch{}}
+const home=document.querySelector<HTMLElement>('[data-home-locale]');
+if(home){
+ const locale=home.dataset.homeLocale! as Locale;
+ const legacy=JSON.parse(home.dataset.legacy!);
+ const redirect=()=>{const id=legacy[location.hash.replace('#stage-','')];if(id)location.replace(stepUrl(locale,id));};
+ redirect();addEventListener('hashchange',redirect);
+ try{
+  const state=parseLearning(localStorage.getItem('vibe-guide-learning-v1'));
+  const recent=home.querySelector<HTMLAnchorElement>('[data-last-viewed]')!;
+  if(state.lastViewed&&lessons.some(l=>l.id===state.lastViewed)){recent.href=stepUrl(locale,state.lastViewed);recent.textContent=locale==='en'?'Last viewed action →':'最近浏览的动作 →';recent.hidden=false;}
+  if(state.idea||state.completed.length){
+   const next=nextMainStep(state.completed);
+   const a=home.querySelector<HTMLAnchorElement>('[data-resume]')!;
+   a.href=stepUrl(locale,next??'maintain');
+   a.textContent=next?(locale==='en'?'Continue where I left off →':'接着上次的动作做 →'):(locale==='en'?'Main route complete · review maintenance →':'主线已完成 · 查看维护说明 →');
+  }
+ }catch{}
+}
 </script>
+
 
 <style>.home-preparation{margin-top:18px;max-width:680px;color:#536b7d;font-size:14px;line-height:1.8}.home-preparation summary{cursor:pointer;font-weight:600}.home-preparation p{margin:10px 0}[data-last-viewed]{font-size:13px}[data-last-viewed][hidden]{display:none}</style>

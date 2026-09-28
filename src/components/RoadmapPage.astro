@@ -1,41 +1,8 @@
 ---
 import '../styles/learning.css';
-import Roadmap from './Roadmap.astro';
 import ProjectRoadmap from './ProjectRoadmap.astro';
-import PromptTemplate from './PromptTemplate.astro';
-import StageTroubleshooting from './StageTroubleshooting.astro';
-import {journey,mainJourney} from '../data/journey';
-import {lessons,legacyLessons} from '../data/learning';
-import {stepUrl} from '../data/nodes';
-import {modules,t,url,type Locale} from '../data/site';
-const {locale,path}=Astro.props as {locale:Locale;path:string};
-const stage=journey.find(s=>s.id===path.split('/')[1]);
-const next=stage?mainJourney[mainJourney.findIndex(s=>s.id===(stage.parent??stage.id))+1]:undefined;
-const label=(zh:string,en:string)=>t([zh,en],locale);
+import {t,type Locale} from '../data/site';
+const {locale}=Astro.props as {locale:Locale};
 ---
-{!stage?<>
-<header class="page-intro"><span class="eyebrow">VIBE CODING ROADMAP</span><h1>{label('从想法到作品，完整路线图','The complete path from idea to product')}</h1><p class="lead">{label('先看每一站的关系，再进入当前要做的事。所有知识点都挂在对应节点下面。','See how the stages connect, then enter the current task. Related knowledge lives under each node.')}</p></header>
-<p class="local-note">{label("主线共6阶段、31个动作；下方知识路线用于查资料，不是额外必做步骤。", "The main route has 6 stages and 31 actions; the knowledge map below is reference, not additional required work.")}</p><ProjectRoadmap locale={locale}/>
-<details class="learn-details"><summary>{label('查看完整知识路线与制作分支','Explore the full knowledge map and branches')}</summary><Roadmap locale={locale} compact/></details>
-</>:<article class="node-guide">
-<nav class="node-crumb"><a href={url(locale,'roadmap')}>{label('完整路线图','Complete roadmap')}</a><span> / </span>{stage.parent&&<><a href={url(locale,`roadmap/${stage.parent}`)}>{t(journey.find(s=>s.id===stage.parent)!.title,locale)}</a><span> / </span></>}{t(stage.title,locale)}</nav>
-<span class="eyebrow">{stage.term}</span><h1>{t(stage.title,locale)}</h1><p class="node-question" data-orientation>{label(`这里是“${t(stage.title,locale)}”的补充知识，帮助理解对应操作并准备所需材料。需要跟着制作时，进入下方第 ${lessons.findIndex(l=>l.id===legacyLessons[stage.id])+1} 步；查完资料后回到该步骤继续。`,`This reference explains “${t(stage.title,locale)}” and its inputs. For guided work, open step ${lessons.findIndex(l=>l.id===legacyLessons[stage.id])+1} below, then continue there after reading.`)}</p>
-<a class="learn-primary" href={stepUrl(locale,legacyLessons[stage.id])}>{label('带着做：进入当前小步骤','Walk me through the next action')} →</a>
-<section class="node-outcome"><span>{label('这一站的完成结果','THE OUTCOME')}</span><p>{t(stage.output,locale)}</p></section>
-{stage.id==='build'&&<nav class="node-branches" aria-label={label('制作分支','Build branches')}>{journey.filter(s=>s.parent==='build').map(s=><a href={url(locale,`roadmap/${s.id}`)}>{t(s.title,locale)} →</a>)}</nav>}
-<div class="node-knowledge">
-<details><summary><span>01</span>{label('操作与准备材料','Actions and preparation')}</summary><div><h2>{label('先带上这些材料','Bring these inputs')}</h2><p>{t(stage.incoming,locale)}</p><h2>{label('具体怎么做','What to do')}</h2><ol>{stage.actions.map(a=><li>{t(a,locale)}</li>)}</ol></div></details>
-<details><summary><span>02</span>{label('看一个例子与常见疑问','Example and common question')}</summary><div><p>{t(stage.example,locale)}</p><h2>{t(stage.problem,locale)}</h2><p>{t(stage.answer,locale)}</p></div></details>
-<details><summary><span>03</span>{label('完整提示词与填写模板','Full prompt and worksheet')}</summary><PromptTemplate id={`roadmap-${stage.id}`} title={stage.promptTitle} prompt={stage.prompt} locale={locale} kind={stage.id==='idea'?'worksheet':'prompt'}/></details>
-<details><summary><span>04</span>{label('相关知识与操作资料','Related knowledge and guides')}</summary><div class="node-resources">
-{stage.moduleIds.map(id=>modules.find(m=>m.id===id)!).filter(Boolean).map(m=><a href={`${url(locale,m.path)}?lesson=${legacyLessons[stage.id]}`}>{t(m.title,locale)} →</a>)}
-{stage.id==='ui'&&<><a href={url(locale,'components/style')}>{label('整体风格怎么描述','Describe a visual style')} →</a><a href={url(locale,'components/edit')}>{label('只修改一个地方','Edit one part')} →</a></>}
-{['tell','environment'].includes(stage.id)&&<a href={url(locale,'communicate/setup')}>{label('Git 与项目规则准备','Git and project setup')} →</a>}
-</div></details>
-<details><summary><span>05</span>{label('遇到问题，按现象排查','Troubleshoot by symptom')}</summary><StageTroubleshooting stage={stage.id} locale={locale}/></details>
-</div>
-<footer class="node-next"><a href={url(locale,'roadmap')}>{label('查看全程','See the full journey')}</a>{next&&<a href={url(locale,`roadmap/${next.id}`)}>{label('下一站：','Next: ')}{t(next.title,locale)} →</a>}</footer>
-</article>}
-<style>.node-guide{max-width:800px;margin:auto}.node-crumb{font-size:12px;color:#64748b;margin-bottom:30px;line-height:1.8}.node-guide h1{font-size:clamp(30px,4vw,42px);letter-spacing:-.03em;margin:14px 0}.node-question{font-size:17px;color:#53647c;line-height:1.8;margin-bottom:26px;max-width:650px}.node-outcome{margin:30px 0;padding:20px 24px;background:#fff;border:1px solid #50a976;border-radius:10px}.node-outcome>span{font-size:10px;font-weight:700;color:#36764f;letter-spacing:.08em}.node-outcome p{font-size:15px;line-height:1.8;margin:8px 0 0;color:#294d39}.node-knowledge>details{border-top:1px solid #dce4ee}.node-knowledge>details:last-child{border-bottom:1px solid #dce4ee}.node-knowledge>details>summary{padding:22px 4px;font-size:16px;font-weight:600;color:#263953;cursor:pointer}.node-knowledge>details>summary>span{font-size:11px;color:#7a8aa0;margin-right:18px}.node-knowledge>details>div:not(.prompt-template){padding:0 24px 22px}.node-knowledge h2{font-size:15px;margin-top:20px}.node-knowledge p,.node-knowledge li{font-size:14px;line-height:1.9;color:#4b5b72}.node-resources a{display:block;padding:12px 0}.node-branches,.node-next{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;font-size:13px;margin:24px 0}.node-branches a{padding:12px 16px;border:1px solid #dce4ee;border-radius:8px}.node-guide .prompt-template pre{max-height:380px;overflow:auto}</style>
-
-<style>.outcome-map{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:28px 0}.outcome-stage{--tone:#df3044;display:flex;align-items:center;gap:16px;padding:24px;border:1px solid var(--tone);border-radius:12px;text-decoration:none!important;background:#fff}.outcome-stage.stage-1,.outcome-stage.stage-4{--tone:#50a976}.outcome-stage.stage-2,.outcome-stage.stage-5{--tone:#4385e8}.outcome-stage.stage-3{--tone:#ff7a1a}.outcome-number{font-size:24px;font-weight:700;color:var(--tone)}.outcome-stage h2{font-size:19px;margin:0 0 8px;color:#1c2c43}.outcome-stage p{font-size:14px;margin:0 0 8px;color:#53647b}.outcome-stage small{color:#6c7d91;font-size:12px}.outcome-stage>span:last-child{margin-left:auto;color:var(--tone)}@media(max-width:700px){.outcome-map{grid-template-columns:1fr}.outcome-stage{padding:20px}}</style>
+<header class="page-intro"><span class="eyebrow">VIBE CODING ROADMAP</span><h1>{t(['从想法到作品，完整路线图','The complete path from idea to product'],locale)}</h1><p class="lead">{t(['6 个阶段、18 个节点、31 个动作。进入当前节点，按顺序完成操作、核对结果，再继续下一节点。','6 stages, 18 milestones and 31 actions. Open the current milestone, follow its actions, check the result, and continue.'],locale)}</p></header>
+<ProjectRoadmap locale={locale}/>

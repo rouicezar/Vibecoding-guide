@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import ts from 'typescript';
 import {readFile} from 'node:fs/promises';
 import {lessons,phases,learningPaths,legacyLessons} from '../src/data/learning.ts';
-const source=await readFile('src/scripts/learning.ts','utf8');
+const source=(await readFile('src/scripts/learning.ts','utf8')).replace('../data/nodes.ts',new URL('../src/data/nodes.ts',import.meta.url).href);
 const compiled=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText.replace(/(['"])\.\/project-storage\.ts\1/g,JSON.stringify(new URL('../src/scripts/project-storage.ts',import.meta.url).href)).replace(/(['"])\.\.\/data\/(learning|idea-template)\1/g,(_,quote,name)=>JSON.stringify(new URL('../src/data/'+name+'.ts',import.meta.url).href));
 const {parseLearning}=await import('data:text/javascript;base64,'+Buffer.from(compiled).toString('base64'));
 assert.equal(parseLearning(null).current,'idea');
