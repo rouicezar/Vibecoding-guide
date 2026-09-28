@@ -1,0 +1,154 @@
+---
+import Icon from './Icon.astro';
+import NodeStep from './NodeStep.astro';
+import ProjectDraft from './ProjectDraft.astro';
+import {phases, lessons} from '../data/learning';
+import {stepSupport} from '../data/learning-support';
+import {glossary} from '../data/glossary';
+import {t,url,type Locale,type Copy} from '../data/site';
+import {routeNodes, nodePhaseById, repairStepIds, repairTitle, repairEntryNodeIds, type RouteNode} from '../data/nodes';
+/**
+ * 节点页：18 个节点共用这一个模板。页头字段与顺序固定。
+ * 页头固定回答：这是第几阶段/第几节点、共几个步骤、为什么要有这一节点、做完得到什么。
+ * 步骤的固定结构见 NodeStep.astro。旧的 /learn/<步骤> 页面全部跳转到本页对应的步骤锚点。
+ */
+interface Props {node: RouteNode; locale: Locale;}
+const {node, locale} = Astro.props;
+const label = (zh: string, en: string) => t([zh, en] as const, locale);
+const phaseIndex = phases.findIndex(p => p.id === node.phaseId) + 1;
+const total = routeNodes.length;
+const steps = node.stepIds;
+const lastSupport = stepSupport.find(s => s.id === steps[steps.length - 1]);
+if (!lastSupport) throw new Error(`节点 ${node.id} 的最后一个步骤缺少材料：${steps[steps.length - 1]}`);
+const showRepair = repairEntryNodeIds.includes(node.id);
+const repairLessons = repairStepIds.map(id => {
+  const lesson = lessons.find(l => l.id === id);
+  if (!lesson) throw new Error(`修复回路缺少步骤：${id}`);
+  return lesson;
+});
+const phaseTitle = t(nodePhaseById(node.phaseId)!.title, locale);
+const previous = routeNodes[node.order - 2];
+const next = routeNodes[node.order];
+/** 每个步骤的「下一步」：同组内跳到下一步锚点，最后一步进入下一节点。 */
+const plan = (ids: string[], fallback?: {href: string; label: Copy}) =>
+  ids.map((id, i) => ({stepId: id, nextHref: i < ids.length - 1 ? `#${ids[i + 1]}` : fallback?.href, nextLabel: (i < ids.length - 1 ? ['已核对，下一步', 'Checked, next step'] : fallback?.label) as Copy | undefined}));
+const nodePlan = plan(steps, next ? {href: url(locale, `node/${next.id}`), label: [`进入下一节点：${next.title[0]}`, `Next milestone: ${next.title[1]}`] as Copy} : undefined);
+const repairPlan = plan(repairStepIds);
+/** 本节点出现的词：合并全部步骤的术语并去重，顺序按步骤出现先后。 */
+const seen = new Set<string>();
+const nodeTerms = steps
+  .flatMap(id => stepSupport.find(s => s.id === id)?.terms ?? [])
+  .filter(id => (seen.has(id) ? false : (seen.add(id), true)))
+  .map(id => glossary.find(g => g.id === id))
+  .filter(Boolean);
+---
+
+<div class="node-page" data-learning data-node={node.id} data-lesson={steps[0]} data-locale={locale}>
+  <nav class="node-crumb" aria-label={label('当前位置', 'Breadcrumb')}>
+    <a href={url(locale, 'roadmap')}>{label('完整路线图', 'Complete roadmap')}</a>
+    <span aria-hidden="true">/</span>
+    <span>{label(`阶段 ${phaseIndex} ${phaseTitle}`, `Stage ${phaseIndex} ${phaseTitle}`)}</span>
+  </nav>
+
+  <header class="node-head">
+    <p class="node-eyebrow">
+      <span class="node-badge">{label(`阶段 ${phaseIndex} · ${phaseTitle}`, `STAGE ${phaseIndex} · ${phaseTitle}`)}</span>
+      <span class="node-count">{label(`节点 ${node.order} / ${total}`, `Milestone ${node.order} / ${total}`)}</span>
+    </p>
+    <h1><Icon name={node.icon} size={26} />{t(node.title, locale)}</h1>
+    <p class="node-gloss">{t(node.gloss, locale)}</p>
+    <p class="node-why"><strong>{label('为什么要有这一节点：', 'Why this milestone: ')}</strong>{t(node.why, locale)}</p>
+    <dl class="node-meta">
+      <div><dt>{label('本节点步骤数', 'Steps in this milestone')}</dt><dd>{label(`共 ${steps.length} 个步骤`, `${steps.length} step${steps.length > 1 ? 's' : ''} in total`)}</dd></div>
+      <div><dt>{label('做完你会得到', 'What you finish with')}</dt><dd>{t(lastSupport.output, locale)}</dd></div>
+    </dl>
+  </header>
+
+  <section class="node-steps" aria-label={label('本节点的步骤', 'Steps in this milestone')}>
+    <h2 class="node-section-title">{label(`本节点共 ${steps.length} 个步骤`, `${steps.length} step${steps.length > 1 ? 's' : ''} in this milestone`)}<span>{label('逐项展开，做完一个再进入下一个', 'Open one at a time, finish it, then continue')}</span></h2>
+    {nodePlan.map((step, i) => <NodeStep stepId={step.stepId} index={i + 1} total={steps.length} locale={locale} open={i === 0 && steps.length === 1} nextHref={step.nextHref} nextLabel={step.nextLabel} />)}
+  </section>
+
+  {showRepair && <section class="node-repair" aria-label={t(repairTitle, locale)}>
+    <h2 class="node-section-title"><Icon name="refresh" size={18} />{t(repairTitle, locale)}<span>{label('测试或上线评估发现问题时，按这三步修好，再回到上面的节点。', 'When testing or release review finds a problem, repair in three steps, then return to the milestone above.')}</span></h2>
+    {repairPlan.map((step, i) => <NodeStep stepId={step.stepId} index={i + 1} total={repairLessons.length} locale={locale} nextHref={step.nextHref} nextLabel={step.nextLabel} />)}
+  </section>}
+
+  {nodeTerms.length > 0 && <section class="node-terms" aria-label={label('本节点出现的词', 'Words in this milestone')}>
+    <h2 class="node-section-title">{label('本节点出现的词', 'Words in this milestone')}<span>{label('按出现顺序排列，点开可查完整解释', 'In order of appearance; open for the full explanation')}</span></h2>
+    <div class="node-term-list">
+      {nodeTerms.map(term => <a href={url(locale, `terms/${term!.id}`)}><strong>{t(term!.name, locale)}</strong><span>{t(term!.definition, locale)}</span></a>)}
+    </div>
+  </section>}
+
+  <nav class="node-nav" aria-label={label('节点之间的导航', 'Milestone navigation')}>
+    <div class="node-nav-slot node-nav-prev">
+      <span>{label('上一节点', 'Previous milestone')}</span>
+      {previous
+        ? <a href={url(locale, `node/${previous.id}`)}><strong>← {label(`${previous.order} `, `${previous.order} `)}{t(previous.title, locale)}</strong></a>
+        : <a href={url(locale, 'roadmap')}><strong>← {label('这是第一个节点，回到完整路线图', 'This is the first milestone; back to the roadmap')}</strong></a>}
+    </div>
+    <div class="node-nav-slot node-nav-next">
+      <span>{label('下一节点', 'Next milestone')}</span>
+      {next
+        ? <a class="learn-primary" href={url(locale, `node/${next.id}`)}><strong>{label(`${next.order} `, `${next.order} `)}{t(next.title, locale)} →</strong></a>
+        : <a class="learn-primary" href={url(locale, 'roadmap')}><strong>{label('这是最后一个节点，回到完整路线图', 'This is the last milestone; back to the roadmap')} →</strong></a>}
+    </div>
+  </nav>
+
+  <ProjectDraft locale={locale} />
+  <p class="local-note" data-learning-status role="status">{label('草稿与进度只保存在当前浏览器。', 'Draft and progress stay in this browser.')}</p>
+  <p class="local-note">{label('本页只呈现本节点的操作、术语和卡点，不把其他节点的内容堆在同一屏。', 'This page shows only this milestone’s actions, terms and blockers.')}</p>
+</div>
+
+<script>
+import {initLearning} from '../scripts/learning';
+initLearning();
+// 从旧页面跳转过来时，自动展开锚点对应的步骤。
+const openFromHash=()=>{const id=location.hash.slice(1);if(!id)return;const el=document.getElementById(id);if(el instanceof HTMLDetailsElement&&!el.open){el.open=true;el.scrollIntoView({block:'start'});}};
+openFromHash();
+window.addEventListener('hashchange',openFromHash);
+</script>
+
+<style>
+.node-page{max-width:880px}
+.node-crumb{display:flex;gap:8px;align-items:center;font-size:13px;color:#64748b;margin-bottom:20px}
+.node-crumb a{color:#326f9c}
+.node-head{border-bottom:1px solid #e2e8f0;padding-bottom:26px;margin-bottom:8px}
+.node-eyebrow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:0 0 14px}
+.node-badge{font-size:12px;font-weight:650;color:#b3283c;background:#ffecef;border-radius:999px;padding:5px 12px}
+.node-count{font-size:12px;color:#64748b;font:12px/1.6 ui-monospace,monospace}
+.node-head h1{display:flex;align-items:center;gap:12px;font-size:clamp(24px,3vw,32px);letter-spacing:-.03em;color:#17243b;margin:0 0 12px}
+.node-head h1 :global(.semantic-icon){color:#df3044}
+.node-gloss{font-size:17px;color:#3d5470;margin:0 0 14px;line-height:1.7}
+.node-why{font-size:15px;color:#64748b;margin:0 0 20px;line-height:1.8;max-width:640px}
+.node-why strong{color:#3d5470}
+.node-meta{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0}
+.node-meta>div{border:1px solid #dfe6ee;border-radius:10px;padding:14px 16px;background:#fafcfe}
+.node-meta dt{font-size:12px;color:#64748b;margin-bottom:6px}
+.node-meta dd{margin:0;font-size:15px;font-weight:650;color:#1c2f47;line-height:1.6}
+.node-section-title{display:flex;flex-direction:column;gap:5px;font-size:19px;color:#17243b;margin:36px 0 14px}
+.node-section-title span{font-size:13px;font-weight:400;color:#64748b}
+.node-repair{border:1px dashed #a38bd1;border-radius:12px;padding:20px 20px 8px;margin-top:34px;background:#fcfaff}
+.node-repair .node-section-title{flex-direction:row;flex-wrap:wrap;align-items:center;gap:10px;margin-top:0}
+.node-repair .node-section-title :global(.semantic-icon){color:#7b5fc0}
+.node-repair .node-section-title span{flex-basis:100%}
+.node-term-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.node-term-list a{display:flex;flex-direction:column;gap:4px;border:1px solid #dfe6ee;border-radius:10px;padding:13px 15px;text-decoration:none;background:#fff}
+.node-term-list a:hover{border-color:#b9cade}
+.node-term-list strong{font-size:14px;color:#1c2f47}
+.node-term-list span{font-size:13px;color:#64748b;line-height:1.6}
+.node-nav{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin:40px 0 8px;border-top:1px solid #e2e8f0;padding-top:24px}
+.node-nav-slot{display:flex;flex-direction:column;gap:5px;min-width:220px}
+.node-nav-slot>span{font-size:12px;color:#64748b}
+.node-nav-slot a{text-decoration:none}
+.node-nav-slot strong{font-size:15px;color:#1c2f47;font-weight:650}
+.node-nav-prev a strong{color:#326f9c}
+.node-nav-next{align-items:flex-start}
+@media(max-width:640px){
+ .node-meta{grid-template-columns:1fr}
+ .node-head h1{font-size:24px}
+ .node-nav{flex-direction:column}
+ .node-nav-slot{min-width:0}
+}
+</style>

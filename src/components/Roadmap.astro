@@ -2,6 +2,7 @@
 import {journey,mainJourney} from '../data/journey';
 import {legacyLessons} from '../data/learning';
 import {t,url,type Locale} from '../data/site';
+import {stepUrl} from '../data/nodes';
 import Icon from './Icon.astro';
 const {locale,compact=false}=Astro.props as {locale:Locale;compact?:boolean};
 const groups=[{title:['把想法说清楚','Shape the idea'] as const,ids:['idea','tell','refine','scope','requirements'],tone:'red',icon:'brain'},{title:['准备开始制作','Prepare to build'] as const,ids:['stack','plan','environment'],tone:'green',icon:'layers'},{title:['做出可以使用的版本','Build a working version'] as const,ids:['build'],tone:'blue',icon:'browser'},{title:['检查、交付、继续改','Check, deliver, improve'] as const,ids:['test','accept','launch','maintain'],tone:'orange',icon:'checklist'}];
@@ -9,7 +10,7 @@ const groups=[{title:['把想法说清楚','Shape the idea'] as const,ids:['idea
 <section class:list={['roadmap',{compact}]} aria-labelledby="roadmap-title" data-roadmap data-lesson-map={JSON.stringify(legacyLessons)}>
 <header class="roadmap-heading" hidden={compact}><div><span class="eyebrow">{t(['完整路线 · 随时知道下一步','THE COMPLETE JOURNEY'],locale)}</span><h2 id="roadmap-title">{t(['看清全程，再走好每一步','See the journey. Take the next step.'],locale)}</h2></div><span class="map-key"><i></i>{t(['点击节点，展开这一站','Select a node to explore'],locale)}</span></header>
 <div class="roadmap-lanes">{groups.map((g,i)=><section class={`map-lane tone-${g.tone}`}><header><span class="lane-number">0{i+1}</span><h3>{t(g.title,locale)}</h3></header><ol>{g.ids.map(id=>{const s=journey.find(s=>s.id===id)!;return <li><a class="map-node" href={url(locale,`roadmap/${id}`)} data-map-node={id}><span class="map-dot"><Icon name={({idea:'idea',tell:'message',refine:'question',scope:'target',requirements:'document',stack:'layers',plan:'checklist',environment:'code',build:'tool',ui:'layout',backend:'database',flow:'route',test:'bug',accept:'verify',launch:'rocket',maintain:'settings'} as Record<string,string>)[id]??g.icon} size={16}/></span><span><strong>{t(s.title,locale)}</strong><small>{String(mainJourney.indexOf(s)+1).padStart(2,'0')} · {s.term}</small></span><span class="map-state" aria-hidden="true">↗</span></a>{id==='build'&&<div class="map-branches"><span>{t(['按作品需要进入分支','Branches as needed'],locale)}</span>{journey.filter(b=>b.parent==='build').map(b=><a href={url(locale,`roadmap/${b.id}`)} data-map-node={b.id}><span aria-hidden="true">↳</span> {t(b.title,locale)} <span aria-hidden="true">→</span></a>)}</div>}</li>})}</ol></section>)}</div>
-<footer class="map-footer"><span>↶ {t(['检查未通过，回到制作；需求改变，回到范围确认。','Checks failed? Revisit building. Scope changed? Revisit agreement.'],locale)}</span><a href={url(locale,'learn/idea')}>{t(['零基础？从第一个小动作开始 →','New to this? Start with one small action →'],locale)}</a></footer>
+<footer class="map-footer"><span>↶ {t(['检查未通过，回到制作；需求改变，回到范围确认。','Checks failed? Revisit building. Scope changed? Revisit agreement.'],locale)}</span><a href={stepUrl(locale,'idea')}>{t(['零基础？从第一个小动作开始 →','New to this? Start with one small action →'],locale)}</a></footer>
 </section>
 <script>
 import {projectStorage as localStorage} from '../scripts/project-storage';

@@ -93,8 +93,8 @@ export const additions=[
       "Each first-version feature maps to a user action and acceptance criteria."
     ],
     "prompt": [
-      "读取 idea.md 和 docs/requirements.md。只整理已确认范围：按“什么用户，在什么情况下，希望完成什么，为什么”写用户故事；每个故事写开始条件、操作、正常结果、失败提示和通过条件。简单项目合并到 docs/requirements.md 的用户故事小节，不重复创建同内容文档。未知项标待确认，不增加功能。保存后读回并报告文件位置。本次不写业务代码。",
-      "Read idea.md and docs/requirements.md. Write stories for confirmed scope: who, situation, goal and reason. Add prerequisites, actions, normal results, failure feedback and acceptance criteria. For a small project use a user-stories section in requirements rather than duplicate documents. Mark unknowns, save and read back the file. Do not implement yet."
+      "读取 idea.md 和 docs/requirements.md。只整理已确认范围：按“什么用户，在什么情况下，希望完成什么，为什么”写用户故事；每个故事写开始条件、操作、正常结果、失败提示和通过条件。把用户故事保存为独立文档 docs/stories.md（不要并入 docs/requirements.md）。未知项标待确认，不增加功能。保存后读回并报告文件位置。本次不写业务代码。",
+      "Read idea.md and docs/requirements.md. Write stories for confirmed scope: who, situation, goal and reason. Add prerequisites, actions, normal results, failure feedback and acceptance criteria. Save the stories as a separate document, docs/stories.md (do not merge them into docs/requirements.md). Mark unknowns, save and read back the file. Do not implement yet."
     ],
     "stage": "requirements",
     "understanding": {

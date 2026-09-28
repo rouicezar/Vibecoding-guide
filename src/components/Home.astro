@@ -1,6 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import {t,url,type Locale} from '../data/site';
+import {stepUrl} from '../data/nodes';
 import {legacyLessons, phases} from '../data/learning';
 import '../styles/learning.css';
 import '../styles/home.css';
@@ -15,7 +16,7 @@ const outcomes=[['一份清楚的项目描述','A clear project brief'],['工具
     <p class="home-kicker"><span></span>{t(['零基础 · 用 AI 做第一个项目','NO CODING EXPERIENCE NEEDED'],locale)}</p>
     <h1 id="home-title">{t(['把你的想法，','Take your idea.'],locale)}<br/><span>{t(['Vibecoding成一个真实的项目','Vibe code a real project.'],locale)}</span></h1>
     <p class="home-description">{t(['从有一个想法，到指挥AI完成开发文档，再到部署上线，每一步都有方法、提示词模板、检查标准。同时让你知道为什么要这样做的原理。','From an idea to directing AI to write development documents, then deployment. Every step includes a method, a prompt template, and checks—along with the reasoning behind it.'],locale)}</p>
-    <div class="home-actions"><a class="learn-primary" data-resume href={url(locale,'learn/idea')}>{t(['开始第一步','Start the first step'],locale)} →</a><a data-last-viewed hidden></a><a class="home-route" href={url(locale,'roadmap')}>{t(['探索完整路线','Explore the full route'],locale)} <Icon name="arrow" size={17}/></a></div><details class="home-preparation"><summary>{t(['开始前，需要准备什么？','What do I need before starting?'],locale)}</summary><p>{t(['一个自己的想法、一台可用电脑；第3步再选择能操作项目文件的AI工具并核对账号条件。现在无需先购买服务。','Bring an idea and a usable computer. Step 3 helps choose a project-capable AI tool and check account access; no purchase is needed now.'],locale)}</p><p>{t(['本站：学习方法与准备材料 → AI工具：读取项目、制作和测试 → 你的作品：亲手打开，核对结果。','This guide: methods and material → AI tool: project work and tests → your project: open and verify it personally.'],locale)}</p></details>
+    <div class="home-actions"><a class="learn-primary" data-resume href={stepUrl(locale,'idea')}>{t(['开始第一步','Start the first step'],locale)} →</a><a data-last-viewed hidden></a><a class="home-route" href={url(locale,'roadmap')}>{t(['探索完整路线','Explore the full route'],locale)} <Icon name="arrow" size={17}/></a></div><details class="home-preparation"><summary>{t(['开始前，需要准备什么？','What do I need before starting?'],locale)}</summary><p>{t(['一个自己的想法、一台可用电脑；下一步“选择 AI 工具”再选择能操作项目文件的工具并核对账号条件。现在无需先购买服务。','Bring an idea and a usable computer. Step 3 helps choose a project-capable AI tool and check account access; no purchase is needed now.'],locale)}</p><p>{t(['本站：学习方法与准备材料 → AI工具：读取项目、制作和测试 → 你的作品：亲手打开，核对结果。','This guide: methods and material → AI tool: project work and tests → your project: open and verify it personally.'],locale)}</p></details>
     <p class="home-start-note">{t(['从自己的想法开始，不必先掌握技术名词。','Start with an idea. Technical vocabulary can come later.'],locale)}</p>
   </div>
   <figure class="home-journey" aria-label={t(['从想法、项目描述到可用作品的流程示意','An illustration of idea, project brief, and working project'],locale)}>

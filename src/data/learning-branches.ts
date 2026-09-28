@@ -213,8 +213,8 @@ export const learningBranches:LearningBranch[]=[
         "Create a test site on the selected host, configure build/output/base path, and test its temporary URL."
       ],
       [
-        "域名可后加；需要时在域名服务按托管平台给出的记录配置DNS，等待生效并核对HTTPS。正式发布回第29步确认。",
-        "Add a domain if needed using host-provided DNS records, wait and verify HTTPS. Confirm production publishing in step 29."
+        "域名可后加；需要时在域名服务按托管平台给出的记录配置DNS，等待生效并核对HTTPS。正式发布回“交付上线，检查实际入口”确认。",
+        "Add a domain if needed using host-provided DNS records, wait and verify HTTPS. Confirm production publishing in the “Deliver and check the real entry” milestone."
       ]
     ],
     "check": [
@@ -330,8 +330,8 @@ export const learningBranches:LearningBranch[]=[
         "Test the actual release on target devices: installation, permissions, offline behavior and update retention."
       ],
       [
-        "直接分发准备可信下载页、版本与更新说明；商店准备真实截图、应用资料、数据声明和测试要求。正式上传/提交由第29步授权执行。",
-        "Direct delivery needs a trusted download page and update information. Stores need accurate listings, screenshots, data declarations and required testing; authorize submission in step 29."
+        "直接分发准备可信下载页、版本与更新说明；商店准备真实截图、应用资料、数据声明和测试要求。正式上传和提交由“交付上线，检查实际入口”授权执行。",
+        "Direct delivery needs a trusted download page and update information. Stores need accurate listings, screenshots, data declarations and required testing; authorize submission in the “Deliver and check the real entry” milestone."
       ]
     ],
     "check": [
@@ -447,8 +447,8 @@ export const learningBranches:LearningBranch[]=[
         "Create a trial version and test on permitted real accounts/devices, including network, data and access."
       ],
       [
-        "根据当前平台要求准备版本说明、隐私与审核材料，区分开发预览、体验、审核与正式发布。第29步才确认提交/发布。",
-        "Prepare release notes, privacy and review material under current requirements; distinguish preview, trial, review and live release. Authorize submission in step 29."
+        "根据当前平台要求准备版本说明、隐私与审核材料，区分开发预览、体验、审核与正式发布。“交付上线，检查实际入口”才确认提交和发布。",
+        "Prepare release notes, privacy and review material under current requirements; distinguish preview, trial, review and live release. Authorize submission in the “Deliver and check the real entry” milestone."
       ]
     ],
     "check": [

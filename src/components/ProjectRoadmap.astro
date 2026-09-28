@@ -1,49 +1,24 @@
 ---
 import Icon from './Icon.astro';
 import {t,url,type Locale} from '../data/site';
+import {nodePhases,routeNodes,stepUrl} from '../data/nodes';
 const {locale}=Astro.props as {locale:Locale};
 const label=(zh:string,en:string)=>t([zh,en],locale);
-const groups=[
- {title:['把想法说清楚','Define the idea'],caption:['先明确要解决的问题','Start with the problem'],nodes:[
- ['idea','记录项目想法','Record the idea','明确用户、问题与预期结果','Users, problem and success criteria'],
- ['description','整理项目描述','Prepare the brief','一份可以交给 AI 的项目说明','A project brief ready for AI']]},
- {title:['准备协作空间','Prepare the workspace'],caption:['让 AI 在正确的项目里工作','Give AI the right workspace'],nodes:[
- ['tool','选择 AI 工具','Choose an AI tool','比较上手、额度、费用与能力','Compare ease, allowance, cost and capability'],
- ['folder','创建项目文件夹','Create the project folder','一个专属于本项目的存放位置','A dedicated location for the project'],
- ['open-project','在工具中打开项目','Open it in the tool','确认对话关联正确文件夹','Confirm the chat uses the correct folder']]},
- {title:['把需求变成计划','Turn needs into a plan'],caption:['先确定做什么、怎样算做好','Agree on scope and passing criteria'],nodes:[
- ['clarify','澄清需求与第一版范围','Clarify needs and scope','回答疑问，确定先做与暂不做的事','Resolve questions and bound version one'],
- ['requirements','形成需求与用户故事','Write requirements and stories','说明功能，以及用户怎样完成任务','Describe features and the user journey'],
- ['prototype','确认界面与技术方案','Agree on design and technology','关键页面、交互与实现方案','Key screens, interactions and implementation choices'],
- ['plan','制定开发计划与测试标准','Plan development and tests','可逐项执行、可检查的任务清单','Executable tasks with passing criteria']]},
- {title:['制作并验证功能','Build and verify'],caption:['每次做一小段，完成就检查','Build in small, verifiable increments'],nodes:[
- ['checkpoint','准备 Git 与项目规则','Prepare Git and project rules','可恢复的起点与 AI 工作约定','A recoverable baseline and AI instructions'],
- ['environment','检查环境并初始化项目','Check the environment and initialize','能启动的项目与再次打开的方法','A running project and restart instructions'],
- ['preview','按计划分步开发并测试','Build and test incrementally','走通核心操作，核对正常与异常结果','Verify the core flow and failure cases']]},
- {title:['验收与修复','Accept and repair'],caption:['由实际使用结果决定是否通过','Decide from real usage'],nodes:[
- ['accept','亲自测试完整使用过程','Test the full journey personally','对照最初目标，记录真实结果','Check the original goals against actual results'],
- ['delivery','选择交付方式','Choose how to deliver','自己用、网址或安装包','Personal use, a website or an installer'],
- ['release-review','评估上线与交付条件','Review release readiness','确认功能、数据、权限和恢复条件','Check functionality, data, access and recovery']]},
- {title:['交付与持续维护','Deliver and maintain'],caption:['从能运行，走到真正能使用','Verify the delivered experience'],nodes:[
- ['package','准备部署脚本或安装包','Prepare deployment or packaging','按交付方式生成产物并试运行','Prepare and trial the chosen deliverable'],
- ['live-check','交付上线，检查实际入口','Deliver and check the real entry','从用户入口完成一次真实操作','Complete a real task through the delivered entry'],
- ['maintain','记录维护与下一次迭代','Plan maintenance and the next change','留下启动、恢复与后续任务说明','Record startup, recovery and future tasks']]}
-];
-let offset=0;
-const numbered=groups.map(g=>({...g,nodes:g.nodes.map(n=>({values:n,number:++offset}))}));
+const groups=nodePhases.map(phase=>({title:phase.title,caption:phase.caption,nodes:routeNodes.filter(node=>node.phaseId===phase.id)}));
+
 ---
 <div class="project-map">
 <p class="map-intro">{label('沿彩色路线，从想法走到交付。18 个关键节点串起 31 个教学动作，点击节点开始这一段。','Follow the colored path from idea to delivery. 18 milestones connect 31 guided actions; open a node to begin.')}</p>
 <div class="serpent-map">
 <svg class="route-track" viewBox="0 0 1000 1560" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="journey-colors" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ee7f86"/><stop offset="20%" stop-color="#53b8ad"/><stop offset="40%" stop-color="#6e9cde"/><stop offset="60%" stop-color="#e8b455"/><stop offset="80%" stop-color="#a38bd1"/><stop offset="100%" stop-color="#54b8c8"/></linearGradient></defs><path d="M 60 105 H 930 Q 978 105 978 153 V 317 Q 978 365 930 365 H 70 Q 22 365 22 413 V 577 Q 22 625 70 625 H 930 Q 978 625 978 673 V 837 Q 978 885 930 885 H 70 Q 22 885 22 933 V 1097 Q 22 1145 70 1145 H 930 Q 978 1145 978 1193 V 1357 Q 978 1405 930 1405 H 60" fill="none" stroke="url(#journey-colors)" stroke-width="5" vector-effect="non-scaling-stroke" stroke-linecap="round"/></svg>
-{numbered.map((group,i)=><section class={`journey-row color-${i}`}>
-<header><span>{label(`阶段 ${i+1}`,`STAGE ${i+1}`)}</span><h2>{t(group.title as [string,string],locale)}</h2><span class="direction">{i%2===0?'→':'←'}</span></header>
-<ol style={`--count:${group.nodes.length}`}>{group.nodes.map(({values:n,number})=><li><a href={url(locale,`learn/${n[0]}`)}><span class="milestone"><Icon name={({idea:'idea',description:'document',tool:'tool',folder:'folder-plus','open-project':'folder',clarify:'message',requirements:'document',prototype:'layout',plan:'checklist',checkpoint:'git',environment:'code',preview:'click',accept:'verify',delivery:'package','release-review':'shield',package:'package','live-check':'rocket',maintain:'settings'} as Record<string,string>)[n[0]]} size={25}/><b>{String(number).padStart(2,'0')}</b></span><h3>{label(n[1],n[2])}</h3><p>{label(n[3],n[4])}</p></a></li>)}</ol>
+{groups.map((group,i)=><section class={`journey-row color-${i}`}>
+<header><span>{label(`阶段 ${i+1}`,`STAGE ${i+1}`)}</span><h2>{t(group.title,locale)}</h2><span class="direction">{i%2===0?'→':'←'}</span></header>
+<ol style={`--count:${group.nodes.length}`}>{group.nodes.map(node=><li><a href={url(locale,`node/${node.id}`)}><span class="milestone"><Icon name={node.icon} size={25}/><b>{String(node.order).padStart(2,'0')}</b></span><h3>{t(node.title,locale)}</h3><p>{t(node.gloss,locale)}</p></a></li>)}</ol>
 </section>)}
 </div>
 <div class="route-decisions">
-<section><span class="decision-icon"><Icon name="refresh" size={23}/></span><h2>{label('没通过？沿这条路修好再继续','Not passed? Repair before continuing')}</h2><p>{label('人工验收或上线评估发现问题时：','When acceptance or release review finds an issue:')}</p><div class="repair-links"><a href={url(locale,'learn/feedback')}>{label('记录反馈','Record feedback')}</a><span>→</span><a href={url(locale,'learn/repair-plan')}>{label('修复计划与测试标准','Repair plan and criteria')}</a><span>→</span><a href={url(locale,'learn/repair')}>{label('修复与复测','Repair and retest')}</a></div><p><a href={url(locale,'learn/accept')}>{label('↶ 回到人工验收','↶ Return to acceptance')}</a><span> · </span><a href={url(locale,'learn/release-review')}>{label('↶ 回到上线评估','↶ Return to release review')}</a></p></section>
-<section><span class="decision-icon"><Icon name="route" size={23}/></span><h2>{label('选择适合项目的交付方式','Choose a delivery path')}</h2><div class="delivery-options"><a href={url(locale,'learn/delivery')}><Icon name="monitor"/>{label('本机使用','Local use')}</a><a href={url(locale,'learn/package')}><Icon name="browser"/>{label('网站部署','Web deployment')}</a><a href={url(locale,'learn/package')}><Icon name="package"/>{label('应用安装包','App installer')}</a></div><p><a href={url(locale,'learn/publish')}>{label('静态网站可参考 GitHub Pages ↗','GitHub Pages guide for static sites ↗')}</a></p><p>{label('交付后仍需检查实际入口，有问题就返回反馈与修复。','Check the real entry after delivery; return to feedback and repair if needed.')}</p></section>
+<section><span class="decision-icon"><Icon name="refresh" size={23}/></span><h2>{label('没通过？沿这条路修好再继续','Not passed? Repair before continuing')}</h2><p>{label('人工验收或上线评估发现问题时：','When acceptance or release review finds an issue:')}</p><div class="repair-links"><a href={stepUrl(locale,'feedback')}>{label('记录反馈','Record feedback')}</a><span>→</span><a href={stepUrl(locale,'repair-plan')}>{label('修复计划与测试标准','Repair plan and criteria')}</a><span>→</span><a href={stepUrl(locale,'repair')}>{label('修复与复测','Repair and retest')}</a></div><p><a href={stepUrl(locale,'accept')}>{label('↶ 回到人工验收','↶ Return to acceptance')}</a><span> · </span><a href={stepUrl(locale,'release-review')}>{label('↶ 回到上线评估','↶ Return to release review')}</a></p></section>
+<section><span class="decision-icon"><Icon name="route" size={23}/></span><h2>{label('选择适合项目的交付方式','Choose a delivery path')}</h2><div class="delivery-options"><a href={stepUrl(locale,'delivery')}><Icon name="monitor"/>{label('本机使用','Local use')}</a><a href={stepUrl(locale,'package')}><Icon name="browser"/>{label('网站部署','Web deployment')}</a><a href={stepUrl(locale,'package')}><Icon name="package"/>{label('应用安装包','App installer')}</a></div><p><a href={stepUrl(locale,'publish')}>{label('静态网站可参考 GitHub Pages ↗','GitHub Pages guide for static sites ↗')}</a></p><p>{label('交付后仍需检查实际入口，有问题就返回反馈与修复。','Check the real entry after delivery; return to feedback and repair if needed.')}</p></section>
 </div>
 <p class="map-note">{label('Git 与项目规则在第一次改文件前准备；进入节点后，按具体动作顺序操作。','Prepare Git and project rules before the first file changes; follow the guided action order inside each milestone.')}</p>
 </div>

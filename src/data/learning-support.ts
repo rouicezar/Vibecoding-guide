@@ -34,8 +34,8 @@ export const stepSupport:StepSupport[]=[
       "Users: club members. Problem: chat signups get lost. Pass: submit and see a reservation; repeating it does not reserve twice."
     ],
     "recovery": [
-      "不知道就写尚未确定。不要为了填满而编造用户需求；第8步会逐项澄清。",
-      "Keep unknowns explicit. Step 8 clarifies them; do not invent requirements."
+      "不知道就写尚未确定。不要为了填满而编造用户需求；“澄清需求与第一版范围”这一节点会逐项澄清。",
+      "Keep unknowns explicit. The “Clarify needs and scope” milestone clarifies them; do not invent requirements."
     ],
     "terms": [
       "brief",
@@ -49,8 +49,8 @@ export const stepSupport:StepSupport[]=[
       "The confirmed idea."
     ],
     "output": [
-      "本站项目描述 → 第6步复制给AI并保存为 idea.md。",
-      "Guide brief → step 6 saves it as idea.md."
+      "本站项目描述 → “准备 Git 与项目规则”这一节点复制给 AI 并保存为 idea.md。",
+      "Guide brief → the “Prepare Git and project rules” milestone saves it as idea.md."
     ],
     "steps": [
       [
@@ -62,8 +62,8 @@ export const stepSupport:StepSupport[]=[
         "Add a name, device and complete flow: open event in a phone browser, book, see result."
       ],
       [
-        "核对并确认生成。这里只形成文字；第6步才把它保存到真实项目。以后项目文件是AI执行依据，修改本站草稿不会自动改文件。",
-        "Confirm the brief. This is text only until step 6 saves it in the project. Editing a guide draft does not automatically update project files."
+        "核对并确认生成。这里只形成文字；“准备 Git 与项目规则”这一节点才把它保存到真实项目。以后项目文件是AI执行依据，修改本站草稿不会自动改文件。",
+        "Confirm the brief. This is text only until the “Prepare Git and project rules” milestone saves it in the project. Editing a guide draft does not automatically update project files."
       ]
     ],
     "answer": [
@@ -75,8 +75,8 @@ export const stepSupport:StepSupport[]=[
       "Project: club reservations. Device: phone browser. Flow: view session, enter name, book, see confirmation. Budget: undecided."
     ],
     "recovery": [
-      "带入为空时先返回第1步确认草稿；不要重复手写已有材料。备份可在页末“我的项目材料与备份”下载。",
-      "If import is empty, confirm step 1 first. Back up all material using the panel at the page bottom."
+      "带入为空时先返回“记录项目想法”确认草稿；不要重复手写已有材料。备份可在页末“我的项目材料与备份”下载。",
+      "If import is empty, confirm the “Record the idea” milestone first. Back up all material using the panel at the page bottom."
     ],
     "terms": [
       "brief",
@@ -136,8 +136,8 @@ export const stepSupport:StepSupport[]=[
       "A local location or web workspace."
     ],
     "output": [
-      "确定的项目名称与位置 → 第5步选中相同位置。",
-      "Project name and location → select the same location in step 5."
+      "确定的项目名称与位置 → “在工具中打开项目”选中相同位置。",
+      "Project name and location → the “Open it in the tool” milestone selects the same location in the “Open it in the tool” milestone."
     ],
     "steps": [
       [
@@ -158,8 +158,8 @@ export const stepSupport:StepSupport[]=[
       "The project root is the box containing this project, not the computer’s root. Separate boxes prevent editing the wrong project."
     ],
     "example": [
-      "book-club/ ← 在工具中选择这一层\n  idea.md ← 第6步才创建\n  docs/ ← 后面放需求文档",
-      "book-club/ ← select this folder\n  idea.md ← created in step 6\n  docs/ ← later documents"
+      "book-club/ ← 在工具中选择这一层\n  idea.md ← “准备 Git 与项目规则”这一节点才创建\n  docs/ ← 后面放需求文档",
+      "book-club/ ← select this folder\n  idea.md ← created by the “Prepare Git and project rules” milestone\n  docs/ ← later documents"
     ],
     "recovery": [
       "文件夹已有内容时保留。确认它是否属于本项目，不要通过删除旧文件来清空起点。",
@@ -182,8 +182,8 @@ export const stepSupport:StepSupport[]=[
     ],
     "steps": [
       [
-        "在工具选择 Open folder / 打开项目，选第4步的项目；网页工具从项目列表打开对应工作区。",
-        "Use Open folder / project and select step 4’s folder, or open the corresponding web workspace."
+        "在工具选择 Open folder / 打开项目，选“创建项目文件夹”建立的项目；网页工具从项目列表打开对应工作区。",
+        "Use Open folder / project and select the “Create the project folder” milestone’s folder, or open the corresponding web workspace."
       ],
       [
         "在该项目内新建对话，点击带入已确认材料，再发本步只读检查提示词。",
@@ -199,8 +199,8 @@ export const stepSupport:StepSupport[]=[
       "Chat history is not a project directory: discussing a renovation is not entering the correct building."
     ],
     "example": [
-      "通过：实际路径与第4步一致，现有文件列表可核对。失败：只回复一个建议路径。",
-      "Pass: actual path and verifiable files. Fail: a suggested path only."
+      "通过：实际路径与“创建项目文件夹”记录一致，现有文件列表可核对。失败：只回复一个建议路径。",
+      "Pass: the actual path matches the “Create the project folder” record and verifiable files. Fail: a suggested path only."
     ],
     "recovery": [
       "位置不一致先停止当前任务，重新选择项目后检查；只读模式无法写入时，按工具说明切换执行模式。",
@@ -218,8 +218,8 @@ export const stepSupport:StepSupport[]=[
       "Confirmed brief and correct directory."
     ],
     "output": [
-      "idea.md、工具支持的规则文件、首次本地Git版本 → 第7步核对。",
-      "idea.md, supported rules and first local Git revision → step 7."
+      "idea.md、工具支持的规则文件、首次本地 Git 版本 → “亲手核对 AI 创建的文件”核对。",
+      "idea.md, supported rules and first local Git revision → the “Inspect a file AI actually created” stepvision → the “Inspect a file AI actually created” step."
     ],
     "steps": [
       [
@@ -260,8 +260,8 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "first-file",
     "input": [
-      "第6步报告的真实文件位置。",
-      "Real paths reported in step 6."
+      "“准备 Git 与项目规则”报告的真实文件位置。",
+      "Real paths reported by the “Prepare Git and project rules” milestone."
     ],
     "output": [
       "本人确认文件存在且内容正确 → 需求讨论。",
@@ -290,8 +290,8 @@ export const stepSupport:StepSupport[]=[
       "Expect the actual personal brief, not instructions saying to write one."
     ],
     "recovery": [
-      "按完整路径找不到时返回第6步核对实际保存结果，不创建另一份项目代替。",
-      "Return to step 6 if the real file is missing; do not replace it with another project."
+      "按完整路径找不到时返回“准备 Git 与项目规则”核对实际保存结果，不创建另一份项目代替。",
+      "Return to the “Prepare Git and project rules” milestone if the real file is missing; do not replace it with another project."
     ],
     "terms": [
       "markdown",
@@ -400,8 +400,8 @@ export const stepSupport:StepSupport[]=[
         "Read the generated requirements and reject unrequested login, storage or payment features. Ask for explanations of jargon."
       ],
       [
-        "确认需求编号与范围一致；需求不明确就回第8步讨论，技术方案留到第13步。",
-        "Match IDs to scope. Clarify vague requirements in step 8; technology comes in step 13."
+        "确认需求编号与范围一致；需求不明确就回“澄清需求与第一版范围”讨论，技术方案留到“确认界面与技术方案”。",
+        "Match IDs to scope. Clarify vague requirements in the “Clarify needs and scope” milestone and leave technology to “Agree on design and technology”. in the “Clarify needs and scope” milestone; technology comes in the “Let AI choose from actual conditions” step."
       ]
     ],
     "answer": [
@@ -523,8 +523,8 @@ export const stepSupport:StepSupport[]=[
         "Plan a small experiment for critical unknowns with account/device prerequisites, cost, input and expected result; do not install in this step."
       ],
       [
-        "确认方案和实验后写入设计文档；第15步准备环境后先跑实验。失败返回这里调整方案，不带着未证实前提做全套功能。",
-        "Record the decision and experiment. Run it after environment setup in step 15; if it fails, return here before full development."
+        "确认方案和实验后写入设计文档；“检查环境并初始化项目”准备好环境后先跑实验。失败返回这里调整方案，不带着未证实前提做全套功能。",
+        "Record the decision in the design document; run the experiment after the “Check the environment and initialize” milestone.cision and experiment. Run it after environment setup in the “Check the environment and initialize” milestone; if it fails, return here before full development."
       ]
     ],
     "answer": [
@@ -609,8 +609,8 @@ export const stepSupport:StepSupport[]=[
         "Install dependencies and start from the project root. Report the actual URL, device/emulator or headless command."
       ],
       [
-        "打开入口核对，再按README停止并重启。若有第13步关键实验，先完成它；失败回选型，成功再继续。",
-        "Open the entry, stop and restart using README. Run any step 13 feasibility experiment before continuing; return to selection on failure."
+        "打开入口核对，再按README停止并重启。若有“确认界面与技术方案”里的关键实验，先完成它；失败回选型，成功再继续。",
+        "Open the entry, stop and restart using README. Run any the “Let AI choose from actual conditions” step feasibility experiment before continuing; return to selection on failure."
       ]
     ],
     "answer": [
@@ -651,8 +651,8 @@ export const stepSupport:StepSupport[]=[
         "Open the real entry and try it. Separate AI checks from personal testing; report failures rather than marking passed."
       ],
       [
-        "本任务核对后保存文件、记录版本与结果，再重复发送本步提示词做下一项。界面和数据问题可展开第17/18步对应指导，处理后回到任务表。",
-        "After verification save files, revision and results, then reuse this prompt for the next task. Consult steps 17/18 for UI/data guidance and return to the list."
+        "本任务核对后保存文件、记录版本与结果，再重复发送本步提示词做下一项。界面和数据问题可展开“只调整眼前这一页”和“让保存真正留下内容”的对应指导，处理后回到任务表。",
+        "After verification save files, revision and results, then reuse this prompt for the next task. Consult the “Adjust this page only” step and the “Make Save retain real content” step for UI/data guidance and return to the list."
       ],
       [
         "全部必做任务完成或本人明确延期后，才进入全项目测试；不要做完第一项就认为第一版完成。",
@@ -793,8 +793,8 @@ export const stepSupport:StepSupport[]=[
       "R01 / revision abc / test name / expect confirmation and one fewer place / actual matches / evidence path / passed."
     ],
     "recovery": [
-      "失败只记录问题和操作证据，本步不修代码；第23步整理反馈后再修复。",
-      "Record failures here without code changes; organize feedback in step 23 before repair."
+      "失败只记录问题和操作证据，本步不修代码；“把试用结果记录成反馈”整理反馈后再修复。",
+      "Record failures here without code changes; repair follows the “Record the trial feedback” step.; organize feedback in the “Record the trial feedback” step before repair."
     ],
     "terms": [
       "e2e",
@@ -1026,8 +1026,8 @@ export const stepSupport:StepSupport[]=[
         "Personally repeat the original steps and affected functions; do not close an issue before retesting."
       ],
       [
-        "失败沿用原编号追加证据；成功写修复版本和复测结果。交付问题修好后回第27步重新评估。",
-        "Append failures under the same ID; on success record revision and retest. Return delivery-related fixes to step 27."
+        "失败沿用原编号追加证据；成功写修复版本和复测结果。交付问题修好后回“评估上线与交付条件”重新评估。",
+        "Append failures under the same ID; on success record revision and retest. Return delivery-related fixes to the “Review release readiness” milestone."
       ]
     ],
     "answer": [
@@ -1067,8 +1067,8 @@ export const stepSupport:StepSupport[]=[
         "Record your choice, then generate a save prompt for docs/delivery.md. Guide input alone does not inform AI."
       ],
       [
-        "看第28步对应交付分支的账号、设备、费用前提；静态Pages方案可以现在查第30步，然后回第27/28步，不等上线后才选择。",
-        "Review step 28 prerequisites. Static Pages planning in step 30 belongs before packaging, not after release."
+        "看“准备部署脚本或安装包”对应交付分支的账号、设备、费用前提；静态 Pages 方案可以现在查“可选：把简单网页放到 GitHub Pages”，然后回“评估上线与交付条件”和“准备部署脚本或安装包”，不等上线后才选择。",
+        "Review prerequisites for the “Prepare deployment or packaging” delivery branch. Static Pages can be checked now via “Optional: publish a simple page on GitHub Pages”, then return to “Review release readiness” and “Prepare deployment or packaging” instead of deciding after release.ages planning in the “Optional: publish a simple page on GitHub Pages” step belongs before packaging, not after release."
       ]
     ],
     "answer": [
@@ -1109,8 +1109,8 @@ export const stepSupport:StepSupport[]=[
         "This is pre-packaging readiness. Target-environment trials remain pending until a deliverable exists."
       ],
       [
-        "有阻断先反馈修复；具备准备条件才进入第28步。第28步完成后，第29步还要做最终放行检查。",
-        "Repair blockers first; proceed to packaging when ready. Step 29 checks final release readiness after trial."
+        "有阻断先反馈修复；具备准备条件才进入“准备部署脚本或安装包”。它完成后，“交付上线，检查实际入口”还要做最终放行检查。",
+        "Repair blockers first; proceed to the “Prepare deployment or packaging” milestone only when prerequisites are ready, then run the final go-live check in “Deliver and check the real entry”. to packaging when ready. Step 29 checks final release readiness after trial."
       ]
     ],
     "answer": [
@@ -1118,8 +1118,8 @@ export const stepSupport:StepSupport[]=[
       "Readiness is checking your documents; release clearance is boarding. Neither proves the trip already completed."
     ],
     "example": [
-      "构建条件：已核验；真机安装：待第28步；正式发布：未执行。",
-      "Build prerequisites verified; device installation pending step 28; release not executed."
+      "构建条件：已核验；真机安装：待“准备部署脚本或安装包”；正式发布：未执行。",
+      "Build prerequisites verified; device installation pending “Prepare deployment or packaging”; production release not executed.tallation pending the “Prepare deployment or packaging” milestone; release not executed."
     ],
     "recovery": [
       "把不足写入带编号反馈，修复后重新评估，别在提示词里要求AI替你宣告全部通过。",
@@ -1184,7 +1184,7 @@ export const stepSupport:StepSupport[]=[
     ],
     "steps": [
       [
-        "先看第28步产物与试运行是否齐全，阻断/未测项是否已处理。明确将发布到哪个账号/地址、版本和费用，由本人确认发布动作。",
+        "先看“准备部署脚本或安装包”的产物与试运行是否齐全，阻断/未测项是否已处理。明确将发布到哪个账号/地址、版本和费用，由本人确认发布动作。",
         "Review artifact and trial evidence, resolve blockers, and confirm account/address, revision, cost and release action."
       ],
       [
@@ -1220,21 +1220,21 @@ export const stepSupport:StepSupport[]=[
       "Static-site delivery choice."
     ],
     "output": [
-      "Pages适用判断与设置方案 → 返回第28步。",
-      "Pages suitability and setup → return to step 28."
+      "Pages 适用判断与设置方案 → 返回“准备部署脚本或安装包”。",
+      "Pages suitability and setup → return to “Prepare deployment or packaging”."
     ],
     "steps": [
       [
         "这是第26—28步使用的可选方案，不是上线后的必做任务。需要服务端或秘密凭据的项目不能直接按纯静态站处理。",
-        "This is an optional plan for steps 26–28, not a post-release requirement. Server-side work and secrets need another arrangement."
+        "This is an optional plan for the “Choose how to deliver” milestone–28, not a post-release requirement. Server-side work and secrets need another arrangement."
       ],
       [
         "让AI读取实际构建配置，确定输出目录、资源路径和发布方式。设置入口是对应仓库 Settings → Pages，按当前官方说明选择构建来源。",
         "Read actual build config for output, asset paths and publishing method. Use repository Settings → Pages and current official guidance."
       ],
       [
-        "只准备配置说明，返回第28步试运行；正式创建远端/推送/发布统一在第29步确认后执行。",
-        "Prepare instructions, return to step 28 for trials, and perform authorized remote publishing in step 29."
+        "只准备配置说明，返回“准备部署脚本或安装包”试运行；正式创建远端、推送和发布统一在“交付上线，检查实际入口”确认后执行。",
+        "Prepare instructions, return to “Prepare deployment or packaging” for the trial run, and execute remote creation, push and release only after confirmation in “Deliver and check the real entry”.s, return to the “Prepare deployment or packaging” milestone for trials, and perform authorized remote publishing in the “Deliver and check the real entry” milestone."
       ]
     ],
     "answer": [
@@ -1320,8 +1320,8 @@ export const referenceAnswers:Record<string,Copy>={
     "Identify the actual local path or web workspace and export options. Guide drafts are not the code directory."
   ],
   "open-project": [
-    "让AI只读报告真实路径和现有文件，再与第4步记录及文件管理器对照。只看对话标题不够。",
-    "Compare AI’s actual read-only path/files with step 4 and the file manager; a chat title is insufficient."
+    "让AI只读报告真实路径和现有文件，再与“创建项目文件夹”的记录及文件管理器对照。只看对话标题不够。",
+    "Compare AI’s actual read-only paths and files with the “Create the project folder” record and the file manager.th/files with the “Create the project folder” milestone and the file manager; a chat title is insufficient."
   ],
   "checkpoint": [
     "没有。仓库初始化只是建立版本管理容器，成功提交后才有相应文件快照；数据库和未纳入Git的文件需另行备份。",

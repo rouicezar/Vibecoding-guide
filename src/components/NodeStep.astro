@@ -1,0 +1,234 @@
+---
+import Icon from './Icon.astro';
+import PromptTemplate from './PromptTemplate.astro';
+import StepVisual from './StepVisual.astro';
+import LearningBranches from './LearningBranches.astro';
+import StepRecord from './StepRecord.astro';
+import IdeaDraft from './IdeaDraft.astro';
+import ToolEntries from './ToolEntries.astro';
+import {lessons} from '../data/learning';
+import {stepSupport,referenceAnswers} from '../data/learning-support';
+import {fileContracts} from '../data/learning-contracts';
+import {glossary} from '../data/glossary';
+import {t,url,type Locale,type Copy} from '../data/site';
+import {nodeForStep,optionalSteps} from '../data/nodes';
+/**
+ * 一个步骤的固定结构。18 个节点、31 个步骤共用这一个模板：
+ *   固定区块 A 操作示意 → 9 个编号槽位（顺序固定）→ 固定区块 B 项目分支 → 固定区块 C 示例资料
+ *   → 固定区块 D 记录与核对 → 固定底栏（分支选择或下一步）。
+ * 槽位与区块的内容全部来自现有数据；本文件不写教学内容。
+ */
+interface Props {stepId: string; index: number; total: number; locale: Locale; open?: boolean; nextHref?: string; nextLabel?: Copy;}
+const {stepId, index, total, locale, open = false, nextHref, nextLabel} = Astro.props;
+const lesson = lessons.find(l => l.id === stepId);
+if (!lesson) throw new Error(`未知步骤：${stepId}`);
+const support = stepSupport.find(s => s.id === stepId);
+if (!support) throw new Error(`步骤缺少步骤材料：${stepId}`);
+const label = (zh: string, en: string) => t([zh, en] as const, locale);
+const terms = support.terms.map(id => glossary.find(g => g.id === id)).filter(Boolean);
+const purpose = lesson.understanding?.why ?? support.answer;
+const contract = fileContracts[lesson.id];
+const answer = referenceAnswers[lesson.id];
+const optional = optionalSteps[stepId];
+const heading = (n: number, zh: string, en: string) =>
+  `<h3 class="slot-title"><span class="slot-number">${String(n).padStart(2, '0')}</span>${t([zh, en] as const, locale)}</h3>`;
+/** 跨节点引用另一步骤时用完整地址，只有同节点内的步骤才用页内锚点。 */
+const stepHref = (id: string) => `${url(locale, `node/${nodeForStep(id)}`)}#${id}`;
+---
+
+<details class="node-step" id={stepId} data-node-step={stepId} open={open}>
+  <summary>
+    <span class="step-order">{String(index).padStart(2, '0')}<span aria-hidden="true">/</span>{String(total).padStart(2, '0')}</span>
+    <span class="step-title">{t(lesson.title, locale)}{optional && <em class="step-optional">{label("可选","Optional")}</em>}</span>
+    <span class="step-hint">{label('展开这一步', 'Open this step')}<Icon name="chevron" size={16}/></span>
+  </summary>
+
+  <div class="step-body">
+    {optional && <p class="step-optional-note"><Icon name="help" size={16} />{t(optional, locale)}</p>}
+
+    <!-- 固定区块 A · 操作示意 -->
+    <StepVisual id={lesson.id} locale={locale} />
+
+    <!-- 槽位 01 · 材料交接 -->
+    <div class="step-slot">
+      <Fragment set:html={heading(1, '开始前带上，做完交给下一步', 'Bring in, then pass onward')} />
+      <div class="material-flow">
+        <div><small>{label('开始前带上', 'Bring')}</small><p>{t(support.input, locale)}</p></div>
+        <span class="material-arrow" aria-hidden="true">→</span>
+        <div><small>{label('做完交给下一步', 'Pass onward')}</small><p>{t(support.output, locale)}</p></div>
+      </div>
+      {contract && <details class="learn-details">
+        <summary>{label('这一步读哪些文件、写哪个文件', 'Files this step reads and writes')}</summary>
+        <p>{label('本站不能检查你的电脑文件。在当前项目对话里发送，AI 应先读取这些材料；缺失就回前面的步骤补齐。', 'This guide cannot inspect your files. Send in the current project; AI reads these inputs first. Return to the earlier step if something is missing.')}</p>
+        <p><strong>{label('需要读取：', 'Read: ')}</strong>{contract.reads.join(' · ') || label('当前已确认材料与项目位置', 'Confirmed material and project location')}</p>
+        <p><strong>{label('这一步写入：', 'Write: ')}</strong>{contract.writes.join(' · ') || label('只检查，不改文件', 'Read-only; no file changes')}</p>
+        <p class="slot-note"><a href={stepHref(contract.back)}>{label('缺前置材料？回上一步补齐 →', 'Missing input? Return to the previous step →')}</a></p>
+      </details>}
+    </div>
+
+    <!-- 槽位 02 · 这一步要达成 -->
+    <div class="step-slot">
+      <Fragment set:html={heading(2, '这一步要达成', 'What this step achieves')} />
+      <p>{t(purpose, locale)}</p>
+      {lesson.understanding && <details class="learn-details">
+        <summary>{label('弄懂原理，再试着自己判断', 'Understand it, then judge for yourself')}</summary>
+        <h4>{label('这个概念是什么意思', 'What the concept means')}</h4>
+        <p>{t(lesson.understanding.concept, locale)}</p>
+        <h4>{label('换个情况，还会判断吗', 'Can this be applied elsewhere?')}</h4>
+        <p>{t(lesson.understanding.question, locale)}</p>
+        {answer && <details><summary>{label('查看参考答案', 'See a reference answer')}</summary><p>{t(answer, locale)}</p></details>}
+        <p class="slot-note">{label('试着用自己的话回答；拿不准时先对照上面的解释，再用自己的项目举例核对。', 'Answer in your own words; if unsure, compare the explanation above and check it against your own project.')}</p>
+      </details>}
+    </div>
+
+    <!-- 槽位 03 · 你要做的 -->
+    <div class="step-slot">
+      <Fragment set:html={heading(3, '你要做的', 'What you do')} />
+      <p class="step-location"><Icon name="location" size={16} />{t(lesson.where, locale)}</p>
+      <ol class="lesson-actions">{lesson.actions.map(action => <li>{t(action, locale)}</li>)}</ol>
+      {lesson.id === 'tool' && <ToolEntries locale={locale} />}
+    </div>
+
+    <!-- 槽位 04 · 逐项跟着做 -->
+    <div class="step-slot">
+      <Fragment set:html={heading(4, '不会具体操作？逐项跟着做', 'Not sure how? Follow each action')} />
+      <ol class="support-actions">
+        {support.steps.map(step => <li><details><summary>{t(step, locale).split(/[。.!！]/)[0]}</summary><p>{t(step, locale)}</p></details></li>)}
+      </ol>
+    </div>
+
+    <!-- 槽位 05 · 这一步出现的词 -->
+    <div class="step-slot">
+      <Fragment set:html={heading(5, '这一步出现的词', 'Words in this step')} />
+      <div class="step-terms">
+        {terms.map(term => <section>
+          <h4><a href={url(locale, `terms/${term!.id}`)}>{t(term!.name, locale)} ↗</a></h4>
+          <p>{t(term!.definition, locale)}</p>
+          <p class="slot-note">{t(term!.example, locale)}</p>
+        </section>)}
+      </div>
+    </div>
+
+    <!-- 槽位 06 · 可能卡住的地方 -->
+    <div class="step-slot">
+      <Fragment set:html={heading(6, '可能卡住的地方', 'Where people get stuck')} />
+      {lesson.issues.map(issue => <div class="issue-card">
+        <p class="issue-symptom"><Icon name="bug" size={16} />{t(issue.title, locale)}</p>
+        <dl>
+          <dt>{label('先看哪里', 'Check')}</dt><dd>{t(issue.check, locale)}</dd>
+          <dt>{label('这样处理', 'Try this')}</dt><dd>{t(issue.action, locale)}</dd>
+          <dt>{label('恢复后应该看到', 'Expected recovery')}</dt><dd>{t(issue.expected, locale)}</dd>
+        </dl>
+        {issue.retry && <p class="slot-note"><a href={stepHref(issue.retry)}>{label('回到前面的准备步骤 →', 'Revisit the preparation step →')}</a></p>}
+      </div>)}
+      <PromptTemplate id={`rescue-${lesson.id}`} title={['问题不在列表里？请 AI 排查', 'Not listed? Ask AI to investigate'] as Copy} locale={locale}
+        prompt={[`我停在“${lesson.title[0]}”。预期结果：${lesson.expected[0]}。实际画面/报错：[在这里补充]。请先根据已有文件检查原因，一次只给一个可逆的处理动作，说明在哪里操作、恢复后应看到什么。不要重建项目，不要删除已有成果。`, `I am at “${lesson.title[1]}”. Expected: ${lesson.expected[1]}. Actual screen/error: [add here]. Inspect existing files first. Give one reversible action at a time, its location, and expected result. Do not recreate the project or delete existing work.`] as Copy} />
+    </div>
+
+    <!-- 槽位 07 · 发给 AI 的话 -->
+    <div class="step-slot">
+      <Fragment set:html={heading(7, '发给 AI 的话（可一键复制）', 'What to send to AI (copyable)')} />
+      {lesson.prompt
+        ? <PromptTemplate id={`learn-${lesson.id}`} title={['这一步的提示词模板', 'Prompt template for this step'] as Copy} kind={lesson.templateKind ?? 'prompt'} prompt={lesson.prompt} locale={locale} />
+        : lesson.id === 'idea'
+          ? <IdeaDraft locale={locale} />
+          : <p>{label('这一步不需要发给 AI：先在自己的笔记里填写。', 'This step does not need a prompt. Write it in your own notes.')}</p>}
+    </div>
+
+    <!-- 槽位 08 · 看到这个结果才算完成 -->
+    <div class="step-slot step-slot-done">
+      <Fragment set:html={heading(8, '看到这个结果才算完成', 'Check this before continuing')} />
+      <p class="success-line"><Icon name="verify" size={18} />{t(lesson.expected, locale)}</p>
+    </div>
+
+    <!-- 槽位 09 · 没有出现预期结果时 -->
+    <div class="step-slot">
+      <Fragment set:html={heading(9, '没有出现预期结果时', 'If the result differs')} />
+      <p>{t(support.recovery, locale)}</p>
+      <details class="learn-details">
+        <summary>{label('看结果对照（教学示意，不是你的项目结果）', 'Compare with an example (illustration, not your result)')}</summary>
+        <pre>{t(support.example, locale)}</pre>
+      </details>
+    </div>
+
+    <!-- 固定区块 B · 按项目类型展开 -->
+    <LearningBranches id={lesson.id} locale={locale} />
+
+    <!-- 固定区块 C · 示例与参考资料 -->
+    {(lesson.sample || lesson.refs || lesson.source) && <details class="learn-details">
+      <summary>{label('看示例或查资料', 'Examples and reference')}</summary>
+      {lesson.sample && <p>{t(lesson.sample, locale)}</p>}
+      {lesson.refs?.map(r => <p><a href={`${url(locale, r.path)}?lesson=${lesson.id}`}>{t(r.title, locale)} →</a></p>)}
+      {lesson.source && <p><a href={lesson.source} target="_blank" rel="noopener">{label('打开官方操作入口 ↗', 'Open the official instructions ↗')}</a></p>}
+    </details>}
+
+    <!-- 固定区块 D · 记录与核对 -->
+    <StepRecord id={lesson.id} locale={locale} />
+
+    <!-- 固定底栏 -->
+    <div class="step-footer">
+      <span class="slot-note">{label(`第 ${index} 步，共 ${total} 步`, `Step ${index} of ${total}`)}</span>
+      {lesson.choices
+        ? <span class="step-choices">{lesson.choices.map((choice, i) => <a class={i === lesson.choices!.length - 1 ? 'learn-primary' : 'learn-help'} data-complete={['feedback', 'repair-plan'].includes(choice.id) ? undefined : lesson.id} href={stepHref(choice.id)}>{t(choice.label, locale)} →</a>)}</span>
+        : nextHref && nextLabel
+          ? <a class="learn-primary" data-complete={lesson.id} href={nextHref}>{t(nextLabel, locale)} →</a>
+          : <button type="button" class="learn-primary" data-finish={lesson.id}>{label('已核对，记录完成', 'Checked, mark complete')}</button>}
+    </div>
+  </div>
+</details>
+
+<style>
+.node-step{border:1px solid #dfe6ee;border-radius:12px;background:#fff;margin:12px 0;overflow:hidden;scroll-margin-top:90px}
+.node-step[open]{border-color:#b9cade;box-shadow:0 6px 18px #17243b0a}
+.node-step>summary{display:flex;align-items:center;gap:14px;padding:18px 20px;cursor:pointer;list-style:none;min-height:62px}
+.node-step>summary::-webkit-details-marker{display:none}
+.step-order{font:12px/1 ui-monospace,monospace;color:#5b7fa6;background:#eef4fb;border-radius:6px;padding:7px 8px;flex-shrink:0}
+.node-step[open] .step-order{background:#df3044;color:#fff}
+.step-title{font-size:17px;font-weight:650;color:#1c2f47;line-height:1.5;flex:1}
+.step-optional{font-style:normal;font-size:11px;font-weight:600;color:#7b5fc0;background:#f2ecff;border-radius:999px;padding:3px 9px;margin-left:8px;vertical-align:middle}
+.step-optional-note{display:flex;gap:9px;align-items:flex-start;border:1px dashed #a38bd1;background:#fcfaff;border-radius:10px;padding:13px 15px;margin:16px 0 0;font-size:13px;color:#5b4b8a;line-height:1.7}
+.step-hint{display:inline-flex;align-items:center;gap:4px;font-size:12px;color:#64748b;white-space:nowrap}
+.node-step[open] .step-hint{color:#df3044}
+.step-body{padding:4px 20px 22px;border-top:1px solid #eef2f6}
+.step-slot{padding:22px 0;border-bottom:1px solid #eef2f6}
+.step-slot:last-of-type{border-bottom:0}
+.slot-title{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:650;color:#1c2f47;margin:0 0 14px}
+.slot-number{font:11px/1 ui-monospace,monospace;color:#7b8ea5;background:#f2f6fa;border-radius:5px;padding:5px 6px}
+.material-flow{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;background:#f7fafc;border-radius:10px;padding:16px 18px}
+.material-flow small{color:#347c83;font-weight:650;font-size:13px}
+.material-flow p{font-size:15px;margin:6px 0 0;line-height:1.7}
+.material-arrow{color:#7b93ab}
+.step-location{display:flex;gap:10px;align-items:center;color:#475569;font-size:14px;margin:0 0 12px}
+.lesson-actions{padding-left:24px;line-height:1.9;margin:0;font-size:15px}
+.lesson-actions li{padding:5px 0}
+.support-actions{padding-left:24px;margin:0;font-size:15px}
+.support-actions li{padding:7px 0}
+.support-actions summary{cursor:pointer;font-weight:600}
+.support-actions p{margin:10px 0}
+.step-terms section{padding:12px 0}
+.step-terms section+section{border-top:1px solid #eef2f6}
+.step-terms h4{margin:0 0 4px;font-size:15px}
+.step-terms p{margin:4px 0;font-size:14px}
+.issue-card{border:1px solid #ffe0e4;background:#fffafb;border-radius:10px;padding:16px 18px;margin-bottom:12px}
+.issue-symptom{display:flex;gap:9px;align-items:center;font-weight:650;color:#b3283c;margin:0 0 10px;font-size:15px}
+.issue-card dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0;font-size:14px}
+.issue-card dt{color:#64748b;white-space:nowrap}
+.issue-card dd{margin:0}
+.step-slot-done .success-line{display:flex;gap:10px;align-items:flex-start;border:1px solid #50a976;background:#f4fbf7;border-radius:10px;padding:16px 18px;margin:0;font-size:15px;color:#20492f;line-height:1.7}
+.step-slot pre{white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid #d5e0e7;border-radius:8px;padding:18px;font:14px/1.8 system-ui;background:#fbfcfd}
+.slot-note{font-size:13px;color:#64748b;line-height:1.7}
+.step-body h4{font-size:14px;margin:14px 0 6px}
+.step-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:18px;border-top:1px solid #eef2f6;margin-top:6px}
+.step-choices{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+@media(max-width:640px){
+ .node-step>summary{padding:16px;gap:10px}
+ .step-title{font-size:16px}
+ .step-hint{display:none}
+ .step-body{padding:0 15px 18px}
+ .material-flow{grid-template-columns:1fr;gap:10px}
+ .material-arrow{display:none}
+ .issue-card dl{grid-template-columns:1fr}
+ .issue-card dt{margin-top:6px}
+ .step-footer{flex-direction:column;align-items:stretch}
+}
+</style>

@@ -2,8 +2,11 @@ import {explorePaths} from '../src/data/explore/index.ts';
 import {readFile,access} from 'node:fs/promises';
 import assert from 'node:assert/strict';
 import {glossaryPaths} from '../src/data/glossary/index.ts';
-import {learningPaths} from '../src/data/learning.ts';
+import {learningPaths,lessons} from '../src/data/learning.ts';
+import {nodeForStep} from '../src/data/nodes.ts';
+import {url} from '../src/data/site.ts';
 import {journey,mainJourney} from '../src/data/journey.ts';
+import {routeNodes} from '../src/data/nodes.ts';
 import {practices} from '../src/data/practice.ts';
 import {modules} from '../src/data/site.ts';
 for(const stage of journey.filter(stage=>stage.parent)){
@@ -30,7 +33,7 @@ for(const stage of journey){
  }
 }
 const dictionary=JSON.parse(await readFile('src/data/dictionary.json','utf8'));
-const paths=[...explorePaths.map(p=>p+'/'),'roadmap/',...journey.map(s=>`roadmap/${s.id}/`),...learningPaths.map(p=>p+'/'),'','tools/','start/','communicate/','stacks/','components/','terms/',...glossaryPaths.map(p=>p+'/'),...practices.map(p=>p.path+'/'),'data/','check/','launch/','maintain/',...dictionary.entries.map(e=>`components/${e.id}/`),'projects/web/','projects/mini-program/','projects/mobile/','projects/desktop/'];
+const paths=[...explorePaths.map(p=>p+'/'),'roadmap/',...routeNodes.map(n=>`node/${n.id}/`),...journey.map(s=>`roadmap/${s.id}/`),'library/','','tools/','start/','communicate/','stacks/','components/','terms/',...glossaryPaths.map(p=>p+'/'),...practices.map(p=>p.path+'/'),'data/','check/','launch/','maintain/',...dictionary.entries.map(e=>`components/${e.id}/`),'projects/web/','projects/mini-program/','projects/mobile/','projects/desktop/'];
 for(const locale of ['zh-cn','en'])for(const path of paths){
  const html=await readFile(`dist/${locale}/${path}index.html`,'utf8');
  // Direct second-person guidance is intentional in the approved beginner walkthrough.
@@ -48,4 +51,15 @@ for(const locale of ['zh-cn','en'])for(const path of paths){
  }
  for(const match of html.matchAll(/href="#([^"]+)"/g))assert(html.includes(`id="${match[1]}"`),`Missing anchor ${match[1]}`);
 }
-console.log(`PASS: ${paths.length*2} localized pages, language counterparts, headings, local links/assets section anchors, copy policy, module coverage structured bilingual templates, branch parents and lifecycle ordering.`);
+/* 旧学习页面不再单独存在：/learn/<步骤> 必须跳转到对应节点页的步骤锚点。 */
+for(const locale of ['zh-cn','en'])for(const lesson of lessons){
+ const html=await readFile(`dist/${locale}/learn/${lesson.id}/index.html`,'utf8');
+ const target=`${url(locale,`node/${nodeForStep(lesson.id)}`)}#${lesson.id}`;
+ assert(html.includes(`url=${target}`),`旧学习页未跳转到节点页：${locale}/${lesson.id} → ${target}`);
+ assert(html.includes('content="0;url='),`旧学习页不是即时跳转：${locale}/${lesson.id}`);
+}
+for(const locale of ['zh-cn','en']){
+ const index=await readFile(`dist/${locale}/learn/index.html`,'utf8');
+ assert(index.includes(`url=${url(locale,'roadmap')}`),`旧学习入口未跳转到路线图：${locale}`);
+}
+console.log(`PASS: ${paths.length*2} localized pages, language counterparts, headings, local links/assets section anchors, copy policy, module coverage structured bilingual templates, branch parents and lifecycle ordering; ${lessons.length*2} legacy learning pages redirect to node-page step anchors.`);
