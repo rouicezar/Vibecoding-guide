@@ -1,7 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import {t,url,type Locale} from '../data/site';
-import {nodePhases,routeNodes} from '../data/nodes';
+import {nodePhases,routeNodes,optionalSteps} from '../data/nodes';
 const {locale,path}=Astro.props as {locale:Locale;path:string};
 const current=path.startsWith('node/')?path.split('/')[1]:undefined;
 ---
@@ -9,13 +9,15 @@ const current=path.startsWith('node/')?path.split('/')[1]:undefined;
 <a class:list={['nav-item',{active:path===''}]} href={url(locale)} aria-current={path===''?'page':undefined}><Icon name="home" size={20}/>{t(['从这里开始','Start here'],locale)}</a>
 <a class:list={['nav-item',{active:path.startsWith('roadmap')}]} href={url(locale,'roadmap')} aria-current={path==='roadmap'?'page':undefined}><Icon name="route" size={20}/><strong>{t(['完整路线图','Complete roadmap'],locale)}</strong></a>
 <div class="nav-label">{t(['一步一步做 · 18 个节点','BUILD STEP BY STEP · 18 MILESTONES'],locale)}</div>
-{nodePhases.map((phase,i)=><Fragment>
-<div class="nav-phase">{i+1}. {t(phase.title,locale)}</div>
-{routeNodes.filter(node=>node.phaseId===phase.id).map(node=><a class:list={['nav-item',{active:current===node.id}]} href={url(locale,`node/${node.id}`)} aria-current={current===node.id?'page':undefined}><span class="node-number">{String(node.order).padStart(2,'0')}</span><span>{t(node.title,locale)}</span></a>)}
-</Fragment>)}
+{nodePhases.map((phase,i)=><details class="nav-phase-group" open={current?routeNodes.find(n=>n.id===current)?.phaseId===phase.id:i===0}>
+<summary class="nav-phase">{i+1}. {t(phase.title,locale)}</summary>
+{routeNodes.filter(node=>node.phaseId===phase.id).map(node=><a class:list={['nav-item',{active:current===node.id}]} href={url(locale,`node/${node.id}`)} aria-current={current===node.id?'page':undefined}><span class="node-number">{String(node.order).padStart(2,'0')}</span><span>{t(node.title,locale)}</span><small data-node-progress={node.id}>0/{node.stepIds.filter(id=>!optionalSteps[id]).length}</small></a>)}
+</details>)}
 <div class="nav-secondary"><a class="nav-item" href={url(locale,'library')}><Icon name="book" size={20}/>{t(['查资料','Reference library'],locale)}<span aria-hidden="true">↗</span></a><a class="nav-item" href={url(locale,'terms')}><Icon name="question" size={20}/>{t(['遇到不懂的词','Look up a word'],locale)}</a></div>
 <div class="nav-explore"><a class:list={['nav-item',{active:path.startsWith('explore')}]} href={url(locale,'explore')} aria-current={path.startsWith('explore')?'page':undefined}><Icon name="idea" size={20}/>{t(['大家在做什么','What people build'],locale)}</a></div>
 </nav>
 <style>.nav-label{margin:30px 10px 12px;font-size:10px}.nav-phase{margin:14px 10px 4px;font-size:11px;color:#8a94a3;font-weight:600}.nav-item{font-size:13px;min-height:40px;gap:10px}.node-number{font:11px/1 ui-monospace,monospace;color:#5b7fa6;background:#eef4fb;border-radius:5px;padding:5px 6px;flex-shrink:0}.nav-item.active .node-number{background:#df3044;color:#fff}.nav-secondary{border-top:1px solid #e2e8f0;margin-top:32px;padding-top:16px}.nav-secondary a{color:#64748b;font-size:12px}</style>
 
 <style>.nav-explore{border-top:1px solid #e2e8f0;margin-top:14px;padding-top:14px}.nav-explore a{white-space:nowrap;color:#397e78}</style>
+
+<style>.nav-phase-group{border:0;margin:4px 0;padding:0}.nav-phase-group>summary{min-height:44px;padding:10px 6px;margin:0;cursor:pointer;font-size:14px;color:#465c74;list-style:revert}.nav-phase-group .nav-item{white-space:normal;font-size:14px;min-height:44px}.nav-phase-group .nav-item small{margin-left:auto;font-size:12px;color:#435e78;white-space:nowrap}.nav-label{font-size:12px}.nav-secondary a{font-size:14px}</style>

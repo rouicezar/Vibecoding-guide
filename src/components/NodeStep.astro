@@ -1,5 +1,6 @@
 ---
 import Icon from './Icon.astro';
+import {microActions} from '../data/micro-actions';
 import PromptTemplate from './PromptTemplate.astro';
 import StepVisual from './StepVisual.astro';
 import LearningBranches from './LearningBranches.astro';
@@ -40,7 +41,7 @@ const stepHref = (id: string) => `${url(locale, `node/${nodeForStep(id)}`)}#${id
   <summary>
     <span class="step-order">{String(index).padStart(2, '0')}<span aria-hidden="true">/</span>{String(total).padStart(2, '0')}</span>
     <span class="step-title">{t(lesson.title, locale)}{optional && <em class="step-optional">{label("可选","Optional")}</em>}</span>
-    <span class="step-hint">{label('展开这一步', 'Open this step')}<Icon name="chevron" size={16}/></span>
+    <span class="step-progress" data-progress={stepId}>{label('待核对', 'To check')}</span><span class="step-hint">{label('展开这一步', 'Open this step')}<Icon name="chevron" size={16}/></span>
   </summary>
 
   <div class="step-body">
@@ -90,16 +91,16 @@ const stepHref = (id: string) => `${url(locale, `node/${nodeForStep(id)}`)}#${id
     </div>
 
     <!-- 槽位 04 · 逐项跟着做 -->
-    <div class="step-slot">
-      <Fragment set:html={heading(4, '不会具体操作？逐项跟着做', 'Not sure how? Follow each action')} />
+    <details class="step-slot step-extra">
+      <summary><Fragment set:html={heading(4, '不会具体操作？逐项跟着做', 'Not sure how? Follow each action')} /></summary>
       <ol class="support-actions">
-        {support.steps.map(step => <li><details><summary>{t(step, locale).split(/[。.!！]/)[0]}</summary><p>{t(step, locale)}</p></details></li>)}
+        {microActions[stepId].map(step => <li data-micro-action={step.id}><p>{t(step.action,locale)}</p><dl class="micro-check"><dt>{label('应看到','Expected')}</dt><dd>{t(step.expect,locale)}</dd><dt>{label('没有出现时','If missing')}</dt><dd>{t(step.ifWrong,locale)}</dd></dl></li>)}
       </ol>
-    </div>
+    </details>
 
     <!-- 槽位 05 · 这一步出现的词 -->
-    <div class="step-slot">
-      <Fragment set:html={heading(5, '这一步出现的词', 'Words in this step')} />
+    <details class="step-slot step-extra">
+      <summary><Fragment set:html={heading(5, '这一步出现的词', 'Words in this step')} /></summary>
       <div class="step-terms">
         {terms.map(term => <section>
           <h4><a href={url(locale, `terms/${term!.id}`)}>{t(term!.name, locale)} ↗</a></h4>
@@ -107,11 +108,11 @@ const stepHref = (id: string) => `${url(locale, `node/${nodeForStep(id)}`)}#${id
           <p class="slot-note">{t(term!.example, locale)}</p>
         </section>)}
       </div>
-    </div>
+    </details>
 
     <!-- 槽位 06 · 可能卡住的地方 -->
-    <div class="step-slot">
-      <Fragment set:html={heading(6, '可能卡住的地方', 'Where people get stuck')} />
+    <details class="step-slot step-extra">
+      <summary><Fragment set:html={heading(6, '可能卡住的地方', 'Where people get stuck')} /></summary>
       {lesson.issues.map(issue => <div class="issue-card">
         <p class="issue-symptom"><Icon name="bug" size={16} />{t(issue.title, locale)}</p>
         <dl>
@@ -123,7 +124,7 @@ const stepHref = (id: string) => `${url(locale, `node/${nodeForStep(id)}`)}#${id
       </div>)}
       <PromptTemplate id={`rescue-${lesson.id}`} title={['问题不在列表里？请 AI 排查', 'Not listed? Ask AI to investigate'] as Copy} locale={locale}
         prompt={[`我停在“${lesson.title[0]}”。预期结果：${lesson.expected[0]}。实际画面/报错：[在这里补充]。请先根据已有文件检查原因，一次只给一个可逆的处理动作，说明在哪里操作、恢复后应看到什么。不要重建项目，不要删除已有成果。`, `I am at “${lesson.title[1]}”. Expected: ${lesson.expected[1]}. Actual screen/error: [add here]. Inspect existing files first. Give one reversible action at a time, its location, and expected result. Do not recreate the project or delete existing work.`] as Copy} />
-    </div>
+    </details>
 
     <!-- 槽位 07 · 发给 AI 的话 -->
     <div class="step-slot">
@@ -142,14 +143,14 @@ const stepHref = (id: string) => `${url(locale, `node/${nodeForStep(id)}`)}#${id
     </div>
 
     <!-- 槽位 09 · 没有出现预期结果时 -->
-    <div class="step-slot">
-      <Fragment set:html={heading(9, '没有出现预期结果时', 'If the result differs')} />
+    <details class="step-slot step-extra">
+      <summary><Fragment set:html={heading(9, '没有出现预期结果时', 'If the result differs')} /></summary>
       <p>{t(support.recovery, locale)}</p>
       <details class="learn-details">
         <summary>{label('看结果对照（教学示意，不是你的项目结果）', 'Compare with an example (illustration, not your result)')}</summary>
         <pre>{t(support.example, locale)}</pre>
       </details>
-    </div>
+    </details>
 
     <!-- 固定区块 B · 按项目类型展开 -->
     <LearningBranches id={lesson.id} locale={locale} />
@@ -165,13 +166,14 @@ const stepHref = (id: string) => `${url(locale, `node/${nodeForStep(id)}`)}#${id
     <!-- 固定区块 D · 记录与核对 -->
     <StepRecord id={lesson.id} locale={locale} />
 
+    <button type="button" class="undo-progress" data-undo-complete={stepId} hidden>{label('改动后需重查：撤销本动作完成标记', 'Needs another check: undo completion')}</button>
     <!-- 固定底栏 -->
     <div class="step-footer">
       <span class="slot-note">{label(`第 ${index} 步，共 ${total} 步`, `Step ${index} of ${total}`)}</span>
       {lesson.choices
-        ? <span class="step-choices">{lesson.choices.map((choice, i) => <a class={i === lesson.choices!.length - 1 ? 'learn-primary' : 'learn-help'} data-complete={['feedback', 'repair-plan'].includes(choice.id) ? undefined : lesson.id} href={stepHref(choice.id)}>{t(choice.label, locale)} →</a>)}</span>
+        ? <span class="step-choices">{lesson.choices.map((choice, i) => <a class={i === lesson.choices!.length - 1 ? 'learn-primary' : 'learn-help'} data-follow-step={choice.id} data-complete={['feedback', 'repair-plan'].includes(choice.id) ? undefined : lesson.id} href={stepHref(choice.id)}>{t(choice.label, locale)} →</a>)}</span>
         : nextHref && nextLabel
-          ? <a class="learn-primary" data-complete={lesson.id} href={nextHref}>{t(nextLabel, locale)} →</a>
+          ? <a class="learn-primary" data-complete={lesson.id} data-follow-step={nextHref.startsWith('#')?nextHref.slice(1):undefined} href={nextHref}>{t(nextLabel, locale)} →</a>
           : <button type="button" class="learn-primary" data-finish={lesson.id}>{label('已核对，记录完成', 'Checked, mark complete')}</button>}
     </div>
   </div>
@@ -232,3 +234,9 @@ const stepHref = (id: string) => `${url(locale, `node/${nodeForStep(id)}`)}#${id
  .step-footer{flex-direction:column;align-items:stretch}
 }
 </style>
+
+<style>
+.step-extra>summary{cursor:pointer;padding:8px 0;min-height:44px}.step-extra>summary .slot-title{display:inline-flex;margin:0}.step-progress{font-size:13px;white-space:nowrap;color:#52667d}.step-progress[data-done="true"]{color:#246c50}.undo-progress{padding:10px 12px;min-height:44px;font-size:14px;border:1px solid #c7d3df;border-radius:7px;background:white;color:#365570}.step-hint{display:none!important}@media(max-width:640px){.node-step>summary{flex-wrap:wrap;padding:14px}.step-progress{margin-left:auto}.step-order{font-size:12px}.step-body{padding-inline:14px}}
+</style>
+
+<style>.support-actions>li{padding:10px 0 18px}.micro-check{display:grid;grid-template-columns:100px 1fr;gap:8px 12px;font-size:14px;line-height:1.8;border-left:3px solid #bed8d3;padding:10px 14px;background:#f7fafb}.micro-check dt{font-weight:650;color:#2c665e}.micro-check dd{margin:0;color:#344d65}@media(max-width:640px){.micro-check{grid-template-columns:1fr;gap:3px}.micro-check dd+dt{margin-top:10px}}</style>

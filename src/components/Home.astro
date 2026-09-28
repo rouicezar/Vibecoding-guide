@@ -34,7 +34,8 @@ const outcomes=[['一份清楚的项目描述','A clear project brief'],['工具
 <aside class="home-library"><span class="library-symbol"><Icon name="book" size={27}/></span><div><h2>{t(['遇到问题，资料就在手边。','Help when a question comes up.'],locale)}</h2><p>{t(['选项目、选工具、看组件、查术语。需要哪一项，再展开哪一项。','Project choices, tools, components, and terminology. Open only what is needed.'],locale)}</p></div><a href={url(locale,'library')}>{t(['按问题查资料','Browse by question'],locale)} <Icon name="arrow" size={18}/></a></aside>
 </div>
 <script>
-import {stepUrl, nextMainStep} from '../data/nodes';
+import {stepUrl} from '../data/nodes';
+import {resumeStep} from '../data/learning-progress';
 import type {Locale} from '../data/site';
 import {projectStorage as localStorage} from '../scripts/project-storage';
 import {lessons} from '../data/learning';
@@ -49,8 +50,8 @@ if(home){
   const state=parseLearning(localStorage.getItem('vibe-guide-learning-v1'));
   const recent=home.querySelector<HTMLAnchorElement>('[data-last-viewed]')!;
   if(state.lastViewed&&lessons.some(l=>l.id===state.lastViewed)){recent.href=stepUrl(locale,state.lastViewed);recent.textContent=locale==='en'?'Last viewed action →':'最近浏览的动作 →';recent.hidden=false;}
-  if(state.idea||state.completed.length){
-   const next=nextMainStep(state.completed);
+  if(state.idea||state.completed.length||state.activeBranch){
+   const next=resumeStep(state);
    const a=home.querySelector<HTMLAnchorElement>('[data-resume]')!;
    a.href=stepUrl(locale,next??'maintain');
    a.textContent=next?(locale==='en'?'Continue where I left off →':'接着上次的动作做 →'):(locale==='en'?'Main route complete · review maintenance →':'主线已完成 · 查看维护说明 →');

@@ -6,7 +6,7 @@ import {legacyLessons,phases} from '../src/data/learning.ts';
 import {stepUrl,nodeForStep,nodePhases,routeNodes,nextMainStep,linearStepIds} from '../src/data/nodes.ts';
 import {t} from '../src/data/site.ts';
 import {blockers} from '../src/data/blockers.ts';
-const src=(await readFile('src/scripts/navigation.ts','utf8')).replace('../data/base.ts',new URL('../src/data/base.ts',import.meta.url).href);
+const src=(await readFile('src/scripts/navigation.ts','utf8')).replace('../data/base.ts',new URL('../src/data/base.ts',import.meta.url).href).replace('../data/nodes.ts',new URL('../src/data/nodes.ts',import.meta.url).href);
 const js=ts.transpileModule(src,{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText;
 const {readTrail,withTrail,cleanPath}=await import('data:text/javascript;base64,'+Buffer.from(js).toString('base64'));
 const origin='http://127.0.0.1:4324';

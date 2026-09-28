@@ -1,0 +1,6 @@
+---
+import {resourcesForNode} from '../data/node-resources';
+import {t,url,type Locale} from '../data/site';
+const {id,locale}=Astro.props as {id:string;locale:Locale};
+---
+<details class="learn-details node-resources"><summary>{t(['本节点可查的资料','References for this milestone'],locale)}</summary><p>{t(['遇到对应问题再查，资料不是额外必做步骤。','Open these when the question arises; they are not extra required actions.'],locale)}</p><ul>{resourcesForNode(id).map(r=><li><a href={`${url(locale,r.path)}?node=${id}`}>{t(r.question,locale)}</a><p>{t(r.use,locale)}</p></li>)}</ul><a href={`${url(locale,'terms')}?node=${id}`}>{t(['按本节点查术语 →','Look up this milestone’s terms →'],locale)}</a></details>

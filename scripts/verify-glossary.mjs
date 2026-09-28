@@ -1,3 +1,4 @@
+import {routeUrl} from '../src/data/nodes.ts';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {glossary,termGroups,termDiagrams,termComparisons,starterIds} from '../src/data/glossary/index.ts';
@@ -22,7 +23,7 @@ for(const term of glossary){
   const html=decode(await readFile(`dist/${locale}/terms/${term.id}/index.html`,'utf8'));
   assert(html.includes(term.definition[index]),`${locale}/${term.id}: definition missing`);
   assert(html.includes(term.example[index]),`${locale}/${term.id}: example missing`);
-  assert(html.includes(`href="/${locale}/${term.path}/"`),`${term.id}: task link`);
+  assert(html.includes(`href="${routeUrl(locale,term.path)}"`),`${term.id}: task link`);
   assert(html.includes(locale==='en'?'An everyday example':'换成生活中的例子'));
  }
 }

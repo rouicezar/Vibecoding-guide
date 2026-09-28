@@ -3,6 +3,8 @@ import {glossary,termComparisons} from '../data/glossary';
 import {t,url,type Locale} from '../data/site';
 import TermDiagram from './TermDiagram.astro';
 import Icon from './Icon.astro';
+import {relatedNodesForTerm} from '../data/node-resources';
+import {routeUrl} from '../data/nodes';
 import '../styles/glossary.css';
 const {locale,id}=Astro.props as {locale:Locale;id:string};
 const term=glossary.find(x=>x.id===id)!;
@@ -15,8 +17,11 @@ const primaryVisual=['llm','agent','skill','mcp','harness','frontend','backend',
 <header class="term-detail-heading"><p class="eyebrow">{t([term.priority?'新手常用 · 按需查阅':'遇到再查 · 不必背诵',term.priority?'BEGINNER ESSENTIAL':'LOOK UP WHEN NEEDED'],locale)}</p><h1>{t(term.name,locale)}</h1>{locale==='zh-cn'&&<p class="term-english">{term.name[1]}</p>}<p class="term-definition">{t(term.definition,locale)}</p></header>
 <section class="term-example"><div><Icon name="idea" size={24}/><h2>{t(['换成生活中的例子','An everyday example'],locale)}</h2></div><p>{t(term.example,locale)}</p></section>
 {group.diagram&&(primaryVisual?<TermDiagram id={group.diagram} locale={locale}/>:<details class="term-extra"><summary>{t(['用图看清这一类概念的关系','See how these concepts connect'],locale)}<Icon name="chevron" size={18}/></summary><TermDiagram id={group.diagram} locale={locale}/></details>)}
-<section class="term-use"><h2>{t(['放回实际项目中','Back in the project'],locale)}</h2><p><strong>{t(['什么时候会遇到：','When it comes up: '],locale)}</strong>{t(group.where,locale)}</p><p><strong>{t(['当前可以这样做：','What to do next: '],locale)}</strong>{t(term.action,locale)}</p><a class="term-task-link" href={url(locale,term.path)}>{t(['查看对应的方法与步骤','Open the related method and steps'],locale)} <Icon name="arrow" size={17}/></a></section>
+<section class="term-route-context"><h2>{t(['在哪些节点会用到','Where this term is useful'],locale)}</h2><p>{t(['以下是相关使用场景，不要求先学完这些节点。','These are related contexts, not prerequisites.'],locale)}</p><nav aria-label={t(['相关节点','Related milestones'],locale)}>{relatedNodesForTerm(id).map(n=><a href={url(locale,`node/${n.id}`)}>{String(n.order).padStart(2,'0')}. {t(n.title,locale)} →</a>)}</nav></section>
+<section class="term-use"><h2>{t(['放回实际项目中','Back in the project'],locale)}</h2><p><strong>{t(['什么时候会遇到：','When it comes up: '],locale)}</strong>{t(group.where,locale)}</p><p><strong>{t(['当前可以这样做：','What to do next: '],locale)}</strong>{t(term.action,locale)}</p><a class="term-task-link" href={routeUrl(locale,term.path)}>{t(['查看对应的方法与步骤','Open the related method and steps'],locale)} <Icon name="arrow" size={17}/></a></section>
 <details class="term-extra"><summary>{t(['类比之外，还有哪些容易误解？','What can this analogy leave out?'],locale)}<Icon name="chevron" size={18}/></summary><p>{t(group.caution,locale)}</p><p>{t(['生活例子用于理解职责和关系，真实行为仍以所用工具、语言或平台的规则为准。','Everyday examples explain roles and relationships; actual behavior follows the tool, language, or platform.'],locale)}</p></details>
 {related.length>0&&<section class="term-related"><h2>{t(['容易混淆的概念','Often confused with'],locale)}</h2>{related.map(c=><details class="term-extra"><summary>{t(c.title,locale)}<Icon name="chevron" size={18}/></summary><p>{t(c.explanation,locale)}</p><nav aria-label={t(c.title,locale)}>{c.ids.filter(i=>i!==id).map(i=><a href={url(locale,`terms/${i}`)}>{t(glossary.find(x=>x.id===i)!.name,locale)} →</a>)}</nav></details>)}</section>}
 <footer class="term-footer"><a href={term.source} target="_blank" rel="noopener noreferrer">{t(['查阅官方资料或原始规范 ↗','Official documentation or specification ↗'],locale)}</a><a href={`${url(locale,'terms')}?category=${group.id}`}>{t(['继续查同类术语 →','Browse this category →'],locale)}</a></footer>
 </article>
+
+<style>.term-route-context{padding:18px 0;border-top:1px solid #d7e1e9}.term-route-context p{font-size:14px;color:#52677d}.term-route-context nav{display:flex;flex-wrap:wrap;gap:12px}.term-route-context a{font-size:14px;padding:10px;border:1px solid #d7e1e9;border-radius:8px}</style>

@@ -4,12 +4,13 @@ import StageTroubleshooting from './StageTroubleshooting.astro';
 import {legacyLessons} from '../data/learning';
 import {nodeForStep} from '../data/nodes';
 import NodeStep from './NodeStep.astro';
+import NodeResources from './NodeResources.astro';
 import ProjectDraft from './ProjectDraft.astro';
 import {phases, lessons} from '../data/learning';
 import {stepSupport} from '../data/learning-support';
 import {glossary} from '../data/glossary';
 import {t,url,type Locale,type Copy} from '../data/site';
-import {routeNodes, nodePhaseById, repairStepIds, repairTitle, repairEntryNodeIds, type RouteNode} from '../data/nodes';
+import {routeNodes, nodePhaseById, repairStepIds, repairTitle, repairEntryNodeIds, optionalSteps, type RouteNode} from '../data/nodes';
 /**
  * 节点页：18 个节点共用这一个模板。页头字段与顺序固定。
  * 页头固定回答：这是第几阶段/第几节点、共几个步骤、为什么要有这一节点、做完得到什么。
@@ -21,7 +22,8 @@ const label = (zh: string, en: string) => t([zh, en] as const, locale);
 const phaseIndex = phases.findIndex(p => p.id === node.phaseId) + 1;
 const total = routeNodes.length;
 const steps = node.stepIds;
-const lastSupport = stepSupport.find(s => s.id === steps[steps.length - 1]);
+const mainSteps=steps.filter(id=>!optionalSteps[id]);
+const lastSupport = stepSupport.find(s => s.id === mainSteps[mainSteps.length - 1]);
 if (!lastSupport) throw new Error(`节点 ${node.id} 的最后一个步骤缺少材料：${steps[steps.length - 1]}`);
 const showRepair = repairEntryNodeIds.includes(node.id);
 const repairLessons = repairStepIds.map(id => {
@@ -60,16 +62,18 @@ const nodeTerms = steps
     </p>
     <h1><Icon name={node.icon} size={26} />{t(node.title, locale)}</h1>
     <p class="node-gloss">{t(node.gloss, locale)}</p>
-    <p class="node-why"><strong>{label('为什么要有这一节点：', 'Why this milestone: ')}</strong>{t(node.why, locale)}</p>
+    <details class="node-why"><summary>{label('为什么要有这一节点？', 'Why this milestone?')}</summary><p>{t(node.why, locale)}</p></details>
     <dl class="node-meta">
       <div><dt>{label('本节点步骤数', 'Steps in this milestone')}</dt><dd>{label(`共 ${steps.length} 个步骤`, `${steps.length} step${steps.length > 1 ? 's' : ''} in total`)}</dd></div>
       <div><dt>{label('做完你会得到', 'What you finish with')}</dt><dd>{t(lastSupport.output, locale)}</dd></div>
     </dl>
   </header>
 
+  <aside class="node-progress-summary" aria-label={label('本人核对进度','Your check progress')}><strong>{label('本节点','This milestone')} <span data-node-progress={node.id}>0/{mainSteps.length}</span></strong><span data-main-progress aria-live="polite"></span><small>{label('仅记录本人核对；可随时撤销，不代表网站自动验收。','Self-reported checks; reversible, not automatic verification.')}</small></aside>
+  <nav class="node-action-index" aria-label={label('本节点动作直达','Jump to an action')}>{steps.map((id,i)=><a href={`#${id}`}>{i+1}. {t(lessons.find(l=>l.id===id)!.title,locale)}</a>)}</nav>
   <section class="node-steps" aria-label={label('本节点的步骤', 'Steps in this milestone')}>
     <h2 class="node-section-title">{label(`本节点共 ${steps.length} 个步骤`, `${steps.length} step${steps.length > 1 ? 's' : ''} in this milestone`)}<span>{label('逐项展开，做完一个再进入下一个', 'Open one at a time, finish it, then continue')}</span></h2>
-    {nodePlan.map((step, i) => <NodeStep stepId={step.stepId} index={i + 1} total={steps.length} locale={locale} open={i === 0 && steps.length === 1} nextHref={step.nextHref} nextLabel={step.nextLabel} />)}
+    {nodePlan.map((step, i) => <NodeStep stepId={step.stepId} index={i + 1} total={steps.length} locale={locale} open={i === 0} nextHref={step.nextHref} nextLabel={step.nextLabel} />)}
   </section>
 
   {showRepair && <section class="node-repair" aria-label={t(repairTitle, locale)}>
@@ -102,6 +106,7 @@ const nodeTerms = steps
   {Object.values(legacyLessons).some(step=>nodeForStep(step)===node.id) && <details class="learn-details"><summary>{label('更多问题与排障资料', 'More troubleshooting references')}</summary>
     {Object.entries(legacyLessons).filter(([,step])=>nodeForStep(step)===node.id).map(([stage])=><StageTroubleshooting stage={stage} locale={locale}/>)}
   </details>}
+  <NodeResources id={node.id} locale={locale}/>
   <ProjectDraft locale={locale} />
   <p class="local-note" data-learning-status role="status">{label('草稿与进度只保存在当前浏览器。', 'Draft and progress stay in this browser.')}</p>
   <p class="local-note">{label('本页只呈现本节点的操作、术语和卡点，不把其他节点的内容堆在同一屏。', 'This page shows only this milestone’s actions, terms and blockers.')}</p>
@@ -110,10 +115,6 @@ const nodeTerms = steps
 <script>
 import {initLearning} from '../scripts/learning';
 initLearning();
-// 从旧页面跳转过来时，自动展开锚点对应的步骤。
-const openFromHash=()=>{const id=location.hash.slice(1);if(!id)return;const el=document.getElementById(id);if(el instanceof HTMLDetailsElement&&!el.open){el.open=true;el.scrollIntoView({block:'start'});}};
-openFromHash();
-window.addEventListener('hashchange',openFromHash);
 </script>
 
 <style>
@@ -158,3 +159,7 @@ window.addEventListener('hashchange',openFromHash);
  .node-nav-slot{min-width:0}
 }
 </style>
+
+<style>.node-progress-summary{display:flex;gap:12px;flex-wrap:wrap;padding:14px 16px;background:#f5f9fc;border:1px solid #d6e1eb;border-radius:10px;margin-top:18px;font-size:14px;color:#36516e}.node-progress-summary small{flex-basis:100%;font-size:13px}.node-action-index{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}.node-action-index a{padding:10px 12px;min-height:44px;border:1px solid #cedae5;border-radius:8px;font-size:14px;text-decoration:none}.node-head{padding-bottom:18px}.node-crumb{margin-bottom:14px}.node-why{margin-bottom:14px}.node-section-title{margin-top:24px}</style>
+
+<style>.node-why{margin:0 0 14px}.node-why summary{cursor:pointer;font-size:14px;font-weight:600;color:#3d5470;min-height:44px;padding:10px 0}.node-why p{margin:0 0 8px;font-size:15px}.node-meta>div{padding:12px}@media(max-width:640px){.node-meta{grid-template-columns:minmax(88px,.6fr) minmax(0,1.4fr)}.node-crumb{display:none}.node-head h1{margin-bottom:8px}.node-meta dd{font-size:14px}.node-meta dt{font-size:13px}.node-gloss{margin-bottom:6px}}</style>

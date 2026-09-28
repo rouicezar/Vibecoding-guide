@@ -1225,7 +1225,7 @@ export const stepSupport:StepSupport[]=[
     ],
     "steps": [
       [
-        "这是第26—28步使用的可选方案，不是上线后的必做任务。需要服务端或秘密凭据的项目不能直接按纯静态站处理。",
+        "这是交付准备期间使用的可选方案，不是上线后的必做任务。需要服务端或秘密凭据的项目不能直接按纯静态站处理。",
         "This is an optional plan for the “Choose how to deliver” milestone–28, not a post-release requirement. Server-side work and secrets need another arrangement."
       ],
       [

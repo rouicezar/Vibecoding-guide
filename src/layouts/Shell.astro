@@ -33,9 +33,10 @@ const searchEntries=[{path:'explore',title:t(['大家在做什么 · AI收益调
 
 </script>
 <script>
+ import {initProgress} from '../scripts/progress';
  import {initNavigation} from '../scripts/navigation';
  import {initMotion} from '../scripts/motion';
- initNavigation();initMotion();
+ initNavigation();initMotion();initProgress();
  document.querySelectorAll<HTMLButtonElement>('[data-open]').forEach(button=>button.addEventListener('click',()=>{(document.getElementById(button.dataset.open!) as HTMLDialogElement).showModal();}));
  document.addEventListener('keydown',event=>{if((event.metaKey||event.ctrlKey)&&event.key==='k'){event.preventDefault();const dialog=document.getElementById('search-dialog') as HTMLDialogElement;if(!dialog.open)dialog.showModal();document.getElementById('search-input')?.focus();}});
  const filterShortcuts=()=>{const query=(document.getElementById('search-input') as HTMLInputElement).value.trim().toLowerCase();let count=0;document.querySelectorAll<HTMLElement>('[data-search]').forEach(item=>{const match=item.dataset.search!.includes(query);item.hidden=!match||count>=6;if(match)count++;});document.getElementById('search-empty')!.hidden=count>0;};document.getElementById('search-input')?.addEventListener('input',filterShortcuts);filterShortcuts();
