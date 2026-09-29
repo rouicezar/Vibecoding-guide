@@ -1,0 +1,13 @@
+node:internal/modules/esm/get_format:218
+  throw new ERR_UNKNOWN_FILE_EXTENSION(ext, filepath);
+        ^
+
+TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".ts" for /Users/rouice/.codex/worktrees/b85c/组件/src/data/learning-branches.ts
+    at Object.getFileProtocolModuleFormat [as file:] (node:internal/modules/esm/get_format:218:9)
+    at defaultGetFormat (node:internal/modules/esm/get_format:244:36)
+    at defaultLoad (node:internal/modules/esm/load:122:22)
+    at async ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:483:32) {
+  code: 'ERR_UNKNOWN_FILE_EXTENSION'
+}
+
+Node.js v22.12.0

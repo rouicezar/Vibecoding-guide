@@ -1,0 +1,22 @@
+import assert from 'node:assert/strict';
+import {projectStorage,createProject,switchProject,restoreProject,activeProject} from '../../../src/scripts/project-storage.ts';
+const map=new Map();let failKey='';
+globalThis.window={localStorage:{getItem:k=>map.get(k)??null,setItem:(k,v)=>{if(k===failKey)throw Error('simulated quota');map.set(k,String(v));},removeItem:k=>map.delete(k)}};
+const a=createProject('A');projectStorage.setItem('vibe-guide-learning-v1','A saved');
+const staleTabState='A editing';const b=createProject('B');projectStorage.setItem('vibe-guide-learning-v1','B saved');
+// An already-open A page still holds A state but its wrapper now resolves global active project B.
+projectStorage.setItem('vibe-guide-learning-v1',staleTabState);
+assert.equal(map.get(`vibe-project:${b}:vibe-guide-learning-v1`),'A editing');
+console.log('REPRODUCED: after another tab switches to B, an old A editor writes A content into B.');
+switchProject(a);const before=new Set(map.keys());failKey='vibe-guide-projects';
+assert.throws(()=>restoreProject({format:'vibe-project-backup',version:1,name:'restore',entries:{'vibe-test-one':'one','vibe-test-two':'two'}}));
+const residue=[...map.keys()].filter(k=>!before.has(k));assert.equal(residue.length,2);assert.equal(activeProject(),a);
+console.log('REPRODUCED: failed restoration leaves '+residue.length+' orphan storage entries; active project restored but consumed space not released.');
+const {initNavigation}=await import('../../../src/scripts/navigation.ts');
+const details=[{open:true}];
+globalThis.location={href:'https://example.test/zh-cn/node/checkpoint/',hash:'',origin:'https://example.test'};
+globalThis.sessionStorage={getItem:()=>JSON.stringify({y:0,open:[]})};
+globalThis.document={querySelector:()=>null,querySelectorAll:()=>details,addEventListener:()=>{}};
+globalThis.addEventListener=()=>{};globalThis.requestAnimationFrame=fn=>fn();globalThis.scrollTo=()=>{};
+initNavigation();assert.equal(details[0].open,true);
+console.log('REPRODUCED: saved view with no open details fails to close a default-open section on return.');

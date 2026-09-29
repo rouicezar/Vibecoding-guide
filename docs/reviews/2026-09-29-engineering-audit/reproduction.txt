@@ -1,0 +1,3 @@
+REPRODUCED: after another tab switches to B, an old A editor writes A content into B.
+REPRODUCED: failed restoration leaves 2 orphan storage entries; active project restored but consumed space not released.
+REPRODUCED: saved view with no open details fails to close a default-open section on return.
