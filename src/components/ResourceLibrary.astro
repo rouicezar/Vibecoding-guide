@@ -8,7 +8,7 @@ const {locale}=Astro.props as {locale:Locale};
 const groups=[{title:['决定做什么、用什么','Choose the product and tools'],paths:['start','tools','stacks']},{title:['把当前任务做出来','Build the current task'],paths:['communicate','components','data']},{title:['检查、交付、继续维护','Verify, deliver and maintain'],paths:['check','launch','maintain','terms']}];
 ---
 <h1>{t(['带着问题来，拿着方法走','Find a method for the current question'],locale)}</h1><p class="lesson-lead">{t(['不必把资料库读完。选择当前卡住的问题，看适用条件与方法，带着结果回到项目。','No need to read the whole library. Choose the current question, check the method and conditions, then return to the project.'],locale)}</p>
-<section class="library-node-index"><h2>{t(['按当前节点找资料','Find references by milestone'],locale)}</h2><p>{t(['先选正在做的节点，只展开相关资料；原有按问题分类保留在下方。','Choose the current milestone for its references; question categories remain below.'],locale)}</p>{routeNodes.map(n=><details data-library-node={n.id}><summary>{String(n.order).padStart(2,'0')}. {t(n.title,locale)}</summary><ul>{resourcesForNode(n.id).map(r=><li><a href={`${url(locale,r.path)}?node=${n.id}`}>{t(r.question,locale)}</a></li>)}</ul><a href={`${url(locale,'terms')}?node=${n.id}`}>{t(['本节点的术语','Terms for this milestone'],locale)}</a><a class="library-back" href={url(locale,`node/${n.id}`)}>{t(['返回节点 →','Return to milestone →'],locale)}</a></details>)}</section>
+<section class="library-node-index"><h2>{t(['按当前节点找资料','Find references by milestone'],locale)}</h2><p>{t(['先选正在做的节点，只展开相关资料；原有按问题分类保留在下方。','Choose the current milestone for its references; question categories remain below.'],locale)}</p><div class="library-node-grid">{routeNodes.map(n=><details data-library-node={n.id}><summary>{String(n.order).padStart(2,'0')}. {t(n.title,locale)}</summary><ul>{resourcesForNode(n.id).map(r=><li><a href={`${url(locale,r.path)}?node=${n.id}`}>{t(r.question,locale)}</a></li>)}</ul><a href={`${url(locale,'terms')}?node=${n.id}`}>{t(['本节点的术语','Terms for this milestone'],locale)}</a><a class="library-back" href={url(locale,`node/${n.id}`)}>{t(['返回节点 →','Return to milestone →'],locale)}</a></details>)}</div></section>
 <a class="glossary-entry" href={url(locale,'terms')}><Icon name="book" size={28}/><span><strong>{t(['AI 与项目开发术语库','AI & development glossary'],locale)}</strong><small>{t(['大模型、Skill、Agent、MCP、前后端、API……一句解释，配上生活例子和图解。','Models, skills, agents, MCP, APIs and more—with everyday examples and diagrams.'],locale)}</small></span><Icon name="arrow" size={20}/></a>
 {groups.map(group=><section class="resource-group"><h2>{t(group.title as [string,string],locale)}</h2><div class="resource-grid">{group.paths.map(path=>{const r=resourceGuidance.find(r=>r.path===path)!;return <a href={url(locale,path)}><h3>{t(r.question,locale)}<Icon name="arrow" size={17}/></h3><p>{t(r.use,locale)}</p><small>{t(['读完后，你会得到什么？','What will you get from reading this? '],locale)}{t(r.result,locale)}</small></a>})}</div></section>)}
 <details class="resource-extra"><summary>{t(['已有明确操作？直接查专项方法','Need a specific procedure?'],locale)}</summary><div>{[['communicate/tools',['打开工具并检查项目访问','Open a tool and check project access']],['communicate/setup',['Git 与项目规则','Git and project rules']],['components/style',['描述界面风格','Describe visual style']],['components/edit',['只改一处界面','Change one interface part']]].map(([path,title])=><a href={url(locale,path as string)}>{t(title as [string,string],locale)} →</a>)}</div></details>
@@ -17,3 +17,17 @@ const groups=[{title:['决定做什么、用什么','Choose the product and tool
 
 <script>const node=new URLSearchParams(location.search).get('node');document.querySelectorAll<HTMLDetailsElement>('[data-library-node]').forEach(el=>{if(el.dataset.libraryNode===node){el.open=true;}});</script>
 <style>.library-node-index{margin:24px 0}.library-node-index>p{font-size:14px;color:#536b80}.library-node-index details{border-bottom:1px solid #dce5ed;padding:10px 0}.library-node-index summary{min-height:44px;font-size:15px;cursor:pointer;padding:10px 0}.library-node-index a{font-size:14px;display:inline-block;padding:8px 0}.library-back{margin-left:20px}</style>
+
+<style>
+.library-node-index{container-type:inline-size}
+.library-node-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;align-items:start;margin-top:18px}
+.library-node-grid details{margin:0;padding:0 16px 12px;border:1px solid #e1e9ed;border-radius:12px;background:linear-gradient(130deg,#ffffffdb,#ffffff80);min-width:0}
+.library-node-grid details:not([open]){padding-bottom:0}
+.library-node-grid summary{display:list-item;list-style:disclosure-closed inside;min-height:64px;padding:18px 0;font-size:15px;font-weight:550;line-height:1.7;color:#344f64;overflow-wrap:anywhere}
+.library-node-grid details[open]>summary{list-style-type:disclosure-open}
+.library-node-grid ul{margin:0;padding-left:20px}
+.library-node-grid a{overflow-wrap:anywhere;line-height:1.65}
+.library-node-grid .library-back{display:block;margin-left:0;font-weight:550}
+@container (min-width:580px){.library-node-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@container (min-width:900px){.library-node-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+</style>

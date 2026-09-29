@@ -717,3 +717,9 @@ P26验证：check零错误/警告/提示，build与verify通过；中英产物�
 - [x] 合并重复阶段和步骤数量；单步骤直入操作，多步骤保留目录。
 - [x] format/build/16组verify/check通过；桌面与中英文手机验证无溢出，原因折叠及目录目标正常。
 - 记录：docs/reviews/2026-09-30-header-hierarchy/results.md。未发布，下一步视觉验收。
+
+## P67 资料节点网格（2026-09-30）
+
+- [x] 按内容宽度呈现三列/两列/单列，保持编号阅读顺序与独立折叠。
+- [x] build/16组verify通过；浏览器核对1280/800/390三档、展开链接与英文node参数自动展开。
+- 记录：docs/reviews/2026-09-30-library-grid/results.md。本地更新，未发布。
