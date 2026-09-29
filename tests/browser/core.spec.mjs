@@ -82,3 +82,31 @@ test('milestone header and resource grid remain usable', async ({ page }) => {
   expect(layout.actual).toBe(layout.expected);
   expect(layout.fits).toBe(true);
 });
+
+test('mobile home cards stay separate when text wraps', async ({ page }) => {
+  for (const width of [320, 390, 430]) {
+    await page.setViewportSize({ width, height: 900 });
+    for (const locale of ['zh-cn', 'en']) {
+      await page.goto(`${origin}/${locale}/`);
+      const geometry = await page
+        .locator('.home-journey')
+        .evaluate((figure) => {
+          const cards = [...figure.querySelectorAll('.journey-note')].map(
+            (card) => {
+              const r = card.getBoundingClientRect();
+              return { top: r.top, bottom: r.bottom };
+            },
+          );
+          return {
+            gaps: cards.slice(1).map((r, i) => r.top - cards[i].bottom),
+            contained:
+              figure.getBoundingClientRect().bottom >= cards.at(-1).bottom,
+            fits: document.documentElement.scrollWidth <= innerWidth,
+          };
+        });
+      expect(geometry.gaps.every((gap) => gap >= 20)).toBe(true);
+      expect(geometry.contained).toBe(true);
+      expect(geometry.fits).toBe(true);
+    }
+  }
+});
