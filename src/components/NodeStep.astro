@@ -44,7 +44,7 @@ const stepHref = (id: string) => `${url(locale, `node/${nodeForStep(id)}`)}#${id
   <summary>
     <span class="step-order">{String(index).padStart(2, '0')}<span aria-hidden="true">/</span>{String(total).padStart(2, '0')}</span>
     <span class="step-title">{t(lesson.title, locale)}{optional && <em class="step-optional">{label("可选","Optional")}</em>}</span>
-    <span class="step-progress" data-progress={stepId}>{label('待核对', 'To check')}</span><span class="step-hint">{label('展开这一步', 'Open this step')}<Icon name="chevron" size={16}/></span>
+    <span class="step-progress" data-progress={stepId}>{label('待核对', 'To check')}</span><span class="step-hint"><span class="when-closed">{label('展开这一步', 'Open this step')}</span><span class="when-open">{label('收起这一步', 'Close this step')}</span><Icon name="chevron" size={16}/></span>
   </summary>
 
   <div class="step-body">
@@ -86,25 +86,28 @@ const stepHref = (id: string) => `${url(locale, `node/${nodeForStep(id)}`)}#${id
     </div>
 
     <!-- 槽位 03 · 你要做的 -->
-    <div class="step-slot">
-      <Fragment set:html={heading(3, '你要做的', 'What you do')} />
+    <details class="step-slot step-extra" data-step-section="actions" open>
+      <summary><Fragment set:html={heading(3, '你要做的', 'What you do')} /><span class="slot-fold-hint"><span class="when-closed">{label('展开','Open')}</span><span class="when-open">{label('收起','Close')}</span><Icon name="chevron" size={14}/></span></summary>
       <p class="step-location"><Icon name="location" size={16} />{t(lesson.where, locale)}</p>
       {microActions[stepId].some(action=>action.action[0].includes('建议提示词：')) && <p>{label('每次只发送当前这一项的提示词：选中框内文字复制（Mac 按 ⌘C，Windows 按 Ctrl+C），切到所选工具的项目对话，粘贴后把【】替换成自己的内容，再点发送。等工具回复并核对“完成后”的结果，再做下一项。','Send one action at a time: select and copy its prompt (⌘C on Mac, Ctrl+C on Windows), switch to your tool’s project chat, paste it, replace bracketed fields and send. Wait for the reply and check the stated result before continuing.')}</p>}
-      <ol class="lesson-actions">{microActions[stepId].map(action => {
+      <ol class="lesson-actions">{microActions[stepId].map((action, actionIndex) => {
         const value=t(action.action,locale);
         const promptMarker=label('\n建议提示词：','\nSuggested prompt: ');
         const resultMarker=label('\n完成后：','\nAfterwards: ');
         const [body,result]=value.split(resultMarker);
         const [instruction,prompt]=body.split(promptMarker);
-        return <li><p>{instruction}</p>{prompt&&<><p><strong>{label('建议提示词：','Suggested prompt:')}</strong></p><pre>{prompt}</pre></>}<p><strong>{label('完成后：','Afterwards:')}</strong>{result}</p></li>;
+        return <li><details class="action-detail" data-guided-action={action.id} open={actionIndex === 0}>
+          <summary>{instruction}<span class="action-hint"><span class="when-closed">{label('展开','Open')}</span><span class="when-open">{label('收起','Close')}</span><Icon name="chevron" size={14}/></span></summary>
+          {prompt&&<><p><strong>{label('建议提示词：','Suggested prompt:')}</strong></p><pre>{prompt}</pre></>}<p><strong>{label('完成后：','Afterwards:')}</strong>{result}</p>
+        </details></li>;
       })}</ol>
       {lesson.id === 'tool' && <ToolEntries locale={locale} />}
       <FullstackPractice id={stepId} locale={locale} />
-    </div>
+    </details>
 
     <!-- 槽位 04 · 逐项跟着做 -->
     <details class="step-slot step-extra">
-      <summary><Fragment set:html={heading(4, '不会具体操作？逐项跟着做', 'Not sure how? Follow each action')} /></summary>
+      <summary><Fragment set:html={heading(4, '不会具体操作？逐项跟着做', 'Not sure how? Follow each action')} /><span class="slot-fold-hint"><span class="when-closed">{label('展开','Open')}</span><span class="when-open">{label('收起','Close')}</span><Icon name="chevron" size={14}/></span></summary>
       <ol class="support-actions">
         {microActions[stepId].map(step => <li data-micro-action={step.id}><p>{t(step.action,locale).split(label('\n建议提示词：','\nSuggested prompt: '))[0].split(label('\n完成后：','\nAfterwards: '))[0]}</p><dl class="micro-check"><dt>{label('应看到','Expected')}</dt><dd>{t(step.expect,locale)}</dd><dt>{label('没有出现时','If missing')}</dt><dd>{t(step.ifWrong,locale)}</dd></dl></li>)}
       </ol>
@@ -112,7 +115,7 @@ const stepHref = (id: string) => `${url(locale, `node/${nodeForStep(id)}`)}#${id
 
     <!-- 槽位 05 · 这一步出现的词 -->
     <details class="step-slot step-extra">
-      <summary><Fragment set:html={heading(5, '这一步出现的词', 'Words in this step')} /></summary>
+      <summary><Fragment set:html={heading(5, '这一步出现的词', 'Words in this step')} /><span class="slot-fold-hint"><span class="when-closed">{label('展开','Open')}</span><span class="when-open">{label('收起','Close')}</span><Icon name="chevron" size={14}/></span></summary>
       <div class="step-terms">
         {terms.map(term => <section>
           <h4><a href={url(locale, `terms/${term!.id}`)}>{t(term!.name, locale)} ↗</a></h4>
@@ -124,7 +127,7 @@ const stepHref = (id: string) => `${url(locale, `node/${nodeForStep(id)}`)}#${id
 
     <!-- 槽位 06 · 可能卡住的地方 -->
     <details class="step-slot step-extra">
-      <summary><Fragment set:html={heading(6, '可能卡住的地方', 'Where people get stuck')} /></summary>
+      <summary><Fragment set:html={heading(6, '可能卡住的地方', 'Where people get stuck')} /><span class="slot-fold-hint"><span class="when-closed">{label('展开','Open')}</span><span class="when-open">{label('收起','Close')}</span><Icon name="chevron" size={14}/></span></summary>
       {lesson.issues.map(issue => <div class="issue-card">
         <p class="issue-symptom"><Icon name="bug" size={16} />{t(issue.title, locale)}</p>
         <dl>
@@ -138,9 +141,9 @@ const stepHref = (id: string) => `${url(locale, `node/${nodeForStep(id)}`)}#${id
         prompt={[`我停在“${lesson.title[0]}”。预期结果：${lesson.expected[0]}。实际画面/报错：[在这里补充]。请先根据已有文件检查原因，一次只给一个可逆的处理动作，说明在哪里操作、恢复后应看到什么。不要重建项目，不要删除已有成果。`, `I am at “${lesson.title[1]}”. Expected: ${lesson.expected[1]}. Actual screen/error: [add here]. Inspect existing files first. Give one reversible action at a time, its location, and expected result. Do not recreate the project or delete existing work.`] as Copy} />
     </details>
 
-    <!-- 槽位 07 · 发给 AI 的话 -->
-    <div class="step-slot">
-      <Fragment set:html={heading(7, '本步材料（填写或复制）', 'Material for this step (fill or copy)')} />
+    <!-- 槽位 07 · 本步材料 -->
+    <details class="step-slot step-extra" data-step-section="material">
+      <summary><Fragment set:html={heading(7, '本步材料（填写或复制）', 'Material for this step (fill or copy)')} /><span class="slot-fold-hint"><span class="when-closed">{label('展开','Open')}</span><span class="when-open">{label('收起','Close')}</span><Icon name="chevron" size={14}/></span></summary>
       <p>{lesson.templateKind === 'worksheet' || lesson.id === 'idea' ? label('先在下面填写自己的材料，点击确认后核对生成内容；什么时候交给工具，按上面的具体操作来。重新打开本页若只看到编辑框，核对后再点确认即可重新复制。','Fill your own material below, confirm it and check the result. Follow the actions above for when to give it to your tool. If reopening shows only the editor, review and confirm again to copy.') : label('上面已经逐项发送并完成的，不必再发下面整段模板。需要整理本步材料时再使用；替换【】后确认，再复制到项目对话。','If you completed the individual prompts above, do not resend this full template. Use it to organize this step’s material when needed; replace bracketed fields, confirm and copy into the project chat.')}</p>
       {lesson.prompt
         ? <PromptTemplate id={`learn-${lesson.id}`} title={lesson.templateKind === 'worksheet' ? ['这一步的填写模板','Worksheet for this step'] as Copy : ['这一步的提示词模板', 'Prompt template for this step'] as Copy} kind={lesson.templateKind ?? 'prompt'} prompt={lesson.prompt} locale={locale} />
@@ -156,7 +159,7 @@ const stepHref = (id: string) => `${url(locale, `node/${nodeForStep(id)}`)}#${id
           ? <PromptTemplate id={`fullstack-${stepId}`} title={['全栈跟练：本步提示词','Full-stack practice: this step'] as Copy} locale={locale} prompt={[lesson.prompt[0]+'\n\n本次已选择个人学习记录全栈跟练。\n'+practice.instruction[0],lesson.prompt[1]+'\n\nI selected the full-stack journal practice.\n'+practice.instruction[1]] as Copy} />
           : <pre class="practice-instruction">{practice.instruction[locale==='zh-cn'?0:1]}</pre>}
       </details>
-    </div>
+    </details>
 
     <!-- 槽位 08 · 看到这个结果才算完成 -->
     <div class="step-slot step-slot-done">
@@ -166,7 +169,7 @@ const stepHref = (id: string) => `${url(locale, `node/${nodeForStep(id)}`)}#${id
 
     <!-- 槽位 09 · 没有出现预期结果时 -->
     <details class="step-slot step-extra">
-      <summary><Fragment set:html={heading(9, '没有出现预期结果时', 'If the result differs')} /></summary>
+      <summary><Fragment set:html={heading(9, '没有出现预期结果时', 'If the result differs')} /><span class="slot-fold-hint"><span class="when-closed">{label('展开','Open')}</span><span class="when-open">{label('收起','Close')}</span><Icon name="chevron" size={14}/></span></summary>
       <p>{t(support.recovery, locale)}</p>
       <details class="learn-details">
         <summary>{label('看结果对照（教学示意，不是你的项目结果）', 'Compare with an example (illustration, not your result)')}</summary>
@@ -247,7 +250,7 @@ const stepHref = (id: string) => `${url(locale, `node/${nodeForStep(id)}`)}#${id
 @media(max-width:640px){
  .node-step>summary{padding:16px;gap:10px}
  .step-title{font-size:16px}
- .step-hint{display:none}
+ .step-hint{font-size:11px}
  .step-body{padding:0 15px 18px}
  .material-flow{grid-template-columns:1fr;gap:10px}
  .material-arrow{display:none}
@@ -258,9 +261,29 @@ const stepHref = (id: string) => `${url(locale, `node/${nodeForStep(id)}`)}#${id
 </style>
 
 <style>
-.step-extra>summary{cursor:pointer;padding:8px 0;min-height:44px}.step-extra>summary .slot-title{display:inline-flex;margin:0}.step-progress{font-size:13px;white-space:nowrap;color:#52667d}.step-progress[data-done="true"]{color:#246c50}.undo-progress{padding:10px 12px;min-height:44px;font-size:14px;border:1px solid #c7d3df;border-radius:7px;background:white;color:#365570}.step-hint{display:none!important}@media(max-width:640px){.node-step>summary{flex-wrap:wrap;padding:14px}.step-progress{margin-left:auto}.step-order{font-size:12px}.step-body{padding-inline:14px}}
+.step-extra>summary{cursor:pointer;padding:8px 0;min-height:44px}.step-extra>summary .slot-title{display:inline-flex;margin:0}.step-progress{font-size:13px;white-space:nowrap;color:#52667d}.step-progress[data-done="true"]{color:#246c50}.undo-progress{padding:10px 12px;min-height:44px;font-size:14px;border:1px solid #c7d3df;border-radius:7px;background:white;color:#365570}@media(max-width:640px){.node-step>summary{flex-wrap:wrap;padding:14px}.step-progress{margin-left:auto}.step-order{font-size:12px}.step-body{padding-inline:14px}}
 </style>
 
 <style>.support-actions>li{padding:10px 0 18px}.micro-check{display:grid;grid-template-columns:100px 1fr;gap:8px 12px;font-size:14px;line-height:1.8;border-left:3px solid #bed8d3;padding:10px 14px;background:#f7fafb}.micro-check dt{font-weight:650;color:#2c665e}.micro-check dd{margin:0;color:#344d65}@media(max-width:640px){.micro-check{grid-template-columns:1fr;gap:3px}.micro-check dd+dt{margin-top:10px}}</style>
 
 <style>.practice-instruction{white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;line-height:1.8;user-select:text}</style>
+
+<style>
+.node-step>summary .when-open,.action-detail>summary .when-open{display:none}
+.node-step[open]>summary .when-open,.action-detail[open]>summary .when-open{display:inline}
+.node-step[open]>summary .when-closed,.action-detail[open]>summary .when-closed{display:none}
+.node-step[open]>summary .step-hint>svg,.action-detail[open]>summary .action-hint>svg{transform:rotate(180deg)}
+.action-detail>summary{cursor:pointer;line-height:1.8;padding:8px 0;min-height:44px}
+.action-hint{display:inline-flex;align-items:center;gap:4px;margin-left:12px;color:#64748b;font-size:12px;white-space:nowrap}
+.action-detail>p{margin:12px 0}
+.step-extra[open]>summary{margin-bottom:14px}
+</style>
+
+<style>
+.step-extra>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;list-style:none}
+.slot-fold-hint{display:inline-flex;align-items:center;gap:4px;flex-shrink:0;color:#64748b;font-size:12px}
+.step-extra>summary .when-open{display:none}
+.step-extra[open]>summary .when-open{display:inline}
+.step-extra[open]>summary .when-closed{display:none}
+.step-extra[open]>summary .slot-fold-hint>svg{transform:rotate(180deg)}
+</style>

@@ -53,3 +53,18 @@ for(const locale of ['zh-cn','en']){
  assert(!html.includes(locale==='zh-cn'?'07发给 AI 的话':'07What to send to AI'));
 }
 console.log('PASS: first-run instructions match the idea fields and worksheet purpose.');
+// Disclosure regression: all action lists and material panels remain collapsible.
+for(const locale of ['zh-cn','en'])for(const lesson of lessons){
+ const html=await readFile(`dist/${locale}/node/${nodeForStep(lesson.id)}/index.html`,'utf8');
+ const section=html.split(`data-node-step="${lesson.id}"`)[1]?.split('data-node-step=')[0];
+ assert(section,`${lesson.id}: section missing`);
+ assert(/<details[^>]*data-step-section="actions"[^>]*\sopen(?:\s|>)/.test(section),`${lesson.id}: actions must start open and be collapsible`);
+ const material=section.match(/<details[^>]*data-step-section="material"[^>]*>/)?.[0];
+ assert(material&&!/\sopen(?:\s|>)/.test(material),`${lesson.id}: long material should start collapsed`);
+ for(const [index,action] of microActions[lesson.id].entries()){
+  const tag=section.match(new RegExp(`<details[^>]*data-guided-action="${action.id}"[^>]*>`))?.[0];
+  assert(tag,`${action.id}: missing disclosure`);
+  assert.equal(/\sopen(?:\s|>)/.test(tag),index===0,`${action.id}: only the first action starts expanded`);
+ }
+}
+console.log('PASS: every bilingual step has collapsible actions/materials and only the first action starts expanded.');
