@@ -95,20 +95,16 @@ export const stepSupport:StepSupport[]=[
     ],
     "steps": [
       [
-        "打开工具比较页，按上手难度、当前免费额度、订阅开销、文件/运行能力比较。先看官方系统要求，再选择与你电脑相符的安装包。",
-        "Compare ease, current free allowance, subscription cost and file/runtime capabilities. Check official OS requirements first."
+        "操作位置：本站本步的“官方下载与安装入口”。先确认电脑是 Mac 还是 Windows，再展开下载入口，选一种工具。已装好可用工具时跳过安装，直接核对登录状态和项目入口。 提醒：这一步只选一个工具。下面安装动作以桌面工具为例；网页工具直接打开官方网页登录，命令行工具按官方安装说明进入项目，不照搬桌面入口。",
+        "Where: This step’s official download entries. Check whether your computer uses Mac or Windows, expand the download entries and choose one tool. If already installed, skip installation and check sign-in and the project entry. Note: Choose one tool. Installation below illustrates a desktop app; for a web tool sign in on its official site, and for a CLI use its official setup rather than desktop controls."
       ],
       [
-        "桌面工具：按官方安装向导安装并登录；网页制作工具：创建工作区并确认可导出/查看文件；命令行工具：先按官方指南安装，在项目目录运行其启动命令。",
-        "Desktop: install and sign in through the official guide. Web builder: create a workspace and check file/export access. CLI: follow official installation, then start it from the project folder."
+        "操作位置：所选工具的官方下载页与安装窗口。下载与你系统对应的安装文件，打开它，按安装窗口提示完成，再打开应用。 提醒：出现付费或系统权限说明时先看清内容；安装还没完成，不要先发送项目制作任务。",
+        "Where: The chosen tool’s official download page and installer. Download the installer for your OS, open it, follow its instructions and launch the app. Note: Read payment or permission explanations; do not send project work before installation finishes."
       ],
       [
-        "打开项目/文件入口。仅能回答文字的聊天模式不能直接修改电脑文件；没有所需权限时换到支持项目执行的模式，不盲目购买套餐。",
-        "Locate project/file controls. Text-only chat cannot modify local files. Use a supported execution mode; do not purchase blindly."
-      ],
-      [
-        "发送后看状态：运行中先等待；等授权时阅读它要读写的路径/命令；失败时保留原报错。额度耗尽先保存文件和下一任务，恢复后从当前项目继续。",
-        "After sending: wait while running; review requested paths/commands when permission is needed; keep errors on failure. At a usage limit, save files and the next task before resuming."
+        "操作位置：所选工具的登录界面。按界面完成本人账号登录；登录后找到与项目或文件夹有关的工作入口。 提醒：不要把密码或验证码粘贴到本站模板里；免费额度和费用以本人账号显示为准。",
+        "Where: The chosen tool’s sign-in screen. Sign in with your own account, then locate the project or folder workspace. Note: Never paste passwords or verification codes into this guide; check access and costs in your account."
       ]
     ],
     "answer": [
@@ -141,16 +137,20 @@ export const stepSupport:StepSupport[]=[
     ],
     "steps": [
       [
-        "Mac：访达→文稿→文件→新建文件夹；Windows：文件资源管理器→文档→新建→文件夹。用自己的项目名，例如 book-club；不要要求改成示例名字。",
-        "Mac: Finder → Documents → File → New Folder. Windows: File Explorer → Documents → New → Folder. Use your own name, such as book-club."
+        "操作位置：Mac 访达 / Windows 文件资源管理器。打开文件管理器，在左侧找到“文稿”或“文档”，进入这个位置。 提醒：这是电脑上的文件夹，不是本站资料库，也不是浏览器下载列表。",
+        "Where: Mac Finder / Windows File Explorer. Open the file manager and enter Documents from its sidebar. Note: This is a computer folder, not the guide’s library or the browser’s download list."
       ],
       [
-        "Mac选中文件夹可用 Option+⌘+C 复制路径；Windows在文件夹内点击地址栏复制位置。把位置放入本步记录，不用手打猜路径。",
-        "Mac: select the folder and use Option+Command+C for its path. Windows: copy the folder address bar. Paste it into the record."
+        "操作位置：刚打开的文稿／文档目录。Mac 按 Shift + Command + N；Windows 在文档目录按 Ctrl + Shift + N，新建文件夹。输入自己的项目名称并按回车，双击打开。跟练示例可命名 learning-journal。 提醒：看到已有同名文件夹先检查里面是什么，不覆盖或清空别人的项目。",
+        "Where: The Documents folder you just opened. In Documents, press Shift + Command + N on Mac or Ctrl + Shift + N on Windows. Type your project name, press Enter and open the folder. The practice example can be named learning-journal. Note: Inspect an existing same-named folder; do not overwrite or empty another project."
       ],
       [
-        "网页工具在它的项目列表新建工作区，记录项目名和工作区入口；没有本地路径就明确写网页工作区，不能假装电脑里已有文件。",
-        "For a web builder, create a workspace and record its name and URL. Mark it as a web workspace rather than inventing a local path."
+        "操作位置：自己新建的文件夹。选中刚建的文件夹。Mac 按 Option + Command + C 复制路径；Windows 打开文件夹后点击地址栏，再按 Ctrl + C。把复制的位置填入本步记录模板。 提醒：填的是自己电脑上的实际位置，不照抄教程作者路径。这里只记录，还没有让 AI 打开它。",
+        "Where: Your newly created folder. Select the new folder. On Mac press Option + Command + C to copy its path; on Windows open it, click the address bar and press Ctrl + C. Paste the path into this step’s record template. Note: Use your own actual path, not the author’s. Recording it does not open it in the AI tool."
+      ],
+      [
+        "操作位置：所选工具是网页工作区时。本步改在该工具的项目列表新建独立工作区，记录名称和实际入口；下一步打开同一工作区。 提醒：网页工作区不一定在电脑上有文件夹。模板中如实填写工作区入口，不编造本机路径。",
+        "Where: If your chosen tool uses a web workspace. Create a dedicated workspace in that tool’s project list, record its name and real entry, then open the same workspace in the next step. Note: A web workspace may not have a local folder. Record its real entry rather than inventing a local path."
       ]
     ],
     "answer": [
@@ -182,16 +182,20 @@ export const stepSupport:StepSupport[]=[
     ],
     "steps": [
       [
-        "在工具选择 Open folder / 打开项目，选“创建项目文件夹”建立的项目；网页工具从项目列表打开对应工作区。",
-        "Use Open folder / project and select the “Create the project folder” milestone’s folder, or open the corresponding web workspace."
+        "操作位置：所选 AI 工具的项目／文件夹入口。选择打开或添加项目文件夹，选中上一步的文件夹并确认。在这个项目里打开一条对话。 提醒：入口名称随工具和版本不同。网页工具打开刚记录的工作区；命令行工具先在终端进入原项目目录。不在别的项目会话里发制作任务。",
+        "Where: The AI tool’s project/folder entry. Open/add the previous folder and confirm, then open a chat within that project. Note: Names vary by tool/version. Web tools open the recorded workspace; CLIs start from the project directory in a terminal. Do not send work in an unrelated project."
       ],
       [
-        "在该项目内新建对话，点击带入已确认材料，再发本步只读检查提示词。",
-        "Start a conversation in this project, import confirmed material and send the read-only check."
+        "操作位置：本站“本步提示词”编辑框。找到下方第 7 项“发给 AI 的话”中的本步模板，把“项目文件夹”换成实际路径，点击确认，再复制生成的提示词。 提醒：确认和复制只发生在本站，还没有向工具发消息，也没有检查你的电脑。",
+        "Where: This guide’s prompt editor. Find this step’s template in section 7, “What to send to AI”, enter the real folder path, confirm and copy the generated prompt. Note: Confirm/copy only prepares text in this guide; it has not messaged the tool or inspected your computer."
       ],
       [
-        "对照AI返回的位置与文件管理器。命令行工具需先在终端进入同一目录；不确定当前路径时先让工具报告，不执行制作任务。",
-        "Compare its reported path with the file manager. CLI tools must start in that directory; verify before building."
+        "操作位置：刚打开的项目对话输入框。粘贴刚复制的提示词，检查是本次路径，再发送。等待工具完成这次只读检查。 提醒：先不要再发“开始开发”；若出现权限提示，读清它要访问哪个目录。",
+        "Where: The selected project chat composer. Paste the prompt, check the path and send it. Wait for the read-only inspection. Note: Do not send “start building” yet; read the target directory if a permission prompt appears."
+      ],
+      [
+        "操作位置：工具回复与文件管理器中的文件夹。逐字核对回复里的项目位置；确认一致后，再进入“准备起点”的动作。 提醒：“名称相似”不等于同一个目录，尤其注意下载目录和文稿目录的区别。",
+        "Where: The tool reply and your file manager. Compare the reported location with your folder; proceed to baseline preparation only when they match. Note: Similar names do not mean the same directory; distinguish Downloads from Documents."
       ]
     ],
     "answer": [
@@ -223,20 +227,16 @@ export const stepSupport:StepSupport[]=[
     ],
     "steps": [
       [
-        "点击带入项目描述并发送提示词。AI先检查Git是否存在；缺少时根据你的系统给官方安装入口和检查命令，完成安装后再重新检查。",
-        "Import the brief and send the prompt. AI checks Git first; if absent it should provide official OS-specific installation and verification."
+        "操作位置：本站项目描述与本步模板。回看已确认的项目描述，在本步模板点击“带入前面已确认的材料”，核对带入内容，再确认并复制。 提醒：本站草稿不会自动变成电脑文件；现在是准备让工具保存的文字。",
+        "Where: Your guide brief and this step’s template. Review the confirmed brief, import it into this step’s template, check the imported text, then confirm and copy. Note: A guide draft does not automatically become a computer file; you are preparing text for the tool to save."
       ],
       [
-        "AI核对当前仓库；首次空目录不需要先有历史版本。需要姓名/邮箱时由本人提供提交身份，优先只设置当前仓库；这不是账号密码。",
-        "Check the repository. An empty folder needs no prior checkpoint. Supply commit name/email if needed, preferably scoped to this repository; these are not passwords."
+        "操作位置：已经核对位置的项目对话。粘贴并发送本步提示词，让工具保存想法、规则和起点版本；等待它报告结果。 提醒：这次不开发功能。已有规则文件先读再合并，不能因为跟教程就覆盖。",
+        "Where: The project chat whose location you verified. Paste/send this step’s prompt to save the idea, rules and baseline revision; wait for its result. Note: No feature development yet. Read and merge existing rules instead of overwriting them for the tutorial."
       ],
       [
-        "查看 idea.md 正文；规则文件由工具支持情况决定，AGENTS.md不是所有工具都自动读取。要求AI说明实际规则读取入口。",
-        "Open idea.md. Rules depend on tool support: not every tool automatically reads AGENTS.md. Ask which entry it actually loads."
-      ],
-      [
-        "核对忽略列表排除密钥、依赖和生成文件，再建立仅包含本步文件的本地提交。看到真实版本号才算完成；此时不需要远端账号。",
-        "Check ignores for secrets, dependencies and output, then commit only this step’s files locally. Require a real revision; a remote account is unnecessary here."
+        "操作位置：工具刚才的结果回复。记下文件位置与版本号；下一步打开真实文件，核对保存内容。 提醒：版本号是找回起点的标记，不是验收通过证明。",
+        "Where: The tool’s result reply. Note the file locations and revision; open the real files in the next step. Note: A revision identifies a recovery point, not acceptance success."
       ]
     ],
     "answer": [
@@ -269,16 +269,20 @@ export const stepSupport:StepSupport[]=[
     ],
     "steps": [
       [
-        "在AI工具文件区点击 idea.md；或按报告的路径在文件管理器打开。md是文本文件，可用文本编辑器查看，不需要执行它。",
-        "Open idea.md in the tool’s file tree or a text editor. Markdown is text, not a program to run."
+        "操作位置：本站本步提示词模板。找到下方第 7 项“发给 AI 的话”中的本步模板，核对本步内容，确认后复制生成的提示词。先不要标记本动作完成。 提醒：本步只检查已保存文件，不再新建一个练习文件。",
+        "Where: This guide’s step prompt template. Find this step’s template in section 7, “What to send to AI”, review this step’s text, confirm and copy the generated prompt. Do not mark the action complete yet. Note: Inspect existing saved files; do not create another practice file."
       ],
       [
-        "核对用户、目标、通过条件和第二阶段范围；若文件后缀显示为 .md.txt，让AI定位实际文件并解释差异，不新建第二份描述。",
-        "Check users, goal, criteria and later scope. If the extension is .md.txt, locate the actual file instead of duplicating it."
+        "操作位置：所选工具里的原项目对话。回到原项目对话，把刚复制的文字粘贴进输入框，核对后发送。等待工具返回文件位置。 提醒：核对项目名称再发送；本站的“确认”不是向工具发送消息。",
+        "Where: The original project chat in your chosen tool. Return to the original project chat, paste the copied text, check it and send. Wait for the tool to report file locations. Note: Check the project name before sending; Confirm on this guide does not send a message to the tool."
       ],
       [
-        "查看规则文件内容和工具加载说明。已经验证真实项目文件，就不用再做 tool-check.md 练习。",
-        "Inspect the rules and loading instructions. A verified real project file makes a tool-check.md exercise unnecessary."
+        "操作位置：工具回复的文件链接，或电脑文件管理器。点击 idea.md 文件链接打开预览；没有可点链接时，在返回的文件夹中找到同名文件并打开。 提醒：看的是文件正文，不是对话里“我已经保存”的一句话。",
+        "Where: The file link in the tool reply, or your file manager. Open the idea.md link; if unavailable, find that file in the reported folder and open it. Note: Inspect the file contents, not a chat statement claiming it was saved."
+      ],
+      [
+        "操作位置：已打开的 idea.md 和规则文件。把正文与自己的描述对照，再打开规则文件检查；一致后回本站核对本动作并继续。 提醒：只有你亲自打开核对了，才点击本站的“已核对”。",
+        "Where: The opened idea.md and rules file. Compare the brief and inspect the rules file; when correct, return to the guide to record the check and continue. Note: Click Checked only after personally opening and reviewing the files."
       ]
     ],
     "answer": [
@@ -597,20 +601,20 @@ export const stepSupport:StepSupport[]=[
     ],
     "steps": [
       [
-        "让AI只读检查系统、运行时、包管理器和锁文件，说明缺什么、为何需要。已有项目沿用现有工具版本，不同时混用多种安装器。",
-        "Inspect OS, runtime, package manager and lockfile first. Explain missing dependencies; preserve the existing toolchain."
+        "操作位置：本站本步提示词模板。找到下方第 7 项“发给 AI 的话”中的本步模板，核对本步内容，确认后复制生成的提示词。先不要标记本动作完成。 提醒：先检查再安装；不要在本站输入框运行命令，那里只是保存文字。",
+        "Where: This guide’s step prompt template. Find this step’s template in section 7, “What to send to AI”, review this step’s text, confirm and copy the generated prompt. Do not mark the action complete yet. Note: Inspect before installing. This guide’s text fields store text; they do not run commands."
       ],
       [
-        "缺少工具时按官方安装步骤补齐，由AI给与你系统匹配的检查命令；重新打开终端后核对版本。不要复制别的项目的命令。",
-        "Install missing tools through official instructions, then verify versions in a new terminal using project-specific commands."
+        "操作位置：所选工具里的原项目对话。切回原项目对话，粘贴并发送刚复制的提示词。等工具检查完已有环境后，再决定是否需要安装。 提醒：核对项目名称再发送；本站的“确认”不是向工具发送消息。",
+        "Where: The original project chat in your chosen tool. Switch to the original project chat, paste/send the prompt and wait for its environment check before deciding what needs installation. Note: Check the project name before sending; Confirm on this guide does not send a message to the tool."
       ],
       [
-        "在项目根目录安装依赖、运行最小启动命令。AI报告真实输出和入口：网页是实际网址，原生应用是目标设备/模拟器，无界面程序是执行命令。",
-        "Install dependencies and start from the project root. Report the actual URL, device/emulator or headless command."
+        "操作位置：工具指定的本机安装或命令执行位置。需要你操作时，先确认在哪个窗口、哪个项目目录执行，再逐项按工具给出的实际步骤做。 提醒：系统、已有依赖和项目方案不同，不能把另一项目的命令不加核对地粘贴进来。",
+        "Where: The installation or command location identified by the tool. For a manual action, identify the window and project directory before following the tool’s exact instructions one at a time. Note: Commands depend on OS, existing dependencies and design; do not blindly paste commands from another project."
       ],
       [
-        "打开入口核对，再按README停止并重启。若有“确认界面与技术方案”里的关键实验，先完成它；失败回选型，成功再继续。",
-        "Open the entry, stop and restart using README. Run any the “Let AI choose from actual conditions” step feasibility experiment before continuing; return to selection on failure."
+        "操作位置：项目对话的运行结果。让工具启动最小入口并给出实际地址、停止方法和重启方法，再打开它给出的地址。 提醒：服务还在运行时才能打开；端口用实际输出，不照抄示例。",
+        "Where: The project chat’s runtime result. Ask the tool to start the minimal entry and give the real URL, stop and restart instructions, then open that URL. Note: The service must be running; use its actual port, not an example."
       ]
     ],
     "answer": [
@@ -643,20 +647,20 @@ export const stepSupport:StepSupport[]=[
     ],
     "steps": [
       [
-        "先让AI读任务表，选择依赖已满足的第一项未完成任务，报任务编号和测试标准。一次只做这一项。",
-        "Read the task list, identify the first ready unfinished task, and report its ID and criteria. Execute only that task."
+        "操作位置：本站本步提示词模板。找到下方第 7 项“发给 AI 的话”中的本步模板，核对本步内容，确认后复制生成的提示词。先不要标记本动作完成。 提醒：一次先做一项，才知道哪里出了问题；不要追加“顺便把剩下的全做完”。",
+        "Where: This guide’s step prompt template. Find this step’s template in section 7, “What to send to AI”, review this step’s text, confirm and copy the generated prompt. Do not mark the action complete yet. Note: One task at a time makes problems traceable; do not add a request to finish everything else."
       ],
       [
-        "完成后打开真实入口亲手操作。AI跑过的测试与本人试用分开记录；失败进入反馈，不能改成“通过”。",
-        "Open the real entry and try it. Separate AI checks from personal testing; report failures rather than marking passed."
+        "操作位置：所选工具里的原项目对话。在原项目对话粘贴并发送提示词，等待工具完成当前一项任务并报告结果。 提醒：核对项目名称再发送；本站的“确认”不是向工具发送消息。",
+        "Where: The original project chat in your chosen tool. Paste/send the prompt in the original project chat and wait for the tool to finish and report on one task. Note: Check the project name before sending; Confirm on this guide does not send a message to the tool."
       ],
       [
-        "本任务核对后保存文件、记录版本与结果，再重复发送本步提示词做下一项。界面和数据问题可展开“只调整眼前这一页”和“让保存真正留下内容”的对应指导，处理后回到任务表。",
-        "After verification save files, revision and results, then reuse this prompt for the next task. Consult the “Adjust this page only” step and the “Make Save retain real content” step for UI/data guidance and return to the list."
+        "操作位置：工具给出的网页／应用入口。打开实际入口，按本次任务要求操作一次。网页项目使用运行中的 http 地址。 提醒：能看到页面不代表所有功能都完成；尚未接好的按钮应按任务状态判断。",
+        "Where: The page/app entry reported by the tool. Open the real entry and perform the task’s action once; web projects use the running HTTP URL. Note: A visible page does not mean every feature works; judge unfinished buttons against the task state."
       ],
       [
-        "全部必做任务完成或本人明确延期后，才进入全项目测试；不要做完第一项就认为第一版完成。",
-        "Begin whole-project testing only after all required tasks are done or explicitly deferred. One task is not the entire version."
+        "操作位置：原项目对话，再回本站。告诉工具本人看到的结果，确认后保存当前任务状态；再按本站进入界面或保存的对应步骤。 提醒：本站的进度与项目任务文件不是同一份；这里点完成不会替工具更新项目文件。",
+        "Where: The original project chat, then this guide. Report your own observation, record the reviewed task state and follow the guide to interface or persistence work. Note: Guide progress and the project task file are separate; checking this page does not update project files."
       ]
     ],
     "answer": [

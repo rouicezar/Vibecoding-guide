@@ -22,7 +22,7 @@ switchProject(second);assert.equal(projectStorage.getItem('vibe-selected-platfor
 assert.throws(()=>validateBackup({format:'vibe-project-backup',version:1,entries:{'vibe-guide-active-project':'attacker'}}));
 assert.throws(()=>validateBackup({format:'vibe-project-backup',version:1,entries:{'unrelated-key':'bad'}}));
 assert.throws(()=>restoreProject({format:'wrong'}));assert.equal(activeProject(),second);
-assert.equal(lessons.length,31);assert.equal(stepSupport.length,31);
+assert.deepEqual(stepSupport.map(s=>s.id).sort(),lessons.map(l=>l.id).sort(),'Every current action needs handoff material');
 for(const l of lessons){const entry=stepSupport.find(s=>s.id===l.id);assert(entry,l.id);assert(referenceAnswers[l.id]?.every(Boolean),l.id+' reference answer');for(const term of entry.terms)assert(glossary.some(g=>g.id===term),`Missing term ${term}`);const contract=fileContracts[l.id];if(contract){assert(lessons.some(s=>s.id===contract.back));for(const path of contract.reads)assert(l.prompt[0].includes(path),`${l.id} input ${path}`);}}
 assert(fileContracts.repair.reads.includes('docs/repair-plan.md'));
 assert(fileContracts['repair-plan'].writes.includes('docs/repair-plan.md'));

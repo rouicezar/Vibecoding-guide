@@ -7,13 +7,13 @@ import {routeNodes,linearStepIds} from '../src/data/nodes.ts';
 import {mainProgress,nodeProgress,resumeStep,canComplete} from '../src/data/learning-progress.ts';
 import {termNodeIds,resourcesForNode,groupNodes} from '../src/data/node-resources.ts';
 import {glossary,termGroups} from '../src/data/glossary/index.ts';
-assert.equal(lessons.length,31);assert.equal(routeNodes.length,18);assert.equal(glossary.length,755);
+assert.deepEqual(stepSupport.map(s=>s.id).sort(),lessons.map(l=>l.id).sort());assert.equal(glossary.length,755);
 let microCount=0;
 for(const s of stepSupport){
  const rows=microActions[s.id];assert.equal(rows.length,s.steps.length,s.id);
  for(const row of rows){microCount++;for(const field of ['action','expect','ifWrong'])assert(row[field].length===2&&row[field].every(v=>v.trim().length>5),`${row.id}/${field}`);}
 }
-assert.equal(Object.keys(microActions).length,31);
+assert.deepEqual(Object.keys(microActions).sort(),lessons.map(l=>l.id).sort());
 for(const g of termGroups)assert(groupNodes[g.id]?.length,g.id);
 for(const term of glossary){assert(termNodeIds[term.id].length,term.id);for(const id of termNodeIds[term.id])assert(routeNodes.some(n=>n.id===id),`${term.id}/${id}`);}
 for(const node of routeNodes){assert(resourcesForNode(node.id).length,node.id);assert(resourcesForNode(node.id).every(Boolean));}
@@ -22,7 +22,7 @@ assert.equal(resumeStep({completed:accepted}),'delivery');
 assert.equal(resumeStep({completed:accepted,activeBranch:'repair-plan'}),'repair-plan');
 assert.equal(resumeStep({completed:linearStepIds}),undefined);
 assert.equal(resumeStep({completed:accepted,activeBranch:'bogus'}),'delivery');
-assert.deepEqual(mainProgress([...linearStepIds,...linearStepIds,'repair']),{done:27,total:27});
+assert.deepEqual(mainProgress([...linearStepIds,...linearStepIds,'repair']),{done:linearStepIds.length,total:linearStepIds.length});
 assert.deepEqual(nodeProgress('package',['publish']),{done:0,total:1});
 assert.deepEqual(nodeProgress('preview',['preview','interface']),{done:2,total:4});
 assert.deepEqual(nodeProgress('preview',['preview']),{done:1,total:4});
@@ -31,9 +31,9 @@ assert(!canComplete('preview','failed'));assert(!canComplete('preview','not-test
 for(const locale of ['zh-cn','en']){
  for(const node of routeNodes){const html=await readFile(`dist/${locale}/node/${node.id}/index.html`,'utf8');assert(html.includes('data-main-progress'));assert(html.includes('data-node-progress'));for(const id of node.stepIds){assert(html.includes(`data-progress="${id}"`));assert(html.includes(`data-undo-complete="${id}"`));for(const row of microActions[id])assert(html.includes(`data-micro-action="${row.id}"`));}}
  const terms=await readFile(`dist/${locale}/terms/index.html`,'utf8');assert(terms.includes('id="term-node"'));assert.equal((terms.match(/data-term-nodes=/g)||[]).length,755);
- const library=await readFile(`dist/${locale}/library/index.html`,'utf8');assert.equal((library.match(/data-library-node=/g)||[]).length,18);
+ const library=await readFile(`dist/${locale}/library/index.html`,'utf8');assert.equal((library.match(/data-library-node=/g)||[]).length,routeNodes.length);
 }
-console.log(`PASS: ${microCount} bilingual micro-operations; 755 term assignments; 18 reference groups; resume, repair, completion and reversible progress invariants; rendered controls.`);
+console.log(`PASS: ${microCount} bilingual micro-operations; 755 term assignments; ${routeNodes.length} reference groups; resume, repair, completion and reversible progress invariants; rendered controls.`);
 // Exercise the actual completion handler with storage failures; no browser profile is touched.
 const ts=(await import('typescript')).default;
 const source=(await readFile('src/scripts/learning.ts','utf8')).replace(/(['"])(\.\.\/data\/[^'"]+|\.\/project-storage\.ts)\1/g,(_,_quote,path)=>{

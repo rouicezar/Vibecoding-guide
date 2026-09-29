@@ -2,14 +2,14 @@ import {url,type Copy,type Locale} from './site.ts';
 import {lessons,phases,legacyLessons} from './learning.ts';
 
 /**
- * 18 个关键节点 = 学习基线。
+ * 当前节点组织：数量是实现快照，不是教学标准；按跟做需要调整。
  * 数据与站内「完整路线图」（ProjectRoadmap.astro）上的节点一一对应。
- * 每个节点的 stepIds 指向 learning.ts 的教学动作（步骤）；18 个节点共 31 个步骤。
+ * 每个节点的 stepIds 指向 learning.ts 的教学动作，数量由实际内容决定。
  * 这是节点页（/node/<id>）的唯一数据源；页面结构固定，不再逐个节点手写。
  */
 export interface RouteNode {
   id: string;
-  order: number;                                   // 1..18，线性
+  order: number;                                   // 从 1 连续排列
   phaseId: 'idea' | 'prepare' | 'scope' | 'build' | 'check' | 'use';
   icon: string;
   title: Copy;
@@ -179,7 +179,7 @@ export const nodeForStep = (stepId: string): string => {
   throw new Error(`步骤没有归属节点：${stepId}`);
 };
 
-/** 18 个节点是否覆盖了全部 31 个教学动作，以及每个动作是否只属于一个节点。 */
+/** 当前节点是否覆盖了全部教学动作，以及每个动作是否只属于一个节点。 */
 export const nodeStepIds = routeNodes.flatMap(node => node.stepIds);
 
 export const nodeById = (id: string) => routeNodes.find(node => node.id === id);

@@ -66,180 +66,190 @@
   "tool": [
     {
       "expect": [
-        "记录候选工具的能力和费用条件",
-        "Candidate capabilities and costs are recorded"
+        "你知道选的是哪个工具，打开的是它的官方入口。",
+        "You know the chosen tool and have opened its official entry."
       ],
       "ifWrong": [
-        "打开官方说明补查未知项，不把未知写成免费",
-        "Check official information; unknown is not free"
+        "不确定系统时先在电脑系统信息里核对；不要试着下载每个版本。",
+        "If unsure, check the computer’s system information instead of downloading every version."
       ]
     },
     {
       "expect": [
-        "工具可以打开并进入自己的账号或工作区",
-        "The tool opens your account or workspace"
+        "能看到应用窗口，或清楚的登录页面。",
+        "An app window or sign-in page is visible."
       ],
       "ifWrong": [
-        "保留安装或登录错误，检查系统与官方支持条件",
-        "Keep the error and check OS and eligibility"
+        "若提示不支持当前系统，记下原文并回官方兼容说明；此时保留在本步，不假装安装成功。",
+        "For unsupported-system messages, keep the exact text and check official compatibility; remain here until installed."
       ]
     },
     {
       "expect": [
-        "找到项目或文件入口",
-        "A project or file entry is visible"
+        "你进入了工具工作界面；下一步将创建自己的项目文件夹。",
+        "You are in the tool workspace, ready to create your project folder."
       ],
       "ifWrong": [
-        "查该工具帮助中的项目功能，无法操作文件则换候选",
-        "Check project help; choose another candidate if files are unsupported"
-      ]
-    },
-    {
-      "expect": [
-        "能区分运行中、等待授权和失败",
-        "Running, approval and failure states are distinguishable"
-      ],
-      "ifWrong": [
-        "先读取当前状态及权限范围，再决定等待或排障",
-        "Read the status and permission scope before proceeding"
+        "登录失败就记录它实际显示的错误，先解决登录；只有聊天框但没有项目入口时查看官方项目说明。",
+        "Record sign-in errors and resolve them first; if you see only chat, check official project instructions."
       ]
     }
   ],
   "folder": [
     {
       "expect": [
-        "实际项目文件夹存在，名称可辨认",
-        "A real project folder exists with a recognizable name"
+        "窗口显示文稿／文档目录里的内容。",
+        "The window shows the contents of Documents."
       ],
       "ifWrong": [
-        "确认是在文件管理器新建，而不是聊天中写了名字",
-        "Create it in the file manager, not just in chat"
+        "Mac 侧栏没有时可用“前往 → 文稿”；Windows 在文件资源管理器里查找“文档”。",
+        "On Mac use Go → Documents if absent from the sidebar; on Windows locate Documents in File Explorer."
       ]
     },
     {
       "expect": [
-        "复制出该文件夹的完整实际路径",
-        "The actual full folder path is copied"
+        "目录里出现你命名的文件夹。",
+        "Your named folder appears."
       ],
       "ifWrong": [
-        "重新从当前文件夹复制位置，不手写猜测",
-        "Copy its location again instead of guessing"
+        "无法创建时换到本人有写入权限的位置，记录新的位置；不要随意修改系统权限。",
+        "If creation fails, choose a writable personal location and record it instead of changing system permissions."
       ]
     },
     {
       "expect": [
-        "网页工具有可重新打开的工作区入口",
-        "A web tool has a reopenable workspace entry"
+        "你能再次找到这个文件夹，记录中有明确位置。",
+        "You can find the folder again and have recorded its location."
       ],
       "ifWrong": [
-        "回项目列表查找；本地工具走前两项，不虚构云工作区",
-        "Use its project list; local tools use the first two actions"
+        "不会复制完整路径时，先在文件管理器的路径显示位置查看；仍不确定先记录所在目录和名称，下一步核对前不要制作文件。",
+        "Use the file manager’s path display; if unsure, note parent folder/name and verify next before creating files."
+      ]
+    },
+    {
+      "expect": [
+        "能再次打开同一工作区，并查看项目文件。",
+        "The same workspace reopens and exposes its project files."
+      ],
+      "ifWrong": [
+        "不能查看或导出项目文件时，返回工具选择核对它是否适合本项目。",
+        "If project files cannot be viewed/exported, return to tool selection and check suitability."
       ]
     }
   ],
   "open-project": [
     {
       "expect": [
-        "工具显示的是自己的项目或工作区",
-        "The tool displays your own project or workspace"
+        "对话显示或关联的是你的项目。",
+        "The chat shows or belongs to your project."
       ],
       "ifWrong": [
-        "退出错误项目，再从项目列表选中正确位置",
-        "Leave the wrong project and select the correct location"
+        "找不到入口先查看本步工具说明；不把普通网页聊天当成已经打开了文件夹。",
+        "Check the tool guidance if the entry is missing; ordinary web chat does not prove folder access."
       ]
     },
     {
       "expect": [
-        "AI返回只读检查结果，没有制作文件",
-        "AI reports inspection without creating files"
+        "本站显示可复制的完整检查话术，路径是你填写的。",
+        "The complete inspection prompt contains your real path."
       ],
       "ifWrong": [
-        "明确重发只读约束，核对当前对话关联项目",
-        "Repeat the read-only constraint and check the chat project"
+        "仍有待填字段时先补齐；复制失败就手动选中生成文字复制。",
+        "Complete remaining fields first; if copying fails, select and copy the generated text manually."
       ]
     },
     {
       "expect": [
-        "AI报告位置与文件管理器一致",
-        "AI and file manager locations match"
+        "工具回复实际路径、已有文件和是否一致。",
+        "The tool reports actual location, files and whether they match."
       ],
       "ifWrong": [
-        "停止制作任务，重新打开正确目录再检查",
-        "Stop build tasks, reopen the correct directory and inspect again"
+        "无法访问时按报告选择目录；额度用完就保留本步材料，恢复后在原项目重发检查。不接受编造的文件列表。",
+        "For access failures select the reported directory; if quota runs out, keep this step’s material and repeat the check in the original project after access returns. Do not accept invented files."
+      ]
+    },
+    {
+      "expect": [
+        "两边指向同一个位置，已有文件也对得上。",
+        "Both point to the same location with matching files."
+      ],
+      "ifWrong": [
+        "不一致就停止，重新选项目再发同一条检查，不让工具移动别的项目凑位置。",
+        "If mismatched, select the correct project and repeat the check; do not move other projects to force a match."
       ]
     }
   ],
   "checkpoint": [
     {
       "expect": [
-        "得到实际Git检查结果或明确安装缺口",
-        "An actual Git result or installation gap is reported"
+        "提示词包含自己的项目描述，不留示例占位文字。",
+        "The prompt contains your brief without example placeholders."
       ],
       "ifWrong": [
-        "按本机官方安装说明补齐，再重新检查版本",
-        "Install for this OS, then check the version again"
+        "没有可带入材料时回到项目描述完成确认；不要让工具替你猜已确认内容。",
+        "If there is no confirmed material, return to the brief and confirm it rather than asking the tool to guess."
       ]
     },
     {
       "expect": [
-        "确认当前仓库位置和提交身份",
-        "Repository location and commit identity are confirmed"
+        "回复说明 idea.md、规则文件的实际位置和起点版本。",
+        "The reply identifies idea.md, the rules file and a baseline revision."
       ],
       "ifWrong": [
-        "位置错误先切换；只配置本仓库身份，不输入密码",
-        "Switch wrong directories; configure local identity, never a password"
+        "缺 Git、身份或写权限时，先按报告解决这一项，再重试；不能把没提交写成已留版本。",
+        "Resolve missing Git, identity or write access before retrying; an unmade commit is not a saved revision."
       ]
     },
     {
       "expect": [
-        "idea.md和工具实际支持的规则入口可读取",
-        "idea.md and the supported rules entry can be read"
+        "你知道下一步该打开哪两个文件。",
+        "You know which two files to open next."
       ],
       "ifWrong": [
-        "要求AI重新读取真实文件，说明规则如何加载",
-        "Ask AI to reread actual files and explain rule loading"
-      ]
-    },
-    {
-      "expect": [
-        "本地提交有版本号且不含密钥或依赖",
-        "A local revision exists without secrets or dependencies"
-      ],
-      "ifWrong": [
-        "先检查待提交清单，移除不应纳入的文件再提交",
-        "Inspect the staged list and exclude unsuitable files before committing"
+        "回复只说“完成”却没有位置时，要求它重新读取并报告真实路径，不重新创建项目。",
+        "If it only says done, ask it to read back and report real paths without recreating the project."
       ]
     }
   ],
   "first-file": [
     {
       "expect": [
-        "能在文件查看器打开真实idea.md",
-        "The real idea.md opens in a file viewer"
+        "已复制本步完整提示词，准备切换到原项目对话。",
+        "You have copied this step’s complete prompt and are ready to switch to the original project chat."
       ],
       "ifWrong": [
-        "按AI报告路径查找，找不到则要求读取实际文件",
-        "Locate the reported path or ask AI to read the actual file"
+        "未生成时先确认模板；复制失败就选中生成文字手动复制。",
+        "Confirm the template if not generated; select/copy the generated text manually if copying fails."
       ]
     },
     {
       "expect": [
-        "正文符合已确认想法，后缀和路径明确",
-        "Contents match the confirmed idea and its path is clear"
+        "工具回复 idea.md 和规则文件的实际位置。",
+        "The tool reports the actual locations of idea.md and the rules file."
       ],
       "ifWrong": [
-        "让AI定位已有文件并修正差异，避免创建副本",
-        "Locate and correct the existing file without duplicates"
+        "回复缺失文件时回准备起点补保存；不要把聊天中的示例当真实文件。",
+        "For missing files, return to baseline preparation; chat examples are not files."
       ]
     },
     {
       "expect": [
-        "能说明工具实际读取哪份规则",
-        "The rules actually read by the tool are identifiable"
+        "正文显示自己确认过的项目用户、目标和范围。",
+        "The file shows your agreed users, goal and scope."
       ],
       "ifWrong": [
-        "查看工具支持的规则入口，不以文件存在代替加载",
-        "Check the supported entry; existence does not prove loading"
+        "找不到时先核对完整路径；工具不能提供预览就用电脑文本编辑器打开，不猜位置。",
+        "Check the full path; if preview is unavailable use a text editor rather than guessing the location."
+      ]
+    },
+    {
+      "expect": [
+        "两个真实文件可打开，内容属于当前项目。",
+        "Both real files open and belong to the current project."
+      ],
+      "ifWrong": [
+        "内容不一致就指出具体段落让工具解释，本次不继续依赖错误材料。",
+        "Identify mismatched passages and ask the tool to explain; do not proceed using incorrect material."
       ]
     }
   ],
@@ -470,84 +480,84 @@
   "environment": [
     {
       "expect": [
-        "得到本机运行时、包管理器和锁文件检查结果",
-        "Actual runtime, package manager and lockfile are identified"
+        "已复制本步完整提示词，准备切换到原项目对话。",
+        "You have copied this step’s complete prompt and are ready to switch to the original project chat."
       ],
       "ifWrong": [
-        "要求先只读检查现有项目，不另换工具链",
-        "Inspect the existing project before changing tools"
+        "未生成时先确认模板；复制失败就选中生成文字手动复制。",
+        "Confirm the template if not generated; select/copy the generated text manually if copying fails."
       ]
     },
     {
       "expect": [
-        "安装后能在新终端核对实际版本",
-        "The installed version is visible in a fresh terminal"
+        "回复区分已有条件、缺少条件和当前要处理的一项。",
+        "The reply distinguishes existing prerequisites, missing ones and the next item."
       ],
       "ifWrong": [
-        "按官方步骤检查路径与重启终端，保留错误",
-        "Check official path setup and restart the terminal; keep errors"
+        "若只说重装全部环境，先要求具体缺项和证据，不立即执行。",
+        "If told to reinstall everything, ask for the specific gap and evidence before acting."
       ]
     },
     {
       "expect": [
-        "项目启动成功并给出实际访问或执行入口",
-        "The project starts with a real access or execution entry"
+        "当前缺项通过它对应的成功检查。",
+        "The missing prerequisite passes its specific check."
       ],
       "ifWrong": [
-        "保留第一处错误，让AI在当前项目定位原因",
-        "Keep the first error and investigate in this project"
+        "报错就保留原文和执行位置交给工具，先解决这一项，不连续尝试一串不懂的命令。",
+        "Keep the error and execution location, resolve this item first and avoid trying a chain of unexplained commands."
       ]
     },
     {
       "expect": [
-        "入口可停止重启，关键实验有实际结果",
-        "The entry restarts and critical experiments have actual results"
+        "能打开最小项目，README 记录实际启动方法。",
+        "The minimal project opens and README records its real startup method."
       ],
       "ifWrong": [
-        "启动失败回安装检查；实验失败回技术方案",
-        "Recheck setup on startup failure; revisit design on experiment failure"
+        "打不开先核对服务是否退出、地址是否一致；将实际提示反馈，不把文件存在当运行成功。",
+        "If unavailable, check whether the service stopped and the address matches; existing files alone do not prove it runs."
       ]
     }
   ],
   "preview": [
     {
       "expect": [
-        "明确本次任务编号、依赖和通过条件",
-        "The task ID, dependencies and passing criteria are clear"
+        "已复制本步完整提示词，准备切换到原项目对话。",
+        "You have copied this step’s complete prompt and are ready to switch to the original project chat."
       ],
       "ifWrong": [
-        "让AI回任务表重选依赖满足的小任务",
-        "Choose a small task whose dependencies are satisfied"
+        "未生成时先确认模板；复制失败就选中生成文字手动复制。",
+        "Confirm the template if not generated; select/copy the generated text manually if copying fails."
       ]
     },
     {
       "expect": [
-        "实际入口能操作，AI检查与本人试用分开记录",
-        "The real entry works; AI and personal checks are separate"
+        "工具给出当前任务、改动文件、实际入口和检查结果。",
+        "The tool reports the task, changed files, actual entry and checks."
       ],
       "ifWrong": [
-        "记录失败动作并进入反馈，不改写成通过",
-        "Record the failing action and report it without claiming success"
+        "没有任务编号或实际入口就要求补齐；执行还没结束时不要连发下一项任务。",
+        "Ask for missing task ID/entry; do not send the next task before this one finishes."
       ]
     },
     {
       "expect": [
-        "文件、版本和核对结果已记录到任务表",
-        "Files, revision and checks are recorded in the task list"
+        "看到与当前任务相符的真实结果，并能说出做了什么。",
+        "You see the current task’s actual result and can describe the action."
       ],
       "ifWrong": [
-        "要求保存真实结果和版本，再继续下一任务",
-        "Save actual results and revision before another task"
+        "画面与预期不同，记录点击顺序、预期和实际结果交给工具；不要直接标完成。",
+        "For a mismatch, record actions, expected and actual results instead of marking complete."
       ]
     },
     {
       "expect": [
-        "所有必做项已通过或明确延期",
-        "Required tasks are passed or explicitly deferred"
+        "项目文件记录实际结果，你知道下个动作要带什么。",
+        "Project notes record actual results and you know the next input."
       ],
       "ifWrong": [
-        "逐项检查未完成项，不把首个功能当作完整版本",
-        "Review unfinished tasks instead of treating one feature as the whole version"
+        "工具把未测项标通过时要求恢复真实状态；已经做完的任务只复核，不重复开发。",
+        "Correct any untested work marked passed; review completed tasks rather than rebuilding."
       ]
     }
   ],

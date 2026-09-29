@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {lessons} from '../src/data/learning.ts';
-import {routeNodes,nodeForStep} from '../src/data/nodes.ts';
+import {nodeForStep} from '../src/data/nodes.ts';
 const rows=JSON.parse(await readFile('src/data/fullstack-practice.json','utf8'));
-assert.equal(rows.length,31);assert.equal(new Set(rows.map(r=>r.id)).size,31);assert.equal(routeNodes.length,18);
+assert.deepEqual(rows.map(r=>r.id).sort(),lessons.map(l=>l.id).sort(),'Practice must cover each current action exactly once');
 for(const lesson of lessons){
  const row=rows.find(r=>r.id===lesson.id);assert(row,lesson.id);
  for(const key of ['action','expected','recovery','instruction'])assert(row[key]?.length===2&&row[key].every(s=>typeof s==='string'&&s.trim().length>0),`${lesson.id} ${key}`);
@@ -22,4 +22,4 @@ assert(lessons.find(l=>l.id==='prototype').prompt[0].includes('docs/stories.md ç
 const component=await readFile('src/components/NodeStep.astro','utf8');
 assert(component.includes('lesson.templateKind !== \'worksheet\''),'Worksheets must not become fabricated AI results');
 for(const asset of ['codex-location-map','journal-saved-example','journal-service-stopped'])assert((await readFile(`public/images/guide/${asset}.png`)).length>1000);
-console.log('PASS: 31 bilingual full-stack supplements, rendered guidance and prompt selection; separate stories handoff; backend persistence and non-destructive recovery criteria; 3 image assets. This is content validation, not a learner completion claim.');
+console.log(`PASS: ${lessons.length} bilingual full-stack supplements, rendered guidance and prompt selection; separate stories handoff; backend persistence and non-destructive recovery criteria; 3 image assets. This is content validation, not a learner completion claim.`);

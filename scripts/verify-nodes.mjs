@@ -7,8 +7,9 @@ import {stepSupport} from '../src/data/learning-support.ts';
 import {glossary} from '../src/data/glossary/index.ts';
 
 /* 1. 18 个节点，编号连续，阶段合法 */
-assert.equal(routeNodes.length,18,`节点数应为 18，实际 ${routeNodes.length}`);
-assert.deepEqual(routeNodes.map(n=>n.order),Array.from({length:18},(_,i)=>i+1),'节点编号必须为 1..18 连续');
+assert(routeNodes.length>0,'路线不能为空');
+assert.equal(new Set(routeNodes.map(n=>n.id)).size,routeNodes.length,'节点 ID 不得重复');
+assert.deepEqual(routeNodes.map(n=>n.order),Array.from({length:routeNodes.length},(_,i)=>i+1),'节点编号必须从 1 连续排列');
 for(const node of routeNodes){
   assert(phases.some(p=>p.id===node.phaseId),`未知阶段：${node.id}/${node.phaseId}`);
   assert(node.title[0]&&node.title[1],`节点缺少中英名称：${node.id}`);
@@ -103,7 +104,7 @@ for(const locale of ['zh-cn','en']){
       for(let i=1;i<order.length;i++)assert(order[i]>order[i-1],`${locale}/${node.id}: 槽位顺序与标准不一致`);
       for(const head of HEAD)assert(html.includes(head),`${locale}/${node.id}: 页头缺少「${head}」`);
       assert(html.includes(`共 ${node.stepIds.length} 个步骤`),`${locale}/${node.id}: 未显示本节点步骤数`);
-      assert(html.includes(`节点 ${node.order} / 18`),`${locale}/${node.id}: 未显示节点序号`);
+      assert(html.includes(`节点 ${node.order} / ${routeNodes.length}`),`${locale}/${node.id}: 未显示节点序号`);
       assert(html.includes(BLOCK_A),`${locale}/${node.id}: 缺少固定区块 A（操作示意）`);
       assert(html.indexOf(BLOCK_A)<order[0],`${locale}/${node.id}: 区块 A 必须排在槽位之前`);
       /* B（项目分支）与 C（示例资料）只在有数据时出现；一旦出现必须在槽位之后。 */
@@ -124,4 +125,4 @@ assert(!nav.includes('href="/zh-cn/learn/stage/'),'侧栏仍在链接旧的分�
 const roadmap=await readFile('dist/zh-cn/roadmap/index.html','utf8');
 for(const node of routeNodes)assert(roadmap.includes(`href="/zh-cn/node/${node.id}/"`),`路线图未指向节点页：${node.id}`);
 
-console.log(`PASS: 18 个节点页结构一致（${SLOTS.length} 个固定槽位、同一顺序；区块 A 在前、B/C/D 在后；侧栏与路线图均指向节点页）、${linearStepIds.length} 个线性步骤 + ${branchStepIds.length} 个分支步骤（含 ${Object.keys(optionalSteps).length} 个可选）覆盖全部 ${lessons.length} 个教学动作、槽位数据齐备、术语无死链。`);
+console.log(`PASS: ${routeNodes.length} 个节点页结构一致（${SLOTS.length} 个固定槽位、同一顺序；区块 A 在前、B/C/D 在后；侧栏与路线图均指向节点页）、${linearStepIds.length} 个线性步骤 + ${branchStepIds.length} 个分支步骤（含 ${Object.keys(optionalSteps).length} 个可选）覆盖全部 ${lessons.length} 个教学动作、槽位数据齐备、术语无死链。`);
