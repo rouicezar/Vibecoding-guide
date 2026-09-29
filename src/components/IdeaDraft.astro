@@ -16,7 +16,7 @@ const label=(zh:string,en:string)=>t([zh,en],locale);
     <button type="button" class="button" data-copy-idea disabled>{label('一键复制我的草稿','Copy my draft')}</button>
   </div>
   <details class="learn-details"><summary>{label('补充想法（可以以后再填）','Add details (optional for now)')}</summary>
-    <label for="later-text">{label('以后再做 / 现在不确定的事','Later / undecided')}</label>
+    <label for="later-text">{label('哪些功能以后再做，哪些事情还没决定？','Which features can wait, and what have you not decided yet?')}</label>
     <textarea id="later-text" name="later" rows="3"></textarea>
   </details>
 </form>

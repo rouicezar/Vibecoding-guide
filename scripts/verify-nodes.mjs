@@ -133,15 +133,16 @@ for (const node of routeNodes)
       slotGaps.push(`${stepId}:步骤材料`);
       continue;
     }
-    if (!lesson.actions.length) slotGaps.push(`${stepId}:你要做的`);
+    if (!lesson.actions.length) slotGaps.push(`${stepId}:这一步具体怎么做？`);
     if (!lesson.expected.every(Boolean)) slotGaps.push(`${stepId}:完成标准`);
-    if (!lesson.issues.length) slotGaps.push(`${stepId}:可能卡住的地方`);
+    if (!lesson.issues.length)
+      slotGaps.push(`${stepId}:遇到问题时，应该怎么处理？`);
     if (!lesson.understanding?.why.every(Boolean))
-      slotGaps.push(`${stepId}:这一步要达成`);
+      slotGaps.push(`${stepId}:这一步要帮你解决什么问题？`);
     if (!support.steps.length) slotGaps.push(`${stepId}:逐项跟着做`);
     if (!support.terms.length) slotGaps.push(`${stepId}:这一步出现的词`);
     if (!support.recovery.every(Boolean))
-      slotGaps.push(`${stepId}:没有出现预期结果时`);
+      slotGaps.push(`${stepId}:没有看到预期结果，接下来怎么办？`);
     if (!support.example.every(Boolean)) slotGaps.push(`${stepId}:结果对照`);
     if (!lesson.prompt && stepId !== 'idea')
       slotGaps.push(`${stepId}:发给 AI 的话`);
@@ -179,21 +180,21 @@ for (const [legacy, nodeId] of Object.entries(legacyNodeMap)) {
 
 /* 6. 页面结构一致性：18 个节点页必须出现同一组槽位标题与固定区块，且顺序相同 */
 const SLOTS = [
-  '开始前带上，做完交给下一步',
-  '这一步要达成',
-  '你要做的',
+  '开始前准备什么，做完后留下什么？',
+  '这一步要帮你解决什么问题？',
+  '这一步具体怎么做？',
   '不会具体操作？逐项跟着做',
   '这一步出现的词',
-  '可能卡住的地方',
+  '遇到问题时，应该怎么处理？',
   '本步材料（填写或复制）',
   '看到这个结果才算完成',
-  '没有出现预期结果时',
+  '没有看到预期结果，接下来怎么办？',
 ];
 const HEAD = [
   '完整路线图',
   '为什么要有这一节点',
-  '本节点步骤数',
-  '做完你会得到',
+  '这一节点需要做几步？',
+  '做完这一节点，你会得到什么？',
   '本节点出现的词',
   '上一节点',
   '下一节点',
@@ -263,7 +264,7 @@ for (const locale of ['zh-cn', 'en']) {
         );
       assert(
         html.includes(`共 ${node.stepIds.length} 个步骤`),
-        `${locale}/${node.id}: 未显示本节点步骤数`,
+        `${locale}/${node.id}: 未显示这一节点需要做几步？`,
       );
       assert(
         html.includes(`节点 ${node.order} / ${routeNodes.length}`),

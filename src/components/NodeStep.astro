@@ -96,20 +96,27 @@ const stepHref = (id: string) =>
       <Fragment
         set:html={heading(
           1,
-          '开始前带上，做完交给下一步',
-          'Bring in, then pass onward',
+          '开始前准备什么，做完后留下什么？',
+          'What do you need, and what should you keep?',
         )}
       />
       <div class="material-flow">
         <div>
-          <small>{label('开始前带上', 'Bring')}</small>
+          <small>
+            {label('开始前需要准备什么？', 'What do you need before starting?')}
+          </small>
           <p>{t(support.input, locale)}</p>
         </div>
         <span class="material-arrow" aria-hidden="true">
           →
         </span>
         <div>
-          <small>{label('做完交给下一步', 'Pass onward')}</small>
+          <small>
+            {label(
+              '做完后要留下什么？',
+              'What should you keep for the next step?',
+            )}
+          </small>
           <p>{t(support.output, locale)}</p>
         </div>
       </div>
@@ -117,8 +124,8 @@ const stepHref = (id: string) =>
         <details class="learn-details">
           <summary>
             {label(
-              '这一步读哪些文件、写哪个文件',
-              'Files this step reads and writes',
+              '这一步要让 AI 读取和保存哪些文件？',
+              'Which files should AI read and save in this step?',
             )}
           </summary>
           <p>
@@ -128,7 +135,12 @@ const stepHref = (id: string) =>
             )}
           </p>
           <p>
-            <strong>{label('需要读取：', 'Read: ')}</strong>
+            <strong>
+              {label(
+                '先让 AI 读取这些材料：',
+                'Ask AI to read these materials first: ',
+              )}
+            </strong>
             {contract.reads.join(' · ') ||
               label(
                 '当前已确认材料与项目位置',
@@ -136,15 +148,17 @@ const stepHref = (id: string) =>
               )}
           </p>
           <p>
-            <strong>{label('这一步写入：', 'Write: ')}</strong>
+            <strong>
+              {label('让 AI 将结果保存到：', 'Ask AI to save the result to: ')}
+            </strong>
             {contract.writes.join(' · ') ||
               label('只检查，不改文件', 'Read-only; no file changes')}
           </p>
           <p class="slot-note">
             <a href={stepHref(contract.back)}>
               {label(
-                '缺前置材料？回上一步补齐 →',
-                'Missing input? Return to the previous step →',
+                '缺少这些材料？回到创建它们的步骤 →',
+                'Missing these materials? Return to the step that creates them →',
               )}
             </a>
           </p>
@@ -155,7 +169,11 @@ const stepHref = (id: string) =>
     <!-- 槽位 02 · 这一步要达成 -->
     <div class="step-slot">
       <Fragment
-        set:html={heading(2, '这一步要达成', 'What this step achieves')}
+        set:html={heading(
+          2,
+          '这一步要帮你解决什么问题？',
+          'What will this step help you do?',
+        )}
       />
       <p>{t(purpose, locale)}</p>
       {lesson.understanding && (
@@ -166,10 +184,15 @@ const stepHref = (id: string) =>
               'Understand it, then judge for yourself',
             )}
           </summary>
-          <h4>{label('这个概念是什么意思', 'What the concept means')}</h4>
+          <h4>
+            {label('这个概念是什么意思？', 'What does this concept mean?')}
+          </h4>
           <p>{t(lesson.understanding.concept, locale)}</p>
           <h4>
-            {label('换个情况，还会判断吗', 'Can this be applied elsewhere?')}
+            {label(
+              '换个情况，你会怎样判断？',
+              'How would you decide in a different situation?',
+            )}
           </h4>
           <p>{t(lesson.understanding.question, locale)}</p>
           {answer && (
@@ -193,7 +216,13 @@ const stepHref = (id: string) =>
     <!-- 槽位 03 · 你要做的 -->
     <details class="step-slot step-extra" data-step-section="actions" open>
       <summary>
-        <Fragment set:html={heading(3, '你要做的', 'What you do')} />
+        <Fragment
+          set:html={heading(
+            3,
+            '这一步具体怎么做？',
+            'What exactly should you do in this step?',
+          )}
+        />
         <span class="slot-fold-hint">
           <span class="when-closed">{label('展开', 'Open')}</span>
           <span class="when-open">{label('收起', 'Close')}</span>
@@ -207,7 +236,7 @@ const stepHref = (id: string) =>
       {microActions[stepId].some((action) => action.prompt) && (
         <p>
           {label(
-            '每次只发送当前这一项的提示词：选中框内文字复制（Mac 按 ⌘C，Windows 按 Ctrl+C），切到所选工具的项目对话，粘贴后把【】替换成自己的内容，再点发送。等工具回复并核对“完成后”的结果，再做下一项。',
+            '每次只发送当前这一项的提示词：选中框内文字复制（Mac 按 ⌘C，Windows 按 Ctrl+C），切到所选工具的项目对话，粘贴后把【】替换成自己的内容，再点发送。等工具回复并核对“完成后应该看到”的结果，再做下一项。',
             'Send one action at a time: select and copy its prompt (⌘C on Mac, Ctrl+C on Windows), switch to your tool’s project chat, paste it, replace bracketed fields and send. Wait for the reply and check the stated result before continuing.',
           )}
         </p>
@@ -243,7 +272,9 @@ const stepHref = (id: string) =>
                   </>
                 )}
                 <p>
-                  <strong>{label('完成后：', 'Afterwards:')}</strong>
+                  <strong>
+                    {label('完成后应该看到：', 'Afterwards, you should see: ')}
+                  </strong>
                   {result}
                 </p>
               </details>
@@ -276,9 +307,19 @@ const stepHref = (id: string) =>
           <li data-micro-action={step.id}>
             <p>{t(step.action, locale)}</p>
             <dl class="micro-check">
-              <dt>{label('应看到', 'Expected')}</dt>
+              <dt>
+                {label(
+                  '操作后应该看到什么？',
+                  'What should you see after this action?',
+                )}
+              </dt>
               <dd>{t(step.expect, locale)}</dd>
-              <dt>{label('没有出现时', 'If missing')}</dt>
+              <dt>
+                {label(
+                  '没有看到这个结果时，怎么办？',
+                  'What should you do if that result is missing?',
+                )}
+              </dt>
               <dd>{t(step.ifWrong, locale)}</dd>
             </dl>
           </li>
@@ -317,7 +358,11 @@ const stepHref = (id: string) =>
     <details class="step-slot step-extra">
       <summary>
         <Fragment
-          set:html={heading(6, '可能卡住的地方', 'Where people get stuck')}
+          set:html={heading(
+            6,
+            '遇到问题时，应该怎么处理？',
+            'How should you handle a problem here?',
+          )}
         />
         <span class="slot-fold-hint">
           <span class="when-closed">{label('展开', 'Open')}</span>
@@ -332,9 +377,19 @@ const stepHref = (id: string) =>
             {t(issue.title, locale)}
           </p>
           <dl>
-            <dt>{label('先看哪里', 'Check')}</dt>
+            <dt>
+              {label(
+                '先检查哪里，确认问题的原因？',
+                'Where should you look to understand the problem?',
+              )}
+            </dt>
             <dd>{t(issue.check, locale)}</dd>
-            <dt>{label('这样处理', 'Try this')}</dt>
+            <dt>
+              {label(
+                '按下面的方法处理问题',
+                'Follow these steps to resolve the problem',
+              )}
+            </dt>
             <dd>{t(issue.action, locale)}</dd>
             <dt>{label('恢复后应该看到', 'Expected recovery')}</dt>
             <dd>{t(issue.expected, locale)}</dd>
@@ -482,7 +537,11 @@ const stepHref = (id: string) =>
     <details class="step-slot step-extra">
       <summary>
         <Fragment
-          set:html={heading(9, '没有出现预期结果时', 'If the result differs')}
+          set:html={heading(
+            9,
+            '没有看到预期结果，接下来怎么办？',
+            'What should you do if the expected result is missing?',
+          )}
         />
         <span class="slot-fold-hint">
           <span class="when-closed">{label('展开', 'Open')}</span>

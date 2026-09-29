@@ -17,11 +17,11 @@ export function makePrompt(index:number,locale:Locale,values?:string[]){
  const scene=scenarios[index];
  const defaults=[t(['填写项目用途、当前进度与已有页面。','Enter the purpose, current progress, and existing page.'],locale),t(['填写项目面向的人群，以及他们希望通过项目完成的事情。','Enter the intended users.'],locale),t(['填写当前问题和希望达到的结果；参考上方单独标明的例子。','Enter the current problem and desired result; refer to the separately labeled example above.'],locale),t(['粘贴已确认范围、相关截图或复现步骤；未提供的材料请先索取。','Attach agreed scope, relevant screenshots, or reproduction steps; request missing material first.'],locale),t(['只做本次目标；预算与发布时间尚未确定。','Limit work to this goal; budget and release date are undecided.'],locale)];
  const v=values??defaults.map(value=>locale==='zh-cn'?`【${value}】`:`[${value}]`);
- return locale==='zh-cn'?`【背景】${v[0]}
+ return locale==='zh-cn'?`【项目现在做到哪一步】${v[0]}
 【这个项目主要给谁使用】${v[1]}
-【当前问题与目标】${v[2]}
-【输入材料】${v[3]}
-【约束】${v[4]}
+【现在遇到什么问题，希望解决后变成什么样】${v[2]}
+【有哪些文件、截图或操作记录可以提供】${v[3]}
+【这次有什么限制，哪些内容不要改】${v[4]}
 
 本次任务：${scene.task[0]}
 请按以下方式配合：
@@ -30,11 +30,11 @@ export function makePrompt(index:number,locale:Locale,values?:string[]){
 3. 输出具体操作顺序、预期交付物和检查办法，用普通话解释专业词。
 4. 实施前保留可恢复版本；删除资料、付费、扩大权限或发布前等待确认。
 5. 交付时列出改动、实际检查动作、结果、未验证项和下一步。
-【检查标准】逐项核对上述目标；正常操作与失败情况都有明确结果。若无法实际执行，明确标记建议或待验证，不宣称已完成。`:`[Background] ${v[0]}
-[Audience] ${v[1]}
-[Problem and goal] ${v[2]}
-[Input material] ${v[3]}
-[Constraints] ${v[4]}
+【检查标准】逐项核对上述目标；正常操作与失败情况都有明确结果。若无法实际执行，明确标记建议或待验证，不宣称已完成。`:`[What stage has the project reached] ${v[0]}
+[Who will use the project] ${v[1]}
+[What is wrong now, and what should happen instead] ${v[2]}
+[What files, screenshots or steps are available] ${v[3]}
+[What are the limits, and what should stay unchanged] ${v[4]}
 
 Task: ${scene.task[1]}
 Working instructions:

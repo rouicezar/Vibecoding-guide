@@ -64,8 +64,8 @@ const nodeTerms = steps
     <p class="node-gloss">{t(node.gloss, locale)}</p>
     <details class="node-why"><summary>{label('为什么要有这一节点？', 'Why this milestone?')}</summary><p>{t(node.why, locale)}</p></details>
     <dl class="node-meta">
-      <div><dt>{label('本节点步骤数', 'Steps in this milestone')}</dt><dd>{label(`共 ${steps.length} 个步骤`, `${steps.length} step${steps.length > 1 ? 's' : ''} in total`)}</dd></div>
-      <div><dt>{label('做完你会得到', 'What you finish with')}</dt><dd>{t(lastSupport.output, locale)}</dd></div>
+      <div><dt>{label('这一节点需要做几步？', 'How many steps are in this node?')}</dt><dd>{label(`共 ${steps.length} 个步骤`, `${steps.length} step${steps.length > 1 ? 's' : ''} in total`)}</dd></div>
+      <div><dt>{label('做完这一节点，你会得到什么？', 'What will you have after this node?')}</dt><dd>{t(lastSupport.output, locale)}</dd></div>
     </dl>
   </header>
 

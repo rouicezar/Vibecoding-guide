@@ -7,8 +7,8 @@ export const learningContent: LearningContent[] = [
     title: ['先记下自己的想法', 'Write down the idea'],
     where: ['就在这一页的草稿里', 'In the draft on this page'],
     expected: [
-      '草稿写明项目用户、要解决的问题和试用通过的条件；第二阶段计划可以填“否”或“暂未确定”。确认后草稿保存在当前浏览器，随时可以复制。',
-      'The draft identifies users, the problem and the passing condition. After confirmation it is kept in this browser, ready to copy.',
+      '草稿写清了项目的用户群体是谁、解决他们的什么问题，以及开发成功的检验标准是什么；第二阶段计划可以填“否”或“暂未确定”。确认后草稿保存在当前浏览器，随时可以复制。',
+      'The draft says who will use the project, what problem it solves for them, and how to check that it works as intended. Plans for a second phase may be none or undecided. Once confirmed, the draft stays in this browser and can be copied.',
     ],
     stage: 'idea',
     issues: [
@@ -58,7 +58,7 @@ export const learningContent: LearningContent[] = [
       ],
       example: [
         '用户：读书会成员。问题：群里报名容易漏记。通过：提交一次报名后能看到自己的报名；重复提交不会占两个名额。',
-        'Users: club members. Problem: chat signups get lost. Pass: submit and see a reservation; repeating it does not reserve twice.',
+        'Who will use this project: club members. Problem: chat signups get lost. Pass: submit and see a reservation; repeating it does not reserve twice.',
       ],
       recovery: [
         '想不到就从自己最近遇到的一件麻烦事开始。',
@@ -140,8 +140,8 @@ export const learningContent: LearningContent[] = [
       'The brief covers users, problem, first version, acceptance and later scope without treating examples as personal requirements.',
     ],
     prompt: [
-      '项目名称：【填写名称】\n项目用户群体：【填写实际使用者】\n项目解决的问题：【填写用户使用后能解决的具体问题】\n使用设备：【填写电脑浏览器、手机、桌面应用等】\n第一版使用过程：【填写打开哪里、做什么、得到什么结果】\n测试通过条件：【填写操作和应该看到的结果】\n第二阶段功能：【填写；没有填否，未决定填尚未确定】\n预算及其他限制：【填写或填尚未确定】',
-      'Project name: [fill in]\nIntended users: [fill in]\nProblem solved: [fill in]\nDevices: [fill in]\nFirst-version flow: [entry, actions, result]\nPassing criteria: [actions and expected results]\nPhase-two features: [none, details or undecided]\nBudget and constraints: [fill in or undecided]',
+      '项目名称：【填写名称】\n项目的用户群体是谁：【填写实际使用者】\n解决他们的什么问题：【填写用户使用后能解决的具体问题】\n使用设备：【填写电脑浏览器、手机、桌面应用等】\n用户使用第一版时，需要做什么、得到什么：【填写打开哪里、做什么、得到什么结果】\n开发成功的检验标准是什么：【填写操作和应该看到的结果】\n第一版完成后，还希望增加哪些功能：【填写；没有填否，未决定填尚未确定】\n愿意花多少钱，还有哪些限制：【填写或填尚未确定】',
+      'Project name: [fill in]\nWho will use this project: [fill in]\nWhat problem will it solve for them: [fill in]\nDevices: [fill in]\nWhat users will do and receive in the first version: [entry, actions, result]\nHow will you check that the project works as intended: [actions and expected results]\nWhat features would you like to add after the first version: [none, details or undecided]\nWhat you can spend and what other limits apply: [fill in or undecided]',
     ],
     stage: 'idea',
     understanding: {
@@ -326,8 +326,8 @@ export const learningContent: LearningContent[] = [
       ],
     },
     prompt: [
-      '候选工具：【填写】\n能否安装并登录：【填写实际结果】\n上手难度：【记录是否找到项目和文件入口】\n免费额度与核对日期：【按官方页面和当前账号填写】\n订阅费用与预算：【填写】\n所需能力：【填写是否能读写文件、运行和检查项目】\n最终选择及理由：【填写】',
-      'Candidate: [fill in]\nInstallation and sign-in result: [fill in]\nEase of use: [can project and file controls be found]\nFree allowance and date checked: [official page/account]\nSubscription cost and budget: [fill in]\nRequired capabilities: [file access, running and checking]\nChoice and reason: [fill in]',
+      '你准备比较哪些工具：【填写】\n能否安装并登录：【填写实际结果】\n你能找到工具里的项目和文件入口吗：【记录是否找到项目和文件入口】\n免费额度能做多少，你在哪一天核对的：【按官方页面和当前账号填写】\n工具订阅要花多少钱，你能接受吗：【填写】\n工具能读写文件、运行项目并检查结果吗：【填写是否能读写文件、运行和检查项目】\n你最后选了哪个工具，为什么：【填写】',
+      'Which tools do you want to compare: [fill in]\nWere you able to install the tool and sign in: [fill in]\nCan you find the project and file controls: [can project and file controls be found]\nWhat does the free allowance cover, and when did you check: [official page/account]\nWhat the subscription costs and whether you can afford it: [fill in]\nCan the tool edit files, run the project and check results: [file access, running and checking]\nWhich tool did you choose, and why: [fill in]',
     ],
     templateKind: 'worksheet',
     support: {
@@ -727,8 +727,8 @@ export const learningContent: LearningContent[] = [
         'Initializing Git creates a place for history; committing saves a version. AGENTS.md states the rules the tool should follow.',
       ],
       question: [
-        '有仓库但没有提交，是否已有可恢复版本？',
-        'Does an empty repository contain a recoverable version?',
+        '只初始化 Git 仓库、还没有提交过改动时，是否已经有能恢复的版本？',
+        'If you have initialized Git but have not committed any changes, is there a version you can restore?',
       ],
     },
     templateKind: 'prompt',
@@ -1024,8 +1024,8 @@ export const learningContent: LearningContent[] = [
         'Answer one question at a time; undecided is a valid answer.',
       ],
       question: [
-        '这项未知会改变第一版范围吗？',
-        'Does this unknown change first-version scope?',
+        '这个还没确定的答案，会不会改变第一版需要做的功能？',
+        'Could this unanswered question change the features needed in the first version?',
       ],
     },
     templateKind: 'prompt',
@@ -1280,8 +1280,8 @@ export const learningContent: LearningContent[] = [
         'Requirements record inputs, actions and expected outcomes.',
       ],
       question: [
-        '只写“好用”，别人能一致判断通过吗？',
-        'Can everyone consistently judge “easy to use”?',
+        '如果只写“好用”，别人知道要做哪些操作、看到什么结果才算通过吗？',
+        'If you only write “easy to use”, will someone know which actions and results count as a pass?',
       ],
     },
     templateKind: 'prompt',
@@ -1693,8 +1693,8 @@ export const learningContent: LearningContent[] = [
       ],
     },
     prompt: [
-      '先检查能否读取docs/requirements.md、docs/stories.md、docs/design.md。缺失或无访问能力时，明确缺项与需本人操作的入口，停止本步执行，不编造文件或前序结论。\n实际设备与系统：【填写】\n可接受预算：【填写或尚未确定】\n使用方式与数据要求：【填写本机/多人、是否保存、是否跨设备；未知写尚未确定】\n读取 docs/requirements.md 与 docs/design.md 中的交互决定，只建议满足已确认范围的技术方案。解释推荐理由、费用、限制和数据位置；优先沿用已有项目。关键条件未知时先询问。本人确认后，将方案保存到 docs/design.md 的技术方案小节，保留交互内容。本次不安装、不初始化、不开发。 将最难能力和交付资格的最小验证写入设计，列设备/账号前提、预期结果及失败时替代方案；实验在环境准备后执行。',
-      'First check access to docs/requirements.md, docs/stories.md, docs/design.md. If missing or inaccessible, identify the prerequisite and owner action, then stop rather than invent prior work.\nDevice and OS: [fill in]\nBudget: [fill in or undecided]\nUsage and data needs: [local/shared, storage, cross-device or undecided]\nRead requirements and interaction decisions in docs/design.md. Recommend only technology meeting confirmed scope, explaining reasons, costs, limits and data location. Prefer the existing project. Ask about essential unknowns; after confirmation save the technical section in docs/design.md, preserving interaction decisions. Do not install, initialize or implement. Record a minimal feasibility test for the hardest capability and delivery eligibility, including device/account prerequisites, expected result and alternatives. Execute after environment preparation.',
+      '先检查能否读取docs/requirements.md、docs/stories.md、docs/design.md。缺失或无访问能力时，明确缺项与需本人操作的入口，停止本步执行，不编造文件或前序结论。\n你用的是什么设备和操作系统：【填写】\n你愿意为这个项目花多少钱：【填写或尚未确定】\n谁会使用，需要保存资料或在不同设备上查看吗：【填写本机/多人、是否保存、是否跨设备；未知写尚未确定】\n读取 docs/requirements.md 与 docs/design.md 中的交互决定，只建议满足已确认范围的技术方案。解释推荐理由、费用、限制和数据位置；优先沿用已有项目。关键条件未知时先询问。本人确认后，将方案保存到 docs/design.md 的技术方案小节，保留交互内容。本次不安装、不初始化、不开发。 将最难能力和交付资格的最小验证写入设计，列设备/账号前提、预期结果及失败时替代方案；实验在环境准备后执行。',
+      'First check access to docs/requirements.md, docs/stories.md, docs/design.md. If missing or inaccessible, identify the prerequisite and owner action, then stop rather than invent prior work.\nWhat device and operating system do you use: [fill in]\nHow much are you willing to spend on this project: [fill in or undecided]\nWho will use it, and must data be saved or viewed on different devices: [local/shared, storage, cross-device or undecided]\nRead requirements and interaction decisions in docs/design.md. Recommend only technology meeting confirmed scope, explaining reasons, costs, limits and data location. Prefer the existing project. Ask about essential unknowns; after confirmation save the technical section in docs/design.md, preserving interaction decisions. Do not install, initialize or implement. Record a minimal feasibility test for the hardest capability and delivery eligibility, including device/account prerequisites, expected result and alternatives. Execute after environment preparation.',
     ],
     templateKind: 'prompt',
     support: {
@@ -2211,8 +2211,8 @@ export const learningContent: LearningContent[] = [
       'Move Save below the input without changing storage or the history list.',
     ],
     prompt: [
-      '先检查能否读取docs/design.md、tasks/todo.md。缺失或无访问能力时，明确缺项与需本人操作的入口，停止本步执行，不编造文件或前序结论。\n要调整的页面与位置：【填写】\n当前表现：【填写】\n希望调整成什么：【填写具体效果】\n只修改上述界面位置，沿用已确认设计，不修改无关功能或数据逻辑。完成后提供预览入口，核对指定效果和受影响的原有操作，报告实际结果。',
-      'First check access to docs/design.md, tasks/todo.md. If missing or inaccessible, identify the prerequisite and owner action, then stop rather than invent prior work.\nPage and location: [fill in]\nCurrent appearance: [fill in]\nDesired change: [concrete result]\nChange only this interface location, following the agreed design and preserving unrelated features and data logic. Provide a preview and check both the requested result and affected existing actions. Report actual results.',
+      '先检查能否读取docs/design.md、tasks/todo.md。缺失或无访问能力时，明确缺项与需本人操作的入口，停止本步执行，不编造文件或前序结论。\n要调整的页面与位置：【填写】\n这个位置现在是什么样，哪里不符合预期：【填写】\n希望调整成什么：【填写具体效果】\n只修改上述界面位置，沿用已确认设计，不修改无关功能或数据逻辑。完成后提供预览入口，核对指定效果和受影响的原有操作，报告实际结果。',
+      'First check access to docs/design.md, tasks/todo.md. If missing or inaccessible, identify the prerequisite and owner action, then stop rather than invent prior work.\nPage and location: [fill in]\nWhat happens here now, and what does not meet your needs: [fill in]\nDesired change: [concrete result]\nChange only this interface location, following the agreed design and preserving unrelated features and data logic. Provide a preview and check both the requested result and affected existing actions. Report actual results.',
     ],
     refs: [
       {
@@ -2570,8 +2570,8 @@ export const learningContent: LearningContent[] = [
         'A complete flow includes opening, input, submission and results, not one button alone.',
       ],
       question: [
-        '从第一次打开开始，能独立完成吗？',
-        'Can the task be completed independently from opening?',
+        '从第一次打开项目开始，你能独自完成需求里约定的那件事吗？',
+        'Starting from opening the project, can you complete the agreed task on your own?',
       ],
     },
     templateKind: 'prompt',
@@ -2866,8 +2866,8 @@ export const learningContent: LearningContent[] = [
         'The browser page and backend are separate; closing the browser may leave the service running.',
       ],
       question: [
-        '明天没有这段聊天，还知道怎样打开吗？',
-        'Could it be reopened tomorrow without this chat?',
+        '明天看不到这段聊天时，你还能按项目里的说明重新打开它吗？',
+        'Without this chat tomorrow, could you reopen the project using its saved instructions?',
       ],
     },
     support: {
@@ -2975,8 +2975,8 @@ export const learningContent: LearningContent[] = [
       'Personal trial results are recorded; local use is a valid choice.',
     ],
     prompt: [
-      '本次试用版本与入口：【填写】\n对应的原始目标：【填写】\n本人实际操作：【填写】\n预期结果：【填写】\n实际结果：【填写，不以 AI 声称完成代替】\n结论：【通过／失败／未测试】\n未通过或未测试的事项：【填写或无】',
-      'Version and entry: [fill in]\nOriginal goal: [fill in]\nActions personally performed: [fill in]\nExpected result: [fill in]\nActual result: [not an AI completion claim]\nVerdict: [passed/failed/not tested]\nOutstanding items: [details or none]',
+      '本次试用版本与入口：【填写】\n这次试用要检查最初的哪个目标：【填写】\n你从哪里开始，依次做了什么：【填写】\n按最初约定，应该看到什么：【填写】\n实际结果：【填写，不以 AI 声称完成代替】\n结论：【通过／失败／未测试】\n未通过或未测试的事项：【填写或无】',
+      'Version and entry: [fill in]\nWhich original goal are you checking in this trial: [fill in]\nWhere did you start, and what did you do in order: [fill in]\nWhat should happen according to the original agreement: [fill in]\nActual result: [not an AI completion claim]\nVerdict: [passed/failed/not tested]\nOutstanding items: [details or none]',
     ],
     issues: [
       {
@@ -3125,8 +3125,8 @@ export const learningContent: LearningContent[] = [
       'Feedback is reproducible and separates facts, guesses and new requests.',
     ],
     prompt: [
-      '先检查能否读取当前项目位置。缺失或无访问能力时，明确缺项与需本人操作的入口，停止本步执行，不编造文件或前序结论。\n本次测试版本和日期：【填写】\n设备、系统和实际入口：【填写】\n测试的功能：【填写】\n依次做了什么：【填写能重复的操作步骤】\n希望看到什么：【填写原需求中的结果】\n实际发生什么：【填写现象，不必猜原因】\n截图或报错原文：【附上或写无】\n出现频率：【每次／偶尔／只试一次】\n影响：【无法使用／可绕开／外观文字】\n已通过和未测试的部分：【分别填写】\n\n请把以上本人试用记录保存到 docs/feedback.md，按问题编号整理，保留通过、失败和未测试项，不自行改写为已通过。材料缺失先问。本次只记录，不修代码。',
-      'First check access to the current project location. If missing or inaccessible, identify the prerequisite and owner action, then stop rather than invent prior work.\nVersion/date: [fill in]\nDevice and entry: [fill in]\nFeature: [fill in]\nSteps: [fill in]\nExpected: [fill in]\nActual: [fill in]\nEvidence: [attach or none]\nFrequency: [always/sometimes/once]\nImpact: [blocked/workaround/cosmetic]\nPassed and untested: [fill in]\n\nSave these personal observations in docs/feedback.md with issue IDs. Preserve facts and unknowns; ask for missing material. Do not fix code yet.',
+      '先检查能否读取当前项目位置。缺失或无访问能力时，明确缺项与需本人操作的入口，停止本步执行，不编造文件或前序结论。\n本次测试版本和日期：【填写】\n设备、系统和实际入口：【填写】\n测试的功能：【填写】\n依次做了什么：【填写能重复的操作步骤】\n希望看到什么：【填写原需求中的结果】\n实际发生什么：【填写现象，不必猜原因】\n截图或报错原文：【附上或写无】\n这个问题每次都会出现，还是偶尔出现：【每次／偶尔／只试一次】\n这个问题会让哪个操作做不下去：【无法使用／可绕开／外观文字】\n已通过和未测试的部分：【分别填写】\n\n请把以上本人试用记录保存到 docs/feedback.md，按问题编号整理，保留通过、失败和未测试项，不自行改写为已通过。材料缺失先问。本次只记录，不修代码。',
+      'First check access to the current project location. If missing or inaccessible, identify the prerequisite and owner action, then stop rather than invent prior work.\nVersion/date: [fill in]\nDevice and entry: [fill in]\nFeature: [fill in]\nSteps: [fill in]\nExpected: [fill in]\nActual: [fill in]\nEvidence: [attach or none]\nDoes the problem happen every time or only sometimes: [always/sometimes/once]\nWhich action does this problem prevent you from completing: [blocked/workaround/cosmetic]\nPassed and untested: [fill in]\n\nSave these personal observations in docs/feedback.md with issue IDs. Preserve facts and unknowns; ask for missing material. Do not fix code yet.',
     ],
     stage: 'accept',
     understanding: {
@@ -3577,8 +3577,8 @@ export const learningContent: LearningContent[] = [
       },
     ],
     prompt: [
-      '实际使用者：【填写】\n交付方式：【本机自用／网站／安装包／其他】\n目标设备或平台：【填写】\n本人选择这个方式的理由：【填写】\n尚未明确的条件：【填写或无】',
-      'Users: [fill in]\nDelivery: [local/website/installer/other]\nTarget device or platform: [fill in]\nReason for this choice: [fill in]\nUnknown conditions: [details or none]',
+      '项目做好后，具体给谁使用：【填写】\n用户通过什么方式打开项目：【本机自用／网站／安装包／其他】\n用户会用什么设备或平台：【填写】\n本人选择这个方式的理由：【填写】\n还有哪些使用或发布条件没确认：【填写或无】',
+      'Who will use the finished project: [fill in]\nHow will users open the project: [local/website/installer/other]\nWhat device or platform will users use: [fill in]\nReason for this choice: [fill in]\nWhich usage or release requirements are still undecided: [details or none]',
     ],
     templateKind: 'worksheet',
     support: {
