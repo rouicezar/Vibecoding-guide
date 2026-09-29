@@ -89,6 +89,7 @@ const stepHref = (id: string) => `${url(locale, `node/${nodeForStep(id)}`)}#${id
     <div class="step-slot">
       <Fragment set:html={heading(3, '你要做的', 'What you do')} />
       <p class="step-location"><Icon name="location" size={16} />{t(lesson.where, locale)}</p>
+      {microActions[stepId].some(action=>action.action[0].includes('建议提示词：')) && <p>{label('每次只发送当前这一项的提示词：选中框内文字复制（Mac 按 ⌘C，Windows 按 Ctrl+C），切到所选工具的项目对话，粘贴后把【】替换成自己的内容，再点发送。等工具回复并核对“完成后”的结果，再做下一项。','Send one action at a time: select and copy its prompt (⌘C on Mac, Ctrl+C on Windows), switch to your tool’s project chat, paste it, replace bracketed fields and send. Wait for the reply and check the stated result before continuing.')}</p>}
       <ol class="lesson-actions">{microActions[stepId].map(action => {
         const value=t(action.action,locale);
         const promptMarker=label('\n建议提示词：','\nSuggested prompt: ');
@@ -139,10 +140,10 @@ const stepHref = (id: string) => `${url(locale, `node/${nodeForStep(id)}`)}#${id
 
     <!-- 槽位 07 · 发给 AI 的话 -->
     <div class="step-slot">
-      <Fragment set:html={heading(7, '发给 AI 的话（可一键复制）', 'What to send to AI (copyable)')} />
-      <p>{label('按上面的顺序，一次完成一个操作。已逐项发送提示词的，不必再重复发送下面整段模板；需要整理材料时再使用它。','Follow the actions above one at a time. If you have sent the individual prompts, do not send this full template again; use it when you need to organize the step’s material.')}</p>
+      <Fragment set:html={heading(7, '本步材料（填写或复制）', 'Material for this step (fill or copy)')} />
+      <p>{lesson.templateKind === 'worksheet' || lesson.id === 'idea' ? label('先在下面填写自己的材料，点击确认后核对生成内容；什么时候交给工具，按上面的具体操作来。重新打开本页若只看到编辑框，核对后再点确认即可重新复制。','Fill your own material below, confirm it and check the result. Follow the actions above for when to give it to your tool. If reopening shows only the editor, review and confirm again to copy.') : label('上面已经逐项发送并完成的，不必再发下面整段模板。需要整理本步材料时再使用；替换【】后确认，再复制到项目对话。','If you completed the individual prompts above, do not resend this full template. Use it to organize this step’s material when needed; replace bracketed fields, confirm and copy into the project chat.')}</p>
       {lesson.prompt
-        ? <PromptTemplate id={`learn-${lesson.id}`} title={['这一步的提示词模板', 'Prompt template for this step'] as Copy} kind={lesson.templateKind ?? 'prompt'} prompt={lesson.prompt} locale={locale} />
+        ? <PromptTemplate id={`learn-${lesson.id}`} title={lesson.templateKind === 'worksheet' ? ['这一步的填写模板','Worksheet for this step'] as Copy : ['这一步的提示词模板', 'Prompt template for this step'] as Copy} kind={lesson.templateKind ?? 'prompt'} prompt={lesson.prompt} locale={locale} />
         : lesson.id === 'idea'
           ? <IdeaDraft locale={locale} />
           : <p>{label('这一步不需要发给 AI：先在自己的笔记里填写。', 'This step does not need a prompt. Write it in your own notes.')}</p>}

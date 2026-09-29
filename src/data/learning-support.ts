@@ -13,12 +13,12 @@ export const stepSupport:StepSupport[]=[
     ],
     "steps": [
       [
-        "写清谁会用。在下方想法草稿的第一项，写一个具体的人或群体。\n完成后：例如“我自己”或“店里负责记账的人”。",
-        "Name the user. Fill the first field in the idea draft below.\nAfterwards: For example, yourself or the person keeping shop accounts."
+        "向下找到“07 本步材料”里的“按模板改成自己的想法”输入框。保留四个问题，只把【】里的说明换成自己的答案。先填写“这个项目主要给谁使用”，例如“我自己”。\n完成后：第一个问题后面是自己的使用者，其余问题仍在。",
+        "Find “07 Material for this step” and the “Make this template personal” text box below. Keep all four questions and replace only the bracketed guidance with your answers. Start with “Who will use this project”, such as yourself.\nAfterwards: The first question contains your user and the other questions remain."
       ],
       [
-        "写清要解决什么。接着填写“现在有什么麻烦”和“做完后想怎样用”。\n完成后：能说出一个具体过程，例如输入学习内容、保存、以后再找。",
-        "Describe the problem and how you want to use the finished project.\nAfterwards: A concrete flow, such as enter notes, save them and find them later."
+        "在同一个框里找到“这个项目要帮他们解决什么问题”。写下现在遇到的麻烦，以及使用项目后想完成的事情。\n完成后：能说出一个具体过程，例如输入学习内容、保存、以后再找。",
+        "In the same box, find the question about the problem the project should solve. Describe the current difficulty and what you want to do with the finished project.\nAfterwards: A concrete flow, such as enter notes, save them and find them later."
       ],
       [
         "写好怎样试用才算做好，再点击“确认，生成我的想法草稿”。第二阶段暂时不做就填“否”。\n完成后：生成的草稿保留了自己的用户、问题、试用方法。",
@@ -49,8 +49,8 @@ export const stepSupport:StepSupport[]=[
       "Your confirmed idea draft."
     ],
     "output": [
-      "得到一份能直接交给工具的项目说明。",
-      "You have a project description ready to send to the tool."
+      "项目说明已确认，可以复制给后面的项目对话。",
+      "The confirmed brief is ready to copy into your project conversation."
     ],
     "steps": [
       [
@@ -62,8 +62,8 @@ export const stepSupport:StepSupport[]=[
         "Add the name, devices and one complete use from opening to outcome. You do not need to choose a database yet.\nAfterwards: A reader knows what to build, for whom and how to test it."
       ],
       [
-        "点击“确认，生成我的专属内容”，再复制保存好。后面准备 Git 的步骤会用到这段项目说明。\n完成后：得到一份能直接交给工具的项目说明。",
-        "Confirm your version, then copy and keep it for the Git preparation step.\nAfterwards: You have a project description ready to send to the tool."
+        "点击“确认，生成我的专属内容”，核对下方出现的文字，再点“复制我的草稿”。回到本页时若只看到编辑框，再确认一次就会出现复制按钮；不要点“使用本步新版模板”清掉自己的填写内容。后面准备 Git 时再把这份说明交给工具。\n完成后：项目说明已确认，可以复制给后面的项目对话。",
+        "Click “Confirm and generate my version”, review the result and click “Copy my draft”. If returning shows only the editor, confirm again to reveal Copy; do not replace your answers with the current template. Give the brief to your tool in the Git step later.\nAfterwards: The confirmed brief is ready to copy into your project conversation."
       ]
     ],
     "answer": [
@@ -132,8 +132,8 @@ export const stepSupport:StepSupport[]=[
       "A name for your project."
     ],
     "output": [
-      "模板中的位置能带你回到同一个项目。",
-      "The recorded location leads back to the same project."
+      "已确认的位置可以在下一步带入，带你回到同一个项目。",
+      "The confirmed location can be carried into the next step and leads to the same project."
     ],
     "steps": [
       [
@@ -141,12 +141,12 @@ export const stepSupport:StepSupport[]=[
         "Open Documents in Finder or File Explorer. For a web workspace, create a project in its project list instead.\nAfterwards: You have a dedicated place for this project."
       ],
       [
-        "创建文件夹并用自己的项目名称命名。Mac 按 Shift+Command+N，Windows 按 Ctrl+Shift+N，输入名称后按回车。\n完成后：能打开刚建的空文件夹；网页工具能打开新工作区。",
-        "Create and name a folder: Shift+Command+N on Mac or Ctrl+Shift+N on Windows, then enter a name.\nAfterwards: The new folder or web workspace opens."
+        "电脑文件夹：Mac 按 Shift+Command+N，Windows 按 Ctrl+Shift+N，输入自己的项目名称后按回车。网页工具：在新建项目的名称栏填写名称并确认，不使用电脑文件夹快捷键。\n完成后：能打开刚建的空文件夹；网页工具能打开新工作区。",
+        "For a local folder, press Shift+Command+N on Mac or Ctrl+Shift+N on Windows, type your project name and press Enter. In a web tool, enter the name in its new-project form and confirm; do not use a local-folder shortcut.\nAfterwards: The new folder or web workspace opens."
       ],
       [
-        "复制项目位置填到下方模板。Mac 选中文件夹按 Option+Command+C；Windows 打开文件夹后复制地址栏；网页工具记录工作区名称和入口。\n完成后：模板中的位置能带你回到同一个项目。",
-        "Copy the location into the template: Option+Command+C on a selected Mac folder, the Windows address bar, or your web workspace name and entry.\nAfterwards: The recorded location leads back to the same project."
+        "复制项目位置填到“07 本步材料”的模板，再点击确认。Mac 选中文件夹按 Option+Command+C；Windows 打开文件夹后复制地址栏；网页工具填写工作区名称和入口网址。\n完成后：已确认的位置可以在下一步带入，带你回到同一个项目。",
+        "Copy the location into the template in section 07 and confirm it. On Mac select the folder and press Option+Command+C; on Windows copy its address bar. For a web workspace, record its name and URL.\nAfterwards: The confirmed location can be carried into the next step and leads to the same project."
       ]
     ],
     "answer": [
@@ -173,8 +173,8 @@ export const stepSupport:StepSupport[]=[
       "The project folder or web workspace you created."
     ],
     "output": [
-      "工具返回的实际路径与自己的路径一致。",
-      "The reported path matches yours."
+      "工具返回的位置与自己的项目一致。",
+      "The reported location matches your project."
     ],
     "steps": [
       [
@@ -182,8 +182,8 @@ export const stepSupport:StepSupport[]=[
         "Use Open folder or the equivalent project entry and choose your new folder.\nAfterwards: The tool shows the expected project."
       ],
       [
-        "在这个项目中打开对话，把自己的完整路径填入下面这段话后发送。\n建议提示词：请检查当前打开的项目是不是【我的项目完整路径】。告诉我实际路径，并列出文件夹里已有的文件。只检查，不修改文件。\n完成后：工具返回的实际路径与自己的路径一致。",
-        "Start a chat in this project, replace the path and send this.\nSuggested prompt: Check whether the current project is 【my full project path】. Report its actual path and existing files. Inspect only; do not change files.\nAfterwards: The reported path matches yours."
+        "在这个项目中打开对话。把下面【】替换成自己的项目路径；网页工具则填写工作区名称和入口网址，再发送。\n建议提示词：请检查当前打开的项目是不是【本机项目完整路径，或网页工作区名称和入口网址】。告诉我实际位置，并列出已有文件。只检查，不修改文件。\n完成后：工具返回的位置与自己的项目一致。",
+        "Open a conversation inside this project. Replace the brackets with your folder path, or your web workspace name and URL, before sending.\nSuggested prompt: Check whether the current project is [full local path, or web workspace name and URL]. Report its actual location and existing files. Inspect only; do not modify files.\nAfterwards: The reported location matches your project."
       ]
     ],
     "answer": [
@@ -565,8 +565,8 @@ export const stepSupport:StepSupport[]=[
         "Check whether your computer can run this project.\nSuggested prompt: Read docs/design.md and tasks/todo.md. Check required software; for anything missing give official installation steps for my system and a success check. Do not build features.\nAfterwards: You know what is missing and where to install it."
       ],
       [
-        "准备运行所需的依赖。依赖就是项目会用到的现成程序包。\n建议提示词：请检查项目已有配置，按确认的方案安装必要依赖，保留已有文件。告诉我运行结果，失败时先解释第一条错误。\n完成后：必要程序包已安装，没有未解决的安装错误。",
-        "Install dependencies, the existing software packages your project uses.\nSuggested prompt: Inspect existing configuration, install only agreed dependencies and preserve files. Report results and explain the first failure if any.\nAfterwards: Required packages are installed without unresolved errors."
+        "让工具准备最小项目需要的文件，再安装必要程序包。空文件夹还没有运行配置，需要先创建；已有文件先检查并保留。\n建议提示词：请读 docs/design.md 和 tasks/todo.md。检查现有配置；缺少时，按已确认方案创建最小项目的配置和启动文件，再安装必要依赖。保留项目说明、规则和已有成果。本次只准备能启动的最小项目，不提前开发业务功能。失败时先解释第一条错误。\n完成后：有实际配置和启动文件，必要程序包已安装。",
+        "Prepare minimal project files before installing packages. An empty folder needs configuration first; inspect and preserve existing files.\nSuggested prompt: Read docs/design.md and tasks/todo.md. Inspect existing configuration; if missing, create minimal configuration and startup files for the agreed approach, then install required dependencies. Preserve instructions, rules and existing work. Prepare only a runnable minimal project, without building business features. Explain the first error if setup fails.\nAfterwards: Actual configuration and startup files exist and required packages are installed."
       ],
       [
         "启动一个能打开的最小页面，再记下启动方法。\n建议提示词：请启动本项目最小页面，告诉我在哪里执行、实际打开哪个地址，以及怎样停止。把验证过的方法写入 README.md，检查结果写入 docs/checks.md。\n完成后：打开工具给出的地址能看到页面，README 中有下次启动方法。",
@@ -681,25 +681,25 @@ export const stepSupport:StepSupport[]=[
       "Your input page and the agreed storage requirements."
     ],
     "output": [
-      "同一编号和内容仍能找到。",
-      "The same ID and content remain."
+      "记录在设计约定的位置保留，内容与保存时相同。",
+      "The entry remains in the storage location promised by the design, with its original content."
     ],
     "steps": [
       [
-        "先建立真正存放记录的地方。数据库就像项目的登记本，页面关闭后记录还在里面。只展示内容的项目可以跳过保存功能。\n建议提示词：请读需求，检查本项目的数据应该保存在哪里。需要数据库时，先检查已有内容，再建立缺少的表，告诉我实际位置、每条记录保存哪些字段。不要清空已有数据。\n完成后：知道数据位置和每条记录会保存的内容。",
-        "Prepare real storage. A database keeps records after the page closes. Display-only projects can skip storage.\nSuggested prompt: Read the requirements and inspect storage. If a database is needed, inspect existing content, create only missing tables and report its location and record fields. Do not erase data.\nAfterwards: You know where records live and what they contain."
+        "先建立真正存放记录的地方。数据库就像项目的登记本，页面关闭后记录还在里面。先看设计文件：不用保存的项目跳过本步；只保存在浏览器的项目按原方案检查，不增加后端或数据库。下面的数据库操作用于已经选择数据库的项目。\n建议提示词：请读需求，检查本项目的数据应该保存在哪里。需要数据库时，先检查已有内容，再建立缺少的表，告诉我实际位置、每条记录保存哪些字段。不要清空已有数据。\n完成后：知道数据位置和每条记录会保存的内容。",
+        "Prepare real storage. A database keeps records after the page closes.  If no storage is needed, skip this step. For browser-only storage, follow that design without adding a backend or database. Database actions apply only when the design requires one.\nSuggested prompt: Read the requirements and inspect storage. If a database is needed, inspect existing content, create only missing tables and report its location and record fields. Do not erase data.\nAfterwards: You know where records live and what they contain."
       ],
       [
-        "让后端能够保存和读取记录。后端是收到页面请求后实际处理事情的程序。\n建议提示词：请实现或检查保存一条记录和读取列表的后端接口。接口就是页面发送或索取内容的入口。用测试记录检查保存结果，告诉我记录编号，再核对数据库中同一条记录。空白内容应被拒绝。\n完成后：合法内容有真实编号，数据库里能找到，空白内容没有写入。",
-        "Make the backend save and read records. It is the program processing page requests.\nSuggested prompt: Implement or inspect save-one and read-list endpoints. Test a record, report its ID and verify the matching database record. Reject blank input.\nAfterwards: A valid record has a matching database ID; blank input is not inserted."
+        "已选择后端的项目：让后端能够保存和读取记录。后端是收到页面请求后实际处理事情的程序。\n建议提示词：请实现或检查保存一条记录和读取列表的后端接口。接口就是页面发送或索取内容的入口。用测试记录检查保存结果，告诉我记录编号，再核对数据库中同一条记录。空白内容应被拒绝。\n完成后：合法内容有真实编号，数据库里能找到，空白内容没有写入。",
+        "If your design uses a backend: Make the backend save and read records. It is the program processing page requests.\nSuggested prompt: Implement or inspect save-one and read-list endpoints. Test a record, report its ID and verify the matching database record. Reject blank input.\nAfterwards: A valid record has a matching database ID; blank input is not inserted."
       ],
       [
-        "把页面按钮连接到刚才的保存功能。\n建议提示词：请把页面的保存按钮连接到已检查的后端。保存期间避免重复点击，失败保留输入并解释原因，真正保存成功后再显示成功。告诉我打开哪个地址来试。\n完成后：点一次保存后，能在列表里找到刚才的内容。",
-        "Connect the page’s Save button to the checked backend.\nSuggested prompt: Connect Save to the checked backend. Prevent repeat pending clicks, keep input on failure and show success only after saving. Give me the test URL.\nAfterwards: One save produces a record you can find in the list."
+        "已选择后端的项目：把页面按钮连接到刚才的保存功能。\n建议提示词：请把页面的保存按钮连接到已检查的后端。保存期间避免重复点击，失败保留输入并解释原因，真正保存成功后再显示成功。告诉我打开哪个地址来试。\n完成后：点一次保存后，能在列表里找到刚才的内容。",
+        "If your design uses a backend: Connect the page’s Save button to the checked backend.\nSuggested prompt: Connect Save to the checked backend. Prevent repeat pending clicks, keep input on failure and show success only after saving. Give me the test URL.\nAfterwards: One save produces a record you can find in the list."
       ],
       [
-        "亲自保存一条独特测试内容，刷新页面，再用另一个浏览器打开同一网址查找它。\n完成后：同一编号和内容仍能找到。",
-        "Save unique test content, refresh, then find it in another browser on the same URL.\nAfterwards: The same ID and content remain."
+        "保存一条容易辨认的测试内容，例如“保存测试 001”，刷新并重新打开页面查找它。设计要求数据在后端共享时，再用另一个浏览器打开同一网址；只存在浏览器里的资料应在原浏览器检查。\n完成后：记录在设计约定的位置保留，内容与保存时相同。",
+        "Save a recognizable test entry such as “save test 001”, refresh and reopen the page to find it. Use another browser only if the design calls for shared backend data; check browser-only data in the original browser.\nAfterwards: The entry remains in the storage location promised by the design, with its original content."
       ]
     ],
     "answer": [
@@ -1214,8 +1214,8 @@ export const stepSupport:StepSupport[]=[
     ],
     "steps": [
       [
-        "先分清要备份什么：项目代码、作品数据库、学习草稿是三份不同资料。\n建议提示词：请列出本项目代码和实际数据的位置，分别说明怎样备份、备份存在哪里。代码提交不能代替数据库备份。\n完成后：知道每份资料该从哪里备份。",
-        "Distinguish code, application data and learning drafts.\nSuggested prompt: List code and actual data locations and how/where each is backed up. A commit does not replace a database backup.\nAfterwards: Each backup source and destination is clear."
+        "先分清要备份什么：项目代码、作品数据、学习草稿分别保存。只有实际使用数据库时才做下面的数据库备份和恢复；没有数据库就按工具说明备份实际文件，再做最后的“记录下次从哪里继续”。\n建议提示词：请列出本项目代码和实际数据的位置，分别说明怎样备份、备份存在哪里。代码提交不能代替数据库备份。\n完成后：知道每份资料该从哪里备份。",
+        "Distinguish code, application data and learning drafts. Follow the database backup and restoration actions only when your project uses a database. Otherwise back up its actual files, then continue to the final handoff action.\nSuggested prompt: List code and actual data locations and how/where each is backed up. A commit does not replace a database backup.\nAfterwards: Each backup source and destination is clear."
       ],
       [
         "创建一份带日期的新备份，不覆盖旧文件。\n建议提示词：请用数据库支持的一致性备份方法，生成一份新备份。先报告原数据位置、备份位置和当前记录数量，完成后告诉我文件大小。不要清空或覆盖原数据。\n完成后：得到能找到的非空备份文件。",
@@ -1226,8 +1226,8 @@ export const stepSupport:StepSupport[]=[
         "Restore into a separate test location and actually read the records.\nSuggested prompt: Restore to a separate test destination. Show source and target paths first. Start only a test service connected to the copy and give its URL. Never overwrite the source.\nAfterwards: The restored copy opens with records from the backup."
       ],
       [
-        "只在恢复副本里新增一条测试记录，再检查原库没有变化。\n建议提示词：请核对恢复副本的旧记录，并只读检查原库没有这次新增。将备份位置、恢复方法和结果写入 docs/handoff.md，停止恢复测试服务。\n完成后：副本能用，原库内容不变，恢复方法已保存。",
-        "Add a test record only to the restored copy and check the source stayed unchanged.\nSuggested prompt: Verify old records in the copy and read-only confirm the source lacks the new record. Save backup location, recovery method and results to docs/handoff.md; stop the test service.\nAfterwards: The copy works, the source is unchanged and recovery is documented."
+        "打开刚才恢复副本的网址，新增“恢复测试 001”并保存。把这条记录的编号交给工具，检查原库里没有它。若副本无法新增，就把实际报错交给工具，先不要记录为成功。\n建议提示词：我只在恢复副本里新增了“恢复测试 001”，编号是【填写】。请核对副本中的旧记录和新增记录，并只读检查原库没有这次新增。将备份位置、恢复方法和实际结果写入 docs/handoff.md，再停止恢复测试服务。不要修改原库。\n完成后：副本能保存新记录，原库内容不变，恢复方法已保存。",
+        "Open the restored copy’s URL and save “restore test 001”. Give its ID to the tool and check that it is absent from the original database. If saving fails, report the error instead of claiming success.\nSuggested prompt: I added “restore test 001” only to the restored copy, with ID [fill in]. Check the copy’s old and new records, and read-only verify that the original does not contain this addition. Record backup location, restoration method and actual results in docs/handoff.md, then stop the test service. Do not modify the original database.\nAfterwards: The copy saves new records, the original is unchanged, and restoration instructions are saved."
       ],
       [
         "记录下次从哪里继续。\n建议提示词：请更新 docs/handoff.md：项目位置、当前版本、启动方法、未解决问题、下一项任务。下次新对话先读这份文件，不重新创建项目。\n完成后：下次可以直接找到原项目和下一项任务。",

@@ -2,8 +2,8 @@
   "idea": [
     {
       "expect": [
-        "例如“我自己”或“店里负责记账的人”。",
-        "For example, yourself or the person keeping shop accounts."
+        "第一个问题后面是自己的使用者，其余问题仍在。",
+        "The first question contains your user and the other questions remain."
       ],
       "ifWrong": [
         "想不到就从自己最近遇到的一件麻烦事开始。",
@@ -54,8 +54,8 @@
     },
     {
       "expect": [
-        "得到一份能直接交给工具的项目说明。",
-        "You have a project description ready to send to the tool."
+        "项目说明已确认，可以复制给后面的项目对话。",
+        "The confirmed brief is ready to copy into your project conversation."
       ],
       "ifWrong": [
         "发现内容有误就修改模板、重新确认，再复制最新版。",
@@ -118,8 +118,8 @@
     },
     {
       "expect": [
-        "模板中的位置能带你回到同一个项目。",
-        "The recorded location leads back to the same project."
+        "已确认的位置可以在下一步带入，带你回到同一个项目。",
+        "The confirmed location can be carried into the next step and leads to the same project."
       ],
       "ifWrong": [
         "不要照抄示例路径；找不到完整路径时先记录上级目录和名称。",
@@ -140,8 +140,8 @@
     },
     {
       "expect": [
-        "工具返回的实际路径与自己的路径一致。",
-        "The reported path matches yours."
+        "工具返回的位置与自己的项目一致。",
+        "The reported location matches your project."
       ],
       "ifWrong": [
         "不一致就重新选择正确项目，不让工具搬动其他项目的文件来凑路径。",
@@ -390,8 +390,8 @@
     },
     {
       "expect": [
-        "必要程序包已安装，没有未解决的安装错误。",
-        "Required packages are installed without unresolved errors."
+        "有实际配置和启动文件，必要程序包已安装。",
+        "Actual configuration and startup files exist and required packages are installed."
       ],
       "ifWrong": [
         "权限不足就按工具说明完成当前必要操作，不直接删除配置重来。",
@@ -506,8 +506,8 @@
     },
     {
       "expect": [
-        "同一编号和内容仍能找到。",
-        "The same ID and content remain."
+        "记录在设计约定的位置保留，内容与保存时相同。",
+        "The entry remains in the storage location promised by the design, with its original content."
       ],
       "ifWrong": [
         "找不到先核对网址、账号和数据库位置，保留原数据。",
@@ -902,8 +902,8 @@
     },
     {
       "expect": [
-        "副本能用，原库内容不变，恢复方法已保存。",
-        "The copy works, the source is unchanged and recovery is documented."
+        "副本能保存新记录，原库内容不变，恢复方法已保存。",
+        "The copy saves new records, the original is unchanged, and restoration instructions are saved."
       ],
       "ifWrong": [
         "记录不符时保留副本和日志，先查备份日期及路径。",

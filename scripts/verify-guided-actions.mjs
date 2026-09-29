@@ -39,3 +39,17 @@ for(const branch of learningBranches){
  }
 }
 console.log(`PASS: ${learningBranches.length} optional branches have per-action bilingual prompts.`);
+// First-run regressions: instructions must name the actual editable questions.
+const {ideaTemplate}=await import('../src/data/idea-template.ts');
+for(const [lang,field] of ['这个项目主要给谁使用','Who will use this project'].entries()){
+ assert(ideaTemplate[lang].includes(field));
+ assert(microActions.idea[0].action[lang].includes(field));
+}
+assert(microActions.idea[1].action[0].includes('这个项目要帮他们解决什么问题'));
+assert(!microActions.idea[1].action[0].includes('“现在有什么麻烦”'));
+for(const locale of ['zh-cn','en']){
+ const html=await readFile(`dist/${locale}/node/description/index.html`,'utf8');
+ assert(html.includes(locale==='zh-cn'?'这一步的填写模板':'Worksheet for this step'));
+ assert(!html.includes(locale==='zh-cn'?'07发给 AI 的话':'07What to send to AI'));
+}
+console.log('PASS: first-run instructions match the idea fields and worksheet purpose.');
