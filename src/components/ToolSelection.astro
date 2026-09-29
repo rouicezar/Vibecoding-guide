@@ -1,56 +1,1205 @@
 ---
-import {t,url,type Locale,type Copy} from '../data/site';
-import {codingTools} from '../data/tools';
+import { t, url, type Locale, type Copy } from '../data/site';
+import { codingTools } from '../data/tools';
 import Icon from './Icon.astro';
 import ToolReviews from './ToolReviews.astro';
-const {locale}=Astro.props as {locale:Locale};
-const forms:{id:string;icon:string;title:Copy;for:Copy;gain:Copy;cost:Copy}[]=[
-{id:'desktop',icon:'monitor',title:['桌面任务界面','Desktop tasks'],for:['想通过对话交代任务、看结果','Prefer task conversations and results'],gain:['打开文件夹 → 交代任务 → 审查改动','Open folder → delegate → review'],cost:['适合起步；仍要检查文件与运行结果。','Good starting point; still review files and runtime results.']},
-{id:'ide',icon:'layout',title:['IDE · 带 AI 的编辑器','IDE · an editor with AI'],for:['想看文件、改局部、长期维护','See files, edit precisely, maintain over time'],gain:['选中文件或组件 → AI 修改 → 对照差异','Select files → ask AI → compare changes'],cost:['需要认识文件区、对话区和终端区。','Learn the file, conversation and terminal panels.']},
-{id:'cli',icon:'code',title:['CLI · 终端里的助手','CLI · assistant in a terminal'],for:['熟悉命令，准备做自动化','Comfortable with commands and automation'],gain:['进入目录 → 描述任务 → 运行检查','Enter folder → describe → run checks'],cost:['方便脚本和远程工作；首次接触电脑开发可后学。','Useful for scripts and remote work; can be learned later.']},
-{id:'web',icon:'browser',title:['网页构建工具','Browser builder'],for:['先验证网站想法，不想配置环境','Try a web idea with minimal local setup'],gain:['输入需求 → 页面预览 → 分享试用','Describe → preview → share a trial'],cost:['先检查导出、托管费用和平台限制。','Check export, hosting costs and platform limits.']},
+const { locale } = Astro.props as { locale: Locale };
+const forms: {
+  id: string;
+  icon: string;
+  title: Copy;
+  for: Copy;
+  gain: Copy;
+  cost: Copy;
+}[] = [
+  {
+    id: 'desktop',
+    icon: 'monitor',
+    title: ['桌面任务界面', 'Desktop tasks'],
+    for: [
+      '想通过对话交代任务、看结果',
+      'Prefer task conversations and results',
+    ],
+    gain: [
+      '打开文件夹 → 交代任务 → 审查改动',
+      'Open folder → delegate → review',
+    ],
+    cost: [
+      '适合起步；仍要检查文件与运行结果。',
+      'Good starting point; still review files and runtime results.',
+    ],
+  },
+  {
+    id: 'ide',
+    icon: 'layout',
+    title: ['IDE · 带 AI 的编辑器', 'IDE · an editor with AI'],
+    for: [
+      '想看文件、改局部、长期维护',
+      'See files, edit precisely, maintain over time',
+    ],
+    gain: [
+      '选中文件或组件 → AI 修改 → 对照差异',
+      'Select files → ask AI → compare changes',
+    ],
+    cost: [
+      '需要认识文件区、对话区和终端区。',
+      'Learn the file, conversation and terminal panels.',
+    ],
+  },
+  {
+    id: 'cli',
+    icon: 'code',
+    title: ['CLI · 终端里的助手', 'CLI · assistant in a terminal'],
+    for: ['熟悉命令，准备做自动化', 'Comfortable with commands and automation'],
+    gain: [
+      '进入目录 → 描述任务 → 运行检查',
+      'Enter folder → describe → run checks',
+    ],
+    cost: [
+      '方便脚本和远程工作；首次接触电脑开发可后学。',
+      'Useful for scripts and remote work; can be learned later.',
+    ],
+  },
+  {
+    id: 'web',
+    icon: 'browser',
+    title: ['网页构建工具', 'Browser builder'],
+    for: [
+      '先验证网站想法，不想配置环境',
+      'Try a web idea with minimal local setup',
+    ],
+    gain: [
+      '输入需求 → 页面预览 → 分享试用',
+      'Describe → preview → share a trial',
+    ],
+    cost: [
+      '先检查导出、托管费用和平台限制。',
+      'Check export, hosting costs and platform limits.',
+    ],
+  },
 ];
 ---
+
 <div class="tool-page">
-<header class="page-intro"><span class="eyebrow">BUILD WITH AI</span><h1>{t(['选择工具','Choose a tool'],locale)}</h1><p class="lead">{t(['先选顺手的工作方式，再选一个能陪项目走下去的工具。','Choose a comfortable workflow, then a tool that can grow with the project.'],locale)}</p><p class="muted">{t(['这里选的是帮忙制作的 AI 工具；产品使用什么技术，下一阶段再决定。','Choose the AI tool used to build here. Product technologies come in a later stage.'],locale)} <a href={url(locale,'stacks')}>{t(['查看区别 →','See the stack guide →'],locale)}</a></p><p><a href={url(locale,'communicate/setup')}>{t(['已经选好？直接复制 Git 初始化与完整规则文件提示词 →','Already chosen? Open Git initialization and complete project-rule prompts →'],locale)}</a></p></header>
-<nav class="tool-toc" aria-label={t(['本页内容','On this page'],locale)}>{[['forms','01',t(['认识使用方式','Workflows'],locale)],['recommend','02',t(['按项目选','Project fit'],locale)],['catalog','03',t(['对比工具与价格','Tools & pricing'],locale)],['reviews','04',t(['使用评价','User experience'],locale)],['begin','05',t(['选好后开始','Start building'],locale)]].map(([id,n,label])=><a href={`#${id}`}><span>{n}</span>{label}</a>)}</nav>
-<section class="tool-section" id="four-dimensions"><h2>{t(['先比较这四件事，再试一个小任务','Compare four things, then try one task'],locale)}</h2><div class="surface-grid">{[
-{title:['你能找到项目和文件入口吗？','Can you find the project and file controls?'],body:['先看是否能找到项目、对话、预览和错误；桌面任务界面通常比终端更容易开始。这是操作负担判断，不是能力排名。','Find the project, chat, preview and errors. A graphical task interface is generally easier to start with than a terminal; this assesses interaction effort, not capability.']},
-{title:['免费额度能做多少，用完后怎么办？','What does the free allowance cover, and what happens when it runs out?'],body:['核对免费的是安装还是制作额度、何时重置、耗尽后怎样继续。未明确的额度不当作无限免费。','Distinguish free installation from usable allowance, reset timing and what happens when exhausted. Unknown limits are not unlimited.']},
-{title:['订阅和额外用量分别要花多少钱？','What do the subscription and extra usage cost?'],body:['分别核对月付、年付、续费、超额费用；模型费用与项目上线后的托管费用也可能另计。先试用，不为完成课程盲目购买。','Compare monthly, annual, renewal and overage costs. Model usage and hosting may cost extra. Try before buying.']},
-{title:['它能操作文件、运行项目并检查结果吗？','Can it edit files, run the project and check the result?'],body:['用同一小任务比较：保存一个文件、修改一处、打开预览、处理一个错误、导出并再次打开。能展示结果比笼统说最强更有用。','Compare saving a file, editing one detail, previewing, fixing an error, exporting and reopening. Visible results beat broad rankings.']}
-].map(x=><article class="surface-card"><h3>{t([x.title[0],x.title[1]],locale)}</h3><p>{t([x.body[0],x.body[1]],locale)}</p></article>)}</div><p class="small muted">{t(['先排除系统、地区或导出条件不符合的工具；下面目录价格是已标日期的参考，购买前核对当前官方页面和本人账号。','First exclude incompatible OS, region or export options. Catalog prices are dated references; verify current official pages and account details before purchase.'],locale)}</p></section>
-<section id="forms" class="tool-section"><h2>{t(['四种入口，做的是同一件事','Four entry points to the same work'],locale)}</h2><p>{t(['IDE 也安装在电脑上。这里的“桌面任务界面”特指以任务和对话为主的界面；同一品牌可以同时提供多种入口。','An IDE is also desktop software. “Desktop tasks” here means a task-first conversational interface. One brand may offer several entry points.'],locale)}</p><div class="surface-grid">{forms.map(f=><article class="surface-card"><Icon name={f.icon} size={25}/><h3>{t(f.title,locale)}</h3><p>{t(f.for,locale)}</p><div class={`workflow-sample ${f.id}`} aria-hidden="true">{f.id==='ide'?<><span>FILES</span><span>EDITOR</span><span>AI</span></>:f.id==='cli'?<code>project/ $<br/>› {t(['完成这一项任务','Complete this task'],locale)}<br/>✓ {t(['检查结果','Check result'],locale)}</code>:f.id==='desktop'?<><span>{t(['项目','Project'],locale)}</span><span>{t(['任务 → 改动 → 检查','Task → Changes → Check'],locale)}</span></>:<><span>{t(['需求','Brief'],locale)}</span><span>{t(['页面预览','Preview'],locale)}</span></>}</div><strong class="small">{t(f.gain,locale)}</strong><p class="small muted">{t(f.cost,locale)}</p></article>)}</div></section>
-<section id="recommend" class="tool-section"><h2>{t(['从当前项目，选出一小组候选','Shortlist for the current project'],locale)}</h2><p>{t(['这是按工作方式给出的选型建议，不是能力排行榜。已有订阅先试已有工具，先完成一个小任务再考虑升级。','These are workflow recommendations, not a capability ranking. Try an existing subscription first and finish a small task before upgrading.'],locale)}</p><form id="tool-picker" data-locale={locale}>
-<div class="picker-fields"><label>{t(['你准备用这个工具制作什么？','What do you want to build with this tool?'],locale)}<select name="project"><option value="web">{t(['网站 / Web 应用','Website / web app'],locale)}</option><option value="native">{t(['手机 App / 桌面软件','Mobile / desktop app'],locale)}</option><option value="existing">{t(['接手或长期维护已有项目','Maintain an existing project'],locale)}</option><option value="automation">{t(['脚本 / 重复任务自动化','Scripts / recurring automation'],locale)}</option></select></label><label>{t(['你更习惯用哪种方式操作工具？','How would you prefer to work with the tool?'],locale)}<select name="style"><option value="visual">{t(['对话交代任务，看结果','Conversations and results'],locale)}</option><option value="files">{t(['同时查看文件与修改','Files and changes together'],locale)}</option><option value="terminal">{t(['已经熟悉终端命令','Already use terminal commands'],locale)}</option><option value="browser">{t(['暂时不能安装软件','Cannot install software yet'],locale)}</option></select></label><label>{t(['你想先比较哪些地区可用的服务？','Which available regional services would you like to compare first?'],locale)}<select name="region"><option value="all">{t(['国际与中国服务一起看','Global and China services'],locale)}</option><option value="cn">{t(['优先中国版服务','China editions first'],locale)}</option></select></label></div><button class="button primary" type="submit">{t(['查看候选和理由','See candidates and reasoning'],locale)}</button></form>
-<div class="recommendation" id="tool-recommendation" aria-live="polite"><strong>{t(['还没有偏好？先试桌面任务界面或 IDE。','No preference yet? Try desktop tasks or an IDE.'],locale)}</strong><p>{t(['新手做本地项目可先比较 Codex、Claude Code、Qoder、TRAE、Kimi Code；能成功打开项目并改一处文字，比一次安装所有工具更有帮助。','For a first local project, compare Codex, Claude Code, Qoder, TRAE and Kimi Code. Successfully open a project and change one label before expanding the toolset.'],locale)}</p></div>
-</section>
-<details id="catalog" class="tool-section"><summary>{t(['按需展开工具目录与订阅','Open the tool catalog and subscriptions'],locale)}</summary><div class="section-heading"><h2>{t(['常用工具与订阅','Common tools and subscriptions'],locale)}</h2><span class="small muted">2026-09-23</span></div><p>{t(['覆盖全球与中国常用工具；同一品牌的不同版本不重复计数。价格按所标地区、币种与付款周期展示；不把首月优惠当续费价。购买前打开官方价格页核对税费、可用地区与账号权益。','Common global and China tools; editions of the same brand are not counted twice. Prices retain their region, currency and billing cycle. Introductory offers are not renewal prices. Check official pricing, tax, availability and account entitlements before buying.'],locale)}</p>
-<label class="tool-search-label" for="tool-search">{t(['按名称或用途找工具','Find a tool by name or purpose'],locale)}<input id="tool-search" type="search" placeholder={t(['比如：CodeBuddy、网页、自动化','For example: CodeBuddy, browser, automation'],locale)}/></label><div class="tool-filters" role="group" aria-label={t(['按入口筛选','Filter by entry point'],locale)}><button data-tool-filter="all" aria-pressed="true">{t(['全部','All'],locale)}</button>{forms.map(f=><button data-tool-filter={f.id} aria-pressed="false">{t(f.title,locale)}</button>)}</div><p class="small muted" id="tool-count" role="status">{codingTools.length} / {codingTools.length}</p>
-<p id="tool-empty" hidden>{t(['没有匹配。清空关键词，或切换到“全部”。','No matches. Clear the search or choose All.'],locale)}</p><div class="tool-catalog">{codingTools.map(tool=><article id={`tool-${tool.id}`} class="tool-product" data-tool-card data-keywords={[tool.name,...tool.fit,...tool.forms,...tool.advantage].join(' ').toLowerCase()} data-surfaces={tool.surfaces.join(' ')}><header><img src={`/brand/tools/${tool.icon}`} alt="" width="36" height="36" loading="lazy"/><div><h3>{tool.name}</h3><span class="small muted">{t(tool.forms,locale)}</span></div></header><p class="tool-fit">{t(tool.fit,locale)}</p><p class="price-line">{t(tool.price,locale)}</p><details><summary>{t(['优势、限制与开始方式','Strengths, limits and getting started'],locale)}<span aria-hidden="true"> ＋</span></summary><dl><dt>{t(['这个工具可以帮你做什么？','What can this tool help you do?'],locale)}</dt><dd>{t(tool.advantage,locale)}</dd><dt>{t(['使用前需要知道哪些限制？','What limits should you know before using it?'],locale)}</dt><dd>{t(tool.limit,locale)}</dd><dt>{t(['第一次使用时，应该从哪里开始？','Where should you start on your first use?'],locale)}</dt><dd>{t(tool.start,locale)}</dd><dt>{t(['使用这个工具可能要付哪些费用？','What might using this tool cost?'],locale)}</dt><dd>{t(tool.billing,locale)}</dd></dl><a class="text-link" href={tool.home} target="_blank" rel="noreferrer">{t(['打开官网 ↗','Open official site ↗'],locale)}</a></details><footer><span>{t(['官方依据','Official sources'],locale)}</span>{tool.sources.map(s=><a href={s.url} target="_blank" rel="noreferrer">{s.label} ↗</a>)}</footer></article>)}</div>
-</details>
-<details class="catalog-notes"><summary>{t(['旧教程中的工具为什么不在名单里？','Why are some tools from older guides absent?'],locale)}</summary><p>{t(['本轮核验覆盖 26 个独立工具与相关旧品牌，并非全球穷尽。Devin / Windsurf 合并展示；停服、停止新建或不再维护的工具不放进新手候选。','This review covers 26 distinct tools and related former brands, not every tool worldwide. Devin / Windsurf share one entry. Discontinued or unmaintained tools are excluded from starter candidates.'],locale)}</p><ul><li><strong>Roo Code</strong> — {t(["官方已停止并归档，不推荐用于新项目起步。", "Officially discontinued and archived; not recommended for a new project."],locale)} <a href="https://github.com/RooCodeInc/Roo-Code" target="_blank" rel="noreferrer">{t(['官方说明 ↗','Official notice ↗'],locale)}</a></li><li><strong>Continue</strong> — {t(["官方仓库不再积极维护，最后版本为 2.0.0。", "The official repository is no longer actively maintained; final version 2.0.0."],locale)} <a href="https://github.com/continuedev/continue" target="_blank" rel="noreferrer">{t(['官方说明 ↗','Official notice ↗'],locale)}</a></li><li><strong>Firebase Studio</strong> — {t(["官方说明已停止新建工作区，不作为新手起步入口。", "Official documentation says new workspace creation is disabled."],locale)} <a href="https://firebase.google.com/docs/studio/pricing" target="_blank" rel="noreferrer">{t(['官方说明 ↗','Official notice ↗'],locale)}</a></li><li><strong>通义灵码 / Lingma</strong> — {t(["已迁移至 Qoder 中国版，合并到 Qoder 条目。", "Migrated to Qoder CN; included in the Qoder entry."],locale)} <a href="https://help.aliyun.com/zh/lingma/billing-description" target="_blank" rel="noreferrer">{t(['官方说明 ↗','Official notice ↗'],locale)}</a></li></ul></details>
-<ToolReviews locale={locale}/><section class="tool-section" id="budget"><h2>{t(['看总成本，再决定订阅','Check total cost before subscribing'],locale)}</h2><div class="budget-row"><div><strong>1</strong><span>{t(['工具订阅','Tool subscription'],locale)}</span><small>{t(['使用助手的固定费用','Fixed assistant access cost'],locale)}</small></div><span aria-hidden="true">+</span><div><strong>2</strong><span>{t(['额外 AI 用量','Extra AI usage'],locale)}</span><small>{t(['超额或独立 API 费用','Overages or separate API billing'],locale)}</small></div><span aria-hidden="true">+</span><div><strong>3</strong><span>{t(['作品运行费用','Product running cost'],locale)}</span><small>{t(['域名、托管、数据库等','Domain, hosting, database'],locale)}</small></div></div><p>{t(['先用免费或已有额度做同一个小任务，记录消耗和修改次数。偶尔使用选入门档；只有持续碰到用量限制，且任务确有价值时才升级。不同工具的积分不可直接比较。','Use free or existing access for the same small task and record usage and revisions. Occasional use usually calls for an entry tier. Upgrade only when repeated limits obstruct valuable work. Credits are not comparable across tools.'],locale)}</p><aside class="example-box">{t(['比如：第一周只做作品展示页，先完成“改标题 → 预览 → 保存版本”。能够独立完成，再决定是否按月订阅，不必为了未来可能做的复杂项目立即买最高档。','For example: in week one, change a portfolio title, preview it and save a version. Once this works, decide on a monthly subscription; a hypothetical future project does not require the highest tier today.'],locale)}</aside></section>
-<section id="begin" class="tool-section"><h2>{t(['选好一个工具，马上进入实操','Pick one tool and start practicing'],locale)}</h2><ol class="start-chain"><li>{t(['打开官网，确认系统与地区可用','Confirm OS and regional availability'],locale)}</li><li>{t(['安装或创建网页项目，登录账号','Install or create a web project and sign in'],locale)}</li><li>{t(['做一处小改动，检查预览与用量','Make one small change; check preview and usage'],locale)}</li><li>{t(['准备 Git 和项目规则，继续需求整理','Prepare Git and project rules, then requirements'],locale)}</li></ol><div class="tool-next"><a class="button primary" href={url(locale,'communicate/tools')}>{t(['开始：打开项目并验证工具 →','Start: open a project and verify the tool →'],locale)}</a><a class="button" href={url(locale,'communicate/setup')}>{t(['已能操作：设置 Git 与 AGENTS.md →','Ready to work: Git and AGENTS.md →'],locale)}</a></div><p class="small muted">{t(['未来要换工具，优先保留项目文件、Git 历史、需求、运行命令和测试记录。CLI 可以以后再学，不是进阶的必经门槛。','Keep files, Git history, requirements, run commands and test records for future migration. CLI can be learned later; it is not a mandatory milestone.'],locale)}</p></section>
+  <header class="page-intro">
+    <span class="eyebrow">BUILD WITH AI</span>
+    <h1>{t(['选择工具', 'Choose a tool'], locale)}</h1>
+    <p class="lead">
+      {t(
+        [
+          '先选顺手的工作方式，再选一个能陪项目走下去的工具。',
+          'Choose a comfortable workflow, then a tool that can grow with the project.',
+        ],
+        locale,
+      )}
+    </p>
+    <p class="muted">
+      {t(
+        [
+          '这里选的是帮忙制作的 AI 工具；产品使用什么技术，下一阶段再决定。',
+          'Choose the AI tool used to build here. Product technologies come in a later stage.',
+        ],
+        locale,
+      )}{' '}
+      <a href={url(locale, 'stacks')}>
+        {t(['查看区别 →', 'See the stack guide →'], locale)}
+      </a>
+    </p>
+    <p>
+      <a href={url(locale, 'communicate/setup')}>
+        {t(
+          [
+            '已经选好？直接复制 Git 初始化与完整规则文件提示词 →',
+            'Already chosen? Open Git initialization and complete project-rule prompts →',
+          ],
+          locale,
+        )}
+      </a>
+    </p>
+  </header>
+  <nav class="tool-toc" aria-label={t(['本页内容', 'On this page'], locale)}>
+    {[
+      ['forms', '01', t(['认识使用方式', 'Workflows'], locale)],
+      ['recommend', '02', t(['按项目选', 'Project fit'], locale)],
+      ['catalog', '03', t(['对比工具与价格', 'Tools & pricing'], locale)],
+      ['reviews', '04', t(['使用评价', 'User experience'], locale)],
+      ['begin', '05', t(['选好后开始', 'Start building'], locale)],
+    ].map(([id, n, label]) => (
+      <a href={`#${id}`}>
+        <span>{n}</span>
+        {label}
+      </a>
+    ))}
+  </nav>
+  <section class="tool-section" id="four-dimensions">
+    <h2>
+      {t(
+        [
+          '先比较这四件事，再试一个小任务',
+          'Compare four things, then try one task',
+        ],
+        locale,
+      )}
+    </h2>
+    <div class="surface-grid">
+      {[
+        {
+          title: [
+            '你能找到项目和文件入口吗？',
+            'Can you find the project and file controls?',
+          ],
+          body: [
+            '先看是否能找到项目、对话、预览和错误；桌面任务界面通常比终端更容易开始。这是操作负担判断，不是能力排名。',
+            'Find the project, chat, preview and errors. A graphical task interface is generally easier to start with than a terminal; this assesses interaction effort, not capability.',
+          ],
+        },
+        {
+          title: [
+            '免费额度能做多少，用完后怎么办？',
+            'What does the free allowance cover, and what happens when it runs out?',
+          ],
+          body: [
+            '核对免费的是安装还是制作额度、何时重置、耗尽后怎样继续。未明确的额度不当作无限免费。',
+            'Distinguish free installation from usable allowance, reset timing and what happens when exhausted. Unknown limits are not unlimited.',
+          ],
+        },
+        {
+          title: [
+            '订阅和额外用量分别要花多少钱？',
+            'What do the subscription and extra usage cost?',
+          ],
+          body: [
+            '分别核对月付、年付、续费、超额费用；模型费用与项目上线后的托管费用也可能另计。先试用，不为完成课程盲目购买。',
+            'Compare monthly, annual, renewal and overage costs. Model usage and hosting may cost extra. Try before buying.',
+          ],
+        },
+        {
+          title: [
+            '它能操作文件、运行项目并检查结果吗？',
+            'Can it edit files, run the project and check the result?',
+          ],
+          body: [
+            '用同一小任务比较：保存一个文件、修改一处、打开预览、处理一个错误、导出并再次打开。能展示结果比笼统说最强更有用。',
+            'Compare saving a file, editing one detail, previewing, fixing an error, exporting and reopening. Visible results beat broad rankings.',
+          ],
+        },
+      ].map((x) => (
+        <article class="surface-card">
+          <h3>{t([x.title[0], x.title[1]], locale)}</h3>
+          <p>{t([x.body[0], x.body[1]], locale)}</p>
+        </article>
+      ))}
+    </div>
+    <p class="small muted">
+      {t(
+        [
+          '先排除系统、地区或导出条件不符合的工具；下面目录价格是已标日期的参考，购买前核对当前官方页面和本人账号。',
+          'First exclude incompatible OS, region or export options. Catalog prices are dated references; verify current official pages and account details before purchase.',
+        ],
+        locale,
+      )}
+    </p>
+  </section>
+  <section id="forms" class="tool-section">
+    <h2>
+      {t(
+        ['四种入口，做的是同一件事', 'Four entry points to the same work'],
+        locale,
+      )}
+    </h2>
+    <p>
+      {t(
+        [
+          'IDE 也安装在电脑上。这里的“桌面任务界面”特指以任务和对话为主的界面；同一品牌可以同时提供多种入口。',
+          'An IDE is also desktop software. “Desktop tasks” here means a task-first conversational interface. One brand may offer several entry points.',
+        ],
+        locale,
+      )}
+    </p>
+    <div class="surface-grid">
+      {forms.map((f) => (
+        <article class="surface-card">
+          <Icon name={f.icon} size={25} />
+          <h3>{t(f.title, locale)}</h3>
+          <p>{t(f.for, locale)}</p>
+          <div class={`workflow-sample ${f.id}`} aria-hidden="true">
+            {f.id === 'ide' ? (
+              <>
+                <span>FILES</span>
+                <span>EDITOR</span>
+                <span>AI</span>
+              </>
+            ) : f.id === 'cli' ? (
+              <code>
+                project/ $<br />›{' '}
+                {t(['完成这一项任务', 'Complete this task'], locale)}
+                <br />✓ {t(['检查结果', 'Check result'], locale)}
+              </code>
+            ) : f.id === 'desktop' ? (
+              <>
+                <span>{t(['项目', 'Project'], locale)}</span>
+                <span>
+                  {t(['任务 → 改动 → 检查', 'Task → Changes → Check'], locale)}
+                </span>
+              </>
+            ) : (
+              <>
+                <span>{t(['需求', 'Brief'], locale)}</span>
+                <span>{t(['页面预览', 'Preview'], locale)}</span>
+              </>
+            )}
+          </div>
+          <strong class="small">{t(f.gain, locale)}</strong>
+          <p class="small muted">{t(f.cost, locale)}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+  <section id="recommend" class="tool-section">
+    <h2>
+      {t(
+        ['从当前项目，选出一小组候选', 'Shortlist for the current project'],
+        locale,
+      )}
+    </h2>
+    <p>
+      {t(
+        [
+          '这是按工作方式给出的选型建议，不是能力排行榜。已有订阅先试已有工具，先完成一个小任务再考虑升级。',
+          'These are workflow recommendations, not a capability ranking. Try an existing subscription first and finish a small task before upgrading.',
+        ],
+        locale,
+      )}
+    </p>
+    <form id="tool-picker" data-locale={locale}>
+      <div class="picker-fields">
+        <label>
+          {t(
+            [
+              '你准备用这个工具制作什么？',
+              'What do you want to build with this tool?',
+            ],
+            locale,
+          )}
+          <select name="project">
+            <option value="web">
+              {t(['网站 / Web 应用', 'Website / web app'], locale)}
+            </option>
+            <option value="native">
+              {t(['手机 App / 桌面软件', 'Mobile / desktop app'], locale)}
+            </option>
+            <option value="existing">
+              {t(
+                ['接手或长期维护已有项目', 'Maintain an existing project'],
+                locale,
+              )}
+            </option>
+            <option value="automation">
+              {t(
+                ['脚本 / 重复任务自动化', 'Scripts / recurring automation'],
+                locale,
+              )}
+            </option>
+          </select>
+        </label>
+        <label>
+          {t(
+            [
+              '你更习惯用哪种方式操作工具？',
+              'How would you prefer to work with the tool?',
+            ],
+            locale,
+          )}
+          <select name="style">
+            <option value="visual">
+              {t(['对话交代任务，看结果', 'Conversations and results'], locale)}
+            </option>
+            <option value="files">
+              {t(['同时查看文件与修改', 'Files and changes together'], locale)}
+            </option>
+            <option value="terminal">
+              {t(['已经熟悉终端命令', 'Already use terminal commands'], locale)}
+            </option>
+            <option value="browser">
+              {t(['暂时不能安装软件', 'Cannot install software yet'], locale)}
+            </option>
+          </select>
+        </label>
+        <label>
+          {t(
+            [
+              '你想先比较哪些地区可用的服务？',
+              'Which available regional services would you like to compare first?',
+            ],
+            locale,
+          )}
+          <select name="region">
+            <option value="all">
+              {t(['国际与中国服务一起看', 'Global and China services'], locale)}
+            </option>
+            <option value="cn">
+              {t(['优先中国版服务', 'China editions first'], locale)}
+            </option>
+          </select>
+        </label>
+      </div>
+      <button class="button primary" type="submit">
+        {t(['查看候选和理由', 'See candidates and reasoning'], locale)}
+      </button>
+    </form>
+    <div class="recommendation" id="tool-recommendation" aria-live="polite">
+      <strong>
+        {t(
+          [
+            '还没有偏好？先试桌面任务界面或 IDE。',
+            'No preference yet? Try desktop tasks or an IDE.',
+          ],
+          locale,
+        )}
+      </strong>
+      <p>
+        {t(
+          [
+            '新手做本地项目可先比较 Codex、Claude Code、Qoder、TRAE、Kimi Code；能成功打开项目并改一处文字，比一次安装所有工具更有帮助。',
+            'For a first local project, compare Codex, Claude Code, Qoder, TRAE and Kimi Code. Successfully open a project and change one label before expanding the toolset.',
+          ],
+          locale,
+        )}
+      </p>
+    </div>
+  </section>
+  <details id="catalog" class="tool-section">
+    <summary>
+      {t(
+        ['按需展开工具目录与订阅', 'Open the tool catalog and subscriptions'],
+        locale,
+      )}
+    </summary>
+    <div class="section-heading">
+      <h2>{t(['常用工具与订阅', 'Common tools and subscriptions'], locale)}</h2>
+      <span class="small muted">2026-09-23</span>
+    </div>
+    <p>
+      {t(
+        [
+          '覆盖全球与中国常用工具；同一品牌的不同版本不重复计数。价格按所标地区、币种与付款周期展示；不把首月优惠当续费价。购买前打开官方价格页核对税费、可用地区与账号权益。',
+          'Common global and China tools; editions of the same brand are not counted twice. Prices retain their region, currency and billing cycle. Introductory offers are not renewal prices. Check official pricing, tax, availability and account entitlements before buying.',
+        ],
+        locale,
+      )}
+    </p>
+    <label class="tool-search-label" for="tool-search">
+      {t(['按名称或用途找工具', 'Find a tool by name or purpose'], locale)}
+      <input
+        id="tool-search"
+        type="search"
+        placeholder={t(
+          [
+            '比如：CodeBuddy、网页、自动化',
+            'For example: CodeBuddy, browser, automation',
+          ],
+          locale,
+        )}
+      />
+    </label>
+    <div
+      class="tool-filters"
+      role="group"
+      aria-label={t(['按入口筛选', 'Filter by entry point'], locale)}
+    >
+      <button data-tool-filter="all" aria-pressed="true">
+        {t(['全部', 'All'], locale)}
+      </button>
+      {forms.map((f) => (
+        <button data-tool-filter={f.id} aria-pressed="false">
+          {t(f.title, locale)}
+        </button>
+      ))}
+    </div>
+    <p class="small muted" id="tool-count" role="status">
+      {codingTools.length} / {codingTools.length}
+    </p>
+    <p id="tool-empty" hidden>
+      {t(
+        [
+          '没有匹配。清空关键词，或切换到“全部”。',
+          'No matches. Clear the search or choose All.',
+        ],
+        locale,
+      )}
+    </p>
+    <div class="tool-catalog">
+      {codingTools.map((tool) => (
+        <article
+          id={`tool-${tool.id}`}
+          class="tool-product"
+          data-tool-card
+          data-keywords={[
+            tool.name,
+            ...tool.fit,
+            ...tool.forms,
+            ...tool.advantage,
+          ]
+            .join(' ')
+            .toLowerCase()}
+          data-surfaces={tool.surfaces.join(' ')}
+        >
+          <header>
+            <img
+              src={`/brand/tools/${tool.icon}`}
+              alt=""
+              width="36"
+              height="36"
+              loading="lazy"
+            />
+            <div>
+              <h3>{tool.name}</h3>
+              <span class="small muted">{t(tool.forms, locale)}</span>
+            </div>
+          </header>
+          <p class="tool-fit">{t(tool.fit, locale)}</p>
+          <p class="price-line">{t(tool.price, locale)}</p>
+          <details>
+            <summary>
+              {t(
+                [
+                  '优势、限制与开始方式',
+                  'Strengths, limits and getting started',
+                ],
+                locale,
+              )}
+              <span aria-hidden="true"> ＋</span>
+            </summary>
+            <dl>
+              <dt>
+                {t(
+                  [
+                    '这个工具可以帮你做什么？',
+                    'What can this tool help you do?',
+                  ],
+                  locale,
+                )}
+              </dt>
+              <dd>{t(tool.advantage, locale)}</dd>
+              <dt>
+                {t(
+                  [
+                    '使用前需要知道哪些限制？',
+                    'What limits should you know before using it?',
+                  ],
+                  locale,
+                )}
+              </dt>
+              <dd>{t(tool.limit, locale)}</dd>
+              <dt>
+                {t(
+                  [
+                    '第一次使用时，应该从哪里开始？',
+                    'Where should you start on your first use?',
+                  ],
+                  locale,
+                )}
+              </dt>
+              <dd>{t(tool.start, locale)}</dd>
+              <dt>
+                {t(
+                  [
+                    '使用这个工具可能要付哪些费用？',
+                    'What might using this tool cost?',
+                  ],
+                  locale,
+                )}
+              </dt>
+              <dd>{t(tool.billing, locale)}</dd>
+            </dl>
+            <a
+              class="text-link"
+              href={tool.home}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {t(['打开官网 ↗', 'Open official site ↗'], locale)}
+            </a>
+          </details>
+          <footer>
+            <span>{t(['官方依据', 'Official sources'], locale)}</span>
+            {tool.sources.map((s) => (
+              <a href={s.url} target="_blank" rel="noreferrer">
+                {s.label} ↗
+              </a>
+            ))}
+          </footer>
+        </article>
+      ))}
+    </div>
+  </details>
+  <details class="catalog-notes">
+    <summary>
+      {t(
+        [
+          '旧教程中的工具为什么不在名单里？',
+          'Why are some tools from older guides absent?',
+        ],
+        locale,
+      )}
+    </summary>
+    <p>
+      {t(
+        [
+          '本轮核验覆盖 26 个独立工具与相关旧品牌，并非全球穷尽。Devin / Windsurf 合并展示；停服、停止新建或不再维护的工具不放进新手候选。',
+          'This review covers 26 distinct tools and related former brands, not every tool worldwide. Devin / Windsurf share one entry. Discontinued or unmaintained tools are excluded from starter candidates.',
+        ],
+        locale,
+      )}
+    </p>
+    <ul>
+      <li>
+        <strong>Roo Code</strong> —{' '}
+        {t(
+          [
+            '官方已停止并归档，不推荐用于新项目起步。',
+            'Officially discontinued and archived; not recommended for a new project.',
+          ],
+          locale,
+        )}{' '}
+        <a
+          href="https://github.com/RooCodeInc/Roo-Code"
+          target="_blank"
+          rel="noreferrer"
+        >
+          {t(['官方说明 ↗', 'Official notice ↗'], locale)}
+        </a>
+      </li>
+      <li>
+        <strong>Continue</strong> —{' '}
+        {t(
+          [
+            '官方仓库不再积极维护，最后版本为 2.0.0。',
+            'The official repository is no longer actively maintained; final version 2.0.0.',
+          ],
+          locale,
+        )}{' '}
+        <a
+          href="https://github.com/continuedev/continue"
+          target="_blank"
+          rel="noreferrer"
+        >
+          {t(['官方说明 ↗', 'Official notice ↗'], locale)}
+        </a>
+      </li>
+      <li>
+        <strong>Firebase Studio</strong> —{' '}
+        {t(
+          [
+            '官方说明已停止新建工作区，不作为新手起步入口。',
+            'Official documentation says new workspace creation is disabled.',
+          ],
+          locale,
+        )}{' '}
+        <a
+          href="https://firebase.google.com/docs/studio/pricing"
+          target="_blank"
+          rel="noreferrer"
+        >
+          {t(['官方说明 ↗', 'Official notice ↗'], locale)}
+        </a>
+      </li>
+      <li>
+        <strong>通义灵码 / Lingma</strong> —{' '}
+        {t(
+          [
+            '已迁移至 Qoder 中国版，合并到 Qoder 条目。',
+            'Migrated to Qoder CN; included in the Qoder entry.',
+          ],
+          locale,
+        )}{' '}
+        <a
+          href="https://help.aliyun.com/zh/lingma/billing-description"
+          target="_blank"
+          rel="noreferrer"
+        >
+          {t(['官方说明 ↗', 'Official notice ↗'], locale)}
+        </a>
+      </li>
+    </ul>
+  </details>
+  <ToolReviews locale={locale} />
+  <section class="tool-section" id="budget">
+    <h2>
+      {t(
+        ['看总成本，再决定订阅', 'Check total cost before subscribing'],
+        locale,
+      )}
+    </h2>
+    <div class="budget-row">
+      <div>
+        <strong>1</strong>
+        <span>{t(['工具订阅', 'Tool subscription'], locale)}</span>
+        <small>
+          {t(['使用助手的固定费用', 'Fixed assistant access cost'], locale)}
+        </small>
+      </div>
+      <span aria-hidden="true">+</span>
+      <div>
+        <strong>2</strong>
+        <span>{t(['额外 AI 用量', 'Extra AI usage'], locale)}</span>
+        <small>
+          {t(
+            ['超额或独立 API 费用', 'Overages or separate API billing'],
+            locale,
+          )}
+        </small>
+      </div>
+      <span aria-hidden="true">+</span>
+      <div>
+        <strong>3</strong>
+        <span>{t(['作品运行费用', 'Product running cost'], locale)}</span>
+        <small>
+          {t(['域名、托管、数据库等', 'Domain, hosting, database'], locale)}
+        </small>
+      </div>
+    </div>
+    <p>
+      {t(
+        [
+          '先用免费或已有额度做同一个小任务，记录消耗和修改次数。偶尔使用选入门档；只有持续碰到用量限制，且任务确有价值时才升级。不同工具的积分不可直接比较。',
+          'Use free or existing access for the same small task and record usage and revisions. Occasional use usually calls for an entry tier. Upgrade only when repeated limits obstruct valuable work. Credits are not comparable across tools.',
+        ],
+        locale,
+      )}
+    </p>
+    <aside class="example-box">
+      {t(
+        [
+          '比如：第一周只做作品展示页，先完成“改标题 → 预览 → 保存版本”。能够独立完成，再决定是否按月订阅，不必为了未来可能做的复杂项目立即买最高档。',
+          'For example: in week one, change a portfolio title, preview it and save a version. Once this works, decide on a monthly subscription; a hypothetical future project does not require the highest tier today.',
+        ],
+        locale,
+      )}
+    </aside>
+  </section>
+  <section id="begin" class="tool-section">
+    <h2>
+      {t(
+        ['选好一个工具，马上进入实操', 'Pick one tool and start practicing'],
+        locale,
+      )}
+    </h2>
+    <ol class="start-chain">
+      <li>
+        {t(
+          [
+            '打开官网，确认系统与地区可用',
+            'Confirm OS and regional availability',
+          ],
+          locale,
+        )}
+      </li>
+      <li>
+        {t(
+          [
+            '安装或创建网页项目，登录账号',
+            'Install or create a web project and sign in',
+          ],
+          locale,
+        )}
+      </li>
+      <li>
+        {t(
+          [
+            '做一处小改动，检查预览与用量',
+            'Make one small change; check preview and usage',
+          ],
+          locale,
+        )}
+      </li>
+      <li>
+        {t(
+          [
+            '准备 Git 和项目规则，继续需求整理',
+            'Prepare Git and project rules, then requirements',
+          ],
+          locale,
+        )}
+      </li>
+    </ol>
+    <div class="tool-next">
+      <a class="button primary" href={url(locale, 'communicate/tools')}>
+        {t(
+          [
+            '开始：打开项目并验证工具 →',
+            'Start: open a project and verify the tool →',
+          ],
+          locale,
+        )}
+      </a>
+      <a class="button" href={url(locale, 'communicate/setup')}>
+        {t(
+          [
+            '已能操作：设置 Git 与 AGENTS.md →',
+            'Ready to work: Git and AGENTS.md →',
+          ],
+          locale,
+        )}
+      </a>
+    </div>
+    <p class="small muted">
+      {t(
+        [
+          '未来要换工具，优先保留项目文件、Git 历史、需求、运行命令和测试记录。CLI 可以以后再学，不是进阶的必经门槛。',
+          'Keep files, Git history, requirements, run commands and test records for future migration. CLI can be learned later; it is not a mandatory milestone.',
+        ],
+        locale,
+      )}
+    </p>
+  </section>
 </div>
 <script>
-const revealTool=()=>{const el=document.getElementById(location.hash.slice(1));if(el){let parent:HTMLElement|null=el;while(parent){if(parent instanceof HTMLDetailsElement)parent.open=true;parent=parent.parentElement;}}};revealTool();addEventListener('hashchange',revealTool);
+  const revealTool = () => {
+    const el = document.getElementById(location.hash.slice(1));
+    if (el) {
+      let parent: HTMLElement | null = el;
+      while (parent) {
+        if (parent instanceof HTMLDetailsElement) parent.open = true;
+        parent = parent.parentElement;
+      }
+    }
+  };
+  revealTool();
+  addEventListener('hashchange', revealTool);
 
-const cards=[...document.querySelectorAll<HTMLElement>('[data-tool-card]')];
-const search=document.querySelector<HTMLInputElement>('#tool-search')!;let surface='all';
-const applyFilters=()=>{let count=0;cards.forEach(card=>{card.hidden=(surface!=='all'&&!card.dataset.surfaces!.split(' ').includes(surface))||!card.dataset.keywords!.includes(search.value.trim().toLowerCase());if(!card.hidden)count++;});document.querySelector('#tool-count')!.textContent=`${count} / ${cards.length}`;(document.querySelector('#tool-empty') as HTMLElement).hidden=count>0;};
-search.addEventListener('input',applyFilters);
-document.querySelectorAll<HTMLButtonElement>('[data-tool-filter]').forEach(button=>button.addEventListener('click',()=>{surface=button.dataset.toolFilter!;document.querySelectorAll('[data-tool-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));applyFilters();}));
-const picker=document.querySelector<HTMLFormElement>('#tool-picker')!;const result=document.querySelector<HTMLElement>('#tool-recommendation')!;
-picker.addEventListener('change',()=>{result.textContent=picker.dataset.locale==='en'?'Choices changed. Select “See candidates and reasoning” to update.':'条件已改变，请点击“查看候选和理由”更新建议。';});
-picker.addEventListener('submit',e=>{e.preventDefault();const d=new FormData(picker),en=picker.dataset.locale==='en',project=d.get('project'),style=d.get('style'),cn=d.get('region')==='cn';let ids:string[]=[],why='',later='';
-if(style==='browser'&&project!=='web'){why=en?'Installation is a blocker for this route. A browser can help draft or prototype, but does not replace a native build environment or access to the existing project.':'当前不能安装软件，与这条制作路线存在限制。浏览器可帮助整理需求或做原型，不能代替原生构建环境或已有项目访问。';later=en?'First arrange a usable computer or confirm a cloud environment supports the actual project.':'先准备可使用的电脑，或核实云端环境确实支持实际项目。';}
-else if(style==='browser'){ids=cn?[]:['lovable','bolt','replit','v0'];why=cn?(en?'This catalog does not yet verify a China-only browser builder. Do not assume global services are locally available.':'本表尚未核实中国版纯网页构建服务，不能把国际服务默认视为本地可用。'):(en?'A small web project can start with a browser builder to reduce setup.':'小型 Web 项目可先用网页构建工具减少环境准备。');later=en?'Before long-term use, export the project and test an independent run.':'长期使用前，导出项目并验证能否独立运行。';}
-else if(style==='terminal'||project==='automation'){ids=cn?['kimi','qoder']:['codex','claude','gemini'];why=en?'These tools have a documented CLI route for scripts and repeatable tasks. If commands are unfamiliar, begin with a desktop client for the same tool.':'这些工具有明确的 CLI 入口，适合脚本和重复任务。尚不熟悉命令时，先用同品牌桌面界面做小任务。';later=en?'Keep commands, checks and environment requirements in the repository.':'把命令、检查和环境要求保存在项目中。';}
-else if(style==='files'||project==='existing'){ids=cn?['qoder','trae','codebuddy']:['cursor','copilot','kiro'];why=en?'An IDE makes file structure and local changes easier to inspect. Keep an existing editor when it already works.':'IDE 便于核对文件结构和局部改动；已有编辑器能用时优先沿用。';later=en?'Verify import, run commands and one regression check before larger edits.':'先验证项目导入、启动命令和一次原功能检查，再扩大修改。';}
-else{ids=cn?['zcode','kimi','qoder']:['codex','claude','kimi'];why=en?'A task-first desktop interface is a practical starting point for conversational local development.':'以任务对话为主的桌面界面，适合作为本地制作的起点。';later=project==='native'?(en?'A native app also needs its platform SDK, packaging and a real-device test; the AI tool does not replace these.':'原生 App 还需要平台开发环境、打包和真机检查，AI 工具不能替代这些条件。'):(en?'Keep source files and version history so the project can move into an IDE later.':'保留源文件和版本记录，后续需要时可在 IDE 中继续维护。');}
-result.replaceChildren();const title=document.createElement('strong');title.textContent=en?'Recommended next step':'建议的下一步';const p=document.createElement('p');p.textContent=why;result.append(title,p);const links=document.createElement('div');links.className='candidate-links';ids.forEach(id=>{const card=document.getElementById('tool-'+id)!;const a=document.createElement('a');a.href='#tool-'+id;a.textContent=card.querySelector('h3')!.textContent;a.addEventListener('click',()=>{search.value='';(document.querySelector('[data-tool-filter="all"]') as HTMLButtonElement).click();card.querySelector('details')!.open=true;});links.append(a);});result.append(links);const next=document.createElement('p');next.textContent=later;result.append(next);});
+  const cards = [...document.querySelectorAll<HTMLElement>('[data-tool-card]')];
+  const search = document.querySelector<HTMLInputElement>('#tool-search')!;
+  let surface = 'all';
+  const applyFilters = () => {
+    let count = 0;
+    cards.forEach((card) => {
+      card.hidden =
+        (surface !== 'all' &&
+          !card.dataset.surfaces!.split(' ').includes(surface)) ||
+        !card.dataset.keywords!.includes(search.value.trim().toLowerCase());
+      if (!card.hidden) count++;
+    });
+    document.querySelector('#tool-count')!.textContent =
+      `${count} / ${cards.length}`;
+    (document.querySelector('#tool-empty') as HTMLElement).hidden = count > 0;
+  };
+  search.addEventListener('input', applyFilters);
+  document
+    .querySelectorAll<HTMLButtonElement>('[data-tool-filter]')
+    .forEach((button) =>
+      button.addEventListener('click', () => {
+        surface = button.dataset.toolFilter!;
+        document
+          .querySelectorAll('[data-tool-filter]')
+          .forEach((b) => b.setAttribute('aria-pressed', String(b === button)));
+        applyFilters();
+      }),
+    );
+  const picker = document.querySelector<HTMLFormElement>('#tool-picker')!;
+  const result = document.querySelector<HTMLElement>('#tool-recommendation')!;
+  picker.addEventListener('change', () => {
+    result.textContent =
+      picker.dataset.locale === 'en'
+        ? 'Choices changed. Select “See candidates and reasoning” to update.'
+        : '条件已改变，请点击“查看候选和理由”更新建议。';
+  });
+  picker.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const d = new FormData(picker),
+      en = picker.dataset.locale === 'en',
+      project = d.get('project'),
+      style = d.get('style'),
+      cn = d.get('region') === 'cn';
+    let ids: string[] = [],
+      why = '',
+      later = '';
+    if (style === 'browser' && project !== 'web') {
+      why = en
+        ? 'Installation is a blocker for this route. A browser can help draft or prototype, but does not replace a native build environment or access to the existing project.'
+        : '当前不能安装软件，与这条制作路线存在限制。浏览器可帮助整理需求或做原型，不能代替原生构建环境或已有项目访问。';
+      later = en
+        ? 'First arrange a usable computer or confirm a cloud environment supports the actual project.'
+        : '先准备可使用的电脑，或核实云端环境确实支持实际项目。';
+    } else if (style === 'browser') {
+      ids = cn ? [] : ['lovable', 'bolt', 'replit', 'v0'];
+      why = cn
+        ? en
+          ? 'This catalog does not yet verify a China-only browser builder. Do not assume global services are locally available.'
+          : '本表尚未核实中国版纯网页构建服务，不能把国际服务默认视为本地可用。'
+        : en
+          ? 'A small web project can start with a browser builder to reduce setup.'
+          : '小型 Web 项目可先用网页构建工具减少环境准备。';
+      later = en
+        ? 'Before long-term use, export the project and test an independent run.'
+        : '长期使用前，导出项目并验证能否独立运行。';
+    } else if (style === 'terminal' || project === 'automation') {
+      ids = cn ? ['kimi', 'qoder'] : ['codex', 'claude', 'gemini'];
+      why = en
+        ? 'These tools have a documented CLI route for scripts and repeatable tasks. If commands are unfamiliar, begin with a desktop client for the same tool.'
+        : '这些工具有明确的 CLI 入口，适合脚本和重复任务。尚不熟悉命令时，先用同品牌桌面界面做小任务。';
+      later = en
+        ? 'Keep commands, checks and environment requirements in the repository.'
+        : '把命令、检查和环境要求保存在项目中。';
+    } else if (style === 'files' || project === 'existing') {
+      ids = cn ? ['qoder', 'trae', 'codebuddy'] : ['cursor', 'copilot', 'kiro'];
+      why = en
+        ? 'An IDE makes file structure and local changes easier to inspect. Keep an existing editor when it already works.'
+        : 'IDE 便于核对文件结构和局部改动；已有编辑器能用时优先沿用。';
+      later = en
+        ? 'Verify import, run commands and one regression check before larger edits.'
+        : '先验证项目导入、启动命令和一次原功能检查，再扩大修改。';
+    } else {
+      ids = cn ? ['zcode', 'kimi', 'qoder'] : ['codex', 'claude', 'kimi'];
+      why = en
+        ? 'A task-first desktop interface is a practical starting point for conversational local development.'
+        : '以任务对话为主的桌面界面，适合作为本地制作的起点。';
+      later =
+        project === 'native'
+          ? en
+            ? 'A native app also needs its platform SDK, packaging and a real-device test; the AI tool does not replace these.'
+            : '原生 App 还需要平台开发环境、打包和真机检查，AI 工具不能替代这些条件。'
+          : en
+            ? 'Keep source files and version history so the project can move into an IDE later.'
+            : '保留源文件和版本记录，后续需要时可在 IDE 中继续维护。';
+    }
+    result.replaceChildren();
+    const title = document.createElement('strong');
+    title.textContent = en ? 'Recommended next step' : '建议的下一步';
+    const p = document.createElement('p');
+    p.textContent = why;
+    result.append(title, p);
+    const links = document.createElement('div');
+    links.className = 'candidate-links';
+    ids.forEach((id) => {
+      const card = document.getElementById('tool-' + id)!;
+      const a = document.createElement('a');
+      a.href = '#tool-' + id;
+      a.textContent = card.querySelector('h3')!.textContent;
+      a.addEventListener('click', () => {
+        search.value = '';
+        (
+          document.querySelector(
+            '[data-tool-filter="all"]',
+          ) as HTMLButtonElement
+        ).click();
+        card.querySelector('details')!.open = true;
+      });
+      links.append(a);
+    });
+    result.append(links);
+    const next = document.createElement('p');
+    next.textContent = later;
+    result.append(next);
+  });
 </script>
 <style>
-.catalog-notes{padding:20px;border:1px solid #dfe5ed;border-radius:8px;font-size:14px;line-height:1.9;margin-bottom:24px}.catalog-notes summary{cursor:pointer;font-weight:600}.catalog-notes li{margin:12px 0}.tool-page{max-width:1080px;margin:auto}.tool-toc{display:flex;flex-wrap:wrap;gap:10px;border-block:1px solid var(--line);padding:16px 0;margin:24px 0}.tool-toc a{display:flex;gap:8px;align-items:center;font-size:13px;padding:6px 10px}.tool-toc span{color:#8491a3;font:12px monospace}.tool-section{padding:20px 0 30px;scroll-margin-top:86px}.tool-section>p{max-width:80ch;color:#59636e;line-height:1.85}.surface-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:22px}.surface-card{border:1px solid #e3e8ed;border-radius:10px;padding:20px}.surface-card>svg{color:#567596;margin-bottom:12px}.surface-card p{font-size:14px}.workflow-sample{height:88px;background:#f4f6fa;border:1px solid #e3e8ed;border-radius:6px;display:flex;gap:8px;padding:10px;align-items:stretch;margin:16px 0;font-size:11px;color:#5d6c83}.workflow-sample span{border:1px solid #dce3ec;background:white;display:grid;place-items:center;flex:1;padding:5px;text-align:center}.workflow-sample.ide span:nth-child(2){flex:2}.workflow-sample code{line-height:1.9}.picker-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:20px 0}.picker-fields label{font-weight:600;font-size:13px}.picker-fields select{display:block;width:100%;font:inherit;padding:10px 6px;margin-top:8px;border:1px solid #cdd5df;background:white;border-radius:6px}.recommendation{padding:20px;background:#f2f6fb;border-left:0;border-radius:8px;margin:20px 0;font-size:14px}.recommendation :global(.candidate-links){display:flex;flex-wrap:wrap;gap:10px}.recommendation :global(.candidate-links a){padding:6px 12px;border:1px solid #cbd6e5;border-radius:5px;background:white;text-decoration:underline}.tool-search-label{display:block;font-size:13px;font-weight:600;margin-top:20px}.tool-search-label input{display:block;width:100%;padding:12px;margin-top:8px;border:1px solid #ccd6e2;border-radius:6px;font:inherit}.tool-filters{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 8px}.tool-filters button{border:1px solid #dbe1e9;border-radius:20px;padding:7px 12px;font-size:12px}.tool-filters button[aria-pressed=true]{background:#202733;color:white;border-color:#202733}.tool-catalog{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.tool-product{border:1px solid #dfe5ed;border-radius:10px;padding:22px;scroll-margin-top:85px;overflow-wrap:anywhere}.tool-product[hidden]{display:none}.tool-product header{display:flex;gap:12px;align-items:flex-start}.tool-product img{object-fit:contain;flex-shrink:0}.tool-product h3{margin-bottom:5px}.tool-product .small{display:block;line-height:1.7}.tool-fit{min-height:3.4em;font-size:14px;margin:18px 0}.price-line{padding:13px;background:#f7f8fa;border-radius:5px;font-size:13px;font-weight:600;line-height:1.8}.tool-product summary{cursor:pointer;display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:12px 0}.tool-product details[open] summary span{transform:rotate(45deg)}.tool-product dl{font-size:13px;line-height:1.8}.tool-product dt{font-weight:600}.tool-product dd{margin:3px 0 13px;color:#5c6775}.tool-product footer{display:flex;flex-wrap:wrap;gap:6px 12px;border-top:1px solid #e9edf2;padding-top:12px;margin-top:12px;font-size:11px;color:#66758b}.tool-product footer a{text-decoration:underline;text-underline-offset:3px}.budget-row{display:flex;gap:15px;align-items:center;margin:24px 0}.budget-row>div{flex:1;display:grid;gap:7px;padding:18px;background:#f7f8fa;border-radius:8px}.budget-row strong{color:#7c8da5}.budget-row small{color:#67758a}.start-chain{padding-left:25px;line-height:2.3}.tool-next{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0}@media(max-width:650px){.surface-grid,.tool-catalog,.picker-fields{grid-template-columns:1fr}.tool-product{padding:18px}.budget-row{flex-direction:column;align-items:stretch;gap:6px}.budget-row>span{text-align:center}.tool-toc{gap:3px}.tool-toc a{font-size:12px}.tool-fit{min-height:0}.tool-next .button{white-space:normal}.tool-section{padding-bottom:18px}}
+  .catalog-notes {
+    padding: 20px;
+    border: 1px solid #dfe5ed;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.9;
+    margin-bottom: 24px;
+  }
+  .catalog-notes summary {
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .catalog-notes li {
+    margin: 12px 0;
+  }
+  .tool-page {
+    max-width: 1080px;
+    margin: auto;
+  }
+  .tool-toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-block: 1px solid var(--line);
+    padding: 16px 0;
+    margin: 24px 0;
+  }
+  .tool-toc a {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+  .tool-toc span {
+    color: #8491a3;
+    font: 12px monospace;
+  }
+  .tool-section {
+    padding: 20px 0 30px;
+    scroll-margin-top: 86px;
+  }
+  .tool-section > p {
+    max-width: 80ch;
+    color: #59636e;
+    line-height: 1.85;
+  }
+  .surface-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 22px;
+  }
+  .surface-card {
+    border: 1px solid #e3e8ed;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .surface-card > svg {
+    color: #567596;
+    margin-bottom: 12px;
+  }
+  .surface-card p {
+    font-size: 14px;
+  }
+  .workflow-sample {
+    height: 88px;
+    background: #f4f6fa;
+    border: 1px solid #e3e8ed;
+    border-radius: 6px;
+    display: flex;
+    gap: 8px;
+    padding: 10px;
+    align-items: stretch;
+    margin: 16px 0;
+    font-size: 11px;
+    color: #5d6c83;
+  }
+  .workflow-sample span {
+    border: 1px solid #dce3ec;
+    background: white;
+    display: grid;
+    place-items: center;
+    flex: 1;
+    padding: 5px;
+    text-align: center;
+  }
+  .workflow-sample.ide span:nth-child(2) {
+    flex: 2;
+  }
+  .workflow-sample code {
+    line-height: 1.9;
+  }
+  .picker-fields {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .picker-fields label {
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .picker-fields select {
+    display: block;
+    width: 100%;
+    font: inherit;
+    padding: 10px 6px;
+    margin-top: 8px;
+    border: 1px solid #cdd5df;
+    background: white;
+    border-radius: 6px;
+  }
+  .recommendation {
+    padding: 20px;
+    background: #f2f6fb;
+    border-left: 0;
+    border-radius: 8px;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+  .recommendation :global(.candidate-links) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .recommendation :global(.candidate-links a) {
+    padding: 6px 12px;
+    border: 1px solid #cbd6e5;
+    border-radius: 5px;
+    background: white;
+    text-decoration: underline;
+  }
+  .tool-search-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 20px;
+  }
+  .tool-search-label input {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border: 1px solid #ccd6e2;
+    border-radius: 6px;
+    font: inherit;
+  }
+  .tool-filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 20px 0 8px;
+  }
+  .tool-filters button {
+    border: 1px solid #dbe1e9;
+    border-radius: 20px;
+    padding: 7px 12px;
+    font-size: 12px;
+  }
+  .tool-filters button[aria-pressed='true'] {
+    background: #202733;
+    color: white;
+    border-color: #202733;
+  }
+  .tool-catalog {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+  .tool-product {
+    border: 1px solid #dfe5ed;
+    border-radius: 10px;
+    padding: 22px;
+    scroll-margin-top: 85px;
+    overflow-wrap: anywhere;
+  }
+  .tool-product[hidden] {
+    display: none;
+  }
+  .tool-product header {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .tool-product img {
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+  .tool-product h3 {
+    margin-bottom: 5px;
+  }
+  .tool-product .small {
+    display: block;
+    line-height: 1.7;
+  }
+  .tool-fit {
+    min-height: 3.4em;
+    font-size: 14px;
+    margin: 18px 0;
+  }
+  .price-line {
+    padding: 13px;
+    background: #f7f8fa;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.8;
+  }
+  .tool-product summary {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 13px;
+    padding: 12px 0;
+  }
+  .tool-product details[open] summary span {
+    transform: rotate(45deg);
+  }
+  .tool-product dl {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+  .tool-product dt {
+    font-weight: 600;
+  }
+  .tool-product dd {
+    margin: 3px 0 13px;
+    color: #5c6775;
+  }
+  .tool-product footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+    border-top: 1px solid #e9edf2;
+    padding-top: 12px;
+    margin-top: 12px;
+    font-size: 11px;
+    color: #66758b;
+  }
+  .tool-product footer a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .budget-row {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin: 24px 0;
+  }
+  .budget-row > div {
+    flex: 1;
+    display: grid;
+    gap: 7px;
+    padding: 18px;
+    background: #f7f8fa;
+    border-radius: 8px;
+  }
+  .budget-row strong {
+    color: #7c8da5;
+  }
+  .budget-row small {
+    color: #67758a;
+  }
+  .start-chain {
+    padding-left: 25px;
+    line-height: 2.3;
+  }
+  .tool-next {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 22px 0;
+  }
+  @media (max-width: 650px) {
+    .surface-grid,
+    .tool-catalog,
+    .picker-fields {
+      grid-template-columns: 1fr;
+    }
+    .tool-product {
+      padding: 18px;
+    }
+    .budget-row {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 6px;
+    }
+    .budget-row > span {
+      text-align: center;
+    }
+    .tool-toc {
+      gap: 3px;
+    }
+    .tool-toc a {
+      font-size: 12px;
+    }
+    .tool-fit {
+      min-height: 0;
+    }
+    .tool-next .button {
+      white-space: normal;
+    }
+    .tool-section {
+      padding-bottom: 18px;
+    }
+  }
 </style>

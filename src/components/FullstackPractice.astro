@@ -1,30 +1,277 @@
 ---
 import rows from '../data/fullstack-practice.json';
-import {base} from '../data/base';
-import {t,type Locale} from '../data/site';
-interface Props {id:string;locale:Locale;}
-const {id,locale}=Astro.props;
-const row=rows.find(row=>row.id===id)!;
-const text=(value:string[])=>value[locale==='zh-cn'?0:1];
-const label=(zh:string,en:string)=>t([zh,en],locale);
+import { base } from '../data/base';
+import { t, type Locale } from '../data/site';
+interface Props {
+  id: string;
+  locale: Locale;
+}
+const { id, locale } = Astro.props;
+const row = rows.find((row) => row.id === id)!;
+const text = (value: string[]) => value[locale === 'zh-cn' ? 0 : 1];
+const label = (zh: string, en: string) => t([zh, en], locale);
 ---
-<details class="practice-guide" data-fullstack-step={id} open={['idea','choose-stack','save'].includes(id)}>
- <summary>{label('跟练：个人学习记录（前端 + 后端 + 数据库）','Practice: personal journal (frontend + backend + database)')}</summary>
- <p class="practice-scope">{label('选择这个示例时，沿用同一个 learning-journal 项目逐步完成。已有自己的项目时，对照检查相关要求即可，不必另建项目。','Use the same learning-journal project throughout this example. For your own project, compare applicable requirements without creating another project.')}</p>
- <p>{text(row.action)}</p>
- <dl><dt>{label('做完这一步，应该看到什么？','What should you see after this step?')}</dt><dd>{text(row.expected)}</dd><dt>{label('做不下去时，先怎么办？','What should you do first if you get stuck?')}</dt><dd>{text(row.recovery)}</dd></dl>
- {row.issues.length>0&&<details class="practice-errors"><summary>{label('对照具体报错，找到下一步','Match an error to the next action')}</summary>{row.issues.map(issue=><section><h4>{text(issue.title)}</h4><dl><dt>{label('先检查哪些地方？','What should you check first?')}</dt><dd>{text(issue.check)}</dd><dt>{label('按下面的方法处理问题','Follow these steps to resolve the problem')}</dt><dd>{text(issue.action)}</dd><dt>{label('问题解决后，应该看到什么？','What should you see after the problem is resolved?')}</dt><dd>{text(issue.expected)}</dd></dl></section>)}</details>}
- {['tool','open-project','first-file'].includes(id)&&<figure><a href={`${base}/images/guide/codex-official-workspace.webp`} target="_blank" rel="noopener"><img src={`${base}/images/guide/codex-official-workspace.webp`} width="3600" height="2026" loading="lazy" alt={label('Codex 官方英文界面截图：左侧 Projects 项目列表，中下方输入框及右下发送箭头，中间回复中的文件链接，右侧 Review 改动对比。','Official Codex English screenshot: Projects on the left, composer and send arrow below the chat, file links in the reply, and Review on the right.')} /></a><figcaption>{label('点击放大。OpenAI 官方公开截图（英文界面，图中版本未标注；2026-09-29 核验来源），不是本机当前版本截图。项目名称和模型只是示例，不需要照抄。','Click to enlarge. OpenAI public screenshot (English; app version unspecified; source checked 2026-09-29), not a capture of our current app. Project/model names are examples.')} <a href="https://developers.openai.com/images/codex/app/app-screenshot-light.webp" target="_blank" rel="noopener">{label('截图原图','Original screenshot')}</a> · <a href="https://learn.chatgpt.com/docs/projects" target="_blank" rel="noopener">{label('当前官方项目说明','Current official project guide')}</a></figcaption><p>{id==='tool'?label('先认入口：图左侧 Projects 是项目列表，New chat 是新对话。第一次使用时按官方说明打开自己的本地文件夹；已有项目就选它。若界面外观不同，按功能名称找入口，不必找一模一样的图标。','Locate Projects on the left and New chat above it. Open your local folder following current instructions, or select your existing project. Match function names if icons differ.'):id==='open-project'?label('先核对左侧项目，再看中下方 Ask for follow-up changes 输入框：点击后粘贴本步已确认提示词，核对内容，再点输入框右下角向上箭头发送。发送后等待工具回复，再按回复检查结果。','Check the project on the left. Click the lower Ask for follow-up changes composer, paste and review this step’s confirmed prompt, then use the upward arrow at its lower right. Wait for the reply, then check its result.'):label('图中回复里的蓝色文件名是文件定位入口；请工具返回你自己项目中 idea.md 的实际文件链接并打开核对。右侧 Review 的红绿行展示改动前后，不等于完整文件，也不是作品运行页面。无法打开时按工具报告的实际路径在文件管理器查找。','File links in the reply locate files. Ask for your actual idea.md link and open it to check. Red/green Review rows show changes, not the full file or running app. If opening is unavailable, find the reported path in your file manager.')}</p></figure>}
- {id==='choose-stack'&&<ol><li>{label('前端：你在浏览器看到、填写和点击的页面。','Frontend: the page you see, fill in and click.')}</li><li>{label('后端：收到保存请求后检查内容，决定能不能保存。接口就是页面向它交材料的入口。','Backend: receives requests, checks content and decides whether to save. An API is the entry for those requests.')}</li><li>{label('数据库：按编号保管记录。SQLite 是实际文件，不是浏览器缓存，也不是另一个必须注册的网站。','Database: stores numbered records. SQLite is a real file, not browser cache or another account you must register.')}</li></ol>}
- {id==='save'&&<ol class="save-checks">
- <li>{label('建表：让 Codex 报告数据库完整路径、entries 表和字段；重复启动不清空旧数据。','Table: report full database path, entries and fields; startup must preserve records.')}</li>
- <li>{label('接口：GET 是读取，POST 是提交。先用测试内容验证接口保存和返回编号，再试全空格输入应被拒绝。','API: GET reads, POST submits. Test saving and its returned ID, then rejection of spaces-only input.')}</li>
- <li>{label('连接页面和后端：在网页点击保存，页面请求同一个服务的 /api/entries。只有后端保存成功才提示成功；失败保留输入。','Connect: Save sends to /api/entries on the same service. Show success only after persistence; retain input on failure.')}</li>
- <li>{label('读回：复制正在运行的实际网址到另一浏览器，查看同一编号。由 Codex 只读核对数据库记录；你不必先学会 SQL。','Read back: open the running URL in another browser and find the same ID. Codex checks the database read-only; you need not learn SQL first.')}</li>
- </ol>}
- {['save','flow','test'].includes(id)&&<figure><a href={`${base}/images/guide/${id==='test'?'journal-service-stopped':'journal-saved-example'}.png`} target="_blank" rel="noopener"><img src={`${base}/images/guide/${id==='test'?'journal-service-stopped':'journal-saved-example'}.png`} loading="lazy" alt={id==='test'?label('参考项目实测截图：服务停止后输入保留，页面没有显示保存成功。','Reference runtime: stopped service preserves input without claiming success.'):label('参考项目实测截图：通过后端保存到数据库后，页面显示编号 1 和历史记录。','Reference runtime: backend/database save produces record ID 1 and history.')} /></a><figcaption>{label('参考项目的实际运行截图。用于对照现象，不是你的项目验收结果。点击可放大。','Actual reference-project runtime, for comparison rather than your project acceptance. Click to enlarge.')}</figcaption></figure>}
- {['environment','choose-stack','save'].includes(id)&&<p class="practice-source"><a href="https://flask.palletsprojects.com/en/stable/installation/">{label('Flask 安装依据','Flask installation')}</a> · <a href="https://flask.palletsprojects.com/en/stable/tutorial/database/">{label('SQLite 与后端连接依据','SQLite integration')}</a></p>}
+
+<details
+  class="practice-guide"
+  data-fullstack-step={id}
+  open={['idea', 'choose-stack', 'save'].includes(id)}
+>
+  <summary>
+    {label(
+      '跟练：个人学习记录（前端 + 后端 + 数据库）',
+      'Practice: personal journal (frontend + backend + database)',
+    )}
+  </summary>
+  <p class="practice-scope">
+    {label(
+      '选择这个示例时，沿用同一个 learning-journal 项目逐步完成。已有自己的项目时，对照检查相关要求即可，不必另建项目。',
+      'Use the same learning-journal project throughout this example. For your own project, compare applicable requirements without creating another project.',
+    )}
+  </p>
+  <p>{text(row.action)}</p>
+  <dl>
+    <dt>
+      {label(
+        '做完这一步，应该看到什么？',
+        'What should you see after this step?',
+      )}
+    </dt>
+    <dd>{text(row.expected)}</dd>
+    <dt>
+      {label(
+        '做不下去时，先怎么办？',
+        'What should you do first if you get stuck?',
+      )}
+    </dt>
+    <dd>{text(row.recovery)}</dd>
+  </dl>
+  {row.issues.length > 0 && (
+    <details class="practice-errors">
+      <summary>
+        {label('对照具体报错，找到下一步', 'Match an error to the next action')}
+      </summary>
+      {row.issues.map((issue) => (
+        <section>
+          <h4>{text(issue.title)}</h4>
+          <dl>
+            <dt>{label('先检查哪些地方？', 'What should you check first?')}</dt>
+            <dd>{text(issue.check)}</dd>
+            <dt>
+              {label(
+                '按下面的方法处理问题',
+                'Follow these steps to resolve the problem',
+              )}
+            </dt>
+            <dd>{text(issue.action)}</dd>
+            <dt>
+              {label(
+                '问题解决后，应该看到什么？',
+                'What should you see after the problem is resolved?',
+              )}
+            </dt>
+            <dd>{text(issue.expected)}</dd>
+          </dl>
+        </section>
+      ))}
+    </details>
+  )}
+  {['tool', 'open-project', 'first-file'].includes(id) && (
+    <figure>
+      <a
+        href={`${base}/images/guide/codex-official-workspace.webp`}
+        target="_blank"
+        rel="noopener"
+      >
+        <img
+          src={`${base}/images/guide/codex-official-workspace.webp`}
+          width="3600"
+          height="2026"
+          loading="lazy"
+          alt={label(
+            'Codex 官方英文界面截图：左侧 Projects 项目列表，中下方输入框及右下发送箭头，中间回复中的文件链接，右侧 Review 改动对比。',
+            'Official Codex English screenshot: Projects on the left, composer and send arrow below the chat, file links in the reply, and Review on the right.',
+          )}
+        />
+      </a>
+      <figcaption>
+        {label(
+          '点击放大。OpenAI 官方公开截图（英文界面，图中版本未标注；2026-09-29 核验来源），不是本机当前版本截图。项目名称和模型只是示例，不需要照抄。',
+          'Click to enlarge. OpenAI public screenshot (English; app version unspecified; source checked 2026-09-29), not a capture of our current app. Project/model names are examples.',
+        )}{' '}
+        <a
+          href="https://developers.openai.com/images/codex/app/app-screenshot-light.webp"
+          target="_blank"
+          rel="noopener"
+        >
+          {label('截图原图', 'Original screenshot')}
+        </a>{' '}
+        ·{' '}
+        <a
+          href="https://learn.chatgpt.com/docs/projects"
+          target="_blank"
+          rel="noopener"
+        >
+          {label('当前官方项目说明', 'Current official project guide')}
+        </a>
+      </figcaption>
+      <p>
+        {id === 'tool'
+          ? label(
+              '先认入口：图左侧 Projects 是项目列表，New chat 是新对话。第一次使用时按官方说明打开自己的本地文件夹；已有项目就选它。若界面外观不同，按功能名称找入口，不必找一模一样的图标。',
+              'Locate Projects on the left and New chat above it. Open your local folder following current instructions, or select your existing project. Match function names if icons differ.',
+            )
+          : id === 'open-project'
+            ? label(
+                '先核对左侧项目，再看中下方 Ask for follow-up changes 输入框：点击后粘贴本步已确认提示词，核对内容，再点输入框右下角向上箭头发送。发送后等待工具回复，再按回复检查结果。',
+                'Check the project on the left. Click the lower Ask for follow-up changes composer, paste and review this step’s confirmed prompt, then use the upward arrow at its lower right. Wait for the reply, then check its result.',
+              )
+            : label(
+                '图中回复里的蓝色文件名是文件定位入口；请工具返回你自己项目中 idea.md 的实际文件链接并打开核对。右侧 Review 的红绿行展示改动前后，不等于完整文件，也不是作品运行页面。无法打开时按工具报告的实际路径在文件管理器查找。',
+                'File links in the reply locate files. Ask for your actual idea.md link and open it to check. Red/green Review rows show changes, not the full file or running app. If opening is unavailable, find the reported path in your file manager.',
+              )}
+      </p>
+    </figure>
+  )}
+  {id === 'choose-stack' && (
+    <ol>
+      <li>
+        {label(
+          '前端：你在浏览器看到、填写和点击的页面。',
+          'Frontend: the page you see, fill in and click.',
+        )}
+      </li>
+      <li>
+        {label(
+          '后端：收到保存请求后检查内容，决定能不能保存。接口就是页面向它交材料的入口。',
+          'Backend: receives requests, checks content and decides whether to save. An API is the entry for those requests.',
+        )}
+      </li>
+      <li>
+        {label(
+          '数据库：按编号保管记录。SQLite 是实际文件，不是浏览器缓存，也不是另一个必须注册的网站。',
+          'Database: stores numbered records. SQLite is a real file, not browser cache or another account you must register.',
+        )}
+      </li>
+    </ol>
+  )}
+  {id === 'save' && (
+    <ol class="save-checks">
+      <li>
+        {label(
+          '建表：让 Codex 报告数据库完整路径、entries 表和字段；重复启动不清空旧数据。',
+          'Table: report full database path, entries and fields; startup must preserve records.',
+        )}
+      </li>
+      <li>
+        {label(
+          '接口：GET 是读取，POST 是提交。先用测试内容验证接口保存和返回编号，再试全空格输入应被拒绝。',
+          'API: GET reads, POST submits. Test saving and its returned ID, then rejection of spaces-only input.',
+        )}
+      </li>
+      <li>
+        {label(
+          '连接页面和后端：在网页点击保存，页面请求同一个服务的 /api/entries。只有后端保存成功才提示成功；失败保留输入。',
+          'Connect: Save sends to /api/entries on the same service. Show success only after persistence; retain input on failure.',
+        )}
+      </li>
+      <li>
+        {label(
+          '读回：复制正在运行的实际网址到另一浏览器，查看同一编号。由 Codex 只读核对数据库记录；你不必先学会 SQL。',
+          'Read back: open the running URL in another browser and find the same ID. Codex checks the database read-only; you need not learn SQL first.',
+        )}
+      </li>
+    </ol>
+  )}
+  {['save', 'flow', 'test'].includes(id) && (
+    <figure>
+      <a
+        href={`${base}/images/guide/${id === 'test' ? 'journal-service-stopped' : 'journal-saved-example'}.png`}
+        target="_blank"
+        rel="noopener"
+      >
+        <img
+          src={`${base}/images/guide/${id === 'test' ? 'journal-service-stopped' : 'journal-saved-example'}.png`}
+          loading="lazy"
+          alt={
+            id === 'test'
+              ? label(
+                  '参考项目实测截图：服务停止后输入保留，页面没有显示保存成功。',
+                  'Reference runtime: stopped service preserves input without claiming success.',
+                )
+              : label(
+                  '参考项目实测截图：通过后端保存到数据库后，页面显示编号 1 和历史记录。',
+                  'Reference runtime: backend/database save produces record ID 1 and history.',
+                )
+          }
+        />
+      </a>
+      <figcaption>
+        {label(
+          '参考项目的实际运行截图。用于对照现象，不是你的项目验收结果。点击可放大。',
+          'Actual reference-project runtime, for comparison rather than your project acceptance. Click to enlarge.',
+        )}
+      </figcaption>
+    </figure>
+  )}
+  {['environment', 'choose-stack', 'save'].includes(id) && (
+    <p class="practice-source">
+      <a href="https://flask.palletsprojects.com/en/stable/installation/">
+        {label('Flask 安装依据', 'Flask installation')}
+      </a>{' '}
+      ·{' '}
+      <a href="https://flask.palletsprojects.com/en/stable/tutorial/database/">
+        {label('SQLite 与后端连接依据', 'SQLite integration')}
+      </a>
+    </p>
+  )}
 </details>
 <style>
-.practice-guide{margin-top:20px;border:1px solid #edcbaa;border-radius:10px;padding:16px;background:#fffaf5}.practice-guide>summary{font-size:16px;font-weight:650;cursor:pointer;line-height:1.6}.practice-guide p,.practice-guide li,.practice-guide dd{font-size:15px;line-height:1.8}.practice-scope,.practice-source,figcaption{color:#526071;font-size:13px!important}.practice-guide dt{font-weight:650;margin-top:10px}.practice-guide dd{margin-left:0}.practice-guide img{width:100%;height:auto;display:block;border-radius:8px}.practice-guide figure{margin:16px 0}.practice-guide a{text-decoration:underline}.save-checks li{margin:12px 0}
+  .practice-guide {
+    margin-top: 20px;
+    border: 1px solid #edcbaa;
+    border-radius: 10px;
+    padding: 16px;
+    background: #fffaf5;
+  }
+  .practice-guide > summary {
+    font-size: 16px;
+    font-weight: 650;
+    cursor: pointer;
+    line-height: 1.6;
+  }
+  .practice-guide p,
+  .practice-guide li,
+  .practice-guide dd {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+  .practice-scope,
+  .practice-source,
+  figcaption {
+    color: #526071;
+    font-size: 13px !important;
+  }
+  .practice-guide dt {
+    font-weight: 650;
+    margin-top: 10px;
+  }
+  .practice-guide dd {
+    margin-left: 0;
+  }
+  .practice-guide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+  }
+  .practice-guide figure {
+    margin: 16px 0;
+  }
+  .practice-guide a {
+    text-decoration: underline;
+  }
+  .save-checks li {
+    margin: 12px 0;
+  }
 </style>

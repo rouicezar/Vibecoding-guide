@@ -1,31 +1,1081 @@
-import type {Copy} from './site';
-export type Surface='desktop'|'ide'|'cli'|'web';
-export interface CodingTool {id:string;name:string;icon:string;surfaces:Surface[];forms:Copy;fit:Copy;advantage:Copy;limit:Copy;price:Copy;billing:Copy;start:Copy;home:string;sources:{label:string;url:string}[];}
-export const codingTools:CodingTool[]=[
-{id:'codex',name:'Codex',icon:'codex.png',surfaces:['desktop','ide','cli','web'],forms:['桌面任务界面 · CLI · IDE 扩展 · 云端','Desktop tasks · CLI · IDE extension · cloud'],fit:['希望主要通过对话推进本地项目，并检查改动。','Build a local project through conversation and review the changes.'],advantage:['同一项目可按任务委托，也可在编辑器中核对文件。','Delegate scoped tasks or inspect files in an editor.'],limit:['桌面版按系统下载；云端任务与本地任务的文件和环境不同。','Download the appropriate desktop build; local and cloud tasks use different files and environments.'],price:['Free $0；Plus $20/月；Pro $100/月起（USD）','Free $0; Plus $20/mo; Pro from $100/mo (USD)'],billing:['ChatGPT 订阅有用量限制；API Key 另按 API 用量计费，不等于订阅额度。','ChatGPT plans have usage limits. API-key billing is separate from subscription usage.'],start:['从官方入口安装桌面版，登录并打开项目文件夹；已有编辑器可安装官方扩展。','Install the desktop app, sign in and open the project folder, or install the official editor extension.'],home:'https://openai.com/codex/',sources:[{label:'Pricing',url:'https://developers.openai.com/codex/pricing'},{label:'App',url:'https://developers.openai.com/codex/app'},{label:'IDE',url:'https://marketplace.visualstudio.com/items?itemName=openai.chatgpt'}]},
-{id:'claude',name:'Claude / Claude Code',icon:'claude.png',surfaces:['desktop','ide','cli','web'],forms:['桌面 Code 页 · CLI · VS Code / JetBrains 扩展 · 网页','Desktop Code tab · CLI · VS Code / JetBrains · web'],fit:['既要讨论需求，也要在本地项目中执行和验证。','Discuss requirements and execute changes in a local project.'],advantage:['图形界面与终端可使用同一套 Claude Code 工作方式。','Graphical and terminal surfaces share the Claude Code workflow.'],limit:['普通聊天与 Code 工作区分开理解；规则加载方式按版本核对 CLAUDE.md / AGENTS.md。','Distinguish ordinary chat from the Code workspace; verify CLAUDE.md / AGENTS.md loading for the installed version.'],price:['Pro $20/月；Max $100/月起（USD）','Pro $20/mo; Max from $100/mo (USD)'],billing:['免费聊天不等于免费 Claude Code。Pro 年付 $200；API 与额外用量另计。','Free chat does not imply free Claude Code. Pro is $200/year; API and extra usage are separate.'],start:['打开桌面应用的 Code 页，选择本地项目；终端熟练后再使用 CLI。','Open the desktop Code tab and select a local project; use CLI when comfortable with terminals.'],home:'https://claude.com/product/claude-code',sources:[{label:'Pricing',url:'https://claude.com/pricing'},{label:'Setup & surfaces',url:'https://code.claude.com/docs/en/overview'}]},
-{id:'cursor',name:'Cursor',icon:'cursor.svg',surfaces:['ide','cli'],forms:['电脑端 IDE · Cursor CLI','Desktop IDE · Cursor CLI'],fit:['想同时看到文件、AI 对话和改动，逐渐学会维护项目。','See files, AI conversation and changes together while learning maintenance.'],advantage:['编辑器内补全、选择局部代码、查看改动的流程集中。','Completion, selecting code and reviewing changes live in one editor.'],limit:['属于 IDE 型桌面软件；仍需准备项目运行环境。','A desktop IDE; the project still needs its own runtime setup.'],price:['Hobby 免费；Pro $20；Pro+ $60；Ultra $200/月（USD）','Hobby free; Pro $20; Pro+ $60; Ultra $200/mo (USD)'],billing:['套餐包含一定模型用量；按需额外用量另收费。年付与月付价格不同。','Plans include model usage; on-demand overages cost extra. Annual and monthly rates differ.'],start:['下载 Cursor，Open Folder 打开项目，在 Agent 中做一处小改动。','Download Cursor, open the project folder and make one small change with Agent.'],home:'https://cursor.com',sources:[{label:'Pricing',url:'https://cursor.com/pricing'},{label:'CLI',url:'https://cursor.com/cli'}]},
-{id:'qoder',name:'Qoder',icon:'qoder.svg',surfaces:['desktop','ide','cli'],forms:['Qoder IDE · CLI · JetBrains 插件 · QoderWork 桌面任务','Qoder IDE · CLI · JetBrains plugin · QoderWork desktop tasks'],fit:['希望中文起步、看到代码文件，并长期维护已有项目。','Start with Chinese guidance, see project files and maintain an existing codebase.'],advantage:['IDE、CLI 和文档整理工具可配合使用；编程先选 IDE。','Combine IDE, CLI and documentation workflows; start coding in the IDE.'],limit:['中国版和国际版是不同账号系统；Work 通用办公能力不能替代开发验收。','China and global editions use separate account systems; office tasks do not replace software verification.'],price:['中国版 Pro ¥59 / Pro+ ¥169 / Ultra ¥559/月；国际版 $20 / $60 / $200/月','CN Pro CNY59 / Pro+ CNY169 / Ultra CNY559 per month; global USD20 / 60 / 200 per month'],billing:['免费试用有期限和积分上限；各档积分不能直接等同对话次数。','Free trials have time and credit limits; credits are not a fixed number of conversations.'],start:['先确定中国版或国际版，在对应官网安装 IDE；登录同一版本账号再打开文件夹。','Choose CN or global, install its IDE and sign in with the matching account before opening a folder.'],home:'https://qoder.com',sources:[{label:'CN pricing',url:'https://docs.qoder.cn/product-overview/account-and-subscription'},{label:'Global pricing',url:'https://docs.qoder.com/account/pricing'},{label:'Products',url:'https://docs.qoder.com/product-series/quick-start'}]},
-{id:'trae',name:'TRAE',icon:'trae.png',surfaces:['desktop','ide','cli'],forms:['TraeCode IDE / SOLO · TraeWork 桌面任务；CLI（中国版企业旗舰套餐）','TraeCode IDE / SOLO · TraeWork desktop tasks; CLI (China enterprise flagship plan)'],fit:['希望用中文界面从需求推进到页面，并在同一工具看预览。','Use a Chinese interface to move from requirements to a preview.'],advantage:['TraeCode 把编辑、任务对话和预览放在同一工作区。','TraeCode combines editing, task conversation and preview.'],limit:['SOLO 是工作模式；TraeWork 是另一产品。中国版 CLI 2.0 仅企业旗舰套餐可用，国际企业页仍为 coming soon；个人先选 IDE。','SOLO is a mode; TraeWork is another product. CN CLI 2.0 requires the enterprise flagship plan; the global enterprise page still says coming soon. Individuals should start with IDE.'],price:['中国版单月：Pro ¥99 / Pro+ ¥239 / Ultra ¥699；连续包月 ¥89 / ¥219 / ¥629','CN one-month: Pro CNY99 / Pro+ CNY239 / Ultra CNY699; recurring: CNY89 / 219 / 629'],billing:['Lite ¥49 单月仅供 TraeWork；不作为编程套餐。国际版 Pro 标价 $10、Pro+ $30、Ultra $100/月；优惠和续费以账号结算页核对。','Lite CNY49/month is Work-only, not a coding plan. Global list rates: Pro USD10, Pro+ USD30, Ultra USD100/month; confirm offers and renewal at checkout.'],start:['选择中国版或国际版官网，安装 TraeCode，打开项目后选 IDE 或 SOLO 模式。','Choose the CN or global site, install TraeCode, open the project and choose IDE or SOLO mode.'],home:'https://www.trae.cn',sources:[{label:'CN pricing',url:'https://docs.trae.cn/ide_plans-and-billing'},{label:'Global pricing',url:'https://www.trae.ai/pricing'},{label:'SOLO',url:'https://docs.trae.cn/ide_solo-mode'},{label:'CN CLI 2.0',url:'https://docs.trae.cn/cli_about-trae-code-cli-2'},{label:'Global CLI status',url:'https://www.trae.ai/enterprise'}]},
-{id:'kimi',name:'Kimi / Kimi Code',icon:'kimi.png',surfaces:['desktop','cli','ide'],forms:['Kimi Code Desktop · CLI · VS Code 扩展','Kimi Code Desktop · CLI · VS Code extension'],fit:['已有 Kimi 使用习惯，希望从中文需求继续做本地项目。','Already use Kimi and want to carry Chinese requirements into a local project.'],advantage:['官方 Code 客户端可读取项目、修改文件和执行检查。','Official Code clients read projects, edit files and execute checks.'],limit:['Kimi 聊天页面与 Kimi Code 不同；网页生成结果仍需实际运行验收。','Kimi chat and Kimi Code differ; generated results still need runtime verification.'],price:['Andante ¥49 / Moderato ¥99 / Allegretto ¥199 / Allegro ¥699/月（连续包月）','Andante CNY49 / Moderato CNY99 / Allegretto CNY199 / Allegro CNY699 per recurring month'],billing:['会员共享额度；Kimi Code 另有 5 小时和每周限额。会员不是无限编程。','Membership shares an allowance; Code also has five-hour and weekly limits. Coding is not unlimited.'],start:['在 Kimi Code 官方文档选 Desktop（macOS / Windows）或 VS Code 扩展，登录后打开项目。','Choose Desktop (macOS / Windows) or the VS Code extension in Code docs, sign in and open a project.'],home:'https://www.kimi.com/code',sources:[{label:'Clients',url:'https://www.kimi.com/code/docs/en/'},{label:'CN membership',url:'https://www.kimi.com/help/membership/membership-pricing'}]},
-{id:'copilot',name:'GitHub Copilot',icon:'copilot.svg',surfaces:['desktop','ide','cli','web'],forms:['Copilot 桌面应用 · IDE 扩展 · CLI · GitHub','Copilot desktop app · IDE extensions · CLI · GitHub'],fit:['已经在用 VS Code、GitHub 或团队仓库。','Already use VS Code, GitHub or a team repository.'],advantage:['现有编辑器、代码审查和仓库协作可以连起来。','Connect an existing editor with code review and repository collaboration.'],limit:['GitHub Copilot 与 Microsoft 365 Copilot 不同，套餐不能混用。','GitHub Copilot differs from Microsoft 365 Copilot; subscriptions are not interchangeable.'],price:['Free $0；Pro $10 / Pro+ $39 / Max $100/月（USD）','Free $0; Pro $10 / Pro+ $39 / Max $100 per month (USD)'],billing:['AI Credits 按功能和模型消耗；额外用量需核对预算设置。','AI Credits vary by feature and model; inspect budget settings for extra usage.'],start:['已有 VS Code 就启用官方 Copilot，登录 GitHub，再打开项目。','Enable official Copilot in VS Code, sign into GitHub and open the project.'],home:'https://github.com/features/copilot',sources:[{label:'Plans',url:'https://github.com/features/copilot/plans'},{label:'Desktop',url:'https://github.com/features/ai/github-app'}]},
-{id:'gemini',name:'Gemini CLI',icon:'gemini.png',surfaces:['cli','ide'],forms:['CLI · IDE 集成；这里比较编程工具，不把普通聊天 App 算作编程桌面端','CLI · IDE integration; ordinary chat apps are not counted as coding desktop apps'],fit:['愿意使用终端，想先试免费额度，再做脚本和自动化。','Comfortable using a terminal; start with free usage, then scripts and automation.'],advantage:['有 Google 账号免费入口，可把任务接入命令行工作流。','A free Google-account route supports command-line workflows.'],limit:['需要理解当前目录、命令输出和权限；免费额度也有限制。','Requires understanding folders, command output and permissions; free usage is limited.'],price:['免费入口 $0；Google AI Pro 美国参考价 $19.99/月；Ultra 地区价格见官网','Free $0; Google AI Pro US reference USD19.99/mo; see regional Ultra pricing'],billing:['订阅、免费账号与 API Key 计费不同；先确认登录方式与地区。','Subscription, free account and API-key billing differ; check authentication and region.'],start:['按官方 Quickstart 安装，在项目目录启动，再登录 Google 账号。','Follow the official quickstart, launch in the project folder and sign in with Google.'],home:'https://geminicli.com',sources:[{label:'Quota & billing',url:'https://geminicli.com/docs/resources/quota-and-pricing/'},{label:'Subscriptions',url:'https://gemini.google/subscriptions/'}]},
-{id:'lovable',name:'Lovable',icon:'lovable.svg',surfaces:['web'],forms:['网页构建工作区；此处按网页方式比较','Browser building workspace; compared here as a web workflow'],fit:['先做网站或 Web 应用原型，希望减少本机环境准备。','Prototype a website or web app with less local setup.'],advantage:['在浏览器里描述需求、查看页面，再逐步调整。','Describe requirements, view the page and iterate in a browser.'],limit:['原生手机/桌面安装包不是这个入口的主要用途；先验证代码与数据能否迁移。','Native mobile/desktop installers are not its primary route; check code and data portability.'],price:['Free；Pro $25/月起；Business $50/月起（USD）','Free; Pro from USD25/mo; Business from USD50/mo'],billing:['套餐按积分档位变化；构建、运行与应用内 AI 都可能消耗余额。','Price varies by credit tier; building, hosting and in-app AI can consume the balance.'],start:['创建 Web 项目，先做一页；检查导出与版本历史，再扩展功能。','Create a web project and one page; check export and version history before expanding.'],home:'https://lovable.dev',sources:[{label:'Plans',url:'https://docs.lovable.dev/introduction/subscription-plans'},{label:'Usage',url:'https://lovable.dev/pricing'}]},
-{id:'replit',name:'Replit',icon:'replit.png',surfaces:['web'],forms:['网页云端开发工作区；此处按网页方式比较','Browser cloud development workspace; compared here as a web workflow'],fit:['希望在浏览器里同时生成、运行和部署一个小应用。','Generate, run and deploy a small app in a browser.'],advantage:['云端开发环境减少本机依赖安装，适合快速试作品。','Cloud development reduces local dependency setup for early trials.'],limit:['平台运行费用与 Agent 消耗需同时查看；已有本地项目先验证导入。','Track runtime cost alongside agent usage; verify import for existing local projects.'],price:['Starter $0；Core $20/月；Pro $100/月（USD，月付标价）','Starter $0; Core USD20/mo; Pro USD100/mo (monthly list rates)'],billing:['年付折算与促销不是月付续费价；任务按工作量消耗，运行也可能收费。','Annual equivalents and promotions are not monthly renewal prices; tasks and runtime can incur usage costs.'],start:['从官网创建项目，做一个能预览的小流程；检查账单和导出。','Create a project, build one previewable flow and check billing and export.'],home:'https://replit.com',sources:[{label:'Pricing',url:'https://replit.com/pricing'},{label:'Core',url:'https://docs.replit.com/billing/plans/replit-core'}]},
-{"id": "devin", "name": "Devin / Windsurf", "icon": "devin.svg", "surfaces": ["ide", "cli", "web"], "forms": ["Devin Desktop 编辑器 · CLI · Cloud", "Devin Desktop editor · CLI · Cloud"], "fit": ["想保留编辑器操作，也想把明确任务交给云端执行。", "Keep an editor workflow and delegate scoped cloud tasks."], "advantage": ["本地编辑、补全与云端任务属于同一产品系列。", "Local editing, completion and cloud tasks share a product family."], "limit": ["Windsurf 已转到 Devin；旧教程的名称、价格与入口可能失效。", "Windsurf now redirects to Devin; old names, prices and links may be stale."], "price": ["Free $0；Pro $20；Max $200/月（USD）", "Free $0; Pro $20; Max $200/mo (USD)"], "billing": ["付费额度按日和周刷新；额外用量按 API 价格购买。", "Paid allowances refresh daily and weekly; extra usage is purchased at API pricing."], "start": ["从官网下载安装编辑器，先打开一个项目做小改动；云端先核对仓库和运行环境。", "Install the editor and make a small local edit; verify repository and runtime before cloud work."], "home": "https://devin.ai", "sources": [{"label": "Pricing", "url": "https://devin.ai/pricing"}, {"label": "Windsurf redirect", "url": "https://windsurf.com"}]},
-{"id": "kiro", "name": "Kiro", "icon": "kiro.svg", "surfaces": ["ide", "cli", "web"], "forms": ["Kiro IDE · CLI · 网页", "Kiro IDE · CLI · web"], "fit": ["希望先整理需求、设计和任务，再逐步制作。", "Prefer requirements, design and tasks before implementation."], "advantage": ["规格驱动工作方式帮助把大需求拆成可检查的小任务。", "Spec-driven work organizes large requests into reviewable tasks."], "limit": ["仍需人工核对规格；各入口共享积分，网页需付费计划。", "Specs still need review; surfaces share credits and web requires a paid plan."], "price": ["Free；Pro $20；Pro+ $40；Pro Max $100；Power $200/月", "Free; Pro $20; Pro+ $40; Pro Max $100; Power $200/mo"], "billing": ["按任务和模型扣积分；付费档可另购积分，不能把一条消息当固定积分。", "Credit use varies by task and model; paid plans offer add-on credits."], "start": ["安装 IDE 并登录，从一个小功能创建需求和任务，确认后再执行。", "Install the IDE, sign in and review one small feature specification before execution."], "home": "https://kiro.dev", "sources": [{"label": "Pricing & surfaces", "url": "https://kiro.dev/pricing/"}, {"label": "Product", "url": "https://kiro.dev/"}]},
-{"id": "cline", "name": "Cline", "icon": "cline.png", "surfaces": ["ide", "cli"], "forms": ["VS Code 扩展 · CLI", "VS Code extension · CLI"], "fit": ["已有编辑器，愿意理解 API 费用和执行审批。", "Already have an editor and can manage API costs and approvals."], "advantage": ["开源，可选择模型提供商；无需更换整个编辑器。", "Open source with provider choice, without replacing the editor."], "limit": ["工具免费不代表模型免费；复杂任务可能消耗较多推理费用。", "Free software does not mean free inference; complex work can cost more."], "price": ["个人软件免费；模型按量付费", "Individual software free; model inference billed by usage"], "billing": ["可用 Cline 提供商或自带 API Key；企业功能另询价。", "Use Cline provider or own API keys; enterprise features are separately priced."], "start": ["安装官方扩展，选择提供商并设置预算，先审批一次小文件修改。", "Install the official extension, choose a provider and budget, then approve one small edit."], "home": "https://cline.bot", "sources": [{"label": "Pricing & surfaces", "url": "https://cline.bot/pricing"}, {"label": "Get started", "url": "https://cline.bot/get-cline"}]},
-{"id": "opencode", "name": "OpenCode", "icon": "opencode.png", "surfaces": ["desktop", "ide", "cli"], "forms": ["桌面应用 · CLI · IDE 扩展", "Desktop app · CLI · IDE extension"], "fit": ["想自由选择模型，愿意学习提供商和登录配置。", "Want model choice and are willing to configure providers and login."], "advantage": ["开源，同一工具连接多家模型，支持本地模型。", "Open source with multiple providers and local models."], "limit": ["每种模型入口的订阅、限额和数据处理规则不同。", "Subscription, quotas and data handling vary by provider."], "price": ["软件免费；可选 Go $10/月；Zen 按量", "Software free; optional Go $10/mo; Zen pay-as-you-go"], "billing": ["已有订阅仅限官方列出的兼容登录；API 费用另计。", "Existing subscriptions require a documented compatible login; API costs are separate."], "start": ["下载桌面版或按文档安装 CLI，连接一个提供商，打开项目后试一处修改。", "Download desktop or install CLI, connect one provider, open the project and test one edit."], "home": "https://opencode.ai", "sources": [{"label": "Forms & providers", "url": "https://opencode.ai/"}, {"label": "Go pricing", "url": "https://opencode.ai/go"}]},
-{"id": "aider", "name": "Aider", "icon": "aider.png", "surfaces": ["cli"], "forms": ["以终端为主，可配合已有编辑器", "Terminal-first, works alongside an editor"], "fit": ["已能使用终端和 Git，希望控制每次修改涉及的文件。", "Comfortable with terminal and Git and want explicit file scope."], "advantage": ["与 Git 配合记录改动，可添加指定文件并撤销 AI 改动。", "Git integration records changes, with explicit file selection and undo."], "limit": ["不适合作为完全陌生终端时的第一入口；模型和密钥需配置。", "Not the easiest first tool for terminal newcomers; configure models and keys."], "price": ["开源工具免费；模型 API 按提供商收费", "Open-source tool free; model API charged by provider"], "billing": ["本地模型也需要相应设备资源；免费工具不等于免费运行。", "Local models need hardware resources; free software does not imply free operation."], "start": ["按安装文档准备工具，在项目目录启动，只添加本次要修改的文件。", "Follow installation docs, start in the project folder and add only files needed for the task."], "home": "https://aider.chat", "sources": [{"label": "Usage & Git", "url": "https://aider.chat/docs/usage.html"}, {"label": "Models", "url": "https://aider.chat/docs/llms.html"}]},
-{"id": "qwen-code", "name": "Qwen Code", "icon": "qwen-code.png", "surfaces": ["cli", "ide"], "forms": ["CLI · VS Code 扩展（Beta）", "CLI · VS Code extension (Beta)"], "fit": ["愿意用终端，并希望使用阿里云或兼容模型服务。", "Comfortable with terminal and Alibaba Cloud or compatible model services."], "advantage": ["开源客户端，可配置多家模型提供商。", "Open-source client with configurable model providers."], "limit": ["旧 OAuth 免费通道已于 2026-04-15 停止；旧教程需核对。", "The old free OAuth tier ended on 2026-04-15; verify old tutorials."], "price": ["客户端免费；Coding Plan 或模型 API 另计", "Client free; Coding Plan or model API charged separately"], "billing": ["地区、专用接口和 API Key 必须匹配；不沿用旧免费额度。", "Region, dedicated endpoint and API key must match; old free quotas no longer apply."], "start": ["按当前认证文档安装，启动后用 /auth 选择服务，再用 /doctor 检查。", "Follow current auth docs, choose a provider with /auth and verify with /doctor."], "home": "https://qwenlm.github.io/qwen-code-docs/", "sources": [{"label": "Authentication & billing", "url": "https://qwenlm.github.io/qwen-code-docs/en/users/configuration/auth/"}, {"label": "Repository", "url": "https://github.com/QwenLM/qwen-code"}, {"label": "IDE integration", "url": "https://github.com/QwenLM/qwen-code/blob/main/docs/users/integration-vscode.md"}]},
-{"id": "codebuddy", "name": "CodeBuddy", "icon": "codebuddy.svg", "surfaces": ["ide", "cli"], "forms": ["IDE · IDE 插件 · CLI", "IDE · IDE plugins · CLI"], "fit": ["希望中文起步，使用腾讯工具生态并保留本地代码。", "Prefer Chinese onboarding, Tencent tooling and local code."], "advantage": ["编辑器与命令行选择较全，可从 IDE 起步再过渡到 CLI。", "Editor and CLI options support a gradual move from visual work to terminals."], "limit": ["CodeBuddy 与 WorkBuddy 用途不同；中国版与国际版定价分开。", "CodeBuddy and WorkBuddy serve different purposes; CN and global pricing differ."], "price": ["中国版月付 ¥99/¥199/¥999；连续包月 ¥70/¥140/¥700；国际 Pro $10/月", "CN monthly CNY99/199/999; recurring CNY70/140/700; global Pro USD10/mo"], "billing": ["免费体验有积分上限；限时赠送不是永久额度。国际年付 $96。", "Free trials have credit limits; promotional credits are temporary. Global annual: $96."], "start": ["从对应地区官网安装 IDE，登录后打开项目文件夹，先验证读取与小改动。", "Install the appropriate regional IDE, sign in, open the folder and test reading and a small edit."], "home": "https://www.codebuddy.cn", "sources": [{"label": "CN pricing", "url": "https://www.codebuddy.cn/docs/ide/Account/pricing"}, {"label": "Global pricing", "url": "https://www.codebuddy.ai/docs/ide/Account/pricing"}, {"label": "CLI", "url": "https://www.codebuddy.cn/docs/cli/quickstart"}]},
-{"id": "bolt", "name": "Bolt", "icon": "bolt.svg", "surfaces": ["web"], "forms": ["浏览器构建工作区", "Browser building workspace"], "fit": ["先做可点开的网页或小应用，减少本机安装。", "Build an interactive website or small app with less local setup."], "advantage": ["浏览器内生成、预览和托管，便于快速验证流程。", "Browser generation, preview and hosting simplify early flow tests."], "limit": ["项目文件越多通常越耗 tokens；复杂后端和迁移需单独验证。", "More project files typically consume more tokens; verify complex backends and migration."], "price": ["Free；Pro $25/月起；Teams $30/人/月起", "Free; Pro from $25/mo; Teams from $30/user/mo"], "billing": ["免费有每日与每月上限；网站运行和数据库也有套餐限制。", "Free usage has daily/monthly caps; hosting and databases have plan limits."], "start": ["在浏览器新建项目，先生成一页可操作流程，再核对代码导出和账单。", "Create a browser project and one interactive page, then check export and billing."], "home": "https://bolt.new", "sources": [{"label": "Pricing", "url": "https://bolt.new/pricing"}, {"label": "Help", "url": "https://support.bolt.new/"}]},
-{"id": "v0", "name": "v0", "icon": "v0.svg", "surfaces": ["web"], "forms": ["浏览器 UI 与应用构建工作区", "Browser UI and app building workspace"], "fit": ["重视页面效果，希望从参考图、组件和网页开始。", "Prioritize UI and start from references, components and web pages."], "advantage": ["可视化调整、GitHub 同步与 Vercel 部署入口集中。", "Visual editing, GitHub sync and Vercel deployment are integrated."], "limit": ["页面能预览不代表权限、数据和付款流程已经可用。", "A preview does not prove permissions, data or payment flows work."], "price": ["Free；Plus 当前展示 $30/人/月；Business $100/人/月", "Free; Plus currently displayed at $30/user/mo; Business $100/user/mo"], "billing": ["Plus 有划线促销价格，续费以结算核对；v0积分和部署费用分开。", "Plus shows a promotional strike-through price; confirm renewal. Credits and deployment costs differ."], "start": ["新建一个页面，上传参考图并说明要借鉴的部分，连接代码仓库前先检查内容。", "Create one page, explain reference elements and review before connecting a repository."], "home": "https://v0.app", "sources": [{"label": "Pricing", "url": "https://v0.app/pricing"}, {"label": "Docs", "url": "https://v0.app/docs"}]},
-{"id": "zed", "name": "Zed", "icon": "zed.png", "surfaces": ["ide"], "forms": ["桌面代码编辑器 · 可连接外部 Agent", "Desktop code editor · external agent connections"], "fit": ["已有代码基础，重视编辑器速度、协作和自选模型。", "Have coding basics and value editing speed, collaboration and model choice."], "advantage": ["可使用自带 API Key 或外部 Agent，保留编辑器工作习惯。", "Use own keys or external agents while keeping an editor workflow."], "limit": ["属于编辑器，不会自动解决项目依赖和部署配置。", "An editor does not automatically solve dependencies or deployment."], "price": ["Personal $0；Pro $10/月；Business $30/人/月", "Personal $0; Pro $10/mo; Business $30/user/mo"], "billing": ["Pro 含 $5 tokens，超出按 API 标价加10%计费；可设费用上限。", "Pro includes $5 of tokens; overage is API list price +10%, with a spending cap."], "start": ["安装后打开项目，选择已有 Agent 或模型入口，先检查一次改动。", "Install, open the project, connect an agent or provider and review one edit."], "home": "https://zed.dev", "sources": [{"label": "Pricing", "url": "https://zed.dev/pricing"}, {"label": "Download", "url": "https://zed.dev/download"}]},
-{"id": "augment", "name": "Augment Code", "icon": "augment.svg", "surfaces": ["ide", "cli", "web"], "forms": ["IDE 扩展 · CLI · Cosmos 云端", "IDE extensions · CLI · Cosmos cloud"], "fit": ["接手已有较大项目，希望跨文件理解和团队协作。", "Work with an existing larger codebase and cross-file/team workflows."], "advantage": ["围绕代码上下文、任务执行和审查组织工作。", "Organizes repository context, task execution and review."], "limit": ["不是零基础做第一张网页的最短路径；先确认当前套餐而非旧博客。", "Not the shortest path to a first page; use current pricing rather than old posts."], "price": ["Standard $20/月；Business $100/月（各含最多50席位）", "Standard $20/mo; Business $100/mo (up to 50 seats each)"], "billing": ["含等额共享用量；模型费加40%服务费，计算资源另计，额度不足可充值。", "Includes matching shared usage; LLM usage adds a 40% service fee, compute is separate."], "start": ["按官网配置现有仓库，从一个明确缺陷或小任务开始。", "Configure an existing repository and start with a well-defined bug or small task."], "home": "https://www.augmentcode.com", "sources": [{"label": "Current pricing", "url": "https://www.augmentcode.com/pricing"}, {"label": "Official IDE extension", "url": "https://marketplace.visualstudio.com/items?itemName=augment.vscode-augment"}]},
-{"id": "zcode", "name": "智谱 ZCode", "icon": "zcode.png", "surfaces": ["desktop"], "forms": ["桌面智能体工作区 · macOS / Windows / Linux", "Desktop agent workspace · macOS / Windows / Linux"], "fit": ["希望用中文交代任务，在同一工作区检查文件、Git 记录与页面预览。", "Describe tasks in Chinese and inspect files, Git history and previews in one workspace."], "advantage": ["内置文件管理、终端、Git 与浏览器预览，适合以任务对话推进本地项目。", "Built-in files, terminal, Git and browser preview support conversational local development."], "limit": ["按桌面任务界面比较；内置终端不等于独立 CLI。模型连接需在 ZCode 内配置，不会自动沿用终端设置。", "Compared as a desktop task interface; an embedded terminal is not a standalone CLI. Configure model access in ZCode separately from terminal settings."], "price": ["客户端免费；中国 GLM Coding Plan 标价 Lite ¥118 / Pro ¥538 / Max ¥1,078 每月", "Client free; CN GLM Coding Plan list rates: Lite CNY118 / Pro CNY538 / Max CNY1,078 per month"], "billing": ["模型服务另计。官网优惠价与续费价分开核对，以 BigModel 订阅页为准；API 余额与 Coding Plan 是不同计费入口。", "Model access costs extra. Confirm promotional and renewal prices on BigModel; API balance and Coding Plan use separate billing routes."], "start": ["从官网下载对应系统版本，连接 BigModel 或 Z.ai 账号及可用模型套餐，打开项目后先完成一处小改动并核对预览。", "Download for the OS, connect a BigModel or Z.ai account with model access, open a project and verify one small edit in preview."], "home": "https://zcode.z.ai/cn", "sources": [{"label": "Product & plans", "url": "https://zcode.z.ai/cn"}, {"label": "Install", "url": "https://zcode.z.ai/cn/docs/install"}, {"label": "Model configuration", "url": "https://zcode.z.ai/cn/docs/configuration"}, {"label": "FAQ & billing", "url": "https://zcode.z.ai/cn/docs/qa"}]},
-{"id": "amp", "name": "Amp", "icon": "amp.svg", "surfaces": ["desktop", "cli", "web"], "forms": ["macOS 应用 · CLI · 网页与云端 Orbs", "macOS app · CLI · web and cloud Orbs"], "fit": ["已理解 Git 和任务验收，想在本地与云端之间工作。", "Understand Git and acceptance checks and want local/cloud work."], "advantage": ["本地命令行与云端执行可连接，提供项目和规则文件支持。", "Connects local CLI and cloud execution with projects and instruction files."], "limit": ["计费与功能变动较快，官方两个价格说明存在差异，购买前核对结算。", "Pricing evolves quickly; official pages differ, so verify checkout before purchase."], "price": ["Hobby 免费入口；Individual/Megawatt $20/月起", "Hobby free entry; Individual/Megawatt from $20/mo"], "billing": ["云端机器时间与模型使用分别核算；自带订阅/API 并不免除所有运行成本。", "Cloud machine time and model usage are separate; own keys/subscriptions do not remove runtime costs."], "start": ["从官方文档选择桌面或 CLI，在一个小项目验证修改和回退。", "Choose desktop or CLI from official docs and verify edits and recovery on a small project."], "home": "https://ampcode.com", "sources": [{"label": "Pricing", "url": "https://ampcode.app/pricing"}, {"label": "Billing detail", "url": "https://ampcode.app/docs/pricing"}, {"label": "Surfaces", "url": "https://ampcode.com/docs"}]},
-{"id": "kilo", "name": "Kilo Code", "icon": "kilo.svg", "surfaces": ["ide", "cli", "web"], "forms": ["VS Code / JetBrains 扩展 · CLI · Cloud", "VS Code / JetBrains extensions · CLI · Cloud"], "fit": ["已有编辑器，想尝试开源 Agent 和多家模型。", "Have an editor and want an open-source agent with model choice."], "advantage": ["同一套工具提供编写、规划、排错模式，并可连接本地模型。", "One tool provides coding, planning and debugging modes with local model support."], "limit": ["模型选择自由也增加配置工作；平台、推理、云计算是三项费用。", "Model flexibility adds setup; platform, inference and cloud compute are separate costs."], "price": ["个人平台免费；可选 Kilo Pass $19/月起；Teams $15/人/月", "Individual platform free; optional Kilo Pass from $19/mo; Teams $15/user/mo"], "billing": ["模型按使用收费；购买积分有5%处理费；云端按运行时间另计。", "Models are usage-based; credit purchases have a 5% processing fee; cloud time costs extra."], "start": ["安装官方扩展，先选免费或低预算模式，再批准一次范围明确的小修改。", "Install the official extension, choose free or low-budget mode and approve one scoped edit."], "home": "https://kilo.ai", "sources": [{"label": "Pricing", "url": "https://kilo.ai/pricing"}, {"label": "Surfaces", "url": "https://kilo.ai/"}]},
-{"id": "antigravity", "name": "Google Antigravity", "icon": "antigravity.png", "surfaces": ["desktop", "ide", "cli"], "forms": ["Antigravity 2.0 桌面 · IDE / 扩展 · CLI", "Antigravity 2.0 desktop · IDE / extensions · CLI"], "fit": ["希望通过任务对话推进，也能进入编辑器查看文件。", "Use task conversations while retaining access to an editor."], "advantage": ["任务、编辑器和终端入口可按当前习惯选择。", "Choose task, editor or terminal entry points to suit the workflow."], "limit": ["与 Gemini CLI 是不同工具；个人与企业入口、地区和额度分别核对。", "Distinct from Gemini CLI; verify individual versus enterprise routes, region and quotas."], "price": ["免费 $0；AI Pro 约 $20/月；AI Ultra $100 / $200/月（USD 官方公告参考）", "Free $0; AI Pro about USD20/mo; AI Ultra USD100 / 200 per month (official announcement reference)"], "billing": ["套餐有额度上限；额外 AI credits 与地区结算价另核对。", "Plans have quotas; confirm extra AI credits and regional checkout prices."], "start": ["从官网选择桌面或 IDE，登录 Google 账号并打开一个项目，先验证一处小改动。", "Choose desktop or IDE from the official site, sign in with Google, open a project and verify a small edit."], "home": "https://antigravity.google", "sources": [{"label": "Pricing", "url": "https://antigravity.google/pricing"}, {"label": "Plan changes", "url": "https://antigravity.google/blog/changes-to-antigravity-plans"}, {"label": "IDE & desktop", "url": "https://www.antigravity.google/docs/ide/extensions/"}, {"label": "CLI", "url": "https://antigravity.google/product/antigravity-cli"}]},
-{"id": "base44", "name": "Base44", "icon": "base44.png", "surfaces": ["web"], "forms": ["浏览器应用构建工作区", "Browser app-building workspace"], "fit": ["先做内部小工具、客户门户或可试用的网站。", "Prototype an internal tool, customer portal or website."], "advantage": ["在浏览器描述需求并预览，内置数据与登录能力。", "Describe and preview in a browser with built-in data and authentication."], "limit": ["GitHub 集成等权益随套餐变化；需要独立维护时先验证代码、数据和服务的迁移方式。", "GitHub integration depends on plan; verify code, data and service portability before independent maintenance."], "price": ["Free；年付折算 Starter $16 / Builder $40 / Pro $80 / Elite $160 每月（USD）", "Free; annual equivalents: Starter USD16 / Builder 40 / Pro 80 / Elite 160 per month"], "billing": ["以上付费价格按年一次扣款，不是月付价；消息积分与集成积分分开，外接第三方服务另收费。", "Paid figures are billed annually, not monthly prices. Message and integration credits differ; external services bill separately."], "start": ["先用免费额度做一页和一次数据保存，检查权限与用量；需要 GitHub 集成时再核对套餐。", "Use free access for one page and one save action, check permissions and usage, then verify the plan for GitHub integration."], "home": "https://base44.com", "sources": [{"label": "Plans & product features", "url": "https://base44.com/pricing"}, {"label": "Docs", "url": "https://docs.base44.com"}]},
+import type { Copy } from './site';
+export type Surface = 'desktop' | 'ide' | 'cli' | 'web';
+export interface CodingTool {
+  id: string;
+  name: string;
+  icon: string;
+  surfaces: Surface[];
+  forms: Copy;
+  fit: Copy;
+  advantage: Copy;
+  limit: Copy;
+  price: Copy;
+  billing: Copy;
+  start: Copy;
+  home: string;
+  sources: { label: string; url: string }[];
+}
+export const codingTools: CodingTool[] = [
+  {
+    id: 'codex',
+    name: 'Codex',
+    icon: 'codex.png',
+    surfaces: ['desktop', 'ide', 'cli', 'web'],
+    forms: [
+      '桌面任务界面 · CLI · IDE 扩展 · 云端',
+      'Desktop tasks · CLI · IDE extension · cloud',
+    ],
+    fit: [
+      '希望主要通过对话推进本地项目，并检查改动。',
+      'Build a local project through conversation and review the changes.',
+    ],
+    advantage: [
+      '同一项目可按任务委托，也可在编辑器中核对文件。',
+      'Delegate scoped tasks or inspect files in an editor.',
+    ],
+    limit: [
+      '桌面版按系统下载；云端任务与本地任务的文件和环境不同。',
+      'Download the appropriate desktop build; local and cloud tasks use different files and environments.',
+    ],
+    price: [
+      'Free $0；Plus $20/月；Pro $100/月起（USD）',
+      'Free $0; Plus $20/mo; Pro from $100/mo (USD)',
+    ],
+    billing: [
+      'ChatGPT 订阅有用量限制；API Key 另按 API 用量计费，不等于订阅额度。',
+      'ChatGPT plans have usage limits. API-key billing is separate from subscription usage.',
+    ],
+    start: [
+      '从官方入口安装桌面版，登录并打开项目文件夹；已有编辑器可安装官方扩展。',
+      'Install the desktop app, sign in and open the project folder, or install the official editor extension.',
+    ],
+    home: 'https://openai.com/codex/',
+    sources: [
+      { label: 'Pricing', url: 'https://developers.openai.com/codex/pricing' },
+      { label: 'App', url: 'https://developers.openai.com/codex/app' },
+      {
+        label: 'IDE',
+        url: 'https://marketplace.visualstudio.com/items?itemName=openai.chatgpt',
+      },
+    ],
+  },
+  {
+    id: 'claude',
+    name: 'Claude / Claude Code',
+    icon: 'claude.png',
+    surfaces: ['desktop', 'ide', 'cli', 'web'],
+    forms: [
+      '桌面 Code 页 · CLI · VS Code / JetBrains 扩展 · 网页',
+      'Desktop Code tab · CLI · VS Code / JetBrains · web',
+    ],
+    fit: [
+      '既要讨论需求，也要在本地项目中执行和验证。',
+      'Discuss requirements and execute changes in a local project.',
+    ],
+    advantage: [
+      '图形界面与终端可使用同一套 Claude Code 工作方式。',
+      'Graphical and terminal surfaces share the Claude Code workflow.',
+    ],
+    limit: [
+      '普通聊天与 Code 工作区分开理解；规则加载方式按版本核对 CLAUDE.md / AGENTS.md。',
+      'Distinguish ordinary chat from the Code workspace; verify CLAUDE.md / AGENTS.md loading for the installed version.',
+    ],
+    price: [
+      'Pro $20/月；Max $100/月起（USD）',
+      'Pro $20/mo; Max from $100/mo (USD)',
+    ],
+    billing: [
+      '免费聊天不等于免费 Claude Code。Pro 年付 $200；API 与额外用量另计。',
+      'Free chat does not imply free Claude Code. Pro is $200/year; API and extra usage are separate.',
+    ],
+    start: [
+      '打开桌面应用的 Code 页，选择本地项目；终端熟练后再使用 CLI。',
+      'Open the desktop Code tab and select a local project; use CLI when comfortable with terminals.',
+    ],
+    home: 'https://claude.com/product/claude-code',
+    sources: [
+      { label: 'Pricing', url: 'https://claude.com/pricing' },
+      {
+        label: 'Setup & surfaces',
+        url: 'https://code.claude.com/docs/en/overview',
+      },
+    ],
+  },
+  {
+    id: 'cursor',
+    name: 'Cursor',
+    icon: 'cursor.svg',
+    surfaces: ['ide', 'cli'],
+    forms: ['电脑端 IDE · Cursor CLI', 'Desktop IDE · Cursor CLI'],
+    fit: [
+      '想同时看到文件、AI 对话和改动，逐渐学会维护项目。',
+      'See files, AI conversation and changes together while learning maintenance.',
+    ],
+    advantage: [
+      '编辑器内补全、选择局部代码、查看改动的流程集中。',
+      'Completion, selecting code and reviewing changes live in one editor.',
+    ],
+    limit: [
+      '属于 IDE 型桌面软件；仍需准备项目运行环境。',
+      'A desktop IDE; the project still needs its own runtime setup.',
+    ],
+    price: [
+      'Hobby 免费；Pro $20；Pro+ $60；Ultra $200/月（USD）',
+      'Hobby free; Pro $20; Pro+ $60; Ultra $200/mo (USD)',
+    ],
+    billing: [
+      '套餐包含一定模型用量；按需额外用量另收费。年付与月付价格不同。',
+      'Plans include model usage; on-demand overages cost extra. Annual and monthly rates differ.',
+    ],
+    start: [
+      '下载 Cursor，Open Folder 打开项目，在 Agent 中做一处小改动。',
+      'Download Cursor, open the project folder and make one small change with Agent.',
+    ],
+    home: 'https://cursor.com',
+    sources: [
+      { label: 'Pricing', url: 'https://cursor.com/pricing' },
+      { label: 'CLI', url: 'https://cursor.com/cli' },
+    ],
+  },
+  {
+    id: 'qoder',
+    name: 'Qoder',
+    icon: 'qoder.svg',
+    surfaces: ['desktop', 'ide', 'cli'],
+    forms: [
+      'Qoder IDE · CLI · JetBrains 插件 · QoderWork 桌面任务',
+      'Qoder IDE · CLI · JetBrains plugin · QoderWork desktop tasks',
+    ],
+    fit: [
+      '希望中文起步、看到代码文件，并长期维护已有项目。',
+      'Start with Chinese guidance, see project files and maintain an existing codebase.',
+    ],
+    advantage: [
+      'IDE、CLI 和文档整理工具可配合使用；编程先选 IDE。',
+      'Combine IDE, CLI and documentation workflows; start coding in the IDE.',
+    ],
+    limit: [
+      '中国版和国际版是不同账号系统；Work 通用办公能力不能替代开发验收。',
+      'China and global editions use separate account systems; office tasks do not replace software verification.',
+    ],
+    price: [
+      '中国版 Pro ¥59 / Pro+ ¥169 / Ultra ¥559/月；国际版 $20 / $60 / $200/月',
+      'CN Pro CNY59 / Pro+ CNY169 / Ultra CNY559 per month; global USD20 / 60 / 200 per month',
+    ],
+    billing: [
+      '免费试用有期限和积分上限；各档积分不能直接等同对话次数。',
+      'Free trials have time and credit limits; credits are not a fixed number of conversations.',
+    ],
+    start: [
+      '先确定中国版或国际版，在对应官网安装 IDE；登录同一版本账号再打开文件夹。',
+      'Choose CN or global, install its IDE and sign in with the matching account before opening a folder.',
+    ],
+    home: 'https://qoder.com',
+    sources: [
+      {
+        label: 'CN pricing',
+        url: 'https://docs.qoder.cn/product-overview/account-and-subscription',
+      },
+      {
+        label: 'Global pricing',
+        url: 'https://docs.qoder.com/account/pricing',
+      },
+      {
+        label: 'Products',
+        url: 'https://docs.qoder.com/product-series/quick-start',
+      },
+    ],
+  },
+  {
+    id: 'trae',
+    name: 'TRAE',
+    icon: 'trae.png',
+    surfaces: ['desktop', 'ide', 'cli'],
+    forms: [
+      'TraeCode IDE / SOLO · TraeWork 桌面任务；CLI（中国版企业旗舰套餐）',
+      'TraeCode IDE / SOLO · TraeWork desktop tasks; CLI (China enterprise flagship plan)',
+    ],
+    fit: [
+      '希望用中文界面从需求推进到页面，并在同一工具看预览。',
+      'Use a Chinese interface to move from requirements to a preview.',
+    ],
+    advantage: [
+      'TraeCode 把编辑、任务对话和预览放在同一工作区。',
+      'TraeCode combines editing, task conversation and preview.',
+    ],
+    limit: [
+      'SOLO 是工作模式；TraeWork 是另一产品。中国版 CLI 2.0 仅企业旗舰套餐可用，国际企业页仍为 coming soon；个人先选 IDE。',
+      'SOLO is a mode; TraeWork is another product. CN CLI 2.0 requires the enterprise flagship plan; the global enterprise page still says coming soon. Individuals should start with IDE.',
+    ],
+    price: [
+      '中国版单月：Pro ¥99 / Pro+ ¥239 / Ultra ¥699；连续包月 ¥89 / ¥219 / ¥629',
+      'CN one-month: Pro CNY99 / Pro+ CNY239 / Ultra CNY699; recurring: CNY89 / 219 / 629',
+    ],
+    billing: [
+      'Lite ¥49 单月仅供 TraeWork；不作为编程套餐。国际版 Pro 标价 $10、Pro+ $30、Ultra $100/月；优惠和续费以账号结算页核对。',
+      'Lite CNY49/month is Work-only, not a coding plan. Global list rates: Pro USD10, Pro+ USD30, Ultra USD100/month; confirm offers and renewal at checkout.',
+    ],
+    start: [
+      '选择中国版或国际版官网，安装 TraeCode，打开项目后选 IDE 或 SOLO 模式。',
+      'Choose the CN or global site, install TraeCode, open the project and choose IDE or SOLO mode.',
+    ],
+    home: 'https://www.trae.cn',
+    sources: [
+      {
+        label: 'CN pricing',
+        url: 'https://docs.trae.cn/ide_plans-and-billing',
+      },
+      { label: 'Global pricing', url: 'https://www.trae.ai/pricing' },
+      { label: 'SOLO', url: 'https://docs.trae.cn/ide_solo-mode' },
+      {
+        label: 'CN CLI 2.0',
+        url: 'https://docs.trae.cn/cli_about-trae-code-cli-2',
+      },
+      { label: 'Global CLI status', url: 'https://www.trae.ai/enterprise' },
+    ],
+  },
+  {
+    id: 'kimi',
+    name: 'Kimi / Kimi Code',
+    icon: 'kimi.png',
+    surfaces: ['desktop', 'cli', 'ide'],
+    forms: [
+      'Kimi Code Desktop · CLI · VS Code 扩展',
+      'Kimi Code Desktop · CLI · VS Code extension',
+    ],
+    fit: [
+      '已有 Kimi 使用习惯，希望从中文需求继续做本地项目。',
+      'Already use Kimi and want to carry Chinese requirements into a local project.',
+    ],
+    advantage: [
+      '官方 Code 客户端可读取项目、修改文件和执行检查。',
+      'Official Code clients read projects, edit files and execute checks.',
+    ],
+    limit: [
+      'Kimi 聊天页面与 Kimi Code 不同；网页生成结果仍需实际运行验收。',
+      'Kimi chat and Kimi Code differ; generated results still need runtime verification.',
+    ],
+    price: [
+      'Andante ¥49 / Moderato ¥99 / Allegretto ¥199 / Allegro ¥699/月（连续包月）',
+      'Andante CNY49 / Moderato CNY99 / Allegretto CNY199 / Allegro CNY699 per recurring month',
+    ],
+    billing: [
+      '会员共享额度；Kimi Code 另有 5 小时和每周限额。会员不是无限编程。',
+      'Membership shares an allowance; Code also has five-hour and weekly limits. Coding is not unlimited.',
+    ],
+    start: [
+      '在 Kimi Code 官方文档选 Desktop（macOS / Windows）或 VS Code 扩展，登录后打开项目。',
+      'Choose Desktop (macOS / Windows) or the VS Code extension in Code docs, sign in and open a project.',
+    ],
+    home: 'https://www.kimi.com/code',
+    sources: [
+      { label: 'Clients', url: 'https://www.kimi.com/code/docs/en/' },
+      {
+        label: 'CN membership',
+        url: 'https://www.kimi.com/help/membership/membership-pricing',
+      },
+    ],
+  },
+  {
+    id: 'copilot',
+    name: 'GitHub Copilot',
+    icon: 'copilot.svg',
+    surfaces: ['desktop', 'ide', 'cli', 'web'],
+    forms: [
+      'Copilot 桌面应用 · IDE 扩展 · CLI · GitHub',
+      'Copilot desktop app · IDE extensions · CLI · GitHub',
+    ],
+    fit: [
+      '已经在用 VS Code、GitHub 或团队仓库。',
+      'Already use VS Code, GitHub or a team repository.',
+    ],
+    advantage: [
+      '现有编辑器、代码审查和仓库协作可以连起来。',
+      'Connect an existing editor with code review and repository collaboration.',
+    ],
+    limit: [
+      'GitHub Copilot 与 Microsoft 365 Copilot 不同，套餐不能混用。',
+      'GitHub Copilot differs from Microsoft 365 Copilot; subscriptions are not interchangeable.',
+    ],
+    price: [
+      'Free $0；Pro $10 / Pro+ $39 / Max $100/月（USD）',
+      'Free $0; Pro $10 / Pro+ $39 / Max $100 per month (USD)',
+    ],
+    billing: [
+      'AI Credits 按功能和模型消耗；额外用量需核对预算设置。',
+      'AI Credits vary by feature and model; inspect budget settings for extra usage.',
+    ],
+    start: [
+      '已有 VS Code 就启用官方 Copilot，登录 GitHub，再打开项目。',
+      'Enable official Copilot in VS Code, sign into GitHub and open the project.',
+    ],
+    home: 'https://github.com/features/copilot',
+    sources: [
+      { label: 'Plans', url: 'https://github.com/features/copilot/plans' },
+      { label: 'Desktop', url: 'https://github.com/features/ai/github-app' },
+    ],
+  },
+  {
+    id: 'gemini',
+    name: 'Gemini CLI',
+    icon: 'gemini.png',
+    surfaces: ['cli', 'ide'],
+    forms: [
+      'CLI · IDE 集成；这里比较编程工具，不把普通聊天 App 算作编程桌面端',
+      'CLI · IDE integration; ordinary chat apps are not counted as coding desktop apps',
+    ],
+    fit: [
+      '愿意使用终端，想先试免费额度，再做脚本和自动化。',
+      'Comfortable using a terminal; start with free usage, then scripts and automation.',
+    ],
+    advantage: [
+      '有 Google 账号免费入口，可把任务接入命令行工作流。',
+      'A free Google-account route supports command-line workflows.',
+    ],
+    limit: [
+      '需要理解当前目录、命令输出和权限；免费额度也有限制。',
+      'Requires understanding folders, command output and permissions; free usage is limited.',
+    ],
+    price: [
+      '免费入口 $0；Google AI Pro 美国参考价 $19.99/月；Ultra 地区价格见官网',
+      'Free $0; Google AI Pro US reference USD19.99/mo; see regional Ultra pricing',
+    ],
+    billing: [
+      '订阅、免费账号与 API Key 计费不同；先确认登录方式与地区。',
+      'Subscription, free account and API-key billing differ; check authentication and region.',
+    ],
+    start: [
+      '按官方 Quickstart 安装，在项目目录启动，再登录 Google 账号。',
+      'Follow the official quickstart, launch in the project folder and sign in with Google.',
+    ],
+    home: 'https://geminicli.com',
+    sources: [
+      {
+        label: 'Quota & billing',
+        url: 'https://geminicli.com/docs/resources/quota-and-pricing/',
+      },
+      { label: 'Subscriptions', url: 'https://gemini.google/subscriptions/' },
+    ],
+  },
+  {
+    id: 'lovable',
+    name: 'Lovable',
+    icon: 'lovable.svg',
+    surfaces: ['web'],
+    forms: [
+      '网页构建工作区；此处按网页方式比较',
+      'Browser building workspace; compared here as a web workflow',
+    ],
+    fit: [
+      '先做网站或 Web 应用原型，希望减少本机环境准备。',
+      'Prototype a website or web app with less local setup.',
+    ],
+    advantage: [
+      '在浏览器里描述需求、查看页面，再逐步调整。',
+      'Describe requirements, view the page and iterate in a browser.',
+    ],
+    limit: [
+      '原生手机/桌面安装包不是这个入口的主要用途；先验证代码与数据能否迁移。',
+      'Native mobile/desktop installers are not its primary route; check code and data portability.',
+    ],
+    price: [
+      'Free；Pro $25/月起；Business $50/月起（USD）',
+      'Free; Pro from USD25/mo; Business from USD50/mo',
+    ],
+    billing: [
+      '套餐按积分档位变化；构建、运行与应用内 AI 都可能消耗余额。',
+      'Price varies by credit tier; building, hosting and in-app AI can consume the balance.',
+    ],
+    start: [
+      '创建 Web 项目，先做一页；检查导出与版本历史，再扩展功能。',
+      'Create a web project and one page; check export and version history before expanding.',
+    ],
+    home: 'https://lovable.dev',
+    sources: [
+      {
+        label: 'Plans',
+        url: 'https://docs.lovable.dev/introduction/subscription-plans',
+      },
+      { label: 'Usage', url: 'https://lovable.dev/pricing' },
+    ],
+  },
+  {
+    id: 'replit',
+    name: 'Replit',
+    icon: 'replit.png',
+    surfaces: ['web'],
+    forms: [
+      '网页云端开发工作区；此处按网页方式比较',
+      'Browser cloud development workspace; compared here as a web workflow',
+    ],
+    fit: [
+      '希望在浏览器里同时生成、运行和部署一个小应用。',
+      'Generate, run and deploy a small app in a browser.',
+    ],
+    advantage: [
+      '云端开发环境减少本机依赖安装，适合快速试作品。',
+      'Cloud development reduces local dependency setup for early trials.',
+    ],
+    limit: [
+      '平台运行费用与 Agent 消耗需同时查看；已有本地项目先验证导入。',
+      'Track runtime cost alongside agent usage; verify import for existing local projects.',
+    ],
+    price: [
+      'Starter $0；Core $20/月；Pro $100/月（USD，月付标价）',
+      'Starter $0; Core USD20/mo; Pro USD100/mo (monthly list rates)',
+    ],
+    billing: [
+      '年付折算与促销不是月付续费价；任务按工作量消耗，运行也可能收费。',
+      'Annual equivalents and promotions are not monthly renewal prices; tasks and runtime can incur usage costs.',
+    ],
+    start: [
+      '从官网创建项目，做一个能预览的小流程；检查账单和导出。',
+      'Create a project, build one previewable flow and check billing and export.',
+    ],
+    home: 'https://replit.com',
+    sources: [
+      { label: 'Pricing', url: 'https://replit.com/pricing' },
+      {
+        label: 'Core',
+        url: 'https://docs.replit.com/billing/plans/replit-core',
+      },
+    ],
+  },
+  {
+    id: 'devin',
+    name: 'Devin / Windsurf',
+    icon: 'devin.svg',
+    surfaces: ['ide', 'cli', 'web'],
+    forms: [
+      'Devin Desktop 编辑器 · CLI · Cloud',
+      'Devin Desktop editor · CLI · Cloud',
+    ],
+    fit: [
+      '想保留编辑器操作，也想把明确任务交给云端执行。',
+      'Keep an editor workflow and delegate scoped cloud tasks.',
+    ],
+    advantage: [
+      '本地编辑、补全与云端任务属于同一产品系列。',
+      'Local editing, completion and cloud tasks share a product family.',
+    ],
+    limit: [
+      'Windsurf 已转到 Devin；旧教程的名称、价格与入口可能失效。',
+      'Windsurf now redirects to Devin; old names, prices and links may be stale.',
+    ],
+    price: [
+      'Free $0；Pro $20；Max $200/月（USD）',
+      'Free $0; Pro $20; Max $200/mo (USD)',
+    ],
+    billing: [
+      '付费额度按日和周刷新；额外用量按 API 价格购买。',
+      'Paid allowances refresh daily and weekly; extra usage is purchased at API pricing.',
+    ],
+    start: [
+      '从官网下载安装编辑器，先打开一个项目做小改动；云端先核对仓库和运行环境。',
+      'Install the editor and make a small local edit; verify repository and runtime before cloud work.',
+    ],
+    home: 'https://devin.ai',
+    sources: [
+      { label: 'Pricing', url: 'https://devin.ai/pricing' },
+      { label: 'Windsurf redirect', url: 'https://windsurf.com' },
+    ],
+  },
+  {
+    id: 'kiro',
+    name: 'Kiro',
+    icon: 'kiro.svg',
+    surfaces: ['ide', 'cli', 'web'],
+    forms: ['Kiro IDE · CLI · 网页', 'Kiro IDE · CLI · web'],
+    fit: [
+      '希望先整理需求、设计和任务，再逐步制作。',
+      'Prefer requirements, design and tasks before implementation.',
+    ],
+    advantage: [
+      '规格驱动工作方式帮助把大需求拆成可检查的小任务。',
+      'Spec-driven work organizes large requests into reviewable tasks.',
+    ],
+    limit: [
+      '仍需人工核对规格；各入口共享积分，网页需付费计划。',
+      'Specs still need review; surfaces share credits and web requires a paid plan.',
+    ],
+    price: [
+      'Free；Pro $20；Pro+ $40；Pro Max $100；Power $200/月',
+      'Free; Pro $20; Pro+ $40; Pro Max $100; Power $200/mo',
+    ],
+    billing: [
+      '按任务和模型扣积分；付费档可另购积分，不能把一条消息当固定积分。',
+      'Credit use varies by task and model; paid plans offer add-on credits.',
+    ],
+    start: [
+      '安装 IDE 并登录，从一个小功能创建需求和任务，确认后再执行。',
+      'Install the IDE, sign in and review one small feature specification before execution.',
+    ],
+    home: 'https://kiro.dev',
+    sources: [
+      { label: 'Pricing & surfaces', url: 'https://kiro.dev/pricing/' },
+      { label: 'Product', url: 'https://kiro.dev/' },
+    ],
+  },
+  {
+    id: 'cline',
+    name: 'Cline',
+    icon: 'cline.png',
+    surfaces: ['ide', 'cli'],
+    forms: ['VS Code 扩展 · CLI', 'VS Code extension · CLI'],
+    fit: [
+      '已有编辑器，愿意理解 API 费用和执行审批。',
+      'Already have an editor and can manage API costs and approvals.',
+    ],
+    advantage: [
+      '开源，可选择模型提供商；无需更换整个编辑器。',
+      'Open source with provider choice, without replacing the editor.',
+    ],
+    limit: [
+      '工具免费不代表模型免费；复杂任务可能消耗较多推理费用。',
+      'Free software does not mean free inference; complex work can cost more.',
+    ],
+    price: [
+      '个人软件免费；模型按量付费',
+      'Individual software free; model inference billed by usage',
+    ],
+    billing: [
+      '可用 Cline 提供商或自带 API Key；企业功能另询价。',
+      'Use Cline provider or own API keys; enterprise features are separately priced.',
+    ],
+    start: [
+      '安装官方扩展，选择提供商并设置预算，先审批一次小文件修改。',
+      'Install the official extension, choose a provider and budget, then approve one small edit.',
+    ],
+    home: 'https://cline.bot',
+    sources: [
+      { label: 'Pricing & surfaces', url: 'https://cline.bot/pricing' },
+      { label: 'Get started', url: 'https://cline.bot/get-cline' },
+    ],
+  },
+  {
+    id: 'opencode',
+    name: 'OpenCode',
+    icon: 'opencode.png',
+    surfaces: ['desktop', 'ide', 'cli'],
+    forms: ['桌面应用 · CLI · IDE 扩展', 'Desktop app · CLI · IDE extension'],
+    fit: [
+      '想自由选择模型，愿意学习提供商和登录配置。',
+      'Want model choice and are willing to configure providers and login.',
+    ],
+    advantage: [
+      '开源，同一工具连接多家模型，支持本地模型。',
+      'Open source with multiple providers and local models.',
+    ],
+    limit: [
+      '每种模型入口的订阅、限额和数据处理规则不同。',
+      'Subscription, quotas and data handling vary by provider.',
+    ],
+    price: [
+      '软件免费；可选 Go $10/月；Zen 按量',
+      'Software free; optional Go $10/mo; Zen pay-as-you-go',
+    ],
+    billing: [
+      '已有订阅仅限官方列出的兼容登录；API 费用另计。',
+      'Existing subscriptions require a documented compatible login; API costs are separate.',
+    ],
+    start: [
+      '下载桌面版或按文档安装 CLI，连接一个提供商，打开项目后试一处修改。',
+      'Download desktop or install CLI, connect one provider, open the project and test one edit.',
+    ],
+    home: 'https://opencode.ai',
+    sources: [
+      { label: 'Forms & providers', url: 'https://opencode.ai/' },
+      { label: 'Go pricing', url: 'https://opencode.ai/go' },
+    ],
+  },
+  {
+    id: 'aider',
+    name: 'Aider',
+    icon: 'aider.png',
+    surfaces: ['cli'],
+    forms: [
+      '以终端为主，可配合已有编辑器',
+      'Terminal-first, works alongside an editor',
+    ],
+    fit: [
+      '已能使用终端和 Git，希望控制每次修改涉及的文件。',
+      'Comfortable with terminal and Git and want explicit file scope.',
+    ],
+    advantage: [
+      '与 Git 配合记录改动，可添加指定文件并撤销 AI 改动。',
+      'Git integration records changes, with explicit file selection and undo.',
+    ],
+    limit: [
+      '不适合作为完全陌生终端时的第一入口；模型和密钥需配置。',
+      'Not the easiest first tool for terminal newcomers; configure models and keys.',
+    ],
+    price: [
+      '开源工具免费；模型 API 按提供商收费',
+      'Open-source tool free; model API charged by provider',
+    ],
+    billing: [
+      '本地模型也需要相应设备资源；免费工具不等于免费运行。',
+      'Local models need hardware resources; free software does not imply free operation.',
+    ],
+    start: [
+      '按安装文档准备工具，在项目目录启动，只添加本次要修改的文件。',
+      'Follow installation docs, start in the project folder and add only files needed for the task.',
+    ],
+    home: 'https://aider.chat',
+    sources: [
+      { label: 'Usage & Git', url: 'https://aider.chat/docs/usage.html' },
+      { label: 'Models', url: 'https://aider.chat/docs/llms.html' },
+    ],
+  },
+  {
+    id: 'qwen-code',
+    name: 'Qwen Code',
+    icon: 'qwen-code.png',
+    surfaces: ['cli', 'ide'],
+    forms: ['CLI · VS Code 扩展（Beta）', 'CLI · VS Code extension (Beta)'],
+    fit: [
+      '愿意用终端，并希望使用阿里云或兼容模型服务。',
+      'Comfortable with terminal and Alibaba Cloud or compatible model services.',
+    ],
+    advantage: [
+      '开源客户端，可配置多家模型提供商。',
+      'Open-source client with configurable model providers.',
+    ],
+    limit: [
+      '旧 OAuth 免费通道已于 2026-04-15 停止；旧教程需核对。',
+      'The old free OAuth tier ended on 2026-04-15; verify old tutorials.',
+    ],
+    price: [
+      '客户端免费；Coding Plan 或模型 API 另计',
+      'Client free; Coding Plan or model API charged separately',
+    ],
+    billing: [
+      '地区、专用接口和 API Key 必须匹配；不沿用旧免费额度。',
+      'Region, dedicated endpoint and API key must match; old free quotas no longer apply.',
+    ],
+    start: [
+      '按当前认证文档安装，启动后用 /auth 选择服务，再用 /doctor 检查。',
+      'Follow current auth docs, choose a provider with /auth and verify with /doctor.',
+    ],
+    home: 'https://qwenlm.github.io/qwen-code-docs/',
+    sources: [
+      {
+        label: 'Authentication & billing',
+        url: 'https://qwenlm.github.io/qwen-code-docs/en/users/configuration/auth/',
+      },
+      { label: 'Repository', url: 'https://github.com/QwenLM/qwen-code' },
+      {
+        label: 'IDE integration',
+        url: 'https://github.com/QwenLM/qwen-code/blob/main/docs/users/integration-vscode.md',
+      },
+    ],
+  },
+  {
+    id: 'codebuddy',
+    name: 'CodeBuddy',
+    icon: 'codebuddy.svg',
+    surfaces: ['ide', 'cli'],
+    forms: ['IDE · IDE 插件 · CLI', 'IDE · IDE plugins · CLI'],
+    fit: [
+      '希望中文起步，使用腾讯工具生态并保留本地代码。',
+      'Prefer Chinese onboarding, Tencent tooling and local code.',
+    ],
+    advantage: [
+      '编辑器与命令行选择较全，可从 IDE 起步再过渡到 CLI。',
+      'Editor and CLI options support a gradual move from visual work to terminals.',
+    ],
+    limit: [
+      'CodeBuddy 与 WorkBuddy 用途不同；中国版与国际版定价分开。',
+      'CodeBuddy and WorkBuddy serve different purposes; CN and global pricing differ.',
+    ],
+    price: [
+      '中国版月付 ¥99/¥199/¥999；连续包月 ¥70/¥140/¥700；国际 Pro $10/月',
+      'CN monthly CNY99/199/999; recurring CNY70/140/700; global Pro USD10/mo',
+    ],
+    billing: [
+      '免费体验有积分上限；限时赠送不是永久额度。国际年付 $96。',
+      'Free trials have credit limits; promotional credits are temporary. Global annual: $96.',
+    ],
+    start: [
+      '从对应地区官网安装 IDE，登录后打开项目文件夹，先验证读取与小改动。',
+      'Install the appropriate regional IDE, sign in, open the folder and test reading and a small edit.',
+    ],
+    home: 'https://www.codebuddy.cn',
+    sources: [
+      {
+        label: 'CN pricing',
+        url: 'https://www.codebuddy.cn/docs/ide/Account/pricing',
+      },
+      {
+        label: 'Global pricing',
+        url: 'https://www.codebuddy.ai/docs/ide/Account/pricing',
+      },
+      { label: 'CLI', url: 'https://www.codebuddy.cn/docs/cli/quickstart' },
+    ],
+  },
+  {
+    id: 'bolt',
+    name: 'Bolt',
+    icon: 'bolt.svg',
+    surfaces: ['web'],
+    forms: ['浏览器构建工作区', 'Browser building workspace'],
+    fit: [
+      '先做可点开的网页或小应用，减少本机安装。',
+      'Build an interactive website or small app with less local setup.',
+    ],
+    advantage: [
+      '浏览器内生成、预览和托管，便于快速验证流程。',
+      'Browser generation, preview and hosting simplify early flow tests.',
+    ],
+    limit: [
+      '项目文件越多通常越耗 tokens；复杂后端和迁移需单独验证。',
+      'More project files typically consume more tokens; verify complex backends and migration.',
+    ],
+    price: [
+      'Free；Pro $25/月起；Teams $30/人/月起',
+      'Free; Pro from $25/mo; Teams from $30/user/mo',
+    ],
+    billing: [
+      '免费有每日与每月上限；网站运行和数据库也有套餐限制。',
+      'Free usage has daily/monthly caps; hosting and databases have plan limits.',
+    ],
+    start: [
+      '在浏览器新建项目，先生成一页可操作流程，再核对代码导出和账单。',
+      'Create a browser project and one interactive page, then check export and billing.',
+    ],
+    home: 'https://bolt.new',
+    sources: [
+      { label: 'Pricing', url: 'https://bolt.new/pricing' },
+      { label: 'Help', url: 'https://support.bolt.new/' },
+    ],
+  },
+  {
+    id: 'v0',
+    name: 'v0',
+    icon: 'v0.svg',
+    surfaces: ['web'],
+    forms: [
+      '浏览器 UI 与应用构建工作区',
+      'Browser UI and app building workspace',
+    ],
+    fit: [
+      '重视页面效果，希望从参考图、组件和网页开始。',
+      'Prioritize UI and start from references, components and web pages.',
+    ],
+    advantage: [
+      '可视化调整、GitHub 同步与 Vercel 部署入口集中。',
+      'Visual editing, GitHub sync and Vercel deployment are integrated.',
+    ],
+    limit: [
+      '页面能预览不代表权限、数据和付款流程已经可用。',
+      'A preview does not prove permissions, data or payment flows work.',
+    ],
+    price: [
+      'Free；Plus 当前展示 $30/人/月；Business $100/人/月',
+      'Free; Plus currently displayed at $30/user/mo; Business $100/user/mo',
+    ],
+    billing: [
+      'Plus 有划线促销价格，续费以结算核对；v0积分和部署费用分开。',
+      'Plus shows a promotional strike-through price; confirm renewal. Credits and deployment costs differ.',
+    ],
+    start: [
+      '新建一个页面，上传参考图并说明要借鉴的部分，连接代码仓库前先检查内容。',
+      'Create one page, explain reference elements and review before connecting a repository.',
+    ],
+    home: 'https://v0.app',
+    sources: [
+      { label: 'Pricing', url: 'https://v0.app/pricing' },
+      { label: 'Docs', url: 'https://v0.app/docs' },
+    ],
+  },
+  {
+    id: 'zed',
+    name: 'Zed',
+    icon: 'zed.png',
+    surfaces: ['ide'],
+    forms: [
+      '桌面代码编辑器 · 可连接外部 Agent',
+      'Desktop code editor · external agent connections',
+    ],
+    fit: [
+      '已有代码基础，重视编辑器速度、协作和自选模型。',
+      'Have coding basics and value editing speed, collaboration and model choice.',
+    ],
+    advantage: [
+      '可使用自带 API Key 或外部 Agent，保留编辑器工作习惯。',
+      'Use own keys or external agents while keeping an editor workflow.',
+    ],
+    limit: [
+      '属于编辑器，不会自动解决项目依赖和部署配置。',
+      'An editor does not automatically solve dependencies or deployment.',
+    ],
+    price: [
+      'Personal $0；Pro $10/月；Business $30/人/月',
+      'Personal $0; Pro $10/mo; Business $30/user/mo',
+    ],
+    billing: [
+      'Pro 含 $5 tokens，超出按 API 标价加10%计费；可设费用上限。',
+      'Pro includes $5 of tokens; overage is API list price +10%, with a spending cap.',
+    ],
+    start: [
+      '安装后打开项目，选择已有 Agent 或模型入口，先检查一次改动。',
+      'Install, open the project, connect an agent or provider and review one edit.',
+    ],
+    home: 'https://zed.dev',
+    sources: [
+      { label: 'Pricing', url: 'https://zed.dev/pricing' },
+      { label: 'Download', url: 'https://zed.dev/download' },
+    ],
+  },
+  {
+    id: 'augment',
+    name: 'Augment Code',
+    icon: 'augment.svg',
+    surfaces: ['ide', 'cli', 'web'],
+    forms: [
+      'IDE 扩展 · CLI · Cosmos 云端',
+      'IDE extensions · CLI · Cosmos cloud',
+    ],
+    fit: [
+      '接手已有较大项目，希望跨文件理解和团队协作。',
+      'Work with an existing larger codebase and cross-file/team workflows.',
+    ],
+    advantage: [
+      '围绕代码上下文、任务执行和审查组织工作。',
+      'Organizes repository context, task execution and review.',
+    ],
+    limit: [
+      '不是零基础做第一张网页的最短路径；先确认当前套餐而非旧博客。',
+      'Not the shortest path to a first page; use current pricing rather than old posts.',
+    ],
+    price: [
+      'Standard $20/月；Business $100/月（各含最多50席位）',
+      'Standard $20/mo; Business $100/mo (up to 50 seats each)',
+    ],
+    billing: [
+      '含等额共享用量；模型费加40%服务费，计算资源另计，额度不足可充值。',
+      'Includes matching shared usage; LLM usage adds a 40% service fee, compute is separate.',
+    ],
+    start: [
+      '按官网配置现有仓库，从一个明确缺陷或小任务开始。',
+      'Configure an existing repository and start with a well-defined bug or small task.',
+    ],
+    home: 'https://www.augmentcode.com',
+    sources: [
+      { label: 'Current pricing', url: 'https://www.augmentcode.com/pricing' },
+      {
+        label: 'Official IDE extension',
+        url: 'https://marketplace.visualstudio.com/items?itemName=augment.vscode-augment',
+      },
+    ],
+  },
+  {
+    id: 'zcode',
+    name: '智谱 ZCode',
+    icon: 'zcode.png',
+    surfaces: ['desktop'],
+    forms: [
+      '桌面智能体工作区 · macOS / Windows / Linux',
+      'Desktop agent workspace · macOS / Windows / Linux',
+    ],
+    fit: [
+      '希望用中文交代任务，在同一工作区检查文件、Git 记录与页面预览。',
+      'Describe tasks in Chinese and inspect files, Git history and previews in one workspace.',
+    ],
+    advantage: [
+      '内置文件管理、终端、Git 与浏览器预览，适合以任务对话推进本地项目。',
+      'Built-in files, terminal, Git and browser preview support conversational local development.',
+    ],
+    limit: [
+      '按桌面任务界面比较；内置终端不等于独立 CLI。模型连接需在 ZCode 内配置，不会自动沿用终端设置。',
+      'Compared as a desktop task interface; an embedded terminal is not a standalone CLI. Configure model access in ZCode separately from terminal settings.',
+    ],
+    price: [
+      '客户端免费；中国 GLM Coding Plan 标价 Lite ¥118 / Pro ¥538 / Max ¥1,078 每月',
+      'Client free; CN GLM Coding Plan list rates: Lite CNY118 / Pro CNY538 / Max CNY1,078 per month',
+    ],
+    billing: [
+      '模型服务另计。官网优惠价与续费价分开核对，以 BigModel 订阅页为准；API 余额与 Coding Plan 是不同计费入口。',
+      'Model access costs extra. Confirm promotional and renewal prices on BigModel; API balance and Coding Plan use separate billing routes.',
+    ],
+    start: [
+      '从官网下载对应系统版本，连接 BigModel 或 Z.ai 账号及可用模型套餐，打开项目后先完成一处小改动并核对预览。',
+      'Download for the OS, connect a BigModel or Z.ai account with model access, open a project and verify one small edit in preview.',
+    ],
+    home: 'https://zcode.z.ai/cn',
+    sources: [
+      { label: 'Product & plans', url: 'https://zcode.z.ai/cn' },
+      { label: 'Install', url: 'https://zcode.z.ai/cn/docs/install' },
+      {
+        label: 'Model configuration',
+        url: 'https://zcode.z.ai/cn/docs/configuration',
+      },
+      { label: 'FAQ & billing', url: 'https://zcode.z.ai/cn/docs/qa' },
+    ],
+  },
+  {
+    id: 'amp',
+    name: 'Amp',
+    icon: 'amp.svg',
+    surfaces: ['desktop', 'cli', 'web'],
+    forms: [
+      'macOS 应用 · CLI · 网页与云端 Orbs',
+      'macOS app · CLI · web and cloud Orbs',
+    ],
+    fit: [
+      '已理解 Git 和任务验收，想在本地与云端之间工作。',
+      'Understand Git and acceptance checks and want local/cloud work.',
+    ],
+    advantage: [
+      '本地命令行与云端执行可连接，提供项目和规则文件支持。',
+      'Connects local CLI and cloud execution with projects and instruction files.',
+    ],
+    limit: [
+      '计费与功能变动较快，官方两个价格说明存在差异，购买前核对结算。',
+      'Pricing evolves quickly; official pages differ, so verify checkout before purchase.',
+    ],
+    price: [
+      'Hobby 免费入口；Individual/Megawatt $20/月起',
+      'Hobby free entry; Individual/Megawatt from $20/mo',
+    ],
+    billing: [
+      '云端机器时间与模型使用分别核算；自带订阅/API 并不免除所有运行成本。',
+      'Cloud machine time and model usage are separate; own keys/subscriptions do not remove runtime costs.',
+    ],
+    start: [
+      '从官方文档选择桌面或 CLI，在一个小项目验证修改和回退。',
+      'Choose desktop or CLI from official docs and verify edits and recovery on a small project.',
+    ],
+    home: 'https://ampcode.com',
+    sources: [
+      { label: 'Pricing', url: 'https://ampcode.app/pricing' },
+      { label: 'Billing detail', url: 'https://ampcode.app/docs/pricing' },
+      { label: 'Surfaces', url: 'https://ampcode.com/docs' },
+    ],
+  },
+  {
+    id: 'kilo',
+    name: 'Kilo Code',
+    icon: 'kilo.svg',
+    surfaces: ['ide', 'cli', 'web'],
+    forms: [
+      'VS Code / JetBrains 扩展 · CLI · Cloud',
+      'VS Code / JetBrains extensions · CLI · Cloud',
+    ],
+    fit: [
+      '已有编辑器，想尝试开源 Agent 和多家模型。',
+      'Have an editor and want an open-source agent with model choice.',
+    ],
+    advantage: [
+      '同一套工具提供编写、规划、排错模式，并可连接本地模型。',
+      'One tool provides coding, planning and debugging modes with local model support.',
+    ],
+    limit: [
+      '模型选择自由也增加配置工作；平台、推理、云计算是三项费用。',
+      'Model flexibility adds setup; platform, inference and cloud compute are separate costs.',
+    ],
+    price: [
+      '个人平台免费；可选 Kilo Pass $19/月起；Teams $15/人/月',
+      'Individual platform free; optional Kilo Pass from $19/mo; Teams $15/user/mo',
+    ],
+    billing: [
+      '模型按使用收费；购买积分有5%处理费；云端按运行时间另计。',
+      'Models are usage-based; credit purchases have a 5% processing fee; cloud time costs extra.',
+    ],
+    start: [
+      '安装官方扩展，先选免费或低预算模式，再批准一次范围明确的小修改。',
+      'Install the official extension, choose free or low-budget mode and approve one scoped edit.',
+    ],
+    home: 'https://kilo.ai',
+    sources: [
+      { label: 'Pricing', url: 'https://kilo.ai/pricing' },
+      { label: 'Surfaces', url: 'https://kilo.ai/' },
+    ],
+  },
+  {
+    id: 'antigravity',
+    name: 'Google Antigravity',
+    icon: 'antigravity.png',
+    surfaces: ['desktop', 'ide', 'cli'],
+    forms: [
+      'Antigravity 2.0 桌面 · IDE / 扩展 · CLI',
+      'Antigravity 2.0 desktop · IDE / extensions · CLI',
+    ],
+    fit: [
+      '希望通过任务对话推进，也能进入编辑器查看文件。',
+      'Use task conversations while retaining access to an editor.',
+    ],
+    advantage: [
+      '任务、编辑器和终端入口可按当前习惯选择。',
+      'Choose task, editor or terminal entry points to suit the workflow.',
+    ],
+    limit: [
+      '与 Gemini CLI 是不同工具；个人与企业入口、地区和额度分别核对。',
+      'Distinct from Gemini CLI; verify individual versus enterprise routes, region and quotas.',
+    ],
+    price: [
+      '免费 $0；AI Pro 约 $20/月；AI Ultra $100 / $200/月（USD 官方公告参考）',
+      'Free $0; AI Pro about USD20/mo; AI Ultra USD100 / 200 per month (official announcement reference)',
+    ],
+    billing: [
+      '套餐有额度上限；额外 AI credits 与地区结算价另核对。',
+      'Plans have quotas; confirm extra AI credits and regional checkout prices.',
+    ],
+    start: [
+      '从官网选择桌面或 IDE，登录 Google 账号并打开一个项目，先验证一处小改动。',
+      'Choose desktop or IDE from the official site, sign in with Google, open a project and verify a small edit.',
+    ],
+    home: 'https://antigravity.google',
+    sources: [
+      { label: 'Pricing', url: 'https://antigravity.google/pricing' },
+      {
+        label: 'Plan changes',
+        url: 'https://antigravity.google/blog/changes-to-antigravity-plans',
+      },
+      {
+        label: 'IDE & desktop',
+        url: 'https://www.antigravity.google/docs/ide/extensions/',
+      },
+      {
+        label: 'CLI',
+        url: 'https://antigravity.google/product/antigravity-cli',
+      },
+    ],
+  },
+  {
+    id: 'base44',
+    name: 'Base44',
+    icon: 'base44.png',
+    surfaces: ['web'],
+    forms: ['浏览器应用构建工作区', 'Browser app-building workspace'],
+    fit: [
+      '先做内部小工具、客户门户或可试用的网站。',
+      'Prototype an internal tool, customer portal or website.',
+    ],
+    advantage: [
+      '在浏览器描述需求并预览，内置数据与登录能力。',
+      'Describe and preview in a browser with built-in data and authentication.',
+    ],
+    limit: [
+      'GitHub 集成等权益随套餐变化；需要独立维护时先验证代码、数据和服务的迁移方式。',
+      'GitHub integration depends on plan; verify code, data and service portability before independent maintenance.',
+    ],
+    price: [
+      'Free；年付折算 Starter $16 / Builder $40 / Pro $80 / Elite $160 每月（USD）',
+      'Free; annual equivalents: Starter USD16 / Builder 40 / Pro 80 / Elite 160 per month',
+    ],
+    billing: [
+      '以上付费价格按年一次扣款，不是月付价；消息积分与集成积分分开，外接第三方服务另收费。',
+      'Paid figures are billed annually, not monthly prices. Message and integration credits differ; external services bill separately.',
+    ],
+    start: [
+      '先用免费额度做一页和一次数据保存，检查权限与用量；需要 GitHub 集成时再核对套餐。',
+      'Use free access for one page and one save action, check permissions and usage, then verify the plan for GitHub integration.',
+    ],
+    home: 'https://base44.com',
+    sources: [
+      { label: 'Plans & product features', url: 'https://base44.com/pricing' },
+      { label: 'Docs', url: 'https://docs.base44.com' },
+    ],
+  },
 ];

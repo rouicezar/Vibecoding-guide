@@ -11,15 +11,18 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   validate:
+    timeout-minutes: 20
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version-file: .nvmrc
+          registry-url: https://registry.npmjs.org
           cache: npm
       - run: npm ci
-      - run: npm run format:check && npm run lint && npm run check && npm run verify:unit
+      - run: npm run quality
+      - run: npm run audit:dependencies
       - run: npm run build && npm run verify
       - run: npx playwright install --with-deps chromium
       - run: npm run test:browser
@@ -29,19 +32,21 @@ jobs:
           TEST_DIST: dist-pages
           TEST_BASE: /Vibecoding-guide
           TEST_PORT: 4343
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: failure()
         with:
           name: browser-failure-evidence
+          retention-days: 7
           path: |
             playwright-report
             test-results
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         with:
           path: dist-pages
   deploy:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    timeout-minutes: 10
     needs: validate
     runs-on: ubuntu-latest
     permissions:
@@ -53,4 +58,4 @@ jobs:
     steps:
       - name: Deploy
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

@@ -1,15 +1,180 @@
 ---
-import {stepSupport} from '../data/learning-support';
-import {glossary} from '../data/glossary';
-import {t,url,type Locale} from '../data/site';
-const {id,locale}=Astro.props as {id:string;locale:Locale};
-const entry=stepSupport.find(s=>s.id===id)!;
-const terms=entry.terms.map(id=>glossary.find(g=>g.id===id)).filter(Boolean);
+import { stepSupport } from '../data/learning-support';
+import { glossary } from '../data/glossary';
+import { t, url, type Locale } from '../data/site';
+const { id, locale } = Astro.props as { id: string; locale: Locale };
+const entry = stepSupport.find((s) => s.id === id)!;
+const terms = entry.terms
+  .map((id) => glossary.find((g) => g.id === id))
+  .filter(Boolean);
 ---
-<section class="step-support" aria-label={t(['本步材料与操作','Step material and actions'],locale)}>
-<div class="material-flow"><div><small>{t(['开始前需要准备什么？','What do you need before starting?'],locale)}</small><p>{t(entry.input,locale)}</p></div><span aria-hidden="true">→</span><div><small>{t(['做完后要留下什么？','What should you keep for the next step?'],locale)}</small><p>{t(entry.output,locale)}</p></div></div>
-<details class="learn-details"><summary>{t(['不会具体操作？逐项展开跟着做','Need the exact actions? Follow these steps'],locale)}</summary><ol class="support-actions">{entry.steps.map(step=><li><details><summary>{t(step,locale).split(/[。.!！]/)[0]}</summary><p>{t(step,locale)}</p></details></li>)}</ol><h3>{t(['结果对照（教学示意，不是你的项目结果）','Compare the result (illustration, not your result)'],locale)}</h3><pre>{t(entry.example,locale)}</pre><h3>{t(['没有看到预期结果，接下来怎么办？','What should you do if the expected result is missing?'],locale)}</h3><p>{t(entry.recovery,locale)}</p></details>
-<details class="learn-details"><summary>{t(['为什么这样做？看解释与常见误解','Why this works and what it does not prove'],locale)}</summary><p>{t(entry.answer,locale)}</p><p>{t(['这一步留下的材料有什么用？','How will you use the material from this step?'],locale)}{t(entry.output,locale)}</p></details>
-{terms.length>0&&<details class="learn-details"><summary>{t(['本步用到的概念（按需看）','Concepts for this step'],locale)}</summary><div class="step-terms">{terms.map(term=><section><h3><a href={url(locale,`terms/${term!.id}`)}>{t(term!.name,locale)} ↗</a></h3><p>{t(term!.definition,locale)}</p><p class="local-note">{t(term!.example,locale)}</p></section>)}</div></details>}
+
+<section
+  class="step-support"
+  aria-label={t(['本步材料与操作', 'Step material and actions'], locale)}
+>
+  <div class="material-flow">
+    <div>
+      <small>
+        {t(
+          ['开始前需要准备什么？', 'What do you need before starting?'],
+          locale,
+        )}
+      </small>
+      <p>{t(entry.input, locale)}</p>
+    </div>
+    <span aria-hidden="true">→</span>
+    <div>
+      <small>
+        {t(
+          ['做完后要留下什么？', 'What should you keep for the next step?'],
+          locale,
+        )}
+      </small>
+      <p>{t(entry.output, locale)}</p>
+    </div>
+  </div>
+  <details class="learn-details">
+    <summary>
+      {t(
+        [
+          '不会具体操作？逐项展开跟着做',
+          'Need the exact actions? Follow these steps',
+        ],
+        locale,
+      )}
+    </summary>
+    <ol class="support-actions">
+      {entry.steps.map((step) => (
+        <li>
+          <details>
+            <summary>{t(step, locale).split(/[。.!！]/)[0]}</summary>
+            <p>{t(step, locale)}</p>
+          </details>
+        </li>
+      ))}
+    </ol>
+    <h3>
+      {t(
+        [
+          '结果对照（教学示意，不是你的项目结果）',
+          'Compare the result (illustration, not your result)',
+        ],
+        locale,
+      )}
+    </h3>
+    <pre>{t(entry.example,locale)}</pre>
+    <h3>
+      {t(
+        [
+          '没有看到预期结果，接下来怎么办？',
+          'What should you do if the expected result is missing?',
+        ],
+        locale,
+      )}
+    </h3>
+    <p>{t(entry.recovery, locale)}</p>
+  </details>
+  <details class="learn-details">
+    <summary>
+      {t(
+        [
+          '为什么这样做？看解释与常见误解',
+          'Why this works and what it does not prove',
+        ],
+        locale,
+      )}
+    </summary>
+    <p>{t(entry.answer, locale)}</p>
+    <p>
+      {t(
+        [
+          '这一步留下的材料有什么用？',
+          'How will you use the material from this step?',
+        ],
+        locale,
+      )}
+      {t(entry.output, locale)}
+    </p>
+  </details>
+  {terms.length > 0 && (
+    <details class="learn-details">
+      <summary>
+        {t(['本步用到的概念（按需看）', 'Concepts for this step'], locale)}
+      </summary>
+      <div class="step-terms">
+        {terms.map((term) => (
+          <section>
+            <h3>
+              <a href={url(locale, `terms/${term!.id}`)}>
+                {t(term!.name, locale)} ↗
+              </a>
+            </h3>
+            <p>{t(term!.definition, locale)}</p>
+            <p class="local-note">{t(term!.example, locale)}</p>
+          </section>
+        ))}
+      </div>
+    </details>
+  )}
 </section>
-<style>.step-support{margin:24px 0}.material-flow{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:22px;border-block:1px solid #dce5eb;padding:20px 0}.material-flow small{color:#347c83;font-weight:650;font-size:14px}.material-flow p{font-size:16px;margin:7px 0;line-height:1.7}.material-flow>span{color:#68849b}.support-actions{padding-left:24px}.support-actions li{padding:8px 0}.support-actions summary{cursor:pointer;font-weight:600}.support-actions p{margin:10px 0}.step-support pre{white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid #d5e0e7;border-radius:8px;padding:20px;font:15px/1.8 system-ui}.step-terms section+section{border-top:1px solid #e2e8ed;padding-top:12px}@media(max-width:600px){.material-flow{grid-template-columns:1fr;gap:8px}.material-flow>span{display:none}}</style>
+<style>
+  .step-support {
+    margin: 24px 0;
+  }
+  .material-flow {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 22px;
+    border-block: 1px solid #dce5eb;
+    padding: 20px 0;
+  }
+  .material-flow small {
+    color: #347c83;
+    font-weight: 650;
+    font-size: 14px;
+  }
+  .material-flow p {
+    font-size: 16px;
+    margin: 7px 0;
+    line-height: 1.7;
+  }
+  .material-flow > span {
+    color: #68849b;
+  }
+  .support-actions {
+    padding-left: 24px;
+  }
+  .support-actions li {
+    padding: 8px 0;
+  }
+  .support-actions summary {
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .support-actions p {
+    margin: 10px 0;
+  }
+  .step-support pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    border: 1px solid #d5e0e7;
+    border-radius: 8px;
+    padding: 20px;
+    font: 15px/1.8 system-ui;
+  }
+  .step-terms section + section {
+    border-top: 1px solid #e2e8ed;
+    padding-top: 12px;
+  }
+  @media (max-width: 600px) {
+    .material-flow {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .material-flow > span {
+      display: none;
+    }
+  }
+</style>

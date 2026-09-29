@@ -1,11 +1,152 @@
 ---
-import {projectFit,fitLabels} from '../data/project-fit';
-import {t,url,type Locale,type ProjectKey} from '../data/site';
-const {locale,id,compact=false}=Astro.props as {locale:Locale;id:ProjectKey;compact?:boolean};
-const f=projectFit[id];
+import { projectFit, fitLabels } from '../data/project-fit';
+import { t, url, type Locale, type ProjectKey } from '../data/site';
+const {
+  locale,
+  id,
+  compact = false,
+} = Astro.props as { locale: Locale; id: ProjectKey; compact?: boolean };
+const f = projectFit[id];
 ---
-<section class:list={['project-fit',{compact}]} aria-label={t(['为什么要这样选择？','Why choose this option?'],locale)}>
-{compact?<><p class="fit-summary">{t(f.summary,locale)}</p><details><summary>{t(['这个形式适合你的项目吗？从这四点判断','Does this form fit your project? Check these four points'],locale)}</summary><dl>{[f.fits,f.builders,f.avoids,f.notReady].map((copy,i)=><div><dt>{t(fitLabels[i],locale)}</dt><dd>{t(copy,locale)}</dd></div>)}</dl></details></>:<><h2>{t(['先判断是否适合，再开始制作','Check suitability before building'],locale)}</h2><div class="fit-grid">{[f.fits,f.builders,f.avoids,f.notReady].map((copy,i)=><section><h3><span>{String(i+1).padStart(2,'0')}</span>{t(fitLabels[i],locale)}</h3><p>{t(copy,locale)}</p></section>)}</div><details><summary>{t(['还拿不准：先做一个最小验证','Still unsure? Try a small validation'],locale)}</summary><p>{t(f.test,locale)}</p><p>{t(f.reason,locale)}</p><a href={url(locale,`projects/${f.alternative}`)}>{t(['比较另一种形式 →','Compare an alternative →'],locale)}</a>{f.source&&<p class="small"><a href={f.source.url} target="_blank" rel="noreferrer">{f.source.label} ↗</a></p>}</details></>}
+
+<section
+  class:list={['project-fit', { compact }]}
+  aria-label={t(['为什么要这样选择？', 'Why choose this option?'], locale)}
+>
+  {compact ? (
+    <>
+      <p class="fit-summary">{t(f.summary, locale)}</p>
+      <details>
+        <summary>
+          {t(
+            [
+              '这个形式适合你的项目吗？从这四点判断',
+              'Does this form fit your project? Check these four points',
+            ],
+            locale,
+          )}
+        </summary>
+        <dl>
+          {[f.fits, f.builders, f.avoids, f.notReady].map((copy, i) => (
+            <div>
+              <dt>{t(fitLabels[i], locale)}</dt>
+              <dd>{t(copy, locale)}</dd>
+            </div>
+          ))}
+        </dl>
+      </details>
+    </>
+  ) : (
+    <>
+      <h2>
+        {t(
+          ['先判断是否适合，再开始制作', 'Check suitability before building'],
+          locale,
+        )}
+      </h2>
+      <div class="fit-grid">
+        {[f.fits, f.builders, f.avoids, f.notReady].map((copy, i) => (
+          <section>
+            <h3>
+              <span>{String(i + 1).padStart(2, '0')}</span>
+              {t(fitLabels[i], locale)}
+            </h3>
+            <p>{t(copy, locale)}</p>
+          </section>
+        ))}
+      </div>
+      <details>
+        <summary>
+          {t(
+            [
+              '还拿不准：先做一个最小验证',
+              'Still unsure? Try a small validation',
+            ],
+            locale,
+          )}
+        </summary>
+        <p>{t(f.test, locale)}</p>
+        <p>{t(f.reason, locale)}</p>
+        <a href={url(locale, `projects/${f.alternative}`)}>
+          {t(['比较另一种形式 →', 'Compare an alternative →'], locale)}
+        </a>
+        {f.source && (
+          <p class="small">
+            <a href={f.source.url} target="_blank" rel="noreferrer">
+              {f.source.label} ↗
+            </a>
+          </p>
+        )}
+      </details>
+    </>
+  )}
 </section>
-<style>.project-fit{margin:24px 0}.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.fit-grid>section{padding:20px;border:1px solid #d7e4e9;border-radius:12px}.fit-grid h3{font-size:17px;margin:0 0 10px;display:flex;gap:10px;align-items:center}.fit-grid h3 span{font-size:12px;color:#3c9189}.project-fit p,.project-fit dd{font-size:15px;line-height:1.85;color:#52677c}.project-fit summary{padding:16px 0;font-size:15px;font-weight:600}.project-fit dl{margin:0}.project-fit dl>div{padding:12px 0;border-top:1px solid #e5ecf0}.project-fit dt{font-size:14px;font-weight:650;color:#263e56}.project-fit dd{margin:7px 0 0}.project-fit a{color:#327e98}.compact{margin:12px 0}.compact .fit-summary{margin:0}.compact summary{padding-bottom:6px}@media(max-width:700px){.fit-grid{grid-template-columns:1fr}}
+<style>
+  .project-fit {
+    margin: 24px 0;
+  }
+  .fit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .fit-grid > section {
+    padding: 20px;
+    border: 1px solid #d7e4e9;
+    border-radius: 12px;
+  }
+  .fit-grid h3 {
+    font-size: 17px;
+    margin: 0 0 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .fit-grid h3 span {
+    font-size: 12px;
+    color: #3c9189;
+  }
+  .project-fit p,
+  .project-fit dd {
+    font-size: 15px;
+    line-height: 1.85;
+    color: #52677c;
+  }
+  .project-fit summary {
+    padding: 16px 0;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .project-fit dl {
+    margin: 0;
+  }
+  .project-fit dl > div {
+    padding: 12px 0;
+    border-top: 1px solid #e5ecf0;
+  }
+  .project-fit dt {
+    font-size: 14px;
+    font-weight: 650;
+    color: #263e56;
+  }
+  .project-fit dd {
+    margin: 7px 0 0;
+  }
+  .project-fit a {
+    color: #327e98;
+  }
+  .compact {
+    margin: 12px 0;
+  }
+  .compact .fit-summary {
+    margin: 0;
+  }
+  .compact summary {
+    padding-bottom: 6px;
+  }
+  @media (max-width: 700px) {
+    .fit-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>

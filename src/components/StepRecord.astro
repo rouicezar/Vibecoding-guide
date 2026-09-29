@@ -1,15 +1,214 @@
 ---
-import {t,type Locale} from '../data/site';
-const {id,locale}=Astro.props as {id:string;locale:Locale};
-const savePath=id==='accept'?'docs/acceptance.md':'docs/delivery.md';
+import { t, type Locale } from '../data/site';
+const { id, locale } = Astro.props as { id: string; locale: Locale };
+const savePath = id === 'accept' ? 'docs/acceptance.md' : 'docs/delivery.md';
 ---
-{['accept','delivery'].includes(id)&&<details class="learn-details" data-record-handoff data-record-id={id} data-record-path={savePath}><summary>{t(['把本步已确认记录交给 AI 保存','Save the confirmed record in the actual project'],locale)}</summary><p>{t([`先在本页模板填写、确认，再点击下方按钮。AI 将记录保存到 ${savePath}，请在项目文件区亲手打开核对。`, `Complete and confirm this page’s template, then use the button below. AI saves it to ${savePath}; open the actual file to check it.`],locale)}</p><button class="button" type="button" data-make-record>{t(['生成保存话术','Prepare save instruction'],locale)}</button><textarea rows="8" readonly aria-label={t(['保存话术','Save instruction'],locale)} data-record-text hidden></textarea><button type="button" class="button" data-copy-record hidden>{t(['复制保存话术','Copy save instruction'],locale)}</button><p role="status" data-record-status></p></details>}
-{['preview','interface','save','flow','test','restart','accept','repair','release-review','package','live-check'].includes(id)&&<details class="learn-details" data-personal-check data-check-for={id}><summary>{t(['记录本次核对结论与版本','Record this check and project version'],locale)}</summary><p>{t(['这是本人的记录，不是网站自动检测。改动项目后旧结论不能证明新版本通过；未测试或失败时先补测/反馈。','This is self-reported, not automatic inspection. Old checks do not prove a changed version; complete or report failed and untested work.'],locale)}</p>{id==='accept'&&<button type="button" class="button" data-import-check>{t(['带入本页已确认的试用记录','Use the confirmed trial record above'],locale)}</button>}<label>{t(['这次检查的是哪个版本？填写 AI 给出的版本号或改动标识','Which version did you check? Enter the revision or change ID from AI'],locale)}<input data-check-version /></label><label>{t(['你亲手检查后，结果通过了吗？','Did the project pass your own check?'],locale)}<select data-check-verdict><option value="not-tested">{t(['未测试','Not tested'],locale)}</option><option value="passed">{t(['已按本步标准核对','Checked against this step'],locale)}</option><option value="failed">{t(['失败 / 尚有阻断','Failed / blocked'],locale)}</option>{['interface','save','test'].includes(id)&&<option value="not-applicable">{t(['不适用（必须说明原因）','Not applicable (reason required)'],locale)}</option>}</select></label><label>{t(['你实际看到了什么？如果无需检查这一项，请说明原因','What did you actually see? If this check does not apply, explain why'],locale)}<textarea data-check-note rows="3"></textarea></label><button type="button" class="button" data-save-check>{t(['保存本次核对','Save this check'],locale)}</button><p role="status" data-check-status></p></details>}
+
+{['accept', 'delivery'].includes(id) && (
+  <details
+    class="learn-details"
+    data-record-handoff
+    data-record-id={id}
+    data-record-path={savePath}
+  >
+    <summary>
+      {t(
+        [
+          '把本步已确认记录交给 AI 保存',
+          'Save the confirmed record in the actual project',
+        ],
+        locale,
+      )}
+    </summary>
+    <p>
+      {t(
+        [
+          `先在本页模板填写、确认，再点击下方按钮。AI 将记录保存到 ${savePath}，请在项目文件区亲手打开核对。`,
+          `Complete and confirm this page’s template, then use the button below. AI saves it to ${savePath}; open the actual file to check it.`,
+        ],
+        locale,
+      )}
+    </p>
+    <button class="button" type="button" data-make-record>
+      {t(['生成保存话术', 'Prepare save instruction'], locale)}
+    </button>
+    <textarea
+      rows="8"
+      readonly
+      aria-label={t(['保存话术', 'Save instruction'], locale)}
+      data-record-text
+      hidden
+    ></textarea>
+    <button type="button" class="button" data-copy-record hidden>
+      {t(['复制保存话术', 'Copy save instruction'], locale)}
+    </button>
+    <p role="status" data-record-status></p>
+  </details>
+)}
+{[
+  'preview',
+  'interface',
+  'save',
+  'flow',
+  'test',
+  'restart',
+  'accept',
+  'repair',
+  'release-review',
+  'package',
+  'live-check',
+].includes(id) && (
+  <details class="learn-details" data-personal-check data-check-for={id}>
+    <summary>
+      {t(
+        ['记录本次核对结论与版本', 'Record this check and project version'],
+        locale,
+      )}
+    </summary>
+    <p>
+      {t(
+        [
+          '这是本人的记录，不是网站自动检测。改动项目后旧结论不能证明新版本通过；未测试或失败时先补测/反馈。',
+          'This is self-reported, not automatic inspection. Old checks do not prove a changed version; complete or report failed and untested work.',
+        ],
+        locale,
+      )}
+    </p>
+    {id === 'accept' && (
+      <button type="button" class="button" data-import-check>
+        {t(
+          ['带入本页已确认的试用记录', 'Use the confirmed trial record above'],
+          locale,
+        )}
+      </button>
+    )}
+    <label>
+      {t(
+        [
+          '这次检查的是哪个版本？填写 AI 给出的版本号或改动标识',
+          'Which version did you check? Enter the revision or change ID from AI',
+        ],
+        locale,
+      )}
+      <input data-check-version />
+    </label>
+    <label>
+      {t(
+        [
+          '你亲手检查后，结果通过了吗？',
+          'Did the project pass your own check?',
+        ],
+        locale,
+      )}
+      <select data-check-verdict>
+        <option value="not-tested">
+          {t(['未测试', 'Not tested'], locale)}
+        </option>
+        <option value="passed">
+          {t(['已按本步标准核对', 'Checked against this step'], locale)}
+        </option>
+        <option value="failed">
+          {t(['失败 / 尚有阻断', 'Failed / blocked'], locale)}
+        </option>
+        {['interface', 'save', 'test'].includes(id) && (
+          <option value="not-applicable">
+            {t(
+              ['不适用（必须说明原因）', 'Not applicable (reason required)'],
+              locale,
+            )}
+          </option>
+        )}
+      </select>
+    </label>
+    <label>
+      {t(
+        [
+          '你实际看到了什么？如果无需检查这一项，请说明原因',
+          'What did you actually see? If this check does not apply, explain why',
+        ],
+        locale,
+      )}
+      <textarea data-check-note rows="3"></textarea>
+    </label>
+    <button type="button" class="button" data-save-check>
+      {t(['保存本次核对', 'Save this check'], locale)}
+    </button>
+    <p role="status" data-check-status></p>
+  </details>
+)}
 <script>
-import {readConfirmed} from '../scripts/project-storage';
-const record=document.querySelector<HTMLElement>('[data-record-handoff]');if(record){const en=document.documentElement.lang==='en';const text=record.querySelector<HTMLTextAreaElement>('[data-record-text]')!;const status=record.querySelector<HTMLElement>('[data-record-status]')!;const copy=record.querySelector<HTMLButtonElement>('[data-copy-record]')!;
-document.querySelector(`[data-template-editor="learn-${record.dataset.recordId}"]`)?.addEventListener('input',()=>{text.hidden=true;copy.hidden=true;text.value='';status.textContent=en?'Record changed. Confirm and generate the save instruction again.':'记录已修改，请重新确认并生成保存话术。';});
-record.querySelector('[data-make-record]')!.addEventListener('click',()=>{const material=readConfirmed(`learn-${record.dataset.recordId}`);if(!material){text.hidden=true;copy.hidden=true;status.textContent=en?'Complete and confirm the record above first.':'请先填写并确认上方本步记录。';return;}text.value=(en?`Save the following personal record to ${record.dataset.recordPath}. Read any existing file and preserve previous revisions. Do not invent or change the verdict. Link it to the stated version; ask if a required version or decision is unclear. Read it back and report its path and summary. Do not repair, publish or change code.\n\n`:`将以下本人记录保存到 ${record.dataset.recordPath}。先读已有文件，保留历史版本记录。不得编造或改变本人结论，关联所述版本；缺少关键版本或决定先询问。保存后读回并报告路径和摘要。本步不修复、不发布、不修改代码。\n\n`)+material;text.hidden=false;copy.hidden=false;status.textContent=en?'Review, copy, then inspect the saved project file.':'核对后复制给AI，再亲手打开保存的项目文件。';});copy.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(text.value);status.textContent=en?'Copied.':'已复制。';}catch{text.focus();text.select();status.textContent=en?'Select and copy with Ctrl/Cmd+C.':'请按 Ctrl/⌘+C 复制已选文字。';}});
-}
+  import { readConfirmed } from '../scripts/project-storage';
+  const record = document.querySelector<HTMLElement>('[data-record-handoff]');
+  if (record) {
+    const en = document.documentElement.lang === 'en';
+    const text =
+      record.querySelector<HTMLTextAreaElement>('[data-record-text]')!;
+    const status = record.querySelector<HTMLElement>('[data-record-status]')!;
+    const copy = record.querySelector<HTMLButtonElement>('[data-copy-record]')!;
+    document
+      .querySelector(
+        `[data-template-editor="learn-${record.dataset.recordId}"]`,
+      )
+      ?.addEventListener('input', () => {
+        text.hidden = true;
+        copy.hidden = true;
+        text.value = '';
+        status.textContent = en
+          ? 'Record changed. Confirm and generate the save instruction again.'
+          : '记录已修改，请重新确认并生成保存话术。';
+      });
+    record
+      .querySelector('[data-make-record]')!
+      .addEventListener('click', () => {
+        const material = readConfirmed(`learn-${record.dataset.recordId}`);
+        if (!material) {
+          text.hidden = true;
+          copy.hidden = true;
+          status.textContent = en
+            ? 'Complete and confirm the record above first.'
+            : '请先填写并确认上方本步记录。';
+          return;
+        }
+        text.value =
+          (en
+            ? `Save the following personal record to ${record.dataset.recordPath}. Read any existing file and preserve previous revisions. Do not invent or change the verdict. Link it to the stated version; ask if a required version or decision is unclear. Read it back and report its path and summary. Do not repair, publish or change code.\n\n`
+            : `将以下本人记录保存到 ${record.dataset.recordPath}。先读已有文件，保留历史版本记录。不得编造或改变本人结论，关联所述版本；缺少关键版本或决定先询问。保存后读回并报告路径和摘要。本步不修复、不发布、不修改代码。\n\n`) +
+          material;
+        text.hidden = false;
+        copy.hidden = false;
+        status.textContent = en
+          ? 'Review, copy, then inspect the saved project file.'
+          : '核对后复制给AI，再亲手打开保存的项目文件。';
+      });
+    copy.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(text.value);
+        status.textContent = en ? 'Copied.' : '已复制。';
+      } catch {
+        text.focus();
+        text.select();
+        status.textContent = en
+          ? 'Select and copy with Ctrl/Cmd+C.'
+          : '请按 Ctrl/⌘+C 复制已选文字。';
+      }
+    });
+  }
 </script>
-<style>textarea,input,select{display:block;width:100%;box-sizing:border-box;padding:12px;margin:8px 0 16px;border:1px solid #b9cad4;border-radius:6px;font:inherit}textarea{line-height:1.7;resize:vertical}</style>
+<style>
+  textarea,
+  input,
+  select {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    margin: 8px 0 16px;
+    border: 1px solid #b9cad4;
+    border-radius: 6px;
+    font: inherit;
+  }
+  textarea {
+    line-height: 1.7;
+    resize: vertical;
+  }
+</style>

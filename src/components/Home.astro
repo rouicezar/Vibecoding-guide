@@ -1,64 +1,330 @@
 ---
 import Icon from './Icon.astro';
-import {t,url,type Locale} from '../data/site';
-import {stepUrl,phaseUrl} from '../data/nodes';
-import {legacyLessons, phases} from '../data/learning';
+import { t, url, type Locale } from '../data/site';
+import { stepUrl, phaseUrl } from '../data/nodes';
+import { legacyLessons, phases } from '../data/learning';
 import '../styles/learning.css';
 import '../styles/home.css';
-const {locale}=Astro.props as {locale:Locale};
-const icons=['idea','folder','checklist','layout','verify','rocket'];
-const outcomes=[['一份清楚的项目描述','A clear project brief'],['工具就绪，项目已创建','A tool and a project ready to go'],['明确的需求与开发计划','Defined requirements and a plan'],['可以亲手操作的第一版','A first version to use'],['经过试用与修复的版本','A tried and improved version'],['交付作品，留下维护说明','Delivery and maintenance notes']];
+const { locale } = Astro.props as { locale: Locale };
+const icons = ['idea', 'folder', 'checklist', 'layout', 'verify', 'rocket'];
+const outcomes = [
+  ['一份清楚的项目描述', 'A clear project brief'],
+  ['工具就绪，项目已创建', 'A tool and a project ready to go'],
+  ['明确的需求与开发计划', 'Defined requirements and a plan'],
+  ['可以亲手操作的第一版', 'A first version to use'],
+  ['经过试用与修复的版本', 'A tried and improved version'],
+  ['交付作品，留下维护说明', 'Delivery and maintenance notes'],
+];
 ---
-<div class="start-home" data-home-locale={locale} data-legacy={JSON.stringify(legacyLessons)}>
-{Object.keys(legacyLessons).map(id=><span id={`stage-${id}`} hidden></span>)}
-<section class="home-opening" aria-labelledby="home-title">
-  <div class="home-story">
-    <p class="home-kicker"><span></span>{t(['零基础 · 用 AI 做第一个项目','NO CODING EXPERIENCE NEEDED'],locale)}</p>
-    <h1 id="home-title">{t(['把你的想法，','Take your idea.'],locale)}<br/><span>{t(['Vibecoding成一个真实的项目','Vibe code a real project.'],locale)}</span></h1>
-    <p class="home-description">{t(['从有一个想法，到指挥AI完成开发文档，再到部署上线，每一步都有方法、提示词模板、检查标准。同时让你知道为什么要这样做的原理。','From an idea to directing AI to write development documents, then deployment. Every step includes a method, a prompt template, and checks—along with the reasoning behind it.'],locale)}</p>
-    <div class="home-actions"><a class="learn-primary" data-resume href={stepUrl(locale,'idea')}>{t(['开始第一步','Start the first step'],locale)} →</a><a data-last-viewed hidden></a><a class="home-route" href={url(locale,'roadmap')}>{t(['探索完整路线','Explore the full route'],locale)} <Icon name="arrow" size={17}/></a></div><details class="home-preparation"><summary>{t(['开始前，需要准备什么？','What do I need before starting?'],locale)}</summary><p>{t(['一个自己的想法、一台可用电脑；进入“选择 AI 工具”节点时，再选择能操作项目文件的工具并核对账号条件。现在无需先购买服务。','Bring an idea and a usable computer. The “Choose an AI tool” milestone helps choose a project-capable AI tool and check account access; no purchase is needed now.'],locale)}</p><p>{t(['本站：学习方法与准备材料 → AI工具：读取项目、制作和测试 → 你的作品：亲手打开，核对结果。','This guide: methods and material → AI tool: project work and tests → your project: open and verify it personally.'],locale)}</p></details>
-    <p class="home-start-note">{t(['从自己的想法开始，不必先掌握技术名词。','Start with an idea. Technical vocabulary can come later.'],locale)}</p>
-  </div>
-  <figure class="home-journey" aria-label={t(['从想法、项目描述到可用作品的流程示意','An illustration of idea, project brief, and working project'],locale)}>
-    <svg class="journey-thread" viewBox="0 0 440 360" fill="none" aria-hidden="true"><path d="M55 54H330C420 54 420 180 330 180H110C20 180 20 306 110 306H392" stroke="var(--home-line)" stroke-width="2"/><path class="thread-color" d="M55 54H330C420 54 420 180 330 180" stroke="var(--accent-coral)" stroke-width="2"/><path d="M110 180C20 180 20 306 110 306H392" stroke="var(--accent-teal)" stroke-width="2"/></svg>
-    <div class="journey-note note-idea"><span class="journey-symbol"><Icon name="idea" size={26}/></span><div><small>01 / {t(['从想法出发','AN IDEA'],locale)}</small><strong>{t(['“这件事，能不能更简单？”','“Could this be easier?”'],locale)}</strong></div></div>
-    <div class="journey-note note-brief"><span class="journey-symbol"><Icon name="document" size={26}/></span><div><small>02 / {t(['把想法说清楚','A CLEAR BRIEF'],locale)}</small><strong>{t(['谁会使用这个项目 · 它要解决他们的什么问题','Who will use it · What problem will it solve for them?'],locale)}</strong><span class="brief-lines" aria-hidden="true"><i></i><i></i></span></div></div>
-    <div class="journey-note note-project"><span class="journey-symbol"><Icon name="layout" size={26}/></span><div><small>03 / {t(['一步步实现','A WORKING PROJECT'],locale)}</small><strong>{t(['从“我想做”，到“可以用了”','From “what if” to “it works”'],locale)}</strong><span class="journey-result"><Icon name="check" size={14}/>{t(['制作 → 试用 → 改进','Build → Try → Improve'],locale)}</span></div></div>
-    <figcaption>{t(['学习过程示意 · 按自己的项目逐步实现','The learning journey · build at your own pace'],locale)}</figcaption>
-  </figure>
-</section>
-<section class="home-path" aria-labelledby="home-path-title">
-  <header class="home-section-heading"><div><p class="home-kicker">{t(['一步一步，积累看得见的成果','SMALL STEPS. VISIBLE PROGRESS.'],locale)}</p><h2 id="home-path-title">{t(['每一个步骤，都清晰可见','Every step, clearly mapped.'],locale)}</h2></div><span class="home-path-meta">{t(['6 个阶段 / 18 个节点 / 31 个动作','6 stages / 18 milestones / 31 actions'],locale)}</span></header>
-  <ol class="home-phase-list">{phases.map((phase,i)=><li><a href={phaseUrl(locale,phase.id)}><span class={`phase-symbol phase-${i}`}><Icon name={icons[i]} size={24}/></span><span class="phase-order">0{i+1}</span><h3>{t(phase.title,locale)}</h3><p>{t(outcomes[i] as [string,string],locale)}</p><span class="phase-enter"><Icon name="arrow" size={18}/></span></a></li>)}</ol>
-</section>
-<aside class="home-library"><span class="library-symbol"><Icon name="book" size={27}/></span><div><h2>{t(['遇到问题，资料就在手边。','Help when a question comes up.'],locale)}</h2><p>{t(['选项目、选工具、看组件、查术语。需要哪一项，再展开哪一项。','Project choices, tools, components, and terminology. Open only what is needed.'],locale)}</p></div><a href={url(locale,'library')}>{t(['按问题查资料','Browse by question'],locale)} <Icon name="arrow" size={18}/></a></aside>
+
+<div
+  class="start-home"
+  data-home-locale={locale}
+  data-legacy={JSON.stringify(legacyLessons)}
+>
+  {Object.keys(legacyLessons).map((id) => (
+    <span id={`stage-${id}`} hidden></span>
+  ))}
+  <section class="home-opening" aria-labelledby="home-title">
+    <div class="home-story">
+      <p class="home-kicker">
+        <span></span>
+        {t(
+          ['零基础 · 用 AI 做第一个项目', 'NO CODING EXPERIENCE NEEDED'],
+          locale,
+        )}
+      </p>
+      <h1 id="home-title">
+        {t(['把你的想法，', 'Take your idea.'], locale)}
+        <br />
+        <span>
+          {t(
+            ['Vibecoding成一个真实的项目', 'Vibe code a real project.'],
+            locale,
+          )}
+        </span>
+      </h1>
+      <p class="home-description">
+        {t(
+          [
+            '从有一个想法，到指挥AI完成开发文档，再到部署上线，每一步都有方法、提示词模板、检查标准。同时让你知道为什么要这样做的原理。',
+            'From an idea to directing AI to write development documents, then deployment. Every step includes a method, a prompt template, and checks—along with the reasoning behind it.',
+          ],
+          locale,
+        )}
+      </p>
+      <div class="home-actions">
+        <a class="learn-primary" data-resume href={stepUrl(locale, 'idea')}>
+          {t(['开始第一步', 'Start the first step'], locale)} →
+        </a>
+        <a data-last-viewed hidden></a>
+        <a class="home-route" href={url(locale, 'roadmap')}>
+          {t(['探索完整路线', 'Explore the full route'], locale)}{' '}
+          <Icon name="arrow" size={17} />
+        </a>
+      </div>
+      <details class="home-preparation">
+        <summary>
+          {t(
+            ['开始前，需要准备什么？', 'What do I need before starting?'],
+            locale,
+          )}
+        </summary>
+        <p>
+          {t(
+            [
+              '一个自己的想法、一台可用电脑；进入“选择 AI 工具”节点时，再选择能操作项目文件的工具并核对账号条件。现在无需先购买服务。',
+              'Bring an idea and a usable computer. The “Choose an AI tool” milestone helps choose a project-capable AI tool and check account access; no purchase is needed now.',
+            ],
+            locale,
+          )}
+        </p>
+        <p>
+          {t(
+            [
+              '本站：学习方法与准备材料 → AI工具：读取项目、制作和测试 → 你的作品：亲手打开，核对结果。',
+              'This guide: methods and material → AI tool: project work and tests → your project: open and verify it personally.',
+            ],
+            locale,
+          )}
+        </p>
+      </details>
+      <p class="home-start-note">
+        {t(
+          [
+            '从自己的想法开始，不必先掌握技术名词。',
+            'Start with an idea. Technical vocabulary can come later.',
+          ],
+          locale,
+        )}
+      </p>
+    </div>
+    <figure
+      class="home-journey"
+      aria-label={t(
+        [
+          '从想法、项目描述到可用作品的流程示意',
+          'An illustration of idea, project brief, and working project',
+        ],
+        locale,
+      )}
+    >
+      <svg
+        class="journey-thread"
+        viewBox="0 0 440 360"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M55 54H330C420 54 420 180 330 180H110C20 180 20 306 110 306H392"
+          stroke="var(--home-line)"
+          stroke-width="2"
+        />
+        <path
+          class="thread-color"
+          d="M55 54H330C420 54 420 180 330 180"
+          stroke="var(--accent-coral)"
+          stroke-width="2"
+        />
+        <path
+          d="M110 180C20 180 20 306 110 306H392"
+          stroke="var(--accent-teal)"
+          stroke-width="2"
+        />
+      </svg>
+      <div class="journey-note note-idea">
+        <span class="journey-symbol">
+          <Icon name="idea" size={26} />
+        </span>
+        <div>
+          <small>01 / {t(['从想法出发', 'AN IDEA'], locale)}</small>
+          <strong>
+            {t(['“这件事，能不能更简单？”', '“Could this be easier?”'], locale)}
+          </strong>
+        </div>
+      </div>
+      <div class="journey-note note-brief">
+        <span class="journey-symbol">
+          <Icon name="document" size={26} />
+        </span>
+        <div>
+          <small>02 / {t(['把想法说清楚', 'A CLEAR BRIEF'], locale)}</small>
+          <strong>
+            {t(
+              [
+                '谁会使用这个项目 · 它要解决他们的什么问题',
+                'Who will use it · What problem will it solve for them?',
+              ],
+              locale,
+            )}
+          </strong>
+          <span class="brief-lines" aria-hidden="true">
+            <i></i>
+            <i></i>
+          </span>
+        </div>
+      </div>
+      <div class="journey-note note-project">
+        <span class="journey-symbol">
+          <Icon name="layout" size={26} />
+        </span>
+        <div>
+          <small>03 / {t(['一步步实现', 'A WORKING PROJECT'], locale)}</small>
+          <strong>
+            {t(
+              ['从“我想做”，到“可以用了”', 'From “what if” to “it works”'],
+              locale,
+            )}
+          </strong>
+          <span class="journey-result">
+            <Icon name="check" size={14} />
+            {t(['制作 → 试用 → 改进', 'Build → Try → Improve'], locale)}
+          </span>
+        </div>
+      </div>
+      <figcaption>
+        {t(
+          [
+            '学习过程示意 · 按自己的项目逐步实现',
+            'The learning journey · build at your own pace',
+          ],
+          locale,
+        )}
+      </figcaption>
+    </figure>
+  </section>
+  <section class="home-path" aria-labelledby="home-path-title">
+    <header class="home-section-heading">
+      <div>
+        <p class="home-kicker">
+          {t(
+            ['一步一步，积累看得见的成果', 'SMALL STEPS. VISIBLE PROGRESS.'],
+            locale,
+          )}
+        </p>
+        <h2 id="home-path-title">
+          {t(['每一个步骤，都清晰可见', 'Every step, clearly mapped.'], locale)}
+        </h2>
+      </div>
+      <span class="home-path-meta">
+        {t(
+          [
+            '6 个阶段 / 18 个节点 / 31 个动作',
+            '6 stages / 18 milestones / 31 actions',
+          ],
+          locale,
+        )}
+      </span>
+    </header>
+    <ol class="home-phase-list">
+      {phases.map((phase, i) => (
+        <li>
+          <a href={phaseUrl(locale, phase.id)}>
+            <span class={`phase-symbol phase-${i}`}>
+              <Icon name={icons[i]} size={24} />
+            </span>
+            <span class="phase-order">0{i + 1}</span>
+            <h3>{t(phase.title, locale)}</h3>
+            <p>{t(outcomes[i] as [string, string], locale)}</p>
+            <span class="phase-enter">
+              <Icon name="arrow" size={18} />
+            </span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </section>
+  <aside class="home-library">
+    <span class="library-symbol">
+      <Icon name="book" size={27} />
+    </span>
+    <div>
+      <h2>
+        {t(
+          ['遇到问题，资料就在手边。', 'Help when a question comes up.'],
+          locale,
+        )}
+      </h2>
+      <p>
+        {t(
+          [
+            '选项目、选工具、看组件、查术语。需要哪一项，再展开哪一项。',
+            'Project choices, tools, components, and terminology. Open only what is needed.',
+          ],
+          locale,
+        )}
+      </p>
+    </div>
+    <a href={url(locale, 'library')}>
+      {t(['按问题查资料', 'Browse by question'], locale)}{' '}
+      <Icon name="arrow" size={18} />
+    </a>
+  </aside>
 </div>
 <script>
-import {stepUrl} from '../data/nodes';
-import {resumeStep} from '../data/learning-progress';
-import type {Locale} from '../data/site';
-import {projectStorage as localStorage} from '../scripts/project-storage';
-import {lessons} from '../data/learning';
-import {parseLearning} from '../scripts/learning';
-const home=document.querySelector<HTMLElement>('[data-home-locale]');
-if(home){
- const locale=home.dataset.homeLocale! as Locale;
- const legacy=JSON.parse(home.dataset.legacy!);
- const redirect=()=>{const id=legacy[location.hash.replace('#stage-','')];if(id)location.replace(stepUrl(locale,id));};
- redirect();addEventListener('hashchange',redirect);
- try{
-  const state=parseLearning(localStorage.getItem('vibe-guide-learning-v1'));
-  const recent=home.querySelector<HTMLAnchorElement>('[data-last-viewed]')!;
-  if(state.lastViewed&&lessons.some(l=>l.id===state.lastViewed)){recent.href=stepUrl(locale,state.lastViewed);recent.textContent=locale==='en'?'Last viewed action →':'最近浏览的动作 →';recent.hidden=false;}
-  if(state.idea||state.completed.length||state.activeBranch){
-   const next=resumeStep(state);
-   const a=home.querySelector<HTMLAnchorElement>('[data-resume]')!;
-   a.href=stepUrl(locale,next??'maintain');
-   a.textContent=next?(locale==='en'?'Continue where I left off →':'接着上次的动作做 →'):(locale==='en'?'Main route complete · review maintenance →':'主线已完成 · 查看维护说明 →');
+  import { stepUrl } from '../data/nodes';
+  import { resumeStep } from '../data/learning-progress';
+  import type { Locale } from '../data/site';
+  import { projectStorage as localStorage } from '../scripts/project-storage';
+  import { lessons } from '../data/learning';
+  import { parseLearning } from '../scripts/learning';
+  const home = document.querySelector<HTMLElement>('[data-home-locale]');
+  if (home) {
+    const locale = home.dataset.homeLocale! as Locale;
+    const legacy = JSON.parse(home.dataset.legacy!);
+    const redirect = () => {
+      const id = legacy[location.hash.replace('#stage-', '')];
+      if (id) location.replace(stepUrl(locale, id));
+    };
+    redirect();
+    addEventListener('hashchange', redirect);
+    try {
+      const state = parseLearning(
+        localStorage.getItem('vibe-guide-learning-v1'),
+      );
+      const recent =
+        home.querySelector<HTMLAnchorElement>('[data-last-viewed]')!;
+      if (state.lastViewed && lessons.some((l) => l.id === state.lastViewed)) {
+        recent.href = stepUrl(locale, state.lastViewed);
+        recent.textContent =
+          locale === 'en' ? 'Last viewed action →' : '最近浏览的动作 →';
+        recent.hidden = false;
+      }
+      if (state.idea || state.completed.length || state.activeBranch) {
+        const next = resumeStep(state);
+        const a = home.querySelector<HTMLAnchorElement>('[data-resume]')!;
+        a.href = stepUrl(locale, next ?? 'maintain');
+        a.textContent = next
+          ? locale === 'en'
+            ? 'Continue where I left off →'
+            : '接着上次的动作做 →'
+          : locale === 'en'
+            ? 'Main route complete · review maintenance →'
+            : '主线已完成 · 查看维护说明 →';
+      }
+    } catch {}
   }
- }catch{}
-}
 </script>
 
-
-<style>.home-preparation{margin-top:18px;max-width:680px;color:#536b7d;font-size:14px;line-height:1.8}.home-preparation summary{cursor:pointer;font-weight:600}.home-preparation p{margin:10px 0}[data-last-viewed]{font-size:13px}[data-last-viewed][hidden]{display:none}</style>
+<style>
+  .home-preparation {
+    margin-top: 18px;
+    max-width: 680px;
+    color: #536b7d;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  .home-preparation summary {
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .home-preparation p {
+    margin: 10px 0;
+  }
+  [data-last-viewed] {
+    font-size: 13px;
+  }
+  [data-last-viewed][hidden] {
+    display: none;
+  }
+</style>

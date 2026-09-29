@@ -1,9 +1,34 @@
-import type {Copy} from '../site';
-export interface GlossaryTerm {id:string;group:string;name:Copy;definition:Copy;example:Copy;priority:boolean;aliases:string[];}
-export const catalog:GlossaryTerm[]=[];
+import type { Copy } from '../site';
+export interface GlossaryTerm {
+  id: string;
+  group: string;
+  name: Copy;
+  definition: Copy;
+  example: Copy;
+  priority: boolean;
+  aliases: string[];
+}
+export const catalog: GlossaryTerm[] = [];
 // Each line: stable id | Chinese name | English name | Chinese meaning | English meaning | Chinese everyday example | English everyday example.
-export function add(group:string, rows:string){for(const line of rows.trim().split('\n')){const [key,zh,en,dz,de,ez,ee]=line.split('|');if(!ee)throw new Error(`Incomplete glossary row: ${line}`);const priority=key.startsWith('*');catalog.push({id:key.replace(/^\*/,''),group,name:[zh,en],definition:[dz,de],example:[ez,ee],priority,aliases:[]});}}
-add('product',`
+export function add(group: string, rows: string) {
+  for (const line of rows.trim().split('\n')) {
+    const [key, zh, en, dz, de, ez, ee] = line.split('|');
+    if (!ee) throw new Error(`Incomplete glossary row: ${line}`);
+    const priority = key.startsWith('*');
+    catalog.push({
+      id: key.replace(/^\*/, ''),
+      group,
+      name: [zh, en],
+      definition: [dz, de],
+      example: [ez, ee],
+      priority,
+      aliases: [],
+    });
+  }
+}
+add(
+  'product',
+  `
 *project|项目|Project|围绕一个目标组织的代码、资料和工作。|Code, materials, and work organized around a goal.|像开一家店，装修、菜单和收银都属于同一个计划。|Like opening a shop: decor, menu, and checkout share one goal.
 *requirement|需求|Requirement|项目需要满足的具体使用要求。|A specific need the project must satisfy.|不是“店要好”，而是“顾客能查看价格并下单”。|Not “a good shop,” but “customers can see prices and order.”
 *feature|功能|Feature|用户可以用项目完成的一件事。|Something a user can do with the product.|餐厅的点餐、付款是不同功能。|Ordering and paying are different restaurant capabilities.
@@ -26,8 +51,11 @@ acceptance-criteria|验收标准|Acceptance criteria|可以据此判断需求是
 milestone|里程碑|Milestone|项目中值得核对成果的阶段节点。|A project point at which outcomes are reviewed.|装修完成后验收，再开始营业准备。|Inspect completed renovation before preparing to open.
 iteration|迭代|Iteration|根据反馈完成一轮改进。|A round of improvement based on feedback.|先卖早餐，再根据顾客意见调整菜单。|Revise the breakfast menu after customer feedback.
 tech-debt|技术债|Technical debt|当前省事的实现给以后留下的维护成本。|Future maintenance cost caused by today's implementation choices.|临时接线很快，之后整理线路却要返工。|Temporary wiring saves time now but needs rework later.
-`);
-add('documents',`
+`,
+);
+add(
+  'documents',
+  `
 *brief|项目描述|Project brief|把目标、用户、问题和成功条件写清的材料。|A description of goals, users, problems, and success conditions.|装修前写明住几人、需要几间房和预算。|Describe occupants, rooms, and budget before renovating.
 *prd|需求文档|PRD — Product requirements document|记录确认的功能、规则与验收条件。|Records agreed features, rules, and acceptance conditions.|像确认签字的装修需求清单。|Like an agreed renovation requirements list.
 *development-doc|开发文档|Development documentation|说明项目结构、实现方式和开发操作的资料。|Documentation of structure, implementation, and development procedures.|施工说明写材料、做法和施工顺序。|Construction notes list materials, methods, and sequence.
@@ -49,8 +77,11 @@ fix-plan|修复计划|Fix plan|确定问题原因、修复任务和复测条件�
 release-notes|发布说明|Release notes|面向使用者说明新版本变化与限制。|Explains changes and limitations to users of a release.|商店公告新服务和仍未开放的区域。|A shop announces new services and remaining closures.
 maintenance-guide|维护手册|Maintenance guide|说明日常检查、备份和故障处理方法。|Documents routine checks, backups, and fault handling.|电梯保养手册说明多久检查哪些部件。|A lift manual lists checks and their frequency.
 runbook|操作手册|Runbook|针对一个运维任务的可执行步骤。|An executable procedure for a specific operational task.|停电时按顺序检查电闸并恢复设备。|A power-outage checklist restores equipment in order.
-`);
-add('models',`
+`,
+);
+add(
+  'models',
+  `
 *ai|人工智能|AI — Artificial intelligence|让机器完成识别、推断、生成等任务的技术总称。|Technologies for tasks such as recognition, inference, and generation.|像给机器安排识字、辨图等能力，不是赋予人的意识。|A machine learns tasks such as reading, not human consciousness.
 *llm|大语言模型／大模型|LLM — Large language model|从大量数据学习语言规律并生成内容的模型。|A model trained on large datasets to process and generate language.|像读过很多材料的写作助手，仍可能记错或编造。|Like a widely read assistant who can still invent details.
 *model|模型|Model|从训练中得到、用于处理新输入的计算系统。|A trained computational system that processes new input.|同样的题交给不同助手，能力和答案会不同。|Different assistants handle the same question differently.
@@ -76,8 +107,11 @@ output-limit|输出长度限制|Output limit|一次回答允许生成的最大�
 streaming|流式输出|Streaming output|内容生成一部分就先发送一部分。|Delivers portions of output as they are generated.|厨房做好一道就上一道，不等整桌完成。|Serve dishes as ready rather than waiting for all of them.
 first-token|首字延迟|Time to first token|请求发出到收到首个输出片段的时间。|Time from a request to its first output token.|点餐到第一道菜上桌的等待。|Time until the first dish arrives.
 generation-speed|生成速度|Generation speed|单位时间生成的输出数量。|The amount of output generated per unit time.|开始出菜后每分钟能上多少道。|How many dishes arrive per minute after serving begins.
-`);
-add('context',`
+`,
+);
+add(
+  'context',
+  `
 *prompt|提示词|Prompt|交给AI的目标、背景、材料与限制。|Instructions and context given to an AI.|像给装修师傅的任务说明，越具体越少猜。|A clear renovation brief reduces guesswork.
 *prompt-template|提示词模板|Prompt template|留有填写位置、可重复使用的任务说明。|Reusable instructions with fields to fill in.|像快递单，按栏填写真实地址。|A shipping form with fields for real addresses.
 system-prompt|系统提示词|System prompt|由运行系统提供的较高层行为指令。|Higher-level behavioral instructions supplied by the system.|像岗位制度，不是顾客随口说的一句话。|Workplace rules differ from a customer's casual request.
@@ -103,8 +137,11 @@ recall|记忆召回|Memory recall|从保存的信息中找回当前相关内容�
 context-pollution|上下文污染|Context pollution|无关、过时或错误材料干扰当前任务。|Irrelevant or stale context interferes with a task.|把旧地址混在新订单中。|An outdated address gets mixed into a new order.
 reasoning-budget|推理预算|Reasoning budget|系统分配给模型内部推理的资源限制。|Resources allocated to a model's reasoning process.|复杂题多给思考时间，不保证一定答对。|More thinking time does not guarantee a correct answer.
 prompt-cache|提示词缓存|Prompt cache|复用已处理的重复输入以减少部分计算。|Reuses processing for repeated prompt content.|固定表头不用每次重新排版，不是复用同一答案。|Reuse form layout, not necessarily the same answer.
-`);
-add('agents',`
+`,
+);
+add(
+  'agents',
+  `
 *agent|智能体|Agent|利用模型和工具围绕目标执行任务的系统。|A system using a model and tools to act toward a goal.|像会查资料并实际办事的助理，仍需权限和检查。|An assistant that can act still needs permission and checks.
 *skill|技能|Skill|把专门任务的方法、脚本与资料打包供智能体使用。|A reusable package of task instructions, scripts, and resources.|像厨师的菜谱加备料清单，不是另一位厨师。|A recipe and preparation kit, not another chef.
 *mcp|模型上下文协议|MCP — Model Context Protocol|让AI应用按统一约定连接外部工具与资料的协议。|A protocol connecting AI applications with external tools and data.|像规定插头接口，接通不等于自动获得全部权限。|A standard connector does not grant unlimited access.
@@ -133,8 +170,11 @@ hook|钩子|Hook|在指定事件发生时触发额外处理的机制。|Runs add
 connector|连接器|Connector|对接某项外部服务的集成组件。|An integration for a particular external service.|连接收银机与银行服务的适配器。|An adapter between checkout and a payment service.
 extension|扩展|Extension|依附于宿主软件增加功能的模块。|A module that adds features to a host application.|为工具箱加一个可安装的附件。|An attachable tool-box accessory.
 agent-sdk|智能体开发包|Agent SDK|帮助开发者构建智能体应用的代码工具包。|A software kit for building agent applications.|不是请现成助理，而是拿到组建助理系统的零件。|Parts for building an assistant system rather than hiring one.
-`);
-add('agent-files',`
+`,
+);
+add(
+  'agent-files',
+  `
 *agents-md|智能体项目说明|AGENTS.md|部分AI开发工具读取的项目工作说明文件。|A project instruction file read by supporting AI coding tools.|像施工现场须知，是否读取取决于工具支持。|Site instructions only work if the crew follows that format.
 *skill-md|技能说明文件|SKILL.md|描述技能用途和操作方法的入口文件。|The entry file describing a skill and its procedure.|菜谱首页写适合做什么和怎样做。|A recipe cover states its purpose and method.
 project-rules|项目规则|Project rules|针对当前项目的工作约定。|Working instructions specific to a project.|每个工地有自己的材料和验收要求。|Each building site has its own requirements.
@@ -153,8 +193,11 @@ tool-discovery|工具发现|Tool discovery|查询当前连接提供哪些工具�
 capability-negotiation|能力协商|Capability negotiation|连接双方声明并确定支持的能力。|Peers declare supported capabilities when connecting.|先确认双方是否支持加急或电子回执。|Check whether both sides support express handling.
 acp|智能体客户端协议|ACP — Agent Client Protocol|用于编辑器与编程智能体互通的协议。|A protocol connecting editors with coding agents.|让不同工作台能接入不同助理的沟通约定。|An agreement connecting workbenches with assistants.
 a2a|智能体间协议|A2A — Agent2Agent|用于智能体系统间发现与协作的协议。|A protocol for discovery and collaboration between agent systems.|不同公司的助理按共同流程交接任务。|Assistants in different organizations exchange work.
-`);
-add('billing',`
+`,
+);
+add(
+  'billing',
+  `
 *free-tier|免费额度|Free tier|服务允许免费使用的资源范围。|Resources available without payment under stated limits.|试吃份额不等于无限自助餐。|A free sample is not unlimited dining.
 *subscription|订阅|Subscription|按周期付费获得指定服务权益。|Recurring payment for defined service access.|月票只覆盖票面规定的线路。|A monthly pass covers specified routes.
 *api-billing|接口计费|API billing|按接口服务的计量规则计算费用。|Charges measured under an API service's billing rules.|餐厅会员费与外卖订单费用可以分开。|Membership and delivery orders can be billed separately.
@@ -175,8 +218,11 @@ invoice|账单|Bill / Invoice|记录计费周期、用量与费用的凭据。|A
 organization|组织|Organization|服务平台用于管理成员、权限和计费的单位。|A platform grouping for members, access, and billing.|公司的统一采购账户。|A company's shared purchasing account.
 account-workspace|账号工作空间|Account workspace|服务中集中协作资料与成员的空间。|A service area grouping collaboration data and members.|公司内不同部门的工作室。|Separate departmental offices.
 project-quota|项目额度|Project quota|按服务项目分配或统计的使用资源。|Resources allocated or tracked per service project.|各门店有独立采购预算。|Each branch has a purchasing allocation.
-`);
-add('retrieval',`
+`,
+);
+add(
+  'retrieval',
+  `
 *knowledge-base|知识库|Knowledge base|集中整理并供查找使用的资料集合。|An organized collection of reference information.|图书馆的书与档案。|A library's books and records.
 *rag|检索增强生成|RAG|先检索相关资料，再把资料提供给模型回答。|Retrieves relevant material before generating an answer.|开卷答题，先找相关页再作答。|An open-book answer starts with relevant pages.
 *embedding|嵌入向量|Embedding|把内容转换为便于比较或检索的数值表示。|A numerical representation used for comparison or retrieval.|给书做主题坐标，相近主题靠近。|Place books on a topic map by numerical coordinates.
@@ -201,8 +247,11 @@ quantization|量化|Quantization|用较低精度表示数值以减少资源需�
 local-model|本地模型|Local model|在本机或自有设备上运行的模型。|A model running on local or owned hardware.|自己家里做饭，而非远程叫外卖。|Cook at home rather than order remotely.
 eval|模型／智能体评测|Eval|用明确任务与标准检查AI系统表现。|Tests AI behavior against defined tasks and criteria.|考试要有题目与评分规则。|An exam needs questions and grading rules.
 benchmark|基准测试|Benchmark|用约定任务进行可比较的测量。|A standardized set of tasks for comparison.|统一赛道计时，不代表所有道路表现。|A standard race track does not represent every road.
-`);
-add('environment',`
+`,
+);
+add(
+  'environment',
+  `
 *ide|集成开发环境|IDE|把编辑、运行和调试等能力放在一起的软件。|Software combining editing, running, and debugging tools.|像配齐工具的工作台。|A fully equipped workbench.
 editor|代码编辑器|Code editor|用于阅读和修改代码文件的软件。|Software for reading and editing code files.|专门写程序的文字工作台。|A writing desk designed for code.
 *terminal|终端|Terminal|输入命令并查看程序输出的界面。|An interface for commands and program output.|像用文字与办事窗口交流。|A text-based service counter.
@@ -233,8 +282,11 @@ dev-container|开发容器|Dev container|把开发所需软件配置放入容器
 wsl|Windows Linux子系统|WSL|在Windows上使用Linux环境的功能。|A way to use a Linux environment on Windows.|在一栋楼里安排另一套工作间。|A different workshop environment within the same building.
 *environment|运行环境|Environment|程序运行所需的设备、软件、配置与服务。|Hardware, software, configuration, and services used to run software.|同一菜谱换炉具和材料，结果可能不同。|The same recipe behaves differently with different equipment.
 local|本地|Local|在当前电脑或设备上进行的工作。|Work performed on the current device.|在家做饭，但仍可能从外面购买材料。|Cooking at home can still involve outside suppliers.
-`);
-add('code',`
+`,
+);
+add(
+  'code',
+  `
 *source-code|源代码|Source code|人编写或AI生成的程序文本。|Program text written by people or generated by AI.|像可修改的菜谱，而非已经做好的菜。|An editable recipe rather than the finished dish.
 *language|编程语言|Programming language|按规定语法表达程序逻辑的语言。|A language with rules for expressing program logic.|不同工种使用各自约定的图纸符号。|Different trades use agreed notation.
 *variable|变量|Variable|用于引用或保存程序中某个值的名字。|A name referring to or holding a program value.|贴了标签的盒子可装不同内容。|A labeled box holds a value.
@@ -271,8 +323,11 @@ regex|正则表达式|Regular expression|用模式匹配和处理文字的规则
 encoding|字符编码|Character encoding|把文字映射为数字或字节的约定。|Rules mapping text to numerical representations.|双方用同一本电报码才能读懂。|Both sides need the same coding convention.
 unicode|统一字符标准|Unicode|为世界文字等符号分配编码的标准。|A standard assigning codes to characters and symbols.|给不同文字建立统一编号表。|A shared catalog of character numbers.
 utf8|UTF-8编码|UTF-8|一种把Unicode字符编码为字节的方式。|A byte encoding for Unicode characters.|同一编号表有具体打包运输方式。|A particular packing method for the character catalog.
-`);
-add('stack',`
+`,
+);
+add(
+  'stack',
+  `
 *frontend|前端|Frontend|向用户呈现界面并处理界面交互的部分。|The user-facing interface and its interaction logic.|餐厅菜单与点餐屏，不是做饭的厨房。|The menu and ordering screen, not the kitchen.
 *backend|后端|Backend|处理请求、业务规则、权限和数据的服务部分。|Services handling requests, rules, access, and data.|厨房接到订单后检查并制作。|The kitchen checks and prepares orders.
 *fullstack|全栈|Full-stack|同时涉及前端与后端的开发工作。|Development spanning frontend and backend.|同时负责点餐界面与厨房处理流程。|Work on both ordering and preparation.
@@ -304,8 +359,11 @@ dev-server|开发服务器|Development server|供本地开发预览和调试的�
 hmr|热更新|HMR — Hot module replacement|开发时替换更新模块而尽量保留页面状态。|Updates modules during development while preserving state where possible.|更换桌面小部件而不搬走整张桌子。|Replace a desk component without clearing the whole desk.
 lint|静态规范检查|Lint|不运行完整程序就检查部分代码问题和规范。|Checks code patterns and issues without full execution.|检查施工图，不等于房子已经试住。|Review a building plan, not a lived-in house test.
 format|代码格式化|Formatting|按规则统一代码排版。|Applies consistent code layout.|整理文档缩进，不自动纠正内容逻辑。|Align a document without fixing its reasoning.
-`);
-add('technologies',`
+`,
+);
+add(
+  'technologies',
+  `
 *html|网页结构语言|HTML|描述网页内容和语义结构的标记语言。|Markup describing page content and semantic structure.|房屋有哪些房间和门。|The rooms and doors of a house.
 *css|网页样式|CSS|控制网页外观与布局的样式语言。|A language controlling page appearance and layout.|房间的颜色、尺寸和摆放。|Room colors, sizes, and arrangement.
 *javascript|JavaScript语言|JavaScript|常用于网页交互，也能在其他运行环境使用的语言。|A language used for web interactions and other runtimes.|让灯随开关动作的控制逻辑。|Logic making lights respond to switches.
@@ -333,8 +391,11 @@ go|Go语言|Go|常用于网络服务和工具的编程语言。|A language often
 rust|Rust语言|Rust|重视内存安全与性能的编程语言。|A language emphasizing memory safety and performance.|工具借用规则在施工前就严格检查。|Strict borrowing rules checked before work runs.
 php|PHP语言|PHP|常用于Web服务端开发的语言。|A language widely used for server-side web development.|处理网页订单的一套工作语言。|A language for handling web requests.
 csharp|C#语言|C#|常用于.NET应用等场景的编程语言。|A language commonly used with .NET applications.|一套有配套设施的工程语言。|An engineering language with a supporting ecosystem.
-`);
-add('platforms',`
+`,
+);
+add(
+  'platforms',
+  `
 *website|网站|Website|通过网址访问的一组网页与资源。|Pages and resources accessed through a web address.|商店的线上门面。|An online storefront.
 *webapp|Web应用|Web application|通过浏览器完成交互任务的软件。|Software used through a browser to perform tasks.|不只看菜单，还能点餐和查订单。|View a menu, order, and track the order.
 *mini-program|小程序|Mini program|在特定平台宿主内运行的应用。|An application running inside a platform host.|商场内的店铺遵守商场规则。|A shop inside a mall follows the mall's rules.
@@ -361,8 +422,11 @@ react-native|React Native框架|React Native|用React方式构建原生平台界
 swift|Swift语言|Swift|常用于Apple平台应用开发的语言。|A language often used for Apple-platform applications.|为对应平台设施工作的语言。|A language used with a platform's facilities.
 kotlin|Kotlin语言|Kotlin|常用于Android及其他平台的编程语言。|A language used for Android and other platforms.|另一套移动与服务开发语言。|A language for mobile and other development.
 webview|网页视图|WebView|应用内嵌入网页内容的显示组件。|A component displaying web content inside an app.|商店里嵌入一个展示窗。|A display window embedded inside a shop.
-`);
-add('design',`
+`,
+);
+add(
+  'design',
+  `
 *ui|用户界面|UI|用户能看到和操作的界面。|The interface a person sees and operates.|电梯按钮与楼层显示屏。|Lift buttons and the floor display.
 *ux|用户体验|UX|用户完成任务过程中的整体感受与顺畅程度。|The overall experience of completing a task.|不只按钮好看，还要容易找到并知道是否按成功。|Buttons must be findable and provide clear feedback.
 *page|页面|Page|承载一组内容和操作的界面单元。|An interface unit containing content and actions.|一本册子中有明确主题的一页。|A page with a clear topic in a booklet.
@@ -395,8 +459,11 @@ screen-reader|屏幕阅读器|Screen reader|把界面信息通过语音或盲文
 dark-mode|暗色模式|Dark mode|以较暗背景为主的显示主题。|A display theme using darker backgrounds.|夜间照明仍要看得清标牌。|Night lighting must keep signs readable.
 i18n|国际化|Internationalization / i18n|让软件结构能支持不同语言和地区。|Preparing software to support languages and regions.|菜单预留不同文字长度与计价习惯。|A menu system accommodates languages and local conventions.
 l10n|本地化|Localization / l10n|把内容和格式适配到具体语言地区。|Adapting content and formats to a specific locale.|把菜单实际翻译并调整日期货币格式。|Translate the menu and adapt dates and currency.
-`);
-add('ui-states',`
+`,
+);
+add(
+  'ui-states',
+  `
 *button|按钮|Button|触发一个操作的界面控件。|A control that triggers an action.|电梯呼叫按钮。|A lift call button.
 input|输入框|Input field|允许用户输入内容的控件。|A control for entering information.|报名表中的填写栏。|A field on a registration form.
 select|下拉选择|Select / Dropdown|展开候选项供选择的控件。|A control revealing options to choose from.|从菜单中选一道菜。|Choose one dish from a menu.
@@ -425,8 +492,11 @@ debounce|防抖|Debounce|连续触发后等待安静一段时间再执行。|Wai
 throttle|节流|Throttle|限制某操作在一定时间内的执行频率。|Limits how frequently an action runs.|每隔固定时间报一次位置。|Report position at limited intervals.
 optimistic-update|乐观更新|Optimistic update|先显示预期成功结果，失败时再纠正。|Shows expected success before confirmation and recovers on failure.|先在清单打勾，若商店缺货再撤回。|Mark a purchase pending, then undo if unavailable.
 state|状态|State|决定程序或界面当前表现的数据与条件。|Data and conditions determining current behavior.|同一窗口有营业、排队、暂停等状态。|A counter can be open, busy, or paused.
-`);
-add('browser',`
+`,
+);
+add(
+  'browser',
+  `
 *url|统一资源定位符|URL|描述网络资源位置及访问方式的地址。|An address identifying a resource and access scheme.|完整地址可能包括楼名、房号与查询条件。|A full address can include a building, room, and details.
 *domain|域名|Domain|网络地址中便于记忆的名称。|A human-readable name used in network addressing.|店铺的名称地址，不等于店铺实际机器。|A memorable shop address, not its equipment.
 browser-cache|浏览器缓存|Browser cache|浏览器保存的可复用资源副本。|Reusable resource copies stored by a browser.|把常看菜单留一份，可能不是最新版。|Keep a menu copy that may become outdated.
@@ -456,8 +526,11 @@ indexeddb|浏览器数据库|IndexedDB|浏览器内保存较复杂结构化数�
 service-worker|服务工作线程|Service worker|可拦截请求等、独立于页面运行的浏览器脚本。|A browser script handling tasks such as request interception separately from a page.|门口值班员处理缓存和离线请求。|A gatekeeper helps with cached and offline requests.
 same-origin|同源／跨域|Same origin / Cross-origin|按协议、主机和端口判断是否属于同一来源。|Origin equality depends on scheme, host, and port.|同一商场不同窗口也可能有不同访问规则。|Nearby counters may still have separate access rules.
 cors|跨源资源共享|CORS|浏览器按服务端声明控制跨源读取的机制。|Browser enforcement of server-declared cross-origin access.|窗口声明哪些外部来访者可读取结果。|A counter declares which outsiders may read results.
-`);
-add('network',`
+`,
+);
+add(
+  'network',
+  `
 *api|应用程序接口|API|程序之间按约定调用能力和交换数据的接口。|An interface for programs to request capabilities and exchange data.|菜单规定能点什么和需要填哪些信息。|A menu defines available requests and required details.
 *request|请求|Request|向服务发送的操作要求及相关数据。|An operation and data sent to a service.|递交一张点餐单。|Submit an order ticket.
 *response|响应|Response|服务针对请求返回的结果。|The result returned for a request.|收到菜品或缺货说明。|Receive a dish or an out-of-stock response.
@@ -490,8 +563,11 @@ reverse-proxy|反向代理|Reverse proxy|代表后端服务接收并转发外部
 tls|传输层安全|TLS|保护通信机密性和完整性的协议。|A protocol protecting transport confidentiality and integrity.|双方建立可核对身份的密封通道。|A protected channel with identity checks.
 dns|域名系统|DNS|把域名等名称查询为网络记录的系统。|A system resolving domain names to network records.|电话簿把名字对应到号码。|A directory maps names to contact details.
 tcp-udp|TCP／UDP|TCP / UDP|两种传输协议，可靠有序流与独立数据报的取舍不同。|Transport protocols with different stream and datagram guarantees.|挂号连续交付与独立投递的类比，具体保证依协议。|Compare ordered tracked delivery with individual datagrams.
-`);
-add('data',`
+`,
+);
+add(
+  'data',
+  `
 *database|数据库|Database|按规则保存、查找和更新数据的系统。|A system for storing, retrieving, and updating data.|能按条件查找的账房。|A ledger office supporting structured lookup.
 *table|数据表|Table|按列和行组织同类记录的结构。|A structure organizing related records into rows and columns.|订单登记表。|An order ledger table.
 *field|字段|Field / Column|记录中的某一项属性。|One attribute of a record.|登记表中的联系电话栏。|The phone column in a register.
@@ -528,8 +604,11 @@ backup|备份|Backup|为后续恢复保留的数据副本。|A data copy retaine
 restore|恢复|Restore|从备份等来源重建数据或状态。|Reconstructs data or state from a saved source.|原账本损坏后用副本恢复记录。|Recover records from a spare ledger.
 retention|数据保留|Data retention|规定数据保存多久以及何时清理。|Rules for how long data is kept and when it is removed.|收据按期限归档，到期按规则处理。|Archive receipts for a defined period.
 soft-delete|软删除|Soft delete|标记为已删除而暂不物理移除记录。|Marks records deleted without immediately removing them physically.|档案移入待销毁区，不再正常展示。|Move records out of active use without destroying them yet.
-`);
-add('architecture',`
+`,
+);
+add(
+  'architecture',
+  `
 *service|服务|Service|对外或对内部其他程序提供一组能力的软件。|Software providing capabilities to users or other programs.|餐厅的配送部门提供送餐能力。|A delivery department provides a service.
 *business-logic|业务逻辑|Business logic|实现业务规则与处理流程的代码。|Code implementing business rules and processes.|厨房按会员优惠和库存决定如何接单。|Order handling follows pricing and stock rules.
 validation|数据校验|Validation|检查输入是否符合格式和业务要求。|Checks data against format and business requirements.|核对订单有没有地址、数量是否合理。|Check an order has an address and valid quantity.
@@ -558,8 +637,11 @@ circuit-breaker|熔断|Circuit breaker|连续故障时暂时停止调用以防�
 eventual-consistency|最终一致性|Eventual consistency|不同副本允许暂时不同，之后收敛一致。|Replicas may differ temporarily before converging.|各门店账本稍后汇总一致。|Branch ledgers reconcile after a delay.
 race-condition|竞态条件|Race condition|结果依赖并发操作的时间先后。|An outcome depends on the timing of concurrent actions.|两人同时抢最后一张票。|Two people attempt to buy the last ticket.
 deadlock|死锁|Deadlock|多个任务相互等待资源而无法继续。|Tasks wait on each other's resources and cannot proceed.|两人各拿一把钥匙，都等对方先交出。|Each person waits for a key held by the other.
-`);
-add('security',`
+`,
+);
+add(
+  'security',
+  `
 *authentication|身份验证|Authentication|确认访问者使用哪个身份。|Establishes an identity for access.|门卫查身份证。|A guard checks identity.
 *authorization|授权／权限|Authorization|决定某身份可以进行哪些操作。|Determines what an identity may do.|身份确认后仍要看门卡能开哪些门。|Verified identity still needs permission for each door.
 *api-key|接口密钥|API key|服务签发、用于识别或授权接口调用的凭证。|A credential used to identify or authorize API calls.|像带额度与权限的门卡，不应公开张贴。|An access card with scope and limits must not be public.
@@ -593,8 +675,11 @@ pii|个人可识别信息|PII|能识别或关联到个人的信息。|Informatio
 redaction|脱敏|Redaction / Masking|隐藏或转换不应暴露的敏感部分。|Removes or masks sensitive portions before sharing.|展示账单前遮住卡号。|Cover account numbers before sharing a bill.
 vulnerability|依赖漏洞|Dependency vulnerability|所用软件包中可能被利用的安全缺陷。|An exploitable weakness in a dependency.|采购零件有缺陷会影响整台机器。|A defective part can compromise the whole machine.
 security-audit|安全审计|Security audit|系统检查安全控制、风险与证据。|A systematic review of security controls, risks, and evidence.|检查门锁、通行记录和应急措施。|Inspect locks, access records, and recovery procedures.
-`);
-add('git',`
+`,
+);
+add(
+  'git',
+  `
 *git|Git版本控制|Git|跟踪文件版本与变更历史的工具。|A tool tracking file versions and change history.|保存每次修订的图纸，不自动备份线上账本。|Version drawings, not automatically live database records.
 *github|GitHub平台|GitHub|提供Git仓库托管和协作功能的平台。|A platform for Git hosting and collaboration.|存放版本档案的协作场所，不是Git本身。|A shared archive hosting system, not Git itself.
 *repository|仓库|Repository|保存项目文件及版本记录的集合。|A collection of project files and version history.|装着图纸和修订记录的档案盒。|A file box containing drawings and revisions.
@@ -627,8 +712,11 @@ worktree|独立工作树|Git worktree|同一仓库可检出不同版本的额外
 gitignore|忽略规则|.gitignore|指定哪些未跟踪文件通常不纳入Git。|Patterns excluding untracked files from normal Git tracking.|规定草稿哪些不入档，不会抹掉已归档的秘密。|An exclusion rule does not erase already archived secrets.
 git-lfs|大文件存储|Git LFS|用指针与外部存储管理大型文件的扩展。|An extension storing large files through pointers and separate storage.|档案夹留取货单，大物件放专门仓库。|Keep a receipt in the folder and the large item elsewhere.
 protected-branch|受保护分支|Protected branch|按平台规则限制推送或合并的分支。|A branch with platform-enforced update restrictions.|主档案柜需审批才能修改。|The main archive requires approval for changes.
-`);
-add('testing',`
+`,
+);
+add(
+  'testing',
+  `
 *bug|程序缺陷|Bug|导致行为不符合预期的程序问题。|A defect causing behavior to differ from expectations.|按电灯开关却启动风扇。|A light switch unexpectedly starts a fan.
 *error|报错|Error message|程序对失败或异常的说明。|A message reporting a failure or exception.|报警灯提示异常，但还需找真正原因。|A warning light is evidence, not the full diagnosis.
 *log|日志|Log|程序运行时记录的事件信息。|Recorded events from program execution.|值班记录写下时间与发生的事。|A shift log records events and times.
@@ -662,8 +750,11 @@ expected-actual|预期／实际结果|Expected / Actual result|应该发生与�
 root-cause|根因|Root cause|导致问题的基础原因而非表面现象。|The underlying cause rather than a symptom.|灯不亮可能是线路断了，不只是灯泡坏。|A dark lamp may be caused by wiring.
 debug-breakpoint|调试断点|Debugger breakpoint|让程序在指定位置暂停以查看状态。|Pauses execution at a selected point for inspection.|让流水线停在某工位检查零件。|Pause an assembly line at a station.
 tdd|测试驱动开发|TDD|先用失败测试描述要求，再实现并整理代码。|Write a failing test, implement behavior, then refactor.|先明确验收尺子，再按尺子制作。|Define the measuring rule before building.
-`);
-add('release',`
+`,
+);
+add(
+  'release',
+  `
 *build|构建|Build|把源文件处理成可运行或发布的产物。|Processes source files into runnable or distributable artifacts.|把材料加工成成品，还需实际验收。|Manufacture a product, then still inspect it.
 *deploy|部署|Deploy|把程序和配置放到目标运行环境。|Places software and configuration in a target environment.|把设备装到营业地点。|Install equipment at the operating site.
 *go-live|上线|Go live|让目标使用者通过正式入口使用版本。|Makes a version available through its intended live entry.|店铺正式对顾客营业。|Open the shop to customers.
@@ -693,8 +784,11 @@ migration-order|迁移顺序|Migration order|协调数据库变化与应用版�
 code-signing|代码签名|Code signing|为软件附加可验证发布者与完整性的信息。|Adds verifiable publisher and integrity information to software.|封条帮助核对来源，不保证产品没有缺陷。|A seal verifies origin, not absence of defects.
 notarization|软件公证|Notarization|平台对提交软件进行检查并出具相应凭据的流程。|A platform review process issuing software distribution credentials.|通过平台入场检查仍不等于全面质量保证。|Passing entry checks is not a full quality guarantee.
 app-review|应用审核|App review|平台按其规则检查待分发应用。|A platform checks an app against distribution rules.|商场审核新店是否符合入驻规定。|A mall reviews a shop against entry rules.
-`);
-add('cloud',`
+`,
+);
+add(
+  'cloud',
+  `
 *server|服务器|Server|为其他程序处理请求的程序或设备。|A program or machine serving requests from clients.|提供办事服务的柜台与设施。|A counter and facilities serving requests.
 *cloud|云服务|Cloud service|通过网络提供计算、存储等资源的服务。|Network-provided computing, storage, and related resources.|租用外部仓库和工作间。|Rent external storage and work facilities.
 *hosting|托管|Hosting|由服务商存放或运行应用的服务。|A provider stores or runs an application.|把店铺设施交给场地方运营管理。|A provider houses or operates the facilities.
@@ -723,8 +817,11 @@ persistent-disk|持久化磁盘|Persistent disk|用于持续保存数据的磁�
 autoscaling|自动扩缩容|Autoscaling|按规则增加或减少运行资源。|Adjusts running resources according to rules.|高峰加开窗口，低峰关闭部分窗口。|Open more counters during peak demand.
 kubernetes|容器编排系统|Kubernetes|管理容器应用部署、扩缩容等的平台。|A platform managing container deployment and scaling.|统筹多处工作间的运营系统。|A system coordinating many workrooms.
 iac|基础设施即代码|IaC|用可版本管理的代码描述和配置基础设施。|Defines infrastructure using version-controlled configuration.|把仓库建设方案写成可重复执行的清单。|A repeatable, versioned plan for building facilities.
-`);
-add('operations',`
+`,
+);
+add(
+  'operations',
+  `
 *monitoring|监控|Monitoring|持续观察系统运行状态。|Ongoing observation of system behavior.|值班人员定期看仪表。|Watch operating gauges over time.
 *alert|告警|Alert|满足异常条件时主动通知处理者。|A notification triggered by an abnormal condition.|温度超限响警铃。|An alarm sounds when temperature exceeds a limit.
 error-tracking|错误追踪|Error tracking|收集并关联程序错误以便定位。|Collects and correlates software errors for diagnosis.|把同类报修单汇总找规律。|Group similar repair reports to find patterns.
@@ -758,8 +855,11 @@ web-vitals|网页体验指标|Core Web Vitals|衡量页面加载、交互和稳�
 lcp|最大内容绘制|LCP|衡量视口主要大块内容出现时间的指标。|Measures when the largest visible content is rendered.|主展示牌多久能看见。|How soon the main display appears.
 inp|交互到下一次绘制|INP|衡量页面交互响应表现的指标。|Measures responsiveness of page interactions.|按按钮后多久看到反馈。|How soon a button press produces visible feedback.
 cls|累计布局偏移|CLS|衡量非预期布局移动程度的指标。|Measures unexpected layout movement.|准备点菜单时按钮突然移位。|A button unexpectedly moves while being selected.
-`);
-add('integrations',`
+`,
+);
+add(
+  'integrations',
+  `
 *upload|文件上传|File upload|把本地文件传到目标服务。|Transfers a local file to a service.|把手中文件送入收件窗口。|Deliver a local document to a receiving counter.
 *email|邮件发送|Email delivery|由应用通过邮件服务发出消息。|An application sends messages through an email service.|把通知交给邮局，不等于对方已读。|Hand a letter to the post office; reading is separate.
 *notification|消息通知|Notification|向使用者传达事件或状态变化。|Informs a user about events or changes.|取餐铃通知订单已好。|A collection bell announces readiness.
@@ -786,8 +886,11 @@ csv|表格文本格式|CSV|常用分隔符表示行列的文本格式。|A delim
 pdf|便携文档格式|PDF|用于保留文档呈现结构的文件格式。|A document format designed to preserve presentation.|电子版印刷稿，未必容易直接编辑。|A digital printout may not be easy to edit.
 rich-text|富文本|Rich text|带字体、链接等格式信息的文本。|Text containing formatting such as emphasis and links.|带加粗和插图的文章。|An article with emphasis and embedded formatting.
 markdown|Markdown格式|Markdown|用轻量文本符号表达标题、列表等结构。|Plain-text notation for headings, lists, and other structure.|用井号标标题，用短横线写清单。|Use simple marks for headings and lists.
-`);
-add('ownership',`
+`,
+);
+add(
+  'ownership',
+  `
 *open-source|开源|Open source|按允许查看、使用、修改和分发等条件发布的软件。|Software distributed under a license permitting defined reuse rights.|公开图纸并附使用规则，不代表没有条件。|Published plans still come with reuse conditions.
 *license|许可证|License|规定作品可如何使用、修改和分发的授权条款。|Terms defining permitted use, modification, and distribution.|租借工具时附带使用约定。|Terms attached to borrowing equipment.
 *copyright|版权|Copyright|与作品使用和传播相关的法定权利。|Legal rights relating to use and distribution of a work.|拿到图纸副本不等于拥有全部使用权。|Possessing a copy is not ownership of all rights.
@@ -811,4 +914,5 @@ shutdown|停服|Service shutdown|停止向使用者提供运行服务。|Stops p
 data-export|数据导出|Data export|把数据转成可带走和再使用的格式。|Produces data in a portable form.|把账本复制为能在别处读取的资料。|Take records in a format usable elsewhere.
 service-migration|服务迁移|Service migration|把运行或数据转移到另一环境。|Moves operation or data to another environment.|搬店要转运货物并检查新入口。|Move stock and verify the new entrance.
 vendor-lockin|供应商锁定|Vendor lock-in|因格式或能力依赖导致更换服务困难。|Dependency on formats or capabilities makes switching difficult.|只配专用零件，换厂家就要改装。|Proprietary parts make changing suppliers costly.
-`);
+`,
+);

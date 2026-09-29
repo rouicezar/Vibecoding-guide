@@ -2,7 +2,8 @@
 // 旧学习地址由路由兼容跳转；此组件只承载资料库。
 import ResourceLibrary from './ResourceLibrary.astro';
 import '../styles/learning.css';
-import type {Locale} from '../data/site';
-const {locale}=Astro.props as {locale:Locale};
+import type { Locale } from '../data/site';
+const { locale } = Astro.props as { locale: Locale };
 ---
-<ResourceLibrary locale={locale}/>
+
+<ResourceLibrary locale={locale} />
