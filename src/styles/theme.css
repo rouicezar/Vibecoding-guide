@@ -1470,3 +1470,140 @@ body #main .practice-guide {
     background: #f4f7f9;
   }
 }
+
+/* Node introduction: orientation, title, outcome, then quiet progress. */
+body #main .node-crumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  font-size: 12px;
+  color: #718296;
+  margin-bottom: 20px;
+}
+body #main .node-crumb .node-count {
+  margin-left: auto;
+  font: inherit;
+  color: #718296;
+}
+body #main .node-head h1 {
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 750;
+  color: #18314b;
+  margin: 0 0 12px;
+  line-height: 1.25;
+}
+body #main .node-gloss {
+  font-size: 16px;
+  font-weight: 400;
+  color: #52677d;
+  line-height: 1.75;
+  margin-bottom: 22px;
+  max-width: 760px;
+}
+body #main .node-meta {
+  display: block;
+  margin: 0 0 10px;
+  padding: 18px 22px;
+  background: linear-gradient(110deg, #eaf4f2b3, #ffffff70);
+  border-radius: 12px;
+}
+body #main .node-meta > div {
+  padding: 0;
+  border: 0;
+}
+body #main .node-meta dt {
+  font-size: 13px;
+  font-weight: 500;
+  color: #567772;
+  margin-bottom: 7px;
+}
+body #main .node-meta dd {
+  font-size: 17px;
+  font-weight: 600;
+  color: #2b4658;
+  line-height: 1.65;
+}
+body #main .node-why {
+  margin: 0;
+}
+body #main .node-why summary {
+  display: list-item;
+  list-style: disclosure-closed inside;
+  font-size: 13px;
+  font-weight: 450;
+  color: #667b8c;
+  padding: 10px 0;
+  min-height: 40px;
+}
+body #main .node-why[open] > summary {
+  list-style-type: disclosure-open;
+}
+body #main .node-why p {
+  font-size: 14px;
+  color: #52677d;
+}
+body #main .node-progress-summary {
+  font-size: 12px;
+  color: #677c8f;
+  gap: 8px 18px;
+  padding: 12px 0;
+  margin: 0;
+  border-top: 1px solid #dce5eb80;
+  border-radius: 0;
+}
+body #main .node-progress-summary strong {
+  font-weight: 550;
+}
+body #main .node-progress-summary small {
+  font-size: 12px;
+  color: #718296;
+}
+body #main .node-action-index {
+  gap: 8px;
+  margin: 10px 0 18px;
+}
+body #main .node-action-index a {
+  font-size: 13px;
+  font-weight: 450;
+  background: #ffffff70;
+  border-color: #dfe8ec;
+  color: #4c647a;
+}
+body #main .node-start-title {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin: 20px 0 14px;
+  font-size: 19px;
+  font-weight: 650;
+  color: #263e55;
+}
+body #main .node-start-title span {
+  font-size: 12px;
+  color: #718296;
+  font-weight: 400;
+}
+@media (max-width: 640px) {
+  body #main .node-crumb {
+    gap: 6px 10px;
+    margin-bottom: 16px;
+  }
+  body #main .node-crumb .node-count {
+    margin-left: 0;
+  }
+  body #main .node-meta {
+    padding: 15px 16px;
+  }
+  body #main .node-meta dd {
+    font-size: 16px;
+  }
+  body #main .node-gloss {
+    font-size: 15px;
+  }
+  body #main .node-progress-summary small {
+    flex-basis: 100%;
+    line-height: 1.6;
+  }
+}

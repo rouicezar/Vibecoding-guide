@@ -52,27 +52,23 @@ const nodeTerms = steps
   <nav class="node-crumb" aria-label={label('当前位置', 'Breadcrumb')}>
     <a href={url(locale, 'roadmap')}>{label('完整路线图', 'Complete roadmap')}</a>
     <span aria-hidden="true">/</span>
-    <span>{label(`阶段 ${phaseIndex} ${phaseTitle}`, `Stage ${phaseIndex} ${phaseTitle}`)}</span>
+    <span>{label(`阶段 ${phaseIndex} · ${phaseTitle}`, `Stage ${phaseIndex} · ${phaseTitle}`)}</span>
+    <span class="node-count">{label(`节点 ${node.order} / ${total}`, `Milestone ${node.order} / ${total}`)}</span>
   </nav>
 
   <header class="node-head">
-    <p class="node-eyebrow">
-      <span class="node-badge">{label(`阶段 ${phaseIndex} · ${phaseTitle}`, `STAGE ${phaseIndex} · ${phaseTitle}`)}</span>
-      <span class="node-count">{label(`节点 ${node.order} / ${total}`, `Milestone ${node.order} / ${total}`)}</span>
-    </p>
     <h1><Icon name={node.icon} size={26} />{t(node.title, locale)}</h1>
     <p class="node-gloss">{t(node.gloss, locale)}</p>
-    <details class="node-why"><summary>{label('为什么要有这一节点？', 'Why this milestone?')}</summary><p>{t(node.why, locale)}</p></details>
     <dl class="node-meta">
-      <div><dt>{label('这一节点需要做几步？', 'How many steps are in this node?')}</dt><dd>{label(`共 ${steps.length} 个步骤`, `${steps.length} step${steps.length > 1 ? 's' : ''} in total`)}</dd></div>
       <div><dt>{label('做完这一节点，你会得到什么？', 'What will you have after this node?')}</dt><dd>{t(lastSupport.output, locale)}</dd></div>
     </dl>
+    <details class="node-why"><summary>{label('为什么要有这一节点？', 'Why this milestone?')}</summary><p>{t(node.why, locale)}</p></details>
   </header>
 
   <aside class="node-progress-summary" aria-label={label('本人核对进度','Your check progress')}><strong>{label('本节点','This milestone')} <span data-node-progress={node.id}>0/{mainSteps.length}</span></strong><span data-main-progress aria-live="polite"></span><small>{label('亲自检查结果后再标记完成；标错了可以撤销。','Mark complete after checking the result yourself; you can undo a mistaken mark.')}</small></aside>
-  <nav class="node-action-index" aria-label={label('本节点动作直达','Jump to an action')}>{steps.map((id,i)=><a href={`#${id}`}>{i+1}. {t(lessons.find(l=>l.id===id)!.title,locale)}</a>)}</nav>
+  {steps.length > 1 && <nav class="node-action-index" aria-label={label('本节点动作直达','Jump to an action')}>{steps.map((id,i)=><a href={`#${id}`}>{i+1}. {t(lessons.find(l=>l.id===id)!.title,locale)}</a>)}</nav>}
   <section class="node-steps" aria-label={label('本节点的步骤', 'Steps in this milestone')}>
-    <h2 class="node-section-title">{label(`本节点共 ${steps.length} 个步骤`, `${steps.length} step${steps.length > 1 ? 's' : ''} in this milestone`)}<span>{label('逐项展开，做完一个再进入下一个', 'Open one at a time, finish it, then continue')}</span></h2>
+    <h2 class="node-section-title node-start-title">{label('开始操作', 'Start here')}<span>{label(`共 ${steps.length} 个步骤 · 按顺序完成`, `${steps.length} step${steps.length > 1 ? 's' : ''} · Follow in order`)}</span></h2>
     {nodePlan.map((step, i) => <NodeStep stepId={step.stepId} index={i + 1} total={steps.length} locale={locale} open={i === 0} nextHref={step.nextHref} nextLabel={step.nextLabel} />)}
   </section>
 
