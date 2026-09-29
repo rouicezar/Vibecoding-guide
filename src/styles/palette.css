@@ -15,3 +15,7 @@ body :is(.button.primary,.learn-primary),
 body :is(.button.primary,.learn-primary) :is(strong,span,small,b,svg){color:#fff!important}
 /* Separate editors from their immediately following action across shared forms. */
 body main textarea + :is(button,.button,.learn-primary){margin-top:16px}
+
+/* No focus rings on click or selection; retain a quiet keyboard position cue. */
+body :focus{outline:none!important}
+body :focus-visible{box-shadow:inset 0 -2px 0 #8a929c!important}
