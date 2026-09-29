@@ -584,5 +584,365 @@
         "Correct any untested work marked passed; review completed tasks rather than rebuilding."
       ]
     }
+  ],
+  "interface": [
+    {
+      "where": [
+        "作品的预览页面和所选工具的原项目对话",
+        "Your project preview and original tool conversation"
+      ],
+      "action": [
+        "打开前一步确认的预览地址。找到本次任务的输入框、按钮和结果区，记下缺少或看不懂的位置。",
+        "Open the confirmed preview URL. Find the task’s fields, button and result area; note missing or unclear parts."
+      ],
+      "tip": [
+        "这里的前端就是用户看到并操作的页面；修改的是自己的作品，不是本站。",
+        "Frontend means the page users interact with. Work on your own project."
+      ],
+      "expect": [
+        "能指出输入、操作、结果分别在哪里。",
+        "You can locate input, action and result."
+      ],
+      "ifWrong": [
+        "页面打不开时回到预览步骤核对启动地址，先不要求改样式。",
+        "If it will not open, return to preview setup and verify the startup URL before styling."
+      ]
+    },
+    {
+      "where": [
+        "本站本步提示词模板，然后是工具的原项目对话",
+        "This step’s prompt template, then the original project chat"
+      ],
+      "action": [
+        "把实际页面、要完成的动作和发现的问题填进模板，确认后复制，粘贴到原项目对话并发送。请工具先核对已有页面，再只完成当前任务。",
+        "Fill in the real page, action and observed problem; confirm, copy, paste into your tool and send. Ask it to inspect existing work and finish only this task."
+      ],
+      "tip": [
+        "提示词中的示例字段换成自己的字段；尚未连接后端时明确标记为演示。",
+        "Replace sample fields with your own. Label unconnected behavior as a demonstration."
+      ],
+      "expect": [
+        "工具说明修改了哪些文件，给出可打开的页面和待人工检查项。",
+        "The tool names changed files, gives the preview and lists personal checks."
+      ],
+      "ifWrong": [
+        "只有代码片段时，要求工具说明应保存在哪个现有文件；无写入权限时先保存文件再预览。",
+        "For a code snippet alone, ask which existing file should receive it; save before previewing if the tool cannot write."
+      ]
+    },
+    {
+      "where": [
+        "作品页面",
+        "Your project page"
+      ],
+      "action": [
+        "重新打开或刷新工具给出的地址。先不输入就点提交，再填写一条测试内容提交，观察是否出现等待、成功或失败提示。",
+        "Reload the tool’s URL. Submit empty fields, then enter a test item and submit; observe waiting, success or failure."
+      ],
+      "tip": [
+        "成功提示必须来自实际处理结果；模拟页面只能验证显示效果，不能证明数据已保存。",
+        "Success must reflect actual processing. Mocked screens only prove presentation."
+      ],
+      "expect": [
+        "空白有说明；处理中不会反复提交；结果提示能看懂。",
+        "Empty input is explained, pending submission is guarded and feedback is understandable."
+      ],
+      "ifWrong": [
+        "按钮无反应时记下点击位置与画面，把证据带到排障步骤；不要连续猛点。",
+        "If nothing happens, record the button and screen for diagnosis rather than clicking repeatedly."
+      ]
+    },
+    {
+      "where": [
+        "作品页面与本步记录",
+        "Your project page and step record"
+      ],
+      "action": [
+        "缩窄浏览器窗口，检查输入和提示是否被遮住；用 Tab 键逐个移动焦点，确认能到达输入框和按钮。记录实际通过及未通过项。",
+        "Narrow the browser window and inspect fields and messages. Use Tab to reach fields and buttons. Record actual passes and failures."
+      ],
+      "tip": [
+        "不为走完教程强行换颜色或重做页面；没有界面的项目说明不适用。",
+        "Do not redesign just to follow the lesson. Explain inapplicability for headless projects."
+      ],
+      "expect": [
+        "当前页面能完成操作，原本可用的功能仍可用。",
+        "The task remains usable and existing behavior still works."
+      ],
+      "ifWrong": [
+        "标出被遮住或键盘无法到达的具体位置，请工具只修这一处，再重复检查。",
+        "Identify the clipped or unreachable control, request a focused fix and repeat the check."
+      ]
+    }
+  ],
+  "save": [
+    {
+      "where": [
+        "项目需求和工具的原项目对话",
+        "Requirements and original project chat"
+      ],
+      "action": [
+        "先确认要保存什么、谁能读取、在哪里使用。向工具说明：请核对现有实现，分别指出页面、处理保存的后端、真正存记录的数据库。",
+        "Confirm what is saved, who reads it and where it runs. Ask the tool to identify the page, backend handling saves and database storing records."
+      ],
+      "tip": [
+        "后端是接收和处理请求的程序；数据库存放记录。只有展示需求可以不适用，不能把浏览器缓存当成后端数据库。",
+        "The backend processes requests; the database stores records. Display-only projects may skip storage; browser cache is not a backend database."
+      ],
+      "expect": [
+        "知道三部分分别在哪里，以及本次要补哪一部分。",
+        "You know where all three parts are and what is missing."
+      ],
+      "ifWrong": [
+        "工具只说“已保存”时，要求指出实际存放位置与读取方法，先不标记通过。",
+        "If the tool only says saved, request the actual storage location and reading method before passing."
+      ]
+    },
+    {
+      "where": [
+        "本站本步模板与工具对话",
+        "This step’s template and tool conversation"
+      ],
+      "action": [
+        "填写自己的数据需求，确认、复制并发送。先只让工具准备测试数据库：说明存放位置、记录包含哪些字段，检查已有数据后再补缺少的表。",
+        "Fill in data needs, confirm, copy and send. First ask for test database setup: location, record fields and inspection of existing data before adding missing tables."
+      ],
+      "tip": [
+        "表像一张登记表，字段像每列的名字。已有记录先备份；不要用删库重建作为默认准备方法。",
+        "A table resembles a register; fields are its columns. Back up existing records; do not reset storage as setup."
+      ],
+      "expect": [
+        "工具报告实际数据库位置、表和字段；原有数据仍在。",
+        "The tool reports the real database location, table and fields without losing data."
+      ],
+      "ifWrong": [
+        "出现找不到表时先核对数据库完整路径，再让工具补建缺失表；不要删除数据库。",
+        "For a missing table, verify the full database path, then add only the missing table."
+      ]
+    },
+    {
+      "where": [
+        "工具对话及其运行输出",
+        "Tool chat and execution output"
+      ],
+      "action": [
+        "请工具实现或检查“保存一条”和“读取列表”的后端入口，使用一条独特测试内容检查。要求它报告请求结果、记录编号，并只读核对数据库中的同一条记录。",
+        "Ask the tool to implement or inspect save-one and read-list backend endpoints. Use a unique test item, report the response and ID, then read the matching database record."
+      ],
+      "tip": [
+        "接口就是页面向后端提交或索取内容的入口。只看到测试通过不够，要把记录编号与真实数据库对应起来。",
+        "An API is the entry the page uses to send or request data. Match the reported ID to actual storage."
+      ],
+      "expect": [
+        "合法内容有真实记录编号，数据库中能找到相同内容；空白被拒绝且没有新增记录。",
+        "Valid input has a real matching record; blanks are rejected without insertion."
+      ],
+      "ifWrong": [
+        "保存失败时保留错误原文和运行输出；请工具先判断请求是否到达后端，不清空数据。",
+        "Preserve the error and output; first check whether the request reached the backend."
+      ]
+    },
+    {
+      "where": [
+        "工具对话，然后是作品页面",
+        "Tool chat, then your project page"
+      ],
+      "action": [
+        "请工具把页面保存按钮接到已检查的后端入口；给出准确启动方式和网址。打开该网址，输入自己的测试标题和内容，点一次保存并等待结果。",
+        "Ask the tool to connect Save to the checked endpoint and give exact startup instructions and URL. Open it, enter your test title and body, click once and wait."
+      ],
+      "tip": [
+        "等待时不要重复点击。失败要保留输入；网络没收到回复时先查列表，避免已保存却重复提交。",
+        "Do not click repeatedly. Keep failed input; if the response was lost, check the list before resubmitting."
+      ],
+      "expect": [
+        "页面显示真实成功结果，列表能读到刚才的内容；失败不会假装成功。",
+        "The page reports real success and reads the saved content; failures do not claim success."
+      ],
+      "ifWrong": [
+        "页面返回 404 或一段 HTML 时，带上实际网址请工具核对是否打开了正确服务与接口。",
+        "For 404 or HTML responses, give the actual URL to the tool and verify the service and endpoint."
+      ]
+    },
+    {
+      "where": [
+        "第二个浏览器与工具对话",
+        "A second browser and tool chat"
+      ],
+      "action": [
+        "复制同一服务的网址到另一个浏览器，检查刚才的测试记录。再请工具只重启本项目服务，按它给出的地址重新打开并检查。",
+        "Open the same service URL in another browser and find the item. Ask the tool to restart only this project service; reopen its URL and check again."
+      ],
+      "tip": [
+        "第二浏览器检查不能单独证明数据库正确，需与前面的真实数据库核对结合。重启服务不等于删除数据库或恢复出厂设置。",
+        "A second browser alone does not prove correct database storage; combine it with the direct check above. Restarting must not reset storage."
+      ],
+      "expect": [
+        "换浏览器及服务重启后，原记录内容和编号仍可读。",
+        "The record and ID remain readable across browsers and service restart."
+      ],
+      "ifWrong": [
+        "记录消失时保留两次网址、账号和数据库路径，请工具核对是否启动了另一份项目或另一数据库。",
+        "If missing, preserve URLs, accounts and database paths; check for a different project or database."
+      ]
+    },
+    {
+      "where": [
+        "本步记录及测试记录文件",
+        "Step record and project test record"
+      ],
+      "action": [
+        "把测试内容、记录编号、数据库位置、重启前后结果写进记录。多人项目继续检查不同账号可见范围；不具备条件的项目明确写未测试。",
+        "Record test content, ID, database location and before/after restart results. For shared projects test visibility under separate accounts; mark unavailable checks untested."
+      ],
+      "tip": [
+        "不要把密码、访问密钥或真实个人资料粘贴到本站或截图。一次保存成功不等于权限和所有失败情况都通过。",
+        "Do not paste passwords, keys or real personal data into the guide or screenshots. A save does not prove permissions or every failure case."
+      ],
+      "expect": [
+        "证据能对应同一条记录，已测与未测分开，下一步可据此做全流程测试。",
+        "Evidence matches one record, tested and untested checks are separate, ready for flow testing."
+      ],
+      "ifWrong": [
+        "缺哪项就补测哪项；跨账号可见范围不符时先记录问题，按排障流程定位。",
+        "Fill missing evidence; record unexpected cross-account visibility and follow diagnosis."
+      ]
+    }
+  ],
+  "repair-plan": [
+    {
+      "where": [
+        "作品页面和原反馈记录",
+        "Project page and original feedback"
+      ],
+      "action": [
+        "找到一个失败问题，沿用它的编号。写下从打开哪个网址、输入什么、点击哪里，到实际看到什么；附错误文字和发生时间。",
+        "Choose one issue and keep its ID. Record URL, input, clicks, observed result, error text and time."
+      ],
+      "tip": [
+        "每次只复现一个问题，用可清理测试内容。截图先遮住个人资料；不需要懂错误才能记录原文。",
+        "Reproduce one issue with disposable data. Hide private information; copy the error even if unfamiliar."
+      ],
+      "expect": [
+        "别人按记录能走到同一失败位置，预期与实际分别写明。",
+        "The record gives reproducible actions with expected and actual results separated."
+      ],
+      "ifWrong": [
+        "不能稳定重现时记录成功和失败的差别，不编造必现步骤。",
+        "If intermittent, record differences between working and failing attempts."
+      ]
+    },
+    {
+      "where": [
+        "本站本步模板，然后是工具原项目对话",
+        "This step’s template and original project chat"
+      ],
+      "action": [
+        "把问题编号和证据填入模板，确认、复制、粘贴并发送，要求先只读排查。让工具依次核对页面请求、后端响应、数据库记录，指出在哪一处中断。",
+        "Fill in the issue ID and evidence, confirm, copy, paste and send. Request read-only diagnosis through page request, backend response and database record."
+      ],
+      "tip": [
+        "页面没变化、后端报错、数据库没记录是不同线索；有证据才下结论，不按报错关键词直接重装。",
+        "An unchanged page, backend error and missing record are different clues. Diagnose from evidence rather than reinstalling from a keyword."
+      ],
+      "expect": [
+        "工具给出观察到的事实、仍待验证的猜测和最小下一项检查。",
+        "The tool separates observations, hypotheses and the smallest next check."
+      ],
+      "ifWrong": [
+        "需要自己取日志时，请工具给出对应系统的打开位置和复制哪几行；只提供相关错误，移除密钥。",
+        "If logs need manual collection, ask where to open them and which lines to copy; remove secrets."
+      ]
+    },
+    {
+      "where": [
+        "工具给出的修复计划",
+        "The tool’s proposed repair plan"
+      ],
+      "action": [
+        "要求写明只改哪些文件、会不会影响已有记录、如何重新启动，以及怎样重做原失败动作。涉及数据库更改时先备份并在副本上验证。",
+        "Request changed files, impact on records, restart steps and exact reproduction. Back up and validate database changes on a copy first."
+      ],
+      "tip": [
+        "只有原因明确且你理解影响后才确认执行；新增功能另记，不混进修复。",
+        "Confirm only after understanding cause and impact. Keep new features separate."
+      ],
+      "expect": [
+        "计划包含原问题复测、正常保存读取检查、数据保护和失败后恢复方法。",
+        "The plan includes original-case retest, working save/read checks, data protection and recovery."
+      ],
+      "ifWrong": [
+        "计划只有“优化一下”时，要求具体到问题编号和可看到的通过结果，再进入修复步骤。",
+        "If it only says optimize, request an issue-specific change and observable passing result."
+      ]
+    }
+  ],
+  "repair": [
+    {
+      "where": [
+        "工具的原项目对话",
+        "The original project chat"
+      ],
+      "action": [
+        "在本步模板填入已确认的问题编号和计划，确认后复制并发送。明确只执行这一项，结束后报告改动文件、实际检查结果和重新打开作品的方法。",
+        "Fill this step’s template with the approved issue and plan, confirm, copy and send. Execute only that item; request changed files, actual checks and reopening instructions."
+      ],
+      "tip": [
+        "没有确认的计划先回上一步；数据库结构或数据变更应先完成计划中的备份与副本验证。",
+        "Return to planning if unapproved. Complete planned backups and copy-based validation before database changes."
+      ],
+      "expect": [
+        "工具报告与计划一致的修改和真实检查结果，未运行的检查明确标出。",
+        "Reported changes match the plan and distinguish executed from unrun checks."
+      ],
+      "ifWrong": [
+        "工具扩大范围或要求清库时先停止该方案，返回计划说明必要性与恢复办法。",
+        "If scope expands or a reset is proposed, stop that approach and revisit its need and recovery."
+      ]
+    },
+    {
+      "where": [
+        "作品页面",
+        "Your project page"
+      ],
+      "action": [
+        "按工具说明打开修复后的版本，亲自重走原问题的同一组输入和点击，再新增一条测试记录并读取一条旧记录。",
+        "Open the repaired version as instructed; personally repeat the original input and clicks, then save a new test record and read an old one."
+      ],
+      "tip": [
+        "使用同一失败条件才知道问题是否修好；换一条容易成功的输入不算复测。",
+        "Keep the original failure conditions; an easier input is not a retest."
+      ],
+      "expect": [
+        "原失败动作达到预期，正常保存读取和旧数据也正常。",
+        "The original case, normal save/read and old data all behave correctly."
+      ],
+      "ifWrong": [
+        "结果不同于工具报告时保留画面、网址及版本，继续在原编号下补证据，不标记关闭。",
+        "If results differ from the tool report, preserve screen, URL and revision under the same issue; leave it open."
+      ]
+    },
+    {
+      "where": [
+        "原反馈记录和测试记录",
+        "Original feedback and test records"
+      ],
+      "action": [
+        "把修复版本、本人复测结果、受影响功能检查分别记下。失败继续用原编号；通过后回到验收，交付问题还要重新检查交付条件。",
+        "Record the fixed revision, personal retest and affected behavior separately. Keep failed issues open under the same ID; return passed work to acceptance and delivery review if applicable."
+      ],
+      "tip": [
+        "本站勾选完成不会修改项目反馈文件；把实际记录交给工具写回并打开核对。",
+        "Checking this guide does not edit project files. Send the record to the tool and open the saved result."
+      ],
+      "expect": [
+        "记录区分工具测试与本人复测，问题状态有对应证据。",
+        "Tool checks and personal retests are distinct; issue status has evidence."
+      ],
+      "ifWrong": [
+        "未亲自检查或缺少运行条件时写待复测，不把它改成通过。",
+        "Without a personal check or required environment, mark awaiting retest rather than passed."
+      ]
+    }
   ]
 }

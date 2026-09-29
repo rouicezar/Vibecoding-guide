@@ -1,0 +1,799 @@
+[
+  {
+    "adjacent": [
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "16px",
+        "text": "确认，生成我的想法草稿"
+      },
+      {
+        "margin": "16px",
+        "text": "一键复制我的草稿"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      }
+    ],
+    "bad": [],
+    "buttons": 6,
+    "url": "http://127.0.0.1:4339/zh-cn/node/idea/"
+  },
+  {
+    "adjacent": [
+      {
+        "margin": "14px",
+        "text": "2. Confirm and generate my version"
+      },
+      {
+        "margin": "16px",
+        "text": "Confirm and generate my idea"
+      },
+      {
+        "margin": "16px",
+        "text": "Copy my draft"
+      },
+      {
+        "margin": "14px",
+        "text": "2. Confirm and generate my version"
+      },
+      {
+        "margin": "14px",
+        "text": "2. Confirm and generate my version"
+      }
+    ],
+    "bad": [],
+    "buttons": 6,
+    "url": "http://127.0.0.1:4339/en/node/idea/"
+  },
+  {
+    "adjacent": [
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "带入前面已确认的材料"
+      }
+    ],
+    "bad": [],
+    "buttons": 4,
+    "url": "http://127.0.0.1:4339/zh-cn/node/description/"
+  },
+  {
+    "adjacent": [
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      }
+    ],
+    "bad": [],
+    "buttons": 6,
+    "url": "http://127.0.0.1:4339/zh-cn/node/tool/"
+  },
+  {
+    "adjacent": [
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      }
+    ],
+    "bad": [],
+    "buttons": 4,
+    "url": "http://127.0.0.1:4339/zh-cn/node/folder/"
+  },
+  {
+    "adjacent": [
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "带入前面已确认的材料"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      }
+    ],
+    "bad": [],
+    "buttons": 5,
+    "url": "http://127.0.0.1:4339/zh-cn/node/open-project/"
+  },
+  {
+    "adjacent": [
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "带入前面已确认的材料"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      }
+    ],
+    "bad": [],
+    "buttons": 9,
+    "url": "http://127.0.0.1:4339/zh-cn/node/checkpoint/"
+  },
+  {
+    "adjacent": [
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      }
+    ],
+    "bad": [],
+    "buttons": 13,
+    "url": "http://127.0.0.1:4339/zh-cn/node/clarify/"
+  },
+  {
+    "adjacent": [
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      }
+    ],
+    "bad": [],
+    "buttons": 11,
+    "url": "http://127.0.0.1:4339/zh-cn/node/requirements/"
+  },
+  {
+    "adjacent": [
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      }
+    ],
+    "bad": [],
+    "buttons": 11,
+    "url": "http://127.0.0.1:4339/zh-cn/node/prototype/"
+  },
+  {
+    "adjacent": [
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      }
+    ],
+    "bad": [],
+    "buttons": 7,
+    "url": "http://127.0.0.1:4339/zh-cn/node/plan/"
+  },
+  {
+    "adjacent": [
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      }
+    ],
+    "bad": [],
+    "buttons": 7,
+    "url": "http://127.0.0.1:4339/zh-cn/node/environment/"
+  },
+  {
+    "adjacent": [
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      }
+    ],
+    "bad": [],
+    "buttons": 29,
+    "url": "http://127.0.0.1:4339/zh-cn/node/preview/"
+  },
+  {
+    "adjacent": [
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "16px",
+        "text": "复制保存话术"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      }
+    ],
+    "bad": [],
+    "buttons": 28,
+    "url": "http://127.0.0.1:4339/zh-cn/node/accept/"
+  },
+  {
+    "adjacent": [
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "16px",
+        "text": "复制保存话术"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      }
+    ],
+    "bad": [],
+    "buttons": 6,
+    "url": "http://127.0.0.1:4339/zh-cn/node/delivery/"
+  },
+  {
+    "adjacent": [
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      }
+    ],
+    "bad": [],
+    "buttons": 17,
+    "url": "http://127.0.0.1:4339/zh-cn/node/release-review/"
+  },
+  {
+    "adjacent": [
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      }
+    ],
+    "bad": [],
+    "buttons": 29,
+    "url": "http://127.0.0.1:4339/zh-cn/node/package/"
+  },
+  {
+    "adjacent": [
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      }
+    ],
+    "bad": [],
+    "buttons": 17,
+    "url": "http://127.0.0.1:4339/zh-cn/node/live-check/"
+  },
+  {
+    "adjacent": [
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      },
+      {
+        "margin": "14px",
+        "text": "② 确认，生成我的专属内容"
+      }
+    ],
+    "bad": [],
+    "buttons": 7,
+    "url": "http://127.0.0.1:4339/zh-cn/node/maintain/"
+  }
+]

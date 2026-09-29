@@ -564,64 +564,104 @@
   "interface": [
     {
       "expect": [
-        "修改请求指出页面、位置与现有组件",
-        "The request identifies the page, location and existing component"
+        "能指出输入、操作、结果分别在哪里。",
+        "You can locate input, action and result."
       ],
       "ifWrong": [
-        "补截图或位置，让AI先定位现有实现",
-        "Add a screenshot or location and locate existing code first"
+        "页面打不开时回到预览步骤核对启动地址，先不要求改样式。",
+        "If it will not open, return to preview setup and verify the startup URL before styling."
       ]
     },
     {
       "expect": [
-        "相关状态和点击结果都有明确描述",
-        "Relevant states and click outcomes are specified"
+        "工具说明修改了哪些文件，给出可打开的页面和待人工检查项。",
+        "The tool names changed files, gives the preview and lists personal checks."
       ],
       "ifWrong": [
-        "补遗漏的失败、空白或处理中状态",
-        "Add missing failure, empty or pending states"
+        "只有代码片段时，要求工具说明应保存在哪个现有文件；无写入权限时先保存文件再预览。",
+        "For a code snippet alone, ask which existing file should receive it; save before previewing if the tool cannot write."
       ]
     },
     {
       "expect": [
-        "布局、键盘与原业务检查有实际结果",
-        "Layout, keyboard and existing behavior have actual check results"
+        "空白有说明；处理中不会反复提交；结果提示能看懂。",
+        "Empty input is explained, pending submission is guarded and feedback is understandable."
       ],
       "ifWrong": [
-        "记录异常位置并修复；无界面时说明不适用",
-        "Record and repair issues; explain inapplicability for non-UI projects"
+        "按钮无反应时记下点击位置与画面，把证据带到排障步骤；不要连续猛点。",
+        "If nothing happens, record the button and screen for diagnosis rather than clicking repeatedly."
+      ]
+    },
+    {
+      "expect": [
+        "当前页面能完成操作，原本可用的功能仍可用。",
+        "The task remains usable and existing behavior still works."
+      ],
+      "ifWrong": [
+        "标出被遮住或键盘无法到达的具体位置，请工具只修这一处，再重复检查。",
+        "Identify the clipped or unreachable control, request a focused fix and repeat the check."
       ]
     }
   ],
   "save": [
     {
       "expect": [
-        "保存方式或不适用理由已明确",
-        "Storage mode or inapplicability is explicit"
+        "知道三部分分别在哪里，以及本次要补哪一部分。",
+        "You know where all three parts are and what is missing."
       ],
       "ifWrong": [
-        "回需求核对是否需要持久数据，不自动加数据库",
-        "Check persistence needs without adding a database by default"
+        "工具只说“已保存”时，要求指出实际存放位置与读取方法，先不标记通过。",
+        "If the tool only says saved, request the actual storage location and reading method before passing."
       ]
     },
     {
       "expect": [
-        "重开后数据符合要求，共享用独立环境验证",
-        "Reopened data matches requirements; sharing uses independent contexts"
+        "工具报告实际数据库位置、表和字段；原有数据仍在。",
+        "The tool reports the real database location, table and fields without losing data."
       ],
       "ifWrong": [
-        "本机丢失查保存路径；共享不一致查账号与服务",
-        "Check local storage paths or shared accounts and services"
+        "出现找不到表时先核对数据库完整路径，再让工具补建缺失表；不要删除数据库。",
+        "For a missing table, verify the full database path, then add only the missing table."
       ]
     },
     {
       "expect": [
-        "最小数据操作及失败、权限边界有记录",
-        "A minimal operation, failure cases and access boundaries are recorded"
+        "合法内容有真实记录编号，数据库中能找到相同内容；空白被拒绝且没有新增记录。",
+        "Valid input has a real matching record; blanks are rejected without insertion."
       ],
       "ifWrong": [
-        "保留失败输入，在测试环境排查权限或接口",
-        "Keep failing inputs and inspect permissions or APIs in a test environment"
+        "保存失败时保留错误原文和运行输出；请工具先判断请求是否到达后端，不清空数据。",
+        "Preserve the error and output; first check whether the request reached the backend."
+      ]
+    },
+    {
+      "expect": [
+        "页面显示真实成功结果，列表能读到刚才的内容；失败不会假装成功。",
+        "The page reports real success and reads the saved content; failures do not claim success."
+      ],
+      "ifWrong": [
+        "页面返回 404 或一段 HTML 时，带上实际网址请工具核对是否打开了正确服务与接口。",
+        "For 404 or HTML responses, give the actual URL to the tool and verify the service and endpoint."
+      ]
+    },
+    {
+      "expect": [
+        "换浏览器及服务重启后，原记录内容和编号仍可读。",
+        "The record and ID remain readable across browsers and service restart."
+      ],
+      "ifWrong": [
+        "记录消失时保留两次网址、账号和数据库路径，请工具核对是否启动了另一份项目或另一数据库。",
+        "If missing, preserve URLs, accounts and database paths; check for a different project or database."
+      ]
+    },
+    {
+      "expect": [
+        "证据能对应同一条记录，已测与未测分开，下一步可据此做全流程测试。",
+        "Evidence matches one record, tested and untested checks are separate, ready for flow testing."
+      ],
+      "ifWrong": [
+        "缺哪项就补测哪项；跨账号可见范围不符时先记录问题，按排障流程定位。",
+        "Fill missing evidence; record unexpected cross-account visibility and follow diagnosis."
       ]
     }
   ],
@@ -788,64 +828,64 @@
   "repair-plan": [
     {
       "expect": [
-        "每项修复对应反馈编号及最小范围",
-        "Each fix maps to an issue ID and minimum scope"
+        "别人按记录能走到同一失败位置，预期与实际分别写明。",
+        "The record gives reproducible actions with expected and actual results separated."
       ],
       "ifWrong": [
-        "要求关联具体问题，删除无关修改",
-        "Link it to a real issue and remove unrelated changes"
+        "不能稳定重现时记录成功和失败的差别，不编造必现步骤。",
+        "If intermittent, record differences between working and failing attempts."
       ]
     },
     {
       "expect": [
-        "计划写明复现、通过条件和回归范围",
-        "The plan specifies reproduction, pass criteria and regressions"
+        "工具给出观察到的事实、仍待验证的猜测和最小下一项检查。",
+        "The tool separates observations, hypotheses and the smallest next check."
       ],
       "ifWrong": [
-        "补原问题复测方法，再由本人确认",
-        "Add a retest for the original issue before approval"
+        "需要自己取日志时，请工具给出对应系统的打开位置和复制哪几行；只提供相关错误，移除密钥。",
+        "If logs need manual collection, ask where to open them and which lines to copy; remove secrets."
       ]
     },
     {
       "expect": [
-        "新需求分开记录，数据修改有恢复方案",
-        "New requests are separate; data changes have recovery steps"
+        "计划包含原问题复测、正常保存读取检查、数据保护和失败后恢复方法。",
+        "The plan includes original-case retest, working save/read checks, data protection and recovery."
       ],
       "ifWrong": [
-        "先补备份与恢复步骤，再决定是否执行",
-        "Add backup and recovery before execution"
+        "计划只有“优化一下”时，要求具体到问题编号和可看到的通过结果，再进入修复步骤。",
+        "If it only says optimize, request an issue-specific change and observable passing result."
       ]
     }
   ],
   "repair": [
     {
       "expect": [
-        "修复记录有实际检查、文件和版本",
-        "Fix records contain actual checks, files and revision"
+        "工具报告与计划一致的修改和真实检查结果，未运行的检查明确标出。",
+        "Reported changes match the plan and distinguish executed from unrun checks."
       ],
       "ifWrong": [
-        "要求补真实输出，未运行的检查标未执行",
-        "Request actual output and mark unrun checks explicitly"
+        "工具扩大范围或要求清库时先停止该方案，返回计划说明必要性与恢复办法。",
+        "If scope expands or a reset is proposed, stop that approach and revisit its need and recovery."
       ]
     },
     {
       "expect": [
-        "本人复测原步骤及受影响功能",
-        "Personal retests cover the original steps and affected behavior"
+        "原失败动作达到预期，正常保存读取和旧数据也正常。",
+        "The original case, normal save/read and old data all behave correctly."
       ],
       "ifWrong": [
-        "回原编号重走失败动作，未复测不关闭",
-        "Repeat the original failed action before closing the issue"
+        "结果不同于工具报告时保留画面、网址及版本，继续在原编号下补证据，不标记关闭。",
+        "If results differ from the tool report, preserve screen, URL and revision under the same issue; leave it open."
       ]
     },
     {
       "expect": [
-        "结果保留原编号，交付问题回放行评估",
-        "Results keep the issue ID; delivery fixes return to readiness review"
+        "记录区分工具测试与本人复测，问题状态有对应证据。",
+        "Tool checks and personal retests are distinct; issue status has evidence."
       ],
       "ifWrong": [
-        "失败继续补证据；不要修完直接公开发布",
-        "Add evidence on failure; do not publish immediately after fixing"
+        "未亲自检查或缺少运行条件时写待复测，不把它改成通过。",
+        "Without a personal check or required environment, mark awaiting retest rather than passed."
       ]
     }
   ],

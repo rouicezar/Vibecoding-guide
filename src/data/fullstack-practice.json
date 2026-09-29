@@ -379,8 +379,8 @@
   {
     "id": "save",
     "action": [
-      "按下面四个小检查逐项让 Codex 执行：建表、接口、页面接线、读回。每项看到真实结果再继续。",
-      "Ask Codex to perform the four checks below one at a time: table, API, page connection and read-back."
+      "先展开本步“逐项跟着做”，按数据库准备、后端检查、页面连接、重启读回的顺序操作。每完成一项，核对实际结果再向所选工具发送下一项。",
+      "Expand this step’s follow-along actions. Prepare storage, check the backend, connect the page and verify after restart. Review each result before sending the next task to your chosen tool."
     ],
     "expected": [
       "输入“练习 A”保存后有真实记录编号；第二浏览器访问同一服务也能读到。",
@@ -391,8 +391,8 @@
       "A new row on screen is insufficient; verify the same ID in the actual SQLite file without clearing/recreating it."
     ],
     "instruction": [
-      "按计划一次只做一个子任务并等待核对：1 使用 SQLite，固定 instance/journal.sqlite 的绝对路径，非破坏性建 entries 表（id,title,body,created_at）；2 GET/POST /api/entries，用参数化 SQL 和后端 trim/长度校验，提交事务后才成功；3 页面用相对 /api/entries，检查 HTTP 状态，提交中禁用按钮，失败保留输入并提示；4 用唯一测试标记核对接口和数据库编号，再由本人在第二浏览器读回。已有实现先检查，不重复建表或改数据。",
-      "Do one planned subtask at a time and wait for review: 1 resolve instance/journal.sqlite to a stable absolute path and create entries non-destructively (id,title,body,created_at); 2 GET/POST /api/entries with parameterized SQL, backend trim/length validation and success only after commit; 3 connect the page via relative /api/entries, check HTTP status, disable pending submission and preserve failed input; 4 match a unique test marker and ID across API/database, then let the user read it in a second browser. Inspect existing work first; do not recreate tables or alter records."
+      "这是个人本机学习记录示例，先检查已有文件与实现，不重做已完成部分。请先用白话告诉我页面、后端和数据库各在哪里，然后一次只做下面一项，报告证据并等我核对后再继续：\n1. 数据库：使用 SQLite，说明 instance/journal.sqlite 的实际完整路径，路径不能随启动目录改变。检查已有记录并说明备份方法；非破坏性准备 entries 表，包含 id（编号）、title（标题）、body（内容）、created_at（创建时间）。\n2. 后端：提供 GET /api/entries 读取列表和 POST /api/entries 保存记录。后端检查去除首尾空白后的内容及约定长度，使用参数化 SQL，事务提交成功后才返回成功。用一条独特测试内容报告请求结果和编号，再只读核对数据库同一条记录；空白请求不能写入。\n3. 页面：使用相对 /api/entries 连接同一服务，检查 HTTP 状态；提交中禁重复点击，失败保留输入并说明原因。告诉我准确启动方式、打开哪个网址、填写什么以及点哪里；不要只给代码。\n4. 读回：指导我在第二浏览器打开同一网址，随后只重启本项目服务，再检查原记录。逐项记录实际结果与未测项，不替我宣布本人验收通过。\n若请求结果不确定，先查询再决定是否重试，避免重复写入。不要删库、清表、关闭浏览器安全检查，也不要加入登录等未要求功能。",
+      "This is the personal local learning journal example. Inspect existing files and preserve finished work. Explain where the page, backend and database are. Perform only one item at a time, report evidence and wait for my review:\n1. Database: use SQLite; resolve instance/journal.sqlite to a stable full path independent of startup directory. Inspect existing records and explain backup. Prepare entries non-destructively with id, title, body and created_at.\n2. Backend: GET /api/entries reads the list; POST saves a record. Validate trimmed content and agreed length limits on the backend, use parameterized SQL and return success only after commit. Report a unique test item’s response and ID, then read the matching database record. Blank requests must not insert.\n3. Page: use relative /api/entries on the same service, check HTTP status, prevent pending repeat clicks and retain input with an explanation on failure. Give exact startup, URL, input and click instructions, not only code.\n4. Read back: guide me through a second browser on the same URL, then restart only this project service and check old records. Record actual and untested results without claiming my acceptance.\nFor uncertain outcomes, query before retrying to avoid duplicates. Do not delete storage, drop tables, disable browser security or add unrequested login features."
     ],
     "issues": [
       {
@@ -465,6 +465,60 @@
         "expected": [
           "写入恢复，已保存记录仍可读取。",
           "Writing recovers while old records remain readable."
+        ]
+      },
+      {
+        "title": [
+          "保存提示成功，刷新后记录不见了",
+          "Success appears, but refresh loses the record"
+        ],
+        "check": [
+          "记下唯一测试标题、页面网址和记录编号；请工具核对是否只更新了页面或浏览器缓存。",
+          "Record a unique title, URL and ID; check whether only the page or browser cache was updated."
+        ],
+        "action": [
+          "请工具只读对照保存请求结果、数据库中的同一编号和读取列表结果，先找出在哪一步丢失。页面须等后端实际保存成功才显示成功，不用固定成功提示掩盖问题。",
+          "Read-only compare save response, database record and list response to locate the loss. Show success only after real backend persistence."
+        ],
+        "expected": [
+          "真实数据库、读取接口和刷新后的页面显示同一条测试记录。",
+          "Database, read endpoint and refreshed page show the same test record."
+        ]
+      },
+      {
+        "title": [
+          "打不开网址，提示连接被拒绝",
+          "The URL refuses the connection"
+        ],
+        "check": [
+          "核对地址是否与本项目启动输出一致，以及服务是否仍在运行。端口就是网址中冒号后的服务编号。",
+          "Compare the URL with this project’s startup output and check that the service is running. A port is the service number after the colon."
+        ],
+        "action": [
+          "把网址和最近的启动错误交给工具，让它检查本项目进程。未启动就按该项目说明启动；端口被占用时先查归属，再选择空闲端口并更新打开地址，不结束不认识的进程。",
+          "Give the URL and recent startup error to the tool. Start this project as documented; for an occupied port identify its owner, choose a free port and update the URL rather than stopping unknown processes."
+        ],
+        "expected": [
+          "服务持续运行，使用实际启动地址能打开页面；然后再检查保存功能。",
+          "The service remains running and its actual URL opens the page; then check saving."
+        ]
+      },
+      {
+        "title": [
+          "保存失败，但列表里已经出现记录",
+          "Save reports failure, but the record exists"
+        ],
+        "check": [
+          "服务器可能已保存，只是返回结果途中断开；先按唯一测试标题查看列表和数据库。",
+          "The server may have saved before the response was lost; search the unique title in the list and database."
+        ],
+        "action": [
+          "暂不再次提交。把已存在的编号与失败提示交给工具，核对响应处理与重复提交保护；同一次操作是否重复要按编号和内容检查，不能直接删除所有相同标题。",
+          "Do not submit again yet. Give the existing ID and error to the tool; inspect response handling and repeat-submission protection. Compare IDs and content rather than deleting matching titles."
+        ],
+        "expected": [
+          "确认该次提交是否已保存，界面给出准确反馈；旧记录保留。",
+          "The submission outcome is established, feedback is accurate and old records remain."
         ]
       }
     ]
@@ -603,8 +657,8 @@
       "Stop a suggested database deletion; request backup and a non-destructive plan or more diagnosis."
     ],
     "instruction": [
-      "先只读检查端口、API 路径、状态码、表结构和数据库位置，按证据定位；计划保护原记录，不默认清库或重装。",
-      "Inspect port, API path/status, schema and database location read-only. Plan based on evidence, preserving records without default resets or reinstalls."
+      "请先只读排查本次反馈编号，不改代码。根据我填写的实际网址、输入、点击、预期、实际结果和错误原文，先列已有事实与缺失证据。依次检查：页面有没有发出请求；是否到达正确后端；后端返回什么状态与错误；数据库实际路径和对应记录是什么。你能读取的日志请自己核对；需要我操作时给出具体入口和要复制的相关几行，并提醒移除密钥。不要让我猜技术原因。最后提出最小修复计划：问题编号、原因证据、修改文件、数据影响、备份与恢复办法、原失败步骤怎样复测、哪些正常功能需再检查。证据不足先提出一项最小检查，未经我确认不修复、不清库、不重装。",
+      "Diagnose this issue read-only. From my URL, input, clicks, expected/actual results and error text, separate facts from missing evidence. Check whether the page sent a request, whether it reached the right backend, the response status/error, and the actual database path and matching record. Inspect logs you can access; for manual collection give exact entry and relevant lines, removing secrets. Do not make me guess the technical cause. Propose the smallest plan with issue ID, cause evidence, files, data impact, backup/recovery, original-case retest and working behavior to recheck. With insufficient evidence request one minimal check. Do not fix, reset or reinstall before my confirmation."
     ],
     "issues": []
   },

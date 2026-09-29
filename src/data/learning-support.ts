@@ -692,16 +692,20 @@ export const stepSupport:StepSupport[]=[
     ],
     "steps": [
       [
-        "写页面入口和具体位置；截图标出想改的区域。组件资料是参考，先让AI查项目已有组件再决定复用。",
-        "Give the page entry and exact area; annotate the screenshot. Check existing project components before reusing examples."
+        "操作位置：作品的预览页面和所选工具的原项目对话。打开前一步确认的预览地址。找到本次任务的输入框、按钮和结果区，记下缺少或看不懂的位置。 提醒：这里的前端就是用户看到并操作的页面；修改的是自己的作品，不是本站。",
+        "Where: Your project preview and original tool conversation. Open the confirmed preview URL. Find the task’s fields, button and result area; note missing or unclear parts. Note: Frontend means the page users interact with. Work on your own project."
       ],
       [
-        "说明默认、处理中、成功、失败、空内容状态，以及点击后实际发生什么，不只描述颜色。",
-        "Specify idle, loading, success, error and empty states, including real actions rather than colors alone."
+        "操作位置：本站本步提示词模板，然后是工具的原项目对话。把实际页面、要完成的动作和发现的问题填进模板，确认后复制，粘贴到原项目对话并发送。请工具先核对已有页面，再只完成当前任务。 提醒：提示词中的示例字段换成自己的字段；尚未连接后端时明确标记为演示。",
+        "Where: This step’s prompt template, then the original project chat. Fill in the real page, action and observed problem; confirm, copy, paste into your tool and send. Ask it to inspect existing work and finish only this task. Note: Replace sample fields with your own. Label unconnected behavior as a demonstration."
       ],
       [
-        "预览检查字号、手机布局、键盘操作和原业务功能；无界面项目标不适用，并写原因。",
-        "Check typography, mobile layout, keyboard use and existing behavior. Headless projects record why this is inapplicable."
+        "操作位置：作品页面。重新打开或刷新工具给出的地址。先不输入就点提交，再填写一条测试内容提交，观察是否出现等待、成功或失败提示。 提醒：成功提示必须来自实际处理结果；模拟页面只能验证显示效果，不能证明数据已保存。",
+        "Where: Your project page. Reload the tool’s URL. Submit empty fields, then enter a test item and submit; observe waiting, success or failure. Note: Success must reflect actual processing. Mocked screens only prove presentation."
+      ],
+      [
+        "操作位置：作品页面与本步记录。缩窄浏览器窗口，检查输入和提示是否被遮住；用 Tab 键逐个移动焦点，确认能到达输入框和按钮。记录实际通过及未通过项。 提醒：不为走完教程强行换颜色或重做页面；没有界面的项目说明不适用。",
+        "Where: Your project page and step record. Narrow the browser window and inspect fields and messages. Use Tab to reach fields and buttons. Record actual passes and failures. Note: Do not redesign just to follow the lesson. Explain inapplicability for headless projects."
       ]
     ],
     "answer": [
@@ -734,16 +738,28 @@ export const stepSupport:StepSupport[]=[
     ],
     "steps": [
       [
-        "先判断是否需要保存或外部服务；只展示页面的项目可以不适用，不为教学硬加数据库。",
-        "Determine whether storage or external services are needed; a display-only site may skip them."
+        "操作位置：项目需求和工具的原项目对话。先确认要保存什么、谁能读取、在哪里使用。向工具说明：请核对现有实现，分别指出页面、处理保存的后端、真正存记录的数据库。 提醒：后端是接收和处理请求的程序；数据库存放记录。只有展示需求可以不适用，不能把浏览器缓存当成后端数据库。",
+        "Where: Requirements and original project chat. Confirm what is saved, who reads it and where it runs. Ask the tool to identify the page, backend handling saves and database storing records. Note: The backend processes requests; the database stores records. Display-only projects may skip storage; browser cache is not a backend database."
       ],
       [
-        "本机保存：写测试资料→关闭→重开→核对；多人共享：在不同账号/浏览器检查同一数据；不能用同一浏览器证明共享成功。",
-        "Local storage: write, close, reopen, compare. Shared data: check with separate accounts/browsers; one browser cannot prove sharing."
+        "操作位置：本站本步模板与工具对话。填写自己的数据需求，确认、复制并发送。先只让工具准备测试数据库：说明存放位置、记录包含哪些字段，检查已有数据后再补缺少的表。 提醒：表像一张登记表，字段像每列的名字。已有记录先备份；不要用删库重建作为默认准备方法。",
+        "Where: This step’s template and tool conversation. Fill in data needs, confirm, copy and send. First ask for test database setup: location, record fields and inspection of existing data before adding missing tables. Note: A table resembles a register; fields are its columns. Back up existing records; do not reset storage as setup."
       ],
       [
-        "需要登录/权限/文件/API时，展开下方对应能力；先配置测试环境，再做一个最小真实操作，最后核对失败与访问边界。",
-        "For login, permissions, files or APIs, expand the relevant capability below. Configure test access, run a real minimal action, then test failures and boundaries."
+        "操作位置：工具对话及其运行输出。请工具实现或检查“保存一条”和“读取列表”的后端入口，使用一条独特测试内容检查。要求它报告请求结果、记录编号，并只读核对数据库中的同一条记录。 提醒：接口就是页面向后端提交或索取内容的入口。只看到测试通过不够，要把记录编号与真实数据库对应起来。",
+        "Where: Tool chat and execution output. Ask the tool to implement or inspect save-one and read-list backend endpoints. Use a unique test item, report the response and ID, then read the matching database record. Note: An API is the entry the page uses to send or request data. Match the reported ID to actual storage."
+      ],
+      [
+        "操作位置：工具对话，然后是作品页面。请工具把页面保存按钮接到已检查的后端入口；给出准确启动方式和网址。打开该网址，输入自己的测试标题和内容，点一次保存并等待结果。 提醒：等待时不要重复点击。失败要保留输入；网络没收到回复时先查列表，避免已保存却重复提交。",
+        "Where: Tool chat, then your project page. Ask the tool to connect Save to the checked endpoint and give exact startup instructions and URL. Open it, enter your test title and body, click once and wait. Note: Do not click repeatedly. Keep failed input; if the response was lost, check the list before resubmitting."
+      ],
+      [
+        "操作位置：第二个浏览器与工具对话。复制同一服务的网址到另一个浏览器，检查刚才的测试记录。再请工具只重启本项目服务，按它给出的地址重新打开并检查。 提醒：第二浏览器检查不能单独证明数据库正确，需与前面的真实数据库核对结合。重启服务不等于删除数据库或恢复出厂设置。",
+        "Where: A second browser and tool chat. Open the same service URL in another browser and find the item. Ask the tool to restart only this project service; reopen its URL and check again. Note: A second browser alone does not prove correct database storage; combine it with the direct check above. Restarting must not reset storage."
+      ],
+      [
+        "操作位置：本步记录及测试记录文件。把测试内容、记录编号、数据库位置、重启前后结果写进记录。多人项目继续检查不同账号可见范围；不具备条件的项目明确写未测试。 提醒：不要把密码、访问密钥或真实个人资料粘贴到本站或截图。一次保存成功不等于权限和所有失败情况都通过。",
+        "Where: Step record and project test record. Record test content, ID, database location and before/after restart results. For shared projects test visibility under separate accounts; mark unavailable checks untested. Note: Do not paste passwords, keys or real personal data into the guide or screenshots. A save does not prove permissions or every failure case."
       ]
     ],
     "answer": [
@@ -981,16 +997,16 @@ export const stepSupport:StepSupport[]=[
     ],
     "steps": [
       [
-        "让AI只读排查原因，逐项关联反馈编号，列最小修改范围和影响。",
-        "Inspect read-only, link each issue ID, and propose minimal changes and impact."
+        "操作位置：作品页面和原反馈记录。找到一个失败问题，沿用它的编号。写下从打开哪个网址、输入什么、点击哪里，到实际看到什么；附错误文字和发生时间。 提醒：每次只复现一个问题，用可清理测试内容。截图先遮住个人资料；不需要懂错误才能记录原文。",
+        "Where: Project page and original feedback. Choose one issue and keep its ID. Record URL, input, clicks, observed result, error text and time. Note: Reproduce one issue with disposable data. Hide private information; copy the error even if unfamiliar."
       ],
       [
-        "每项列原问题如何重现、修好应看到什么、哪些原功能需回归；本人看懂后确认。",
-        "Specify reproduction, passing result and regression scope, then review and confirm."
+        "操作位置：本站本步模板，然后是工具原项目对话。把问题编号和证据填入模板，确认、复制、粘贴并发送，要求先只读排查。让工具依次核对页面请求、后端响应、数据库记录，指出在哪一处中断。 提醒：页面没变化、后端报错、数据库没记录是不同线索；有证据才下结论，不按报错关键词直接重装。",
+        "Where: This step’s template and original project chat. Fill in the issue ID and evidence, confirm, copy, paste and send. Request read-only diagnosis through page request, backend response and database record. Note: An unchanged page, backend error and missing record are different clues. Diagnose from evidence rather than reinstalling from a keyword."
       ],
       [
-        "不相关的新需求单列以后处理，不混进修复；涉及数据更改先说明备份与恢复。",
-        "Keep new features outside fixes; explain backup and recovery before data changes."
+        "操作位置：工具给出的修复计划。要求写明只改哪些文件、会不会影响已有记录、如何重新启动，以及怎样重做原失败动作。涉及数据库更改时先备份并在副本上验证。 提醒：只有原因明确且你理解影响后才确认执行；新增功能另记，不混进修复。",
+        "Where: The tool’s proposed repair plan. Request changed files, impact on records, restart steps and exact reproduction. Back up and validate database changes on a copy first. Note: Confirm only after understanding cause and impact. Keep new features separate."
       ]
     ],
     "answer": [
@@ -1022,16 +1038,16 @@ export const stepSupport:StepSupport[]=[
     ],
     "steps": [
       [
-        "按计划逐项修复，AI跑对应检查并记录真实输出、修改文件与版本。",
-        "Fix one planned item, run checks and record actual output, changed files and revision."
+        "操作位置：工具的原项目对话。在本步模板填入已确认的问题编号和计划，确认后复制并发送。明确只执行这一项，结束后报告改动文件、实际检查结果和重新打开作品的方法。 提醒：没有确认的计划先回上一步；数据库结构或数据变更应先完成计划中的备份与副本验证。",
+        "Where: The original project chat. Fill this step’s template with the approved issue and plan, confirm, copy and send. Execute only that item; request changed files, actual checks and reopening instructions. Note: Return to planning if unapproved. Complete planned backups and copy-based validation before database changes."
       ],
       [
-        "本人重走同一编号问题的原步骤，再检查受影响原功能。未做本人复测时不能关闭问题。",
-        "Personally repeat the original steps and affected functions; do not close an issue before retesting."
+        "操作位置：作品页面。按工具说明打开修复后的版本，亲自重走原问题的同一组输入和点击，再新增一条测试记录并读取一条旧记录。 提醒：使用同一失败条件才知道问题是否修好；换一条容易成功的输入不算复测。",
+        "Where: Your project page. Open the repaired version as instructed; personally repeat the original input and clicks, then save a new test record and read an old one. Note: Keep the original failure conditions; an easier input is not a retest."
       ],
       [
-        "失败沿用原编号追加证据；成功写修复版本和复测结果。交付问题修好后回“评估上线与交付条件”重新评估。",
-        "Append failures under the same ID; on success record revision and retest. Return delivery-related fixes to the “Review release readiness” milestone."
+        "操作位置：原反馈记录和测试记录。把修复版本、本人复测结果、受影响功能检查分别记下。失败继续用原编号；通过后回到验收，交付问题还要重新检查交付条件。 提醒：本站勾选完成不会修改项目反馈文件；把实际记录交给工具写回并打开核对。",
+        "Where: Original feedback and test records. Record the fixed revision, personal retest and affected behavior separately. Keep failed issues open under the same ID; return passed work to acceptance and delivery review if applicable. Note: Checking this guide does not edit project files. Send the record to the tool and open the saved result."
       ]
     ],
     "answer": [

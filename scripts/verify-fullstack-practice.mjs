@@ -14,7 +14,7 @@ for(const lesson of lessons){
  }
 }
 const row=id=>rows.find(r=>r.id===id);
-for(const token of ['SQLite','GET/POST','参数化','提交事务','HTTP','第二浏览器'])assert(row('save').instruction[0].includes(token),token);
+for(const token of ['SQLite','GET /api/entries','POST /api/entries','参数化','事务提交','HTTP','第二浏览器'])assert(row('save').instruction[0].includes(token),token);
 assert(row('restart').instruction[0].includes('不得重置'));
 assert(row('maintain').instruction[0].includes('绝不覆盖原库'));
 assert(row('publish').instruction[0].includes('不能用纯 Pages'));
