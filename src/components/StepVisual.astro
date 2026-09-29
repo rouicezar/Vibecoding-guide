@@ -1,25 +1,489 @@
 ---
 import Icon from './Icon.astro';
-import {t,type Locale,type Copy} from '../data/site';
-const {id,locale}=Astro.props as {id:string;locale:Locale};
-const diagrams:Record<string,Copy[]>={
- idea:[['项目的用户群体是谁','Who will use this project?'],['解决他们的什么问题','What problem will it solve for them?'],['开发成功的检验标准是什么','How will you check that the project works as intended?']],goal:[['写一句','Write'],['保存','Save'],['再打开','Reopen']],
- tool:[['打开工具的官方网站','Open the tool’s official website'],['安装并登录','Install & sign in'],['找到打开项目的入口','Find where to open a project']],folder:[['访达','Finder'],['文稿','Documents'],['新建文件夹','New folder']],
- 'open-project':[['打开项目','Open project'],['选择文件夹','Choose folder'],['核对工具打开的文件夹','Check which folder the tool opened']],
- 'first-file':[['让 AI 检查上一步保存的文件','Ask AI to check the files saved in the previous step'],['idea.md','idea.md'],['亲手打开文件核对内容','Open the file and check its contents']],checkpoint:[['确认当前打开的是自己的项目','Check that your own project is open'],['写下 AI 修改项目时要遵守的规则','Write the rules AI must follow when editing'],['提交本次改动，留下可恢复的版本','Commit the changes to keep a version you can restore']],
- clarify:[['你想用这个项目完成什么事','What do you want to accomplish with this project?'],['请 AI 每次只问一个问题','Ask AI to raise one question at a time'],['逐个回答 AI 提出的问题','Answer each question from AI']],scope:[['第一版必须能做哪些事','What must the first version let users do?'],['确认这次必须完成的功能','Confirm the features needed this time'],['把暂时不做的功能记下来','List the features to leave for later']],
- requirements:[['确认第一版做什么、不做什么','Agree what the first version will and will not do'],['把约定写进需求文档','Write the agreement in the requirements document'],['逐项检查文档是否符合你的想法','Check each item against your idea']], 'choose-stack':[['用户用什么设备，你能接受多少费用','What devices will users use, and what can you spend?'],['比较各方案能做什么、有什么限制','Compare what each option can do and its limits'],['确认适合自己项目的方案','Choose the option that fits your project']],plan:[['拆成小任务','Small tasks'],['一次做一项','One at a time'],['写清每项任务完成后怎样检查','Write how to check each completed task']],
- preview:[['让 AI 完成任务表中的第一项','Ask AI to complete the first task in the plan'],['打开实际入口','Open actual entry'],['亲手检查本次制作的功能','Try the feature built in this task']],interface:[['指出页面上要修改的位置','Identify the part of the page to change'],['说明这处希望改成什么样','Describe how you want that part to look or work'],['打开修改后的页面对照检查','Open the changed page and compare it']],save:[['输入内容','Write'],['点击保存','Save'],['刷新查看','Refresh']],flow:[['填写一条测试内容','Enter a test record'],['点击完成任务所需的按钮','Click the buttons needed to complete the task'],['检查是否得到预期结果','Check whether the expected result appears']],test:[['正常填写','Valid input'],['空白尝试','Try blank'],['检查页面怎样提示空白或错误输入','Check how the page responds to blank or invalid input']],restart:[['按说明停止','Stop as documented'],['重新启动','Restart'],['检查原有内容是否还能找到','Check whether the original content is still there']],accept:[['选择用户实际要完成的一件事','Choose one task your users really need to complete'],['从打开项目到完成任务，亲手做一遍','Try the task yourself from opening the project to finishing'],['记下实际看到的结果','Record what actually happened']],delivery:[['先确认已经亲手试用通过','First check that your own trial passed'],['可以只在自己的电脑上使用','You can keep using it on your own computer'],['需要分享时，再准备正式入口','If sharing is needed, prepare an entry others can use']],publish:[['检查准备发布的网页文件','Check the web files you intend to publish'],['确认项目是否适合 GitHub Pages','Check whether GitHub Pages fits the project'],['让 AI 说明需要怎样设置','Ask AI to explain the required settings']],maintain:[['打开上次使用的项目文件夹','Open the project folder you used last time'],['先读上次留下的进度和启动说明','Read the saved progress and startup instructions'],['继续任务表里下一项未完成的事','Continue the next unfinished task in the plan']]
+import { t, type Locale, type Copy } from '../data/site';
+const { id, locale } = Astro.props as { id: string; locale: Locale };
+const diagrams: Record<string, Copy[]> = {
+  idea: [
+    ['项目的用户群体是谁', 'Who will use this project?'],
+    ['解决他们的什么问题', 'What problem will it solve for them?'],
+    [
+      '开发成功的检验标准是什么',
+      'How will you check that the project works as intended?',
+    ],
+  ],
+  goal: [
+    ['写一句', 'Write'],
+    ['保存', 'Save'],
+    ['再打开', 'Reopen'],
+  ],
+  tool: [
+    ['打开工具的官方网站', 'Open the tool’s official website'],
+    ['安装并登录', 'Install & sign in'],
+    ['找到打开项目的入口', 'Find where to open a project'],
+  ],
+  folder: [
+    ['访达', 'Finder'],
+    ['文稿', 'Documents'],
+    ['新建文件夹', 'New folder'],
+  ],
+  'open-project': [
+    ['打开项目', 'Open project'],
+    ['选择文件夹', 'Choose folder'],
+    ['核对工具打开的文件夹', 'Check which folder the tool opened'],
+  ],
+  'first-file': [
+    [
+      '让 AI 检查上一步保存的文件',
+      'Ask AI to check the files saved in the previous step',
+    ],
+    ['idea.md', 'idea.md'],
+    ['亲手打开文件核对内容', 'Open the file and check its contents'],
+  ],
+  checkpoint: [
+    ['确认当前打开的是自己的项目', 'Check that your own project is open'],
+    [
+      '写下 AI 修改项目时要遵守的规则',
+      'Write the rules AI must follow when editing',
+    ],
+    [
+      '提交本次改动，留下可恢复的版本',
+      'Commit the changes to keep a version you can restore',
+    ],
+  ],
+  clarify: [
+    [
+      '你想用这个项目完成什么事',
+      'What do you want to accomplish with this project?',
+    ],
+    ['请 AI 每次只问一个问题', 'Ask AI to raise one question at a time'],
+    ['逐个回答 AI 提出的问题', 'Answer each question from AI'],
+  ],
+  scope: [
+    ['第一版必须能做哪些事', 'What must the first version let users do?'],
+    ['确认这次必须完成的功能', 'Confirm the features needed this time'],
+    ['把暂时不做的功能记下来', 'List the features to leave for later'],
+  ],
+  requirements: [
+    [
+      '确认第一版做什么、不做什么',
+      'Agree what the first version will and will not do',
+    ],
+    ['把约定写进需求文档', 'Write the agreement in the requirements document'],
+    ['逐项检查文档是否符合你的想法', 'Check each item against your idea'],
+  ],
+  'choose-stack': [
+    [
+      '用户用什么设备，你能接受多少费用',
+      'What devices will users use, and what can you spend?',
+    ],
+    [
+      '比较各方案能做什么、有什么限制',
+      'Compare what each option can do and its limits',
+    ],
+    ['确认适合自己项目的方案', 'Choose the option that fits your project'],
+  ],
+  plan: [
+    ['拆成小任务', 'Small tasks'],
+    ['一次做一项', 'One at a time'],
+    ['写清每项任务完成后怎样检查', 'Write how to check each completed task'],
+  ],
+  preview: [
+    [
+      '让 AI 完成任务表中的第一项',
+      'Ask AI to complete the first task in the plan',
+    ],
+    ['打开实际入口', 'Open actual entry'],
+    ['亲手检查本次制作的功能', 'Try the feature built in this task'],
+  ],
+  interface: [
+    ['指出页面上要修改的位置', 'Identify the part of the page to change'],
+    [
+      '说明这处希望改成什么样',
+      'Describe how you want that part to look or work',
+    ],
+    ['打开修改后的页面对照检查', 'Open the changed page and compare it'],
+  ],
+  save: [
+    ['输入内容', 'Write'],
+    ['点击保存', 'Save'],
+    ['刷新查看', 'Refresh'],
+  ],
+  flow: [
+    ['填写一条测试内容', 'Enter a test record'],
+    ['点击完成任务所需的按钮', 'Click the buttons needed to complete the task'],
+    ['检查是否得到预期结果', 'Check whether the expected result appears'],
+  ],
+  test: [
+    ['正常填写', 'Valid input'],
+    ['空白尝试', 'Try blank'],
+    [
+      '检查页面怎样提示空白或错误输入',
+      'Check how the page responds to blank or invalid input',
+    ],
+  ],
+  restart: [
+    ['按说明停止', 'Stop as documented'],
+    ['重新启动', 'Restart'],
+    [
+      '检查原有内容是否还能找到',
+      'Check whether the original content is still there',
+    ],
+  ],
+  accept: [
+    [
+      '选择用户实际要完成的一件事',
+      'Choose one task your users really need to complete',
+    ],
+    [
+      '从打开项目到完成任务，亲手做一遍',
+      'Try the task yourself from opening the project to finishing',
+    ],
+    ['记下实际看到的结果', 'Record what actually happened'],
+  ],
+  delivery: [
+    ['先确认已经亲手试用通过', 'First check that your own trial passed'],
+    ['可以只在自己的电脑上使用', 'You can keep using it on your own computer'],
+    [
+      '需要分享时，再准备正式入口',
+      'If sharing is needed, prepare an entry others can use',
+    ],
+  ],
+  publish: [
+    ['检查准备发布的网页文件', 'Check the web files you intend to publish'],
+    [
+      '确认项目是否适合 GitHub Pages',
+      'Check whether GitHub Pages fits the project',
+    ],
+    ['让 AI 说明需要怎样设置', 'Ask AI to explain the required settings'],
+  ],
+  maintain: [
+    ['打开上次使用的项目文件夹', 'Open the project folder you used last time'],
+    [
+      '先读上次留下的进度和启动说明',
+      'Read the saved progress and startup instructions',
+    ],
+    [
+      '继续任务表里下一项未完成的事',
+      'Continue the next unfinished task in the plan',
+    ],
+  ],
 };
-Object.assign(diagrams,{description:[['你想用这个项目完成什么事','What do you want to accomplish with this project?'],['把想法整理成一份项目说明','Turn the idea into a project brief'],['核对项目说明后确认保存','Review the brief, then confirm and save it']],stories:[['谁会在什么情况下使用它','Who will use it, and in what situation?'],['他们从打开项目到完成任务要做什么','What will they do from opening the project to finishing?'],['怎样检查他们已经完成任务','How will you check that they finished the task?']],prototype:[['先画用户完成任务需要的页面','Sketch the pages users need to complete their task'],['亲手点击页面中的入口和按钮','Try the page’s links and buttons yourself'],['注明哪些功能目前只是演示','Label features that are still demonstrations']],environment:[['核对已有工具','Inspect tools'],['启动最小项目','Start project'],['把下次怎样启动写进 README.md','Write the restart instructions in README.md']],feedback:[['写下从哪里开始、做了什么','Write where you started and what you did'],['写下应该看到什么、实际看到了什么','Write what you expected and what actually happened'],['把问题记录保存到项目文件中','Save the issue record in the project']], 'repair-plan':[['按记录再做一次，确认问题会出现','Repeat the recorded steps and confirm the failure'],['明确这次只修哪些问题','State which problems to fix this time'],['写清修好后怎样检查','Write how to check that the fix worked']],repair:[['执行修复','Fix'],['检查原本能用的相关功能有没有被改坏','Check that related working features still work'],['亲手重复出错时的操作','Repeat the failing action yourself']], 'release-review':[['确认用户在本机、网址还是应用里使用','Confirm whether users will use it locally, on a website or in an app'],['检查这种交付方式的条件是否齐全','Check that the chosen delivery method is ready'],['先补齐缺少的条件，再继续交付','Resolve missing requirements before delivery']],package:[['准备用户要打开的网页或安装包','Prepare the website or installer users will open'],['按选定方式试安装或部署一次','Try installing or deploying the chosen way'],['从实际入口检查项目能否使用','Try the project from its actual entry point']], 'live-check':[['亲自确认这次要开放给谁使用','Confirm who should get access this time'],['打开正式网址或安装后的应用','Open the live URL or the installed app'],['检查用户能否完成主要任务','Check that users can complete the main task']]});
-const iconSets:Record<string,string[]>={
- idea:['users','target','verify'],description:['idea','edit','document'],tool:['browser','download','login'],folder:['folder','document','folder-plus'],'open-project':['folder','folder','verify'],'first-file':['message','document','eye'],checkpoint:['folder','shield','git'],clarify:['idea','question','message'],scope:['checklist','target','layers'],requirements:['verify','document','file-check'],stories:['users','route','verify'],prototype:['layout','click','eye'],'choose-stack':['settings','layers','check'],plan:['checklist','target','verify'],environment:['tool','code','document'],preview:['code','browser','layout'],interface:['location','edit','eye'],save:['edit','save','refresh'],flow:['login','click','verify'],test:['checklist','bug','verify'],restart:['power','refresh','verify'],accept:['users','click','verify'],feedback:['click','edit','document'],'repair-plan':['bug','target','checklist'],repair:['tool','checklist','verify'],delivery:['verify','monitor','upload'],'release-review':['package','shield','checklist'],package:['package','download','verify'],'live-check':['rocket','browser','verify'],publish:['document','settings','verify'],maintain:['folder','book','route']
+Object.assign(diagrams, {
+  description: [
+    [
+      '你想用这个项目完成什么事',
+      'What do you want to accomplish with this project?',
+    ],
+    ['把想法整理成一份项目说明', 'Turn the idea into a project brief'],
+    ['核对项目说明后确认保存', 'Review the brief, then confirm and save it'],
+  ],
+  stories: [
+    ['谁会在什么情况下使用它', 'Who will use it, and in what situation?'],
+    [
+      '他们从打开项目到完成任务要做什么',
+      'What will they do from opening the project to finishing?',
+    ],
+    [
+      '怎样检查他们已经完成任务',
+      'How will you check that they finished the task?',
+    ],
+  ],
+  prototype: [
+    [
+      '先画用户完成任务需要的页面',
+      'Sketch the pages users need to complete their task',
+    ],
+    ['亲手点击页面中的入口和按钮', 'Try the page’s links and buttons yourself'],
+    [
+      '注明哪些功能目前只是演示',
+      'Label features that are still demonstrations',
+    ],
+  ],
+  environment: [
+    ['核对已有工具', 'Inspect tools'],
+    ['启动最小项目', 'Start project'],
+    [
+      '把下次怎样启动写进 README.md',
+      'Write the restart instructions in README.md',
+    ],
+  ],
+  feedback: [
+    ['写下从哪里开始、做了什么', 'Write where you started and what you did'],
+    [
+      '写下应该看到什么、实际看到了什么',
+      'Write what you expected and what actually happened',
+    ],
+    ['把问题记录保存到项目文件中', 'Save the issue record in the project'],
+  ],
+  'repair-plan': [
+    [
+      '按记录再做一次，确认问题会出现',
+      'Repeat the recorded steps and confirm the failure',
+    ],
+    ['明确这次只修哪些问题', 'State which problems to fix this time'],
+    ['写清修好后怎样检查', 'Write how to check that the fix worked'],
+  ],
+  repair: [
+    ['执行修复', 'Fix'],
+    [
+      '检查原本能用的相关功能有没有被改坏',
+      'Check that related working features still work',
+    ],
+    ['亲手重复出错时的操作', 'Repeat the failing action yourself'],
+  ],
+  'release-review': [
+    [
+      '确认用户在本机、网址还是应用里使用',
+      'Confirm whether users will use it locally, on a website or in an app',
+    ],
+    [
+      '检查这种交付方式的条件是否齐全',
+      'Check that the chosen delivery method is ready',
+    ],
+    [
+      '先补齐缺少的条件，再继续交付',
+      'Resolve missing requirements before delivery',
+    ],
+  ],
+  package: [
+    [
+      '准备用户要打开的网页或安装包',
+      'Prepare the website or installer users will open',
+    ],
+    [
+      '按选定方式试安装或部署一次',
+      'Try installing or deploying the chosen way',
+    ],
+    [
+      '从实际入口检查项目能否使用',
+      'Try the project from its actual entry point',
+    ],
+  ],
+  'live-check': [
+    ['亲自确认这次要开放给谁使用', 'Confirm who should get access this time'],
+    ['打开正式网址或安装后的应用', 'Open the live URL or the installed app'],
+    ['检查用户能否完成主要任务', 'Check that users can complete the main task'],
+  ],
+});
+const iconSets: Record<string, string[]> = {
+  idea: ['users', 'target', 'verify'],
+  description: ['idea', 'edit', 'document'],
+  tool: ['browser', 'download', 'login'],
+  folder: ['folder', 'document', 'folder-plus'],
+  'open-project': ['folder', 'folder', 'verify'],
+  'first-file': ['message', 'document', 'eye'],
+  checkpoint: ['folder', 'shield', 'git'],
+  clarify: ['idea', 'question', 'message'],
+  scope: ['checklist', 'target', 'layers'],
+  requirements: ['verify', 'document', 'file-check'],
+  stories: ['users', 'route', 'verify'],
+  prototype: ['layout', 'click', 'eye'],
+  'choose-stack': ['settings', 'layers', 'check'],
+  plan: ['checklist', 'target', 'verify'],
+  environment: ['tool', 'code', 'document'],
+  preview: ['code', 'browser', 'layout'],
+  interface: ['location', 'edit', 'eye'],
+  save: ['edit', 'save', 'refresh'],
+  flow: ['login', 'click', 'verify'],
+  test: ['checklist', 'bug', 'verify'],
+  restart: ['power', 'refresh', 'verify'],
+  accept: ['users', 'click', 'verify'],
+  feedback: ['click', 'edit', 'document'],
+  'repair-plan': ['bug', 'target', 'checklist'],
+  repair: ['tool', 'checklist', 'verify'],
+  delivery: ['verify', 'monitor', 'upload'],
+  'release-review': ['package', 'shield', 'checklist'],
+  package: ['package', 'download', 'verify'],
+  'live-check': ['rocket', 'browser', 'verify'],
+  publish: ['document', 'settings', 'verify'],
+  maintain: ['folder', 'book', 'route'],
 };
-const nodes=diagrams[id]??[['带上当前材料','Bring current material'],['完成本步动作','Perform this step'],['亲手核对结果','Verify the result']] as Copy[];
+const nodes =
+  diagrams[id] ??
+  ([
+    ['带上当前材料', 'Bring current material'],
+    ['完成本步动作', 'Perform this step'],
+    ['亲手核对结果', 'Verify the result'],
+  ] as Copy[]);
 ---
+
 <figure class="step-visual">
-{['folder','open-project','first-file'].includes(id)?<div class="file-demo"><div class="file-toolbar"><span aria-hidden="true">● ● ●</span><span>{id==='open-project'?t(['选择项目文件夹','Choose a project folder'],locale):t(['文稿','Documents'],locale)}</span></div><div class="file-tree"><Icon name="folder" size={28}/><strong>{t(['你的项目文件夹','Your project folder'],locale)}</strong>{id==='first-file'?<div class="file-child"><Icon name="document" size={20}/> idea.md <span class="file-open">{t(['双击打开','Open file'],locale)}</span></div>:<span class="file-open">{id==='folder'?t(['新建 / New folder','New folder'],locale):t(['选择并打开','Select & open'],locale)}</span>}</div></div>:<div class="visual-flow">{nodes.map((n,i)=><><div class="visual-node"><span class="visual-icon" aria-hidden="true"><Icon name={(iconSets[id]??['document','click','verify'])[i]} size={26}/></span><strong>{t(n,locale)}</strong></div>{i<2&&<span class="visual-arrow" aria-hidden="true">→</span>}</>)}</div>}
-<figcaption>{t(['操作示意 · 非工具截图','Illustration · not an app screenshot'],locale)}</figcaption>
+  {['folder', 'open-project', 'first-file'].includes(id) ? (
+    <div class="file-demo">
+      <div class="file-toolbar">
+        <span aria-hidden="true">● ● ●</span>
+        <span>
+          {id === 'open-project'
+            ? t(['选择项目文件夹', 'Choose a project folder'], locale)
+            : t(['文稿', 'Documents'], locale)}
+        </span>
+      </div>
+      <div class="file-tree">
+        <Icon name="folder" size={28} />
+        <strong>{t(['你的项目文件夹', 'Your project folder'], locale)}</strong>
+        {id === 'first-file' ? (
+          <div class="file-child">
+            <Icon name="document" size={20} /> idea.md{' '}
+            <span class="file-open">
+              {t(['双击打开', 'Open file'], locale)}
+            </span>
+          </div>
+        ) : (
+          <span class="file-open">
+            {id === 'folder'
+              ? t(['新建 / New folder', 'New folder'], locale)
+              : t(['选择并打开', 'Select & open'], locale)}
+          </span>
+        )}
+      </div>
+    </div>
+  ) : (
+    <div class="visual-flow">
+      {nodes.map((n, i) => (
+        <>
+          <div class="visual-node">
+            <span class="visual-icon" aria-hidden="true">
+              <Icon
+                name={(iconSets[id] ?? ['document', 'click', 'verify'])[i]}
+                size={26}
+              />
+            </span>
+            <strong>{t(n, locale)}</strong>
+          </div>
+          {i < 2 && (
+            <span class="visual-arrow" aria-hidden="true">
+              →
+            </span>
+          )}
+        </>
+      ))}
+    </div>
+  )}
+  <figcaption>
+    {t(
+      ['操作示意 · 非工具截图', 'Illustration · not an app screenshot'],
+      locale,
+    )}
+  </figcaption>
 </figure>
-<style>.step-visual{margin:24px 0;background:#fff;border:1px solid #f3aa70;border-radius:10px;padding:24px 24px 12px}.step-visual figcaption{text-align:right;font-size:10px;color:#64748b;margin-top:14px}.visual-flow{display:flex;align-items:center;justify-content:space-between;gap:10px}.visual-node{display:flex;flex-direction:column;align-items:center;gap:12px;flex:1}.visual-icon{display:grid;place-items:center;width:52px;height:52px;background:#fff;border:1px solid #d3deeb;border-radius:10px;color:#e96516;font-size:24px}.visual-node strong{font-size:14px;font-weight:550;text-align:center}.visual-arrow{color:#98a7bd}.file-demo{background:white;border:1px solid #dbe2ec;border-radius:8px;max-width:460px;margin:auto}.file-toolbar{display:flex;gap:20px;padding:10px 16px;border-bottom:1px solid #e4e8ee;font-size:11px;color:#64748b}.file-toolbar>span:first-child{color:#b1bdcc;font-size:9px}.file-tree{display:flex;align-items:center;gap:10px;padding:20px;flex-wrap:wrap;font-size:14px}.folder-shape{width:28px;height:20px;background:#ffc94a;border-radius:3px;position:relative}.folder-shape:before{content:'';position:absolute;top:-4px;left:0;width:12px;height:5px;background:#ffc94a;border-radius:3px}.file-open{margin-left:auto;font-size:11px;color:#754b12}.file-child{width:100%;padding:14px 0 0 24px;font-size:13px;display:flex;gap:8px}.file-child>span:first-child{color:#8e9fb5}@media(max-width:450px){.step-visual{padding:20px 12px 10px}.visual-node strong{font-size:11px}.file-tree{padding:16px 10px}.file-child{padding-left:8px;font-size:12px}}
+<style>
+  .step-visual {
+    margin: 24px 0;
+    background: #fff;
+    border: 1px solid #f3aa70;
+    border-radius: 10px;
+    padding: 24px 24px 12px;
+  }
+  .step-visual figcaption {
+    text-align: right;
+    font-size: 10px;
+    color: #64748b;
+    margin-top: 14px;
+  }
+  .visual-flow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .visual-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+  }
+  .visual-icon {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    background: #fff;
+    border: 1px solid #d3deeb;
+    border-radius: 10px;
+    color: #e96516;
+    font-size: 24px;
+  }
+  .visual-node strong {
+    font-size: 14px;
+    font-weight: 550;
+    text-align: center;
+  }
+  .visual-arrow {
+    color: #98a7bd;
+  }
+  .file-demo {
+    background: white;
+    border: 1px solid #dbe2ec;
+    border-radius: 8px;
+    max-width: 460px;
+    margin: auto;
+  }
+  .file-toolbar {
+    display: flex;
+    gap: 20px;
+    padding: 10px 16px;
+    border-bottom: 1px solid #e4e8ee;
+    font-size: 11px;
+    color: #64748b;
+  }
+  .file-toolbar > span:first-child {
+    color: #b1bdcc;
+    font-size: 9px;
+  }
+  .file-tree {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    flex-wrap: wrap;
+    font-size: 14px;
+  }
+  .folder-shape {
+    width: 28px;
+    height: 20px;
+    background: #ffc94a;
+    border-radius: 3px;
+    position: relative;
+  }
+  .folder-shape:before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 0;
+    width: 12px;
+    height: 5px;
+    background: #ffc94a;
+    border-radius: 3px;
+  }
+  .file-open {
+    margin-left: auto;
+    font-size: 11px;
+    color: #754b12;
+  }
+  .file-child {
+    width: 100%;
+    padding: 14px 0 0 24px;
+    font-size: 13px;
+    display: flex;
+    gap: 8px;
+  }
+  .file-child > span:first-child {
+    color: #8e9fb5;
+  }
+  @media (max-width: 450px) {
+    .step-visual {
+      padding: 20px 12px 10px;
+    }
+    .visual-node strong {
+      font-size: 11px;
+    }
+    .file-tree {
+      padding: 16px 10px;
+    }
+    .file-child {
+      padding-left: 8px;
+      font-size: 12px;
+    }
+  }
 </style>

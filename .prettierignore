@@ -7,3 +7,7 @@ docs/reviews
 public
 package-lock.json
 README.zh-CN.md
+
+# Preserved original demo skins
+src/demos/legacy.css
+src/demos/skin.css

@@ -1218,3 +1218,392 @@ body :focus {
 body :focus-visible {
   box-shadow: inset 0 -2px 0 #8a929c !important;
 }
+
+/* Approved illuminated surface design: canvas → lesson sheet → active task. */
+:root {
+  --surface-shadow: 0 2px 6px #25445e03, 0 12px 30px -18px #25445e18;
+  --surface-edge: #ffffff70;
+}
+body {
+  background:
+    radial-gradient(ellipse 1000px 550px at 45% 0, #eaf5f680, transparent),
+    #f3f6f8;
+}
+body .topbar {
+  background: linear-gradient(115deg, #fff 15%, #f7fbff 65%, #fff);
+  border-bottom: 1px solid #e5ecef80;
+  box-shadow: 0 2px 12px #23496304;
+}
+body .app-shell {
+  background: transparent;
+  min-height: calc(100vh - 64px);
+}
+body .sidebar {
+  background: transparent;
+  border-right-color: transparent;
+  box-shadow: none;
+}
+body .nav-item.active,
+body .nav-item.active:hover {
+  color: #237d84;
+  background: linear-gradient(110deg, #ffffffdc, #ffffff90);
+  box-shadow: 0 3px 12px #2d536408;
+  border-radius: 8px;
+}
+body #main .node-page {
+  max-width: 1100px;
+}
+body #main .node-head {
+  padding-bottom: 14px;
+  border: 0;
+}
+body #main .node-head h1 {
+  font-size: clamp(28px, 3.3vw, 42px);
+  letter-spacing: -0.035em;
+  color: #142a43;
+}
+body #main .node-head h1 .semantic-icon {
+  color: #398a98;
+}
+body #main .node-badge {
+  background: transparent;
+  color: #506579;
+  padding: 0;
+}
+body #main .node-gloss {
+  color: #425b75;
+}
+body #main .node-meta {
+  gap: 24px;
+}
+body #main .node-meta > div {
+  background: transparent;
+  border: 0;
+  border-left: 2px solid #cfdee7;
+  border-radius: 0;
+  padding: 0 14px;
+}
+body #main .node-progress-summary {
+  margin-top: 8px;
+  padding: 10px 0;
+  border: 0;
+  background: transparent;
+  column-gap: 20px;
+}
+body #main .node-action-index a {
+  background: #ffffff90;
+  border-color: #d8e4ed;
+  box-shadow: inset 0 1px 0 #fff;
+}
+body #main .node-step {
+  border: 1px solid var(--surface-edge);
+  border-radius: 18px;
+  background: linear-gradient(145deg, #ffffffec, #ffffffbf);
+  box-shadow: var(--surface-shadow);
+  margin-bottom: 24px;
+}
+body #main .node-step[open] {
+  border-color: var(--surface-edge);
+  box-shadow: var(--surface-shadow);
+}
+body #main .node-step > summary {
+  padding: 22px 26px;
+  background: transparent;
+}
+body #main .node-step .step-title {
+  font-size: 20px;
+  color: #18314b;
+}
+body #main .node-step[open] .step-order {
+  background: linear-gradient(145deg, #53b8b2, #23829a);
+  border-radius: 12px;
+  box-shadow:
+    inset 0 1px 0 #ffffff70,
+    0 3px 7px #286f8020;
+}
+body #main .node-step[open] .step-hint {
+  color: #347e9f;
+}
+body #main .node-step .step-body {
+  padding: 0 26px 26px;
+  border-top: 0;
+}
+body #main .node-step .step-visual {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 16px 0;
+  margin: 0;
+}
+body #main .visual-icon {
+  background: linear-gradient(145deg, #f7ffff, #e0eff3);
+  box-shadow: inset 0 1px 0 #fff;
+}
+body #main .material-flow {
+  background: transparent;
+  padding: 4px 0;
+}
+body #main .material-flow > div {
+  border-left: 1px solid #d6e2eb;
+  padding-left: 14px;
+}
+body #main .node-step [data-step-section='actions'] {
+  background: linear-gradient(125deg, #eef7f6, #f7fafb 65%, #fbfcfd);
+  border: 1px solid #fff;
+  border-radius: 14px;
+  padding: 20px 22px;
+  margin: 18px 0;
+  box-shadow: 0 4px 14px #3e7c8906;
+}
+body #main .action-detail[open] {
+  background: #ffffffb8;
+  border-radius: 10px;
+  padding: 12px 14px;
+  box-shadow: 0 2px 8px #35667808;
+}
+body #main .node-step .prompt-template,
+body #main .node-step .idea-form {
+  background: linear-gradient(135deg, #fff, #f8fcfe);
+  border-color: #dce7ed;
+  border-radius: 12px;
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 4px 14px #35566b08;
+}
+body
+  main
+  :is(textarea, input:not([type='checkbox']):not([type='radio']), select) {
+  background-color: #fff;
+  border-color: #cddde8;
+  box-shadow: inset 0 2px 4px #31516c05;
+}
+body :is(.button.primary, .learn-primary) {
+  background: linear-gradient(180deg, #438faa, #2d7394);
+  border: 1px solid #327a99;
+  box-shadow:
+    inset 0 1px 0 #ffffff40,
+    0 3px 7px #245e7b22;
+  transition:
+    background 0.16s ease,
+    box-shadow 0.16s ease;
+}
+body :is(.button.primary, .learn-primary):hover {
+  background: linear-gradient(180deg, #3986a3, #286a88);
+  box-shadow:
+    inset 0 1px 0 #ffffff40,
+    0 5px 12px #245e7b2b;
+}
+body #main .node-step .step-extra:not([data-step-section='actions']) {
+  border-bottom-color: #e3ebf1;
+}
+@media (max-width: 640px) {
+  body #main .node-meta {
+    gap: 10px;
+  }
+  body #main .node-meta > div {
+    padding: 0 8px;
+  }
+  body #main .node-step {
+    border-radius: 14px;
+    box-shadow: 0 5px 18px #25445e12;
+  }
+  body #main .node-step > summary {
+    padding: 16px 14px;
+    flex-wrap: wrap;
+  }
+  body #main .node-step .step-title {
+    font-size: 17px;
+  }
+  body #main .node-step .step-body {
+    padding: 0 14px 18px;
+  }
+  body #main .node-step [data-step-section='actions'] {
+    padding: 16px 12px;
+  }
+  body #main .action-detail[open] {
+    padding: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body :is(.button.primary, .learn-primary) {
+    transition: none;
+  }
+}
+/* Keep the lesson visible sooner without removing any guidance or controls. */
+body #main .node-crumb {
+  margin-bottom: 10px;
+}
+body #main .node-eyebrow {
+  margin-bottom: 8px;
+}
+body #main .node-head h1 {
+  margin-bottom: 8px;
+}
+body #main .node-gloss {
+  margin-bottom: 4px;
+}
+body #main .node-why {
+  margin-bottom: 8px;
+}
+body #main .node-why summary {
+  padding: 6px 0;
+  min-height: 36px;
+}
+body #main .node-progress-summary small {
+  flex-basis: auto;
+}
+body #main .node-action-index {
+  margin: 8px 0;
+}
+body #main .node-section-title {
+  margin: 16px 0 12px;
+  font-size: 16px;
+}
+
+/* Supporting examples share the same neutral surface family. */
+body #main .practice-guide {
+  background: linear-gradient(120deg, #ffffffd9, #f9fbfbd9);
+  border-color: #dfe9e980;
+}
+@media (max-width: 1000px) {
+  body .sidebar {
+    background: #f4f7f9;
+  }
+}
+
+/* Node introduction: orientation, title, outcome, then quiet progress. */
+body #main .node-crumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  font-size: 12px;
+  color: #718296;
+  margin-bottom: 20px;
+}
+body #main .node-crumb .node-count {
+  margin-left: auto;
+  font: inherit;
+  color: #718296;
+}
+body #main .node-head h1 {
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 750;
+  color: #18314b;
+  margin: 0 0 12px;
+  line-height: 1.25;
+}
+body #main .node-gloss {
+  font-size: 16px;
+  font-weight: 400;
+  color: #52677d;
+  line-height: 1.75;
+  margin-bottom: 22px;
+  max-width: 760px;
+}
+body #main .node-meta {
+  display: block;
+  margin: 0 0 10px;
+  padding: 18px 22px;
+  background: linear-gradient(110deg, #eaf4f2b3, #ffffff70);
+  border-radius: 12px;
+}
+body #main .node-meta > div {
+  padding: 0;
+  border: 0;
+}
+body #main .node-meta dt {
+  font-size: 13px;
+  font-weight: 500;
+  color: #567772;
+  margin-bottom: 7px;
+}
+body #main .node-meta dd {
+  font-size: 17px;
+  font-weight: 600;
+  color: #2b4658;
+  line-height: 1.65;
+}
+body #main .node-why {
+  margin: 0;
+}
+body #main .node-why summary {
+  display: list-item;
+  list-style: disclosure-closed inside;
+  font-size: 13px;
+  font-weight: 450;
+  color: #667b8c;
+  padding: 10px 0;
+  min-height: 40px;
+}
+body #main .node-why[open] > summary {
+  list-style-type: disclosure-open;
+}
+body #main .node-why p {
+  font-size: 14px;
+  color: #52677d;
+}
+body #main .node-progress-summary {
+  font-size: 12px;
+  color: #677c8f;
+  gap: 8px 18px;
+  padding: 12px 0;
+  margin: 0;
+  border-top: 1px solid #dce5eb80;
+  border-radius: 0;
+}
+body #main .node-progress-summary strong {
+  font-weight: 550;
+}
+body #main .node-progress-summary small {
+  font-size: 12px;
+  color: #718296;
+}
+body #main .node-action-index {
+  gap: 8px;
+  margin: 10px 0 18px;
+}
+body #main .node-action-index a {
+  font-size: 13px;
+  font-weight: 450;
+  background: #ffffff70;
+  border-color: #dfe8ec;
+  color: #4c647a;
+}
+body #main .node-start-title {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin: 20px 0 14px;
+  font-size: 19px;
+  font-weight: 650;
+  color: #263e55;
+}
+body #main .node-start-title span {
+  font-size: 12px;
+  color: #718296;
+  font-weight: 400;
+}
+@media (max-width: 640px) {
+  body #main .node-crumb {
+    gap: 6px 10px;
+    margin-bottom: 16px;
+  }
+  body #main .node-crumb .node-count {
+    margin-left: 0;
+  }
+  body #main .node-meta {
+    padding: 15px 16px;
+  }
+  body #main .node-meta dd {
+    font-size: 16px;
+  }
+  body #main .node-gloss {
+    font-size: 15px;
+  }
+  body #main .node-progress-summary small {
+    flex-basis: 100%;
+    line-height: 1.6;
+  }
+}

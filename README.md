@@ -89,3 +89,9 @@ Most project documentation is currently in Chinese.
 ## Development workflow
 
 Use `rouice/`-prefixed branches and follow requirements → design → implementation → testing → commit → push. Keep credentials, dependencies, generated files, and temporary work out of Git. Historical migration scripts may contain obsolete paths; do not use them to update the current site.
+
+## Maintenance and license
+
+Use `npm run quality` before building. See [contribution instructions](CONTRIBUTING.md), [engineering and release procedures](docs/engineering.md), and [security reporting](SECURITY.md).
+
+Original code and accompanying documentation are licensed under [MIT](LICENSE). Third-party materials retain their own terms; see [third-party notices](THIRD_PARTY_NOTICES.md).

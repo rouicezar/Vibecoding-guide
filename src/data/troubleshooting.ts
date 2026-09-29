@@ -1,15 +1,185 @@
-import type {Copy} from './site';
-export const troubleshooting:{title:Copy;check:Copy;yes:Copy;no:Copy}[]=[
-{title:['刷新后资料消失','Data disappears after reload'],check:['在同一身份的另一设备检查是否存在这条测试记录。','Check for the test record on another device using the same identity.'],yes:['能找到 → 核对当前页面读取、身份和缓存，再刷新复测。','Found → inspect retrieval, identity, and cache on this page, then reload and retest.'],no:['找不到 → 检查保存请求是否成功与资料存放位置；保留编号和错误。','Not found → inspect write success and storage location; preserve IDs and errors.']},
-{title:['点击没有反应','Clicking has no effect'],check:['点击后是否出现加载或失败信息？','Does clicking show a loading or error state?'],yes:['有 → 记录完整反馈，让 AI 定位请求或校验失败，再复测。','Yes → record the full response and ask AI to locate the request or validation failure; retest.'],no:['无 → 核对按钮是否禁用及是否绑定操作；接通后验证真实结果。','No → check disabled state and action wiring; verify the real result once connected.']},
-{title:['手机布局挤压','Cramped mobile layout'],check:['目标宽度是否出现整页横向滚动？','Does the target width produce page-level horizontal scrolling?'],yes:['有 → 提供宽度和截图，让 AI 找出超宽元素，再用长文字复查。','Yes → provide width and screenshot, locate the oversized element, then retest long text.'],no:['无 → 实际点按钮和填写，记录难操作的间距或遮挡，再调整。','No → try tapping and typing, record awkward spacing or obstruction, then adjust.']},
-{title:['登录后仍没有权限','Access denied after sign-in'],check:['当前身份是否按约定应该拥有这项权限？','Should the current identity have this access under the agreed rules?'],yes:['应有 → 核对会话和服务器规则，不用关闭权限检查解决。','Yes → inspect session and server rules; do not disable access checks.'],no:['不应有 → 拒绝是预期；提供返回和联系负责人路径。','No → rejection is expected; provide a return route and owner contact.']},
-{title:['看到他人的资料','Another person’s data is visible'],check:['换成无关测试身份后是否仍能读取该记录？','Can an unrelated test identity still retrieve that record?'],yes:['能 → 暂停受影响功能，修复服务器规则，再用两个身份复查。','Yes → pause the affected feature, fix server rules, and retest both identities.'],no:['不能 → 核对原身份是否是管理员或共享成员；解释实际规则。','No → check whether the original identity is an admin or shared member; explain the actual rule.']},
-{title:['断网后输入丢失','Input is lost offline'],check:['产品是否承诺离线保存？','Does the agreed scope promise offline persistence?'],yes:['承诺 → 用测试资料复现关闭重开，修复本地保存和同步冲突后复测。','Yes → reproduce reopening with test data; fix local persistence and sync conflicts, then retest.'],no:['未承诺 → 明确离线提示并保留当前输入；若要新增离线能力先回范围确认。','No → explain offline limits and preserve current input; return to scope confirmation before adding offline features.']},
-{title:['重复提交生成多条','Repeated submission creates duplicates'],check:['同一次操作重复点击是否出现不同记录编号？','Do repeated clicks on one action create different record IDs?'],yes:['是 → 让 AI 检查服务器去重和提交状态；只禁用按钮还需验证重复请求。','Yes → inspect server deduplication and submission state; disabling a button alone needs repeated-request verification.'],no:['否 → 检查是否只是列表重复显示，再核对真实保存数量。','No → inspect duplicate display and compare the actual stored count.']},
-{title:['加载一直不结束','Loading never finishes'],check:['是否在约定等待时间后显示错误和重试入口？','Does the agreed waiting period end with an error and retry route?'],yes:['有 → 保留错误与时间，检查服务状态或请求结果。','Yes → preserve error and time; inspect service status or request results.'],no:['无 → 让 AI 补超时、取消或重试反馈，再模拟失败复测。','No → add timeout, cancellation, or retry feedback and simulate failure to retest.']},
-{title:['上线后打不开','The release cannot be opened'],check:['是否连首页也无法访问？','Is even the home page unreachable?'],yes:['是 → 先核对地址、运行服务与域名状态，再处理应用。','Yes → inspect address, running service, and domain status before application code.'],no:['否 → 检查失败子页的路由、资源和请求，用正式入口复测。','No → inspect the failing route, assets, and requests; retest from the live entry.']},
-{title:['更新后旧资料无法读取','Old data fails after an update'],check:['保留的旧版本是否仍可读取测试副本？','Can the preserved old version read a test copy?'],yes:['能 → 检查资料格式变化，先验证迁移或兼容修复再更新。','Yes → inspect format changes and validate migration or compatibility before updating.'],no:['不能 → 停止覆盖，核对副本和备份完整性；证据不足保持待排查。','No → stop overwriting and inspect copy and backup integrity; insufficient evidence remains unresolved.']},
-{title:['AI 忘记要求','AI forgets requirements'],check:['让 AI 复述最新范围，是否与确认材料一致？','Ask AI to restate the latest scope. Does it match the approved material?'],yes:['一致 → 指出具体偏离结果，要求单项修正并复查。','Yes → identify the specific deviation, request a focused correction, and recheck.'],no:['不一致 → 先补最新材料与排除项，确认理解后再继续。','No → provide the latest material and exclusions, then confirm understanding before continuing.']},
-{title:['一直修不好','Repeated fixes fail'],check:['目前是否有可重复步骤和实际证据？','Are reproducible steps and observed evidence available?'],yes:['有 → 整理尝试与结果，让 AI 比较假设，每次只验证一个原因。','Yes → summarize attempts and results, compare hypotheses, and test one cause at a time.'],no:['无 → 先补设备、版本、步骤和错误原文，暂停无依据扩大修改。','No → collect device, version, steps, and exact errors; pause speculative broad changes.']}
+import type { Copy } from './site';
+export const troubleshooting: {
+  title: Copy;
+  check: Copy;
+  yes: Copy;
+  no: Copy;
+}[] = [
+  {
+    title: ['刷新后资料消失', 'Data disappears after reload'],
+    check: [
+      '在同一身份的另一设备检查是否存在这条测试记录。',
+      'Check for the test record on another device using the same identity.',
+    ],
+    yes: [
+      '能找到 → 核对当前页面读取、身份和缓存，再刷新复测。',
+      'Found → inspect retrieval, identity, and cache on this page, then reload and retest.',
+    ],
+    no: [
+      '找不到 → 检查保存请求是否成功与资料存放位置；保留编号和错误。',
+      'Not found → inspect write success and storage location; preserve IDs and errors.',
+    ],
+  },
+  {
+    title: ['点击没有反应', 'Clicking has no effect'],
+    check: [
+      '点击后是否出现加载或失败信息？',
+      'Does clicking show a loading or error state?',
+    ],
+    yes: [
+      '有 → 记录完整反馈，让 AI 定位请求或校验失败，再复测。',
+      'Yes → record the full response and ask AI to locate the request or validation failure; retest.',
+    ],
+    no: [
+      '无 → 核对按钮是否禁用及是否绑定操作；接通后验证真实结果。',
+      'No → check disabled state and action wiring; verify the real result once connected.',
+    ],
+  },
+  {
+    title: ['手机布局挤压', 'Cramped mobile layout'],
+    check: [
+      '目标宽度是否出现整页横向滚动？',
+      'Does the target width produce page-level horizontal scrolling?',
+    ],
+    yes: [
+      '有 → 提供宽度和截图，让 AI 找出超宽元素，再用长文字复查。',
+      'Yes → provide width and screenshot, locate the oversized element, then retest long text.',
+    ],
+    no: [
+      '无 → 实际点按钮和填写，记录难操作的间距或遮挡，再调整。',
+      'No → try tapping and typing, record awkward spacing or obstruction, then adjust.',
+    ],
+  },
+  {
+    title: ['登录后仍没有权限', 'Access denied after sign-in'],
+    check: [
+      '当前身份是否按约定应该拥有这项权限？',
+      'Should the current identity have this access under the agreed rules?',
+    ],
+    yes: [
+      '应有 → 核对会话和服务器规则，不用关闭权限检查解决。',
+      'Yes → inspect session and server rules; do not disable access checks.',
+    ],
+    no: [
+      '不应有 → 拒绝是预期；提供返回和联系负责人路径。',
+      'No → rejection is expected; provide a return route and owner contact.',
+    ],
+  },
+  {
+    title: ['看到他人的资料', 'Another person’s data is visible'],
+    check: [
+      '换成无关测试身份后是否仍能读取该记录？',
+      'Can an unrelated test identity still retrieve that record?',
+    ],
+    yes: [
+      '能 → 暂停受影响功能，修复服务器规则，再用两个身份复查。',
+      'Yes → pause the affected feature, fix server rules, and retest both identities.',
+    ],
+    no: [
+      '不能 → 核对原身份是否是管理员或共享成员；解释实际规则。',
+      'No → check whether the original identity is an admin or shared member; explain the actual rule.',
+    ],
+  },
+  {
+    title: ['断网后输入丢失', 'Input is lost offline'],
+    check: [
+      '产品是否承诺离线保存？',
+      'Does the agreed scope promise offline persistence?',
+    ],
+    yes: [
+      '承诺 → 用测试资料复现关闭重开，修复本地保存和同步冲突后复测。',
+      'Yes → reproduce reopening with test data; fix local persistence and sync conflicts, then retest.',
+    ],
+    no: [
+      '未承诺 → 明确离线提示并保留当前输入；若要新增离线能力先回范围确认。',
+      'No → explain offline limits and preserve current input; return to scope confirmation before adding offline features.',
+    ],
+  },
+  {
+    title: ['重复提交生成多条', 'Repeated submission creates duplicates'],
+    check: [
+      '同一次操作重复点击是否出现不同记录编号？',
+      'Do repeated clicks on one action create different record IDs?',
+    ],
+    yes: [
+      '是 → 让 AI 检查服务器去重和提交状态；只禁用按钮还需验证重复请求。',
+      'Yes → inspect server deduplication and submission state; disabling a button alone needs repeated-request verification.',
+    ],
+    no: [
+      '否 → 检查是否只是列表重复显示，再核对真实保存数量。',
+      'No → inspect duplicate display and compare the actual stored count.',
+    ],
+  },
+  {
+    title: ['加载一直不结束', 'Loading never finishes'],
+    check: [
+      '是否在约定等待时间后显示错误和重试入口？',
+      'Does the agreed waiting period end with an error and retry route?',
+    ],
+    yes: [
+      '有 → 保留错误与时间，检查服务状态或请求结果。',
+      'Yes → preserve error and time; inspect service status or request results.',
+    ],
+    no: [
+      '无 → 让 AI 补超时、取消或重试反馈，再模拟失败复测。',
+      'No → add timeout, cancellation, or retry feedback and simulate failure to retest.',
+    ],
+  },
+  {
+    title: ['上线后打不开', 'The release cannot be opened'],
+    check: ['是否连首页也无法访问？', 'Is even the home page unreachable?'],
+    yes: [
+      '是 → 先核对地址、运行服务与域名状态，再处理应用。',
+      'Yes → inspect address, running service, and domain status before application code.',
+    ],
+    no: [
+      '否 → 检查失败子页的路由、资源和请求，用正式入口复测。',
+      'No → inspect the failing route, assets, and requests; retest from the live entry.',
+    ],
+  },
+  {
+    title: ['更新后旧资料无法读取', 'Old data fails after an update'],
+    check: [
+      '保留的旧版本是否仍可读取测试副本？',
+      'Can the preserved old version read a test copy?',
+    ],
+    yes: [
+      '能 → 检查资料格式变化，先验证迁移或兼容修复再更新。',
+      'Yes → inspect format changes and validate migration or compatibility before updating.',
+    ],
+    no: [
+      '不能 → 停止覆盖，核对副本和备份完整性；证据不足保持待排查。',
+      'No → stop overwriting and inspect copy and backup integrity; insufficient evidence remains unresolved.',
+    ],
+  },
+  {
+    title: ['AI 忘记要求', 'AI forgets requirements'],
+    check: [
+      '让 AI 复述最新范围，是否与确认材料一致？',
+      'Ask AI to restate the latest scope. Does it match the approved material?',
+    ],
+    yes: [
+      '一致 → 指出具体偏离结果，要求单项修正并复查。',
+      'Yes → identify the specific deviation, request a focused correction, and recheck.',
+    ],
+    no: [
+      '不一致 → 先补最新材料与排除项，确认理解后再继续。',
+      'No → provide the latest material and exclusions, then confirm understanding before continuing.',
+    ],
+  },
+  {
+    title: ['一直修不好', 'Repeated fixes fail'],
+    check: [
+      '目前是否有可重复步骤和实际证据？',
+      'Are reproducible steps and observed evidence available?',
+    ],
+    yes: [
+      '有 → 整理尝试与结果，让 AI 比较假设，每次只验证一个原因。',
+      'Yes → summarize attempts and results, compare hypotheses, and test one cause at a time.',
+    ],
+    no: [
+      '无 → 先补设备、版本、步骤和错误原文，暂停无依据扩大修改。',
+      'No → collect device, version, steps, and exact errors; pause speculative broad changes.',
+    ],
+  },
 ];

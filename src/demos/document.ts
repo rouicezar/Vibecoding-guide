@@ -3,11 +3,14 @@ import advanced from './advanced.js?url';
 import improvements from './improvements.js?url';
 import styles from './legacy.css?url';
 import skin from './skin.css?url';
-export function demoDocument(entry:{id:string;demo:string;opts:object;en:string},locale:string){
- const json=JSON.stringify(entry).replace(/</g,'\\u003c');
- return `<!doctype html><html lang="${locale}" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src data: blob:; connect-src 'none'; form-action 'none'"><link rel="stylesheet" href="${styles}"><link rel="stylesheet" href="${skin}"></head><body><main id="example" class="demo"></main><button id="restart" type="button">${locale==='en'?'Restart example':'重新开始示例'}</button><p id="runtime-status" role="status"></p><script src="${legacy}"></script><script src="${improvements}"></script><script src="${advanced}"></script><script>
+export function demoDocument(
+  entry: { id: string; demo: string; opts: object; en: string },
+  locale: string,
+) {
+  const json = JSON.stringify(entry).replace(/</g, '\\u003c');
+  return `<!doctype html><html lang="${locale}" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src data: blob:; connect-src 'none'; form-action 'none'"><link rel="stylesheet" href="${styles}"><link rel="stylesheet" href="${skin}"></head><body><main id="example" class="demo"></main><button id="restart" type="button">${locale === 'en' ? 'Restart example' : '重新开始示例'}</button><p id="runtime-status" role="status"></p><script src="${legacy}"></script><script src="${improvements}"></script><script src="${advanced}"></script><script>
 const entry=${json};const host=document.getElementById('example');
-window.addEventListener('error',()=>{document.getElementById('runtime-status').textContent=${JSON.stringify(locale==='en'?'Example failed. Reload to retry.':'演示出错，请重新加载。')};document.body.dataset.state='error';});
+window.addEventListener('error',()=>{document.getElementById('runtime-status').textContent=${JSON.stringify(locale === 'en' ? 'Example failed. Reload to retry.' : '演示出错，请重新加载。')};document.body.dataset.state='error';});
 function render(){clear(host);if(!advancedDemo(host,entry)&&!enhancedDemo(host,entry))mountDemo(host,entry);document.body.dataset.state='ready';}
 render();document.getElementById('restart').onclick=()=>location.reload();
 // Expose genuinely clickable non-button examples to keyboard users.

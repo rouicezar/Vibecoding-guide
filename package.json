@@ -13,11 +13,14 @@
     "preview": "astro preview --host 127.0.0.1",
     "verify": "node scripts/verify-pages.mjs && node scripts/verify-nodes.mjs && node scripts/verify-stacks.mjs && node scripts/extract-dictionary.mjs --check && node scripts/verify-learning.mjs && node scripts/verify-navigation.mjs && node scripts/verify-step-prompts.mjs && node scripts/verify-library.mjs && node scripts/verify-demo-library.mjs && node scripts/verify-glossary.mjs && node scripts/verify-learning-handoffs.mjs && node scripts/verify-explore.mjs && node scripts/verify-learning-experience.mjs && node scripts/verify-fullstack-practice.mjs && node scripts/verify-guided-actions.mjs && node scripts/verify-teaching-chain.mjs",
     "verify:unit": "node scripts/verify-project-storage.mjs && node scripts/verify-disclosures.mjs",
-    "format": "prettier --write \"src/scripts/**/*.ts\" \"src/data/learning*.ts\" src/data/micro-actions.ts \"src/styles/*.css\" src/components/NodeStep.astro src/components/ProjectDraft.astro src/layouts/Shell.astro \"src/pages/**/*.astro\" \"scripts/*.mjs\" \"tests/**/*.mjs\" *.mjs .prettierrc.json \".github/workflows/*.yml\"",
-    "format:check": "prettier --check \"src/scripts/**/*.ts\" \"src/data/learning*.ts\" src/data/micro-actions.ts \"src/styles/*.css\" src/components/NodeStep.astro src/components/ProjectDraft.astro src/layouts/Shell.astro \"src/pages/**/*.astro\" \"scripts/*.mjs\" \"tests/**/*.mjs\" *.mjs .prettierrc.json \".github/workflows/*.yml\"",
+    "format": "prettier --write \"src/**/*.{astro,ts,css}\" \"scripts/*.mjs\" \"tests/**/*.mjs\" *.mjs .prettierrc.json \".github/**/*.yml\"",
+    "format:check": "prettier --check \"src/**/*.{astro,ts,css}\" \"scripts/*.mjs\" \"tests/**/*.mjs\" *.mjs .prettierrc.json \".github/**/*.yml\"",
     "lint": "eslint .",
     "build:pages": "SITE_BASE=/Vibecoding-guide astro build --outDir dist-pages && node scripts/prepare-pages.mjs dist-pages && pagefind --site dist-pages && node scripts/verify-pages-base.mjs dist-pages",
-    "test:browser": "playwright test"
+    "test:browser": "playwright test",
+    "audit:dependencies": "npm audit --registry=https://registry.npmjs.org --audit-level=high",
+    "verify:engineering": "node scripts/verify-engineering.mjs",
+    "quality": "npm run format:check && npm run lint && npm run check && npm run verify:engineering && npm run verify:unit"
   },
   "dependencies": {
     "@lucide/astro": "1.47.0",
@@ -33,5 +36,6 @@
     "prettier-plugin-astro": "1.1.0",
     "typescript": "6.0.3",
     "typescript-eslint": "8.71.0"
-  }
+  },
+  "license": "MIT"
 }

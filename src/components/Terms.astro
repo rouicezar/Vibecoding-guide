@@ -1,35 +1,229 @@
 ---
-import {glossary,termGroups,starterIds,termComparisons} from '../data/glossary';
-import {t,url,type Locale} from '../data/site';
+import {
+  glossary,
+  termGroups,
+  starterIds,
+  termComparisons,
+} from '../data/glossary';
+import { t, url, type Locale } from '../data/site';
 import Icon from './Icon.astro';
-import {routeNodes} from '../data/nodes';
-import {termNodeIds} from '../data/node-resources';
+import { routeNodes } from '../data/nodes';
+import { termNodeIds } from '../data/node-resources';
 import ResourceAdvice from './ResourceAdvice.astro';
 import '../styles/glossary.css';
-const {locale}=Astro.props as {locale:Locale};
+const { locale } = Astro.props as { locale: Locale };
 ---
+
 <div class="glossary" data-glossary data-locale={locale}>
-<header class="glossary-header"><p class="eyebrow">{t(['读懂术语，再回到项目','UNDERSTAND IT. USE IT.'],locale)}</p><h1>{t(['把专业术语，讲成明白话','Technical terms, in everyday language'],locale)}</h1><p>{t(['先看一句解释，再看生活例子和图解。不必背完，遇到哪个词，就查哪个词。','Start with one sentence, then an everyday example and a diagram. Look up what is needed; no memorization required.'],locale)}</p><span>{glossary.length} {t(['个词条','entries'],locale)} · {termGroups.length} {t(['类开发场景','categories'],locale)}</span></header>
-<form class="term-filters" role="search" aria-label={t(['搜索术语','Search terms'],locale)}>
- <label class="term-query" for="term-search"><span>{t(['输入中文、英文或缩写','Chinese, English, or abbreviation'],locale)}</span><input id="term-search" name="q" type="search" placeholder="大模型 / Skill / API Key / Harness" autocomplete="off"/></label>
- <label for="term-node"><span>{t(['按当前节点查','Choose a milestone'],locale)}</span><select id="term-node" name="node"><option value="">{t(['全部节点','All milestones'],locale)}</option>{routeNodes.map(n=><option value={n.id}>{String(n.order).padStart(2,'0')}. {t(n.title,locale)}</option>)}</select></label>
- <label for="term-category"><span>{t(['按场景查','Choose a category'],locale)}</span><select id="term-category" name="category"><option value="">{t(['全部分类','All categories'],locale)}</option>{termGroups.map(g=><option value={g.id}>{t(g.name,locale)}</option>)}</select></label>
- <label class="term-priority"><input type="checkbox" id="term-priority"/>{t(['只看新手常用','Beginner essentials'],locale)}</label><button type="reset">{t(['清除筛选','Clear filters'],locale)}</button>
-</form>
-<a class="term-node-return" data-term-node-return hidden></a>
-<section class="term-starters" aria-labelledby="starter-heading"><h2 id="starter-heading">{t(['第一次遇到？先从这些词开始','New here? Start with these terms'],locale)}</h2><div>{starterIds.map(id=>{const term=glossary.find(x=>x.id===id)!;return <a href={url(locale,`terms/${id}`)}>{locale==='zh-cn'?`${term.name[0]} · ${term.name[1].split(' — ')[0]}`:term.name[1]}<Icon name="arrow" size={14}/></a>})}</div></section>
-<div class="term-results-heading"><h2>{t(['按分类展开','Browse by category'],locale)}</h2><p id="term-count" role="status" aria-live="polite">{glossary.length} {t(['个词条，按需展开','entries; open a category'],locale)}</p></div>
-<p id="term-empty" hidden>{t(['没有找到。试试较短的词、英文名称，或清除分类与新手筛选。','No match. Try a shorter word, an English name, or clear the filters.'],locale)}</p>
-<div class="term-categories">{termGroups.map((group,index)=>{
- const entries=glossary.filter(x=>x.group===group.id).sort((a,b)=>routeNodes.findIndex(n=>n.id===termNodeIds[a.id][0])-routeNodes.findIndex(n=>n.id===termNodeIds[b.id][0]));
- return <details class="term-group" data-term-group={group.id}><summary><span class="group-number">{String(index+1).padStart(2,'0')}</span><span><strong>{t(group.name,locale)}</strong><small data-group-count>{entries.length} {t(['个词条','entries'],locale)}</small></span><Icon name="chevron" size={19}/></summary><div class="group-content"><p class="group-when">{t(group.where,locale)}</p><div class="term-index">{entries.map(term=><a id={term.id} href={url(locale,`terms/${term.id}`)} data-term-id={term.id} data-term-nodes={termNodeIds[term.id].join(' ')} data-priority={String(term.priority)} data-name={[...term.name,...term.aliases].join(' ')} data-term={[...term.name,...term.aliases,...term.definition].join(' ')}><span><strong>{t(term.name,locale)}</strong>{locale==='zh-cn'&&<small>{term.name[1]}</small>}</span><Icon name="arrow" size={16}/></a>)}</div></div></details>
-})}</div>
-<button id="term-more" hidden>{t(['再显示 40 项','Show 40 more'],locale)}</button>
-<details class="glossary-comparisons"><summary><Icon name="layers" size={22}/><strong>{t(['这些词看起来很像，到底有什么区别？','Similar words, different meanings'],locale)}</strong><Icon name="chevron" size={18}/></summary><div>{termComparisons.map(c=><details><summary>{t(c.title,locale)}<Icon name="chevron" size={16}/></summary><p>{t(c.explanation,locale)}</p><nav aria-label={t(c.title,locale)}>{c.ids.map(id=><a href={url(locale,`terms/${id}`)}>{t(glossary.find(x=>x.id===id)!.name,locale)} →</a>)}</nav></details>)}</div></details>
-<ResourceAdvice locale={locale} path="terms"/>
-<p class="glossary-note">{t(['生活类比帮助理解，不能替代真实规则。每个词条都注明开发场景、注意点和进一步阅读入口。','Analogies help understanding but do not replace actual rules. Each entry includes context, limits, and further reading.'],locale)}</p>
+  <header class="glossary-header">
+    <p class="eyebrow">
+      {t(['读懂术语，再回到项目', 'UNDERSTAND IT. USE IT.'], locale)}
+    </p>
+    <h1>
+      {t(
+        ['把专业术语，讲成明白话', 'Technical terms, in everyday language'],
+        locale,
+      )}
+    </h1>
+    <p>
+      {t(
+        [
+          '先看一句解释，再看生活例子和图解。不必背完，遇到哪个词，就查哪个词。',
+          'Start with one sentence, then an everyday example and a diagram. Look up what is needed; no memorization required.',
+        ],
+        locale,
+      )}
+    </p>
+    <span>
+      {glossary.length} {t(['个词条', 'entries'], locale)} · {termGroups.length}{' '}
+      {t(['类开发场景', 'categories'], locale)}
+    </span>
+  </header>
+  <form
+    class="term-filters"
+    role="search"
+    aria-label={t(['搜索术语', 'Search terms'], locale)}
+  >
+    <label class="term-query" for="term-search">
+      <span>
+        {t(
+          ['输入中文、英文或缩写', 'Chinese, English, or abbreviation'],
+          locale,
+        )}
+      </span>
+      <input
+        id="term-search"
+        name="q"
+        type="search"
+        placeholder="大模型 / Skill / API Key / Harness"
+        autocomplete="off"
+      />
+    </label>
+    <label for="term-node">
+      <span>{t(['按当前节点查', 'Choose a milestone'], locale)}</span>
+      <select id="term-node" name="node">
+        <option value="">{t(['全部节点', 'All milestones'], locale)}</option>
+        {routeNodes.map((n) => (
+          <option value={n.id}>
+            {String(n.order).padStart(2, '0')}. {t(n.title, locale)}
+          </option>
+        ))}
+      </select>
+    </label>
+    <label for="term-category">
+      <span>{t(['按场景查', 'Choose a category'], locale)}</span>
+      <select id="term-category" name="category">
+        <option value="">{t(['全部分类', 'All categories'], locale)}</option>
+        {termGroups.map((g) => (
+          <option value={g.id}>{t(g.name, locale)}</option>
+        ))}
+      </select>
+    </label>
+    <label class="term-priority">
+      <input type="checkbox" id="term-priority" />
+      {t(['只看新手常用', 'Beginner essentials'], locale)}
+    </label>
+    <button type="reset">{t(['清除筛选', 'Clear filters'], locale)}</button>
+  </form>
+  <a class="term-node-return" data-term-node-return hidden></a>
+  <section class="term-starters" aria-labelledby="starter-heading">
+    <h2 id="starter-heading">
+      {t(
+        ['第一次遇到？先从这些词开始', 'New here? Start with these terms'],
+        locale,
+      )}
+    </h2>
+    <div>
+      {starterIds.map((id) => {
+        const term = glossary.find((x) => x.id === id)!;
+        return (
+          <a href={url(locale, `terms/${id}`)}>
+            {locale === 'zh-cn'
+              ? `${term.name[0]} · ${term.name[1].split(' — ')[0]}`
+              : term.name[1]}
+            <Icon name="arrow" size={14} />
+          </a>
+        );
+      })}
+    </div>
+  </section>
+  <div class="term-results-heading">
+    <h2>{t(['按分类展开', 'Browse by category'], locale)}</h2>
+    <p id="term-count" role="status" aria-live="polite">
+      {glossary.length}{' '}
+      {t(['个词条，按需展开', 'entries; open a category'], locale)}
+    </p>
+  </div>
+  <p id="term-empty" hidden>
+    {t(
+      [
+        '没有找到。试试较短的词、英文名称，或清除分类与新手筛选。',
+        'No match. Try a shorter word, an English name, or clear the filters.',
+      ],
+      locale,
+    )}
+  </p>
+  <div class="term-categories">
+    {termGroups.map((group, index) => {
+      const entries = glossary
+        .filter((x) => x.group === group.id)
+        .sort(
+          (a, b) =>
+            routeNodes.findIndex((n) => n.id === termNodeIds[a.id][0]) -
+            routeNodes.findIndex((n) => n.id === termNodeIds[b.id][0]),
+        );
+      return (
+        <details class="term-group" data-term-group={group.id}>
+          <summary>
+            <span class="group-number">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <span>
+              <strong>{t(group.name, locale)}</strong>
+              <small data-group-count>
+                {entries.length} {t(['个词条', 'entries'], locale)}
+              </small>
+            </span>
+            <Icon name="chevron" size={19} />
+          </summary>
+          <div class="group-content">
+            <p class="group-when">{t(group.where, locale)}</p>
+            <div class="term-index">
+              {entries.map((term) => (
+                <a
+                  id={term.id}
+                  href={url(locale, `terms/${term.id}`)}
+                  data-term-id={term.id}
+                  data-term-nodes={termNodeIds[term.id].join(' ')}
+                  data-priority={String(term.priority)}
+                  data-name={[...term.name, ...term.aliases].join(' ')}
+                  data-term={[
+                    ...term.name,
+                    ...term.aliases,
+                    ...term.definition,
+                  ].join(' ')}
+                >
+                  <span>
+                    <strong>{t(term.name, locale)}</strong>
+                    {locale === 'zh-cn' && <small>{term.name[1]}</small>}
+                  </span>
+                  <Icon name="arrow" size={16} />
+                </a>
+              ))}
+            </div>
+          </div>
+        </details>
+      );
+    })}
+  </div>
+  <button id="term-more" hidden>
+    {t(['再显示 40 项', 'Show 40 more'], locale)}
+  </button>
+  <details class="glossary-comparisons">
+    <summary>
+      <Icon name="layers" size={22} />
+      <strong>
+        {t(
+          [
+            '这些词看起来很像，到底有什么区别？',
+            'Similar words, different meanings',
+          ],
+          locale,
+        )}
+      </strong>
+      <Icon name="chevron" size={18} />
+    </summary>
+    <div>
+      {termComparisons.map((c) => (
+        <details>
+          <summary>
+            {t(c.title, locale)}
+            <Icon name="chevron" size={16} />
+          </summary>
+          <p>{t(c.explanation, locale)}</p>
+          <nav aria-label={t(c.title, locale)}>
+            {c.ids.map((id) => (
+              <a href={url(locale, `terms/${id}`)}>
+                {t(glossary.find((x) => x.id === id)!.name, locale)} →
+              </a>
+            ))}
+          </nav>
+        </details>
+      ))}
+    </div>
+  </details>
+  <ResourceAdvice locale={locale} path="terms" />
+  <p class="glossary-note">
+    {t(
+      [
+        '生活类比帮助理解，不能替代真实规则。每个词条都注明开发场景、注意点和进一步阅读入口。',
+        'Analogies help understanding but do not replace actual rules. Each entry includes context, limits, and further reading.',
+      ],
+      locale,
+    )}
+  </p>
 </div>
 <script>
-import {initGlossary} from '../scripts/glossary';
-initGlossary();
+  import { initGlossary } from '../scripts/glossary';
+  initGlossary();
 </script>

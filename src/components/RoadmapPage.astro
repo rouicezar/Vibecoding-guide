@@ -1,8 +1,26 @@
 ---
 import '../styles/learning.css';
 import ProjectRoadmap from './ProjectRoadmap.astro';
-import {t,type Locale} from '../data/site';
-const {locale}=Astro.props as {locale:Locale};
+import { t, type Locale } from '../data/site';
+const { locale } = Astro.props as { locale: Locale };
 ---
-<header class="page-intro"><span class="eyebrow">VIBE CODING ROADMAP</span><h1>{t(['从想法到作品，完整路线图','The complete path from idea to product'],locale)}</h1><p class="lead">{t(['6 个阶段、18 个节点、31 个动作。进入当前节点，按顺序完成操作、核对结果，再继续下一节点。','6 stages, 18 milestones and 31 actions. Open the current milestone, follow its actions, check the result, and continue.'],locale)}</p></header>
-<ProjectRoadmap locale={locale}/>
+
+<header class="page-intro">
+  <span class="eyebrow">VIBE CODING ROADMAP</span>
+  <h1>
+    {t(
+      ['从想法到作品，完整路线图', 'The complete path from idea to product'],
+      locale,
+    )}
+  </h1>
+  <p class="lead">
+    {t(
+      [
+        '6 个阶段、18 个节点、31 个动作。进入当前节点，按顺序完成操作、核对结果，再继续下一节点。',
+        '6 stages, 18 milestones and 31 actions. Open the current milestone, follow its actions, check the result, and continue.',
+      ],
+      locale,
+    )}
+  </p>
+</header>
+<ProjectRoadmap locale={locale} />

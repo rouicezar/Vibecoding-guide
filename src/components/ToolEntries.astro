@@ -1,48 +1,147 @@
 ---
-import {codingTools} from '../data/tools';
-import {t,type Locale} from '../data/site';
+import { codingTools } from '../data/tools';
+import { t, type Locale } from '../data/site';
 /** 工具官方下载与安装入口：数据来自 tools.ts，与 /tools 比较页同一来源。 */
-const {locale}=Astro.props as {locale:Locale};
-const label=(zh:string,en:string)=>t([zh,en] as const,locale);
-const surfaces=[
-  {id:'desktop',title:['桌面应用（零基础建议先从这里选）','Desktop apps (a good first pick for beginners)']},
-  {id:'ide',title:['编辑器（IDE）','Editors (IDE)']},
-  {id:'cli',title:['命令行工具','Command-line tools']},
-  {id:'web',title:['网页工作区（免安装）','Web workspaces (no installation)']},
+const { locale } = Astro.props as { locale: Locale };
+const label = (zh: string, en: string) => t([zh, en] as const, locale);
+const surfaces = [
+  {
+    id: 'desktop',
+    title: [
+      '桌面应用（零基础建议先从这里选）',
+      'Desktop apps (a good first pick for beginners)',
+    ],
+  },
+  { id: 'ide', title: ['编辑器（IDE）', 'Editors (IDE)'] },
+  { id: 'cli', title: ['命令行工具', 'Command-line tools'] },
+  {
+    id: 'web',
+    title: ['网页工作区（免安装）', 'Web workspaces (no installation)'],
+  },
 ];
-const groups=surfaces.map(surface=>({...surface,tools:codingTools.filter(tool=>tool.surfaces[0]===surface.id)})).filter(group=>group.tools.length>0);
+const groups = surfaces
+  .map((surface) => ({
+    ...surface,
+    tools: codingTools.filter((tool) => tool.surfaces[0] === surface.id),
+  }))
+  .filter((group) => group.tools.length > 0);
 ---
+
 <details class="tool-entries">
-  <summary>{label(`官方下载与安装入口 · 共 ${codingTools.length} 个工具`,'Official download and install entries · '+codingTools.length+' tools')}</summary>
-  <p class="entries-note">{label('点“官方入口”到对应工具的官方网站，按你的电脑系统下载；费用、系统要求和优惠以官方页面当时显示为准，不要用旧教程或别人的截图代替。安装和登录遇到需要付费、验证或接受条款的步骤，由你本人决定。','Open “Official site” on the tool’s own website and download the build for your computer. Check current price, system requirements and offers on the official page rather than old tutorials or someone else’s screenshot. Decide personally when a step requires payment, verification or accepting terms.')}</p>
-  {groups.map(group=><section class="entries-group">
-    <h4>{label(group.title[0],group.title[1])}</h4>
-    <ul>
-      {group.tools.map(tool=><li>
-        <p class="entries-name"><strong>{tool.name}</strong><span>{t(tool.forms,locale)}</span></p>
-        <p class="entries-start">{t(tool.start,locale)}</p>
-        <p class="entries-links">
-          <a href={tool.home} target="_blank" rel="noopener">{label('官方入口 ↗','Official site ↗')}</a>
-          {tool.sources.map(source=><a href={source.url} target="_blank" rel="noopener">{source.label} ↗</a>)}
-        </p>
-        <p class="entries-limit">{t(tool.limit,locale)}</p>
-      </li>)}
-    </ul>
-  </section>)}
+  <summary>
+    {label(
+      `官方下载与安装入口 · 共 ${codingTools.length} 个工具`,
+      'Official download and install entries · ' +
+        codingTools.length +
+        ' tools',
+    )}
+  </summary>
+  <p class="entries-note">
+    {label(
+      '点“官方入口”到对应工具的官方网站，按你的电脑系统下载；费用、系统要求和优惠以官方页面当时显示为准，不要用旧教程或别人的截图代替。安装和登录遇到需要付费、验证或接受条款的步骤，由你本人决定。',
+      'Open “Official site” on the tool’s own website and download the build for your computer. Check current price, system requirements and offers on the official page rather than old tutorials or someone else’s screenshot. Decide personally when a step requires payment, verification or accepting terms.',
+    )}
+  </p>
+  {groups.map((group) => (
+    <section class="entries-group">
+      <h4>{label(group.title[0], group.title[1])}</h4>
+      <ul>
+        {group.tools.map((tool) => (
+          <li>
+            <p class="entries-name">
+              <strong>{tool.name}</strong>
+              <span>{t(tool.forms, locale)}</span>
+            </p>
+            <p class="entries-start">{t(tool.start, locale)}</p>
+            <p class="entries-links">
+              <a href={tool.home} target="_blank" rel="noopener">
+                {label('官方入口 ↗', 'Official site ↗')}
+              </a>
+              {tool.sources.map((source) => (
+                <a href={source.url} target="_blank" rel="noopener">
+                  {source.label} ↗
+                </a>
+              ))}
+            </p>
+            <p class="entries-limit">{t(tool.limit, locale)}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
 </details>
 <style>
-.tool-entries{border:1px solid #dfe6ee;border-radius:10px;background:#fbfcfe;padding:14px 16px;margin:14px 0}
-.tool-entries>summary{cursor:pointer;font-weight:650;font-size:15px;color:#1c2f47}
-.entries-note{font-size:13px;color:#64748b;line-height:1.75;margin:12px 0 6px}
-.entries-group{margin-top:18px}
-.entries-group h4{font-size:14px;color:#326f9c;margin:0 0 8px}
-.entries-group ul{list-style:none;padding:0;margin:0}
-.entries-group li{border-top:1px solid #eef2f6;padding:12px 0}
-.entries-name{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;margin:0 0 5px}
-.entries-name strong{font-size:14px;color:#1c2f47}
-.entries-name span{font-size:12px;color:#7b8ea5}
-.entries-start{font-size:13px;color:#3d5470;line-height:1.7;margin:0 0 6px}
-.entries-links{display:flex;flex-wrap:wrap;gap:6px 14px;margin:0 0 5px;font-size:12px}
-.entries-links a{color:#326f9c}
-.entries-limit{font-size:12px;color:#94a3b8;line-height:1.65;margin:0}
+  .tool-entries {
+    border: 1px solid #dfe6ee;
+    border-radius: 10px;
+    background: #fbfcfe;
+    padding: 14px 16px;
+    margin: 14px 0;
+  }
+  .tool-entries > summary {
+    cursor: pointer;
+    font-weight: 650;
+    font-size: 15px;
+    color: #1c2f47;
+  }
+  .entries-note {
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.75;
+    margin: 12px 0 6px;
+  }
+  .entries-group {
+    margin-top: 18px;
+  }
+  .entries-group h4 {
+    font-size: 14px;
+    color: #326f9c;
+    margin: 0 0 8px;
+  }
+  .entries-group ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .entries-group li {
+    border-top: 1px solid #eef2f6;
+    padding: 12px 0;
+  }
+  .entries-name {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: baseline;
+    margin: 0 0 5px;
+  }
+  .entries-name strong {
+    font-size: 14px;
+    color: #1c2f47;
+  }
+  .entries-name span {
+    font-size: 12px;
+    color: #7b8ea5;
+  }
+  .entries-start {
+    font-size: 13px;
+    color: #3d5470;
+    line-height: 1.7;
+    margin: 0 0 6px;
+  }
+  .entries-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin: 0 0 5px;
+    font-size: 12px;
+  }
+  .entries-links a {
+    color: #326f9c;
+  }
+  .entries-limit {
+    font-size: 12px;
+    color: #94a3b8;
+    line-height: 1.65;
+    margin: 0;
+  }
 </style>
