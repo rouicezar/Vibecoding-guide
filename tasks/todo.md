@@ -589,3 +589,10 @@ P26验证：check零错误/警告/提示，build与verify通过；中英产物�
 - check（0 错误、0 警告、8 条既有提示）、build、全部 13 条 verify 命令、2383 个 Pages HTML 子路径检查及 diff 检查通过；浏览器验证完成／撤销、修复恢复、失败阻拦、双语筛选和 390px 无横向溢出。
 - 需求设计：`docs/learning-experience-plan.md`；实施证据：`docs/reviews/2026-09-29-learning-experience/实施记录.md`。本地提交，未推送发布，原有未提交审计文件保留。
 - 下一步：审阅本地体验；获得发布指令后推送并核对公开站点。
+
+
+## P51 推送与托管更新（2026-09-29）
+
+- 用户已授权提交、推送与更新托管。`cbedf9d`、`2abbf20` 已快进推送至 `origin/main`，未包含原有未提交审计资料。
+- GitHub Pages 工作流自动执行类型检查、构建、13 项验证、Pages 子路径构建及部署。首次发布任务： https://github.com/rouicezar/Vibecoding-guide/actions/runs/36507457762 。
+- 本记录同步后以最新工作流结果及线上页面核验为最终发布证据，结果在本次交付说明中报告。
