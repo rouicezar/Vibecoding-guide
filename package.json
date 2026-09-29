@@ -11,7 +11,7 @@
     "check": "astro check",
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview --host 127.0.0.1",
-    "verify": "node scripts/verify-pages.mjs && node scripts/verify-nodes.mjs && node scripts/verify-stacks.mjs && node scripts/extract-dictionary.mjs --check && node scripts/verify-learning.mjs && node scripts/verify-navigation.mjs && node scripts/verify-step-prompts.mjs && node scripts/verify-library.mjs && node scripts/verify-demo-library.mjs && node scripts/verify-glossary.mjs && node scripts/verify-learning-handoffs.mjs && node scripts/verify-explore.mjs && node scripts/verify-learning-experience.mjs"
+    "verify": "node scripts/verify-pages.mjs && node scripts/verify-nodes.mjs && node scripts/verify-stacks.mjs && node scripts/extract-dictionary.mjs --check && node scripts/verify-learning.mjs && node scripts/verify-navigation.mjs && node scripts/verify-step-prompts.mjs && node scripts/verify-library.mjs && node scripts/verify-demo-library.mjs && node scripts/verify-glossary.mjs && node scripts/verify-learning-handoffs.mjs && node scripts/verify-explore.mjs && node scripts/verify-learning-experience.mjs && node scripts/verify-fullstack-practice.mjs"
   },
   "dependencies": {
     "@lucide/astro": "1.47.0",

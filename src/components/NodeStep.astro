@@ -1,5 +1,7 @@
 ---
 import Icon from './Icon.astro';
+import FullstackPractice from './FullstackPractice.astro';
+import fullstackRows from '../data/fullstack-practice.json';
 import {microActions} from '../data/micro-actions';
 import PromptTemplate from './PromptTemplate.astro';
 import StepVisual from './StepVisual.astro';
@@ -31,6 +33,7 @@ const purpose = lesson.understanding?.why ?? support.answer;
 const contract = fileContracts[lesson.id];
 const answer = referenceAnswers[lesson.id];
 const optional = optionalSteps[stepId];
+const practice = fullstackRows.find(row => row.id === stepId)!;
 const heading = (n: number, zh: string, en: string) =>
   `<h3 class="slot-title"><span class="slot-number">${String(n).padStart(2, '0')}</span>${t([zh, en] as const, locale)}</h3>`;
 /** 跨节点引用另一步骤时用完整地址，只有同节点内的步骤才用页内锚点。 */
@@ -88,6 +91,7 @@ const stepHref = (id: string) => `${url(locale, `node/${nodeForStep(id)}`)}#${id
       <p class="step-location"><Icon name="location" size={16} />{t(lesson.where, locale)}</p>
       <ol class="lesson-actions">{lesson.actions.map(action => <li>{t(action, locale)}</li>)}</ol>
       {lesson.id === 'tool' && <ToolEntries locale={locale} />}
+      <FullstackPractice id={stepId} locale={locale} />
     </div>
 
     <!-- 槽位 04 · 逐项跟着做 -->
@@ -134,6 +138,15 @@ const stepHref = (id: string) => `${url(locale, `node/${nodeForStep(id)}`)}#${id
         : lesson.id === 'idea'
           ? <IdeaDraft locale={locale} />
           : <p>{label('这一步不需要发给 AI：先在自己的笔记里填写。', 'This step does not need a prompt. Write it in your own notes.')}</p>}
+      <details class="learn-details" data-fullstack-prompt={stepId}>
+        <summary>{label('跟练个人学习记录：本步怎么填写／补充提示词', 'Journal practice: fill or supplement this step')}</summary>
+        <p>{lesson.templateKind === 'worksheet' || stepId === 'idea'
+          ? label('这是填写方向，请把上方模板中的空白换成自己的真实信息。验收、费用、路径和测试结果不能照抄示例。', 'Use this as guidance for filling the template with your real information. Never copy example acceptance, costs, paths or test results.')
+          : label('仅当你选择本页全栈跟练时使用：使用下面已合并本步要求的提示词，填好空白后复制发送；不必重复发送上方通用模板。它不授权跳到后续步骤。', 'For this full-stack practice only: use this combined prompt, fill its fields and send it once instead of also sending the generic template. It does not authorize later steps.')}</p>
+        {lesson.prompt && lesson.templateKind !== 'worksheet'
+          ? <PromptTemplate id={`fullstack-${stepId}`} title={['全栈跟练：本步提示词','Full-stack practice: this step'] as Copy} locale={locale} prompt={[lesson.prompt[0]+'\n\n本次已选择个人学习记录全栈跟练。\n'+practice.instruction[0],lesson.prompt[1]+'\n\nI selected the full-stack journal practice.\n'+practice.instruction[1]] as Copy} />
+          : <pre class="practice-instruction">{practice.instruction[locale==='zh-cn'?0:1]}</pre>}
+      </details>
     </div>
 
     <!-- 槽位 08 · 看到这个结果才算完成 -->
@@ -240,3 +253,5 @@ const stepHref = (id: string) => `${url(locale, `node/${nodeForStep(id)}`)}#${id
 </style>
 
 <style>.support-actions>li{padding:10px 0 18px}.micro-check{display:grid;grid-template-columns:100px 1fr;gap:8px 12px;font-size:14px;line-height:1.8;border-left:3px solid #bed8d3;padding:10px 14px;background:#f7fafb}.micro-check dt{font-weight:650;color:#2c665e}.micro-check dd{margin:0;color:#344d65}@media(max-width:640px){.micro-check{grid-template-columns:1fr;gap:3px}.micro-check dd+dt{margin-top:10px}}</style>
+
+<style>.practice-instruction{white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;line-height:1.8;user-select:text}</style>

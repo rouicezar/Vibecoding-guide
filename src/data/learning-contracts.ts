@@ -22,7 +22,7 @@ export function applyLearningContracts(lessons:Lesson[]){
  ['带入已确认位置，发送只读核对提示词；核对返回路径和现有文件。','Import the confirmed location, send the read-only check and compare the returned path/files.']]);get('open-project').expected=['工具与本人确认的是同一项目位置，文件列表可核对。','The tool and user identify the same verifiable project location.'];
  update('preview',[
  ['每次读取任务表，只执行当前依赖已满足的一项任务；完成后查看实际结果与测试证据。','Read the task list and execute one ready task, then inspect actual output and evidence.'],
- ['本人核对后记录结果和版本，再重复本步处理下一项；全部必做任务完成后进入整体验证。“只调整眼前这一页”和“让保存真正留下内容”可作为对应任务的补充指导。','After personal review record results/revision and repeat for the next task. Finish required tasks before whole-project checks; the “Adjust this page only” and “Make Save retain real content” steps provide focused guidance.']]);
+ ['本人核对当前任务后记录结果和版本。界面和保存任务分别按接下来的对应步骤处理；已完成的任务只复核，不重复开发。其余任务按任务表重复本步，全部必做项完成后再进入完整流程检查。','Record this task’s review and revision. Use the following interface and persistence steps for those tasks; review completed work without rebuilding. Repeat this step for remaining planned tasks, then check the full flow after required work is complete.']]);
  get('preview').prompt=[get('preview').prompt![0]+' 将需求编号、任务编号、实际测试及未测项写入 docs/checks.md。任务先标待本人核对；收到本人明确结果后才标通过，再保存仅属于本任务的本地版本，报告版本号与安全恢复说明，不覆盖无关工作。',get('preview').prompt![1]+' Record requirement/task IDs, actual checks and untested work in docs/checks.md. Mark awaiting personal review first; mark passed only after the user reports success, then save only this task’s local revision and safe recovery instructions while preserving unrelated work.'];
  get('plan').prompt=[
  '读取已确认需求、用户故事和设计，只制定开发计划。将每个必做需求编号映射到一个或多个任务，覆盖全部第一版范围；把第一条完整流程作为先做顺序，不删除其他必做项。每项含任务编号、依赖、产物、适用测试、通过条件与状态；关键能力实验先做。展示供本人确认后保存 tasks/todo.md，未确认项单列。本步不安装、不写代码。',

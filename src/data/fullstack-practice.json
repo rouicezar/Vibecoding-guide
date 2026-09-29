@@ -1,0 +1,751 @@
+[
+  {
+    "id": "idea",
+    "action": [
+      "先用自己的话写：我想每天记下学了什么，关闭网页、重启电脑后还能看到。跟练项目只给自己在本机使用。",
+      "Write your own goal: record what you learned and find it after closing the page and restarting. This practice is for personal local use."
+    ],
+    "expected": [
+      "你能说清“写一条、保存、再次找到”，而不是只说做一个漂亮网页。",
+      "You can describe writing, saving and finding a record."
+    ],
+    "recovery": [
+      "还没有想法时，把今天学的一件小事作为第一条测试内容，不把示例说成真实验收结果。",
+      "Use one thing learned today as test content, not as fabricated acceptance evidence."
+    ],
+    "instruction": [
+      "本项目：个人学习记录。使用者：我自己。第一版：输入标题和内容，保存到后端数据库，读取历史记录。暂不做登录、分享、编辑和删除。",
+      "Project: personal learning journal. User: myself. Version one: enter title and body, save in a backend database and read history. No login, sharing, editing or deletion yet."
+    ],
+    "issues": []
+  },
+  {
+    "id": "description",
+    "action": [
+      "把前一步想法整理进模板；在“通过条件”写明：换一个浏览器打开同一服务仍能读到记录。",
+      "Fill the brief; include reading the record in a second browser connected to the same service."
+    ],
+    "expected": [
+      "项目描述明确有页面、后端和数据库；本机使用不等于只存在浏览器里。",
+      "The brief requires a page, backend and database; local use does not mean browser-only storage."
+    ],
+    "recovery": [
+      "若只写“刷新不丢”，补上重启服务和第二浏览器读取，避免把浏览器缓存误当数据库。",
+      "Add server restart and second-browser checks; refresh alone does not establish database storage."
+    ],
+    "instruction": [
+      "测试条件：合法输入保存成功；空白被拒绝；服务停止时不显示保存成功；重启后能读回；连点一次提交不产生重复记录。",
+      "Criteria: valid save, blank rejection, no false success while offline, restart persistence, and no duplicate from double clicking a single submission."
+    ],
+    "issues": []
+  },
+  {
+    "id": "tool",
+    "action": [
+      "在 Codex 中选择能关联本机文件夹的项目。先看下面定位图：项目、对话、文件预览分别做什么。",
+      "Choose a Codex project connected to a local folder. Use the location map to distinguish project, conversation and file preview."
+    ],
+    "expected": [
+      "能在项目对话让 Codex 检查文件并报告实际路径。",
+      "Codex can inspect files and report their actual location."
+    ],
+    "recovery": [
+      "找不到入口时查看官方项目说明；不要把普通问答会话当成已经连接项目。",
+      "Use official project instructions if controls differ; a chat alone does not prove project access."
+    ],
+    "instruction": [
+      "跟练工具填写 Codex；记录实际系统、登录和文件访问结果，费用按本人账号核对。",
+      "Record Codex, your actual OS, sign-in and file-access results; check costs in your own account."
+    ],
+    "issues": []
+  },
+  {
+    "id": "folder",
+    "action": [
+      "在文稿里新建 learning-journal 文件夹。它是练习项目，不是本网站的源码目录。",
+      "Create learning-journal in Documents. It is the practice project, not this guide repository."
+    ],
+    "expected": [
+      "知道完整位置，里面没有别人的项目。",
+      "You know the full location and it does not contain another project."
+    ],
+    "recovery": [
+      "已有同名目录先检查内容；不要清空它，必要时新建 learning-journal-practice。",
+      "Inspect an existing folder; do not empty it. Use learning-journal-practice if necessary."
+    ],
+    "instruction": [
+      "填入自己电脑上的实际路径，不照抄作者的用户名或路径。",
+      "Enter your own computer path rather than an author’s username or path."
+    ],
+    "issues": []
+  },
+  {
+    "id": "open-project",
+    "action": [
+      "打开刚建的项目文件夹，在其中新建对话，发送只读路径检查。",
+      "Open the new folder, start its chat and send the read-only path check."
+    ],
+    "expected": [
+      "回复路径与自己建立的文件夹一致。",
+      "The returned location matches the folder you created."
+    ],
+    "recovery": [
+      "不一致先切换项目，不能通过让 AI 移动其他项目的文件来凑路径。",
+      "Switch projects if mismatched; do not move another project’s files to force a match."
+    ],
+    "instruction": [
+      "本次练习目录是本人填写的路径。只核对位置，暂不安装 Flask 或创建应用。",
+      "Use my supplied practice directory. Inspect location only; do not install Flask or create an app yet."
+    ],
+    "issues": []
+  },
+  {
+    "id": "checkpoint",
+    "action": [
+      "把全栈练习的已确认描述交给 Codex，保存 idea.md 和起点版本。",
+      "Give Codex the confirmed full-stack brief; save idea.md and a baseline revision."
+    ],
+    "expected": [
+      "idea.md 包含后端数据库保存要求，Git 版本可以指出。",
+      "idea.md includes backend database storage and a real revision is identified."
+    ],
+    "recovery": [
+      "提示 Git 身份未设置时，按 AI 提供的位置设置本人确认的提交身份；不要随便编造邮箱。",
+      "If Git identity is missing, configure your chosen identity in the described location; do not invent an email."
+    ],
+    "instruction": [
+      "项目规则补充：本机单人练习，不开放公网；数据库文件和虚拟环境不提交；不使用 localStorage 代替本项目数据库。",
+      "Rules: personal local practice, no public exposure; exclude database and virtual environment from Git; do not replace the database with localStorage."
+    ],
+    "issues": []
+  },
+  {
+    "id": "first-file",
+    "action": [
+      "点击 Codex 回复中的 idea.md 文件链接，或在原项目文件夹打开它，核对正文。",
+      "Open the idea.md link in Codex or the file in your folder and read it."
+    ],
+    "expected": [
+      "能在文件正文找到“后端数据库”和本机使用范围。",
+      "The file states backend database storage and local use."
+    ],
+    "recovery": [
+      "只有聊天里一段文字不算文件；把找不到的文件名交给 Codex 只读检查。",
+      "Chat text is not a saved file; ask Codex to inspect the missing filename."
+    ],
+    "instruction": [
+      "请指出 idea.md 中有关前端、后端、数据库和第一版范围的原文位置。只读取，不补写不存在的内容。",
+      "Identify the actual passages about frontend, backend, database and version-one scope in idea.md. Read only; do not invent missing text."
+    ],
+    "issues": []
+  },
+  {
+    "id": "clarify",
+    "action": [
+      "逐个回答：谁使用、是否公开、记录哪些字段、保存后如何找回。跟练先选本机单人。",
+      "Answer one question at a time: user, public access, fields and retrieval. Start with one local user."
+    ],
+    "expected": [
+      "已确定标题、内容、时间；明确不需要登录和跨设备联网。",
+      "Title, body and time are agreed; login and networked cross-device use are excluded."
+    ],
+    "recovery": [
+      "若要多人在线使用，先明确身份和资料隔离，回到范围确认，不能直接套用无登录练习。",
+      "For shared online use, define identity and isolation before scope; do not expose the login-free practice."
+    ],
+    "instruction": [
+      "只问影响本机学习记录第一版的未知项，尤其区分“第二浏览器测试”和“互联网多人共享”。",
+      "Clarify only unknowns affecting the local journal, distinguishing a second-browser check from Internet sharing."
+    ],
+    "issues": []
+  },
+  {
+    "id": "scope",
+    "action": [
+      "确认只做新增记录和历史列表；一条记录含标题、内容、创建时间。",
+      "Agree on creating records and listing history, with title, body and creation time."
+    ],
+    "expected": [
+      "列表、新增、保存失败提示和重新读取都有通过条件。",
+      "Create, list, failure feedback and retrieval have criteria."
+    ],
+    "recovery": [
+      "有人建议先加账户或云数据库时，要求说明是否为本机单人版必需。",
+      "If accounts or cloud storage are proposed, ask whether local single-user use requires them."
+    ],
+    "instruction": [
+      "将已确认示例范围编号：R1 页面输入和列表；R2 后端校验及 SQLite 保存读取；R3 异常提示、提交中防连点、重启持久化。",
+      "Number agreed scope: R1 input/list page; R2 backend validation and SQLite persistence; R3 error feedback, pending-submit protection and restart persistence."
+    ],
+    "issues": []
+  },
+  {
+    "id": "requirements",
+    "action": [
+      "逐项核对标题 1–80 字、内容 1–2000 字；前后空格不算有效内容。保存成功后才清空输入。",
+      "Review title length 1–80 and body 1–2000 after trimming. Clear input only after a successful save."
+    ],
+    "expected": [
+      "服务不可用时原输入保留；后端独立拒绝空白和超长内容。",
+      "Unavailable service preserves input; backend independently rejects blank and oversized fields."
+    ],
+    "recovery": [
+      "若只写“按钮可点”，追问存错、断开和空白分别显示什么，不让学员猜。",
+      "If requirements merely say clickable, specify failed saves, offline behavior and blank input."
+    ],
+    "instruction": [
+      "补充已确认 R1–R3 的具体输入限制、提交中禁用按钮、失败保留输入、成功重新读取列表。只写需求，不开发。",
+      "Specify agreed R1–R3 input limits, disabled pending button, preserved failed input and refreshed successful list. Requirements only, no code."
+    ],
+    "issues": []
+  },
+  {
+    "id": "stories",
+    "action": [
+      "用一句完整场景串起来：晚上打开网页，写今天学到的事，保存，第二天再次打开查到。",
+      "Describe opening the journal, writing today’s learning, saving and finding it the next day."
+    ],
+    "expected": [
+      "docs/stories.md 同时覆盖正常保存与保存失败后重试。",
+      "docs/stories.md covers successful saving and retry after failure."
+    ],
+    "recovery": [
+      "不要把“数据库插入成功”当用户操作；学员实际要点击和查看的是网页。",
+      "A database insert is not a user action; the learner clicks and reads the page."
+    ],
+    "instruction": [
+      "在 docs/stories.md 写新增、读回、空白拒绝和服务停止后重试场景，对应 R1–R3。",
+      "Write create, read, blank rejection and stopped-service retry stories in docs/stories.md, linked to R1–R3."
+    ],
+    "issues": []
+  },
+  {
+    "id": "prototype",
+    "action": [
+      "只看输入框、保存按钮、状态提示和历史列表的位置；用明显标记的模拟记录试顺序。",
+      "Review input fields, Save, status and history using clearly labeled mock data."
+    ],
+    "expected": [
+      "能说出保存前、提交中、成功、失败四种画面；原型还没有真实数据库。",
+      "You recognize idle, saving, success and failure; the prototype has no real database yet."
+    ],
+    "recovery": [
+      "看起来能保存也先问是否模拟，不能把演示当后端完成。",
+      "Ask whether saving is mocked; a demonstration does not establish a working backend."
+    ],
+    "instruction": [
+      "读取 docs/stories.md；原型标注“模拟数据”。仅演示四种状态，交互决定写 docs/design.md，不实现真实保存。",
+      "Read docs/stories.md, label mock data and demonstrate four states only. Record interaction decisions in docs/design.md without real persistence."
+    ],
+    "issues": []
+  },
+  {
+    "id": "choose-stack",
+    "action": [
+      "认识三部分：浏览器里的 HTML/CSS/JavaScript 是页面；Python Flask 接收请求；SQLite 把记录放在电脑文件里。",
+      "Identify the HTML/CSS/JavaScript page, Python Flask request handler and SQLite file storing records."
+    ],
+    "expected": [
+      "docs/design.md 写出每部分做什么、文件放哪、如何一起启动。",
+      "docs/design.md explains roles, file locations and startup."
+    ],
+    "recovery": [
+      "已有项目使用另一套已确认技术时沿用，不能为了跟练重建；请 AI 给相同三层的对应位置。",
+      "Keep an existing confirmed stack; ask for equivalent three-layer locations instead of rebuilding."
+    ],
+    "instruction": [
+      "新练习建议 Flask 同时提供页面与 /api/entries，避免两个服务跨域；SQLite 固定 instance/journal.sqlite 路径，参数化查询。本机单人无登录，不适合直接公开。解释依赖和本机成本，待本人确认再保存设计，不安装。",
+      "For a new practice, propose Flask serving both page and /api/entries to avoid cross-origin setup, SQLite at a fixed instance/journal.sqlite path and parameterized queries. Local single-user, no login, unsuitable for direct public exposure. Explain dependencies/local costs and await design confirmation; do not install."
+    ],
+    "issues": []
+  },
+  {
+    "id": "plan",
+    "action": [
+      "任务表分成环境、页面、数据库建表、后端接口、页面接线、失败处理、重启和验收；一次执行一项。",
+      "Plan environment, page, database setup, backend API, connection, failures, restart and acceptance as separate tasks."
+    ],
+    "expected": [
+      "每项有文件、依赖和亲手检查方法，保存功能明确在哪一项完成。",
+      "Every task has files, dependencies and personal checks; persistence has an explicit task."
+    ],
+    "recovery": [
+      "任务只有“实现后端”时，要求拆成建表、写入读取、连接页面，避免一次做完无法核对。",
+      "Split a vague backend task into table setup, API and page connection so each can be checked."
+    ],
+    "instruction": [
+      "给任务标对应教学动作：preview 先做页面，interface 核对界面，save 完成数据库/接口/页面连接并逐项停下，flow 才做全流程。已完成任务只复核不重复实现。",
+      "Map tasks to lessons: preview builds the page, interface checks it, save implements database/API/page connection with pauses, then flow verifies end to end. Review completed tasks instead of rebuilding."
+    ],
+    "issues": []
+  },
+  {
+    "id": "environment",
+    "action": [
+      "在 Codex 项目对话发送环境提示词；让它检查 Python，再创建本项目 .venv（单独放依赖的文件夹）并安装确认过的 Flask。",
+      "Send the environment prompt in the project chat. Check Python, create a project .venv for dependencies and install the agreed Flask."
+    ],
+    "expected": [
+      "最小服务打开真实 http 地址；README 有所在目录、启动命令和停止方式。",
+      "A minimal service opens at a real HTTP address; README records directory, start and stop instructions."
+    ],
+    "recovery": [
+      "提示 command not found 就核对运行时，No module named flask 就核对是否用了 .venv；不要用管理员权限乱装。",
+      "For command not found check the runtime; for No module named flask check .venv. Avoid indiscriminate administrator installs."
+    ],
+    "instruction": [
+      "核对 Python 官方安装入口和实际版本。Mac/Linux 可用 python3 -m venv .venv，Windows 可用 py -3 -m venv .venv，先确认命令存在；用 .venv 的 Python 安装锁定依赖。启动最小 Flask 入口，不实现记录业务，报告真实端口和停止方式。",
+      "Check official Python installation and actual version. After verifying commands, use python3 -m venv .venv on Mac/Linux or py -3 -m venv .venv on Windows. Install pinned dependencies using that environment’s Python. Start a minimal Flask entry without journal logic; report actual port and stop method."
+    ],
+    "issues": [
+      {
+        "title": [
+          "网址打不开 / Connection refused",
+          "URL refuses connection"
+        ],
+        "check": [
+          "先看 Codex 的服务输出是否还在运行，核对真实端口。",
+          "Check that this service is running and compare its actual port."
+        ],
+        "action": [
+          "请 Codex 只重启本项目服务并给出当前地址；不要一直刷新旧端口。",
+          "Restart only this service and use its current URL, not an old port."
+        ],
+        "expected": [
+          "浏览器打开当前地址，出现最小页面。",
+          "The current URL opens the minimal page."
+        ]
+      },
+      {
+        "title": [
+          "Address already in use",
+          "Address already in use"
+        ],
+        "check": [
+          "端口已被另一个进程使用，不代表代码语法错。",
+          "Another process occupies the port; this is not a syntax error."
+        ],
+        "action": [
+          "让 Codex 识别占用者；不确定就给本项目换空闲端口并同步 README，不结束无关进程。",
+          "Identify the owner; if uncertain choose a free project port and update README without terminating unrelated processes."
+        ],
+        "expected": [
+          "运行输出和浏览器使用同一个新端口。",
+          "Server output and browser use the same new port."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "preview",
+    "action": [
+      "让 Codex 只做第一项页面任务，点击回复里的实际 http 网址。此时能看见输入框和列表占位，不要求保存成功。",
+      "Ask Codex to implement only the first page task and open its actual HTTP URL. Inputs and a list placeholder are enough; saving is not ready yet."
+    ],
+    "expected": [
+      "浏览器地址以 http 开头；页面明确未接数据库，不显示假的保存成功。",
+      "The page uses HTTP and clearly says persistence is not connected."
+    ],
+    "recovery": [
+      "双击 index.html 打开的 file 地址不用于本全栈练习；回到服务给出的实际网址。",
+      "A double-clicked file URL is not this full-stack entry; use the running service URL."
+    ],
+    "instruction": [
+      "本次只实现计划中的页面任务，未连接的保存明确不可用，不用 localStorage 或假成功替代后端。返回真实 http 入口，后端任务留到 save 步骤。",
+      "Implement only the planned page task, make disconnected saving clearly unavailable and avoid localStorage or fake success. Return the real HTTP entry; leave backend tasks to save."
+    ],
+    "issues": []
+  },
+  {
+    "id": "interface",
+    "action": [
+      "对照原型核对标题、内容、按钮和提示是否看得懂；手机窄屏也能填写。",
+      "Compare title, body, button and messages with the prototype; try a narrow viewport."
+    ],
+    "expected": [
+      "输入框有名字；保存按钮和结果提示可见，文字不被截断。",
+      "Fields are labeled; Save and feedback are visible without clipped text."
+    ],
+    "recovery": [
+      "界面已符合设计就记录通过，不为了走步骤强行改颜色。",
+      "If the design is met, record the check rather than forcing cosmetic changes."
+    ],
+    "instruction": [
+      "只核对与修改本页的标签、布局和状态提示，保留已确认字段及接口约定；尚未接线不要声称保存可用。",
+      "Check or adjust labels, layout and status messages only, preserving fields and API agreement; do not claim working persistence before connection."
+    ],
+    "issues": []
+  },
+  {
+    "id": "save",
+    "action": [
+      "按下面四个小检查逐项让 Codex 执行：建表、接口、页面接线、读回。每项看到真实结果再继续。",
+      "Ask Codex to perform the four checks below one at a time: table, API, page connection and read-back."
+    ],
+    "expected": [
+      "输入“练习 A”保存后有真实记录编号；第二浏览器访问同一服务也能读到。",
+      "Saving “Practice A” produces a real record ID readable from a second browser on the same service."
+    ],
+    "recovery": [
+      "只有页面出现一行还不够；要求核对真实 SQLite 文件中的同一编号，禁止清库重建来修复。",
+      "A new row on screen is insufficient; verify the same ID in the actual SQLite file without clearing/recreating it."
+    ],
+    "instruction": [
+      "按计划一次只做一个子任务并等待核对：1 使用 SQLite，固定 instance/journal.sqlite 的绝对路径，非破坏性建 entries 表（id,title,body,created_at）；2 GET/POST /api/entries，用参数化 SQL 和后端 trim/长度校验，提交事务后才成功；3 页面用相对 /api/entries，检查 HTTP 状态，提交中禁用按钮，失败保留输入并提示；4 用唯一测试标记核对接口和数据库编号，再由本人在第二浏览器读回。已有实现先检查，不重复建表或改数据。",
+      "Do one planned subtask at a time and wait for review: 1 resolve instance/journal.sqlite to a stable absolute path and create entries non-destructively (id,title,body,created_at); 2 GET/POST /api/entries with parameterized SQL, backend trim/length validation and success only after commit; 3 connect the page via relative /api/entries, check HTTP status, disable pending submission and preserve failed input; 4 match a unique test marker and ID across API/database, then let the user read it in a second browser. Inspect existing work first; do not recreate tables or alter records."
+    ],
+    "issues": [
+      {
+        "title": [
+          "保存显示 404，或返回一段 HTML",
+          "Save returns 404 or HTML"
+        ],
+        "check": [
+          "核对 /api/entries 是否打到了正在运行的 Flask 服务。",
+          "Check whether /api/entries reaches the running Flask service."
+        ],
+        "action": [
+          "把实际网址、请求路径和后端日志交给 Codex 对照路由；本例页面和接口用同一服务，不另开静态文件。",
+          "Give Codex the actual URL, request path and service log to compare routes; this example serves page and API together."
+        ],
+        "expected": [
+          "GET 返回列表，POST 合法内容返回记录编号。",
+          "GET returns a list; a valid POST returns a record ID."
+        ]
+      },
+      {
+        "title": [
+          "提示 CORS 或跨域",
+          "CORS / cross-origin error"
+        ],
+        "check": [
+          "先核对页面是否从 file:// 或另一个端口打开。",
+          "Check whether the page came from file:// or another port."
+        ],
+        "action": [
+          "本例打开 Flask 提供的 http 地址，页面使用相对 /api/entries。不要关闭浏览器安全检查；不同服务的项目请按设计设置指定来源。",
+          "Use the Flask HTTP URL and relative /api/entries. Do not disable browser security; separate-service projects need approved origins in their design."
+        ],
+        "expected": [
+          "页面请求同一服务，不再出现跨域阻拦。",
+          "The same-service request is no longer blocked."
+        ]
+      },
+      {
+        "title": [
+          "no such table: entries",
+          "no such table: entries"
+        ],
+        "check": [
+          "数据库文件存在不代表里面已经建好表；先核对完整路径。",
+          "An existing database file may lack its table; check its full path first."
+        ],
+        "action": [
+          "让 Codex 在正确文件上执行已确认的非破坏性建表，不能删除数据库或复制会清空表的示例命令。",
+          "Run the agreed non-destructive setup on the correct file; do not delete the database or copy table-dropping examples."
+        ],
+        "expected": [
+          "entries 表存在，原有记录未被清除。",
+          "entries exists and old data is retained."
+        ]
+      },
+      {
+        "title": [
+          "database is locked",
+          "database is locked"
+        ],
+        "check": [
+          "检查是否有另一测试服务、数据库编辑器或未结束的写入占着同一文件。",
+          "Check for another test service, editor or unfinished write holding the file."
+        ],
+        "action": [
+          "只结束确认属于本练习的占用，让 Codex 检查事务与连接是否及时关闭；不要删除锁文件或原数据库。",
+          "Stop only a confirmed practice owner and inspect transaction/connection cleanup; do not delete lock files or the database."
+        ],
+        "expected": [
+          "写入恢复，已保存记录仍可读取。",
+          "Writing recovers while old records remain readable."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "flow",
+    "action": [
+      "从页面输入“练习 B”，点一次保存，看成功提示与列表，再刷新和换浏览器读同一编号。",
+      "Enter “Practice B”, save once, inspect status/list, then refresh and read the same ID in another browser."
+    ],
+    "expected": [
+      "页面、接口和数据库三处的记录编号及内容一致。",
+      "Page, API and database agree on ID and content."
+    ],
+    "recovery": [
+      "某层查不到先记录断在哪：按钮、请求、写入还是读取；交给反馈步骤，不在测试里顺手改代码。",
+      "Record the failing layer: button, request, write or read. Send it to feedback without changing code during testing."
+    ],
+    "instruction": [
+      "只核对一条唯一测试记录的页面→POST→数据库→GET→页面链路，记录编号及各层实际证据。无法观测的层写未验证，不以推测代替。",
+      "Verify one unique record through page→POST→database→GET→page. Record its ID and actual evidence for each layer; mark unobservable layers unverified."
+    ],
+    "issues": []
+  },
+  {
+    "id": "test",
+    "action": [
+      "分别试空白、全空格、超长、连续点击；再由 Codex 停止本练习服务后试保存，确认原文还在。",
+      "Try blank, spaces, oversized text and double clicking; then stop only this practice service and try saving, keeping the input."
+    ],
+    "expected": [
+      "无效内容不入库；服务停了不能提示成功；连点同一次提交只新增一条。",
+      "Invalid data is not stored; a stopped service cannot report success; double clicking one submission creates one record."
+    ],
+    "recovery": [
+      "自动检查通过但画面不对仍记失败；不要关闭所有 Python 进程，只停止本项目进程。",
+      "Record visible failure even if automated checks pass; stop only this project’s process, not every Python process."
+    ],
+    "instruction": [
+      "仅测试：绕过页面直接向后端发送空白/超长输入应拒绝且条数不变；检查双击提交、网络失败保留输入、列表读取失败有提示。保留原检查结果，本步不修复。 请求结果不确定时先读列表确认是否已保存，再重试，不能假定网络报错就一定没写入。",
+      "Test only: direct backend blank/oversized requests must fail without new records; check double submit, preserved input on network failure and visible list-load errors. Retain results, do not repair here. If the response is uncertain, read the list before retrying; a network error does not prove no write occurred."
+    ],
+    "issues": []
+  },
+  {
+    "id": "restart",
+    "action": [
+      "记下练习记录编号，按 README 停止服务，再从原文件夹重启并打开网址。",
+      "Note a record ID, stop as documented, restart from the original folder and open the URL."
+    ],
+    "expected": [
+      "同一编号仍可读取；重启没有重新创建空库。",
+      "The same ID remains readable; restart did not create an empty database."
+    ],
+    "recovery": [
+      "记录消失先核对数据库绝对路径是否变了，保留原文件；不要重新初始化清空。",
+      "If missing, compare absolute database paths and preserve the original file; do not reset it."
+    ],
+    "instruction": [
+      "实际停止并重启本项目服务，核对 instance/journal.sqlite 绝对路径、原记录编号与数量。使用后端查询证明保留，记录准确命令及端口；不得重置数据库。",
+      "Stop/restart only this service, compare the absolute database path and original record ID/count, and prove retention with a backend query. Record real commands/port; never reset the database."
+    ],
+    "issues": [
+      {
+        "title": [
+          "重启后列表突然为空",
+          "List becomes empty after restart"
+        ],
+        "check": [
+          "让 Codex 对比重启前后的数据库绝对路径和数量，先别新增记录。",
+          "Compare database absolute paths and counts before adding more data."
+        ],
+        "action": [
+          "如果打开了另一份空库，保留两份文件并修正固定路径；只读确认旧记录，再启动。",
+          "If a different empty database was opened, preserve both files and correct the fixed path; inspect old records before starting."
+        ],
+        "expected": [
+          "原来的编号和内容重新出现。",
+          "Original IDs and content return."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "accept",
+    "action": [
+      "按原需求亲手做一轮新记录、重新读取、失败后重试和重启检查，再填写自己的实际结果。",
+      "Personally test creation, retrieval, retry and restart against original requirements before filling results."
+    ],
+    "expected": [
+      "验收记录对应当前版本，明确前端、后端、数据库各有什么证据。",
+      "Acceptance names the current version and evidence for page, backend and database."
+    ],
+    "recovery": [
+      "没做的写未测试；示例成功记录不能复制成自己的通过结论。",
+      "Mark unperformed checks untested; do not copy example success as your own result."
+    ],
+    "instruction": [
+      "本人实际试用：版本、入口、记录编号、正常保存、空白拒绝、服务停止后输入保留、重新启动读回。逐项填通过/失败/未测试及实际现象。",
+      "Personal trial: version, entry, record ID, normal save, blank rejection, preserved input while stopped and restart read-back. Fill passed/failed/untested with actual observations."
+    ],
+    "issues": []
+  },
+  {
+    "id": "feedback",
+    "action": [
+      "把失败时输入的测试内容、点击顺序、时间、页面提示和报错放在一起；截图不要含私人资料。",
+      "Collect test input, click sequence, time, page message and error together; omit private data from screenshots."
+    ],
+    "expected": [
+      "别人能照记录复现，不只有“保存坏了”。",
+      "Someone can reproduce the issue, rather than merely reading “save broke”."
+    ],
+    "recovery": [
+      "不知道什么是日志时，让 Codex 指出本项目服务输出的位置并只提取对应时间的错误。",
+      "If logs are unfamiliar, ask Codex to locate this service’s output and extract the matching error."
+    ],
+    "instruction": [
+      "注明故障在哪个小检查：建表/接口/页面接线/读回/重启。区分页面提示和后端报错；不粘贴数据库完整内容或密钥。",
+      "Name the failing check: table/API/connection/read/restart. Distinguish page messages from backend errors; do not paste full database contents or secrets."
+    ],
+    "issues": []
+  },
+  {
+    "id": "repair-plan",
+    "action": [
+      "让 Codex 先复现，再说明只改哪一层，改完重跑哪条失败操作。",
+      "Ask Codex to reproduce and identify the layer to change and the failed action to rerun."
+    ],
+    "expected": [
+      "修复计划包括数据保护及原本正常保存的回归检查。",
+      "The plan protects data and retests previously working saves."
+    ],
+    "recovery": [
+      "建议删库时先停止，要求备份和非破坏性方案；缺证据就先补诊断。",
+      "Stop a suggested database deletion; request backup and a non-destructive plan or more diagnosis."
+    ],
+    "instruction": [
+      "先只读检查端口、API 路径、状态码、表结构和数据库位置，按证据定位；计划保护原记录，不默认清库或重装。",
+      "Inspect port, API path/status, schema and database location read-only. Plan based on evidence, preserving records without default resets or reinstalls."
+    ],
+    "issues": []
+  },
+  {
+    "id": "repair",
+    "action": [
+      "执行确认过的一项修复，自己重做原失败操作，再确认旧记录还在。",
+      "Apply one agreed fix, repeat the original failing action personally and check old records remain."
+    ],
+    "expected": [
+      "原问题通过，正常新增/读取及已有数据也通过。",
+      "The failure, normal create/read and existing data all pass."
+    ],
+    "recovery": [
+      "测试状态被 AI 全改成通过时，恢复真实未测项；要求区分它的测试与本人试用。",
+      "If everything was marked passed, restore untested statuses and separate AI checks from personal trials."
+    ],
+    "instruction": [
+      "修复只针对已确认问题；数据库变更先在副本验证并保留恢复方法。记录修复前后同一失败用例和旧记录读取，不代替本人验收。",
+      "Fix only agreed issues; test database changes on a copy first with recovery instructions. Record the same failing case before/after plus old-record reads, without claiming user acceptance."
+    ],
+    "issues": []
+  },
+  {
+    "id": "delivery",
+    "action": [
+      "本轮先选本机自用：一个启动方法、一个网页入口、一份数据库。公开给别人用是之后的单独决定。",
+      "Choose local delivery first: one startup method, web entry and database. Public use is a later decision."
+    ],
+    "expected": [
+      "知道 localhost 只指向打开它的那台电脑；完整全栈项目可先本机交付。",
+      "You know localhost refers to the current computer; a full-stack project can be delivered locally."
+    ],
+    "recovery": [
+      "把本机网址发给朋友打不开不等于代码坏了，不用关闭防火墙解决。",
+      "A friend cannot use your localhost URL; that does not prove broken code and is not fixed by disabling a firewall."
+    ],
+    "instruction": [
+      "记录本轮为本机单人交付；前端、后端、SQLite 都在本机。若以后公开，另定登录、数据隔离、持久磁盘、HTTPS 和费用，不在本步自动部署。",
+      "Record local single-user delivery with all three layers local. Future public use needs identity, isolation, persistent disk, HTTPS and costs; do not auto-deploy here."
+    ],
+    "issues": []
+  },
+  {
+    "id": "release-review",
+    "action": [
+      "核对当前版本确实通过保存、读回、异常和重启；确认启动说明没有只写“打开 HTML”。",
+      "Confirm save, read, failures and restart for this version; startup must not merely say open HTML."
+    ],
+    "expected": [
+      "清单涵盖依赖、启动、数据库位置、备份和未验证事项。",
+      "Checklist includes dependencies, startup, database location, backup and unverified items."
+    ],
+    "recovery": [
+      "没有实际验收文件就返回验收，不能让 Codex 自动补成通过。",
+      "Return to acceptance if its file is missing; do not auto-generate a pass."
+    ],
+    "instruction": [
+      "按本机全栈交付核对虚拟环境、锁定依赖、数据库初始化不清旧数据、固定路径和恢复方案；GitHub Pages 不能单独托管本练习的后端。",
+      "Assess local full-stack delivery: environment, pinned dependencies, non-destructive setup, fixed database path and recovery. GitHub Pages alone cannot host this backend."
+    ],
+    "issues": []
+  },
+  {
+    "id": "package",
+    "action": [
+      "让 Codex 准备启动说明和依赖文件，在独立测试副本试运行；数据库用测试数据，不复制私人记录。",
+      "Prepare startup instructions/dependencies and trial an isolated copy with test data rather than private records."
+    ],
+    "expected": [
+      "从干净副本可以启动前后端、保存并读回一条记录。",
+      "A clean copy starts and saves/reads one record."
+    ],
+    "recovery": [
+      "不能把当前电脑的 .venv 整个复制当通用安装包；应按依赖记录重新建立环境。",
+      "Do not treat a copied .venv as a portable package; recreate the environment from dependencies."
+    ],
+    "instruction": [
+      "仅准备本机交付：README 写明项目目录、按系统创建 .venv、安装依赖、非破坏性建库、启动/停止、真实入口、备份恢复。用独立测试副本验证，记录未测系统，不公开。",
+      "Prepare local delivery only: directory, OS-specific environment/dependencies, non-destructive database setup, start/stop, actual URL and backup/restore. Test an isolated copy, name untested systems and do not publish."
+    ],
+    "issues": []
+  },
+  {
+    "id": "live-check",
+    "action": [
+      "从交付说明的入口亲手打开，新增“交付核对”并重启读回，不使用旧页面缓存当证据。",
+      "Open the delivered entry, create “Delivery check” and read it after restart rather than relying on a cached page."
+    ],
+    "expected": [
+      "实际交付版本可用，数据库路径和使用范围写清楚。",
+      "The delivered revision works with a documented database path and usage scope."
+    ],
+    "recovery": [
+      "无法打开先按说明检查服务，失败保留待交付，不把文件准备好当交付成功。",
+      "Check the service if opening fails; retain pending status instead of equating prepared files with successful delivery."
+    ],
+    "instruction": [
+      "只执行本人允许的本机交付，核对前端请求实际到达该后端和数据库；记录实际版本/入口/编号。没有公网授权就不开放服务。",
+      "Perform only authorized local delivery; verify requests reach its backend/database and record revision/entry/ID. Do not expose publicly without authorization."
+    ],
+    "issues": []
+  },
+  {
+    "id": "publish",
+    "action": [
+      "这个动作是静态网站的可选参考。本全栈练习直接继续维护，不把 Python 和数据库上传 Pages。",
+      "This optional action is for static sites. Continue to maintenance for this full-stack practice; do not upload Python/database to Pages."
+    ],
+    "expected": [
+      "明确 Pages 不能运行本练习后端，数据库不公开。",
+      "Pages cannot run this backend and the database stays private."
+    ],
+    "recovery": [
+      "若有人只发布页面，保存会失败；回到交付方案选择能运行后端并保留数据的方案。",
+      "Publishing just the page breaks saves; choose a delivery plan that runs the backend and retains data."
+    ],
+    "instruction": [
+      "只判断适用性：本项目依赖 Flask 和 SQLite，不能用纯 Pages 完整交付。说明原因并返回交付方式，不发布。",
+      "Assess suitability only: Flask/SQLite cannot be fully delivered by static Pages. Explain and return to delivery planning without publishing."
+    ],
+    "issues": []
+  },
+  {
+    "id": "maintain",
+    "action": [
+      "按 README 备份数据库，在独立临时目录恢复并核对同一记录；下次先读交接文件再继续。",
+      "Back up the database as documented, restore to an isolated directory, verify the record and read the handoff next time."
+    ],
+    "expected": [
+      "备份文件实际能恢复，原数据库未被覆盖。",
+      "The backup restores successfully without overwriting the original."
+    ],
+    "recovery": [
+      "复制正在写入的数据库可能不完整；使用 SQLite 备份接口，或确认服务停止后按已核验方法复制。",
+      "Copying an actively written database may be incomplete; use SQLite backup or a verified stopped-service copy."
+    ],
+    "instruction": [
+      "在获准的独立测试目录用 SQLite backup 接口备份/恢复，验证记录编号和条数；绝不覆盖原库。交接写明命令、数据库绝对路径、依赖版本和下一任务，未演练就标未验证。",
+      "Use SQLite backup/restore in an authorized isolated test directory, verify IDs/counts and never overwrite the original. Handoff records commands, absolute database path, dependencies and next task; unperformed restore remains unverified."
+    ],
+    "issues": []
+  }
+]

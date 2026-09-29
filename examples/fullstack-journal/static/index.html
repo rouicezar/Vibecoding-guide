@@ -1,0 +1,14 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>个人学习记录 · 本机练习</title>
+<style>body{font:17px/1.7 system-ui;margin:32px auto;padding:0 20px;max-width:680px;color:#17212f}label{display:block;margin:16px 0 4px}input,textarea,button{font:inherit;padding:10px;box-sizing:border-box}input,textarea{width:100%}button{margin-top:16px;background:#173d57;color:white;border:0;border-radius:5px}button:disabled{opacity:.5}article{border-top:1px solid #ddd;padding:16px 0;overflow-wrap:anywhere}article p{white-space:pre-wrap}small{color:#536273}</style>
+<h1>个人学习记录</h1><p>本机单人练习：网页 → 后端 → SQLite 数据库。</p>
+<form id="form"><label for="title">标题（1–80 字）</label><input id="title" name="title" maxlength="80" required><label for="body">今天学到了什么（1–2000 字）</label><textarea id="body" name="body" rows="5" maxlength="2000" required></textarea><button id="save" type="submit">保存记录</button></form><p id="status" role="status" aria-live="polite"></p><h2>历史记录</h2><p id="list-status" role="status"></p><div id="entries"></div>
+<script>
+const form=document.querySelector('#form'),button=document.querySelector('#save'),status=document.querySelector('#status'),listStatus=document.querySelector('#list-status'),list=document.querySelector('#entries');
+let pending=false;
+async function load(){
+ try{const response=await fetch('/api/entries');if(!response.ok)throw Error();const entries=await response.json();list.replaceChildren();for(const entry of entries){const card=document.createElement('article'),heading=document.createElement('h3'),body=document.createElement('p'),meta=document.createElement('small');heading.textContent=entry.title;body.textContent=entry.body;meta.textContent=`编号 ${entry.id} · ${entry.created_at}`;card.append(heading,body,meta);list.append(card);}listStatus.textContent=entries.length?'':'还没有记录，写下第一条吧。';return true;}
+ catch{listStatus.textContent='暂时无法读取列表，请检查本项目服务后刷新。';return false;}
+}
+form.addEventListener('submit',async event=>{event.preventDefault();if(pending)return;const title=form.elements.title.value.trim(),body=form.elements.body.value.trim();if(!title||!body){status.textContent='请填写标题和内容，不能只填空格。';return;}pending=true;button.disabled=true;status.textContent='正在保存，请稍候…';try{const response=await fetch('/api/entries',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({title,body})});const result=await response.json();if(!response.ok)throw Error(result.error||'保存失败。');form.reset();status.textContent=`已保存，记录编号 ${result.id}。`;await load();}catch{status.textContent='未确认保存成功。输入已保留；恢复服务后先查看列表，确认没有同一记录再重试。';}finally{pending=false;button.disabled=false;}});
+load();
+</script></html>
