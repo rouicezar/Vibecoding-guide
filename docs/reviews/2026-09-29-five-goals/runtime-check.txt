@@ -1,0 +1,1 @@
+PASS: real HTTP create/read, backend rejection, SQLite evidence, stopped service, process restart and isolated backup/restore; original database preserved.

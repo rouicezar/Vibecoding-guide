@@ -1,0 +1,36 @@
+{
+  "source": "/Users/rouice/.codex/worktrees/b85c/组件/.tmp/five-goals/browser-source.sqlite",
+  "backup": "/Users/rouice/.codex/worktrees/b85c/组件/.tmp/five-goals/backup-2026-09-29.sqlite",
+  "restore": "/Users/rouice/.codex/worktrees/b85c/组件/.tmp/five-goals/delivery-copy/restored.sqlite",
+  "backupBytes": 8192,
+  "baseline": [
+    [
+      1,
+      "五项跟做核对 A",
+      "填写、保存、读回，然后重启再找。"
+    ]
+  ],
+  "originalHash": "93fe366e2797a99d3f62b4bc032a2b3affdee12474d0c0928ef4f135945c67b8",
+  "originalAfter": [
+    [
+      1,
+      "五项跟做核对 A",
+      "填写、保存、读回，然后重启再找。"
+    ]
+  ],
+  "restoredAfter": [
+    [
+      1,
+      "五项跟做核对 A",
+      "填写、保存、读回，然后重启再找。"
+    ],
+    [
+      2,
+      "只在恢复副本新增",
+      "用于确认原库不受影响。"
+    ]
+  ],
+  "originalUnchanged": true,
+  "restoredService": "http://127.0.0.1:5077",
+  "developmentServiceStopped": true
+}

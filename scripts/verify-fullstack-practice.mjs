@@ -21,5 +21,7 @@ assert(row('publish').instruction[0].includes('不能用纯 Pages'));
 assert(lessons.find(l=>l.id==='prototype').prompt[0].includes('docs/stories.md 的用户故事'));
 const component=await readFile('src/components/NodeStep.astro','utf8');
 assert(component.includes('lesson.templateKind !== \'worksheet\''),'Worksheets must not become fabricated AI results');
-for(const asset of ['codex-location-map','journal-saved-example','journal-service-stopped'])assert((await readFile(`public/images/guide/${asset}.png`)).length>1000);
+for(const asset of ['journal-saved-example','journal-service-stopped'])assert((await readFile(`public/images/guide/${asset}.png`)).length>1000);
 console.log(`PASS: ${lessons.length} bilingual full-stack supplements, rendered guidance and prompt selection; separate stories handoff; backend persistence and non-destructive recovery criteria; 3 image assets. This is content validation, not a learner completion claim.`);
+
+assert((await readFile('public/images/guide/codex-official-workspace.webp')).length>1000);

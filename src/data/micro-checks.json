@@ -668,96 +668,116 @@
   "flow": [
     {
       "expect": [
-        "测试资料有来源、权限和清理说明",
-        "Test data has provenance, permissions and cleanup instructions"
+        "有一条准备齐全、能逐步执行的路线。",
+        "One executable route has all prerequisites."
       ],
       "ifWrong": [
-        "要求先准备测试环境，不用真实交易验证",
-        "Prepare a test environment instead of real transactions"
+        "缺账号或服务时要求工具写清创建入口和前置条件，保持未测试。",
+        "For missing accounts/services request setup entries and keep the case untested."
       ]
     },
     {
       "expect": [
-        "普通账号能走完整流程并记录版本与结果",
-        "An ordinary account completes the flow with revision and results recorded"
+        "工具说明测试资料在哪里，哪些已检查、哪些需要本人做。",
+        "Test data location and tool/manual checks are clearly identified."
       ],
       "ifWrong": [
-        "从失败步骤记录反馈，不借管理员绕过",
-        "Report the failed step without using admin privileges to bypass it"
+        "只有“全部正常”时要求给实际输入、输出和未测项，不复制为自己的验收结论。",
+        "Replace an unsupported all-good claim with inputs, outputs and untested cases."
       ]
     },
     {
       "expect": [
-        "必做需求都有流程结果或明确未测试责任人",
-        "Every requirement has results or an owner for pending tests"
+        "输入、处理、保存、读回连成一条真实流程。",
+        "Input, processing, persistence and reading form a real complete flow."
       ],
       "ifWrong": [
-        "对照需求查漏，为未测试项补执行安排",
-        "Find gaps against requirements and assign pending checks"
+        "卡在哪一步就停在那里，保存网址、输入、错误与截图；转反馈步骤记录，按计划修复后重测。",
+        "Stop at the failure; keep URL, input, error and screenshot. Record feedback and retest after planned repair."
+      ]
+    },
+    {
+      "expect": [
+        "每个必做需求有检查记录，未测原因明确，可交给异常测试。",
+        "Every required flow has an honest record ready for failure testing."
+      ],
+      "ifWrong": [
+        "发现漏测就补对应路线；不要因为第一条成功而把整份记录改成通过。",
+        "Test missing routes rather than passing everything after one success."
       ]
     }
   ],
   "test": [
     {
       "expect": [
-        "列出适用异常情况及不适用原因",
-        "Applicable error cases and exclusions are listed"
+        "每项异常有操作和明确预期，不适用写原因。",
+        "Each applicable failure case has actions and expected behavior."
       ],
       "ifWrong": [
-        "按真实功能删去无关用例，补关键边界",
-        "Remove irrelevant cases and add essential boundaries"
+        "不知道怎样制造异常时要求只给本项目测试环境的方法，未准备好先不执行。",
+        "Ask for a method confined to this project’s test environment before trying a fault."
       ]
     },
     {
       "expect": [
-        "涉及共享限制时有独立并发会话检查结果",
-        "Shared limits have independent concurrent-session results where applicable"
+        "无效输入无新增记录，合法输入仍可保存。",
+        "Invalid input adds no record; valid input still saves."
       ],
       "ifWrong": [
-        "不要用同一会话模拟并发，准备独立测试账号",
-        "Use independent test accounts rather than a single session"
+        "页面拦住但后端未测时，请工具直接核对接口校验，保留未测试标记直到有证据。",
+        "If only the page was tested, request a direct backend check and retain untested status until evidenced."
       ]
     },
     {
       "expect": [
-        "用例包含预期、实际、证据和版本",
-        "Cases include expected and actual results, evidence and revision"
+        "服务不可用时没有假成功，输入保留；恢复后可正常读取和保存。",
+        "Unavailable service produces no false success; input remains and normal work resumes."
       ],
       "ifWrong": [
-        "要求补实际结果，未执行项明确未测试",
-        "Add observed results and mark unrun cases untested"
+        "不知道该停哪个进程就不停止，先请工具核对项目和端口；不结束不认识的进程。",
+        "Do not stop an unidentified process; verify its project and port first."
+      ]
+    },
+    {
+      "expect": [
+        "失败、通过、未测试分开，后续知道该修哪项。",
+        "Passes, failures and untested cases are distinct."
+      ],
+      "ifWrong": [
+        "工具自动关闭未测问题时纠正状态；不靠删测试失败记录得到“全通过”。",
+        "Correct automatically closed untested issues rather than deleting failures."
       ]
     }
   ],
   "restart": [
     {
       "expect": [
-        "本项目已正常停止，任务已保存",
-        "This project stops normally with work saved"
+        "停止前已有可供重开后对照的记录。",
+        "You have a baseline to compare after reopening."
       ],
       "ifWrong": [
-        "先核对进程或应用所属项目，不结束无关程序",
-        "Check the owning project before stopping processes"
+        "README 没有实际方法时让工具补入口、执行位置和预期输出，不猜命令。",
+        "Ask for missing entry, execution location and output rather than guessing commands."
       ]
     },
     {
       "expect": [
-        "按README能打开原项目的实际入口",
-        "README instructions reopen the original project entry"
+        "原服务停止后重新启动，并给出实际可用入口。",
+        "The service actually stops and starts with a working entry."
       ],
       "ifWrong": [
-        "记下失效命令或位置，让AI修正启动说明",
-        "Record broken commands or locations and correct the instructions"
+        "端口已占用时让工具确认旧进程归属，不能随便关掉其他项目。",
+        "Have the tool identify an occupied port’s owner rather than stopping unrelated projects."
       ]
     },
     {
       "expect": [
-        "核心动作可重做，需保存的数据仍存在",
-        "Core actions work again and required data persists"
+        "重开可用，要求保留的数据仍在，记录足以支持本人验收。",
+        "Reopening works and required data remains, with evidence for acceptance."
       ],
       "ifWrong": [
-        "分别记录启动失败与数据丢失，再定位原因",
-        "Separate restart failures from data loss when reporting"
+        "记录丢失先查路径、账号与配置；保留原库，不重新初始化整个项目。",
+        "For missing records inspect paths, account and configuration; preserve storage instead of reinitializing."
       ]
     }
   ],
@@ -892,32 +912,32 @@
   "delivery": [
     {
       "expect": [
-        "明确入口类型、目标系统与获取方式",
-        "Entry type, target OS and access method are explicit"
+        "交付对象、设备和范围已保存到实际项目。",
+        "Real project records identify users, devices and distribution scope."
       ],
       "ifWrong": [
-        "回实际使用者需求，选一种本轮交付方式",
-        "Choose this release's delivery method from actual user needs"
+        "想不清范围时先选最小真实使用场景，未确认项写待定，不替用户购买服务。",
+        "Choose the smallest real use case, leave unknowns pending and do not buy services on the user’s behalf."
       ]
     },
     {
       "expect": [
-        "选择已写入真实docs/delivery.md",
-        "The choice is saved in the real docs/delivery.md"
+        "不用记住对话也能按 README 再次使用。",
+        "README alone is sufficient to reopen and use the project."
       ],
       "ifWrong": [
-        "向AI发送确认内容并要求读取保存后的文件",
-        "Send the confirmed choice and request a readback"
+        "另一台设备不能打开时先判断是否真的要求远程使用，再选对应交付方案。",
+        "If another device cannot connect, first decide whether remote access is required."
       ]
     },
     {
       "expect": [
-        "账号、设备、费用前提清楚，未提前发布",
-        "Account, device and cost prerequisites are clear without early release"
+        "三部分各有实际运行方案，访问权限、数据保留与负责人明确。",
+        "All three parts have a runtime plan with access, retention and ownership."
       ],
       "ifWrong": [
-        "记录缺口并回交付评估，不把查资料当发布授权",
-        "Record gaps and return to review; reading is not release approval"
+        "只有“上传代码”时要求补后端启动、配置、持久数据和真实用户入口，先不上线。",
+        "A code-upload plan must also explain startup, configuration, persistence and user entry."
       ]
     }
   ],
@@ -956,64 +976,74 @@
   "package": [
     {
       "expect": [
-        "实际构建命令、产物目录和前提已确定",
-        "Actual build commands, output paths and prerequisites are known"
+        "交付物、输出位置、依赖及待本人操作的前提明确。",
+        "Output, location, dependencies and personal prerequisites are clear."
       ],
       "ifWrong": [
-        "让AI读取本项目配置，不套用其他项目命令",
-        "Read this project's configuration instead of copying commands"
+        "缺交付决定返回选择交付方式，不套用别的项目命令。",
+        "Return to delivery selection if the decision is missing; do not borrow unrelated commands."
       ]
     },
     {
       "expect": [
-        "真实产物可在目标环境按用户流程试运行",
-        "The real deliverable runs through the user flow in its target environment"
+        "产物存在且能找到，配置和数据交接边界清楚。",
+        "The output exists and configuration/data responsibilities are clear."
       ],
       "ifWrong": [
-        "保留构建或安装错误，区分产物缺失与运行失败",
-        "Keep errors and distinguish missing output from runtime failure"
+        "构建报错保留第一条有效错误和执行位置，按排障流程处理，不反复重建项目。",
+        "Keep the first meaningful build error and its location for diagnosis."
       ]
     },
     {
       "expect": [
-        "release.md记下版本、产物、结果和恢复方法",
-        "release.md records revision, output, results and recovery"
+        "交付物在选定环境能独立使用，相关数据按需求保留。",
+        "The deliverable works independently in the chosen environment with required persistence."
       ],
       "ifWrong": [
-        "重新读取文档，补实际路径和未验证项",
-        "Reread it and add actual paths and pending checks"
+        "只在开发机可用时核对运行时、配置、服务和数据路径；缺设备就写未测试。",
+        "For development-only success compare runtime, configuration, services and paths; mark unavailable devices untested."
+      ]
+    },
+    {
+      "expect": [
+        "下一步能按记录找到同一版本和实际入口。",
+        "The next step can find the same revision and entry."
+      ],
+      "ifWrong": [
+        "缺少哪项就补哪项；未测试不改成通过。",
+        "Fill missing evidence without passing untested work."
       ]
     }
   ],
   "live-check": [
     {
       "expect": [
-        "本人已确认本次账号、入口、版本与费用",
-        "The person approves this account, entry, version and costs"
+        "交付范围明确，公开动作有本人确认或保持未执行。",
+        "Scope is clear and publication is approved or remains unexecuted."
       ],
       "ifWrong": [
-        "缺确认或有阻断就停在准备状态",
-        "Stay in preparation if approval or readiness is missing"
+        "没有目标账号、费用决定或试运行证据时，返回准备步骤补齐。",
+        "Return to preparation for missing account, cost decision or trial evidence."
       ]
     },
     {
       "expect": [
-        "渠道状态明确区分已发布、待审核或失败",
-        "The channel distinguishes published, pending review and failed"
+        "目标使用者可从约定入口完成核心操作，数据和权限符合需求。",
+        "Intended users can complete the flow with correct persistence and permissions."
       ],
       "ifWrong": [
-        "查看渠道实际状态，不凭上传成功宣布上线",
-        "Check channel status rather than treating upload as release"
+        "网址能打开但保存失败时分别检查后端地址、服务状态和数据库；停止扩大发布，按恢复方案处理。",
+        "If the page opens but save fails, check backend address, service and storage; contain release and follow recovery."
       ]
     },
     {
       "expect": [
-        "普通账号在实际入口完成检查并记录结果",
-        "An ordinary account checks the real entry and records results"
+        "接收者拿到能执行的说明，后续维护能找到同一项目与数据。",
+        "Recipients have executable instructions and maintenance can locate the project and data."
       ],
       "ifWrong": [
-        "记录失败并执行已确认恢复方案，回反馈处理",
-        "Record failure, follow the agreed recovery plan and report it"
+        "实际入口变化就更新记录；不能把旧截图当当前版本验收。",
+        "Update changed entries; old screenshots do not prove the current revision."
       ]
     }
   ],
@@ -1052,42 +1082,52 @@
   "maintain": [
     {
       "expect": [
-        "维护表有负责人、频率、入口和异常处理",
-        "Maintenance has owners, frequency, entries and failure handling"
+        "知道每份资料的来源与备份范围，能找到实际入口。",
+        "Each source, backup scope and entry is identified."
       ],
       "ifWrong": [
-        "删掉不适用任务，为实际依赖补负责人",
-        "Remove irrelevant tasks and assign actual dependencies"
+        "工具只给仓库地址时要求补实际数据库位置；没有数据库就说明不适用。",
+        "A repository URL alone is insufficient for application data; document its location or inapplicability."
       ]
     },
     {
       "expect": [
-        "测试恢复后的数据能读取且内容正确",
-        "Restored test data is readable and correct"
+        "得到非空备份，来源、时间和基线可核对，原数据仍在。",
+        "A nonempty backup has source, time and baseline, with original data preserved."
       ],
       "ifWrong": [
-        "保留原始数据，检查备份范围和恢复步骤",
-        "Preserve originals and inspect backup coverage and recovery steps"
+        "备份失败先保留原库，检查位置、空间和权限；不删除旧备份来掩盖失败。",
+        "On failure preserve the source and inspect destination, space and permissions."
       ]
     },
     {
       "expect": [
-        "检查实际用量及有效期，升级有回退版本",
-        "Usage and expiry are checked; upgrades have rollback versions"
+        "原库与恢复库分离，测试服务明确连向恢复副本。",
+        "Source and restored storage are separate and the test service targets the copy."
       ],
       "ifWrong": [
-        "先补测试与回退，不直接升级正式环境",
-        "Prepare testing and rollback before production upgrades"
+        "路径相同或无法判断时立即停下，先改为独立目标；不试着覆盖看看。",
+        "Stop if paths match or are uncertain; choose a separate target before proceeding."
       ]
     },
     {
       "expect": [
-        "新需求更新相关文档，新对话能找到下一任务",
-        "Changes update related docs; a new chat can find the next task"
+        "旧记录恢复正确，副本可新增，原库保持原样。",
+        "Old records are correct, the copy accepts writes and the source stays unchanged."
       ],
       "ifWrong": [
-        "先读取交接记录，澄清变化后再继续开发",
-        "Read the handoff and clarify the change before development"
+        "数量或内容不符保留副本和日志，先判断备份时间与路径；不把失败副本覆盖到原库。",
+        "Preserve mismatching copies/logs; check backup time and paths, never overwrite the source with the failed copy."
+      ]
+    },
+    {
+      "expect": [
+        "下次可找到正确版本、数据、入口和下一件事。",
+        "The next session can find the correct revision, data, entry and next task."
+      ],
+      "ifWrong": [
+        "没有条件做恢复时明确写待验证及缺什么，不写“备份正常”代替恢复证据。",
+        "If restoration cannot run, record prerequisites and pending status rather than calling a backup a recovery test."
       ]
     }
   ]

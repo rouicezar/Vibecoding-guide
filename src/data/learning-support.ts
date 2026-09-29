@@ -792,16 +792,20 @@ export const stepSupport:StepSupport[]=[
     ],
     "steps": [
       [
-        "先让AI从需求生成测试账号/资料表，说明创建位置、权限和清理方法。测试通知用测试渠道，不触发真实交易。",
-        "Prepare accounts and disposable data with creation location, permissions and cleanup; use test notification/payment channels."
+        "操作位置：实际项目的需求、任务表和工具对话。打开需求与已完成任务，让工具先列一条从进入页面到看到结果的测试路线，注明当前版本、测试入口、要填的内容和每一步预期。 提醒：若前端、后端或数据库任务还没完成，回对应开发步骤；不让工具把未做的功能写成测试通过。",
+        "Where: Project requirements, tasks and tool chat. Open requirements and completed tasks. Ask for one route from entry to outcome, with revision, URL, inputs and expected results. Note: Return to unfinished frontend, backend or database tasks rather than marking them passed."
       ],
       [
-        "从普通用户入口按完整流程操作，不借管理员权限跳过用户步骤。记录每步实际结果与当前版本。",
-        "Walk the complete journey as an ordinary user, recording actual results and revision."
+        "操作位置：本站本步模板和工具原项目对话。填入真实测试路线，确认、复制并发送，请工具准备可清理的测试资料，先运行它能执行的检查并报告结果。 提醒：测试消息、付款等用测试环境；工具检查与接下来本人操作分别记录。",
+        "Where: This step’s template and original tool chat. Fill the real route, confirm, copy and send. Ask the tool to prepare disposable test data and report checks it can run. Note: Use test environments for messages and payments. Separate tool checks from personal actions."
       ],
       [
-        "先走一条，再覆盖所有必做需求对应流程；不可执行的标未测试并说明由谁补。",
-        "Start with one flow, then cover all required journeys. Mark inaccessible actions untested with an owner."
+        "操作位置：作品页面。从普通用户入口打开作品，按路线只做一遍：填写独特测试内容，点一次保存，读结果，再刷新或重新打开列表找到同一条记录。记下编号。 提醒：不要用管理员入口代替普通流程；页面新增一行还需与前一步数据库核对结果对应。",
+        "Where: Your project page. Use the ordinary user entry once: enter unique test content, save once, read feedback, then refresh or reopen the list and find the same ID. Note: Do not substitute an admin path. Match the visible record to the earlier storage check."
+      ],
+      [
+        "操作位置：项目 docs/checks.md 和剩余需求。把本人实际结果交给工具写入 docs/checks.md，打开文件核对。先完成这条，再按必做需求补其他路线。 提醒：记录格式：需求编号／版本／入口／输入／预期／实际／证据／通过、失败或未测试。本站进度不代替项目文件。",
+        "Where: Project docs/checks.md and remaining requirements. Send your observed results to the tool for docs/checks.md and open it to verify. Then cover other required routes. Note: Record requirement ID, revision, entry, input, expected, actual, evidence and pass/fail/untested. Guide progress is separate."
       ]
     ],
     "answer": [
@@ -814,7 +818,7 @@ export const stepSupport:StepSupport[]=[
     ],
     "recovery": [
       "失败只记录问题和操作证据，本步不修代码；“把试用结果记录成反馈”整理反馈后再修复。",
-      "Record failures here without code changes; repair follows the “Record the trial feedback” step.; organize feedback in the “Record the trial feedback” step before repair."
+      "Record failures here without code changes; repair follows the “Record the trial feedback” step."
     ],
     "terms": [
       "e2e",
@@ -833,16 +837,20 @@ export const stepSupport:StepSupport[]=[
     ],
     "steps": [
       [
-        "按需求选择适用情况：空输入、边界数量、重复操作、无权限、网络失败。无该功能就写不适用及原因。",
-        "Select relevant empty inputs, limits, duplicates, denied access and network failures; record justified inapplicability."
+        "操作位置：需求与本步模板。从空输入、过长内容、连续点击、断开服务、不同权限中选适用情况，填入模板并发给工具。请它逐项写出准备条件、操作和应出现的提示。 提醒：没有登录功能不硬加账号测试；用可清理测试资料，不在他人的正式服务上制造故障。",
+        "Where: Requirements and this step’s template. Choose relevant blanks, length limits, repeat clicks, service failure and access cases. Send them to the tool for setup, actions and expected messages. Note: Do not add account checks to an app without login. Use disposable data and your test environment."
       ],
       [
-        "多人名额/余额等操作要用两个独立会话同时尝试，核对最终记录；AI说明如何保证规则不被并发绕过。",
-        "For shared capacity or balances, test two independent sessions concurrently and inspect final records."
+        "操作位置：作品测试页面。清空必填内容点提交，再试需求规定的过长内容；观察提示和列表。正常内容再提交一次作为对照。 提醒：错误输入应被解释并拒绝保存，不应清空之前的记录。后台也必须检查，不能只依赖页面拦截。",
+        "Where: The project test page. Submit empty required fields, then content beyond the agreed limit. Inspect messages/list and compare with one valid submission. Note: Reject invalid input without deleting old records. The backend must validate too."
       ],
       [
-        "每个用例记录预期、实际、证据和版本。构建通过只能证明能生成程序，不能替代业务测试。",
-        "Record expected/actual outcomes, evidence and revision. A successful build does not replace business tests."
+        "操作位置：工具对话和作品测试页面。先保留未提交内容，请工具说明怎样只停止本项目测试服务。确认停下后在页面点保存，记录提示和输入是否保留；再按原方法启动服务。 提醒：仅适用于可控测试环境。恢复后先查记录是否已保存再决定重试，防止重复提交。",
+        "Where: Tool chat and project test page. Keep unsent content. Ask how to stop only this test service, stop it, try saving and observe feedback/input. Restart as documented. Note: Use a controlled test environment. After recovery query before retrying to avoid duplicates."
+      ],
+      [
+        "操作位置：docs/checks.md 与反馈步骤。把每项实际结果和未测原因交给工具追加到记录。失败保留编号与证据，进入反馈和修复计划；通过后继续重启检查。 提醒：连点保护只证明同一次等待中的操作，不能代替网络重试下的重复数据检查。",
+        "Where: docs/checks.md and feedback. Append actual results and reasons for untested cases. Keep issue IDs and evidence for feedback/planning; continue to restart checks when ready. Note: Pending-click protection does not establish duplicate safety for network retries."
       ]
     ],
     "answer": [
@@ -874,16 +882,16 @@ export const stepSupport:StepSupport[]=[
     ],
     "steps": [
       [
-        "保存当前任务，按README停止本项目进程；桌面/手机应用正常退出，网页工具使用它的重新运行入口。",
-        "Save work and stop the project as documented; close native apps or rerun the web workspace."
+        "操作位置：作品页面和 README.md。先记录当前网址、测试版本及一条已保存内容的编号。打开 README 找到本项目停止与启动方法。 提醒：没有数据保存需求的项目只记录核心结果；不要为了测试添加数据库。",
+        "Where: Project page and README.md. Record URL, revision and one saved record ID. Find this project’s stop/start instructions in README. Note: For projects without persistence, record the core result without adding storage."
       ],
       [
-        "按README重新打开同一项目。浏览器访问实际启动网址，安装应用从系统应用入口打开，无界面项目运行记录的命令。",
-        "Reopen the same project using its actual URL, installed-app entry or documented command."
+        "操作位置：README 指定的终端或应用入口。先保存未完成编辑，再按说明停止本项目；本机终端通常在运行服务的窗口按 Control+C。然后按同一说明重新启动。 提醒：只关闭浏览器不等于后端已经停止；网页工具和桌面应用使用各自停止/重开方法。",
+        "Where: The terminal or app entry named in README. Save unfinished edits, stop this project as documented, then start it again. Local terminals commonly use Control+C in the running service window. Note: Closing a browser is not stopping the backend; web tools/native apps have their own restart controls."
       ],
       [
-        "重做核心动作；有保存要求才检查数据保留，无保存需求只核对运行与结果。",
-        "Repeat the core action; check retained data only when required."
+        "操作位置：作品页面和 docs/checks.md。打开新启动输出中的地址，找到原记录，再做一次核心操作。把重启前后实际结果、版本、数据库位置交给工具保存并打开核对。 提醒：换了端口不代表数据必须消失；应核对仍是同一项目和数据位置。",
+        "Where: Project page and docs/checks.md. Open the reported URL, find the original record and repeat a core action. Save and inspect before/after results, revision and storage location. Note: A changed port should not itself erase data; verify the project and storage identity."
       ]
     ],
     "answer": [
@@ -1079,16 +1087,16 @@ export const stepSupport:StepSupport[]=[
     ],
     "steps": [
       [
-        "先选使用入口：自己电脑、公开网址、桌面安装、手机应用或小程序；记录目标系统和用户如何获得它。",
-        "Choose local use, URL, desktop/mobile installation or mini-program; specify OS and user access."
+        "操作位置：本站交付模板。写清谁用、在哪台设备用、是只给自己本机用还是要让别人远程打开。确认后生成保存话术，复制给工具写入 docs/delivery.md，再打开核对。 提醒：自己本机能用就是一种交付结果，不必强行买域名或上线。本站确认不自动创建交付文件。",
+        "Where: This guide’s delivery template. Specify users, devices and local-only versus remote access. Confirm, generate the save instruction, copy to the tool and inspect docs/delivery.md. Note: Working locally is a valid delivery. Guide confirmation does not create project files."
       ],
       [
-        "用下方模板记录本人选择，再生成保存话术写到 docs/delivery.md。仅在本站填完不代表AI知道决定。",
-        "Record your choice, then generate a save prompt for docs/delivery.md. Guide input alone does not inform AI."
+        "操作位置：工具对话与项目 README。本机使用时让工具写明打开项目、启动服务、访问网址、停止、再次打开和数据位置。把这些步骤发给预期使用者之前先自己照做。 提醒：127.0.0.1 或 localhost 指当前这台电脑；把这个地址发给别人，他们不会连到你的项目。",
+        "Where: Tool chat and project README. For local use document project opening, service start, URL, stop, reopen and storage location; follow the instructions yourself first. Note: 127.0.0.1 and localhost mean the current computer. Sending that URL does not connect someone to yours."
       ],
       [
-        "看“准备部署脚本或安装包”对应交付分支的账号、设备、费用前提；静态 Pages 方案可以现在查“可选：把简单网页放到 GitHub Pages”，然后回“评估上线与交付条件”和“准备部署脚本或安装包”，不等上线后才选择。",
-        "Review prerequisites for the “Prepare deployment or packaging” delivery branch. Static Pages can be checked now via “Optional: publish a simple page on GitHub Pages”, then return to “Review release readiness” and “Prepare deployment or packaging” instead of deciding after release.ages planning in the “Optional: publish a simple page on GitHub Pages” step belongs before packaging, not after release."
+        "操作位置：公开使用方案与对应交付分支。需要远程使用时，请工具分别说明页面放哪里、后端由哪个服务运行、数据库如何持久保存、需要哪些账号和费用。逐项确认再进入准备检查。 提醒：静态网页托管不自动运行后端；演示开发服务器不能直接当正式服务。没有账号或未决定费用先停在准备阶段。",
+        "Where: The remote-use plan and relevant delivery branch. For remote access ask where the page lives, what runs the backend, how data persists, and which accounts/costs are needed. Confirm before readiness review. Note: Static hosting does not automatically run a backend; a development server is not production. Stop at preparation if accounts/costs are unresolved."
       ]
     ],
     "answer": [
@@ -1130,7 +1138,7 @@ export const stepSupport:StepSupport[]=[
       ],
       [
         "有阻断先反馈修复；具备准备条件才进入“准备部署脚本或安装包”。它完成后，“交付上线，检查实际入口”还要做最终放行检查。",
-        "Repair blockers first; proceed to the “Prepare deployment or packaging” milestone only when prerequisites are ready, then run the final go-live check in “Deliver and check the real entry”. to packaging when ready. Step 29 checks final release readiness after trial."
+        "Repair blockers first; proceed to the “Prepare deployment or packaging” milestone only when prerequisites are ready, then run the final go-live check in “Deliver and check the real entry”."
       ]
     ],
     "answer": [
@@ -1139,7 +1147,7 @@ export const stepSupport:StepSupport[]=[
     ],
     "example": [
       "构建条件：已核验；真机安装：待“准备部署脚本或安装包”；正式发布：未执行。",
-      "Build prerequisites verified; device installation pending “Prepare deployment or packaging”; production release not executed.tallation pending the “Prepare deployment or packaging” milestone; release not executed."
+      "Build prerequisites verified; device installation pending “Prepare deployment or packaging”; production release not executed."
     ],
     "recovery": [
       "把不足写入带编号反馈，修复后重新评估，别在提示词里要求AI替你宣告全部通过。",
@@ -1162,16 +1170,20 @@ export const stepSupport:StepSupport[]=[
     ],
     "steps": [
       [
-        "按下方交付类型展开。先确认实际构建命令、输出位置、环境配置和需要本人完成的账号动作；命令由AI读取本项目确定。",
-        "Expand the relevant delivery type. Determine commands, output, configuration and personal account actions from the actual project."
+        "操作位置：已确认的交付文件与工具对话。在本步模板带上 docs/design.md、docs/delivery.md、docs/release.md，复制发送。让工具先核对准备检查，再说明本项目实际打包或启动步骤。 提醒：若选择本机使用，可以交付已验证源码、依赖和启动说明；不为了流程硬做安装包。",
+        "Where: Confirmed delivery files and tool chat. Send this step’s template with design, delivery and release records. Ask the tool to check readiness and specify actual build or startup steps. Note: Local delivery may be verified source, dependencies and instructions; an installer is not mandatory."
       ],
       [
-        "构建完成后找到真实产物；在测试环境或目标设备试部署/安装，按普通用户流程验证，不只看首页。",
-        "Locate the real output, deploy/install in the test target, and test ordinary-user journeys beyond the homepage."
+        "操作位置：工具输出的实际文件位置。执行确认过的准备步骤，找到真实产物和使用说明。请工具列哪些配置要由接收者填写、数据库在哪里，以及怎样保存密钥。 提醒：不要把开发机的密码、密钥或真实用户数据库直接装进公开包；示例配置用占位值并说明填写入口。",
+        "Where: The actual output location. Run the agreed preparation and find the deliverable and instructions. List recipient configuration, storage and secret handling. Note: Do not bundle development secrets or real user databases into a public package; document placeholders and setup entries."
       ],
       [
-        "记录版本、产物位置、依赖服务、安装/启动方法、结果和恢复方式到 docs/release.md；未验证项保留原状态。",
-        "Record revision, artifact, services, instructions, results and recovery in docs/release.md; retain unverified status."
+        "操作位置：隔离测试目录或目标设备。按接收者身份，在独立位置照 README 启动或安装交付物，完成填写、保存、读回、重开。使用测试数据并记录实际版本。 提醒：不要沿用开发机后台已运行的服务来假装独立交付成功；公开发布仍需下一步本人确认。",
+        "Where: An isolated test directory or target device. Act as the recipient: follow README to start/install, enter data, save, read and reopen with test data. Record revision. Note: Do not rely on a hidden running development service to claim independent delivery. Public release still needs confirmation."
+      ],
+      [
+        "操作位置：docs/release.md。把产物位置、启动入口、依赖服务、试运行结果和失败恢复办法交给工具保存，打开文件逐项核对，再进入真实入口检查。 提醒：有阻断问题留在修复流程；上传成功、构建成功和用户可用是不同结果。",
+        "Where: docs/release.md. Save artifact location, entry, services, trial results and recovery; open and review before live-entry checks. Note: Keep blocking issues in repair; upload, build and user usability are different outcomes."
       ]
     ],
     "answer": [
@@ -1204,16 +1216,16 @@ export const stepSupport:StepSupport[]=[
     ],
     "steps": [
       [
-        "先看“准备部署脚本或安装包”的产物与试运行是否齐全，阻断/未测项是否已处理。明确将发布到哪个账号/地址、版本和费用，由本人确认发布动作。",
-        "Review artifact and trial evidence, resolve blockers, and confirm account/address, revision, cost and release action."
+        "操作位置：交付记录和工具对话。先检查试运行证据和阻断项。本机交付就确认本机启动入口；公开交付则列目标账号、网址、版本、费用和影响，由本人明确同意后才发布。 提醒：本机跟练无需执行公开发布；不能把“准备上线”当成发布授权。",
+        "Where: Release record and tool chat. Review trial evidence and blockers. For local delivery confirm the local start entry; for public delivery list account, URL, revision, cost and impact for explicit approval. Note: Local practice needs no publication. Readiness is not release authorization."
       ],
       [
-        "按所选渠道执行；等待审核只记待审核，上传成功不等于普通用户已能使用。",
-        "Execute the chosen channel. Pending review is not live, and upload success does not prove user access."
+        "操作位置：实际使用入口。按所选方式交付后，从普通用户实际入口打开，用测试资料走核心流程，再关闭重开核对。远程项目使用独立浏览器或设备；本机项目核对本机入口即可。 提醒：商店待审核就是待审核；管理员能打开不能代替普通用户访问。",
+        "Where: The real user entry. After the chosen delivery, open the ordinary user entry, complete the core flow and reopen. Use an independent browser/device for remote delivery; local delivery checks the local entry. Note: Pending store review remains pending; admin access does not prove user access."
       ],
       [
-        "用独立浏览器/目标设备和普通账号从真实入口操作，检查数据/权限/错误反馈；记录实际结果。失败按既定恢复方案处理。",
-        "Test the real entry on an independent browser/device with ordinary access, including data, permissions and errors; use the planned recovery on failure."
+        "操作位置：交付记录与使用说明。把真实入口、版本、实际检查、未测项、遇到问题找谁写入 docs/release.md，核对 README 与实际一致，然后进入维护。 提醒：回退代码前先查数据库格式是否兼容，恢复数据库前先保留当前数据和确认影响范围。",
+        "Where: Release record and user instructions. Record entry, revision, checks, untested items and support owner in docs/release.md; align README before maintenance. Note: Check data-format compatibility before code rollback; preserve current data and confirm impact before restoring a database."
       ]
     ],
     "answer": [
@@ -1286,20 +1298,24 @@ export const stepSupport:StepSupport[]=[
     ],
     "steps": [
       [
-        "让AI列本项目实际维护表：负责人、频率、入口、正常结果、失败处理。无云服务就不要增加云账单任务。",
-        "Create a project-specific table: owner, frequency, entry, expected result and failure action. Omit irrelevant cloud tasks."
+        "操作位置：工具对话、README 和交付记录。请工具先列三份东西在哪里：项目代码、作品实际数据、本站学习草稿。逐项写出备份对象、保存位置、负责人和频率。 提醒：提交代码不等于备份数据库；本站“我的项目材料与备份”只备份本站草稿，不备份你的作品数据。",
+        "Where: Tool chat, README and release record. Locate three distinct assets: project code, application data and guide drafts. List backup scope, destination, owner and frequency. Note: Code commits do not back up databases. This guide’s material backup covers guide drafts only."
       ],
       [
-        "有数据就先在测试环境恢复一份备份并核对内容；保存代码版本不能代替数据备份。",
-        "If data exists, restore a backup in a test environment and verify it. Code revisions do not replace data backups."
+        "操作位置：所选工具的原项目对话。填本步模板并发送：先报告原库完整路径与记录基线，再用数据库支持的一致性备份方法生成带日期的新备份。要求报告输出完整路径、大小和核对结果。 提醒：不要直接复制正在写入的数据库文件冒充可靠备份；SQLite 可用 backup API，云数据库按服务商导出或快照说明操作。",
+        "Where: The original project chat. Send this step’s template: report source path and record baseline, then create a dated new consistent backup using the database’s supported method. Report output path, size and verification. Note: Do not casually copy a database while it is being written. SQLite supports its backup API; cloud services have export/snapshot procedures."
       ],
       [
-        "按约定周期查看实际日志、用量/账单和域名/签名有效期。升级先在测试环境验证核心流程，保留旧版恢复方式。",
-        "Review actual logs, usage/billing and relevant expiry dates on schedule. Test upgrades before release and retain recovery."
+        "操作位置：独立恢复目录或测试数据库。先让工具显示原库和恢复目标的完整路径，确认不是同一个位置。仅在独立目录恢复副本，用单独测试服务打开；本例可让工具用 JOURNAL_DB 指向恢复副本并使用空闲端口。 提醒：恢复练习不能覆盖原库；备份文件存在还不算恢复成功。配置由工具读取本项目后给出，不猜命令。",
+        "Where: An isolated restore directory or test database. Compare full source and restore paths first. Restore only to a separate destination and start an isolated test service. In this example ask the tool to point JOURNAL_DB at the restored copy on a free port. Note: Practice must not overwrite the source. An existing backup is not proof of restoration; use project-specific commands."
       ],
       [
-        "新需求先说明改什么，AI列受影响需求、设计、任务与测试；本人确认后更新文档。新对话先读交接文件再继续。",
-        "For new scope, review affected requirements, design, tasks and tests before approval. Start new conversations by reading the handoff."
+        "操作位置：恢复副本的作品页面与工具对话。打开恢复测试地址，核对备份时的记录数量及选定编号、标题、内容。只在副本新增一条“恢复演练”记录，再请工具只读确认原库没有这条新增。 提醒：备份之后才产生的数据不会自动出现在旧备份中；数量应与备份基线比较。",
+        "Where: The restored-copy page and tool chat. Open the restore test URL; compare count and chosen IDs/content to the backup baseline. Add a restore-only item to the copy and verify read-only that the source has no such item. Note: An older backup lacks later writes; compare with its own baseline."
+      ],
+      [
+        "操作位置：docs/handoff.md 与 README。把备份和恢复证据、真实运行入口、当前版本、未解决问题、下一任务保存到交接文件并打开核对。停止恢复测试服务，保留已验证备份。 提醒：维护频率按可接受的数据损失决定；新需求先更新需求与计划，不直接重做项目。新对话先请工具读取交接文件。",
+        "Where: docs/handoff.md and README. Save backup/restore evidence, entry, revision, open issues and next task; inspect the handoff. Stop the restore test service and retain verified backups. Note: Choose frequency from acceptable data loss. Plan new scope first; new chats should read the handoff."
       ]
     ],
     "answer": [

@@ -944,5 +944,591 @@
         "Without a personal check or required environment, mark awaiting retest rather than passed."
       ]
     }
+  ],
+  "flow": [
+    {
+      "where": [
+        "实际项目的需求、任务表和工具对话",
+        "Project requirements, tasks and tool chat"
+      ],
+      "action": [
+        "打开需求与已完成任务，让工具先列一条从进入页面到看到结果的测试路线，注明当前版本、测试入口、要填的内容和每一步预期。",
+        "Open requirements and completed tasks. Ask for one route from entry to outcome, with revision, URL, inputs and expected results."
+      ],
+      "tip": [
+        "若前端、后端或数据库任务还没完成，回对应开发步骤；不让工具把未做的功能写成测试通过。",
+        "Return to unfinished frontend, backend or database tasks rather than marking them passed."
+      ],
+      "expect": [
+        "有一条准备齐全、能逐步执行的路线。",
+        "One executable route has all prerequisites."
+      ],
+      "ifWrong": [
+        "缺账号或服务时要求工具写清创建入口和前置条件，保持未测试。",
+        "For missing accounts/services request setup entries and keep the case untested."
+      ]
+    },
+    {
+      "where": [
+        "本站本步模板和工具原项目对话",
+        "This step’s template and original tool chat"
+      ],
+      "action": [
+        "填入真实测试路线，确认、复制并发送，请工具准备可清理的测试资料，先运行它能执行的检查并报告结果。",
+        "Fill the real route, confirm, copy and send. Ask the tool to prepare disposable test data and report checks it can run."
+      ],
+      "tip": [
+        "测试消息、付款等用测试环境；工具检查与接下来本人操作分别记录。",
+        "Use test environments for messages and payments. Separate tool checks from personal actions."
+      ],
+      "expect": [
+        "工具说明测试资料在哪里，哪些已检查、哪些需要本人做。",
+        "Test data location and tool/manual checks are clearly identified."
+      ],
+      "ifWrong": [
+        "只有“全部正常”时要求给实际输入、输出和未测项，不复制为自己的验收结论。",
+        "Replace an unsupported all-good claim with inputs, outputs and untested cases."
+      ]
+    },
+    {
+      "where": [
+        "作品页面",
+        "Your project page"
+      ],
+      "action": [
+        "从普通用户入口打开作品，按路线只做一遍：填写独特测试内容，点一次保存，读结果，再刷新或重新打开列表找到同一条记录。记下编号。",
+        "Use the ordinary user entry once: enter unique test content, save once, read feedback, then refresh or reopen the list and find the same ID."
+      ],
+      "tip": [
+        "不要用管理员入口代替普通流程；页面新增一行还需与前一步数据库核对结果对应。",
+        "Do not substitute an admin path. Match the visible record to the earlier storage check."
+      ],
+      "expect": [
+        "输入、处理、保存、读回连成一条真实流程。",
+        "Input, processing, persistence and reading form a real complete flow."
+      ],
+      "ifWrong": [
+        "卡在哪一步就停在那里，保存网址、输入、错误与截图；转反馈步骤记录，按计划修复后重测。",
+        "Stop at the failure; keep URL, input, error and screenshot. Record feedback and retest after planned repair."
+      ]
+    },
+    {
+      "where": [
+        "项目 docs/checks.md 和剩余需求",
+        "Project docs/checks.md and remaining requirements"
+      ],
+      "action": [
+        "把本人实际结果交给工具写入 docs/checks.md，打开文件核对。先完成这条，再按必做需求补其他路线。",
+        "Send your observed results to the tool for docs/checks.md and open it to verify. Then cover other required routes."
+      ],
+      "tip": [
+        "记录格式：需求编号／版本／入口／输入／预期／实际／证据／通过、失败或未测试。本站进度不代替项目文件。",
+        "Record requirement ID, revision, entry, input, expected, actual, evidence and pass/fail/untested. Guide progress is separate."
+      ],
+      "expect": [
+        "每个必做需求有检查记录，未测原因明确，可交给异常测试。",
+        "Every required flow has an honest record ready for failure testing."
+      ],
+      "ifWrong": [
+        "发现漏测就补对应路线；不要因为第一条成功而把整份记录改成通过。",
+        "Test missing routes rather than passing everything after one success."
+      ]
+    }
+  ],
+  "test": [
+    {
+      "where": [
+        "需求与本步模板",
+        "Requirements and this step’s template"
+      ],
+      "action": [
+        "从空输入、过长内容、连续点击、断开服务、不同权限中选适用情况，填入模板并发给工具。请它逐项写出准备条件、操作和应出现的提示。",
+        "Choose relevant blanks, length limits, repeat clicks, service failure and access cases. Send them to the tool for setup, actions and expected messages."
+      ],
+      "tip": [
+        "没有登录功能不硬加账号测试；用可清理测试资料，不在他人的正式服务上制造故障。",
+        "Do not add account checks to an app without login. Use disposable data and your test environment."
+      ],
+      "expect": [
+        "每项异常有操作和明确预期，不适用写原因。",
+        "Each applicable failure case has actions and expected behavior."
+      ],
+      "ifWrong": [
+        "不知道怎样制造异常时要求只给本项目测试环境的方法，未准备好先不执行。",
+        "Ask for a method confined to this project’s test environment before trying a fault."
+      ]
+    },
+    {
+      "where": [
+        "作品测试页面",
+        "The project test page"
+      ],
+      "action": [
+        "清空必填内容点提交，再试需求规定的过长内容；观察提示和列表。正常内容再提交一次作为对照。",
+        "Submit empty required fields, then content beyond the agreed limit. Inspect messages/list and compare with one valid submission."
+      ],
+      "tip": [
+        "错误输入应被解释并拒绝保存，不应清空之前的记录。后台也必须检查，不能只依赖页面拦截。",
+        "Reject invalid input without deleting old records. The backend must validate too."
+      ],
+      "expect": [
+        "无效输入无新增记录，合法输入仍可保存。",
+        "Invalid input adds no record; valid input still saves."
+      ],
+      "ifWrong": [
+        "页面拦住但后端未测时，请工具直接核对接口校验，保留未测试标记直到有证据。",
+        "If only the page was tested, request a direct backend check and retain untested status until evidenced."
+      ]
+    },
+    {
+      "where": [
+        "工具对话和作品测试页面",
+        "Tool chat and project test page"
+      ],
+      "action": [
+        "先保留未提交内容，请工具说明怎样只停止本项目测试服务。确认停下后在页面点保存，记录提示和输入是否保留；再按原方法启动服务。",
+        "Keep unsent content. Ask how to stop only this test service, stop it, try saving and observe feedback/input. Restart as documented."
+      ],
+      "tip": [
+        "仅适用于可控测试环境。恢复后先查记录是否已保存再决定重试，防止重复提交。",
+        "Use a controlled test environment. After recovery query before retrying to avoid duplicates."
+      ],
+      "expect": [
+        "服务不可用时没有假成功，输入保留；恢复后可正常读取和保存。",
+        "Unavailable service produces no false success; input remains and normal work resumes."
+      ],
+      "ifWrong": [
+        "不知道该停哪个进程就不停止，先请工具核对项目和端口；不结束不认识的进程。",
+        "Do not stop an unidentified process; verify its project and port first."
+      ]
+    },
+    {
+      "where": [
+        "docs/checks.md 与反馈步骤",
+        "docs/checks.md and feedback"
+      ],
+      "action": [
+        "把每项实际结果和未测原因交给工具追加到记录。失败保留编号与证据，进入反馈和修复计划；通过后继续重启检查。",
+        "Append actual results and reasons for untested cases. Keep issue IDs and evidence for feedback/planning; continue to restart checks when ready."
+      ],
+      "tip": [
+        "连点保护只证明同一次等待中的操作，不能代替网络重试下的重复数据检查。",
+        "Pending-click protection does not establish duplicate safety for network retries."
+      ],
+      "expect": [
+        "失败、通过、未测试分开，后续知道该修哪项。",
+        "Passes, failures and untested cases are distinct."
+      ],
+      "ifWrong": [
+        "工具自动关闭未测问题时纠正状态；不靠删测试失败记录得到“全通过”。",
+        "Correct automatically closed untested issues rather than deleting failures."
+      ]
+    }
+  ],
+  "restart": [
+    {
+      "where": [
+        "作品页面和 README.md",
+        "Project page and README.md"
+      ],
+      "action": [
+        "先记录当前网址、测试版本及一条已保存内容的编号。打开 README 找到本项目停止与启动方法。",
+        "Record URL, revision and one saved record ID. Find this project’s stop/start instructions in README."
+      ],
+      "tip": [
+        "没有数据保存需求的项目只记录核心结果；不要为了测试添加数据库。",
+        "For projects without persistence, record the core result without adding storage."
+      ],
+      "expect": [
+        "停止前已有可供重开后对照的记录。",
+        "You have a baseline to compare after reopening."
+      ],
+      "ifWrong": [
+        "README 没有实际方法时让工具补入口、执行位置和预期输出，不猜命令。",
+        "Ask for missing entry, execution location and output rather than guessing commands."
+      ]
+    },
+    {
+      "where": [
+        "README 指定的终端或应用入口",
+        "The terminal or app entry named in README"
+      ],
+      "action": [
+        "先保存未完成编辑，再按说明停止本项目；本机终端通常在运行服务的窗口按 Control+C。然后按同一说明重新启动。",
+        "Save unfinished edits, stop this project as documented, then start it again. Local terminals commonly use Control+C in the running service window."
+      ],
+      "tip": [
+        "只关闭浏览器不等于后端已经停止；网页工具和桌面应用使用各自停止/重开方法。",
+        "Closing a browser is not stopping the backend; web tools/native apps have their own restart controls."
+      ],
+      "expect": [
+        "原服务停止后重新启动，并给出实际可用入口。",
+        "The service actually stops and starts with a working entry."
+      ],
+      "ifWrong": [
+        "端口已占用时让工具确认旧进程归属，不能随便关掉其他项目。",
+        "Have the tool identify an occupied port’s owner rather than stopping unrelated projects."
+      ]
+    },
+    {
+      "where": [
+        "作品页面和 docs/checks.md",
+        "Project page and docs/checks.md"
+      ],
+      "action": [
+        "打开新启动输出中的地址，找到原记录，再做一次核心操作。把重启前后实际结果、版本、数据库位置交给工具保存并打开核对。",
+        "Open the reported URL, find the original record and repeat a core action. Save and inspect before/after results, revision and storage location."
+      ],
+      "tip": [
+        "换了端口不代表数据必须消失；应核对仍是同一项目和数据位置。",
+        "A changed port should not itself erase data; verify the project and storage identity."
+      ],
+      "expect": [
+        "重开可用，要求保留的数据仍在，记录足以支持本人验收。",
+        "Reopening works and required data remains, with evidence for acceptance."
+      ],
+      "ifWrong": [
+        "记录丢失先查路径、账号与配置；保留原库，不重新初始化整个项目。",
+        "For missing records inspect paths, account and configuration; preserve storage instead of reinitializing."
+      ]
+    }
+  ],
+  "delivery": [
+    {
+      "where": [
+        "本站交付模板",
+        "This guide’s delivery template"
+      ],
+      "action": [
+        "写清谁用、在哪台设备用、是只给自己本机用还是要让别人远程打开。确认后生成保存话术，复制给工具写入 docs/delivery.md，再打开核对。",
+        "Specify users, devices and local-only versus remote access. Confirm, generate the save instruction, copy to the tool and inspect docs/delivery.md."
+      ],
+      "tip": [
+        "自己本机能用就是一种交付结果，不必强行买域名或上线。本站确认不自动创建交付文件。",
+        "Working locally is a valid delivery. Guide confirmation does not create project files."
+      ],
+      "expect": [
+        "交付对象、设备和范围已保存到实际项目。",
+        "Real project records identify users, devices and distribution scope."
+      ],
+      "ifWrong": [
+        "想不清范围时先选最小真实使用场景，未确认项写待定，不替用户购买服务。",
+        "Choose the smallest real use case, leave unknowns pending and do not buy services on the user’s behalf."
+      ]
+    },
+    {
+      "where": [
+        "工具对话与项目 README",
+        "Tool chat and project README"
+      ],
+      "action": [
+        "本机使用时让工具写明打开项目、启动服务、访问网址、停止、再次打开和数据位置。把这些步骤发给预期使用者之前先自己照做。",
+        "For local use document project opening, service start, URL, stop, reopen and storage location; follow the instructions yourself first."
+      ],
+      "tip": [
+        "127.0.0.1 或 localhost 指当前这台电脑；把这个地址发给别人，他们不会连到你的项目。",
+        "127.0.0.1 and localhost mean the current computer. Sending that URL does not connect someone to yours."
+      ],
+      "expect": [
+        "不用记住对话也能按 README 再次使用。",
+        "README alone is sufficient to reopen and use the project."
+      ],
+      "ifWrong": [
+        "另一台设备不能打开时先判断是否真的要求远程使用，再选对应交付方案。",
+        "If another device cannot connect, first decide whether remote access is required."
+      ]
+    },
+    {
+      "where": [
+        "公开使用方案与对应交付分支",
+        "The remote-use plan and relevant delivery branch"
+      ],
+      "action": [
+        "需要远程使用时，请工具分别说明页面放哪里、后端由哪个服务运行、数据库如何持久保存、需要哪些账号和费用。逐项确认再进入准备检查。",
+        "For remote access ask where the page lives, what runs the backend, how data persists, and which accounts/costs are needed. Confirm before readiness review."
+      ],
+      "tip": [
+        "静态网页托管不自动运行后端；演示开发服务器不能直接当正式服务。没有账号或未决定费用先停在准备阶段。",
+        "Static hosting does not automatically run a backend; a development server is not production. Stop at preparation if accounts/costs are unresolved."
+      ],
+      "expect": [
+        "三部分各有实际运行方案，访问权限、数据保留与负责人明确。",
+        "All three parts have a runtime plan with access, retention and ownership."
+      ],
+      "ifWrong": [
+        "只有“上传代码”时要求补后端启动、配置、持久数据和真实用户入口，先不上线。",
+        "A code-upload plan must also explain startup, configuration, persistence and user entry."
+      ]
+    }
+  ],
+  "package": [
+    {
+      "where": [
+        "已确认的交付文件与工具对话",
+        "Confirmed delivery files and tool chat"
+      ],
+      "action": [
+        "在本步模板带上 docs/design.md、docs/delivery.md、docs/release.md，复制发送。让工具先核对准备检查，再说明本项目实际打包或启动步骤。",
+        "Send this step’s template with design, delivery and release records. Ask the tool to check readiness and specify actual build or startup steps."
+      ],
+      "tip": [
+        "若选择本机使用，可以交付已验证源码、依赖和启动说明；不为了流程硬做安装包。",
+        "Local delivery may be verified source, dependencies and instructions; an installer is not mandatory."
+      ],
+      "expect": [
+        "交付物、输出位置、依赖及待本人操作的前提明确。",
+        "Output, location, dependencies and personal prerequisites are clear."
+      ],
+      "ifWrong": [
+        "缺交付决定返回选择交付方式，不套用别的项目命令。",
+        "Return to delivery selection if the decision is missing; do not borrow unrelated commands."
+      ]
+    },
+    {
+      "where": [
+        "工具输出的实际文件位置",
+        "The actual output location"
+      ],
+      "action": [
+        "执行确认过的准备步骤，找到真实产物和使用说明。请工具列哪些配置要由接收者填写、数据库在哪里，以及怎样保存密钥。",
+        "Run the agreed preparation and find the deliverable and instructions. List recipient configuration, storage and secret handling."
+      ],
+      "tip": [
+        "不要把开发机的密码、密钥或真实用户数据库直接装进公开包；示例配置用占位值并说明填写入口。",
+        "Do not bundle development secrets or real user databases into a public package; document placeholders and setup entries."
+      ],
+      "expect": [
+        "产物存在且能找到，配置和数据交接边界清楚。",
+        "The output exists and configuration/data responsibilities are clear."
+      ],
+      "ifWrong": [
+        "构建报错保留第一条有效错误和执行位置，按排障流程处理，不反复重建项目。",
+        "Keep the first meaningful build error and its location for diagnosis."
+      ]
+    },
+    {
+      "where": [
+        "隔离测试目录或目标设备",
+        "An isolated test directory or target device"
+      ],
+      "action": [
+        "按接收者身份，在独立位置照 README 启动或安装交付物，完成填写、保存、读回、重开。使用测试数据并记录实际版本。",
+        "Act as the recipient: follow README to start/install, enter data, save, read and reopen with test data. Record revision."
+      ],
+      "tip": [
+        "不要沿用开发机后台已运行的服务来假装独立交付成功；公开发布仍需下一步本人确认。",
+        "Do not rely on a hidden running development service to claim independent delivery. Public release still needs confirmation."
+      ],
+      "expect": [
+        "交付物在选定环境能独立使用，相关数据按需求保留。",
+        "The deliverable works independently in the chosen environment with required persistence."
+      ],
+      "ifWrong": [
+        "只在开发机可用时核对运行时、配置、服务和数据路径；缺设备就写未测试。",
+        "For development-only success compare runtime, configuration, services and paths; mark unavailable devices untested."
+      ]
+    },
+    {
+      "where": [
+        "docs/release.md",
+        "docs/release.md"
+      ],
+      "action": [
+        "把产物位置、启动入口、依赖服务、试运行结果和失败恢复办法交给工具保存，打开文件逐项核对，再进入真实入口检查。",
+        "Save artifact location, entry, services, trial results and recovery; open and review before live-entry checks."
+      ],
+      "tip": [
+        "有阻断问题留在修复流程；上传成功、构建成功和用户可用是不同结果。",
+        "Keep blocking issues in repair; upload, build and user usability are different outcomes."
+      ],
+      "expect": [
+        "下一步能按记录找到同一版本和实际入口。",
+        "The next step can find the same revision and entry."
+      ],
+      "ifWrong": [
+        "缺少哪项就补哪项；未测试不改成通过。",
+        "Fill missing evidence without passing untested work."
+      ]
+    }
+  ],
+  "live-check": [
+    {
+      "where": [
+        "交付记录和工具对话",
+        "Release record and tool chat"
+      ],
+      "action": [
+        "先检查试运行证据和阻断项。本机交付就确认本机启动入口；公开交付则列目标账号、网址、版本、费用和影响，由本人明确同意后才发布。",
+        "Review trial evidence and blockers. For local delivery confirm the local start entry; for public delivery list account, URL, revision, cost and impact for explicit approval."
+      ],
+      "tip": [
+        "本机跟练无需执行公开发布；不能把“准备上线”当成发布授权。",
+        "Local practice needs no publication. Readiness is not release authorization."
+      ],
+      "expect": [
+        "交付范围明确，公开动作有本人确认或保持未执行。",
+        "Scope is clear and publication is approved or remains unexecuted."
+      ],
+      "ifWrong": [
+        "没有目标账号、费用决定或试运行证据时，返回准备步骤补齐。",
+        "Return to preparation for missing account, cost decision or trial evidence."
+      ]
+    },
+    {
+      "where": [
+        "实际使用入口",
+        "The real user entry"
+      ],
+      "action": [
+        "按所选方式交付后，从普通用户实际入口打开，用测试资料走核心流程，再关闭重开核对。远程项目使用独立浏览器或设备；本机项目核对本机入口即可。",
+        "After the chosen delivery, open the ordinary user entry, complete the core flow and reopen. Use an independent browser/device for remote delivery; local delivery checks the local entry."
+      ],
+      "tip": [
+        "商店待审核就是待审核；管理员能打开不能代替普通用户访问。",
+        "Pending store review remains pending; admin access does not prove user access."
+      ],
+      "expect": [
+        "目标使用者可从约定入口完成核心操作，数据和权限符合需求。",
+        "Intended users can complete the flow with correct persistence and permissions."
+      ],
+      "ifWrong": [
+        "网址能打开但保存失败时分别检查后端地址、服务状态和数据库；停止扩大发布，按恢复方案处理。",
+        "If the page opens but save fails, check backend address, service and storage; contain release and follow recovery."
+      ]
+    },
+    {
+      "where": [
+        "交付记录与使用说明",
+        "Release record and user instructions"
+      ],
+      "action": [
+        "把真实入口、版本、实际检查、未测项、遇到问题找谁写入 docs/release.md，核对 README 与实际一致，然后进入维护。",
+        "Record entry, revision, checks, untested items and support owner in docs/release.md; align README before maintenance."
+      ],
+      "tip": [
+        "回退代码前先查数据库格式是否兼容，恢复数据库前先保留当前数据和确认影响范围。",
+        "Check data-format compatibility before code rollback; preserve current data and confirm impact before restoring a database."
+      ],
+      "expect": [
+        "接收者拿到能执行的说明，后续维护能找到同一项目与数据。",
+        "Recipients have executable instructions and maintenance can locate the project and data."
+      ],
+      "ifWrong": [
+        "实际入口变化就更新记录；不能把旧截图当当前版本验收。",
+        "Update changed entries; old screenshots do not prove the current revision."
+      ]
+    }
+  ],
+  "maintain": [
+    {
+      "where": [
+        "工具对话、README 和交付记录",
+        "Tool chat, README and release record"
+      ],
+      "action": [
+        "请工具先列三份东西在哪里：项目代码、作品实际数据、本站学习草稿。逐项写出备份对象、保存位置、负责人和频率。",
+        "Locate three distinct assets: project code, application data and guide drafts. List backup scope, destination, owner and frequency."
+      ],
+      "tip": [
+        "提交代码不等于备份数据库；本站“我的项目材料与备份”只备份本站草稿，不备份你的作品数据。",
+        "Code commits do not back up databases. This guide’s material backup covers guide drafts only."
+      ],
+      "expect": [
+        "知道每份资料的来源与备份范围，能找到实际入口。",
+        "Each source, backup scope and entry is identified."
+      ],
+      "ifWrong": [
+        "工具只给仓库地址时要求补实际数据库位置；没有数据库就说明不适用。",
+        "A repository URL alone is insufficient for application data; document its location or inapplicability."
+      ]
+    },
+    {
+      "where": [
+        "所选工具的原项目对话",
+        "The original project chat"
+      ],
+      "action": [
+        "填本步模板并发送：先报告原库完整路径与记录基线，再用数据库支持的一致性备份方法生成带日期的新备份。要求报告输出完整路径、大小和核对结果。",
+        "Send this step’s template: report source path and record baseline, then create a dated new consistent backup using the database’s supported method. Report output path, size and verification."
+      ],
+      "tip": [
+        "不要直接复制正在写入的数据库文件冒充可靠备份；SQLite 可用 backup API，云数据库按服务商导出或快照说明操作。",
+        "Do not casually copy a database while it is being written. SQLite supports its backup API; cloud services have export/snapshot procedures."
+      ],
+      "expect": [
+        "得到非空备份，来源、时间和基线可核对，原数据仍在。",
+        "A nonempty backup has source, time and baseline, with original data preserved."
+      ],
+      "ifWrong": [
+        "备份失败先保留原库，检查位置、空间和权限；不删除旧备份来掩盖失败。",
+        "On failure preserve the source and inspect destination, space and permissions."
+      ]
+    },
+    {
+      "where": [
+        "独立恢复目录或测试数据库",
+        "An isolated restore directory or test database"
+      ],
+      "action": [
+        "先让工具显示原库和恢复目标的完整路径，确认不是同一个位置。仅在独立目录恢复副本，用单独测试服务打开；本例可让工具用 JOURNAL_DB 指向恢复副本并使用空闲端口。",
+        "Compare full source and restore paths first. Restore only to a separate destination and start an isolated test service. In this example ask the tool to point JOURNAL_DB at the restored copy on a free port."
+      ],
+      "tip": [
+        "恢复练习不能覆盖原库；备份文件存在还不算恢复成功。配置由工具读取本项目后给出，不猜命令。",
+        "Practice must not overwrite the source. An existing backup is not proof of restoration; use project-specific commands."
+      ],
+      "expect": [
+        "原库与恢复库分离，测试服务明确连向恢复副本。",
+        "Source and restored storage are separate and the test service targets the copy."
+      ],
+      "ifWrong": [
+        "路径相同或无法判断时立即停下，先改为独立目标；不试着覆盖看看。",
+        "Stop if paths match or are uncertain; choose a separate target before proceeding."
+      ]
+    },
+    {
+      "where": [
+        "恢复副本的作品页面与工具对话",
+        "The restored-copy page and tool chat"
+      ],
+      "action": [
+        "打开恢复测试地址，核对备份时的记录数量及选定编号、标题、内容。只在副本新增一条“恢复演练”记录，再请工具只读确认原库没有这条新增。",
+        "Open the restore test URL; compare count and chosen IDs/content to the backup baseline. Add a restore-only item to the copy and verify read-only that the source has no such item."
+      ],
+      "tip": [
+        "备份之后才产生的数据不会自动出现在旧备份中；数量应与备份基线比较。",
+        "An older backup lacks later writes; compare with its own baseline."
+      ],
+      "expect": [
+        "旧记录恢复正确，副本可新增，原库保持原样。",
+        "Old records are correct, the copy accepts writes and the source stays unchanged."
+      ],
+      "ifWrong": [
+        "数量或内容不符保留副本和日志，先判断备份时间与路径；不把失败副本覆盖到原库。",
+        "Preserve mismatching copies/logs; check backup time and paths, never overwrite the source with the failed copy."
+      ]
+    },
+    {
+      "where": [
+        "docs/handoff.md 与 README",
+        "docs/handoff.md and README"
+      ],
+      "action": [
+        "把备份和恢复证据、真实运行入口、当前版本、未解决问题、下一任务保存到交接文件并打开核对。停止恢复测试服务，保留已验证备份。",
+        "Save backup/restore evidence, entry, revision, open issues and next task; inspect the handoff. Stop the restore test service and retain verified backups."
+      ],
+      "tip": [
+        "维护频率按可接受的数据损失决定；新需求先更新需求与计划，不直接重做项目。新对话先请工具读取交接文件。",
+        "Choose frequency from acceptable data loss. Plan new scope first; new chats should read the handoff."
+      ],
+      "expect": [
+        "下次可找到正确版本、数据、入口和下一件事。",
+        "The next session can find the correct revision, data, entry and next task."
+      ],
+      "ifWrong": [
+        "没有条件做恢复时明确写待验证及缺什么，不写“备份正常”代替恢复证据。",
+        "If restoration cannot run, record prerequisites and pending status rather than calling a backup a recovery test."
+      ]
+    }
   ]
 }

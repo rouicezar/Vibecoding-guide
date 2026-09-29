@@ -42,8 +42,8 @@
   {
     "id": "tool",
     "action": [
-      "在 Codex 中选择能关联本机文件夹的项目。先看下面定位图：项目、对话、文件预览分别做什么。",
-      "Choose a Codex project connected to a local folder. Use the location map to distinguish project, conversation and file preview."
+      "选择可访问自己项目文件的工具。下面以 Codex 官方界面截图帮助辨认项目与对话入口；已有可用工具可继续使用。",
+      "Choose a tool that can access your project files. The official Codex screenshot below locates projects and chats; you may keep another suitable tool."
     ],
     "expected": [
       "能在项目对话让 Codex 检查文件并报告实际路径。",
@@ -538,8 +538,8 @@
       "Record the failing layer: button, request, write or read. Send it to feedback without changing code during testing."
     ],
     "instruction": [
-      "只核对一条唯一测试记录的页面→POST→数据库→GET→页面链路，记录编号及各层实际证据。无法观测的层写未验证，不以推测代替。",
-      "Verify one unique record through page→POST→database→GET→page. Record its ID and actual evidence for each layer; mark unobservable layers unverified."
+      "先核对一条唯一测试记录的页面→POST→数据库→GET→页面链路，记录编号及各层实际证据。无法观测的层写未验证，不以推测代替。\n先读取需求与 tasks/todo.md，确认各层任务完成。给我普通用户入口、独特测试输入和逐步预期，等我实际操作后才记录本人结果到 docs/checks.md。先走一条，再覆盖其他必做流程。失败交给反馈与修复计划，本步不改代码。",
+      "Verify one unique record through page→POST→database→GET→page. Record its ID and actual evidence for each layer; mark unobservable layers unverified.\nRead requirements/tasks and confirm each layer is ready. Give the ordinary-user entry, unique input and stepwise expectations. Record my results in docs/checks.md only after I report them. Start with one route, then cover all required flows; send failures to feedback/planning without changes here."
     ],
     "issues": []
   },
@@ -578,8 +578,8 @@
       "If missing, compare absolute database paths and preserve the original file; do not reset it."
     ],
     "instruction": [
-      "实际停止并重启本项目服务，核对 instance/journal.sqlite 绝对路径、原记录编号与数量。使用后端查询证明保留，记录准确命令及端口；不得重置数据库。",
-      "Stop/restart only this service, compare the absolute database path and original record ID/count, and prove retention with a backend query. Record real commands/port; never reset the database."
+      "实际停止并重启本项目服务，核对 instance/journal.sqlite 绝对路径、原记录编号与数量。使用后端查询证明保留，记录准确命令及端口；不得重置数据库。\n先记录原编号与内容，再按 README 给出停止、启动和打开网址的实际操作。不要把关闭浏览器当成重启后端。等我报告重开结果后追加 docs/checks.md，失败保留原数据并记录。",
+      "Stop/restart only this service, compare the absolute database path and original record ID/count, and prove retention with a backend query. Record real commands/port; never reset the database.\nRecord the original ID/content, then give actual stop/start/URL actions from README. Closing the browser is not restarting the backend. Append my reported results to docs/checks.md; preserve data on failure."
     ],
     "issues": [
       {
@@ -598,6 +598,24 @@
         "expected": [
           "原来的编号和内容重新出现。",
           "Original IDs and content return."
+        ]
+      },
+      {
+        "title": [
+          "浏览器提示 ERR_UNSAFE_PORT",
+          "Browser reports ERR_UNSAFE_PORT"
+        ],
+        "check": [
+          "服务可能在运行，但所选端口被浏览器禁止访问；这不等于数据库坏了。",
+          "The service may be running on a browser-blocked port; this is not evidence of database damage."
+        ],
+        "action": [
+          "保留报错与网址，请工具为本项目选择浏览器允许且空闲的端口，再按新启动输出打开；不要关闭浏览器安全保护。",
+          "Keep the error and URL. Ask the tool to choose a free browser-allowed port for this project and use the new startup URL; do not disable browser security."
+        ],
+        "expected": [
+          "新地址可访问，仍连接原来的数据库和记录。",
+          "The new URL opens and still uses the same database and records."
         ]
       }
     ]
@@ -697,8 +715,8 @@
       "A friend cannot use your localhost URL; that does not prove broken code and is not fixed by disabling a firewall."
     ],
     "instruction": [
-      "记录本轮为本机单人交付；前端、后端、SQLite 都在本机。若以后公开，另定登录、数据隔离、持久磁盘、HTTPS 和费用，不在本步自动部署。",
-      "Record local single-user delivery with all three layers local. Future public use needs identity, isolation, persistent disk, HTTPS and costs; do not auto-deploy here."
+      "记录本轮为本机单人交付；前端、后端、SQLite 都在本机。若以后公开，另定登录、数据隔离、持久磁盘、HTTPS 和费用，不在本步自动部署。\n请把我确认的范围保存到 docs/delivery.md，README 写明本机再使用步骤。说明 localhost 是当前电脑，发这个网址不能让另一台电脑访问；远程使用作为另一个已确认方案处理。",
+      "Record local single-user delivery with all three layers local. Future public use needs identity, isolation, persistent disk, HTTPS and costs; do not auto-deploy here.\nSave my confirmed scope to docs/delivery.md and local reopening instructions to README. Explain localhost means the current computer; another device cannot reach this project through that URL. Treat remote use as a separately confirmed plan."
     ],
     "issues": []
   },
@@ -737,8 +755,8 @@
       "Do not treat a copied .venv as a portable package; recreate the environment from dependencies."
     ],
     "instruction": [
-      "仅准备本机交付：README 写明项目目录、按系统创建 .venv、安装依赖、非破坏性建库、启动/停止、真实入口、备份恢复。用独立测试副本验证，记录未测系统，不公开。",
-      "Prepare local delivery only: directory, OS-specific environment/dependencies, non-destructive database setup, start/stop, actual URL and backup/restore. Test an isolated copy, name untested systems and do not publish."
+      "仅准备本机交付：README 写明项目目录、按系统创建 .venv、安装依赖、非破坏性建库、启动/停止、真实入口、备份恢复。用独立测试副本验证，记录未测系统，不公开。\n请给出独立测试副本的完整位置，不能依赖开发机已经运行的服务。试运行填写、保存、读回、重启，把实际入口、版本、依赖、未测项写入 docs/release.md。接收者需要的配置用占位说明，不附带真实密钥和用户库。",
+      "Prepare local delivery only: directory, OS-specific environment/dependencies, non-destructive database setup, start/stop, actual URL and backup/restore. Test an isolated copy, name untested systems and do not publish.\nIdentify the isolated delivery test location; do not rely on an existing development service. Trial entry, save, read and restart; record URL, revision, dependencies and untested work in docs/release.md. Use configuration placeholders without real keys or user databases."
     ],
     "issues": []
   },
@@ -757,8 +775,8 @@
       "Check the service if opening fails; retain pending status instead of equating prepared files with successful delivery."
     ],
     "instruction": [
-      "只执行本人允许的本机交付，核对前端请求实际到达该后端和数据库；记录实际版本/入口/编号。没有公网授权就不开放服务。",
-      "Perform only authorized local delivery; verify requests reach its backend/database and record revision/entry/ID. Do not expose publicly without authorization."
+      "只执行本人允许的本机交付，核对前端请求实际到达该后端和数据库；记录实际版本/入口/编号。没有公网授权就不开放服务。\n本机交付不要求公开网址；实际入口及本人结果写入 docs/release.md。公开交付必须先明确账号、费用、影响与本人授权，未执行就记录未发布，不能编造线上验收。",
+      "Perform only authorized local delivery; verify requests reach its backend/database and record revision/entry/ID. Do not expose publicly without authorization.\nLocal delivery does not require a public URL. Save the actual entry and my results in docs/release.md. Public delivery requires account, cost, impact and explicit permission; otherwise record not published and do not invent online acceptance."
     ],
     "issues": []
   },
@@ -797,8 +815,8 @@
       "Copying an actively written database may be incomplete; use SQLite backup or a verified stopped-service copy."
     ],
     "instruction": [
-      "在获准的独立测试目录用 SQLite backup 接口备份/恢复，验证记录编号和条数；绝不覆盖原库。交接写明命令、数据库绝对路径、依赖版本和下一任务，未演练就标未验证。",
-      "Use SQLite backup/restore in an authorized isolated test directory, verify IDs/counts and never overwrite the original. Handoff records commands, absolute database path, dependencies and next task; unperformed restore remains unverified."
+      "在获准的独立测试目录用 SQLite backup 接口备份/恢复，验证记录编号和条数；绝不覆盖原库。交接写明命令、数据库绝对路径、依赖版本和下一任务，未演练就标未验证。\n先报告原库、带日期备份和恢复副本三个完整路径，以及备份时的记录数量和抽查编号。用一致性备份生成新文件，在独立副本上用 JOURNAL_DB 和空闲端口启动。核对旧记录，再仅在副本新增恢复演练记录，确认原库未新增。结束时停止测试服务；把实际命令、路径、基线、结果、未测项和下一任务写入 docs/handoff.md。本站草稿备份与代码提交都不替代数据库备份。",
+      "Use SQLite backup/restore in an authorized isolated test directory, verify IDs/counts and never overwrite the original. Handoff records commands, absolute database path, dependencies and next task; unperformed restore remains unverified.\nReport separate full paths for source, dated backup and restored copy, with baseline count and sample IDs. Create a consistent backup and run the restored copy with JOURNAL_DB on a free port. Check old records, insert a restore-only item and verify the source has no new item. Stop the test service; record actual commands, paths, baseline, results, untested items and next task in docs/handoff.md. Guide backups and commits do not replace database backups."
     ],
     "issues": []
   }
