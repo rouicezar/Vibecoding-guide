@@ -63,7 +63,7 @@ const stepHref = (id: string) => `${url(locale, `node/${nodeForStep(id)}`)}#${id
       </div>
       {contract && <details class="learn-details">
         <summary>{label('这一步读哪些文件、写哪个文件', 'Files this step reads and writes')}</summary>
-        <p>{label('本站不能检查你的电脑文件。在当前项目对话里发送，AI 应先读取这些材料；缺失就回前面的步骤补齐。', 'This guide cannot inspect your files. Send in the current project; AI reads these inputs first. Return to the earlier step if something is missing.')}</p>
+        <p>{label('在所选工具的项目对话中，让它先打开下面的文件。找不到时，点击下方链接回到创建文件的步骤。', 'In your tool’s project chat, ask it to open the files below. If a file is missing, follow the link back to the step that creates it.')}</p>
         <p><strong>{label('需要读取：', 'Read: ')}</strong>{contract.reads.join(' · ') || label('当前已确认材料与项目位置', 'Confirmed material and project location')}</p>
         <p><strong>{label('这一步写入：', 'Write: ')}</strong>{contract.writes.join(' · ') || label('只检查，不改文件', 'Read-only; no file changes')}</p>
         <p class="slot-note"><a href={stepHref(contract.back)}>{label('缺前置材料？回上一步补齐 →', 'Missing input? Return to the previous step →')}</a></p>
@@ -89,7 +89,14 @@ const stepHref = (id: string) => `${url(locale, `node/${nodeForStep(id)}`)}#${id
     <div class="step-slot">
       <Fragment set:html={heading(3, '你要做的', 'What you do')} />
       <p class="step-location"><Icon name="location" size={16} />{t(lesson.where, locale)}</p>
-      <ol class="lesson-actions">{lesson.actions.map(action => <li>{t(action, locale)}</li>)}</ol>
+      <ol class="lesson-actions">{microActions[stepId].map(action => {
+        const value=t(action.action,locale);
+        const promptMarker=label('\n建议提示词：','\nSuggested prompt: ');
+        const resultMarker=label('\n完成后：','\nAfterwards: ');
+        const [body,result]=value.split(resultMarker);
+        const [instruction,prompt]=body.split(promptMarker);
+        return <li><p>{instruction}</p>{prompt&&<><p><strong>{label('建议提示词：','Suggested prompt:')}</strong></p><pre>{prompt}</pre></>}<p><strong>{label('完成后：','Afterwards:')}</strong>{result}</p></li>;
+      })}</ol>
       {lesson.id === 'tool' && <ToolEntries locale={locale} />}
       <FullstackPractice id={stepId} locale={locale} />
     </div>
@@ -98,7 +105,7 @@ const stepHref = (id: string) => `${url(locale, `node/${nodeForStep(id)}`)}#${id
     <details class="step-slot step-extra">
       <summary><Fragment set:html={heading(4, '不会具体操作？逐项跟着做', 'Not sure how? Follow each action')} /></summary>
       <ol class="support-actions">
-        {microActions[stepId].map(step => <li data-micro-action={step.id}><p>{t(step.action,locale)}</p><dl class="micro-check"><dt>{label('应看到','Expected')}</dt><dd>{t(step.expect,locale)}</dd><dt>{label('没有出现时','If missing')}</dt><dd>{t(step.ifWrong,locale)}</dd></dl></li>)}
+        {microActions[stepId].map(step => <li data-micro-action={step.id}><p>{t(step.action,locale).split(label('\n建议提示词：','\nSuggested prompt: '))[0].split(label('\n完成后：','\nAfterwards: '))[0]}</p><dl class="micro-check"><dt>{label('应看到','Expected')}</dt><dd>{t(step.expect,locale)}</dd><dt>{label('没有出现时','If missing')}</dt><dd>{t(step.ifWrong,locale)}</dd></dl></li>)}
       </ol>
     </details>
 
@@ -133,6 +140,7 @@ const stepHref = (id: string) => `${url(locale, `node/${nodeForStep(id)}`)}#${id
     <!-- 槽位 07 · 发给 AI 的话 -->
     <div class="step-slot">
       <Fragment set:html={heading(7, '发给 AI 的话（可一键复制）', 'What to send to AI (copyable)')} />
+      <p>{label('按上面的顺序，一次完成一个操作。已逐项发送提示词的，不必再重复发送下面整段模板；需要整理材料时再使用它。','Follow the actions above one at a time. If you have sent the individual prompts, do not send this full template again; use it when you need to organize the step’s material.')}</p>
       {lesson.prompt
         ? <PromptTemplate id={`learn-${lesson.id}`} title={['这一步的提示词模板', 'Prompt template for this step'] as Copy} kind={lesson.templateKind ?? 'prompt'} prompt={lesson.prompt} locale={locale} />
         : lesson.id === 'idea'

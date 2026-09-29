@@ -379,8 +379,8 @@
   {
     "id": "save",
     "action": [
-      "先展开本步“逐项跟着做”，按数据库准备、后端检查、页面连接、重启读回的顺序操作。每完成一项，核对实际结果再向所选工具发送下一项。",
-      "Expand this step’s follow-along actions. Prepare storage, check the backend, connect the page and verify after restart. Review each result before sending the next task to your chosen tool."
+      "按上方“03 你要做的”，依次准备数据库、检查后端、连接页面，再重新打开查看记录。每完成一项，核对实际结果再向所选工具发送下一项。",
+      "Follow section 03 above: prepare storage, check the backend, connect the page, then reopen and read the record. Review each result before sending the next task to your chosen tool."
     ],
     "expected": [
       "输入“练习 A”保存后有真实记录编号；第二浏览器访问同一服务也能读到。",

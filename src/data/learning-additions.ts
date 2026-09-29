@@ -32,12 +32,12 @@ export const additions=[
     "stage": "idea",
     "understanding": {
       "why": [
-        "把想法整理成明确描述，AI 才能少猜一点。此时只说明要做什么，不需要先学技术名词。",
-        "A clear brief reduces guesses. Describe the desired outcome without choosing technical terms yet."
+        "把刚才的想法整理成一份说明，后面可以直接交给工具。",
+        "Turn your idea into a description you can give the tool."
       ],
       "concept": [
-        "项目描述是沟通起点，不是最终需求；与 AI 澄清后还会修订。",
-        "A brief starts the discussion; clarification can still change it."
+        "项目描述就是告诉别人：我要做什么，给谁用，怎样使用。",
+        "A project description says what to make, for whom and how it is used."
       ],
       "question": [
         "如果 AI 要加一个未提到的功能，应该直接接受，还是先核对它是否解决第一版的问题？",
@@ -99,12 +99,12 @@ export const additions=[
     "stage": "requirements",
     "understanding": {
       "why": [
-        "功能名称不能说明是否好用。把人的操作写清楚，才能发现缺失的入口和失败后的处理。",
-        "Feature names do not describe usability. User actions reveal missing entry points and recovery paths."
+        "把用户从打开作品到完成任务的过程写清楚，容易发现漏掉的步骤。",
+        "Write the whole user journey to discover missing actions."
       ],
       "concept": [
-        "用户故事说明用户想完成什么；验收条件说明怎样证明它完成了。",
-        "A user story describes intent; acceptance criteria describe proof."
+        "用户故事说的是谁要完成什么；操作过程说明他先做什么、再做什么。",
+        "A user story names who needs what; the journey gives the actions in order."
       ],
       "question": [
         "“支持保存”和“保存后重新打开仍能找到原文”，哪一句更容易亲手检查？",
@@ -166,12 +166,12 @@ export const additions=[
     "stage": "ui",
     "understanding": {
       "why": [
-        "先看见操作流程，可以在正式开发前发现理解偏差，减少做完再返工。",
-        "Seeing the flow early exposes misunderstandings before implementation."
+        "先看看页面草稿，确认入口和按钮放对了，再花时间开发。",
+        "Review a draft before spending time building the features."
       ],
       "concept": [
-        "原型用于确认布局和操作，不证明数据保存、权限或真实服务已经接通。",
-        "A prototype validates layout and interaction, not real persistence, permissions or services."
+        "页面草稿也叫原型，可以演示样子和顺序，但里面的保存按钮可能还不能真正保存。",
+        "A prototype previews appearance and sequence; its Save button may still be simulated."
       ],
       "question": [
         "画面显示“保存成功”，怎样确认它不是演示文字？",
@@ -233,12 +233,12 @@ export const additions=[
     "stage": "environment",
     "understanding": {
       "why": [
-        "代码需要合适的运行环境。先验证能启动，后面的报错才容易区分是环境问题还是功能问题。",
-        "Code needs a suitable runtime. Checking startup first separates environment failures from feature bugs."
+        "先把运行项目需要的软件装好，并确认能打开最小页面。",
+        "Install what the project needs and check that a minimal page opens."
       ],
       "concept": [
-        "Git 记录文件版本；运行环境负责把程序启动。两者不是同一件事。",
-        "Git records file versions; a runtime executes the program. They are different."
+        "运行环境就是让程序在电脑上运行所需的软件；依赖是项目要用的现成程序包。",
+        "The runtime is software needed to execute the program; dependencies are packages it uses."
       ],
       "question": [
         "已经有 Git 提交，但预览打不开，能否据此认定环境已经准备好？",
@@ -300,12 +300,12 @@ export const additions=[
     "stage": "accept",
     "understanding": {
       "why": [
-        "“不能用”很难定位。记录从哪里开始、做了什么和实际结果，才能让 AI 复现同一个问题。",
-        "“It does not work” is hard to reproduce. Starting points, actions and outcomes identify the same issue."
+        "把哪里出错写具体，工具才能找到同一个问题。",
+        "Describe the failure precisely so the tool can find the same problem."
       ],
       "concept": [
-        "反馈描述事实；原因需要检查才能确定。新想法也不等于原功能有缺陷。",
-        "Feedback records facts; causes require investigation. New ideas are not necessarily defects."
+        "反馈先写你做了什么、看到了什么，不需要自己猜代码哪里错了。",
+        "Feedback records actions and observations; you do not need to diagnose the code."
       ],
       "question": [
         "“按钮没反应”和“数据库坏了”，哪一个是观察，哪一个需要证据？",
@@ -367,12 +367,12 @@ export const additions=[
     "stage": "accept",
     "understanding": {
       "why": [
-        "先定义修好后的结果，避免 AI 一边改一边改变目标，最后虽然不报错却不符合需求。",
-        "Define the expected fix first so the goal does not drift during repairs."
+        "先看懂工具准备怎么修，再让它动手。",
+        "Understand the proposed fix before letting the tool make it."
       ],
       "concept": [
-        "回归检查是确认修复没有破坏原来正常的功能。",
-        "Regression checks verify previously working behavior still works."
+        "修复计划说明改哪里、会影响什么，以及怎样再次检查。",
+        "A repair plan explains changes, possible effects and retesting."
       ],
       "question": [
         "修好了保存按钮，为什么还需要试一下读取历史记录？",
@@ -434,12 +434,12 @@ export const additions=[
     "stage": "accept",
     "understanding": {
       "why": [
-        "修复报告说明 AI 做了什么，本人复测才说明实际问题是否解决。",
-        "A repair report describes AI work; personal retesting confirms the experienced problem is resolved."
+        "让工具修好已确认的问题，然后自己重做原来失败的操作。",
+        "Fix the agreed issue, then repeat the original failing actions yourself."
       ],
       "concept": [
-        "自动检查通过、人工试用通过是两种不同的证据。",
-        "Automated checks and personal acceptance are different evidence."
+        "复测是重新试原问题；再检查原本正常的功能，可以发现有没有顺带改坏别的地方。",
+        "Retesting checks the original issue; trying working features catches unintended damage."
       ],
       "question": [
         "如果 AI 自测通过，但同样的操作仍失败，下一步应该记录哪个事实？",
@@ -501,12 +501,12 @@ export const additions=[
     "stage": "launch",
     "understanding": {
       "why": [
-        "本机能跑不代表别人能用。交付前核对使用入口、费用和资料保存，避免把问题带给实际用户。",
-        "Working locally does not establish usability for others. Check access, costs and storage before delivery."
+        "准备给人使用之前，先查功能、说明和所需账号还有没有缺项。",
+        "Before delivery, check for missing features, instructions and accounts."
       ],
       "concept": [
-        "发布阻断项是会让关键任务失败、资料丢失或访问越权等不能带着上线的问题。",
-        "Release blockers include core task failures, data loss and unauthorized access."
+        "这一项是准备检查；还没打开试过的安装包或网站，要留作待测试。",
+        "This checks preparation; an untried installer or site remains pending."
       ],
       "question": [
         "首页能打开，但重新登录后资料丢失，可以只看首页宣布上线吗？",
@@ -568,12 +568,12 @@ export const additions=[
     "stage": "launch",
     "understanding": {
       "why": [
-        "构建成功只说明生成了文件。实际打开和使用交付物，才能发现目标环境里的问题。",
-        "A successful build produces files; running them reveals target-environment problems."
+        "按选好的方式准备文件，并照使用说明实际打开试一次。",
+        "Prepare the chosen files and actually try them using the instructions."
       ],
       "concept": [
-        "部署脚本把步骤自动执行，不会消除配置、费用和恢复责任。",
-        "Deployment scripts automate steps, not configuration, costs or recovery responsibility."
+        "安装包、静态网页和需要后端的网站，使用方法不同；让工具按你的项目准备。",
+        "Installers, static pages and backend-powered sites need different preparation."
       ],
       "question": [
         "安装包生成了，但没有在目标系统打开过，应记录成功还是待验证？",
@@ -635,12 +635,12 @@ export const additions=[
     "stage": "launch",
     "understanding": {
       "why": [
-        "测试环境与正式入口可能不同。上线后再走一遍，才知道实际用户能否完成任务。",
-        "Test and production environments can differ. Check the real user entry after delivery."
+        "从使用者真正会打开的位置再试一次，确认交出去的版本能用。",
+        "Try the actual user entry to check that the delivered version works."
       ],
       "concept": [
-        "代码版本和用户数据需要分别保护。Git 提交不等于数据库已经备份。",
-        "Code versions and user data need separate protection; a Git commit is not a database backup."
+        "本机使用检查本机入口；公开网站检查真实网址，两者按自己的选择来。",
+        "Check the local entry for local use or the real URL for a public site."
       ],
       "question": [
         "换一个设备或身份，还能完成同一任务吗？哪些限制需要告诉使用者？",

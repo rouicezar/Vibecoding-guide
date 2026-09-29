@@ -1,5 +1,5 @@
 import type {Copy} from './site';
-export interface LearningBranch {id:string;lesson:string;title:Copy;when:Copy;steps:Copy[];check:Copy;prompt:Copy;source:string;}
+export interface LearningBranch {id:string;lesson:string;title:Copy;when:Copy;steps:Copy[];actionPrompts:Copy[];check:Copy;prompt:Copy;source:string;}
 export const learningBranches:LearningBranch[]=[
   {
     "id": "shared-data",
@@ -14,20 +14,16 @@ export const learningBranches:LearningBranch[]=[
     ],
     "steps": [
       [
-        "让AI按已确认设计列测试数据服务、连接配置位置及需本人创建的账号；密钥只放本机或平台保密配置，不填本站。",
-        "List the chosen test data service, config location and account actions. Keep secrets in local/platform secret storage."
+        "先让工具说明：多人要共同查看哪些记录。",
+        "Ask which records people need to share."
       ],
       [
-        "AI先做一个最小写入和读回，核对数据确实在选定服务；再用两个独立会话读取同一条测试记录。",
-        "Write and read one record in the selected service, then read it from two independent sessions."
+        "用两个测试账号打开同一条记录，检查修改后两边是否都能看到。",
+        "Open one record with two test accounts and check that changes appear for both."
       ],
       [
-        "按需求测试重复提交、同时抢最后名额、取消后释放；AI应在可信的数据处理端保证这些规则，不能只在按钮上禁用。",
-        "Test duplicates, last-place contention and cancellation. Enforce rules in trusted data handling, not only a disabled button."
-      ],
-      [
-        "保留预期/实际/最终数据与版本；测试结束按编号清理测试记录，不能清空正式资料。",
-        "Record expected/actual/final data and revision; delete only identified test records."
+        "如果有人数限制，再试一次争抢最后一个名额。",
+        "If capacity is limited, try two users requesting the final place."
       ]
     ],
     "check": [
@@ -38,7 +34,21 @@ export const learningBranches:LearningBranch[]=[
       "读取已确认需求、设计和当前数据任务，只完成该任务要求的共享数据与规则。先检查测试环境及配置，缺账号时逐项说明本人在哪操作，勿索要密钥正文。实现最小写入读回后，用两个独立会话验证共享、适用的唯一性和最后名额并发规则。用测试数据记录预期、实际、最终数据、版本与清理方法到 docs/checks.md；不可执行项标未测试。不新增无关功能、不使用正式数据。",
       "Read agreed requirements, design and current data task. Implement only its shared-data rules. Check test configuration; explain required personal account actions without requesting secrets. Verify minimal write/read, two sessions, relevant uniqueness and last-place contention. Record expected/actual/final data, revision and cleanup in docs/checks.md. Mark inaccessible tests untested. Add no unrelated features and use no production data."
     ],
-    "source": ""
+    "source": "",
+    "actionPrompts": [
+      [
+        "我正在做“多人共享与名额规则”。现在只做这一项：先让工具说明：多人要共同查看哪些记录。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on Shared data and capacity. Do only this action: Ask which records people need to share. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ],
+      [
+        "我正在做“多人共享与名额规则”。现在只做这一项：用两个测试账号打开同一条记录，检查修改后两边是否都能看到。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on Shared data and capacity. Do only this action: Open one record with two test accounts and check that changes appear for both. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ],
+      [
+        "我正在做“多人共享与名额规则”。现在只做这一项：如果有人数限制，再试一次争抢最后一个名额。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on Shared data and capacity. Do only this action: If capacity is limited, try two users requesting the final place. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ]
+    ]
   },
   {
     "id": "accounts",
@@ -53,20 +63,16 @@ export const learningBranches:LearningBranch[]=[
     ],
     "steps": [
       [
-        "在需求里找各角色能做和不能做什么；没有这张表先返回需求，不自行增加账号体系。",
-        "Find allowed/denied actions for each role; clarify requirements before adding accounts."
+        "先打开需求文档，确认哪些人能看哪些内容。",
+        "Check who may access which content in the requirements."
       ],
       [
-        "按选定服务创建仅用于测试的普通账号A、普通账号B和必要管理员，凭据在本人控制的位置保管。",
-        "Create test users A and B and an admin only if needed in the chosen service; keep credentials under your control."
+        "按工具说明创建两个只用于测试的账号，分别登录。",
+        "Follow the tool’s instructions to create and sign into two test accounts."
       ],
       [
-        "让AI验证注册/登录/退出及需要的找回流程；A不能读取或修改B的私有内容，未登录不能绕过限制。",
-        "Test required signup/login/logout/recovery; A cannot access B’s private data and logged-out access cannot bypass rules."
-      ],
-      [
-        "把测试方法和实际结果保存；网页隐藏按钮不算权限保护，要检查服务端或数据访问规则。",
-        "Save methods/results and verify server/data rules, not just hidden buttons."
+        "用账号 A 尝试打开账号 B 的私人记录，再退出账号试一次。",
+        "Try opening B’s private record as A, then repeat after signing out."
       ]
     ],
     "check": [
@@ -77,7 +83,21 @@ export const learningBranches:LearningBranch[]=[
       "读取已确认角色权限表和设计，仅执行当前登录/权限任务。先列测试账号的创建入口、所需权限、测试资料及清理方法；真实凭据由本人在服务中配置。实现并检查需求中的登录流程及两用户隔离、退出后访问和适用的越权拒绝。记录方法、版本、实际结果与未测试项到 docs/checks.md；不要增加未要求的角色或修改正式用户资料。",
       "Read the agreed role matrix and design; execute only the current access task. List test account setup, privileges, data and cleanup; the owner configures credentials in the service. Verify required login behavior, two-user isolation, post-logout access and denial cases. Save methods, revision, actual and untested results to docs/checks.md. Add no unrequested roles or changes to real users."
     ],
-    "source": ""
+    "source": "",
+    "actionPrompts": [
+      [
+        "我正在做“登录与权限”。现在只做这一项：先打开需求文档，确认哪些人能看哪些内容。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on Login and access. Do only this action: Check who may access which content in the requirements. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ],
+      [
+        "我正在做“登录与权限”。现在只做这一项：按工具说明创建两个只用于测试的账号，分别登录。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on Login and access. Do only this action: Follow the tool’s instructions to create and sign into two test accounts. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ],
+      [
+        "我正在做“登录与权限”。现在只做这一项：用账号 A 尝试打开账号 B 的私人记录，再退出账号试一次。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on Login and access. Do only this action: Try opening B’s private record as A, then repeat after signing out. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ]
+    ]
   },
   {
     "id": "external-api",
@@ -92,20 +112,16 @@ export const learningBranches:LearningBranch[]=[
     ],
     "steps": [
       [
-        "在已选服务官网由本人确认账号、测试额度、收费和数据用途，创建测试凭据；不要把API Key填进本站或截图。",
-        "Confirm account, test allowance, cost and data use on the chosen service; create test credentials outside this guide."
+        "打开所选服务的官网，先看清费用和测试额度。",
+        "Open the chosen service’s official site and check costs and test allowance."
       ],
       [
-        "AI从设计说明配置名称和服务端/平台保密变量入口；本人填写，AI只检查是否存在，不能打印值。前端公开变量不能存私密Key。",
-        "AI identifies config names and server/platform secret settings. You enter values; AI checks existence without printing them. Public frontend variables cannot hold private keys."
+        "让工具指出填写密钥的具体位置，再由自己填写。",
+        "Ask where to enter the secret key, then enter it yourself."
       ],
       [
-        "先发最小测试请求，看到实际响应再接界面；记录输入、输出和一次调用用量。使用服务测试模式，避免真实支付或通知。",
-        "Make a minimal request before UI integration; record input, output and usage. Use test modes to avoid real payments or notifications."
-      ],
-      [
-        "测试超时、拒绝、额度不足和重试；不要无限重试。接口不可用时给用户可理解的提示。",
-        "Test timeouts, rejection, quota and bounded retries; explain failures to users."
+        "先测试一次请求，成功后再让页面调用；失败时看看页面怎么提示。",
+        "Test one request before connecting the page, then check failure feedback."
       ]
     ],
     "check": [
@@ -116,7 +132,21 @@ export const learningBranches:LearningBranch[]=[
       "读取设计和当前外部接口任务，只接入已选服务的该项能力。先从官方文档核对当前接口与测试条件，列配置变量名称、保密配置位置及本人操作，不读取或打印真实密钥。先做最小测试调用，核对输入输出、用量、超时/拒绝/限额和有限重试，再接已确认业务。记录实际证据及未测项到 docs/checks.md。账号或额度不足就停止说明，不改用未批准服务、不触发真实交易。",
       "Read the design and current integration task. Verify the selected service’s current official API and test prerequisites. Give config names, secret locations and owner actions without reading or printing secret values. Test a minimal call, input/output, usage, timeouts, rejection, quotas and bounded retries before integration. Record evidence and untested items in docs/checks.md. Stop on missing access; do not switch providers or trigger real transactions."
     ],
-    "source": ""
+    "source": "",
+    "actionPrompts": [
+      [
+        "我正在做“API或AI能力接入”。现在只做这一项：打开所选服务的官网，先看清费用和测试额度。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on External API or AI capability. Do only this action: Open the chosen service’s official site and check costs and test allowance. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ],
+      [
+        "我正在做“API或AI能力接入”。现在只做这一项：让工具指出填写密钥的具体位置，再由自己填写。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on External API or AI capability. Do only this action: Ask where to enter the secret key, then enter it yourself. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ],
+      [
+        "我正在做“API或AI能力接入”。现在只做这一项：先测试一次请求，成功后再让页面调用；失败时看看页面怎么提示。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on External API or AI capability. Do only this action: Test one request before connecting the page, then check failure feedback. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ]
+    ]
   },
   {
     "id": "files",
@@ -131,16 +161,16 @@ export const learningBranches:LearningBranch[]=[
     ],
     "steps": [
       [
-        "复制一份测试文件到独立测试目录；先验证选择路径和权限，不直接处理唯一原件。",
-        "Copy sample files to a separate test folder; check paths/permissions without using the only originals."
+        "复制一份文件用于测试，保留原件。",
+        "Copy a file for testing and keep the original."
       ],
       [
-        "核对支持格式、输入限制、输出命名和保存位置；用户取消选择应能安全退出。",
-        "Check formats, input limits, output naming/location and safe cancellation."
+        "选择测试副本，试一次导入、处理和导出。",
+        "Select the copy and try importing, processing and exporting it."
       ],
       [
-        "测试重名、损坏文件、无写权限和重复执行；输出不应静默覆盖原文件。",
-        "Test collisions, corruption, denied writes and repeated runs; never silently overwrite originals."
+        "再次导出同名文件，检查是否提示重名，并确认原件还在。",
+        "Export the same filename again; check the warning and that the original remains."
       ]
     ],
     "check": [
@@ -151,7 +181,21 @@ export const learningBranches:LearningBranch[]=[
       "读取文件处理需求与当前任务，仅实现已确认输入输出。用独立副本测试正常处理、取消、重名、格式错误和无写权限；核对输出内容与位置，不覆盖唯一原件。记录版本、操作、预期实际和未测项到 docs/checks.md；未约定覆盖策略先询问。",
       "Read the file-processing task and implement only agreed inputs/outputs. Test copies for success, cancellation, collisions, invalid formats and denied writes. Verify output content/location without overwriting originals. Record revision, expected/actual and untested results in docs/checks.md. Ask about unspecified overwrite policies."
     ],
-    "source": ""
+    "source": "",
+    "actionPrompts": [
+      [
+        "我正在做“文件导入、处理与导出”。现在只做这一项：复制一份文件用于测试，保留原件。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on File import, processing and export. Do only this action: Copy a file for testing and keep the original. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ],
+      [
+        "我正在做“文件导入、处理与导出”。现在只做这一项：选择测试副本，试一次导入、处理和导出。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on File import, processing and export. Do only this action: Select the copy and try importing, processing and exporting it. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ],
+      [
+        "我正在做“文件导入、处理与导出”。现在只做这一项：再次导出同名文件，检查是否提示重名，并确认原件还在。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on File import, processing and export. Do only this action: Export the same filename again; check the warning and that the original remains. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ]
+    ]
   },
   {
     "id": "local-use",
@@ -166,16 +210,16 @@ export const learningBranches:LearningBranch[]=[
     ],
     "steps": [
       [
-        "核对README里的实际启动方法和依赖；关闭开发工具后按说明重新启动，确认自己能重复使用。",
-        "Check README startup/dependencies, close the development tool and restart as documented."
+        "打开 README，找到启动项目的说明，按顺序操作一次。",
+        "Open README and follow the startup instructions."
       ],
       [
-        "若需要每次运行源码，明确保存代码与运行环境；若想双击启动，让AI按目标系统准备入口或本地包，不默认上传服务器。",
-        "If running source, retain the code/runtime. For double-click use, prepare a platform-specific launcher or local package rather than a server."
+        "如果想双击打开，请工具为自己的电脑准备启动入口。",
+        "If you want double-click startup, ask the tool to prepare an entry for your computer."
       ],
       [
-        "核对实际数据位置、导出/备份和失败时的恢复方法；没有数据需求就标不适用。",
-        "Check data location, export/backup and recovery where applicable."
+        "找到数据保存位置，复制一份备份，再用副本试恢复。",
+        "Locate saved data, make a backup and test restoration using a copy."
       ]
     ],
     "check": [
@@ -186,7 +230,21 @@ export const learningBranches:LearningBranch[]=[
       "读取本人选择的本机自用方案与README，只准备可重复使用的本地交付。核对实际启动入口、依赖和目标系统；如需启动脚本或本地包先说明用途和实际命令，不添加云服务。验证关闭后再次打开和需求要求的数据保留，记录真实位置、版本、备份恢复与未验证项到 docs/release.md。不推送、不公开发布、不扩大访问。",
       "Read the local-use decision and README. Prepare only repeatable local delivery: actual entry, dependencies and target OS. Explain any launcher/package before creating it, without adding cloud services. Verify restart and required persistence; record real paths, revision, backup/recovery and untested work in docs/release.md. Do not push, publish or widen access."
     ],
-    "source": ""
+    "source": "",
+    "actionPrompts": [
+      [
+        "我正在做“只在自己电脑使用”。现在只做这一项：打开 README，找到启动项目的说明，按顺序操作一次。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on Personal local use. Do only this action: Open README and follow the startup instructions. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ],
+      [
+        "我正在做“只在自己电脑使用”。现在只做这一项：如果想双击打开，请工具为自己的电脑准备启动入口。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on Personal local use. Do only this action: If you want double-click startup, ask the tool to prepare an entry for your computer. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ],
+      [
+        "我正在做“只在自己电脑使用”。现在只做这一项：找到数据保存位置，复制一份备份，再用副本试恢复。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on Personal local use. Do only this action: Locate saved data, make a backup and test restoration using a copy. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ]
+    ]
   },
   {
     "id": "web-static",
@@ -201,20 +259,16 @@ export const learningBranches:LearningBranch[]=[
     ],
     "steps": [
       [
-        "让AI从项目配置读取实际构建命令和输出目录；不要默认所有项目都是npm或dist。构建将源码加工成给浏览器使用的文件。",
-        "Read the actual build command/output directory; do not assume npm or dist. Building transforms source into browser files."
+        "先让工具确认：这个网站是否只需要网页文件。",
+        "Ask whether the site only needs static webpage files."
       ],
       [
-        "运行生产构建，检查产物不含秘密配置；用项目支持的生产预览/静态服务打开输出，刷新深层页面和检查图片路径。",
-        "Build, check secrets are absent, then serve the output using the project’s preview/static server. Test deep-link reloads and assets."
+        "让工具生成可交付的网页文件，并告诉你在哪里打开检查。",
+        "Ask the tool to build the deliverable files and explain how to preview them."
       ],
       [
-        "选择托管平台创建测试站点；按该平台设置构建命令、输出目录与基础路径。先用平台临时网址完整试用。",
-        "Create a test site on the selected host, configure build/output/base path, and test its temporary URL."
-      ],
-      [
-        "域名可后加；需要时在域名服务按托管平台给出的记录配置DNS，等待生效并核对HTTPS。正式发布回“交付上线，检查实际入口”确认。",
-        "Add a domain if needed using host-provided DNS records, wait and verify HTTPS. Confirm production publishing in the “Deliver and check the real entry” milestone."
+        "在所选托管平台建立测试站点，按工具说明填写设置，再打开临时网址试用。",
+        "Create a test site on the chosen host, enter the required settings and try its temporary URL."
       ]
     ],
     "check": [
@@ -225,7 +279,21 @@ export const learningBranches:LearningBranch[]=[
       "读取 docs/design.md、docs/delivery.md、docs/release.md 和构建配置，只准备已选静态网站交付。确认无必需服务端进程，报告真实构建命令、执行位置、输出目录及配置名称。构建并在可用测试环境验证资源路径、深层页面刷新和需求流程；需本人操作托管控制台时逐项给入口、应填值、成功现象，不索要密钥。记录产物、版本、测试网址、结果和回退方法到 docs/release.md。不正式发布；不满足静态条件则停止并返回交付选择。",
       "Read design, delivery, release and build config. Prepare only the selected static site. Confirm no required server process, report commands/directory/output/config names, build and test assets, deep-link reloads and user flows in an available test environment. Explain owner console actions and success signals without requesting secrets. Record artifact, revision, test URL, results and recovery in docs/release.md. Do not release publicly; return to delivery selection if not static."
     ],
-    "source": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages"
+    "source": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages",
+    "actionPrompts": [
+      [
+        "我正在做“Web：纯静态网站”。现在只做这一项：先让工具确认：这个网站是否只需要网页文件。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on Web: static output. Do only this action: Ask whether the site only needs static webpage files. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ],
+      [
+        "我正在做“Web：纯静态网站”。现在只做这一项：让工具生成可交付的网页文件，并告诉你在哪里打开检查。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on Web: static output. Do only this action: Ask the tool to build the deliverable files and explain how to preview them. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ],
+      [
+        "我正在做“Web：纯静态网站”。现在只做这一项：在所选托管平台建立测试站点，按工具说明填写设置，再打开临时网址试用。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on Web: static output. Do only this action: Create a test site on the chosen host, enter the required settings and try its temporary URL. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ]
+    ]
   },
   {
     "id": "web-services",
@@ -240,20 +308,16 @@ export const learningBranches:LearningBranch[]=[
     ],
     "steps": [
       [
-        "先完成静态/前端构建检查，再列依赖服务的测试与生产配置；开发账号配置不能直接当生产配置。",
-        "Verify frontend output, then list test/production service settings separately."
+        "让工具列出网站依赖哪些外部服务，每个服务需要什么账号。",
+        "Ask which external services and accounts the site needs."
       ],
       [
-        "在各服务控制台创建或确认目标环境，按说明配置公开地址与保密变量；登录回调、允许来源、文件访问规则与目标网址一致。",
-        "Create/confirm target environments, set public addresses and secrets correctly, and align callbacks, origins and access rules with the URL."
+        "打开各服务后台，按照工具给出的位置填写网站地址和连接设置。",
+        "Open each service dashboard and enter the site URL and connection settings where instructed."
       ],
       [
-        "用普通测试账号完成真实读写/登录/API请求，确认访问规则与失败提示；私密接口通过可信服务端处理。",
-        "Test actual read/write, login and APIs with ordinary test access; private API calls require trusted server handling."
-      ],
-      [
-        "核对服务额度、账单入口、备份和停用影响，再把依赖与证据写入交付记录。",
-        "Check quotas, billing, backups and outage impact; record dependencies and evidence."
+        "用普通测试账号试一次登录、保存和读取，检查费用和失败提示。",
+        "Use an ordinary test account to try login, saving and reading; check costs and failure feedback."
       ]
     ],
     "check": [
@@ -264,7 +328,21 @@ export const learningBranches:LearningBranch[]=[
       "读取已选交付方案，只准备前端与已确认外部服务的测试交付。列各服务测试/生产环境、变量名、本人配置入口、登录回调/来源/数据访问要求，不输出秘密值。验证目标网址的真实登录、数据及外部调用，检查适用的拒绝和限额。记录依赖、费用核对入口、备份恢复、版本与证据到 docs/release.md。缺条件标阻断，不正式发布或创建付费资源。",
       "Prepare only the selected frontend and external-service trial. List test/production environments, config names, owner setup, callbacks/origins/access requirements without secret values. Verify real login, data and API behavior through the target URL, including relevant rejection and quotas. Record dependencies, billing entry, backup/recovery, revision and evidence. Mark missing prerequisites blocked; do not release or provision paid resources."
     ],
-    "source": ""
+    "source": "",
+    "actionPrompts": [
+      [
+        "我正在做“Web：网页加云数据或外部API”。现在只做这一项：让工具列出网站依赖哪些外部服务，每个服务需要什么账号。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on Web: frontend plus external services. Do only this action: Ask which external services and accounts the site needs. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ],
+      [
+        "我正在做“Web：网页加云数据或外部API”。现在只做这一项：打开各服务后台，按照工具给出的位置填写网站地址和连接设置。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on Web: frontend plus external services. Do only this action: Open each service dashboard and enter the site URL and connection settings where instructed. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ],
+      [
+        "我正在做“Web：网页加云数据或外部API”。现在只做这一项：用普通测试账号试一次登录、保存和读取，检查费用和失败提示。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on Web: frontend plus external services. Do only this action: Use an ordinary test account to try login, saving and reading; check costs and failure feedback. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ]
+    ]
   },
   {
     "id": "web-server",
@@ -279,20 +357,16 @@ export const learningBranches:LearningBranch[]=[
     ],
     "steps": [
       [
-        "AI列实际运行时、启动命令、端口、数据库和磁盘需求；选择符合条件的已授权测试主机，不默认增加Docker。",
-        "List runtime, startup command, port, database and disk requirements; use an authorized test host without assuming Docker."
+        "请工具说明服务器要运行什么，以及预估费用。",
+        "Ask what the server needs to run and its estimated cost."
       ],
       [
-        "将代码/构建产物交给测试环境，安装生产依赖并配置秘密变量。数据迁移先备份并在测试库验证，不直接试正式库。",
-        "Deliver code/output, install production dependencies and secrets. Back up and test migrations in a test database first."
+        "选定测试服务器后，让工具一步一步说明上传、配置和启动方法。",
+        "After choosing a test server, request one step at a time for uploading, configuring and starting."
       ],
       [
-        "启动服务并查看日志/健康检查，核对进程重启、持久数据、代理/HTTPS和外部访问入口。",
-        "Start and inspect logs/health, process restart, persistent data, proxy/HTTPS and external access."
-      ],
-      [
-        "普通账号完整试用，记录部署命令、产物、日志入口、旧版恢复和数据兼容条件，再进入最终放行。",
-        "Test ordinary access and record deployment, output, logs, previous-version recovery and data compatibility."
+        "打开测试网址完成一次操作，再重启服务检查数据是否还在。",
+        "Complete a task at the test URL, then restart the service and check retained data."
       ]
     ],
     "check": [
@@ -303,7 +377,21 @@ export const learningBranches:LearningBranch[]=[
       "读取实际服务器交付方案与配置，准备测试环境部署步骤：运行时/生产依赖、构建产物、变量名称、数据迁移、启动命令、端口/代理、HTTPS、日志和进程重启。先确认资源权限与费用；数据库操作先备份并在测试库验证。仅执行已授权测试动作，核对普通用户全流程与适用的数据保留；记录实际结果及旧版/数据兼容恢复条件到 docs/release.md。不默认引入Docker，不操作正式库或正式发布。",
       "Prepare the actual server trial: runtime/dependencies, artifacts, config names, migrations, start command, ports/proxy, HTTPS, logs and restarts. Confirm access/costs; back up and test migrations in a test database. Execute only authorized test actions, verify ordinary-user flows and persistence, and record evidence and compatible recovery in docs/release.md. Do not assume Docker or change production data/release."
     ],
-    "source": ""
+    "source": "",
+    "actionPrompts": [
+      [
+        "我正在做“Web：需要后端运行的应用”。现在只做这一项：请工具说明服务器要运行什么，以及预估费用。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on Web: server-rendered or backend app. Do only this action: Ask what the server needs to run and its estimated cost. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ],
+      [
+        "我正在做“Web：需要后端运行的应用”。现在只做这一项：选定测试服务器后，让工具一步一步说明上传、配置和启动方法。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on Web: server-rendered or backend app. Do only this action: After choosing a test server, request one step at a time for uploading, configuring and starting. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ],
+      [
+        "我正在做“Web：需要后端运行的应用”。现在只做这一项：打开测试网址完成一次操作，再重启服务检查数据是否还在。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on Web: server-rendered or backend app. Do only this action: Complete a task at the test URL, then restart the service and check retained data. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ]
+    ]
   },
   {
     "id": "android",
@@ -318,20 +406,16 @@ export const learningBranches:LearningBranch[]=[
     ],
     "steps": [
       [
-        "核对目标设备、应用标识、版本、开发者验证与所选渠道当前要求。由本人管理签名密钥及备份，不能提交仓库。",
-        "Check device, app identity/version, developer verification and current channel requirements; manage signing keys privately with backups."
+        "先确定给什么安卓设备使用，以及直接下载还是上架商店。",
+        "Choose the Android devices and direct download or store distribution."
       ],
       [
-        "按项目实际构建工具生成release签名产物。直接分发通常提供签名APK；Play渠道按其要求准备签名AAB等上传产物，AAB不是让用户直接点击安装的APK。",
-        "Build signed release output. Direct distribution typically uses APK; Play requires its accepted upload artifact such as AAB, not a directly installable APK."
+        "请工具按这个渠道准备正式安装文件，说明如何保管签名密钥。",
+        "Ask for release files for that channel and instructions for storing signing keys."
       ],
       [
-        "用实际目标设备试安装、启动、权限、断网与升级保留数据；不要只运行debug版就认定正式包可用。",
-        "Test the actual release on target devices: installation, permissions, offline behavior and update retention."
-      ],
-      [
-        "直接分发准备可信下载页、版本与更新说明；商店准备真实截图、应用资料、数据声明和测试要求。正式上传和提交由“交付上线，检查实际入口”授权执行。",
-        "Direct delivery needs a trusted download page and update information. Stores need accurate listings, screenshots, data declarations and required testing; authorize submission in the “Deliver and check the real entry” milestone."
+        "在目标手机上安装试用，再试升级后原来的数据是否还在。",
+        "Install on the target phone and check that an upgrade retains existing data."
       ]
     ],
     "check": [
@@ -342,7 +426,21 @@ export const learningBranches:LearningBranch[]=[
       "读取Android交付决定，核对当前渠道官方要求、应用标识、版本、签名与开发者验证前提。先列本人账号/签名配置动作，勿读取打印密钥。用实际构建方式准备适合渠道的release产物，说明APK与上传包用途及路径。在可用目标设备验证安装、权限、核心流程和升级数据保留；不可测写未测试。记录渠道、版本、产物与证据到 docs/release.md；不提交商店、不上传公开下载站。",
       "Read the Android channel decision and current official requirements for identity, version, signing and developer verification. Explain owner account/key setup without exposing secrets. Build actual channel-appropriate release output and distinguish APK from upload artifacts. Test installation, permissions, core flows and update retention on available target devices; mark missing tests untested. Record channel, revision, output and evidence; do not submit or publish downloads."
     ],
-    "source": "https://developer.android.com/studio/publish/preparing"
+    "source": "https://developer.android.com/studio/publish/preparing",
+    "actionPrompts": [
+      [
+        "我正在做“Android：直接下载或应用商店”。现在只做这一项：先确定给什么安卓设备使用，以及直接下载还是上架商店。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on Android: direct download or store. Do only this action: Choose the Android devices and direct download or store distribution. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ],
+      [
+        "我正在做“Android：直接下载或应用商店”。现在只做这一项：请工具按这个渠道准备正式安装文件，说明如何保管签名密钥。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on Android: direct download or store. Do only this action: Ask for release files for that channel and instructions for storing signing keys. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ],
+      [
+        "我正在做“Android：直接下载或应用商店”。现在只做这一项：在目标手机上安装试用，再试升级后原来的数据是否还在。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on Android: direct download or store. Do only this action: Install on the target phone and check that an upgrade retains existing data. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ]
+    ]
   },
   {
     "id": "ios",
@@ -357,20 +455,16 @@ export const learningBranches:LearningBranch[]=[
     ],
     "steps": [
       [
-        "先核对Mac/Xcode、目标设备、开发者账号权限及Bundle ID。本人在Apple工具完成账号与签名配置，先解决资格再打包。",
-        "Check Mac/Xcode, device, developer access and Bundle ID; complete Apple account/signing setup before packaging."
+        "先请工具列出所需电脑、开发者账号和设备，再核对自己是否具备。",
+        "Ask for required computer, developer account and devices, then check what you have."
       ],
       [
-        "按项目方式归档，验证签名与版本，上传到对应App Store Connect应用记录；处理完成后才可用于后续测试/提交。",
-        "Archive using the project toolchain, validate signing/version and upload to the correct App Store Connect app; wait for processing."
+        "按当前 Apple 官方说明配置账号和签名，再让工具准备测试版本。",
+        "Configure account and signing using current Apple instructions, then prepare a test version."
       ],
       [
-        "测试分发按TestFlight当前条件配置测试者，在真机安装并试用。测试资格不等于正式公开分发资格。",
-        "Use current TestFlight requirements, install on real devices and test. Test access is not public distribution approval."
-      ],
-      [
-        "正式商店需应用资料、截图、隐私信息、审核所需访问及发布设置；其他分发方式有地区/账号/设备等条件，先核对适用性，不能默认把IPA放网站就能安装。",
-        "Store delivery needs listing, screenshots, privacy information, review access and release settings. Alternative channels have eligibility constraints; hosting an IPA is not a universal install method."
+        "在自己的 iPhone 或 iPad 上安装试用；准备公开时再核对上架资料。",
+        "Install and try it on your iPhone or iPad; check store materials before public release."
       ]
     ],
     "check": [
@@ -381,7 +475,21 @@ export const learningBranches:LearningBranch[]=[
       "读取iOS交付决定，先依据Apple当前官方资料核对设备、Xcode、账号、Bundle ID、签名和所选渠道资格。只准备本项目适用的归档、上传及测试步骤；本人处理账号和凭据。报告真实产物与版本，在可用真机验证核心流程、权限和升级；区分构建成功、处理完成、测试可用、待审核、正式可用。保存证据和未测项到 docs/release.md，不擅自提交审核或假设IPA可直接公开安装。",
       "Verify current Apple requirements for devices, Xcode, account, Bundle ID, signing and the chosen channel. Prepare only applicable archive/upload/test actions; the owner handles credentials. Report actual output/version and test core flows, permissions and upgrades on available devices. Distinguish build, processing, testing, review and live states. Save evidence/untested items to docs/release.md; do not submit for review or assume hosted IPA installation."
     ],
-    "source": "https://developer.apple.com/help/app-store-connect/manage-builds/upload-builds/"
+    "source": "https://developer.apple.com/help/app-store-connect/manage-builds/upload-builds/",
+    "actionPrompts": [
+      [
+        "我正在做“iPhone/iPad：测试与正式分发”。现在只做这一项：先请工具列出所需电脑、开发者账号和设备，再核对自己是否具备。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on iPhone/iPad: testing and distribution. Do only this action: Ask for required computer, developer account and devices, then check what you have. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ],
+      [
+        "我正在做“iPhone/iPad：测试与正式分发”。现在只做这一项：按当前 Apple 官方说明配置账号和签名，再让工具准备测试版本。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on iPhone/iPad: testing and distribution. Do only this action: Configure account and signing using current Apple instructions, then prepare a test version. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ],
+      [
+        "我正在做“iPhone/iPad：测试与正式分发”。现在只做这一项：在自己的 iPhone 或 iPad 上安装试用；准备公开时再核对上架资料。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on iPhone/iPad: testing and distribution. Do only this action: Install and try it on your iPhone or iPad; check store materials before public release. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ]
+    ]
   },
   {
     "id": "desktop",
@@ -396,20 +504,16 @@ export const learningBranches:LearningBranch[]=[
     ],
     "steps": [
       [
-        "确认目标系统、版本和CPU架构；由AI检查框架支持的构建机器与安装格式，不能默认本机产物适合所有电脑。",
-        "Confirm OS/version/CPU and supported build hosts/formats; one artifact need not fit every computer."
+        "写清要支持 Windows、macOS 还是 Linux，以及电脑型号。",
+        "Specify Windows, macOS or Linux and the computer model."
       ],
       [
-        "按所选直接下载或商店渠道核对签名/公证/审核要求。macOS外部分发查Developer ID与公证；Windows查对应安装格式/商店要求。",
-        "Check signing/notarization/review for the chosen channel. Consult Developer ID/notarization for macOS and format/store requirements for Windows."
+        "请工具生成对应系统的安装文件，并说明签名和分发要求。",
+        "Ask for the installer for that system and its signing/distribution requirements."
       ],
       [
-        "生成正式安装产物，在无开发环境的目标机器测试安装、启动、文件权限、卸载与升级；系统拦截先查签名来源，不教关闭安全保护。",
-        "Build release output and test on a target without development tools: install, launch, permissions, uninstall and upgrade. Investigate signing rather than disable protections."
-      ],
-      [
-        "说明用户数据位置和卸载是否保留；升级测试确认数据兼容，再准备可信下载入口或商店资料。",
-        "Document user-data location/retention and test upgrade compatibility before preparing distribution."
+        "在目标电脑上试安装、启动和升级，检查资料是否保留。",
+        "Try installation, startup and upgrade on the target computer and check retained data."
       ]
     ],
     "check": [
@@ -420,7 +524,21 @@ export const learningBranches:LearningBranch[]=[
       "读取桌面交付方案，核对目标系统/架构、实际构建工具、渠道和当前官方签名要求。准备对应正式安装产物和逐项操作说明，标明产物位置、安装卸载、数据位置及更新恢复。在可用的无开发环境目标机测试；缺设备则标未验证，不用开发机启动代替。记录证据到 docs/release.md，不公开分发、不绕过系统安全提示。",
       "Read desktop delivery decisions and verify OS/architecture, toolchain, channel and current signing requirements. Prepare release artifacts and installation/uninstall/data/update/recovery instructions. Test on available targets without development tools; mark missing devices unverified. Save evidence to docs/release.md; do not publish or bypass OS protections."
     ],
-    "source": "https://learn.microsoft.com/en-us/windows/apps/publish/"
+    "source": "https://learn.microsoft.com/en-us/windows/apps/publish/",
+    "actionPrompts": [
+      [
+        "我正在做“桌面：Windows / macOS / Linux”。现在只做这一项：写清要支持 Windows、macOS 还是 Linux，以及电脑型号。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on Desktop: Windows / macOS / Linux. Do only this action: Specify Windows, macOS or Linux and the computer model. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ],
+      [
+        "我正在做“桌面：Windows / macOS / Linux”。现在只做这一项：请工具生成对应系统的安装文件，并说明签名和分发要求。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on Desktop: Windows / macOS / Linux. Do only this action: Ask for the installer for that system and its signing/distribution requirements. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ],
+      [
+        "我正在做“桌面：Windows / macOS / Linux”。现在只做这一项：在目标电脑上试安装、启动和升级，检查资料是否保留。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on Desktop: Windows / macOS / Linux. Do only this action: Try installation, startup and upgrade on the target computer and check retained data. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ]
+    ]
   },
   {
     "id": "mini-program",
@@ -435,20 +553,16 @@ export const learningBranches:LearningBranch[]=[
     ],
     "steps": [
       [
-        "在已选平台官网核对主体、类目、账号权限和发布条件。微信使用对应开发者工具与AppID，由管理员授予开发/体验权限。",
-        "Check entity/category/account and publishing prerequisites on the chosen platform; for WeChat use the matching tools/AppID and assigned permissions."
+        "进入所选小程序平台的官网，核对注册和发布需要哪些资格。",
+        "Check registration and release eligibility on the chosen mini-app platform’s official site."
       ],
       [
-        "开发工具打开真实项目并核对AppID、环境、请求域名/服务配置；本地调试忽略域名校验不能作为上线方案。",
-        "Open the actual project, check AppID/environment and request-service settings; local validation bypasses are not production configuration."
+        "在平台开发工具中打开项目，核对项目编号和服务地址。",
+        "Open the project in the platform’s developer tool and check its ID and service URLs."
       ],
       [
-        "生成体验版本，在获得权限的真机账号中完成流程，记录登录、网络、数据与权限结果。",
-        "Create a trial version and test on permitted real accounts/devices, including network, data and access."
-      ],
-      [
-        "根据当前平台要求准备版本说明、隐私与审核材料，区分开发预览、体验、审核与正式发布。“交付上线，检查实际入口”才确认提交和发布。",
-        "Prepare release notes, privacy and review material under current requirements; distinguish preview, trial, review and live release. Authorize submission in the “Deliver and check the real entry” milestone."
+        "准备体验版本，用获准的手机账号试完整流程，再整理审核资料。",
+        "Prepare a trial build, test the full flow with an authorized phone account, then prepare review materials."
       ]
     ],
     "check": [
@@ -459,7 +573,21 @@ export const learningBranches:LearningBranch[]=[
       "读取已选小程序平台与交付决定，按该平台当前官方指南检查账号主体/类目、项目标识、开发权限、请求配置和体验资格。先列本人需完成的控制台操作及成功现象；用实际项目生成体验版本，在可用真机检验核心流程和访问条件。记录平台、版本、配置名称、证据与未测试项到 docs/release.md。不能以本地忽略校验代替正式配置，不擅自审核/发布，不套用另一平台步骤。",
       "Read the selected mini-program platform. Check current official account/category, app identity, developer permissions, request configuration and trial prerequisites. Explain owner console actions and success signals; create and test an actual trial on available devices. Record platform, revision, config names, evidence and untested items. Do not substitute local bypasses, use another platform’s procedure or submit/release without authorization."
     ],
-    "source": "https://developers.weixin.qq.com/miniprogram/dev/framework/quickstart/release.html"
+    "source": "https://developers.weixin.qq.com/miniprogram/dev/framework/quickstart/release.html",
+    "actionPrompts": [
+      [
+        "我正在做“小程序：按已选平台准备”。现在只做这一项：进入所选小程序平台的官网，核对注册和发布需要哪些资格。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on Mini-program: chosen platform. Do only this action: Check registration and release eligibility on the chosen mini-app platform’s official site. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ],
+      [
+        "我正在做“小程序：按已选平台准备”。现在只做这一项：在平台开发工具中打开项目，核对项目编号和服务地址。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on Mini-program: chosen platform. Do only this action: Open the project in the platform’s developer tool and check its ID and service URLs. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ],
+      [
+        "我正在做“小程序：按已选平台准备”。现在只做这一项：准备体验版本，用获准的手机账号试完整流程，再整理审核资料。请先查看我的项目，告诉我在哪里操作、具体怎么做、完成后应看到什么。需要我操作账号时，一次只说明一个动作，等我完成再继续。不要跳到下一项或正式发布。",
+        "I am working on Mini-program: chosen platform. Do only this action: Prepare a trial build, test the full flow with an authorized phone account, then prepare review materials. Inspect my project and explain where to act, the action and its expected result. For account actions, guide one action at a time and wait for me. Do not advance to another action or publish."
+      ]
+    ]
   }
 ];
 

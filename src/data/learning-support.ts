@@ -4,38 +4,38 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "idea",
     "input": [
-      "你想改善的一件事；暂不需要工具或技术方案。",
-      "One real problem; no tools or technical choices yet."
+      "你想解决的一件事。",
+      "One problem you want to solve."
     ],
     "output": [
-      "本站已确认想法 → 下一步项目描述。",
-      "Confirmed guide draft → project brief."
+      "生成的草稿保留了自己的用户、问题、试用方法。",
+      "The draft retains your users, problem and test."
     ],
     "steps": [
       [
-        "先写真实使用者。例如“我们读书会的20名成员”，比“所有人”更容易确定需要什么。",
-        "Name real users, such as 20 reading-club members, rather than everyone."
+        "写清谁会用。在下方想法草稿的第一项，写一个具体的人或群体。\n完成后：例如“我自己”或“店里负责记账的人”。",
+        "Name the user. Fill the first field in the idea draft below.\nAfterwards: For example, yourself or the person keeping shop accounts."
       ],
       [
-        "写现在怎样办事、哪里困难，再写使用后能完成什么；不要只写“做一个好用的平台”。",
-        "Describe the current process, difficulty and desired outcome, not just a useful platform."
+        "写清要解决什么。接着填写“现在有什么麻烦”和“做完后想怎样用”。\n完成后：能说出一个具体过程，例如输入学习内容、保存、以后再找。",
+        "Describe the problem and how you want to use the finished project.\nAfterwards: A concrete flow, such as enter notes, save them and find them later."
       ],
       [
-        "通过条件写成亲手可以做的动作。未来功能放第二阶段，不混入第一版。确认后在下一步点击“带入前面已确认的材料”。",
-        "Make success personally testable. Keep later features separate. Confirm, then use the material button in the next step."
+        "写好怎样试用才算做好，再点击“确认，生成我的想法草稿”。第二阶段暂时不做就填“否”。\n完成后：生成的草稿保留了自己的用户、问题、试用方法。",
+        "Describe how you will test success, then click Confirm and generate my idea. Put “none” for later features if unnecessary.\nAfterwards: The draft retains your users, problem and test."
       ]
     ],
     "answer": [
-      "想法是目的，不是技术清单。就像先说明要去哪里，再选交通工具；第一版做好一件事不等于以后不能扩展。",
-      "An idea specifies the destination, like choosing where to go before transport. A small first version does not prevent later expansion."
+      "先写给谁用、解决什么问题，再写怎样试用才算做好。",
+      "Write users, problem and a practical success check."
     ],
     "example": [
       "用户：读书会成员。问题：群里报名容易漏记。通过：提交一次报名后能看到自己的报名；重复提交不会占两个名额。",
       "Users: club members. Problem: chat signups get lost. Pass: submit and see a reservation; repeating it does not reserve twice."
     ],
     "recovery": [
-      "不知道就写尚未确定。不要为了填满而编造用户需求；“澄清需求与第一版范围”这一节点会逐项澄清。",
-      "Keep unknowns explicit. The “Clarify needs and scope” milestone clarifies them; do not invent requirements."
+      "想不到就从自己最近遇到的一件麻烦事开始。",
+      "Start with a recent problem you personally faced."
     ],
     "terms": [
       "brief",
@@ -45,38 +45,38 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "description",
     "input": [
-      "上一步已确认的想法。",
-      "The confirmed idea."
+      "上一步确认的想法草稿。",
+      "Your confirmed idea draft."
     ],
     "output": [
-      "本站项目描述 → “准备 Git 与项目规则”这一节点复制给 AI 并保存为 idea.md。",
-      "Guide brief → the “Prepare Git and project rules” milestone saves it as idea.md."
+      "得到一份能直接交给工具的项目说明。",
+      "You have a project description ready to send to the tool."
     ],
     "steps": [
       [
-        "点击“带入前面已确认的材料”，核对用户、问题和通过条件；旧字段已有内容时不会覆盖，改动请亲自核对。",
-        "Import confirmed material; review users, problem and criteria. Existing fields are preserved."
+        "点击下方模板的“带入前面已确认的材料”，检查是不是自己的想法。\n完成后：上一步的用户和目标已出现在模板中。",
+        "Click the template’s confirmed-material import button and check the idea.\nAfterwards: Your previous users and goal appear."
       ],
       [
-        "补项目名称、使用设备和一次完整操作。例如手机浏览器打开活动→报名→看到结果。",
-        "Add a name, device and complete flow: open event in a phone browser, book, see result."
+        "补项目名称、在哪种设备上用，以及从打开到完成的一次操作。只写自己想要的使用方法，不需要先选数据库。\n完成后：别人读完能知道要做什么、给谁用、怎样试。",
+        "Add the name, devices and one complete use from opening to outcome. You do not need to choose a database yet.\nAfterwards: A reader knows what to build, for whom and how to test it."
       ],
       [
-        "核对并确认生成。这里只形成文字；“准备 Git 与项目规则”这一节点才把它保存到真实项目。以后项目文件是AI执行依据，修改本站草稿不会自动改文件。",
-        "Confirm the brief. This is text only until the “Prepare Git and project rules” milestone saves it in the project. Editing a guide draft does not automatically update project files."
+        "点击“确认，生成我的专属内容”，再复制保存好。后面准备 Git 的步骤会用到这段项目说明。\n完成后：得到一份能直接交给工具的项目说明。",
+        "Confirm your version, then copy and keep it for the Git preparation step.\nAfterwards: You have a project description ready to send to the tool."
       ]
     ],
     "answer": [
-      "描述让AI少猜用户和结果；它不能替代后面确认的需求。名字、设备、场景不同，技术选择也可能不同。",
-      "A brief reduces guessing about users and outcomes. It does not replace confirmed requirements; device and context affect later choices."
+      "项目描述就是告诉别人：我要做什么，给谁用，怎样使用。",
+      "A project description says what to make, for whom and how it is used."
     ],
     "example": [
       "项目：读书会预约。设备：手机浏览器。流程：查看场次→输入姓名→报名→查看确认。预算：尚未确定。",
       "Project: club reservations. Device: phone browser. Flow: view session, enter name, book, see confirmation. Budget: undecided."
     ],
     "recovery": [
-      "带入为空时先返回“记录项目想法”确认草稿；不要重复手写已有材料。备份可在页末“我的项目材料与备份”下载。",
-      "If import is empty, confirm the “Record the idea” milestone first. Back up all material using the panel at the page bottom."
+      "没有带入时回想法步骤确认草稿，或亲手粘贴已写好的内容。",
+      "Confirm the idea in the preceding step or paste the saved text yourself."
     ],
     "terms": [
       "brief",
@@ -86,38 +86,38 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "tool",
     "input": [
-      "项目描述、电脑系统及预算。",
-      "Brief, computer OS and budget."
+      "自己的电脑，以及能接受的费用。",
+      "Your computer and budget."
     ],
     "output": [
-      "可访问项目的工具与本人核对的权益记录 → 建项目。",
-      "A project-capable tool and checked account access → create project."
+      "得到具体入口说明，知道下一步在哪里打开文件夹。",
+      "You know where to open the folder next."
     ],
     "steps": [
       [
-        "操作位置：本站本步的“官方下载与安装入口”。先确认电脑是 Mac 还是 Windows，再展开下载入口，选一种工具。已装好可用工具时跳过安装，直接核对登录状态和项目入口。 提醒：这一步只选一个工具。下面安装动作以桌面工具为例；网页工具直接打开官方网页登录，命令行工具按官方安装说明进入项目，不照搬桌面入口。",
-        "Where: This step’s official download entries. Check whether your computer uses Mac or Windows, expand the download entries and choose one tool. If already installed, skip installation and check sign-in and the project entry. Note: Choose one tool. Installation below illustrates a desktop app; for a web tool sign in on its official site, and for a CLI use its official setup rather than desktop controls."
+        "从下面的工具入口选一个，打开它的官方网站。先查看是否支持自己的电脑，以及费用是否在预算内。\n完成后：选定一个能够操作项目文件的工具。",
+        "Choose one tool from the entries below. Check its official site for your computer and budget.\nAfterwards: One suitable tool can work with project files."
       ],
       [
-        "操作位置：所选工具的官方下载页与安装窗口。下载与你系统对应的安装文件，打开它，按安装窗口提示完成，再打开应用。 提醒：出现付费或系统权限说明时先看清内容；安装还没完成，不要先发送项目制作任务。",
-        "Where: The chosen tool’s official download page and installer. Download the installer for your OS, open it, follow its instructions and launch the app. Note: Read payment or permission explanations; do not send project work before installation finishes."
+        "按照所选工具的官方说明安装并登录。已有可用工具就直接打开它；网页工具直接登录工作区。\n完成后：能看到项目或对话入口。",
+        "Install and sign in using the chosen tool’s instructions, or open your existing tool. Web tools use their online workspace.\nAfterwards: You can find the project or chat entry."
       ],
       [
-        "操作位置：所选工具的登录界面。按界面完成本人账号登录；登录后找到与项目或文件夹有关的工作入口。 提醒：不要把密码或验证码粘贴到本站模板里；免费额度和费用以本人账号显示为准。",
-        "Where: The chosen tool’s sign-in screen. Sign in with your own account, then locate the project or folder workspace. Note: Never paste passwords or verification codes into this guide; check access and costs in your account."
+        "找到输入框，先询问它能怎样帮你处理项目。\n建议提示词：我是第一次使用。请告诉我在哪里选择项目文件夹，以及你能否读取文件、修改文件和运行项目。只介绍操作入口，先不要创建文件。\n完成后：得到具体入口说明，知道下一步在哪里打开文件夹。",
+        "Find the message box and ask how to work on a project.\nSuggested prompt: I am new. Show me where to select a project folder and whether you can read files, edit them and run the project. Explain the entry only; do not create files.\nAfterwards: You know where to open the folder next."
       ]
     ],
     "answer": [
-      "工具像工作台，模型像助手。能说出代码不等于能把文件放到你的工作台上；订阅也不必然包含API额度。",
-      "The tool is a workbench and the model an assistant. Producing code text is not saving files. A subscription need not include API credits."
+      "这里的 AI 工具需要能帮助你保存文件和运行项目；先确认入口，再开始做。",
+      "The tool should help save files and run the project; locate its controls first."
     ],
     "example": [
       "合格：能指出当前项目文件，并说明可以执行哪些检查。仅回答“当然可以帮你开发”不算能力证据。",
       "Evidence: actual project files and supported checks, not merely a promise to help."
     ],
     "recovery": [
-      "安装/账号受限时保留错误，回工具比较页选择满足系统与预算的工具。各工具界面会变化，以当前官方入口为准。",
-      "If access fails, retain the error and compare compatible tools. Use current official instructions for changing interfaces."
+      "安装条件不合适就换适合的工具，不必全部安装。",
+      "Choose another if unsuitable; you do not need every tool."
     ],
     "terms": [
       "agent",
@@ -128,42 +128,38 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "folder",
     "input": [
-      "电脑本地目录或网页工具工作区。",
-      "A local location or web workspace."
+      "自己给项目起的名字。",
+      "A name for your project."
     ],
     "output": [
-      "确定的项目名称与位置 → “在工具中打开项目”选中相同位置。",
-      "Project name and location → the “Open it in the tool” milestone selects the same location in the “Open it in the tool” milestone."
+      "模板中的位置能带你回到同一个项目。",
+      "The recorded location leads back to the same project."
     ],
     "steps": [
       [
-        "操作位置：Mac 访达 / Windows 文件资源管理器。打开文件管理器，在左侧找到“文稿”或“文档”，进入这个位置。 提醒：这是电脑上的文件夹，不是本站资料库，也不是浏览器下载列表。",
-        "Where: Mac Finder / Windows File Explorer. Open the file manager and enter Documents from its sidebar. Note: This is a computer folder, not the guide’s library or the browser’s download list."
+        "在电脑上打开“文档”文件夹。Mac 用访达，Windows 用文件资源管理器；使用网页工作区时，直接在工具的项目列表新建项目。\n完成后：找到专门存放这个项目的位置。",
+        "Open Documents in Finder or File Explorer. For a web workspace, create a project in its project list instead.\nAfterwards: You have a dedicated place for this project."
       ],
       [
-        "操作位置：刚打开的文稿／文档目录。Mac 按 Shift + Command + N；Windows 在文档目录按 Ctrl + Shift + N，新建文件夹。输入自己的项目名称并按回车，双击打开。跟练示例可命名 learning-journal。 提醒：看到已有同名文件夹先检查里面是什么，不覆盖或清空别人的项目。",
-        "Where: The Documents folder you just opened. In Documents, press Shift + Command + N on Mac or Ctrl + Shift + N on Windows. Type your project name, press Enter and open the folder. The practice example can be named learning-journal. Note: Inspect an existing same-named folder; do not overwrite or empty another project."
+        "创建文件夹并用自己的项目名称命名。Mac 按 Shift+Command+N，Windows 按 Ctrl+Shift+N，输入名称后按回车。\n完成后：能打开刚建的空文件夹；网页工具能打开新工作区。",
+        "Create and name a folder: Shift+Command+N on Mac or Ctrl+Shift+N on Windows, then enter a name.\nAfterwards: The new folder or web workspace opens."
       ],
       [
-        "操作位置：自己新建的文件夹。选中刚建的文件夹。Mac 按 Option + Command + C 复制路径；Windows 打开文件夹后点击地址栏，再按 Ctrl + C。把复制的位置填入本步记录模板。 提醒：填的是自己电脑上的实际位置，不照抄教程作者路径。这里只记录，还没有让 AI 打开它。",
-        "Where: Your newly created folder. Select the new folder. On Mac press Option + Command + C to copy its path; on Windows open it, click the address bar and press Ctrl + C. Paste the path into this step’s record template. Note: Use your own actual path, not the author’s. Recording it does not open it in the AI tool."
-      ],
-      [
-        "操作位置：所选工具是网页工作区时。本步改在该工具的项目列表新建独立工作区，记录名称和实际入口；下一步打开同一工作区。 提醒：网页工作区不一定在电脑上有文件夹。模板中如实填写工作区入口，不编造本机路径。",
-        "Where: If your chosen tool uses a web workspace. Create a dedicated workspace in that tool’s project list, record its name and real entry, then open the same workspace in the next step. Note: A web workspace may not have a local folder. Record its real entry rather than inventing a local path."
+        "复制项目位置填到下方模板。Mac 选中文件夹按 Option+Command+C；Windows 打开文件夹后复制地址栏；网页工具记录工作区名称和入口。\n完成后：模板中的位置能带你回到同一个项目。",
+        "Copy the location into the template: Option+Command+C on a selected Mac folder, the Windows address bar, or your web workspace name and entry.\nAfterwards: The recorded location leads back to the same project."
       ]
     ],
     "answer": [
-      "项目根目录就是装本项目全部文件的那一层盒子，不是整台电脑的根目录。一个项目一个盒子能避免AI改错文件。",
-      "The project root is the box containing this project, not the computer’s root. Separate boxes prevent editing the wrong project."
+      "文件夹就是项目文件的存放位置；路径是找到它的地址。",
+      "A folder stores project files; its path tells you where it is."
     ],
     "example": [
       "book-club/ ← 在工具中选择这一层\n  idea.md ← “准备 Git 与项目规则”这一节点才创建\n  docs/ ← 后面放需求文档",
       "book-club/ ← select this folder\n  idea.md ← created by the “Prepare Git and project rules” milestone\n  docs/ ← later documents"
     ],
     "recovery": [
-      "文件夹已有内容时保留。确认它是否属于本项目，不要通过删除旧文件来清空起点。",
-      "Preserve existing files and check ownership; do not erase them to start."
+      "不要把别人的项目文件夹当作新项目，也不要清空已有文件。",
+      "Do not reuse or empty an unrelated project folder."
     ],
     "terms": [
       "root-directory",
@@ -173,42 +169,34 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "open-project",
     "input": [
-      "已确认的文件夹/工作区位置。",
-      "Confirmed folder or workspace location."
+      "刚才创建的项目文件夹或网页工作区。",
+      "The project folder or web workspace you created."
     ],
     "output": [
-      "AI返回的真实位置与文件列表 → 起点准备。",
-      "Actual location and file list → baseline preparation."
+      "工具返回的实际路径与自己的路径一致。",
+      "The reported path matches yours."
     ],
     "steps": [
       [
-        "操作位置：所选 AI 工具的项目／文件夹入口。选择打开或添加项目文件夹，选中上一步的文件夹并确认。在这个项目里打开一条对话。 提醒：入口名称随工具和版本不同。网页工具打开刚记录的工作区；命令行工具先在终端进入原项目目录。不在别的项目会话里发制作任务。",
-        "Where: The AI tool’s project/folder entry. Open/add the previous folder and confirm, then open a chat within that project. Note: Names vary by tool/version. Web tools open the recorded workspace; CLIs start from the project directory in a terminal. Do not send work in an unrelated project."
+        "在所选工具中选择“打开文件夹”或对应的项目入口，选中刚建的文件夹。\n完成后：工具中的项目名称与自己的文件夹一致。",
+        "Use Open folder or the equivalent project entry and choose your new folder.\nAfterwards: The tool shows the expected project."
       ],
       [
-        "操作位置：本站“本步提示词”编辑框。找到下方第 7 项“发给 AI 的话”中的本步模板，把“项目文件夹”换成实际路径，点击确认，再复制生成的提示词。 提醒：确认和复制只发生在本站，还没有向工具发消息，也没有检查你的电脑。",
-        "Where: This guide’s prompt editor. Find this step’s template in section 7, “What to send to AI”, enter the real folder path, confirm and copy the generated prompt. Note: Confirm/copy only prepares text in this guide; it has not messaged the tool or inspected your computer."
-      ],
-      [
-        "操作位置：刚打开的项目对话输入框。粘贴刚复制的提示词，检查是本次路径，再发送。等待工具完成这次只读检查。 提醒：先不要再发“开始开发”；若出现权限提示，读清它要访问哪个目录。",
-        "Where: The selected project chat composer. Paste the prompt, check the path and send it. Wait for the read-only inspection. Note: Do not send “start building” yet; read the target directory if a permission prompt appears."
-      ],
-      [
-        "操作位置：工具回复与文件管理器中的文件夹。逐字核对回复里的项目位置；确认一致后，再进入“准备起点”的动作。 提醒：“名称相似”不等于同一个目录，尤其注意下载目录和文稿目录的区别。",
-        "Where: The tool reply and your file manager. Compare the reported location with your folder; proceed to baseline preparation only when they match. Note: Similar names do not mean the same directory; distinguish Downloads from Documents."
+        "在这个项目中打开对话，把自己的完整路径填入下面这段话后发送。\n建议提示词：请检查当前打开的项目是不是【我的项目完整路径】。告诉我实际路径，并列出文件夹里已有的文件。只检查，不修改文件。\n完成后：工具返回的实际路径与自己的路径一致。",
+        "Start a chat in this project, replace the path and send this.\nSuggested prompt: Check whether the current project is 【my full project path】. Report its actual path and existing files. Inspect only; do not change files.\nAfterwards: The reported path matches yours."
       ]
     ],
     "answer": [
-      "对话历史不是项目目录。像电话里谈了店铺装修，不代表师傅已经进了正确的店。",
-      "Chat history is not a project directory: discussing a renovation is not entering the correct building."
+      "同一个工具可以打开不同项目；开始前要检查现在打开的是哪一个。",
+      "A tool can open different projects; check which one is active."
     ],
     "example": [
       "通过：实际路径与“创建项目文件夹”记录一致，现有文件列表可核对。失败：只回复一个建议路径。",
       "Pass: the actual path matches the “Create the project folder” record and verifiable files. Fail: a suggested path only."
     ],
     "recovery": [
-      "位置不一致先停止当前任务，重新选择项目后检查；只读模式无法写入时，按工具说明切换执行模式。",
-      "Stop on a path mismatch and reopen the correct project. Use the tool’s documented execution mode for writes."
+      "找不到入口时看下面的界面图或该工具的官方项目说明。",
+      "Use the screenshot below or the tool’s official project instructions."
     ],
     "terms": [
       "working-directory",
@@ -218,38 +206,42 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "checkpoint",
     "input": [
-      "已确认项目描述与正确项目目录。",
-      "Confirmed brief and correct directory."
+      "已经打开的项目，以及前面确认的项目描述。",
+      "Your open project and confirmed description."
     ],
     "output": [
-      "idea.md、工具支持的规则文件、首次本地 Git 版本 → “亲手核对 AI 创建的文件”核对。",
-      "idea.md, supported rules and first local Git revision → the “Inspect a file AI actually created” stepvision → the “Inspect a file AI actually created” step."
+      "工具给出一次成功提交的版本号，文件仍能正常打开。",
+      "A successful local revision is reported and the files still open."
     ],
     "steps": [
       [
-        "操作位置：本站项目描述与本步模板。回看已确认的项目描述，在本步模板点击“带入前面已确认的材料”，核对带入内容，再确认并复制。 提醒：本站草稿不会自动变成电脑文件；现在是准备让工具保存的文字。",
-        "Where: Your guide brief and this step’s template. Review the confirmed brief, import it into this step’s template, check the imported text, then confirm and copy. Note: A guide draft does not automatically become a computer file; you are preparing text for the tool to save."
+        "把项目文件夹初始化为 Git 仓库。在刚才的项目对话中发送下面这句话。Git 用来保存修改历史，已经保存的版本可以找回。\n建议提示词：请检查当前项目是否已经是 Git 仓库。如果还不是，请把这个项目文件夹初始化为 Git 仓库；如果已经是，请继续使用现有仓库。先不要提交或上传文件。\n完成后：工具明确告诉你已经建立或沿用了 Git 仓库。",
+        "Initialize a Git repository in the project chat. Git keeps saved versions of your files so you can return to them.\nSuggested prompt: Check whether this folder is already a Git repository. If not, initialize one here; otherwise reuse it. Do not commit or upload files yet.\nAfterwards: The tool confirms a new or existing repository."
       ],
       [
-        "操作位置：已经核对位置的项目对话。粘贴并发送本步提示词，让工具保存想法、规则和起点版本；等待它报告结果。 提醒：这次不开发功能。已有规则文件先读再合并，不能因为跟教程就覆盖。",
-        "Where: The project chat whose location you verified. Paste/send this step’s prompt to save the idea, rules and baseline revision; wait for its result. Note: No feature development yet. Read and merge existing rules instead of overwriting them for the tutorial."
+        "创建 AGENTS.md。它是写给 AI 工具看的项目说明书和规则，告诉工具应该怎样做事。\n建议提示词：请在项目根目录创建 AGENTS.md，写明：先读项目说明，再做我当前要求的任务；不擅自增加功能；不删除已有成果；完成后告诉我改了哪些文件、怎样检查。已有文件先读并保留原规则，不直接覆盖。若当前工具不支持此文件，请告诉我它支持的规则入口。\n完成后：打开 AGENTS.md，能读到项目的工作规则；其他工具则找到它支持的规则文件。",
+        "Create AGENTS.md, a project guide and working rules for the AI tool.\nSuggested prompt: Create AGENTS.md at the project root: read the project description first, do only my current task, do not add features or delete existing work, and report changed files and checks. Read existing rules before updating them. If this tool does not support AGENTS.md, tell me its supported rules entry.\nAfterwards: You can open the rules file and read the instructions."
       ],
       [
-        "操作位置：工具刚才的结果回复。记下文件位置与版本号；下一步打开真实文件，核对保存内容。 提醒：版本号是找回起点的标记，不是验收通过证明。",
-        "Where: The tool’s result reply. Note the file locations and revision; open the real files in the next step. Note: A revision identifies a recovery point, not acceptance success."
+        "把前面写好的项目描述保存成 idea.md。回到“整理项目描述”复制已确认内容，再粘贴进下面的话。\n建议提示词：请把下面这份项目说明保存到项目根目录的 idea.md。已有同名文件先告诉我差别，不直接覆盖。项目说明：\n【粘贴我已确认的项目描述】\n完成后：打开 idea.md，可以看到自己的项目名称、用户和想做的功能。",
+        "Save your confirmed description as idea.md. Copy it from the description step into this message.\nSuggested prompt: Save the following description as idea.md at the project root. If it already exists, explain differences before changing it. Description:\n【paste my confirmed description】\nAfterwards: idea.md contains your own project and intended users/features."
+      ],
+      [
+        "让 Git 保存第一个版本。仓库建好还不等于文件已经保存成版本；完成这一项，才有可以回来的记录。\n建议提示词：请先检查本次文件，排除密码、密钥、数据库和自动生成文件。把本步确认过的项目说明与规则文件提交到本地 Git，作为第一个版本，并告诉我版本号。不要推送。缺少提交身份时告诉我需要填写什么，不替我编造身份。\n完成后：工具给出一次成功提交的版本号，文件仍能正常打开。",
+        "Save the first Git version. Initializing a repository alone does not save a version.\nSuggested prompt: Inspect this step’s files and exclude passwords, keys, databases and generated files. Commit only the confirmed description and rules locally, then report the revision. Do not push. Ask for missing author identity instead of inventing it.\nAfterwards: A successful local revision is reported and the files still open."
       ]
     ],
     "answer": [
-      "保存像把作业放进抽屉；提交像拍一张可找回的快照；推送才是把快照送到远端。Git通常不备份数据库或被忽略的文件。",
-      "Saving puts work in a drawer, committing takes a recoverable snapshot, pushing sends it elsewhere. Git generally does not back up databases or ignored files."
+      "初始化 Git 是建立保存修改历史的地方；提交才是保存一个版本。AGENTS.md 写明工具做事时要遵守什么。",
+      "Initializing Git creates a place for history; committing saves a version. AGENTS.md states the rules the tool should follow."
     ],
     "example": [
       "项目/\n  idea.md\n  AGENTS.md（仅工具支持时）\n  .gitignore\n  .git/（隐藏的版本记录）",
       "project/\n  idea.md\n  AGENTS.md (if supported)\n  .gitignore\n  .git/ (hidden history)"
     ],
     "recovery": [
-      "Git未装/提交身份缺失/无写权限时完成对应准备后重试。不要让AI伪造版本号或强制覆盖已有仓库。",
-      "Resolve missing Git, identity or write access before retrying. Never invent revisions or overwrite an existing repository."
+      "提示没有安装 Git 时，请工具按你的系统给出官方安装入口，安装后再做这一项。",
+      "If Git is missing, ask for the official installation steps for your system, install it and retry."
     ],
     "terms": [
       "git",
@@ -260,42 +252,34 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "first-file",
     "input": [
-      "“准备 Git 与项目规则”报告的真实文件位置。",
-      "Real paths reported by the “Prepare Git and project rules” milestone."
+      "刚才保存的 idea.md、AGENTS.md 或工具使用的规则文件。",
+      "The saved idea.md and AGENTS.md or your tool’s instruction file."
     ],
     "output": [
-      "本人确认文件存在且内容正确 → 需求讨论。",
-      "Personally verified files → requirements discussion."
+      "两个文件内容正确，能在关闭后重新打开。",
+      "Both files are correct and can reopen."
     ],
     "steps": [
       [
-        "操作位置：本站本步提示词模板。找到下方第 7 项“发给 AI 的话”中的本步模板，核对本步内容，确认后复制生成的提示词。先不要标记本动作完成。 提醒：本步只检查已保存文件，不再新建一个练习文件。",
-        "Where: This guide’s step prompt template. Find this step’s template in section 7, “What to send to AI”, review this step’s text, confirm and copy the generated prompt. Do not mark the action complete yet. Note: Inspect existing saved files; do not create another practice file."
+        "让工具给出刚才两个文件的位置。\n建议提示词：请列出本项目 idea.md 和 AGENTS.md（或本工具对应规则文件）的实际路径，并提供可打开的文件链接。只查看，不修改。\n完成后：得到自己项目中的文件位置。",
+        "Ask for the two saved file locations.\nSuggested prompt: List the actual paths and openable links for idea.md and AGENTS.md, or this tool’s equivalent rules file. Read only.\nAfterwards: The files are located in your project."
       ],
       [
-        "操作位置：所选工具里的原项目对话。回到原项目对话，把刚复制的文字粘贴进输入框，核对后发送。等待工具返回文件位置。 提醒：核对项目名称再发送；本站的“确认”不是向工具发送消息。",
-        "Where: The original project chat in your chosen tool. Return to the original project chat, paste the copied text, check it and send. Wait for the tool to report file locations. Note: Check the project name before sending; Confirm on this guide does not send a message to the tool."
-      ],
-      [
-        "操作位置：工具回复的文件链接，或电脑文件管理器。点击 idea.md 文件链接打开预览；没有可点链接时，在返回的文件夹中找到同名文件并打开。 提醒：看的是文件正文，不是对话里“我已经保存”的一句话。",
-        "Where: The file link in the tool reply, or your file manager. Open the idea.md link; if unavailable, find that file in the reported folder and open it. Note: Inspect the file contents, not a chat statement claiming it was saved."
-      ],
-      [
-        "操作位置：已打开的 idea.md 和规则文件。把正文与自己的描述对照，再打开规则文件检查；一致后回本站核对本动作并继续。 提醒：只有你亲自打开核对了，才点击本站的“已核对”。",
-        "Where: The opened idea.md and rules file. Compare the brief and inspect the rules file; when correct, return to the guide to record the check and continue. Note: Click Checked only after personally opening and reviewing the files."
+        "点击文件链接逐个打开。先看 idea.md 是否是自己的想法，再看规则文件有没有刚才约定的规则。\n完成后：两个文件内容正确，能在关闭后重新打开。",
+        "Open each file link. Compare idea.md with your idea and the rules file with your instructions.\nAfterwards: Both files are correct and can reopen."
       ]
     ],
     "answer": [
-      "“AI说已保存”只是报告，亲手打开才知道文件确实在正确位置。网站草稿、聊天文本、磁盘文件是三份不同的东西。",
-      "An AI report is not proof of a saved file. Guide drafts, chat text and disk files are distinct."
+      "聊天里出现一段文字，与项目里已经保存一个文件，是两件事。现在要找的是实际文件。",
+      "A chat reply and a saved project file are different. Find the actual file now."
     ],
     "example": [
       "应看到自己的项目描述，不是“这里可以写项目描述”这种说明文字。",
       "Expect the actual personal brief, not instructions saying to write one."
     ],
     "recovery": [
-      "按完整路径找不到时返回“准备 Git 与项目规则”核对实际保存结果，不创建另一份项目代替。",
-      "Return to the “Prepare Git and project rules” milestone if the real file is missing; do not replace it with another project."
+      "找不到文件就回上一项确认是否真的保存。",
+      "If absent, return to the preceding step and confirm they were saved."
     ],
     "terms": [
       "markdown",
@@ -305,38 +289,34 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "clarify",
     "input": [
-      "idea.md。",
-      "idea.md."
+      "项目里的 idea.md，以及你还没决定的问题。",
+      "Your idea.md and questions you have not decided yet."
     ],
     "output": [
-      "更新后的已确认事项与未知项 → 范围确认。",
-      "Confirmed facts and open questions → scope."
+      "打开 idea.md 能看到自己的答案。",
+      "idea.md contains your answers."
     ],
     "steps": [
       [
-        "让AI读文件并复述目标；读错先纠正，一次只回答一个影响第一版的问题。",
-        "Ask AI to read and restate the goal, correct mistakes, then answer one scope-changing question at a time."
+        "把 idea.md 交给工具看，让它从你的想法中找出还没说清的地方。\n建议提示词：请阅读 idea.md，用普通话复述我想做什么。你拿不准的地方一次只问我一个问题，先不要写代码。\n完成后：工具先复述，再提出一个你能回答的问题。",
+        "Ask the tool to read idea.md and find unclear parts.\nSuggested prompt: Read idea.md and restate my goal in everyday language. Ask one question at a time about what is unclear. Do not code yet.\nAfterwards: The tool restates the idea and asks an answerable question."
       ],
       [
-        "遇到技术问题让AI换成实际选择：只在这台电脑用，还是几个人同时用？回答真实需要，不必猜数据库名。",
-        "Translate technical questions into choices: one computer or several people? Answer needs, not database names."
-      ],
-      [
-        "检查回答已写回 idea.md；收费、设备、核心能力不清楚时保留未知，不把猜测写成已确认。",
-        "Check answers in idea.md. Keep uncertain cost, device and capability conditions explicitly unknown."
+        "回答当前问题；不确定就说不确定。等影响第一版的问题都说清后，再保存答案。\n建议提示词：请把我刚才确认的答案更新到 idea.md；还没决定的内容单独标出来，不替我决定。\n完成后：打开 idea.md 能看到自己的答案。",
+        "Answer the current question, or say undecided. Save once the first-version questions are clear.\nSuggested prompt: Update idea.md with the answers I confirmed. List undecided items separately without deciding for me.\nAfterwards: idea.md contains your answers."
       ]
     ],
     "answer": [
-      "澄清像裁衣前量尺寸，少一个关键尺寸，做得再快也可能不合身。暂时未知比错误肯定更有用。",
-      "Clarification is measuring before tailoring. An explicit unknown is better than a wrong certainty."
+      "不用一次回答所有问题；问一个，答一个，不知道就说还没决定。",
+      "Answer one question at a time; undecided is a valid answer."
     ],
     "example": [
       "预约项目需问：名额由谁设置？重复报名怎样算？取消后名额是否释放？",
       "Reservation questions: who sets capacity, what counts as duplicate, and does cancellation free a place?"
     ],
     "recovery": [
-      "AI连续追问不影响第一版的细节时，要求区分“现在必须确认”和“可以以后再说”。",
-      "Ask AI to separate essential questions from details that can wait."
+      "问题里有术语就让它解释成生活例子，不勉强猜答案。",
+      "Ask for a simple example if it uses unfamiliar terms."
     ],
     "terms": [
       "requirement",
@@ -346,38 +326,34 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "scope",
     "input": [
-      "idea.md 已确认目标。",
-      "Confirmed goal in idea.md."
+      "刚才逐个回答并确认的需求问题。",
+      "The questions and answers you just confirmed."
     ],
     "output": [
-      "docs/requirements.md 范围小节 → 逐项需求。",
-      "Scope in docs/requirements.md → detailed requirements."
+      "需求文件写清这次做什么、暂时不做什么。",
+      "The file distinguishes this version from later work."
     ],
     "steps": [
       [
-        "让AI列必做、暂不做、待确认；每项写可观察的结果并给需求编号，如 R01报名、R02取消。",
-        "List required, excluded and undecided items with observable outcomes and IDs, such as R01 book and R02 cancel."
+        "先列第一版必须完成的事，再列以后可以做的事。\n建议提示词：请读 idea.md，分成“第一版必须做”和“以后再做”两份清单。每项用我能亲手操作的一句话说明，先给我看，不写代码。\n完成后：两份清单能看懂，没有偷偷加入新功能。",
+        "Separate essential first-version work from later ideas.\nSuggested prompt: Read idea.md and make two lists: needed in version one and later. Describe each as a user action. Show me first; do not code.\nAfterwards: Both lists are understandable and contain no invented features."
       ],
       [
-        "挑一条最小完整流程先做，但其他必做项仍保留在清单，不能因为不是第一条而丢掉。",
-        "Choose one complete flow to build first; retain all other required items."
-      ],
-      [
-        "亲自确认取舍后保存范围。以后改范围先列受影响文档、任务和测试，再确认变更。",
-        "Confirm scope before saving. Later changes require an impact list for documents, tasks and tests."
+        "逐项确认清单，再让工具保存。\n建议提示词：请把我确认的范围保存到 docs/requirements.md，保留以后再做的清单。没有确认的内容标为待定。\n完成后：需求文件写清这次做什么、暂时不做什么。",
+        "Review each item, then save your decision.\nSuggested prompt: Save the confirmed scope to docs/requirements.md, keeping later ideas and marking undecided items.\nAfterwards: The file distinguishes this version from later work."
       ]
     ],
     "answer": [
-      "第一条流程是施工顺序，第一版范围是要交付的全部约定。先修一间房不等于其他房间不修。",
-      "The first flow sets order; version-one scope sets the full promise. Building one room first does not cancel the others."
+      "第一版是你准备先完成并使用的一小部分，不是所有想法一次做完。",
+      "Version one is the useful part you will finish first, not every idea at once."
     ],
     "example": [
       "R01报名：不超过容量；R02取消：取消后释放名额；第二阶段：付费功能。",
       "R01 booking: never exceed capacity. R02 cancel: free a place. Later: payments."
     ],
     "recovery": [
-      "需求太大时让AI解释每项代价，由本人选择延期项，不能静默删除。",
-      "Ask for costs and choose deferrals personally; do not silently drop requirements."
+      "清单太大就按真实使用需要缩小，不能删掉完成核心任务必需的步骤。",
+      "Reduce scope while keeping everything required for the core task."
     ],
     "terms": [
       "mvp",
@@ -387,38 +363,34 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "requirements",
     "input": [
-      "已确认范围。",
-      "Confirmed scope."
+      "已经确认的第一版功能清单。",
+      "Your agreed first-version feature list."
     ],
     "output": [
-      "有编号、规则和通过条件的需求 → 用户故事及测试。",
-      "Numbered rules and criteria → stories and tests."
+      "下一步可以依据这份文件写使用过程。",
+      "The next step can describe use based on this file."
     ],
     "steps": [
       [
-        "核对每项的使用者、输入、操作、结果及适用异常；业务规则写具体数量、状态或限制。",
-        "Check actor, input, action, output and relevant failures; state concrete business limits and states."
+        "把每项功能写成“填什么、点什么、看到什么”。\n建议提示词：请读 docs/requirements.md，把每个必做功能写清输入内容、操作、正常结果和失败时的提示。给每项编号，先让我确认。\n完成后：每个功能都有实际操作和能看到的结果。",
+        "Describe each feature as input, action and visible result.\nSuggested prompt: Read docs/requirements.md. Give each required feature an ID, inputs, actions, normal results and failure messages for my review.\nAfterwards: Every feature has an observable result."
       ],
       [
-        "逐条读AI生成的文档，检查它是否增加了不需要的登录、存储或收费能力；技术名词由AI解释。",
-        "Read the generated requirements and reject unrequested login, storage or payment features. Ask for explanations of jargon."
-      ],
-      [
-        "确认需求编号与范围一致；需求不明确就回“澄清需求与第一版范围”讨论，技术方案留到“确认界面与技术方案”。",
-        "Match IDs to scope. Clarify vague requirements in the “Clarify needs and scope” milestone and leave technology to “Agree on design and technology”. in the “Clarify needs and scope” milestone; technology comes in the “Let AI choose from actual conditions” step."
+        "对照自己的想法检查，再保存确认后的版本。\n建议提示词：请把我确认的内容更新到 docs/requirements.md，保留每项怎样测试才算做好，不增加未提出的功能。\n完成后：下一步可以依据这份文件写使用过程。",
+        "Compare with your idea and save the reviewed version.\nSuggested prompt: Update docs/requirements.md with confirmed content and a practical check for each feature. Do not add unrequested features.\nAfterwards: The next step can describe use based on this file."
       ]
     ],
     "answer": [
-      "“按钮能点击”是界面现象，“最后一个名额只能被一个人获得”才是业务规则。规则决定系统怎样处理操作。",
-      "A clickable button is interface behavior; only one person getting the last place is a business rule."
+      "需求文档记录填什么、做什么、应该得到什么结果。",
+      "Requirements record inputs, actions and expected outcomes."
     ],
     "example": [
       "不合格：报名好用。合格：R01容量20，报名成功余量减1；同一人重复请求不重复占位；已满显示无法报名。",
       "Weak: easy booking. Clear: R01 capacity 20, success reduces remaining places by one; duplicates do not consume extra places; full sessions reject booking."
     ],
     "recovery": [
-      "AI文档只列标题时要求补一条具体需求样例，再用同样结构补其他已确认项。",
-      "If the document contains headings only, ask for one concrete example, then apply it to the remaining agreed items."
+      "出现“体验良好”等空泛词时，要求换成具体画面或行为。",
+      "Replace vague claims like good experience with specific behavior."
     ],
     "terms": [
       "prd",
@@ -428,38 +400,34 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "stories",
     "input": [
-      "docs/requirements.md 的需求编号。",
-      "Requirement IDs."
+      "项目中已经保存的需求文档。",
+      "The requirements document saved in your project."
     ],
     "output": [
-      "同一文件内的用户故事及场景 → 原型。",
-      "Stories and scenarios in the same document → prototype."
+      "使用过程前后接得上，文件能打开。",
+      "The sequence connects and the file opens."
     ],
     "steps": [
       [
-        "把每项需求展开为谁、何时、想做什么、为什么；关联原需求编号。",
-        "Expand each requirement into who, when, what and why, linked to its ID."
+        "让工具把使用过程像讲故事一样写出来：谁打开哪里，先做什么，接着做什么。\n建议提示词：请读 idea.md 和 docs/requirements.md，写出每种用户从打开项目到完成任务的一次完整过程。一步写一个动作，也写出出错后怎样继续。先不要开发。\n完成后：能按文字想象一个人实际使用的顺序。",
+        "Describe a person using the project from start to finish.\nSuggested prompt: Read idea.md and docs/requirements.md. Write each user’s complete journey, one action at a time, including recovery from errors. Do not build yet.\nAfterwards: You can picture a real person following the sequence."
       ],
       [
-        "核对正常、失败、取消和返回流程；只列本项目适用的情况。",
-        "Review success, failure, cancellation and return paths where relevant."
-      ],
-      [
-        "亲自按故事口述一次使用过程。出现“然后系统就好了”这种跳跃，让AI补出用户下一步看到什么。",
-        "Narrate one user journey. Replace vague jumps with the actual next screen or result."
+        "按自己会使用的方式读一遍，指出缺少的步骤，再保存。\n建议提示词：请把我确认的使用过程保存到 docs/stories.md，并保留对应的需求编号。\n完成后：使用过程前后接得上，文件能打开。",
+        "Read it as a user, fill gaps and save.\nSuggested prompt: Save the confirmed journeys to docs/stories.md with their requirement IDs.\nAfterwards: The sequence connects and the file opens."
       ]
     ],
     "answer": [
-      "需求像菜谱的约定，故事像顾客从进店到吃完的一次经历，两者应描述同一个产品。",
-      "Requirements are the agreement; a story is a customer’s complete visit. Both must describe the same product."
+      "用户故事说的是谁要完成什么；操作过程说明他先做什么、再做什么。",
+      "A user story names who needs what; the journey gives the actions in order."
     ],
     "example": [
       "S01关联R01：成员打开活动→看到余位→提交→收到确认；已满时停在活动页并解释原因。",
       "S01 maps to R01: open event, see availability, submit, receive confirmation; when full, remain on the page with a reason."
     ],
     "recovery": [
-      "故事与需求冲突先回需求确认，不让AI按新故事擅自扩范围。",
-      "Resolve conflicts with requirements before extending scope."
+      "突然出现尚未说明的账号或页面时，先补它的来源和进入方法。",
+      "Explain any account or page that appears without an introduction."
     ],
     "terms": [
       "user-story",
@@ -469,38 +437,38 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "prototype",
     "input": [
-      "需求和用户故事。",
-      "Requirements and stories."
+      "需求文档和用户操作顺序。",
+      "The requirements and user journey."
     ],
     "output": [
-      "可查看的原型及 docs/design.md 交互决定 → 选型/制作。",
-      "Viewable prototype and interaction decisions → implementation choices."
+      "设计文件可以给后面的开发步骤使用。",
+      "The design file guides later implementation."
     ],
     "steps": [
       [
-        "让AI说明交付格式和打开方法：图片直接查看；HTML按给出的路径/预览入口打开；无界面项目看输入输出样例。",
-        "Ask for the format and viewing method: view an image, open the actual HTML/preview, or inspect input/output examples for headless tools."
+        "先看页面草稿。页面草稿只帮助决定东西放哪里、点击后去哪里。\n建议提示词：请根据 docs/requirements.md 和 docs/stories.md 做一条主要使用过程的页面草稿。告诉我怎样打开，每个按钮会去哪里；还不能实际使用的部分请标明。先不要接数据库。\n完成后：有能打开查看的页面草稿。",
+        "Preview a draft to decide what goes where and what buttons do.\nSuggested prompt: Use docs/requirements.md and docs/stories.md to draft the main journey. Tell me how to open it and where buttons lead. Mark simulated behavior. Do not connect a database yet.\nAfterwards: A draft opens for review."
       ],
       [
-        "走一遍入口、主要操作、结果、返回及失败；标注哪些是假数据、哪些按钮只演示。",
-        "Walk entry, action, result, return and failure, marking mocked data and demo-only buttons."
+        "从第一屏按顺序点一遍，指出找不到入口或看不懂的地方。\n建议提示词：请只调整我指出的这些位置：【填写】。保留其他已确认内容，完成后告诉我从哪里再看。\n完成后：能找到主要输入、按钮和结果。",
+        "Click through the draft and identify unclear entries.\nSuggested prompt: Change only these locations: 【fill in】. Preserve confirmed work and tell me where to review it.\nAfterwards: Main inputs, buttons and results are easy to find."
       ],
       [
-        "确认布局和交互后保存决定；正式开发时逐项替换模拟功能，原型通过不等于业务完成。",
-        "Save confirmed decisions. Replace mocked behavior during development; prototype approval is not functional acceptance."
+        "把确认的页面和操作方法保存下来。\n建议提示词：请把确认的页面安排和按钮作用写入 docs/design.md，区分已经能用和仍是演示的部分。\n完成后：设计文件可以给后面的开发步骤使用。",
+        "Save the approved screen and action decisions.\nSuggested prompt: Write screen arrangements and button behavior to docs/design.md. Separate working features from demonstrations.\nAfterwards: The design file guides later implementation."
       ]
     ],
     "answer": [
-      "原型像装修效果图，用于看布局；水电能不能用，要等实际施工后验证。",
-      "A prototype is a renovation drawing; working utilities require later construction and testing."
+      "页面草稿也叫原型，可以演示样子和顺序，但里面的保存按钮可能还不能真正保存。",
+      "A prototype previews appearance and sequence; its Save button may still be simulated."
     ],
     "example": [
       "“报名成功”只是演示时，必须标“模拟结果，尚未写入真实记录”。",
       "A simulated confirmation must say it has not stored a real reservation."
     ],
     "recovery": [
-      "打不开先核对格式、文件位置和是否需要启动服务，不让AI直接开始正式开发掩盖原型问题。",
-      "Check format, path and server requirements before moving to production development."
+      "打开方式不清楚就要求准确地址或文件位置。",
+      "Request an exact URL or file location if unclear."
     ],
     "terms": [
       "prototype",
@@ -510,38 +478,34 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "choose-stack",
     "input": [
-      "需求、交互决定、真实设备/预算。",
-      "Requirements, interaction decisions and actual device/budget."
+      "已经确认的页面草稿，以及使用设备、费用和保存数据的要求。",
+      "The agreed page draft, devices, budget and data needs."
     ],
     "output": [
-      "确认的技术方案及风险验证计划 → 开发任务。",
-      "Chosen design and feasibility plan → development tasks."
+      "后面准备环境时知道要安装什么、先试什么。",
+      "Environment setup knows what to install and try first."
     ],
     "steps": [
       [
-        "让AI按最难的已确认能力比较方案，例如手机文件权限、多人同步或外部接口，先核对目标渠道能否交付。",
-        "Compare options around the hardest required capability, such as file access, sharing or external APIs; check delivery eligibility early."
+        "告诉工具项目给谁用、需要保存什么、预算多少。让它解释准备采用的做法。\n建议提示词：请读已确认需求和 docs/design.md，推荐一种适合我的做法。分别解释页面怎么做、处理请求的程序在哪里运行、数据存在哪里、需要什么费用。先不要安装。\n完成后：你能理解三个部分分别负责什么。",
+        "Give users, storage needs and budget, then ask for an understandable approach.\nSuggested prompt: Read the requirements and docs/design.md. Recommend one approach and explain the page, the program processing requests, data storage and costs. Do not install yet.\nAfterwards: You understand the role of each part."
       ],
       [
-        "把关键不确定性列为“先验证”的小实验，写账号/设备前提、费用、输入、预期；本步只制定实验，不擅自安装。",
-        "Plan a small experiment for critical unknowns with account/device prerequisites, cost, input and expected result; do not install in this step."
-      ],
-      [
-        "确认方案和实验后写入设计文档；“检查环境并初始化项目”准备好环境后先跑实验。失败返回这里调整方案，不带着未证实前提做全套功能。",
-        "Record the decision in the design document; run the experiment after the “Check the environment and initialize” milestone.cision and experiment. Run it after environment setup in the “Check the environment and initialize” milestone; if it fails, return here before full development."
+        "确认适合自己的做法，并把决定写进设计文件。\n建议提示词：请把我确认的做法、需要准备的账号和最难部分的试验方法写入 docs/design.md。未确定的条件保留待定。\n完成后：后面准备环境时知道要安装什么、先试什么。",
+        "Confirm the approach and record it.\nSuggested prompt: Save the chosen approach, required accounts and a small test of its hardest part in docs/design.md. Keep unknowns pending.\nAfterwards: Environment setup knows what to install and try first."
       ]
     ],
     "answer": [
-      "选型像选交通工具，要看路况、预算和是否能到目的地，不只看别人说哪种快。",
-      "Choose technology like transport: route, budget and destination matter, not popularity alone."
+      "前端是看得见的页面；后端处理请求；数据库保存记录。你的项目需要哪部分，就准备哪部分。",
+      "The frontend is the page, the backend processes requests and the database stores records. Prepare the parts your project needs."
     ],
     "example": [
       "例如必须读取手机本地文件：先在目标设备验证选择文件与权限，再决定是否采用该方案。",
       "If phone file access is essential, verify file selection and permissions on the target device first."
     ],
     "recovery": [
-      "关键前提未知就列阻断项。能运行一个演示不代表实际账号、设备或发布渠道可用。",
-      "List unknown prerequisites as blockers. A demo does not prove account, device or distribution access."
+      "方案中有陌生名称时，让工具先解释用途，再谈是否使用。",
+      "Ask what unfamiliar tools do before choosing them."
     ],
     "terms": [
       "stack",
@@ -551,38 +515,34 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "plan",
     "input": [
-      "全部第一版需求、技术与风险决定。",
-      "All first-version requirements and design decisions."
+      "已经确认的需求、页面草稿和技术方案。",
+      "Your agreed requirements, page draft and technology choices."
     ],
     "output": [
-      "tasks/todo.md 中需求→任务→测试映射 → 分任务执行。",
-      "Requirement/task/test mapping in tasks/todo.md → task execution."
+      "能找到下一项该做什么以及完成标准。",
+      "The next task and its passing check are clear."
     ],
     "steps": [
       [
-        "让AI给每项任务编号、依赖、产物、测试方法和通过条件；所有必做需求都要映射到任务。",
-        "Give each task an ID, dependencies, output, test and criteria; cover every required requirement."
+        "让工具把要做的功能排成先后顺序。\n建议提示词：请读需求、docs/stories.md 和 docs/design.md，把开发拆成小任务。每项写清先做什么、会新增什么文件或功能、完成后我怎样试。先给我看计划，不写代码。\n完成后：第一项任务明确，后面的任务有顺序。",
+        "Ask for an ordered list of small development tasks.\nSuggested prompt: Read requirements, docs/stories.md and docs/design.md. Break development into small tasks, each with prerequisites, files/features and a personal test. Show the plan without coding.\nAfterwards: The first task is clear and later tasks have an order."
       ],
       [
-        "第一项应足够小：能运行的最小入口或关键能力实验。不要把“开发整个系统”当一项。",
-        "Start with a small runnable entry or feasibility experiment, not the entire system."
-      ],
-      [
-        "亲自检查有没有漏掉取消、错误处理等已确认功能。任务状态区分待做、待本人检查、通过、阻断。",
-        "Look for missing agreed features such as cancellation and errors. Distinguish pending, awaiting personal check, passed and blocked."
+        "检查需求是否都被安排到了，再保存任务表。\n建议提示词：请把我确认的任务保存到 tasks/todo.md。每项标记未开始，并保留对应需求编号。\n完成后：能找到下一项该做什么以及完成标准。",
+        "Check that all required features are planned and save.\nSuggested prompt: Save confirmed tasks to tasks/todo.md with requirement IDs and not-started status.\nAfterwards: The next task and its passing check are clear."
       ]
     ],
     "answer": [
-      "任务表像施工单，测试标准像验收尺；每张单要知道交什么、用哪把尺看。",
-      "A task list is a work order, and tests are its measuring tools. Each task needs both output and measurement."
+      "任务表告诉你下一项做什么、需要什么、怎样判断做完了。",
+      "A task list names the next job, prerequisites and completion check."
     ],
     "example": [
       "R02取消 → T04实现取消 → 测试：取消一次释放1个名额；重复取消不再加名额。",
       "R02 cancellation → T04 implement it → test: release one place once; repeated cancellation releases no more."
     ],
     "recovery": [
-      "发现需求无任务时补映射再开发；范围变化先更新相关文档和需重测任务。",
-      "Fill missing mappings before development; update affected documents and tests after scope changes."
+      "第一项就包含整个项目时，让工具继续拆小。",
+      "Split tasks further if the first one is the whole project."
     ],
     "terms": [
       "plan",
@@ -592,42 +552,38 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "environment",
     "input": [
-      "确认方案与环境要求。",
-      "Approved design and environment requirements."
+      "技术方案和按顺序排列的开发任务表。",
+      "Your technology choices and ordered development tasks."
     ],
     "output": [
-      "可重复启动的最小项目、README运行说明及能力实验结果 → 开发。",
-      "Repeatable minimal project, README and feasibility result → development."
+      "打开工具给出的地址能看到页面，README 中有下次启动方法。",
+      "The URL opens a page and README explains reopening."
     ],
     "steps": [
       [
-        "操作位置：本站本步提示词模板。找到下方第 7 项“发给 AI 的话”中的本步模板，核对本步内容，确认后复制生成的提示词。先不要标记本动作完成。 提醒：先检查再安装；不要在本站输入框运行命令，那里只是保存文字。",
-        "Where: This guide’s step prompt template. Find this step’s template in section 7, “What to send to AI”, review this step’s text, confirm and copy the generated prompt. Do not mark the action complete yet. Note: Inspect before installing. This guide’s text fields store text; they do not run commands."
+        "先检查电脑能否运行这个项目。\n建议提示词：请读 docs/design.md 和 tasks/todo.md，检查本项目需要的运行软件是否已安装。缺什么请给我官方安装入口、适合我的系统的操作，以及怎样确认装好了。先不要开发功能。\n完成后：知道缺哪些软件，以及从哪里安装。",
+        "Check whether your computer can run this project.\nSuggested prompt: Read docs/design.md and tasks/todo.md. Check required software; for anything missing give official installation steps for my system and a success check. Do not build features.\nAfterwards: You know what is missing and where to install it."
       ],
       [
-        "操作位置：所选工具里的原项目对话。切回原项目对话，粘贴并发送刚复制的提示词。等工具检查完已有环境后，再决定是否需要安装。 提醒：核对项目名称再发送；本站的“确认”不是向工具发送消息。",
-        "Where: The original project chat in your chosen tool. Switch to the original project chat, paste/send the prompt and wait for its environment check before deciding what needs installation. Note: Check the project name before sending; Confirm on this guide does not send a message to the tool."
+        "准备运行所需的依赖。依赖就是项目会用到的现成程序包。\n建议提示词：请检查项目已有配置，按确认的方案安装必要依赖，保留已有文件。告诉我运行结果，失败时先解释第一条错误。\n完成后：必要程序包已安装，没有未解决的安装错误。",
+        "Install dependencies, the existing software packages your project uses.\nSuggested prompt: Inspect existing configuration, install only agreed dependencies and preserve files. Report results and explain the first failure if any.\nAfterwards: Required packages are installed without unresolved errors."
       ],
       [
-        "操作位置：工具指定的本机安装或命令执行位置。需要你操作时，先确认在哪个窗口、哪个项目目录执行，再逐项按工具给出的实际步骤做。 提醒：系统、已有依赖和项目方案不同，不能把另一项目的命令不加核对地粘贴进来。",
-        "Where: The installation or command location identified by the tool. For a manual action, identify the window and project directory before following the tool’s exact instructions one at a time. Note: Commands depend on OS, existing dependencies and design; do not blindly paste commands from another project."
-      ],
-      [
-        "操作位置：项目对话的运行结果。让工具启动最小入口并给出实际地址、停止方法和重启方法，再打开它给出的地址。 提醒：服务还在运行时才能打开；端口用实际输出，不照抄示例。",
-        "Where: The project chat’s runtime result. Ask the tool to start the minimal entry and give the real URL, stop and restart instructions, then open that URL. Note: The service must be running; use its actual port, not an example."
+        "启动一个能打开的最小页面，再记下启动方法。\n建议提示词：请启动本项目最小页面，告诉我在哪里执行、实际打开哪个地址，以及怎样停止。把验证过的方法写入 README.md，检查结果写入 docs/checks.md。\n完成后：打开工具给出的地址能看到页面，README 中有下次启动方法。",
+        "Start the smallest working page and save the startup instructions.\nSuggested prompt: Start the minimal project. Give the execution location, actual URL and stop method. Save verified instructions in README.md and results in docs/checks.md.\nAfterwards: The URL opens a page and README explains reopening."
       ]
     ],
     "answer": [
-      "运行时像炉子，依赖像食材，锁文件像这次实际用料清单。启动服务后窗口要保持运行，不能关掉后仍期待网址工作。",
-      "The runtime is a stove, dependencies ingredients and the lockfile a precise ingredient list. A local server must remain running to serve its URL."
+      "运行环境就是让程序在电脑上运行所需的软件；依赖是项目要用的现成程序包。",
+      "The runtime is software needed to execute the program; dependencies are packages it uses."
     ],
     "example": [
       "成功记录示意（非真实日志）：命令/执行目录/版本/实际入口/停止方法/重启结果；“安装成功”不等于项目已启动。",
       "Illustrative record: command, directory, versions, real entry, stop method and restart result. Installation is not startup."
     ],
     "recovery": [
-      "command not found先核对安装和终端；端口占用先查哪个进程，不杀未知程序；依赖失败保留首条错误与锁文件，不反复删库重装。",
-      "For command-not-found check installation; for busy ports identify ownership; for dependency failures retain the first error and lockfile."
+      "不懂报错就复制原文给工具，不同时安装多个不同版本试运气。",
+      "Copy error text instead of trying many random versions."
     ],
     "terms": [
       "runtime",
@@ -638,42 +594,38 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "preview",
     "input": [
-      "tasks/todo.md、需求与已验证环境。",
-      "Task list, requirements and verified environment."
+      "能够运行的最小项目和任务表中的第一项。",
+      "Your runnable minimal project and the first development task."
     ],
     "output": [
-      "本任务真实结果与检查记录 → 下一任务或专项核对。",
-      "Actual task output and checks → next task or focused verification."
+      "任务表记录真实进度，可以继续下一项。",
+      "Task status reflects actual progress."
     ],
     "steps": [
       [
-        "操作位置：本站本步提示词模板。找到下方第 7 项“发给 AI 的话”中的本步模板，核对本步内容，确认后复制生成的提示词。先不要标记本动作完成。 提醒：一次先做一项，才知道哪里出了问题；不要追加“顺便把剩下的全做完”。",
-        "Where: This guide’s step prompt template. Find this step’s template in section 7, “What to send to AI”, review this step’s text, confirm and copy the generated prompt. Do not mark the action complete yet. Note: One task at a time makes problems traceable; do not add a request to finish everything else."
+        "让工具先读任务表，只做下一项尚未完成的任务。\n建议提示词：请读 tasks/todo.md，找出下一项已经具备开始条件的任务。告诉我这次做什么，再只完成这一项。保留其他文件，完成后给我打开作品的方法和测试结果。\n完成后：得到这次修改的说明和能打开的作品入口。",
+        "Have the tool do the next unfinished task only.\nSuggested prompt: Read tasks/todo.md and identify the next task whose prerequisites are ready. Explain and complete only that task. Preserve other files and report how to open and test it.\nAfterwards: You receive a change summary and working entry."
       ],
       [
-        "操作位置：所选工具里的原项目对话。在原项目对话粘贴并发送提示词，等待工具完成当前一项任务并报告结果。 提醒：核对项目名称再发送；本站的“确认”不是向工具发送消息。",
-        "Where: The original project chat in your chosen tool. Paste/send the prompt in the original project chat and wait for the tool to finish and report on one task. Note: Check the project name before sending; Confirm on this guide does not send a message to the tool."
+        "打开作品，亲自操作这一项功能。不要只读工具的“完成”回复。\n完成后：实际结果与任务表中写的相同，或能指出哪里不同。",
+        "Open the project and try this feature yourself.\nAfterwards: The result matches the task or you can name the difference."
       ],
       [
-        "操作位置：工具给出的网页／应用入口。打开实际入口，按本次任务要求操作一次。网页项目使用运行中的 http 地址。 提醒：能看到页面不代表所有功能都完成；尚未接好的按钮应按任务状态判断。",
-        "Where: The page/app entry reported by the tool. Open the real entry and perform the task’s action once; web projects use the running HTTP URL. Note: A visible page does not mean every feature works; judge unfinished buttons against the task state."
-      ],
-      [
-        "操作位置：原项目对话，再回本站。告诉工具本人看到的结果，确认后保存当前任务状态；再按本站进入界面或保存的对应步骤。 提醒：本站的进度与项目任务文件不是同一份；这里点完成不会替工具更新项目文件。",
-        "Where: The original project chat, then this guide. Report your own observation, record the reviewed task state and follow the guide to interface or persistence work. Note: Guide progress and the project task file are separate; checking this page does not update project files."
+        "把实际结果告诉工具，再决定做下一项还是先修问题。\n建议提示词：我的实际操作和结果是：【填写】。请更新 tasks/todo.md 和 docs/checks.md；只有已经检查通过的任务才标完成。保存本次已确认修改的本地版本，不推送。\n完成后：任务表记录真实进度，可以继续下一项。",
+        "Report what happened before continuing.\nSuggested prompt: My actions and results: 【fill in】. Update tasks/todo.md and docs/checks.md; complete only checked tasks. Save the confirmed changes as a local revision without pushing.\nAfterwards: Task status reflects actual progress."
       ]
     ],
     "answer": [
-      "一次一个任务是控制改动大小，不是整个项目只做一个功能。像逐件组装家具，每件验收后还要看清单是否齐全。",
-      "One task at a time limits change size; it does not mean one feature total. Check the complete inventory after assembling each piece."
+      "预览是打开正在开发的作品，看看真实页面和功能是什么样。",
+      "A preview opens the work in progress so you can see its real pages and behavior."
     ],
     "example": [
       "T01入口：已检查；T02报名：待做；T03取消：待做 → 当前还不能进入“全部功能验收通过”。",
       "T01 entry checked; T02 booking pending; T03 cancel pending → full acceptance is not yet possible."
     ],
     "recovery": [
-      "AI越做越多先停止，让它列已改文件与任务对应关系，保留现状，回到当前任务；不要重建项目。",
-      "Stop scope drift, inspect changed files and task mapping, preserve the current state and return to the task."
+      "工具一次做了很多无关功能时，先让它说明改动，回到已确认任务。",
+      "If unrelated work was added, review it and return to the agreed task."
     ],
     "terms": [
       "iteration",
@@ -683,42 +635,38 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "interface",
     "input": [
-      "已确认设计、当前页面与真实截图。",
-      "Agreed design, page and actual screenshot."
+      "已经打开的项目页面，以及一处你想改进的地方。",
+      "Your open project page and one thing to improve."
     ],
     "output": [
-      "指定位置的界面改动及回归检查 → 当前开发任务。",
-      "Focused UI change and regression check → current task."
+      "页面清楚可用，原功能没有被改坏。",
+      "The page is usable and the original feature still works."
     ],
     "steps": [
       [
-        "操作位置：作品的预览页面和所选工具的原项目对话。打开前一步确认的预览地址。找到本次任务的输入框、按钮和结果区，记下缺少或看不懂的位置。 提醒：这里的前端就是用户看到并操作的页面；修改的是自己的作品，不是本站。",
-        "Where: Your project preview and original tool conversation. Open the confirmed preview URL. Find the task’s fields, button and result area; note missing or unclear parts. Note: Frontend means the page users interact with. Work on your own project."
+        "打开自己的作品，指出一处用户找不到或看不懂的位置，例如输入框没有名字、按钮挡住文字。\n完成后：知道具体要改哪个页面、哪个位置。",
+        "Open your project and locate one confusing place, such as an unlabeled field or overlapping button.\nAfterwards: You can name the page and location to change."
       ],
       [
-        "操作位置：本站本步提示词模板，然后是工具的原项目对话。把实际页面、要完成的动作和发现的问题填进模板，确认后复制，粘贴到原项目对话并发送。请工具先核对已有页面，再只完成当前任务。 提醒：提示词中的示例字段换成自己的字段；尚未连接后端时明确标记为演示。",
-        "Where: This step’s prompt template, then the original project chat. Fill in the real page, action and observed problem; confirm, copy, paste into your tool and send. Ask it to inspect existing work and finish only this task. Note: Replace sample fields with your own. Label unconnected behavior as a demonstration."
+        "把这一处问题和希望的效果告诉工具。\n建议提示词：请只修改【页面和具体位置】：现在是【实际样子】，我希望【清楚的结果】。保留其他已确认页面和功能，修改后给我查看地址。\n完成后：能打开修改后的页面。",
+        "Tell the tool the problem and desired result.\nSuggested prompt: Change only 【page/location】. It currently looks like 【actual】; I need 【specific result】. Preserve other pages/features and give me the review URL.\nAfterwards: The updated page opens."
       ],
       [
-        "操作位置：作品页面。重新打开或刷新工具给出的地址。先不输入就点提交，再填写一条测试内容提交，观察是否出现等待、成功或失败提示。 提醒：成功提示必须来自实际处理结果；模拟页面只能验证显示效果，不能证明数据已保存。",
-        "Where: Your project page. Reload the tool’s URL. Submit empty fields, then enter a test item and submit; observe waiting, success or failure. Note: Success must reflect actual processing. Mocked screens only prove presentation."
-      ],
-      [
-        "操作位置：作品页面与本步记录。缩窄浏览器窗口，检查输入和提示是否被遮住；用 Tab 键逐个移动焦点，确认能到达输入框和按钮。记录实际通过及未通过项。 提醒：不为走完教程强行换颜色或重做页面；没有界面的项目说明不适用。",
-        "Where: Your project page and step record. Narrow the browser window and inspect fields and messages. Use Tab to reach fields and buttons. Record actual passes and failures. Note: Do not redesign just to follow the lesson. Explain inapplicability for headless projects."
+        "再操作一次这项功能，然后缩窄窗口，确认文字、输入框和按钮仍能使用。\n完成后：页面清楚可用，原功能没有被改坏。",
+        "Try the feature again and narrow the window to check text, fields and buttons.\nAfterwards: The page is usable and the original feature still works."
       ]
     ],
     "answer": [
-      "组件像门把手：样子合适还要能真的开门。换外观不应顺带改变数据规则。",
-      "A component is like a door handle: it must work, not just look right. Styling should not silently change data rules."
+      "界面就是使用者看到和操作的页面；这里先改一处具体问题。",
+      "The interface is what people see and use; fix one specific problem here."
     ],
     "example": [
       "位置：活动页报名按钮。处理中禁重复提交；失败说明原因并可重试；成功显示实际报名结果。",
       "Location: event booking button. Prevent repeat submission while loading; explain errors and allow retry; show the real result."
     ],
     "recovery": [
-      "看不到修改先确认当前入口、运行进程与修改文件属于同一项目，不盲目清除用户数据。",
-      "Check the entry, running process and changed file belong to the same project before clearing anything."
+      "先解决妨碍使用的地方，不用一句“整体优化”让工具重做全部页面。",
+      "Fix a specific usability problem rather than requesting a complete redesign."
     ],
     "terms": [
       "component",
@@ -729,50 +677,42 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "save",
     "input": [
-      "需求中明确的数据/权限/外部能力任务。",
-      "Agreed data, access and integration tasks."
+      "已经可以填写内容的页面，以及需求中约定的保存方式。",
+      "Your input page and the agreed storage requirements."
     ],
     "output": [
-      "真实数据或接口检查记录 → 流程测试。",
-      "Actual data or integration evidence → flow tests."
+      "同一编号和内容仍能找到。",
+      "The same ID and content remain."
     ],
     "steps": [
       [
-        "操作位置：项目需求和工具的原项目对话。先确认要保存什么、谁能读取、在哪里使用。向工具说明：请核对现有实现，分别指出页面、处理保存的后端、真正存记录的数据库。 提醒：后端是接收和处理请求的程序；数据库存放记录。只有展示需求可以不适用，不能把浏览器缓存当成后端数据库。",
-        "Where: Requirements and original project chat. Confirm what is saved, who reads it and where it runs. Ask the tool to identify the page, backend handling saves and database storing records. Note: The backend processes requests; the database stores records. Display-only projects may skip storage; browser cache is not a backend database."
+        "先建立真正存放记录的地方。数据库就像项目的登记本，页面关闭后记录还在里面。只展示内容的项目可以跳过保存功能。\n建议提示词：请读需求，检查本项目的数据应该保存在哪里。需要数据库时，先检查已有内容，再建立缺少的表，告诉我实际位置、每条记录保存哪些字段。不要清空已有数据。\n完成后：知道数据位置和每条记录会保存的内容。",
+        "Prepare real storage. A database keeps records after the page closes. Display-only projects can skip storage.\nSuggested prompt: Read the requirements and inspect storage. If a database is needed, inspect existing content, create only missing tables and report its location and record fields. Do not erase data.\nAfterwards: You know where records live and what they contain."
       ],
       [
-        "操作位置：本站本步模板与工具对话。填写自己的数据需求，确认、复制并发送。先只让工具准备测试数据库：说明存放位置、记录包含哪些字段，检查已有数据后再补缺少的表。 提醒：表像一张登记表，字段像每列的名字。已有记录先备份；不要用删库重建作为默认准备方法。",
-        "Where: This step’s template and tool conversation. Fill in data needs, confirm, copy and send. First ask for test database setup: location, record fields and inspection of existing data before adding missing tables. Note: A table resembles a register; fields are its columns. Back up existing records; do not reset storage as setup."
+        "让后端能够保存和读取记录。后端是收到页面请求后实际处理事情的程序。\n建议提示词：请实现或检查保存一条记录和读取列表的后端接口。接口就是页面发送或索取内容的入口。用测试记录检查保存结果，告诉我记录编号，再核对数据库中同一条记录。空白内容应被拒绝。\n完成后：合法内容有真实编号，数据库里能找到，空白内容没有写入。",
+        "Make the backend save and read records. It is the program processing page requests.\nSuggested prompt: Implement or inspect save-one and read-list endpoints. Test a record, report its ID and verify the matching database record. Reject blank input.\nAfterwards: A valid record has a matching database ID; blank input is not inserted."
       ],
       [
-        "操作位置：工具对话及其运行输出。请工具实现或检查“保存一条”和“读取列表”的后端入口，使用一条独特测试内容检查。要求它报告请求结果、记录编号，并只读核对数据库中的同一条记录。 提醒：接口就是页面向后端提交或索取内容的入口。只看到测试通过不够，要把记录编号与真实数据库对应起来。",
-        "Where: Tool chat and execution output. Ask the tool to implement or inspect save-one and read-list backend endpoints. Use a unique test item, report the response and ID, then read the matching database record. Note: An API is the entry the page uses to send or request data. Match the reported ID to actual storage."
+        "把页面按钮连接到刚才的保存功能。\n建议提示词：请把页面的保存按钮连接到已检查的后端。保存期间避免重复点击，失败保留输入并解释原因，真正保存成功后再显示成功。告诉我打开哪个地址来试。\n完成后：点一次保存后，能在列表里找到刚才的内容。",
+        "Connect the page’s Save button to the checked backend.\nSuggested prompt: Connect Save to the checked backend. Prevent repeat pending clicks, keep input on failure and show success only after saving. Give me the test URL.\nAfterwards: One save produces a record you can find in the list."
       ],
       [
-        "操作位置：工具对话，然后是作品页面。请工具把页面保存按钮接到已检查的后端入口；给出准确启动方式和网址。打开该网址，输入自己的测试标题和内容，点一次保存并等待结果。 提醒：等待时不要重复点击。失败要保留输入；网络没收到回复时先查列表，避免已保存却重复提交。",
-        "Where: Tool chat, then your project page. Ask the tool to connect Save to the checked endpoint and give exact startup instructions and URL. Open it, enter your test title and body, click once and wait. Note: Do not click repeatedly. Keep failed input; if the response was lost, check the list before resubmitting."
-      ],
-      [
-        "操作位置：第二个浏览器与工具对话。复制同一服务的网址到另一个浏览器，检查刚才的测试记录。再请工具只重启本项目服务，按它给出的地址重新打开并检查。 提醒：第二浏览器检查不能单独证明数据库正确，需与前面的真实数据库核对结合。重启服务不等于删除数据库或恢复出厂设置。",
-        "Where: A second browser and tool chat. Open the same service URL in another browser and find the item. Ask the tool to restart only this project service; reopen its URL and check again. Note: A second browser alone does not prove correct database storage; combine it with the direct check above. Restarting must not reset storage."
-      ],
-      [
-        "操作位置：本步记录及测试记录文件。把测试内容、记录编号、数据库位置、重启前后结果写进记录。多人项目继续检查不同账号可见范围；不具备条件的项目明确写未测试。 提醒：不要把密码、访问密钥或真实个人资料粘贴到本站或截图。一次保存成功不等于权限和所有失败情况都通过。",
-        "Where: Step record and project test record. Record test content, ID, database location and before/after restart results. For shared projects test visibility under separate accounts; mark unavailable checks untested. Note: Do not paste passwords, keys or real personal data into the guide or screenshots. A save does not prove permissions or every failure case."
+        "亲自保存一条独特测试内容，刷新页面，再用另一个浏览器打开同一网址查找它。\n完成后：同一编号和内容仍能找到。",
+        "Save unique test content, refresh, then find it in another browser on the same URL.\nAfterwards: The same ID and content remain."
       ]
     ],
     "answer": [
-      "本地记事本像自己抽屉，共享数据库像公共登记处。能放进去不等于别人能看到，更不等于别人只能看该看的内容。",
-      "Local storage is a private drawer; shared storage is a registry. Saving proves neither sharing nor correct access."
+      "看到“保存成功”还要查记录是否真的写入；刷新、重新打开后也应读得到。",
+      "After a success message, check the real record and read it after reopening."
     ],
     "example": [
       "两人抢最后1个名额：只能1人成功；另一人看到已满。重复请求不能多占名额。",
       "Two users claim the last place: exactly one succeeds; repeats do not reserve additional places."
     ],
     "recovery": [
-      "丢数据先记录入口、账号、数据存放位置和动作，用测试数据重现，不先删库。",
-      "Record entry, account, storage location and actions; reproduce with test data rather than deleting the database."
+      "工具只说“完成”时，追问实际位置和表名；别删库重建。",
+      "Ask for the actual location/table if the response only says done."
     ],
     "terms": [
       "database",
@@ -783,42 +723,38 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "flow",
     "input": [
-      "需求、已完成任务、测试入口。",
-      "Requirements, completed tasks and test entry."
+      "已经能保存并读回内容的项目，以及用户操作步骤。",
+      "Your working save/read features and the user journey."
     ],
     "output": [
-      "docs/checks.md 全流程记录 → 异常测试。",
-      "End-to-end record in docs/checks.md → failure checks."
+      "每条必做流程都有实际结果。",
+      "Every required journey has an honest result."
     ],
     "steps": [
       [
-        "操作位置：实际项目的需求、任务表和工具对话。打开需求与已完成任务，让工具先列一条从进入页面到看到结果的测试路线，注明当前版本、测试入口、要填的内容和每一步预期。 提醒：若前端、后端或数据库任务还没完成，回对应开发步骤；不让工具把未做的功能写成测试通过。",
-        "Where: Project requirements, tasks and tool chat. Open requirements and completed tasks. Ask for one route from entry to outcome, with revision, URL, inputs and expected results. Note: Return to unfinished frontend, backend or database tasks rather than marking them passed."
+        "让工具写一份从打开作品到完成任务的操作清单。\n建议提示词：请读需求和 tasks/todo.md，列一条普通用户完整使用过程。一步只写一个动作，说明输入什么、点击哪里、应该看到什么。没有准备好的功能先标出来。\n完成后：得到能照着做的清单。",
+        "Ask for a checklist from opening the project to finishing a task.\nSuggested prompt: Read requirements and tasks/todo.md. Write one ordinary-user journey, one action at a time, with inputs, clicks and expected results. Mark unfinished prerequisites.\nAfterwards: You have a usable checklist."
       ],
       [
-        "操作位置：本站本步模板和工具原项目对话。填入真实测试路线，确认、复制并发送，请工具准备可清理的测试资料，先运行它能执行的检查并报告结果。 提醒：测试消息、付款等用测试环境；工具检查与接下来本人操作分别记录。",
-        "Where: This step’s template and original tool chat. Fill the real route, confirm, copy and send. Ask the tool to prepare disposable test data and report checks it can run. Note: Use test environments for messages and payments. Separate tool checks from personal actions."
+        "打开作品，照清单逐项做一遍。每次写下自己真正看到的结果。\n完成后：能从开始走到结束，或准确指出停在哪一步。",
+        "Open the project and follow each action, recording what you actually see.\nAfterwards: You finish the flow or can identify the exact stopping point."
       ],
       [
-        "操作位置：作品页面。从普通用户入口打开作品，按路线只做一遍：填写独特测试内容，点一次保存，读结果，再刷新或重新打开列表找到同一条记录。记下编号。 提醒：不要用管理员入口代替普通流程；页面新增一行还需与前一步数据库核对结果对应。",
-        "Where: Your project page. Use the ordinary user entry once: enter unique test content, save once, read feedback, then refresh or reopen the list and find the same ID. Note: Do not substitute an admin path. Match the visible record to the earlier storage check."
-      ],
-      [
-        "操作位置：项目 docs/checks.md 和剩余需求。把本人实际结果交给工具写入 docs/checks.md，打开文件核对。先完成这条，再按必做需求补其他路线。 提醒：记录格式：需求编号／版本／入口／输入／预期／实际／证据／通过、失败或未测试。本站进度不代替项目文件。",
-        "Where: Project docs/checks.md and remaining requirements. Send your observed results to the tool for docs/checks.md and open it to verify. Then cover other required routes. Note: Record requirement ID, revision, entry, input, expected, actual, evidence and pass/fail/untested. Guide progress is separate."
+        "把记录交给工具保存，再检查其他必须完成的使用过程。\n建议提示词：请把以下本人测试记录保存到 docs/checks.md：【粘贴操作、预期、实际结果】。通过、失败和没测试的项目分开写，不代替我填写通过。\n完成后：每条必做流程都有实际结果。",
+        "Save your record and cover the remaining required journeys.\nSuggested prompt: Save my test record to docs/checks.md: 【actions, expected, actual】. Separate passed, failed and untested checks; do not invent passes.\nAfterwards: Every required journey has an honest result."
       ]
     ],
     "answer": [
-      "单个按钮可用不代表整条流程连通，像每段水管都好却没有接起来。",
-      "Working buttons do not prove a connected flow, like good pipes that are not joined."
+      "完整流程包括打开、输入、提交和看到结果，不能只试一个按钮。",
+      "A complete flow includes opening, input, submission and results, not one button alone."
     ],
     "example": [
       "R01 / 版本abc / 输入测试姓名 / 预期确认+余位减1 / 实际一致 / 证据截图路径 / 通过。",
       "R01 / revision abc / test name / expect confirmation and one fewer place / actual matches / evidence path / passed."
     ],
     "recovery": [
-      "失败只记录问题和操作证据，本步不修代码；“把试用结果记录成反馈”整理反馈后再修复。",
-      "Record failures here without code changes; repair follows the “Record the trial feedback” step."
+      "出现没建过的账号或页面时，先回相应步骤准备。",
+      "Prepare any missing account or page before continuing."
     ],
     "terms": [
       "e2e",
@@ -828,42 +764,42 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "test",
     "input": [
-      "测试标准、测试账号与可清理数据。",
-      "Test criteria, accounts and disposable data."
+      "已经正常走完的使用过程，以及只用于测试的内容。",
+      "Your working user flow and disposable test content."
     ],
     "output": [
-      "失败、通过、未测试分开的异常记录 → 人工验收。",
-      "Separated pass/fail/not-run results → personal acceptance."
+      "失败和未测项没有被改成通过。",
+      "Failures and untested checks are not marked passed."
     ],
     "steps": [
       [
-        "操作位置：需求与本步模板。从空输入、过长内容、连续点击、断开服务、不同权限中选适用情况，填入模板并发给工具。请它逐项写出准备条件、操作和应出现的提示。 提醒：没有登录功能不硬加账号测试；用可清理测试资料，不在他人的正式服务上制造故障。",
-        "Where: Requirements and this step’s template. Choose relevant blanks, length limits, repeat clicks, service failure and access cases. Send them to the tool for setup, actions and expected messages. Note: Do not add account checks to an app without login. Use disposable data and your test environment."
+        "先测试错误输入。在作品里不填必填项就点提交，再试过长内容。\n完成后：页面解释哪里不对，也没有保存无效记录。",
+        "Try invalid input: submit empty required fields and overly long content.\nAfterwards: The page explains the problem without saving invalid records."
       ],
       [
-        "操作位置：作品测试页面。清空必填内容点提交，再试需求规定的过长内容；观察提示和列表。正常内容再提交一次作为对照。 提醒：错误输入应被解释并拒绝保存，不应清空之前的记录。后台也必须检查，不能只依赖页面拦截。",
-        "Where: The project test page. Submit empty required fields, then content beyond the agreed limit. Inspect messages/list and compare with one valid submission. Note: Reject invalid input without deleting old records. The backend must validate too."
+        "检查重复点击和服务中断时会发生什么。先让工具给出只影响本项目测试环境的办法。\n建议提示词：请列出本项目测试重复点击和服务暂时停止的操作。一次只测一项，说明怎样停止本项目服务和恢复。不要停止其他项目。只测试，先不修代码。\n完成后：有明确的测试和恢复方法。",
+        "Check repeated clicks and service interruption in this project’s test environment only.\nSuggested prompt: Give step-by-step tests for repeat clicks and a stopped service, one at a time. Explain how to stop and restore only this project. Test without repairing yet.\nAfterwards: You have clear testing and recovery steps."
       ],
       [
-        "操作位置：工具对话和作品测试页面。先保留未提交内容，请工具说明怎样只停止本项目测试服务。确认停下后在页面点保存，记录提示和输入是否保留；再按原方法启动服务。 提醒：仅适用于可控测试环境。恢复后先查记录是否已保存再决定重试，防止重复提交。",
-        "Where: Tool chat and project test page. Keep unsent content. Ask how to stop only this test service, stop it, try saving and observe feedback/input. Restart as documented. Note: Use a controlled test environment. After recovery query before retrying to avoid duplicates."
+        "按说明试一次服务停止后的保存，再恢复服务。\n完成后：没有假成功，未提交内容保留；恢复后先查列表再决定是否重试。",
+        "Try saving with the service stopped, then restore it.\nAfterwards: No false success; input stays. Check the list before retrying after recovery."
       ],
       [
-        "操作位置：docs/checks.md 与反馈步骤。把每项实际结果和未测原因交给工具追加到记录。失败保留编号与证据，进入反馈和修复计划；通过后继续重启检查。 提醒：连点保护只证明同一次等待中的操作，不能代替网络重试下的重复数据检查。",
-        "Where: docs/checks.md and feedback. Append actual results and reasons for untested cases. Keep issue IDs and evidence for feedback/planning; continue to restart checks when ready. Note: Pending-click protection does not establish duplicate safety for network retries."
+        "把结果给工具记下来。\n建议提示词：请把刚才各项异常测试的预期、实际和未测试原因写入 docs/checks.md。失败保持失败，留给反馈与修复步骤处理。\n完成后：失败和未测项没有被改成通过。",
+        "Record the results.\nSuggested prompt: Write expected/actual results and untested reasons in docs/checks.md. Keep failures open for feedback and repair.\nAfterwards: Failures and untested checks are not marked passed."
       ]
     ],
     "answer": [
-      "异常测试不是故意刁难，是检查用户手滑或网络出错时系统会不会把事办坏。",
-      "Failure tests check whether mistakes and outages cause damage."
+      "异常测试就是故意试一试不顺利的情况，看看作品会怎样处理。",
+      "Failure testing deliberately tries things going wrong to see how the project responds."
     ],
     "example": [
       "重复报名：通过；断网：失败；iPhone真机：未测试。不能把这份报告写成“全部通过”。",
       "Duplicate booking passed; offline failed; iPhone device untested. This is not an all-pass report."
     ],
     "recovery": [
-      "不知怎样制造异常时让AI给可逆测试方法，不改正式数据或关闭真实安全措施。",
-      "Request reversible test methods without changing production data or security settings."
+      "只有页面拦截还不够，让工具检查后端是否同样拒绝。",
+      "Ask the tool to check backend rejection as well."
     ],
     "terms": [
       "regression",
@@ -873,38 +809,38 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "restart",
     "input": [
-      "README启动/停止说明与当前测试版本。",
-      "README start/stop instructions and revision."
+      "项目的启动说明，以及一条已保存的测试记录。",
+      "The startup instructions and a saved test record."
     ],
     "output": [
-      "重启可用证据 → 人工目标验收。",
-      "Restart evidence → personal acceptance."
+      "重开后能继续使用，记录按需求保留。",
+      "The reopened project works and retains required data."
     ],
     "steps": [
       [
-        "操作位置：作品页面和 README.md。先记录当前网址、测试版本及一条已保存内容的编号。打开 README 找到本项目停止与启动方法。 提醒：没有数据保存需求的项目只记录核心结果；不要为了测试添加数据库。",
-        "Where: Project page and README.md. Record URL, revision and one saved record ID. Find this project’s stop/start instructions in README. Note: For projects without persistence, record the core result without adding storage."
+        "先记下一条已保存记录，再找到 README.md 里的停止和启动方法。\n完成后：知道待会儿要找回哪条记录。",
+        "Note one saved record and find README’s stop/start instructions.\nAfterwards: You know which record to find after reopening."
       ],
       [
-        "操作位置：README 指定的终端或应用入口。先保存未完成编辑，再按说明停止本项目；本机终端通常在运行服务的窗口按 Control+C。然后按同一说明重新启动。 提醒：只关闭浏览器不等于后端已经停止；网页工具和桌面应用使用各自停止/重开方法。",
-        "Where: The terminal or app entry named in README. Save unfinished edits, stop this project as documented, then start it again. Local terminals commonly use Control+C in the running service window. Note: Closing a browser is not stopping the backend; web tools/native apps have their own restart controls."
+        "停止并重新启动本项目。仅关掉浏览器还不算停止后端。\n建议提示词：请按 README.md 停止并重新启动本项目服务，保留数据库。告诉我实际打开哪个网址；不要新建项目或重置数据。\n完成后：服务重新运行，能打开作品。",
+        "Stop and restart the project; closing the browser alone does not stop its backend.\nSuggested prompt: Stop and restart this project using README.md, keeping its database. Give the actual URL; do not create a new project or reset data.\nAfterwards: The restarted project opens."
       ],
       [
-        "操作位置：作品页面和 docs/checks.md。打开新启动输出中的地址，找到原记录，再做一次核心操作。把重启前后实际结果、版本、数据库位置交给工具保存并打开核对。 提醒：换了端口不代表数据必须消失；应核对仍是同一项目和数据位置。",
-        "Where: Project page and docs/checks.md. Open the reported URL, find the original record and repeat a core action. Save and inspect before/after results, revision and storage location. Note: A changed port should not itself erase data; verify the project and storage identity."
+        "打开新启动的网址，找刚才那条记录，再做一次主要操作。\n建议提示词：我的重开结果是：【填写】。请把实际启动方法和结果更新到 README.md 与 docs/checks.md。\n完成后：重开后能继续使用，记录按需求保留。",
+        "Open the reported URL, find the record and try the main action.\nSuggested prompt: My reopening result is: 【fill in】. Update README.md and docs/checks.md with actual instructions and results.\nAfterwards: The reopened project works and retains required data."
       ]
     ],
     "answer": [
-      "重启验证能证明你知道怎样再次使用作品；它不自动证明换设备也能安装或线上也能运行。",
-      "Restarting proves repeatable use, not installation on another device or production readiness."
+      "浏览器页面与后端服务不是同一个东西；关浏览器后服务可能还在运行。",
+      "The browser page and backend are separate; closing the browser may leave the service running."
     ],
     "example": [
       "静态介绍页：重开能浏览即可。记事工具：还必须找回原记录。",
       "A static page must reopen; a notes tool must also retain notes."
     ],
     "recovery": [
-      "找不到端口/命令回README让AI补实际项目说明；不要重新初始化项目。",
-      "Ask AI to correct README for this project rather than reinitializing it."
+      "方法没写清时，请工具补具体目录、命令和网址。",
+      "Ask for the exact directory, command and URL if missing."
     ],
     "terms": [
       "url",
@@ -914,38 +850,38 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "accept",
     "input": [
-      "原始目标、实际版本、检查记录。",
-      "Original goal, actual revision and checks."
+      "最初的需求文档和你实际试用后的记录。",
+      "Your original requirements and actual trial results."
     ],
     "output": [
-      "本人人工结论 → docs/acceptance.md → 反馈或交付。",
-      "Personal verdict → docs/acceptance.md → feedback or delivery."
+      "docs/acceptance.md 中保存了本人实际操作和结论。",
+      "docs/acceptance.md contains your actual actions and conclusion."
     ],
     "steps": [
       [
-        "用自己的项目目标逐项实际操作；拿AI说“通过”不能代替亲手试用。",
-        "Personally exercise each goal; an AI pass claim is not personal testing."
+        "重新读最初的项目描述，选出当时说“做完应该能做到”的事情。\n完成后：手里有自己的目标和对应试用方法。",
+        "Reread your original description and the things the finished project should do.\nAfterwards: You have your own goals and practical tests."
       ],
       [
-        "填下方记录，注明版本、入口、预期、实际与未测试项。展开“把本步记录交给AI保存”，发送生成的话术。",
-        "Complete the record with revision, entry, expected/actual results and untested items; send the record-saving prompt below."
+        "像实际使用者一样操作作品，不借助工具临时改数据来完成流程。\n完成后：知道作品有没有解决最初的问题。",
+        "Use the project as its intended user without having the tool patch data mid-flow.\nAfterwards: You know whether it solves the original problem."
       ],
       [
-        "打开 docs/acceptance.md 核对结论。失败进入反馈；未测试继续补测试；只有符合目标才选择交付。",
-        "Open docs/acceptance.md and check it. Send failures to feedback, complete untested work, then choose delivery when goals are met."
+        "填写下方试用记录并确认，再展开“把本步已确认记录交给 AI 保存”，生成保存话术，复制到项目对话。\n完成后：docs/acceptance.md 中保存了本人实际操作和结论。",
+        "Fill and confirm the trial record, then use the save-in-project section to generate and send its save instruction.\nAfterwards: docs/acceptance.md contains your actual actions and conclusion."
       ]
     ],
     "answer": [
-      "验收是你检查点的菜有没有上齐，厨师说做好了不是你已经吃过。",
-      "Acceptance is checking your order; the cook announcing completion is not your tasting it."
+      "验收就是你按照先前约定的方法试用，再决定是否达到了目标。",
+      "Acceptance means trying the agreed checks yourself and deciding whether the goal is met."
     ],
     "example": [
       "版本abc：报名通过；取消未测试 → 结论未测试，不能写第一版全部通过。",
       "Revision abc: booking passed, cancellation untested → not fully accepted."
     ],
     "recovery": [
-      "不知道版本号时让AI读取并说明当前未提交改动；不要自己编编号。",
-      "Ask AI to report the revision and uncommitted changes; do not invent an ID."
+      "目标发生变化时先写清变化，不能临时降低标准把失败算通过。",
+      "Document changed goals instead of silently lowering criteria."
     ],
     "terms": [
       "acceptance-criteria",
@@ -955,38 +891,34 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "feedback",
     "input": [
-      "本人操作与失败证据。",
-      "Personal actions and failure evidence."
+      "出现问题时的操作顺序、画面或报错。",
+      "The actions, screen or error from the failure."
     ],
     "output": [
-      "docs/feedback.md 编号问题 → 修复计划。",
-      "Numbered issues in docs/feedback.md → repair plan."
+      "反馈文件有问题编号、重现步骤和证据。",
+      "Issues have IDs, reproduction steps and evidence."
     ],
     "steps": [
       [
-        "保留同一个问题编号，如 F01；写入口、设备、版本、重复步骤、预期、实际。",
-        "Keep a stable issue ID such as F01 with entry, device, revision, steps and expected/actual result."
+        "选一个问题，写下从哪里开始、输入什么、点哪里、出现什么。\n完成后：别人能照着描述走到同一问题。",
+        "Choose one issue and record the entry, input, clicks and result.\nAfterwards: Someone else can follow the same steps."
       ],
       [
-        "截图包含相关界面与提示；终端错误从第一次出错处复制到原因行，遮去密钥和个人资料，不只发“报错了”。",
-        "Include relevant UI and error text, from first failure to cause; remove secrets and personal data."
-      ],
-      [
-        "让AI只整理记录，未知原因写待查；不能复现时增加发生时间与条件，不提前改代码。",
-        "Ask AI to organize evidence only. Leave cause unknown and add timing/conditions if intermittent; do not edit code yet."
+        "把操作记录和报错填进下方模板，确认后复制给工具。\n建议提示词：请把以下问题整理到 docs/feedback.md，给每项编号，写清预期与实际：【粘贴记录】。先记录和检查原因，不修改代码；还没查明的原因不要写成事实。\n完成后：反馈文件有问题编号、重现步骤和证据。",
+        "Fill the template with actions/errors, confirm and send it.\nSuggested prompt: Organize these issues in docs/feedback.md with IDs, expected and actual results: 【paste record】. Record and investigate without changing code. Do not present guesses as facts.\nAfterwards: Issues have IDs, reproduction steps and evidence."
       ]
     ],
     "answer": [
-      "反馈写现象像告诉医生哪里痛，不必自己猜病因。准确过程比一句“不能用”有用。",
-      "Feedback describes symptoms; you need not diagnose the cause."
+      "反馈先写你做了什么、看到了什么，不需要自己猜代码哪里错了。",
+      "Feedback records actions and observations; you do not need to diagnose the code."
     ],
     "example": [
       "F01 / 取消后刷新 / 预期余位+1 / 实际未变 / 版本abc / 两次均复现。",
       "F01 / cancel then refresh / expect one place restored / actual unchanged / revision abc / reproduced twice."
     ],
     "recovery": [
-      "日志找不到时说明出错发生在浏览器、终端还是设备，让AI指出对应查看入口。",
-      "Identify whether the error is in browser, terminal or device and ask for the relevant log location."
+      "不要只写“不能用”；不懂原因没关系，记录现象即可。",
+      "Describe the symptom, not merely “broken”; you need not know the cause."
     ],
     "terms": [
       "bug",
@@ -996,38 +928,34 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "repair-plan",
     "input": [
-      "编号反馈与当前项目。",
-      "Numbered feedback and current project."
+      "刚才保存的问题反馈记录。",
+      "The feedback record you just saved."
     ],
     "output": [
-      "修复范围与测试标准 → 执行修复。",
-      "Repair scope and criteria → execution."
+      "修复计划有具体改动和检查方法。",
+      "The fix and its test are specific."
     ],
     "steps": [
       [
-        "操作位置：作品页面和原反馈记录。找到一个失败问题，沿用它的编号。写下从打开哪个网址、输入什么、点击哪里，到实际看到什么；附错误文字和发生时间。 提醒：每次只复现一个问题，用可清理测试内容。截图先遮住个人资料；不需要懂错误才能记录原文。",
-        "Where: Project page and original feedback. Choose one issue and keep its ID. Record URL, input, clicks, observed result, error text and time. Note: Reproduce one issue with disposable data. Hide private information; copy the error even if unfamiliar."
+        "先让工具解释为什么出问题。\n建议提示词：请读 docs/feedback.md 和需求，先检查问题原因，不改代码。把已查明的事实和还要验证的猜测分开，告诉我下一项最小检查。\n完成后：得到能对应实际问题的解释。",
+        "Ask why the issue occurs before changing anything.\nSuggested prompt: Read docs/feedback.md and the requirements. Investigate without changing code. Separate facts from hypotheses and give the next small check.\nAfterwards: The explanation fits the observed issue."
       ],
       [
-        "操作位置：本站本步模板，然后是工具原项目对话。把问题编号和证据填入模板，确认、复制、粘贴并发送，要求先只读排查。让工具依次核对页面请求、后端响应、数据库记录，指出在哪一处中断。 提醒：页面没变化、后端报错、数据库没记录是不同线索；有证据才下结论，不按报错关键词直接重装。",
-        "Where: This step’s template and original project chat. Fill in the issue ID and evidence, confirm, copy, paste and send. Request read-only diagnosis through page request, backend response and database record. Note: An unchanged page, backend error and missing record are different clues. Diagnose from evidence rather than reinstalling from a keyword."
-      ],
-      [
-        "操作位置：工具给出的修复计划。要求写明只改哪些文件、会不会影响已有记录、如何重新启动，以及怎样重做原失败动作。涉及数据库更改时先备份并在副本上验证。 提醒：只有原因明确且你理解影响后才确认执行；新增功能另记，不混进修复。",
-        "Where: The tool’s proposed repair plan. Request changed files, impact on records, restart steps and exact reproduction. Back up and validate database changes on a copy first. Note: Confirm only after understanding cause and impact. Keep new features separate."
+        "让工具写清准备改哪里、怎么确认改好了，然后自己读一遍。\n建议提示词：请保存 docs/repair-plan.md：每个问题改哪些文件、会影响哪些原功能、怎样重走失败步骤、修好应该看到什么。涉及数据库先写备份和恢复方法，等我确认再执行。\n完成后：修复计划有具体改动和检查方法。",
+        "Review where the fix will happen and how you will check it.\nSuggested prompt: Save docs/repair-plan.md with changed files, affected features, original-case retest and expected results. Include backup/recovery before database changes. Wait for my approval.\nAfterwards: The fix and its test are specific."
       ]
     ],
     "answer": [
-      "先定修复计划能避免修一扇门时把整栋房子拆掉。测试标准先写，才知道改完是否真的解决。",
-      "Planning avoids rebuilding the house to fix a door. Predefined criteria make the result judgeable."
+      "修复计划说明改哪里、会影响什么，以及怎样再次检查。",
+      "A repair plan explains changes, possible effects and retesting."
     ],
     "example": [
       "F01：修正取消释放名额；复测原步骤；回归报名和重复取消；不改页面样式。",
       "F01: restore capacity on cancellation; reproduce and retest; regress booking and repeated cancel; no styling changes."
     ],
     "recovery": [
-      "原因不确定就先列最小验证，不把猜测当结论直接大改。",
-      "Verify the smallest hypothesis before broad changes."
+      "原因不明就继续小范围检查，不默认重装或删库。",
+      "Investigate further rather than defaulting to reinstalling or deleting storage."
     ],
     "terms": [
       "root-cause",
@@ -1037,38 +965,38 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "repair",
     "input": [
-      "已确认修复计划。",
-      "Approved repair plan."
+      "你已确认的修复计划，以及原来失败的操作。",
+      "Your approved repair plan and the original failing actions."
     ],
     "output": [
-      "修复版本与本人复测记录 → 重新验收。",
-      "Repair revision and personal retest → acceptance again."
+      "问题状态与本人实际结果一致。",
+      "Issue status matches your result."
     ],
     "steps": [
       [
-        "操作位置：工具的原项目对话。在本步模板填入已确认的问题编号和计划，确认后复制并发送。明确只执行这一项，结束后报告改动文件、实际检查结果和重新打开作品的方法。 提醒：没有确认的计划先回上一步；数据库结构或数据变更应先完成计划中的备份与副本验证。",
-        "Where: The original project chat. Fill this step’s template with the approved issue and plan, confirm, copy and send. Execute only that item; request changed files, actual checks and reopening instructions. Note: Return to planning if unapproved. Complete planned backups and copy-based validation before database changes."
+        "确认修复计划后，让工具只改这一项问题。\n建议提示词：请按已确认的 docs/repair-plan.md 修复【问题编号】。保护已有数据，只改必要文件，完成后报告实际检查结果和我该怎样复测。\n完成后：工具说明改了哪里和怎样再试。",
+        "After reviewing the plan, fix one agreed issue.\nSuggested prompt: Follow the approved docs/repair-plan.md for 【issue ID】. Preserve data, change only necessary files and report checks plus my retest steps.\nAfterwards: The tool explains the change and retest."
       ],
       [
-        "操作位置：作品页面。按工具说明打开修复后的版本，亲自重走原问题的同一组输入和点击，再新增一条测试记录并读取一条旧记录。 提醒：使用同一失败条件才知道问题是否修好；换一条容易成功的输入不算复测。",
-        "Where: Your project page. Open the repaired version as instructed; personally repeat the original input and clicks, then save a new test record and read an old one. Note: Keep the original failure conditions; an easier input is not a retest."
+        "亲自重走原来失败的那组操作，再试原本正常的功能。\n完成后：原问题解决，原来的保存和读取仍正常。",
+        "Repeat the original failing actions, then check previously working features.\nAfterwards: The issue is fixed and normal behavior still works."
       ],
       [
-        "操作位置：原反馈记录和测试记录。把修复版本、本人复测结果、受影响功能检查分别记下。失败继续用原编号；通过后回到验收，交付问题还要重新检查交付条件。 提醒：本站勾选完成不会修改项目反馈文件；把实际记录交给工具写回并打开核对。",
-        "Where: Original feedback and test records. Record the fixed revision, personal retest and affected behavior separately. Keep failed issues open under the same ID; return passed work to acceptance and delivery review if applicable. Note: Checking this guide does not edit project files. Send the record to the tool and open the saved result."
+        "把自己的复测结果交给工具保存。\n建议提示词：我的复测结果：【填写】。请更新 docs/checks.md 和 docs/feedback.md；只有我实际验证通过的问题才关闭，未测项保留。\n完成后：问题状态与本人实际结果一致。",
+        "Save your personal retest results.\nSuggested prompt: My retest result: 【fill in】. Update docs/checks.md and docs/feedback.md; close only personally verified issues and retain untested items.\nAfterwards: Issue status matches your result."
       ]
     ],
     "answer": [
-      "复测检查伤口好了没，回归检查治疗有没有伤到别处；两者都重要。",
-      "Retesting checks the original fix; regression checks other behavior."
+      "复测是重新试原问题；再检查原本正常的功能，可以发现有没有顺带改坏别的地方。",
+      "Retesting checks the original issue; trying working features catches unintended damage."
     ],
     "example": [
       "F01 / 修复版本def / 原步骤通过 / 报名回归通过 / 本人已复测 → 可以关闭F01。",
       "F01 / revision def / original case passed / booking regression passed / personally retested → close F01."
     ],
     "recovery": [
-      "结果与AI不同以实际为准，保留截图和版本，回反馈更新同一问题。",
-      "If personal results differ, preserve evidence and update the same issue."
+      "范围扩大或要求清库时先停，回修复计划说明原因。",
+      "Return to planning if the scope expands or a reset is proposed."
     ],
     "terms": [
       "regression",
@@ -1078,38 +1006,38 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "delivery",
     "input": [
-      "本人验收记录及实际使用者。",
-      "Personal acceptance and actual users."
+      "已经试用过的作品，以及准备给谁使用的决定。",
+      "Your tested project and intended users."
     ],
     "output": [
-      "docs/delivery.md 交付决定 → 准备条件评估。",
-      "Delivery decision in docs/delivery.md → readiness review."
+      "知道接下来要准备什么。",
+      "The required preparations are clear."
     ],
     "steps": [
       [
-        "操作位置：本站交付模板。写清谁用、在哪台设备用、是只给自己本机用还是要让别人远程打开。确认后生成保存话术，复制给工具写入 docs/delivery.md，再打开核对。 提醒：自己本机能用就是一种交付结果，不必强行买域名或上线。本站确认不自动创建交付文件。",
-        "Where: This guide’s delivery template. Specify users, devices and local-only versus remote access. Confirm, generate the save instruction, copy to the tool and inspect docs/delivery.md. Note: Working locally is a valid delivery. Guide confirmation does not create project files."
+        "决定谁在哪里使用：自己电脑、别人通过网址、还是下载安装包。填下方模板并确认。\n完成后：选择符合真实使用需要。",
+        "Choose who uses it and where: your computer, a shared URL or an installer. Fill and confirm the template.\nAfterwards: The choice matches actual use."
       ],
       [
-        "操作位置：工具对话与项目 README。本机使用时让工具写明打开项目、启动服务、访问网址、停止、再次打开和数据位置。把这些步骤发给预期使用者之前先自己照做。 提醒：127.0.0.1 或 localhost 指当前这台电脑；把这个地址发给别人，他们不会连到你的项目。",
-        "Where: Tool chat and project README. For local use document project opening, service start, URL, stop, reopen and storage location; follow the instructions yourself first. Note: 127.0.0.1 and localhost mean the current computer. Sending that URL does not connect someone to yours."
+        "展开“把本步已确认记录交给 AI 保存”，生成话术并发给工具。\n完成后：docs/delivery.md 中记录了使用者、设备和交付方式。",
+        "Use the save-in-project section to generate and send the save instruction.\nAfterwards: docs/delivery.md records users, devices and delivery method."
       ],
       [
-        "操作位置：公开使用方案与对应交付分支。需要远程使用时，请工具分别说明页面放哪里、后端由哪个服务运行、数据库如何持久保存、需要哪些账号和费用。逐项确认再进入准备检查。 提醒：静态网页托管不自动运行后端；演示开发服务器不能直接当正式服务。没有账号或未决定费用先停在准备阶段。",
-        "Where: The remote-use plan and relevant delivery branch. For remote access ask where the page lives, what runs the backend, how data persists, and which accounts/costs are needed. Confirm before readiness review. Note: Static hosting does not automatically run a backend; a development server is not production. Stop at preparation if accounts/costs are unresolved."
+        "请工具按选好的方式列准备事项。\n建议提示词：请读 docs/delivery.md。本机使用写清启动、停止、数据位置；远程使用分别说明页面、后端、数据库放在哪里，需要哪些账号和费用。先列方案，不发布。\n完成后：知道接下来要准备什么。",
+        "Ask what the chosen method requires.\nSuggested prompt: Read docs/delivery.md. For local use explain start/stop and storage. For remote use explain where page, backend and database run, with accounts and costs. Plan only; do not publish.\nAfterwards: The required preparations are clear."
       ]
     ],
     "answer": [
-      "源码像菜谱，构建产物像做好的菜，运行环境像餐具和保温设备。交源码不等于别人已经能用。",
-      "Source is a recipe, build output the meal, and runtime its serving equipment. Sharing a recipe is not serving a meal."
+      "交付就是让预期使用者能打开并使用作品，不一定需要公开网址。",
+      "Delivery means intended users can open and use it; a public URL is optional."
     ],
     "example": [
       "网站：网址+运行服务；桌面：适合目标系统的安装产物；手机：对应平台和渠道的签名产物/商店入口。",
       "Web: URL plus running services. Desktop: compatible installer. Mobile: signed channel-specific output or store entry."
     ],
     "recovery": [
-      "不知道交什么先按使用者设备与分发范围选择；不要默认所有项目必须有一键部署脚本。",
-      "Choose from users and distribution needs; not every project needs a one-click deploy script."
+      "自己电脑能用也是有效结果，不必为了教程公开上线。",
+      "Local use is a valid result; publication is not mandatory."
     ],
     "terms": [
       "build",
@@ -1120,38 +1048,34 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "release-review",
     "input": [
-      "需求、检查、docs/acceptance.md、docs/delivery.md。",
-      "Requirements, checks, acceptance and delivery documents."
+      "选好的使用方式、试用记录和使用说明。",
+      "The chosen delivery method, trial results and instructions."
     ],
     "output": [
-      "docs/release.md 准备检查 → 修复或制作交付物。",
-      "Readiness checks in docs/release.md → repair or packaging."
+      "可以判断是先修问题还是准备交付文件。",
+      "You know whether to repair or prepare delivery files next."
     ],
     "steps": [
       [
-        "让AI逐项检查已确认功能、阻断问题、账号/费用、配置、恢复与使用说明；缺材料明确回对应步骤。",
-        "Review functions, blockers, accounts/costs, configuration, recovery and instructions; identify missing prerequisite steps."
+        "让工具对照试用记录，看看还有什么没有准备好。\n建议提示词：请读需求、docs/checks.md、docs/acceptance.md 和 docs/delivery.md。逐项检查功能、启动说明、数据保存、账号和费用，把缺少的条件写清楚。先检查，不发布。\n完成后：有明确的已准备和未准备清单。",
+        "Check what is still missing before delivery.\nSuggested prompt: Read requirements, docs/checks.md, docs/acceptance.md and docs/delivery.md. Check features, startup instructions, data, accounts and costs. List gaps without publishing.\nAfterwards: Ready and missing items are clearly separated."
       ],
       [
-        "本步是制作交付物之前的准备检查。尚无产物时“目标环境试运行”只能写待验证，不能写通过。",
-        "This is pre-packaging readiness. Target-environment trials remain pending until a deliverable exists."
-      ],
-      [
-        "有阻断先反馈修复；具备准备条件才进入“准备部署脚本或安装包”。它完成后，“交付上线，检查实际入口”还要做最终放行检查。",
-        "Repair blockers first; proceed to the “Prepare deployment or packaging” milestone only when prerequisites are ready, then run the final go-live check in “Deliver and check the real entry”."
+        "保存检查清单，有阻断问题先修好。\n建议提示词：请把准备情况保存到 docs/release.md，把需要修的问题编号写入 docs/feedback.md。还没制作安装包或部署时，相关试运行写待测试。\n完成后：可以判断是先修问题还是准备交付文件。",
+        "Save the checklist and repair blocking issues first.\nSuggested prompt: Save readiness to docs/release.md and numbered issues to docs/feedback.md. Mark artifact/deployment trials pending until they actually run.\nAfterwards: You know whether to repair or prepare delivery files next."
       ]
     ],
     "answer": [
-      "准备检查像出门前查证件，最终放行像登机检查；前者通过不证明旅途已经完成。",
-      "Readiness is checking your documents; release clearance is boarding. Neither proves the trip already completed."
+      "这一项是准备检查；还没打开试过的安装包或网站，要留作待测试。",
+      "This checks preparation; an untried installer or site remains pending."
     ],
     "example": [
       "构建条件：已核验；真机安装：待“准备部署脚本或安装包”；正式发布：未执行。",
       "Build prerequisites verified; device installation pending “Prepare deployment or packaging”; production release not executed."
     ],
     "recovery": [
-      "把不足写入带编号反馈，修复后重新评估，别在提示词里要求AI替你宣告全部通过。",
-      "Number readiness gaps, repair and reassess rather than asking AI to declare success."
+      "没有本人试用记录就回试用步骤补，不让工具代填通过。",
+      "Return to personal testing if its record is absent."
     ],
     "terms": [
       "release",
@@ -1161,42 +1085,38 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "package",
     "input": [
-      "已选平台与准备检查。",
-      "Chosen platform and readiness review."
+      "检查通过的交付准备清单。",
+      "Your checked delivery preparation list."
     ],
     "output": [
-      "实际交付物、位置、版本与试运行记录 → 最终放行。",
-      "Actual artifact, location, revision and trial → release clearance."
+      "下一步能按记录找到同一份交付文件。",
+      "The next step can find the same deliverable."
     ],
     "steps": [
       [
-        "操作位置：已确认的交付文件与工具对话。在本步模板带上 docs/design.md、docs/delivery.md、docs/release.md，复制发送。让工具先核对准备检查，再说明本项目实际打包或启动步骤。 提醒：若选择本机使用，可以交付已验证源码、依赖和启动说明；不为了流程硬做安装包。",
-        "Where: Confirmed delivery files and tool chat. Send this step’s template with design, delivery and release records. Ask the tool to check readiness and specify actual build or startup steps. Note: Local delivery may be verified source, dependencies and instructions; an installer is not mandatory."
+        "让工具按已选方式准备给使用者的文件。\n建议提示词：请读 docs/design.md、docs/delivery.md 和 docs/release.md。按已确认方式准备交付文件，告诉我保存位置、使用者需要安装什么以及怎样启动。只自用时可以提供源码和运行说明，不强行做安装包。\n完成后：找到真实文件和配套使用说明。",
+        "Prepare files for the chosen delivery method.\nSuggested prompt: Read docs/design.md, docs/delivery.md and docs/release.md. Prepare the agreed files and explain location, dependencies and startup. Local use may use source and instructions without an installer.\nAfterwards: Real files and matching instructions are available."
       ],
       [
-        "操作位置：工具输出的实际文件位置。执行确认过的准备步骤，找到真实产物和使用说明。请工具列哪些配置要由接收者填写、数据库在哪里，以及怎样保存密钥。 提醒：不要把开发机的密码、密钥或真实用户数据库直接装进公开包；示例配置用占位值并说明填写入口。",
-        "Where: The actual output location. Run the agreed preparation and find the deliverable and instructions. List recipient configuration, storage and secret handling. Note: Do not bundle development secrets or real user databases into a public package; document placeholders and setup entries."
+        "在独立测试目录或目标设备中，像接收者一样照说明打开并使用。\n建议提示词：请给出独立试运行的方法，不借用已经启动的开发服务。用测试资料检查打开、保存、读取和重开，保留原项目数据。\n完成后：接收者按说明可以使用主要功能。",
+        "Try it independently as the recipient would.\nSuggested prompt: Give an isolated trial method without relying on an existing development service. Test opening, saving, reading and reopening with test data while preserving the original.\nAfterwards: The instructions let the recipient use core features."
       ],
       [
-        "操作位置：隔离测试目录或目标设备。按接收者身份，在独立位置照 README 启动或安装交付物，完成填写、保存、读回、重开。使用测试数据并记录实际版本。 提醒：不要沿用开发机后台已运行的服务来假装独立交付成功；公开发布仍需下一步本人确认。",
-        "Where: An isolated test directory or target device. Act as the recipient: follow README to start/install, enter data, save, read and reopen with test data. Record revision. Note: Do not rely on a hidden running development service to claim independent delivery. Public release still needs confirmation."
-      ],
-      [
-        "操作位置：docs/release.md。把产物位置、启动入口、依赖服务、试运行结果和失败恢复办法交给工具保存，打开文件逐项核对，再进入真实入口检查。 提醒：有阻断问题留在修复流程；上传成功、构建成功和用户可用是不同结果。",
-        "Where: docs/release.md. Save artifact location, entry, services, trial results and recovery; open and review before live-entry checks. Note: Keep blocking issues in repair; upload, build and user usability are different outcomes."
+        "把这次试运行记录保存下来。\n建议提示词：请将文件位置、版本、实际入口、试运行结果和出错后的恢复方法写入 docs/release.md。未测项保留，先不要正式发布。\n完成后：下一步能按记录找到同一份交付文件。",
+        "Save the trial record.\nSuggested prompt: Write artifact location, revision, real entry, trial results and recovery to docs/release.md. Keep untested items and do not publish yet.\nAfterwards: The next step can find the same deliverable."
       ]
     ],
     "answer": [
-      "构建成功只证明加工完成，试运行才检查送到目标地方后是否能用。动态网站还需要服务进程和数据服务，不能只上传一个文件夹。",
-      "Build success proves processing, not target usability. Dynamic sites need running services and data, not merely uploaded files."
+      "安装包、静态网页和需要后端的网站，使用方法不同；让工具按你的项目准备。",
+      "Installers, static pages and backend-powered sites need different preparation."
     ],
     "example": [
       "仓库 → 项目实际构建命令 → 输出目录/安装包 → 测试目标 → 普通用户操作 → 试运行证据。",
       "Repository → actual build command → output/installer → test target → user actions → evidence."
     ],
     "recovery": [
-      "构建失败保留第一条错误；本机好而目标坏，查目标配置、系统/架构、服务和日志，不重新生成整个项目。",
-      "Keep the first build error. If only the target fails, inspect configuration, architecture, services and logs."
+      "缺配置时用占位说明，不能把真实密码和用户数据库打进公开文件。",
+      "Use configuration placeholders; exclude real secrets and user databases from public packages."
     ],
     "terms": [
       "build",
@@ -1207,38 +1127,38 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "live-check",
     "input": [
-      "试运行证据、交付目标和本人授权。",
-      "Trial evidence, target and explicit release authorization."
+      "准备好的安装包、本机启动入口或实际网站网址。",
+      "The prepared installer, local launch entry or real website URL."
     ],
     "output": [
-      "真实入口、版本与上线核对 → 维护。",
-      "Real entry, revision and live checks → maintenance."
+      "使用者可以按说明使用，结果记录准确。",
+      "Users can follow accurate instructions."
     ],
     "steps": [
       [
-        "操作位置：交付记录和工具对话。先检查试运行证据和阻断项。本机交付就确认本机启动入口；公开交付则列目标账号、网址、版本、费用和影响，由本人明确同意后才发布。 提醒：本机跟练无需执行公开发布；不能把“准备上线”当成发布授权。",
-        "Where: Release record and tool chat. Review trial evidence and blockers. For local delivery confirm the local start entry; for public delivery list account, URL, revision, cost and impact for explicit approval. Note: Local practice needs no publication. Readiness is not release authorization."
+        "先确认实际交付到哪里。本机使用就确认本机启动方法；公开发布先看账号、网址、费用和影响。\n建议提示词：请读 docs/release.md 和 docs/delivery.md，列出本次要执行的交付动作、目标和费用，等我明确确认后再做。\n完成后：你知道将会发生什么，并能决定是否执行。",
+        "Confirm the real destination. For local use check startup; for publication review account, URL, costs and impact.\nSuggested prompt: Read docs/release.md and docs/delivery.md. List the proposed delivery actions, destination and costs; wait for my explicit confirmation.\nAfterwards: You can understand and approve the action."
       ],
       [
-        "操作位置：实际使用入口。按所选方式交付后，从普通用户实际入口打开，用测试资料走核心流程，再关闭重开核对。远程项目使用独立浏览器或设备；本机项目核对本机入口即可。 提醒：商店待审核就是待审核；管理员能打开不能代替普通用户访问。",
-        "Where: The real user entry. After the chosen delivery, open the ordinary user entry, complete the core flow and reopen. Use an independent browser/device for remote delivery; local delivery checks the local entry. Note: Pending store review remains pending; admin access does not prove user access."
+        "确认后执行，再从实际使用者的入口打开。\n建议提示词：我确认执行以下动作：【填写】。请只执行这些动作，报告实际入口与版本。需要审核就记待审核，不提前说已经上线。\n完成后：有真实入口，或知道还在等待哪个审核。",
+        "After approval, execute and open the intended user entry.\nSuggested prompt: I approve these actions: 【fill in】. Execute only these and report the actual entry and revision. Mark pending reviews honestly.\nAfterwards: A real entry exists or its pending review is clear."
       ],
       [
-        "操作位置：交付记录与使用说明。把真实入口、版本、实际检查、未测项、遇到问题找谁写入 docs/release.md，核对 README 与实际一致，然后进入维护。 提醒：回退代码前先查数据库格式是否兼容，恢复数据库前先保留当前数据和确认影响范围。",
-        "Where: Release record and user instructions. Record entry, revision, checks, untested items and support owner in docs/release.md; align README before maintenance. Note: Check data-format compatibility before code rollback; preserve current data and confirm impact before restoring a database."
+        "亲自完成一次主要操作，再关闭重开检查。\n建议提示词：我的实际使用结果：【填写】。请保存到 docs/release.md，并把最新版使用入口和说明更新到 README.md。\n完成后：使用者可以按说明使用，结果记录准确。",
+        "Try the main task and reopen it, then record your result.\nSuggested prompt: My actual use result: 【fill in】. Save it to docs/release.md and update README.md with the latest entry/instructions.\nAfterwards: Users can follow accurate instructions."
       ]
     ],
     "answer": [
-      "管理员自己能打开像店主有钥匙，不代表顾客进得来。上线检查要站在真实用户入口。",
-      "An owner’s key does not prove customers can enter. Test through the actual public/user entry."
+      "本机使用检查本机入口；公开网站检查真实网址，两者按自己的选择来。",
+      "Check the local entry for local use or the real URL for a public site."
     ],
     "example": [
       "网址可访问但登录回调失败 → 未通过；商店正在审核 → 待审核；普通用户完整流程通过 → 已核对。",
       "Reachable URL but broken login callback: fail. Store review pending: pending. Full ordinary-user flow passes: checked."
     ],
     "recovery": [
-      "回滚代码前检查数据格式兼容；恢复数据库会影响用户资料，先备份并确认范围，不盲目覆盖。",
-      "Check data compatibility before code rollback. Back up and confirm scope before restoring a database."
+      "目标或费用不清楚就先问清，不把“准备好了”当作已经同意发布。",
+      "Clarify unknowns before approval."
     ],
     "terms": [
       "deploy",
@@ -1248,38 +1168,34 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "publish",
     "input": [
-      "静态网站交付决定。",
-      "Static-site delivery choice."
+      "项目文件和已经确认的技术方案。",
+      "Your project files and agreed technology choices."
     ],
     "output": [
-      "Pages 适用判断与设置方案 → 返回“准备部署脚本或安装包”。",
-      "Pages suitability and setup → return to “Prepare deployment or packaging”."
+      "有能逐项照做的准备说明。",
+      "The preparation instructions are actionable."
     ],
     "steps": [
       [
-        "这是交付准备期间使用的可选方案，不是上线后的必做任务。需要服务端或秘密凭据的项目不能直接按纯静态站处理。",
-        "This is an optional plan for the “Choose how to deliver” milestone–28, not a post-release requirement. Server-side work and secrets need another arrangement."
+        "先判断是否适合 GitHub Pages。它可以托管静态网页，但不会替你运行后端和数据库。\n建议提示词：请读 docs/delivery.md，检查项目能否直接导出静态网页。如果依赖后端或私密服务端配置，请说明原因并建议回到交付方式选择。现在只判断，不发布。\n完成后：知道自己的项目是否适合。",
+        "Check whether GitHub Pages fits. It hosts static pages, not your backend/database service.\nSuggested prompt: Read docs/delivery.md and assess static export suitability. Explain server/private-configuration dependencies and return to delivery selection if unsuitable. Assess only; do not publish.\nAfterwards: Suitability is clear."
       ],
       [
-        "让AI读取实际构建配置，确定输出目录、资源路径和发布方式。设置入口是对应仓库 Settings → Pages，按当前官方说明选择构建来源。",
-        "Read actual build config for output, asset paths and publishing method. Use repository Settings → Pages and current official guidance."
-      ],
-      [
-        "只准备配置说明，返回“准备部署脚本或安装包”试运行；正式创建远端、推送和发布统一在“交付上线，检查实际入口”确认后执行。",
-        "Prepare instructions, return to “Prepare deployment or packaging” for the trial run, and execute remote creation, push and release only after confirmation in “Deliver and check the real entry”.s, return to the “Prepare deployment or packaging” milestone for trials, and perform authorized remote publishing in the “Deliver and check the real entry” milestone."
+        "适合时让工具写出实际设置方法，再回准备交付步骤试运行。\n建议提示词：请列本项目生成静态文件的方法、输出目录和 GitHub Pages 设置步骤，解释每一步在哪里操作。先只提供方案，不创建远程仓库、不推送、不发布。\n完成后：有能逐项照做的准备说明。",
+        "If suitable, prepare exact instructions and return to delivery preparation.\nSuggested prompt: List this project’s static build, output folder and GitHub Pages settings with locations. Provide a plan only; do not create a remote repository, push or publish.\nAfterwards: The preparation instructions are actionable."
       ]
     ],
     "answer": [
-      "Pages像静态展板托管处，不是替所有后台程序提供运行厨房。",
-      "Pages hosts static displays rather than a runtime for every backend."
+      "Git 是记录版本的工具；GitHub 是保存和分享代码的网站；GitHub Pages 是它提供的静态网页托管功能。",
+      "Git records versions, GitHub hosts/shares code, and GitHub Pages hosts static webpages."
     ],
     "example": [
       "介绍页/静态文档可评估；需要服务端保管密钥的AI接口不能把密钥放进网页产物。",
       "Evaluate brochure/docs sites; never place private API keys in browser output."
     ],
     "recovery": [
-      "资源404先核对输出与基础路径；需后端时返回交付选择，不把凭据改成公开来凑合。",
-      "For asset 404s check output/base paths. If a backend is needed, return to delivery selection rather than exposing secrets."
+      "学习记录全栈示例有后端和数据库，不能只上传页面就当作完整上线。",
+      "The full-stack journal cannot be fully deployed by uploading its page alone."
     ],
     "terms": [
       "static-site",
@@ -1289,46 +1205,46 @@ export const stepSupport:StepSupport[]=[
   {
     "id": "maintain",
     "input": [
-      "已交付版本、使用说明、日志和账号控制台。",
-      "Delivered revision, instructions, logs and service consoles."
+      "目前能使用的项目、数据位置和还没完成的任务。",
+      "Your working project, data location and unfinished tasks."
     ],
     "output": [
-      "docs/handoff.md 维护清单与下一任务 → 可持续使用。",
-      "Maintenance and next-task handoff → continued use."
+      "下次可以直接找到原项目和下一项任务。",
+      "The next session can find the project and next task."
     ],
     "steps": [
       [
-        "操作位置：工具对话、README 和交付记录。请工具先列三份东西在哪里：项目代码、作品实际数据、本站学习草稿。逐项写出备份对象、保存位置、负责人和频率。 提醒：提交代码不等于备份数据库；本站“我的项目材料与备份”只备份本站草稿，不备份你的作品数据。",
-        "Where: Tool chat, README and release record. Locate three distinct assets: project code, application data and guide drafts. List backup scope, destination, owner and frequency. Note: Code commits do not back up databases. This guide’s material backup covers guide drafts only."
+        "先分清要备份什么：项目代码、作品数据库、学习草稿是三份不同资料。\n建议提示词：请列出本项目代码和实际数据的位置，分别说明怎样备份、备份存在哪里。代码提交不能代替数据库备份。\n完成后：知道每份资料该从哪里备份。",
+        "Distinguish code, application data and learning drafts.\nSuggested prompt: List code and actual data locations and how/where each is backed up. A commit does not replace a database backup.\nAfterwards: Each backup source and destination is clear."
       ],
       [
-        "操作位置：所选工具的原项目对话。填本步模板并发送：先报告原库完整路径与记录基线，再用数据库支持的一致性备份方法生成带日期的新备份。要求报告输出完整路径、大小和核对结果。 提醒：不要直接复制正在写入的数据库文件冒充可靠备份；SQLite 可用 backup API，云数据库按服务商导出或快照说明操作。",
-        "Where: The original project chat. Send this step’s template: report source path and record baseline, then create a dated new consistent backup using the database’s supported method. Report output path, size and verification. Note: Do not casually copy a database while it is being written. SQLite supports its backup API; cloud services have export/snapshot procedures."
+        "创建一份带日期的新备份，不覆盖旧文件。\n建议提示词：请用数据库支持的一致性备份方法，生成一份新备份。先报告原数据位置、备份位置和当前记录数量，完成后告诉我文件大小。不要清空或覆盖原数据。\n完成后：得到能找到的非空备份文件。",
+        "Create a new dated backup without overwriting older files.\nSuggested prompt: Use the database’s supported consistent-backup method. Report source, destination and current record count, then output size. Preserve original data.\nAfterwards: A nonempty backup exists at the reported location."
       ],
       [
-        "操作位置：独立恢复目录或测试数据库。先让工具显示原库和恢复目标的完整路径，确认不是同一个位置。仅在独立目录恢复副本，用单独测试服务打开；本例可让工具用 JOURNAL_DB 指向恢复副本并使用空闲端口。 提醒：恢复练习不能覆盖原库；备份文件存在还不算恢复成功。配置由工具读取本项目后给出，不猜命令。",
-        "Where: An isolated restore directory or test database. Compare full source and restore paths first. Restore only to a separate destination and start an isolated test service. In this example ask the tool to point JOURNAL_DB at the restored copy on a free port. Note: Practice must not overwrite the source. An existing backup is not proof of restoration; use project-specific commands."
+        "在独立目录试着恢复这份备份。恢复成功意味着能真的打开并读到记录。\n建议提示词：请把备份恢复到独立测试位置，先让我核对原库和恢复目标不是同一路径。只启动连接恢复副本的测试服务，告诉我打开地址，绝不覆盖原库。\n完成后：能打开恢复副本，找到备份时的旧记录。",
+        "Restore into a separate test location and actually read the records.\nSuggested prompt: Restore to a separate test destination. Show source and target paths first. Start only a test service connected to the copy and give its URL. Never overwrite the source.\nAfterwards: The restored copy opens with records from the backup."
       ],
       [
-        "操作位置：恢复副本的作品页面与工具对话。打开恢复测试地址，核对备份时的记录数量及选定编号、标题、内容。只在副本新增一条“恢复演练”记录，再请工具只读确认原库没有这条新增。 提醒：备份之后才产生的数据不会自动出现在旧备份中；数量应与备份基线比较。",
-        "Where: The restored-copy page and tool chat. Open the restore test URL; compare count and chosen IDs/content to the backup baseline. Add a restore-only item to the copy and verify read-only that the source has no such item. Note: An older backup lacks later writes; compare with its own baseline."
+        "只在恢复副本里新增一条测试记录，再检查原库没有变化。\n建议提示词：请核对恢复副本的旧记录，并只读检查原库没有这次新增。将备份位置、恢复方法和结果写入 docs/handoff.md，停止恢复测试服务。\n完成后：副本能用，原库内容不变，恢复方法已保存。",
+        "Add a test record only to the restored copy and check the source stayed unchanged.\nSuggested prompt: Verify old records in the copy and read-only confirm the source lacks the new record. Save backup location, recovery method and results to docs/handoff.md; stop the test service.\nAfterwards: The copy works, the source is unchanged and recovery is documented."
       ],
       [
-        "操作位置：docs/handoff.md 与 README。把备份和恢复证据、真实运行入口、当前版本、未解决问题、下一任务保存到交接文件并打开核对。停止恢复测试服务，保留已验证备份。 提醒：维护频率按可接受的数据损失决定；新需求先更新需求与计划，不直接重做项目。新对话先请工具读取交接文件。",
-        "Where: docs/handoff.md and README. Save backup/restore evidence, entry, revision, open issues and next task; inspect the handoff. Stop the restore test service and retain verified backups. Note: Choose frequency from acceptable data loss. Plan new scope first; new chats should read the handoff."
+        "记录下次从哪里继续。\n建议提示词：请更新 docs/handoff.md：项目位置、当前版本、启动方法、未解决问题、下一项任务。下次新对话先读这份文件，不重新创建项目。\n完成后：下次可以直接找到原项目和下一项任务。",
+        "Record where to resume next time.\nSuggested prompt: Update docs/handoff.md with location, revision, startup, open issues and next task. A new chat should read it rather than recreate the project.\nAfterwards: The next session can find the project and next task."
       ]
     ],
     "answer": [
-      "维护像定期检查自行车，不是每次从零造一辆。交接文件告诉下一次的你：车在哪里、哪里修过、下一件事是什么。",
-      "Maintenance is checking a bicycle, not rebuilding it. A handoff records where it is, what changed and what is next."
+      "备份是另存一份资料；恢复是用那份资料重新打开并确认能用。",
+      "A backup keeps another copy; restoration proves that copy can be opened and used."
     ],
     "example": [
       "数据备份：每周/本人/服务备份入口/在测试库恢复并对照数量/失败保留原库并排查；频率按可接受损失调整。",
       "Backup example: weekly, owner, service backup entry, restore in test and compare records; preserve the source on failure. Adjust frequency to acceptable loss."
     ],
     "recovery": [
-      "异常先记录时间、版本、入口和日志，按影响决定恢复或修复，不直接在正式环境试不确定命令。",
-      "Record time, revision, entry and logs, then choose recovery or repair without experimenting on production."
+      "只有仓库地址时，追问作品数据实际在哪里。",
+      "Ask for data storage if only a repository is listed."
     ],
     "terms": [
       "backup",

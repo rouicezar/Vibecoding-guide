@@ -1,0 +1,1268 @@
+{
+  "idea": [
+    [
+      [
+        "写清谁会用。在下方想法草稿的第一项，写一个具体的人或群体。",
+        "",
+        "例如“我自己”或“店里负责记账的人”。",
+        "想不到就从自己最近遇到的一件麻烦事开始。"
+      ],
+      [
+        "Name the user. Fill the first field in the idea draft below.",
+        "",
+        "For example, yourself or the person keeping shop accounts.",
+        "Start with a recent problem you personally faced."
+      ]
+    ],
+    [
+      [
+        "写清要解决什么。接着填写“现在有什么麻烦”和“做完后想怎样用”。",
+        "",
+        "能说出一个具体过程，例如输入学习内容、保存、以后再找。",
+        "不要只写“做一个好用的网站”；补上打开后要做的事。"
+      ],
+      [
+        "Describe the problem and how you want to use the finished project.",
+        "",
+        "A concrete flow, such as enter notes, save them and find them later.",
+        "Replace “a useful website” with what someone will actually do."
+      ]
+    ],
+    [
+      [
+        "写好怎样试用才算做好，再点击“确认，生成我的想法草稿”。第二阶段暂时不做就填“否”。",
+        "",
+        "生成的草稿保留了自己的用户、问题、试用方法。",
+        "有空白就补好再确认；还不知道的事写“尚未确定”。"
+      ],
+      [
+        "Describe how you will test success, then click Confirm and generate my idea. Put “none” for later features if unnecessary.",
+        "",
+        "The draft retains your users, problem and test.",
+        "Fill missing fields and confirm again; mark unknowns undecided."
+      ]
+    ]
+  ],
+  "description": [
+    [
+      [
+        "点击下方模板的“带入前面已确认的材料”，检查是不是自己的想法。",
+        "",
+        "上一步的用户和目标已出现在模板中。",
+        "没有带入时回想法步骤确认草稿，或亲手粘贴已写好的内容。"
+      ],
+      [
+        "Click the template’s confirmed-material import button and check the idea.",
+        "",
+        "Your previous users and goal appear.",
+        "Confirm the idea in the preceding step or paste the saved text yourself."
+      ]
+    ],
+    [
+      [
+        "补项目名称、在哪种设备上用，以及从打开到完成的一次操作。只写自己想要的使用方法，不需要先选数据库。",
+        "",
+        "别人读完能知道要做什么、给谁用、怎样试。",
+        "拿不准的条件写“尚未确定”，留给后面和 AI 讨论。"
+      ],
+      [
+        "Add the name, devices and one complete use from opening to outcome. You do not need to choose a database yet.",
+        "",
+        "A reader knows what to build, for whom and how to test it.",
+        "Mark uncertain conditions undecided for later discussion."
+      ]
+    ],
+    [
+      [
+        "点击“确认，生成我的专属内容”，再复制保存好。后面准备 Git 的步骤会用到这段项目说明。",
+        "",
+        "得到一份能直接交给工具的项目说明。",
+        "发现内容有误就修改模板、重新确认，再复制最新版。"
+      ],
+      [
+        "Confirm your version, then copy and keep it for the Git preparation step.",
+        "",
+        "You have a project description ready to send to the tool.",
+        "After edits, confirm again and copy the updated version."
+      ]
+    ]
+  ],
+  "tool": [
+    [
+      [
+        "从下面的工具入口选一个，打开它的官方网站。先查看是否支持自己的电脑，以及费用是否在预算内。",
+        "",
+        "选定一个能够操作项目文件的工具。",
+        "安装条件不合适就换适合的工具，不必全部安装。"
+      ],
+      [
+        "Choose one tool from the entries below. Check its official site for your computer and budget.",
+        "",
+        "One suitable tool can work with project files.",
+        "Choose another if unsuitable; you do not need every tool."
+      ]
+    ],
+    [
+      [
+        "按照所选工具的官方说明安装并登录。已有可用工具就直接打开它；网页工具直接登录工作区。",
+        "",
+        "能看到项目或对话入口。",
+        "遇到安装或登录错误，保留报错文字，对照该工具官方帮助处理。"
+      ],
+      [
+        "Install and sign in using the chosen tool’s instructions, or open your existing tool. Web tools use their online workspace.",
+        "",
+        "You can find the project or chat entry.",
+        "Keep installation/sign-in errors and consult that tool’s official help."
+      ]
+    ],
+    [
+      [
+        "找到输入框，先询问它能怎样帮你处理项目。",
+        "我是第一次使用。请告诉我在哪里选择项目文件夹，以及你能否读取文件、修改文件和运行项目。只介绍操作入口，先不要创建文件。",
+        "得到具体入口说明，知道下一步在哪里打开文件夹。",
+        "没有文件操作能力时，换能操作项目的工具，或按其说明使用配套编辑器。"
+      ],
+      [
+        "Find the message box and ask how to work on a project.",
+        "I am new. Show me where to select a project folder and whether you can read files, edit them and run the project. Explain the entry only; do not create files.",
+        "You know where to open the folder next.",
+        "If files cannot be handled, choose a suitable tool or its supported editor."
+      ]
+    ]
+  ],
+  "folder": [
+    [
+      [
+        "在电脑上打开“文档”文件夹。Mac 用访达，Windows 用文件资源管理器；使用网页工作区时，直接在工具的项目列表新建项目。",
+        "",
+        "找到专门存放这个项目的位置。",
+        "不要把别人的项目文件夹当作新项目，也不要清空已有文件。"
+      ],
+      [
+        "Open Documents in Finder or File Explorer. For a web workspace, create a project in its project list instead.",
+        "",
+        "You have a dedicated place for this project.",
+        "Do not reuse or empty an unrelated project folder."
+      ]
+    ],
+    [
+      [
+        "创建文件夹并用自己的项目名称命名。Mac 按 Shift+Command+N，Windows 按 Ctrl+Shift+N，输入名称后按回车。",
+        "",
+        "能打开刚建的空文件夹；网页工具能打开新工作区。",
+        "同名文件夹已存在时先检查内容，再决定沿用还是另取名字。"
+      ],
+      [
+        "Create and name a folder: Shift+Command+N on Mac or Ctrl+Shift+N on Windows, then enter a name.",
+        "",
+        "The new folder or web workspace opens.",
+        "Inspect an existing same-named folder before reusing it."
+      ]
+    ],
+    [
+      [
+        "复制项目位置填到下方模板。Mac 选中文件夹按 Option+Command+C；Windows 打开文件夹后复制地址栏；网页工具记录工作区名称和入口。",
+        "",
+        "模板中的位置能带你回到同一个项目。",
+        "不要照抄示例路径；找不到完整路径时先记录上级目录和名称。"
+      ],
+      [
+        "Copy the location into the template: Option+Command+C on a selected Mac folder, the Windows address bar, or your web workspace name and entry.",
+        "",
+        "The recorded location leads back to the same project.",
+        "Use your own path; record its parent folder and name if needed."
+      ]
+    ]
+  ],
+  "open-project": [
+    [
+      [
+        "在所选工具中选择“打开文件夹”或对应的项目入口，选中刚建的文件夹。",
+        "",
+        "工具中的项目名称与自己的文件夹一致。",
+        "找不到入口时看下面的界面图或该工具的官方项目说明。"
+      ],
+      [
+        "Use Open folder or the equivalent project entry and choose your new folder.",
+        "",
+        "The tool shows the expected project.",
+        "Use the screenshot below or the tool’s official project instructions."
+      ]
+    ],
+    [
+      [
+        "在这个项目中打开对话，把自己的完整路径填入下面这段话后发送。",
+        "请检查当前打开的项目是不是【我的项目完整路径】。告诉我实际路径，并列出文件夹里已有的文件。只检查，不修改文件。",
+        "工具返回的实际路径与自己的路径一致。",
+        "不一致就重新选择正确项目，不让工具搬动其他项目的文件来凑路径。"
+      ],
+      [
+        "Start a chat in this project, replace the path and send this.",
+        "Check whether the current project is 【my full project path】. Report its actual path and existing files. Inspect only; do not change files.",
+        "The reported path matches yours.",
+        "Select the correct project if different; do not move unrelated files to make it match."
+      ]
+    ]
+  ],
+  "checkpoint": [
+    [
+      [
+        "把项目文件夹初始化为 Git 仓库。在刚才的项目对话中发送下面这句话。Git 用来保存修改历史，已经保存的版本可以找回。",
+        "请检查当前项目是否已经是 Git 仓库。如果还不是，请把这个项目文件夹初始化为 Git 仓库；如果已经是，请继续使用现有仓库。先不要提交或上传文件。",
+        "工具明确告诉你已经建立或沿用了 Git 仓库。",
+        "提示没有安装 Git 时，请工具按你的系统给出官方安装入口，安装后再做这一项。"
+      ],
+      [
+        "Initialize a Git repository in the project chat. Git keeps saved versions of your files so you can return to them.",
+        "Check whether this folder is already a Git repository. If not, initialize one here; otherwise reuse it. Do not commit or upload files yet.",
+        "The tool confirms a new or existing repository.",
+        "If Git is missing, ask for the official installation steps for your system, install it and retry."
+      ]
+    ],
+    [
+      [
+        "创建 AGENTS.md。它是写给 AI 工具看的项目说明书和规则，告诉工具应该怎样做事。",
+        "请在项目根目录创建 AGENTS.md，写明：先读项目说明，再做我当前要求的任务；不擅自增加功能；不删除已有成果；完成后告诉我改了哪些文件、怎样检查。已有文件先读并保留原规则，不直接覆盖。若当前工具不支持此文件，请告诉我它支持的规则入口。",
+        "打开 AGENTS.md，能读到项目的工作规则；其他工具则找到它支持的规则文件。",
+        "只有聊天回复而没有文件时，请工具给出保存后的实际文件路径。"
+      ],
+      [
+        "Create AGENTS.md, a project guide and working rules for the AI tool.",
+        "Create AGENTS.md at the project root: read the project description first, do only my current task, do not add features or delete existing work, and report changed files and checks. Read existing rules before updating them. If this tool does not support AGENTS.md, tell me its supported rules entry.",
+        "You can open the rules file and read the instructions.",
+        "If only a chat reply exists, request the actual saved file path."
+      ]
+    ],
+    [
+      [
+        "把前面写好的项目描述保存成 idea.md。回到“整理项目描述”复制已确认内容，再粘贴进下面的话。",
+        "请把下面这份项目说明保存到项目根目录的 idea.md。已有同名文件先告诉我差别，不直接覆盖。项目说明：\n【粘贴我已确认的项目描述】",
+        "打开 idea.md，可以看到自己的项目名称、用户和想做的功能。",
+        "内容不对时指出哪句需要改；不要让工具重新猜一个项目。"
+      ],
+      [
+        "Save your confirmed description as idea.md. Copy it from the description step into this message.",
+        "Save the following description as idea.md at the project root. If it already exists, explain differences before changing it. Description:\n【paste my confirmed description】",
+        "idea.md contains your own project and intended users/features.",
+        "Point out incorrect sentences rather than having the tool invent a new project."
+      ]
+    ],
+    [
+      [
+        "让 Git 保存第一个版本。仓库建好还不等于文件已经保存成版本；完成这一项，才有可以回来的记录。",
+        "请先检查本次文件，排除密码、密钥、数据库和自动生成文件。把本步确认过的项目说明与规则文件提交到本地 Git，作为第一个版本，并告诉我版本号。不要推送。缺少提交身份时告诉我需要填写什么，不替我编造身份。",
+        "工具给出一次成功提交的版本号，文件仍能正常打开。",
+        "提交失败先按报错处理，不把初始化成功当成版本已保存；未提交的修改无法靠这次记录找回。"
+      ],
+      [
+        "Save the first Git version. Initializing a repository alone does not save a version.",
+        "Inspect this step’s files and exclude passwords, keys, databases and generated files. Commit only the confirmed description and rules locally, then report the revision. Do not push. Ask for missing author identity instead of inventing it.",
+        "A successful local revision is reported and the files still open.",
+        "Resolve commit errors first. Initialization alone does not save uncommitted changes."
+      ]
+    ]
+  ],
+  "first-file": [
+    [
+      [
+        "让工具给出刚才两个文件的位置。",
+        "请列出本项目 idea.md 和 AGENTS.md（或本工具对应规则文件）的实际路径，并提供可打开的文件链接。只查看，不修改。",
+        "得到自己项目中的文件位置。",
+        "找不到文件就回上一项确认是否真的保存。"
+      ],
+      [
+        "Ask for the two saved file locations.",
+        "List the actual paths and openable links for idea.md and AGENTS.md, or this tool’s equivalent rules file. Read only.",
+        "The files are located in your project.",
+        "If absent, return to the preceding step and confirm they were saved."
+      ]
+    ],
+    [
+      [
+        "点击文件链接逐个打开。先看 idea.md 是否是自己的想法，再看规则文件有没有刚才约定的规则。",
+        "",
+        "两个文件内容正确，能在关闭后重新打开。",
+        "链接打不开就按实际路径在文件管理器中找，不只看聊天里的代码片段。"
+      ],
+      [
+        "Open each file link. Compare idea.md with your idea and the rules file with your instructions.",
+        "",
+        "Both files are correct and can reopen.",
+        "If links fail, find the actual paths in your file manager."
+      ]
+    ]
+  ],
+  "clarify": [
+    [
+      [
+        "把 idea.md 交给工具看，让它从你的想法中找出还没说清的地方。",
+        "请阅读 idea.md，用普通话复述我想做什么。你拿不准的地方一次只问我一个问题，先不要写代码。",
+        "工具先复述，再提出一个你能回答的问题。",
+        "问题里有术语就让它解释成生活例子，不勉强猜答案。"
+      ],
+      [
+        "Ask the tool to read idea.md and find unclear parts.",
+        "Read idea.md and restate my goal in everyday language. Ask one question at a time about what is unclear. Do not code yet.",
+        "The tool restates the idea and asks an answerable question.",
+        "Ask for a simple example if it uses unfamiliar terms."
+      ]
+    ],
+    [
+      [
+        "回答当前问题；不确定就说不确定。等影响第一版的问题都说清后，再保存答案。",
+        "请把我刚才确认的答案更新到 idea.md；还没决定的内容单独标出来，不替我决定。",
+        "打开 idea.md 能看到自己的答案。",
+        "复述不对就先纠正，再让它保存。"
+      ],
+      [
+        "Answer the current question, or say undecided. Save once the first-version questions are clear.",
+        "Update idea.md with the answers I confirmed. List undecided items separately without deciding for me.",
+        "idea.md contains your answers.",
+        "Correct misunderstandings before saving."
+      ]
+    ]
+  ],
+  "scope": [
+    [
+      [
+        "先列第一版必须完成的事，再列以后可以做的事。",
+        "请读 idea.md，分成“第一版必须做”和“以后再做”两份清单。每项用我能亲手操作的一句话说明，先给我看，不写代码。",
+        "两份清单能看懂，没有偷偷加入新功能。",
+        "清单太大就按真实使用需要缩小，不能删掉完成核心任务必需的步骤。"
+      ],
+      [
+        "Separate essential first-version work from later ideas.",
+        "Read idea.md and make two lists: needed in version one and later. Describe each as a user action. Show me first; do not code.",
+        "Both lists are understandable and contain no invented features.",
+        "Reduce scope while keeping everything required for the core task."
+      ]
+    ],
+    [
+      [
+        "逐项确认清单，再让工具保存。",
+        "请把我确认的范围保存到 docs/requirements.md，保留以后再做的清单。没有确认的内容标为待定。",
+        "需求文件写清这次做什么、暂时不做什么。",
+        "有遗漏先补清单再确认，不带着模糊范围进入开发。"
+      ],
+      [
+        "Review each item, then save your decision.",
+        "Save the confirmed scope to docs/requirements.md, keeping later ideas and marking undecided items.",
+        "The file distinguishes this version from later work.",
+        "Fill important gaps before moving into development."
+      ]
+    ]
+  ],
+  "requirements": [
+    [
+      [
+        "把每项功能写成“填什么、点什么、看到什么”。",
+        "请读 docs/requirements.md，把每个必做功能写清输入内容、操作、正常结果和失败时的提示。给每项编号，先让我确认。",
+        "每个功能都有实际操作和能看到的结果。",
+        "出现“体验良好”等空泛词时，要求换成具体画面或行为。"
+      ],
+      [
+        "Describe each feature as input, action and visible result.",
+        "Read docs/requirements.md. Give each required feature an ID, inputs, actions, normal results and failure messages for my review.",
+        "Every feature has an observable result.",
+        "Replace vague claims like good experience with specific behavior."
+      ]
+    ],
+    [
+      [
+        "对照自己的想法检查，再保存确认后的版本。",
+        "请把我确认的内容更新到 docs/requirements.md，保留每项怎样测试才算做好，不增加未提出的功能。",
+        "下一步可以依据这份文件写使用过程。",
+        "如果某项自己也看不懂，先要求解释，不直接确认。"
+      ],
+      [
+        "Compare with your idea and save the reviewed version.",
+        "Update docs/requirements.md with confirmed content and a practical check for each feature. Do not add unrequested features.",
+        "The next step can describe use based on this file.",
+        "Ask for an explanation before approving unclear items."
+      ]
+    ]
+  ],
+  "stories": [
+    [
+      [
+        "让工具把使用过程像讲故事一样写出来：谁打开哪里，先做什么，接着做什么。",
+        "请读 idea.md 和 docs/requirements.md，写出每种用户从打开项目到完成任务的一次完整过程。一步写一个动作，也写出出错后怎样继续。先不要开发。",
+        "能按文字想象一个人实际使用的顺序。",
+        "突然出现尚未说明的账号或页面时，先补它的来源和进入方法。"
+      ],
+      [
+        "Describe a person using the project from start to finish.",
+        "Read idea.md and docs/requirements.md. Write each user’s complete journey, one action at a time, including recovery from errors. Do not build yet.",
+        "You can picture a real person following the sequence.",
+        "Explain any account or page that appears without an introduction."
+      ]
+    ],
+    [
+      [
+        "按自己会使用的方式读一遍，指出缺少的步骤，再保存。",
+        "请把我确认的使用过程保存到 docs/stories.md，并保留对应的需求编号。",
+        "使用过程前后接得上，文件能打开。",
+        "例如写了“付款成功”却没说在哪里付款，就先补上操作。"
+      ],
+      [
+        "Read it as a user, fill gaps and save.",
+        "Save the confirmed journeys to docs/stories.md with their requirement IDs.",
+        "The sequence connects and the file opens.",
+        "Fill missing actions such as where payment starts before saying it succeeded."
+      ]
+    ]
+  ],
+  "prototype": [
+    [
+      [
+        "先看页面草稿。页面草稿只帮助决定东西放哪里、点击后去哪里。",
+        "请根据 docs/requirements.md 和 docs/stories.md 做一条主要使用过程的页面草稿。告诉我怎样打开，每个按钮会去哪里；还不能实际使用的部分请标明。先不要接数据库。",
+        "有能打开查看的页面草稿。",
+        "打开方式不清楚就要求准确地址或文件位置。"
+      ],
+      [
+        "Preview a draft to decide what goes where and what buttons do.",
+        "Use docs/requirements.md and docs/stories.md to draft the main journey. Tell me how to open it and where buttons lead. Mark simulated behavior. Do not connect a database yet.",
+        "A draft opens for review.",
+        "Request an exact URL or file location if unclear."
+      ]
+    ],
+    [
+      [
+        "从第一屏按顺序点一遍，指出找不到入口或看不懂的地方。",
+        "请只调整我指出的这些位置：【填写】。保留其他已确认内容，完成后告诉我从哪里再看。",
+        "能找到主要输入、按钮和结果。",
+        "一次只改具体位置，避免一句“更好看”让工具全部重做。"
+      ],
+      [
+        "Click through the draft and identify unclear entries.",
+        "Change only these locations: 【fill in】. Preserve confirmed work and tell me where to review it.",
+        "Main inputs, buttons and results are easy to find.",
+        "Name specific changes rather than asking for a complete redesign."
+      ]
+    ],
+    [
+      [
+        "把确认的页面和操作方法保存下来。",
+        "请把确认的页面安排和按钮作用写入 docs/design.md，区分已经能用和仍是演示的部分。",
+        "设计文件可以给后面的开发步骤使用。",
+        "把演示效果误写成已开发完成时，要求纠正。"
+      ],
+      [
+        "Save the approved screen and action decisions.",
+        "Write screen arrangements and button behavior to docs/design.md. Separate working features from demonstrations.",
+        "The design file guides later implementation.",
+        "Correct any demonstration described as finished development."
+      ]
+    ]
+  ],
+  "choose-stack": [
+    [
+      [
+        "告诉工具项目给谁用、需要保存什么、预算多少。让它解释准备采用的做法。",
+        "请读已确认需求和 docs/design.md，推荐一种适合我的做法。分别解释页面怎么做、处理请求的程序在哪里运行、数据存在哪里、需要什么费用。先不要安装。",
+        "你能理解三个部分分别负责什么。",
+        "方案中有陌生名称时，让工具先解释用途，再谈是否使用。"
+      ],
+      [
+        "Give users, storage needs and budget, then ask for an understandable approach.",
+        "Read the requirements and docs/design.md. Recommend one approach and explain the page, the program processing requests, data storage and costs. Do not install yet.",
+        "You understand the role of each part.",
+        "Ask what unfamiliar tools do before choosing them."
+      ]
+    ],
+    [
+      [
+        "确认适合自己的做法，并把决定写进设计文件。",
+        "请把我确认的做法、需要准备的账号和最难部分的试验方法写入 docs/design.md。未确定的条件保留待定。",
+        "后面准备环境时知道要安装什么、先试什么。",
+        "关键条件不能满足时先换做法，不开始大量开发。"
+      ],
+      [
+        "Confirm the approach and record it.",
+        "Save the chosen approach, required accounts and a small test of its hardest part in docs/design.md. Keep unknowns pending.",
+        "Environment setup knows what to install and try first.",
+        "Change an unworkable approach before building extensively."
+      ]
+    ]
+  ],
+  "plan": [
+    [
+      [
+        "让工具把要做的功能排成先后顺序。",
+        "请读需求、docs/stories.md 和 docs/design.md，把开发拆成小任务。每项写清先做什么、会新增什么文件或功能、完成后我怎样试。先给我看计划，不写代码。",
+        "第一项任务明确，后面的任务有顺序。",
+        "第一项就包含整个项目时，让工具继续拆小。"
+      ],
+      [
+        "Ask for an ordered list of small development tasks.",
+        "Read requirements, docs/stories.md and docs/design.md. Break development into small tasks, each with prerequisites, files/features and a personal test. Show the plan without coding.",
+        "The first task is clear and later tasks have an order.",
+        "Split tasks further if the first one is the whole project."
+      ]
+    ],
+    [
+      [
+        "检查需求是否都被安排到了，再保存任务表。",
+        "请把我确认的任务保存到 tasks/todo.md。每项标记未开始，并保留对应需求编号。",
+        "能找到下一项该做什么以及完成标准。",
+        "漏了某项必做功能就补计划，别靠后面临时想起。"
+      ],
+      [
+        "Check that all required features are planned and save.",
+        "Save confirmed tasks to tasks/todo.md with requirement IDs and not-started status.",
+        "The next task and its passing check are clear.",
+        "Add missing essential features to the plan now."
+      ]
+    ]
+  ],
+  "environment": [
+    [
+      [
+        "先检查电脑能否运行这个项目。",
+        "请读 docs/design.md 和 tasks/todo.md，检查本项目需要的运行软件是否已安装。缺什么请给我官方安装入口、适合我的系统的操作，以及怎样确认装好了。先不要开发功能。",
+        "知道缺哪些软件，以及从哪里安装。",
+        "不懂报错就复制原文给工具，不同时安装多个不同版本试运气。"
+      ],
+      [
+        "Check whether your computer can run this project.",
+        "Read docs/design.md and tasks/todo.md. Check required software; for anything missing give official installation steps for my system and a success check. Do not build features.",
+        "You know what is missing and where to install it.",
+        "Copy error text instead of trying many random versions."
+      ]
+    ],
+    [
+      [
+        "准备运行所需的依赖。依赖就是项目会用到的现成程序包。",
+        "请检查项目已有配置，按确认的方案安装必要依赖，保留已有文件。告诉我运行结果，失败时先解释第一条错误。",
+        "必要程序包已安装，没有未解决的安装错误。",
+        "权限不足就按工具说明完成当前必要操作，不直接删除配置重来。"
+      ],
+      [
+        "Install dependencies, the existing software packages your project uses.",
+        "Inspect existing configuration, install only agreed dependencies and preserve files. Report results and explain the first failure if any.",
+        "Required packages are installed without unresolved errors.",
+        "Resolve the specific permission issue rather than deleting configuration."
+      ]
+    ],
+    [
+      [
+        "启动一个能打开的最小页面，再记下启动方法。",
+        "请启动本项目最小页面，告诉我在哪里执行、实际打开哪个地址，以及怎样停止。把验证过的方法写入 README.md，检查结果写入 docs/checks.md。",
+        "打开工具给出的地址能看到页面，README 中有下次启动方法。",
+        "地址打不开就核对服务是否还在运行和网址是否相同，不猜端口。"
+      ],
+      [
+        "Start the smallest working page and save the startup instructions.",
+        "Start the minimal project. Give the execution location, actual URL and stop method. Save verified instructions in README.md and results in docs/checks.md.",
+        "The URL opens a page and README explains reopening.",
+        "Check the running service and exact URL instead of guessing ports."
+      ]
+    ]
+  ],
+  "preview": [
+    [
+      [
+        "让工具先读任务表，只做下一项尚未完成的任务。",
+        "请读 tasks/todo.md，找出下一项已经具备开始条件的任务。告诉我这次做什么，再只完成这一项。保留其他文件，完成后给我打开作品的方法和测试结果。",
+        "得到这次修改的说明和能打开的作品入口。",
+        "工具一次做了很多无关功能时，先让它说明改动，回到已确认任务。"
+      ],
+      [
+        "Have the tool do the next unfinished task only.",
+        "Read tasks/todo.md and identify the next task whose prerequisites are ready. Explain and complete only that task. Preserve other files and report how to open and test it.",
+        "You receive a change summary and working entry.",
+        "If unrelated work was added, review it and return to the agreed task."
+      ]
+    ],
+    [
+      [
+        "打开作品，亲自操作这一项功能。不要只读工具的“完成”回复。",
+        "",
+        "实际结果与任务表中写的相同，或能指出哪里不同。",
+        "打不开就把网址和报错发给工具；没有测试条件就先记未测试。"
+      ],
+      [
+        "Open the project and try this feature yourself.",
+        "",
+        "The result matches the task or you can name the difference.",
+        "Report the URL and error if it will not open; keep unavailable tests pending."
+      ]
+    ],
+    [
+      [
+        "把实际结果告诉工具，再决定做下一项还是先修问题。",
+        "我的实际操作和结果是：【填写】。请更新 tasks/todo.md 和 docs/checks.md；只有已经检查通过的任务才标完成。保存本次已确认修改的本地版本，不推送。",
+        "任务表记录真实进度，可以继续下一项。",
+        "失败就保留现象，按后面的反馈和修复步骤处理。"
+      ],
+      [
+        "Report what happened before continuing.",
+        "My actions and results: 【fill in】. Update tasks/todo.md and docs/checks.md; complete only checked tasks. Save the confirmed changes as a local revision without pushing.",
+        "Task status reflects actual progress.",
+        "Record failures and follow the feedback/repair steps."
+      ]
+    ]
+  ],
+  "interface": [
+    [
+      [
+        "打开自己的作品，指出一处用户找不到或看不懂的位置，例如输入框没有名字、按钮挡住文字。",
+        "",
+        "知道具体要改哪个页面、哪个位置。",
+        "先解决妨碍使用的地方，不用一句“整体优化”让工具重做全部页面。"
+      ],
+      [
+        "Open your project and locate one confusing place, such as an unlabeled field or overlapping button.",
+        "",
+        "You can name the page and location to change.",
+        "Fix a specific usability problem rather than requesting a complete redesign."
+      ]
+    ],
+    [
+      [
+        "把这一处问题和希望的效果告诉工具。",
+        "请只修改【页面和具体位置】：现在是【实际样子】，我希望【清楚的结果】。保留其他已确认页面和功能，修改后给我查看地址。",
+        "能打开修改后的页面。",
+        "结果不对就描述具体差别，继续只改这一处。"
+      ],
+      [
+        "Tell the tool the problem and desired result.",
+        "Change only 【page/location】. It currently looks like 【actual】; I need 【specific result】. Preserve other pages/features and give me the review URL.",
+        "The updated page opens.",
+        "Describe the remaining difference and keep the fix focused."
+      ]
+    ],
+    [
+      [
+        "再操作一次这项功能，然后缩窄窗口，确认文字、输入框和按钮仍能使用。",
+        "",
+        "页面清楚可用，原功能没有被改坏。",
+        "发现遮挡或点击失效就记录位置和画面，再请工具修这一处。"
+      ],
+      [
+        "Try the feature again and narrow the window to check text, fields and buttons.",
+        "",
+        "The page is usable and the original feature still works.",
+        "Record any overlap or failed click and request a focused repair."
+      ]
+    ]
+  ],
+  "save": [
+    [
+      [
+        "先建立真正存放记录的地方。数据库就像项目的登记本，页面关闭后记录还在里面。只展示内容的项目可以跳过保存功能。",
+        "请读需求，检查本项目的数据应该保存在哪里。需要数据库时，先检查已有内容，再建立缺少的表，告诉我实际位置、每条记录保存哪些字段。不要清空已有数据。",
+        "知道数据位置和每条记录会保存的内容。",
+        "工具只说“完成”时，追问实际位置和表名；别删库重建。"
+      ],
+      [
+        "Prepare real storage. A database keeps records after the page closes. Display-only projects can skip storage.",
+        "Read the requirements and inspect storage. If a database is needed, inspect existing content, create only missing tables and report its location and record fields. Do not erase data.",
+        "You know where records live and what they contain.",
+        "Ask for the actual location/table if the response only says done."
+      ]
+    ],
+    [
+      [
+        "让后端能够保存和读取记录。后端是收到页面请求后实际处理事情的程序。",
+        "请实现或检查保存一条记录和读取列表的后端接口。接口就是页面发送或索取内容的入口。用测试记录检查保存结果，告诉我记录编号，再核对数据库中同一条记录。空白内容应被拒绝。",
+        "合法内容有真实编号，数据库里能找到，空白内容没有写入。",
+        "保存失败就把错误原文保留，请工具查请求是否到达后端。"
+      ],
+      [
+        "Make the backend save and read records. It is the program processing page requests.",
+        "Implement or inspect save-one and read-list endpoints. Test a record, report its ID and verify the matching database record. Reject blank input.",
+        "A valid record has a matching database ID; blank input is not inserted.",
+        "Keep the error and check whether the request reached the backend."
+      ]
+    ],
+    [
+      [
+        "把页面按钮连接到刚才的保存功能。",
+        "请把页面的保存按钮连接到已检查的后端。保存期间避免重复点击，失败保留输入并解释原因，真正保存成功后再显示成功。告诉我打开哪个地址来试。",
+        "点一次保存后，能在列表里找到刚才的内容。",
+        "只在页面多出一行还不够；请工具用编号核对数据库。"
+      ],
+      [
+        "Connect the page’s Save button to the checked backend.",
+        "Connect Save to the checked backend. Prevent repeat pending clicks, keep input on failure and show success only after saving. Give me the test URL.",
+        "One save produces a record you can find in the list.",
+        "Match its ID to the database rather than trusting an extra on-screen row."
+      ]
+    ],
+    [
+      [
+        "亲自保存一条独特测试内容，刷新页面，再用另一个浏览器打开同一网址查找它。",
+        "",
+        "同一编号和内容仍能找到。",
+        "找不到先核对网址、账号和数据库位置，保留原数据。"
+      ],
+      [
+        "Save unique test content, refresh, then find it in another browser on the same URL.",
+        "",
+        "The same ID and content remain.",
+        "Check URL, account and storage location without deleting data."
+      ]
+    ]
+  ],
+  "flow": [
+    [
+      [
+        "让工具写一份从打开作品到完成任务的操作清单。",
+        "请读需求和 tasks/todo.md，列一条普通用户完整使用过程。一步只写一个动作，说明输入什么、点击哪里、应该看到什么。没有准备好的功能先标出来。",
+        "得到能照着做的清单。",
+        "出现没建过的账号或页面时，先回相应步骤准备。"
+      ],
+      [
+        "Ask for a checklist from opening the project to finishing a task.",
+        "Read requirements and tasks/todo.md. Write one ordinary-user journey, one action at a time, with inputs, clicks and expected results. Mark unfinished prerequisites.",
+        "You have a usable checklist.",
+        "Prepare any missing account or page before continuing."
+      ]
+    ],
+    [
+      [
+        "打开作品，照清单逐项做一遍。每次写下自己真正看到的结果。",
+        "",
+        "能从开始走到结束，或准确指出停在哪一步。",
+        "卡住就停，保留输入、网址和错误，不连续乱点。"
+      ],
+      [
+        "Open the project and follow each action, recording what you actually see.",
+        "",
+        "You finish the flow or can identify the exact stopping point.",
+        "Stop on failure and keep input, URL and error."
+      ]
+    ],
+    [
+      [
+        "把记录交给工具保存，再检查其他必须完成的使用过程。",
+        "请把以下本人测试记录保存到 docs/checks.md：【粘贴操作、预期、实际结果】。通过、失败和没测试的项目分开写，不代替我填写通过。",
+        "每条必做流程都有实际结果。",
+        "有失败先记反馈，修好后重走同一条流程。"
+      ],
+      [
+        "Save your record and cover the remaining required journeys.",
+        "Save my test record to docs/checks.md: 【actions, expected, actual】. Separate passed, failed and untested checks; do not invent passes.",
+        "Every required journey has an honest result.",
+        "Report failures and repeat the same journey after repair."
+      ]
+    ]
+  ],
+  "test": [
+    [
+      [
+        "先测试错误输入。在作品里不填必填项就点提交，再试过长内容。",
+        "",
+        "页面解释哪里不对，也没有保存无效记录。",
+        "只有页面拦截还不够，让工具检查后端是否同样拒绝。"
+      ],
+      [
+        "Try invalid input: submit empty required fields and overly long content.",
+        "",
+        "The page explains the problem without saving invalid records.",
+        "Ask the tool to check backend rejection as well."
+      ]
+    ],
+    [
+      [
+        "检查重复点击和服务中断时会发生什么。先让工具给出只影响本项目测试环境的办法。",
+        "请列出本项目测试重复点击和服务暂时停止的操作。一次只测一项，说明怎样停止本项目服务和恢复。不要停止其他项目。只测试，先不修代码。",
+        "有明确的测试和恢复方法。",
+        "不知道进程属于谁时先不停止，要求工具确认项目和端口。"
+      ],
+      [
+        "Check repeated clicks and service interruption in this project’s test environment only.",
+        "Give step-by-step tests for repeat clicks and a stopped service, one at a time. Explain how to stop and restore only this project. Test without repairing yet.",
+        "You have clear testing and recovery steps.",
+        "Identify the project and port before stopping any process."
+      ]
+    ],
+    [
+      [
+        "按说明试一次服务停止后的保存，再恢复服务。",
+        "",
+        "没有假成功，未提交内容保留；恢复后先查列表再决定是否重试。",
+        "已保存但返回失败时不要重复提交，先请工具按内容和编号核对。"
+      ],
+      [
+        "Try saving with the service stopped, then restore it.",
+        "",
+        "No false success; input stays. Check the list before retrying after recovery.",
+        "If it may already be saved, verify content/ID before submitting again."
+      ]
+    ],
+    [
+      [
+        "把结果给工具记下来。",
+        "请把刚才各项异常测试的预期、实际和未测试原因写入 docs/checks.md。失败保持失败，留给反馈与修复步骤处理。",
+        "失败和未测项没有被改成通过。",
+        "没有相应功能就注明不适用及原因，不为测试临时增加功能。"
+      ],
+      [
+        "Record the results.",
+        "Write expected/actual results and untested reasons in docs/checks.md. Keep failures open for feedback and repair.",
+        "Failures and untested checks are not marked passed.",
+        "Explain inapplicability instead of adding unnecessary features."
+      ]
+    ]
+  ],
+  "restart": [
+    [
+      [
+        "先记下一条已保存记录，再找到 README.md 里的停止和启动方法。",
+        "",
+        "知道待会儿要找回哪条记录。",
+        "方法没写清时，请工具补具体目录、命令和网址。"
+      ],
+      [
+        "Note one saved record and find README’s stop/start instructions.",
+        "",
+        "You know which record to find after reopening.",
+        "Ask for the exact directory, command and URL if missing."
+      ]
+    ],
+    [
+      [
+        "停止并重新启动本项目。仅关掉浏览器还不算停止后端。",
+        "请按 README.md 停止并重新启动本项目服务，保留数据库。告诉我实际打开哪个网址；不要新建项目或重置数据。",
+        "服务重新运行，能打开作品。",
+        "端口占用先查归属；浏览器禁止某端口时换允许的空闲端口，不关闭安全保护。"
+      ],
+      [
+        "Stop and restart the project; closing the browser alone does not stop its backend.",
+        "Stop and restart this project using README.md, keeping its database. Give the actual URL; do not create a new project or reset data.",
+        "The restarted project opens.",
+        "Identify occupied ports; use a free allowed port rather than disabling browser protection."
+      ]
+    ],
+    [
+      [
+        "打开新启动的网址，找刚才那条记录，再做一次主要操作。",
+        "我的重开结果是：【填写】。请把实际启动方法和结果更新到 README.md 与 docs/checks.md。",
+        "重开后能继续使用，记录按需求保留。",
+        "丢记录时先核对项目路径和数据库位置，不清库重来。"
+      ],
+      [
+        "Open the reported URL, find the record and try the main action.",
+        "My reopening result is: 【fill in】. Update README.md and docs/checks.md with actual instructions and results.",
+        "The reopened project works and retains required data.",
+        "Check project and database paths before changing data."
+      ]
+    ]
+  ],
+  "accept": [
+    [
+      [
+        "重新读最初的项目描述，选出当时说“做完应该能做到”的事情。",
+        "",
+        "手里有自己的目标和对应试用方法。",
+        "目标发生变化时先写清变化，不能临时降低标准把失败算通过。"
+      ],
+      [
+        "Reread your original description and the things the finished project should do.",
+        "",
+        "You have your own goals and practical tests.",
+        "Document changed goals instead of silently lowering criteria."
+      ]
+    ],
+    [
+      [
+        "像实际使用者一样操作作品，不借助工具临时改数据来完成流程。",
+        "",
+        "知道作品有没有解决最初的问题。",
+        "没有条件亲自试就填未测试，不照抄 AI 的通过结论。"
+      ],
+      [
+        "Use the project as its intended user without having the tool patch data mid-flow.",
+        "",
+        "You know whether it solves the original problem.",
+        "Mark untested if you cannot try it; do not copy an AI pass."
+      ]
+    ],
+    [
+      [
+        "填写下方试用记录并确认，再展开“把本步已确认记录交给 AI 保存”，生成保存话术，复制到项目对话。",
+        "",
+        "docs/acceptance.md 中保存了本人实际操作和结论。",
+        "有问题选“记录反馈”，达到目标再选择交付方式。"
+      ],
+      [
+        "Fill and confirm the trial record, then use the save-in-project section to generate and send its save instruction.",
+        "",
+        "docs/acceptance.md contains your actual actions and conclusion.",
+        "Record issues when failing; choose delivery only after goals are met."
+      ]
+    ]
+  ],
+  "feedback": [
+    [
+      [
+        "选一个问题，写下从哪里开始、输入什么、点哪里、出现什么。",
+        "",
+        "别人能照着描述走到同一问题。",
+        "不要只写“不能用”；不懂原因没关系，记录现象即可。"
+      ],
+      [
+        "Choose one issue and record the entry, input, clicks and result.",
+        "",
+        "Someone else can follow the same steps.",
+        "Describe the symptom, not merely “broken”; you need not know the cause."
+      ]
+    ],
+    [
+      [
+        "把操作记录和报错填进下方模板，确认后复制给工具。",
+        "请把以下问题整理到 docs/feedback.md，给每项编号，写清预期与实际：【粘贴记录】。先记录和检查原因，不修改代码；还没查明的原因不要写成事实。",
+        "反馈文件有问题编号、重现步骤和证据。",
+        "截图含密码或个人信息时先遮住再发送。"
+      ],
+      [
+        "Fill the template with actions/errors, confirm and send it.",
+        "Organize these issues in docs/feedback.md with IDs, expected and actual results: 【paste record】. Record and investigate without changing code. Do not present guesses as facts.",
+        "Issues have IDs, reproduction steps and evidence.",
+        "Hide passwords/private information in screenshots before sharing."
+      ]
+    ]
+  ],
+  "repair-plan": [
+    [
+      [
+        "先让工具解释为什么出问题。",
+        "请读 docs/feedback.md 和需求，先检查问题原因，不改代码。把已查明的事实和还要验证的猜测分开，告诉我下一项最小检查。",
+        "得到能对应实际问题的解释。",
+        "原因不明就继续小范围检查，不默认重装或删库。"
+      ],
+      [
+        "Ask why the issue occurs before changing anything.",
+        "Read docs/feedback.md and the requirements. Investigate without changing code. Separate facts from hypotheses and give the next small check.",
+        "The explanation fits the observed issue.",
+        "Investigate further rather than defaulting to reinstalling or deleting storage."
+      ]
+    ],
+    [
+      [
+        "让工具写清准备改哪里、怎么确认改好了，然后自己读一遍。",
+        "请保存 docs/repair-plan.md：每个问题改哪些文件、会影响哪些原功能、怎样重走失败步骤、修好应该看到什么。涉及数据库先写备份和恢复方法，等我确认再执行。",
+        "修复计划有具体改动和检查方法。",
+        "只有“优化一下”就要求写具体，不直接批准。"
+      ],
+      [
+        "Review where the fix will happen and how you will check it.",
+        "Save docs/repair-plan.md with changed files, affected features, original-case retest and expected results. Include backup/recovery before database changes. Wait for my approval.",
+        "The fix and its test are specific.",
+        "Ask for specifics if it only says optimize."
+      ]
+    ]
+  ],
+  "repair": [
+    [
+      [
+        "确认修复计划后，让工具只改这一项问题。",
+        "请按已确认的 docs/repair-plan.md 修复【问题编号】。保护已有数据，只改必要文件，完成后报告实际检查结果和我该怎样复测。",
+        "工具说明改了哪里和怎样再试。",
+        "范围扩大或要求清库时先停，回修复计划说明原因。"
+      ],
+      [
+        "After reviewing the plan, fix one agreed issue.",
+        "Follow the approved docs/repair-plan.md for 【issue ID】. Preserve data, change only necessary files and report checks plus my retest steps.",
+        "The tool explains the change and retest.",
+        "Return to planning if the scope expands or a reset is proposed."
+      ]
+    ],
+    [
+      [
+        "亲自重走原来失败的那组操作，再试原本正常的功能。",
+        "",
+        "原问题解决，原来的保存和读取仍正常。",
+        "仍失败就保留同一问题编号，补新证据，不重新编一个“已解决”的问题。"
+      ],
+      [
+        "Repeat the original failing actions, then check previously working features.",
+        "",
+        "The issue is fixed and normal behavior still works.",
+        "Keep the same issue ID and add evidence if it still fails."
+      ]
+    ],
+    [
+      [
+        "把自己的复测结果交给工具保存。",
+        "我的复测结果：【填写】。请更新 docs/checks.md 和 docs/feedback.md；只有我实际验证通过的问题才关闭，未测项保留。",
+        "问题状态与本人实际结果一致。",
+        "工具与本人结论不一致时，以实际复测为依据继续检查。"
+      ],
+      [
+        "Save your personal retest results.",
+        "My retest result: 【fill in】. Update docs/checks.md and docs/feedback.md; close only personally verified issues and retain untested items.",
+        "Issue status matches your result.",
+        "Investigate any difference from the tool’s report."
+      ]
+    ]
+  ],
+  "delivery": [
+    [
+      [
+        "决定谁在哪里使用：自己电脑、别人通过网址、还是下载安装包。填下方模板并确认。",
+        "",
+        "选择符合真实使用需要。",
+        "自己电脑能用也是有效结果，不必为了教程公开上线。"
+      ],
+      [
+        "Choose who uses it and where: your computer, a shared URL or an installer. Fill and confirm the template.",
+        "",
+        "The choice matches actual use.",
+        "Local use is a valid result; publication is not mandatory."
+      ]
+    ],
+    [
+      [
+        "展开“把本步已确认记录交给 AI 保存”，生成话术并发给工具。",
+        "",
+        "docs/delivery.md 中记录了使用者、设备和交付方式。",
+        "文件没出现就让工具给出实际保存位置。"
+      ],
+      [
+        "Use the save-in-project section to generate and send the save instruction.",
+        "",
+        "docs/delivery.md records users, devices and delivery method.",
+        "Request the actual saved location if missing."
+      ]
+    ],
+    [
+      [
+        "请工具按选好的方式列准备事项。",
+        "请读 docs/delivery.md。本机使用写清启动、停止、数据位置；远程使用分别说明页面、后端、数据库放在哪里，需要哪些账号和费用。先列方案，不发布。",
+        "知道接下来要准备什么。",
+        "localhost 是当前电脑，把这个网址发给别人不会自动分享自己的项目。"
+      ],
+      [
+        "Ask what the chosen method requires.",
+        "Read docs/delivery.md. For local use explain start/stop and storage. For remote use explain where page, backend and database run, with accounts and costs. Plan only; do not publish.",
+        "The required preparations are clear.",
+        "localhost refers to the current computer; sharing it does not share your project."
+      ]
+    ]
+  ],
+  "release-review": [
+    [
+      [
+        "让工具对照试用记录，看看还有什么没有准备好。",
+        "请读需求、docs/checks.md、docs/acceptance.md 和 docs/delivery.md。逐项检查功能、启动说明、数据保存、账号和费用，把缺少的条件写清楚。先检查，不发布。",
+        "有明确的已准备和未准备清单。",
+        "没有本人试用记录就回试用步骤补，不让工具代填通过。"
+      ],
+      [
+        "Check what is still missing before delivery.",
+        "Read requirements, docs/checks.md, docs/acceptance.md and docs/delivery.md. Check features, startup instructions, data, accounts and costs. List gaps without publishing.",
+        "Ready and missing items are clearly separated.",
+        "Return to personal testing if its record is absent."
+      ]
+    ],
+    [
+      [
+        "保存检查清单，有阻断问题先修好。",
+        "请把准备情况保存到 docs/release.md，把需要修的问题编号写入 docs/feedback.md。还没制作安装包或部署时，相关试运行写待测试。",
+        "可以判断是先修问题还是准备交付文件。",
+        "尚未运行的项目不标通过；缺条件先补条件。"
+      ],
+      [
+        "Save the checklist and repair blocking issues first.",
+        "Save readiness to docs/release.md and numbered issues to docs/feedback.md. Mark artifact/deployment trials pending until they actually run.",
+        "You know whether to repair or prepare delivery files next.",
+        "Do not pass checks that have not run."
+      ]
+    ]
+  ],
+  "package": [
+    [
+      [
+        "让工具按已选方式准备给使用者的文件。",
+        "请读 docs/design.md、docs/delivery.md 和 docs/release.md。按已确认方式准备交付文件，告诉我保存位置、使用者需要安装什么以及怎样启动。只自用时可以提供源码和运行说明，不强行做安装包。",
+        "找到真实文件和配套使用说明。",
+        "缺配置时用占位说明，不能把真实密码和用户数据库打进公开文件。"
+      ],
+      [
+        "Prepare files for the chosen delivery method.",
+        "Read docs/design.md, docs/delivery.md and docs/release.md. Prepare the agreed files and explain location, dependencies and startup. Local use may use source and instructions without an installer.",
+        "Real files and matching instructions are available.",
+        "Use configuration placeholders; exclude real secrets and user databases from public packages."
+      ]
+    ],
+    [
+      [
+        "在独立测试目录或目标设备中，像接收者一样照说明打开并使用。",
+        "请给出独立试运行的方法，不借用已经启动的开发服务。用测试资料检查打开、保存、读取和重开，保留原项目数据。",
+        "接收者按说明可以使用主要功能。",
+        "仅在开发电脑可用时，核对依赖、配置和数据位置；缺设备就记未测试。"
+      ],
+      [
+        "Try it independently as the recipient would.",
+        "Give an isolated trial method without relying on an existing development service. Test opening, saving, reading and reopening with test data while preserving the original.",
+        "The instructions let the recipient use core features.",
+        "Compare dependencies/configuration/paths if it only works in development; mark unavailable devices untested."
+      ]
+    ],
+    [
+      [
+        "把这次试运行记录保存下来。",
+        "请将文件位置、版本、实际入口、试运行结果和出错后的恢复方法写入 docs/release.md。未测项保留，先不要正式发布。",
+        "下一步能按记录找到同一份交付文件。",
+        "测试失败先记问题并修复，不把“生成成功”当成“能用”。"
+      ],
+      [
+        "Save the trial record.",
+        "Write artifact location, revision, real entry, trial results and recovery to docs/release.md. Keep untested items and do not publish yet.",
+        "The next step can find the same deliverable.",
+        "Fix failed trials rather than equating file generation with usability."
+      ]
+    ]
+  ],
+  "live-check": [
+    [
+      [
+        "先确认实际交付到哪里。本机使用就确认本机启动方法；公开发布先看账号、网址、费用和影响。",
+        "请读 docs/release.md 和 docs/delivery.md，列出本次要执行的交付动作、目标和费用，等我明确确认后再做。",
+        "你知道将会发生什么，并能决定是否执行。",
+        "目标或费用不清楚就先问清，不把“准备好了”当作已经同意发布。"
+      ],
+      [
+        "Confirm the real destination. For local use check startup; for publication review account, URL, costs and impact.",
+        "Read docs/release.md and docs/delivery.md. List the proposed delivery actions, destination and costs; wait for my explicit confirmation.",
+        "You can understand and approve the action.",
+        "Clarify unknowns before approval."
+      ]
+    ],
+    [
+      [
+        "确认后执行，再从实际使用者的入口打开。",
+        "我确认执行以下动作：【填写】。请只执行这些动作，报告实际入口与版本。需要审核就记待审核，不提前说已经上线。",
+        "有真实入口，或知道还在等待哪个审核。",
+        "本机项目不需要假造公网网址；公开项目用普通用户身份测试。"
+      ],
+      [
+        "After approval, execute and open the intended user entry.",
+        "I approve these actions: 【fill in】. Execute only these and report the actual entry and revision. Mark pending reviews honestly.",
+        "A real entry exists or its pending review is clear.",
+        "Do not invent a public URL for local use; test public access as an ordinary user."
+      ]
+    ],
+    [
+      [
+        "亲自完成一次主要操作，再关闭重开检查。",
+        "我的实际使用结果：【填写】。请保存到 docs/release.md，并把最新版使用入口和说明更新到 README.md。",
+        "使用者可以按说明使用，结果记录准确。",
+        "有问题先停止扩大发布，按既定恢复方法处理；不要盲目覆盖数据库。"
+      ],
+      [
+        "Try the main task and reopen it, then record your result.",
+        "My actual use result: 【fill in】. Save it to docs/release.md and update README.md with the latest entry/instructions.",
+        "Users can follow accurate instructions.",
+        "Contain failures and use the planned recovery without blindly overwriting storage."
+      ]
+    ]
+  ],
+  "publish": [
+    [
+      [
+        "先判断是否适合 GitHub Pages。它可以托管静态网页，但不会替你运行后端和数据库。",
+        "请读 docs/delivery.md，检查项目能否直接导出静态网页。如果依赖后端或私密服务端配置，请说明原因并建议回到交付方式选择。现在只判断，不发布。",
+        "知道自己的项目是否适合。",
+        "学习记录全栈示例有后端和数据库，不能只上传页面就当作完整上线。"
+      ],
+      [
+        "Check whether GitHub Pages fits. It hosts static pages, not your backend/database service.",
+        "Read docs/delivery.md and assess static export suitability. Explain server/private-configuration dependencies and return to delivery selection if unsuitable. Assess only; do not publish.",
+        "Suitability is clear.",
+        "The full-stack journal cannot be fully deployed by uploading its page alone."
+      ]
+    ],
+    [
+      [
+        "适合时让工具写出实际设置方法，再回准备交付步骤试运行。",
+        "请列本项目生成静态文件的方法、输出目录和 GitHub Pages 设置步骤，解释每一步在哪里操作。先只提供方案，不创建远程仓库、不推送、不发布。",
+        "有能逐项照做的准备说明。",
+        "仓库或页面会公开时，先检查文件是否含密码、私密内容，再决定是否发布。"
+      ],
+      [
+        "If suitable, prepare exact instructions and return to delivery preparation.",
+        "List this project’s static build, output folder and GitHub Pages settings with locations. Provide a plan only; do not create a remote repository, push or publish.",
+        "The preparation instructions are actionable.",
+        "Review files for secrets/private content before approving public access."
+      ]
+    ]
+  ],
+  "maintain": [
+    [
+      [
+        "先分清要备份什么：项目代码、作品数据库、学习草稿是三份不同资料。",
+        "请列出本项目代码和实际数据的位置，分别说明怎样备份、备份存在哪里。代码提交不能代替数据库备份。",
+        "知道每份资料该从哪里备份。",
+        "只有仓库地址时，追问作品数据实际在哪里。"
+      ],
+      [
+        "Distinguish code, application data and learning drafts.",
+        "List code and actual data locations and how/where each is backed up. A commit does not replace a database backup.",
+        "Each backup source and destination is clear.",
+        "Ask for data storage if only a repository is listed."
+      ]
+    ],
+    [
+      [
+        "创建一份带日期的新备份，不覆盖旧文件。",
+        "请用数据库支持的一致性备份方法，生成一份新备份。先报告原数据位置、备份位置和当前记录数量，完成后告诉我文件大小。不要清空或覆盖原数据。",
+        "得到能找到的非空备份文件。",
+        "失败先查空间、路径和权限；不要删除旧备份来试运气。"
+      ],
+      [
+        "Create a new dated backup without overwriting older files.",
+        "Use the database’s supported consistent-backup method. Report source, destination and current record count, then output size. Preserve original data.",
+        "A nonempty backup exists at the reported location.",
+        "Check space, path and permissions on failure."
+      ]
+    ],
+    [
+      [
+        "在独立目录试着恢复这份备份。恢复成功意味着能真的打开并读到记录。",
+        "请把备份恢复到独立测试位置，先让我核对原库和恢复目标不是同一路径。只启动连接恢复副本的测试服务，告诉我打开地址，绝不覆盖原库。",
+        "能打开恢复副本，找到备份时的旧记录。",
+        "路径相同或不确定就停下，先改成独立位置。"
+      ],
+      [
+        "Restore into a separate test location and actually read the records.",
+        "Restore to a separate test destination. Show source and target paths first. Start only a test service connected to the copy and give its URL. Never overwrite the source.",
+        "The restored copy opens with records from the backup.",
+        "Stop if the paths match or are uncertain."
+      ]
+    ],
+    [
+      [
+        "只在恢复副本里新增一条测试记录，再检查原库没有变化。",
+        "请核对恢复副本的旧记录，并只读检查原库没有这次新增。将备份位置、恢复方法和结果写入 docs/handoff.md，停止恢复测试服务。",
+        "副本能用，原库内容不变，恢复方法已保存。",
+        "记录不符时保留副本和日志，先查备份日期及路径。"
+      ],
+      [
+        "Add a test record only to the restored copy and check the source stayed unchanged.",
+        "Verify old records in the copy and read-only confirm the source lacks the new record. Save backup location, recovery method and results to docs/handoff.md; stop the test service.",
+        "The copy works, the source is unchanged and recovery is documented.",
+        "Preserve mismatches and inspect backup time/paths."
+      ]
+    ],
+    [
+      [
+        "记录下次从哪里继续。",
+        "请更新 docs/handoff.md：项目位置、当前版本、启动方法、未解决问题、下一项任务。下次新对话先读这份文件，不重新创建项目。",
+        "下次可以直接找到原项目和下一项任务。",
+        "新需求先说明改什么，再更新需求和计划。"
+      ],
+      [
+        "Record where to resume next time.",
+        "Update docs/handoff.md with location, revision, startup, open issues and next task. A new chat should read it rather than recreate the project.",
+        "The next session can find the project and next task.",
+        "Describe new scope and update requirements/plans first."
+      ]
+    ]
+  ]
+}

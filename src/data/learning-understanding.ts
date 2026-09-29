@@ -2,12 +2,12 @@ import type {Understanding} from './learning';
 export const understanding={
   "idea": {
     "why": [
-      "先把自己的目标写清楚，后续才能判断 AI 是否做偏。",
-      "Clarify personal goals to recognize drift."
+      "先想清楚你要解决的一件事，AI 才知道该帮你做什么。",
+      "Name one problem so AI knows what to help you build."
     ],
     "concept": [
-      "想法可以不完整；未知不等于让 AI 自行编造。",
-      "Unknowns are allowed, not permission to invent."
+      "先写给谁用、解决什么问题，再写怎样试用才算做好。",
+      "Write users, problem and a practical success check."
     ],
     "question": [
       "这个项目解决的是谁的哪件事？",
@@ -30,12 +30,12 @@ export const understanding={
   },
   "tool": {
     "why": [
-      "工具能否读写和检查项目，比宣传中的能力排名更直接影响下一步。",
-      "File access and checks matter more than rankings for the next action."
+      "选一个你能登录、能操作项目文件的工具，就可以开始。",
+      "Choose one tool you can sign into that can work with project files."
     ],
     "concept": [
-      "免费安装、免费使用额度和产品运行费用是三回事。",
-      "Free installation, usage allowance and hosting costs are different."
+      "这里的 AI 工具需要能帮助你保存文件和运行项目；先确认入口，再开始做。",
+      "The tool should help save files and run the project; locate its controls first."
     ],
     "question": [
       "额度用完后，项目文件和进度还能找回吗？",
@@ -44,12 +44,12 @@ export const understanding={
   },
   "folder": {
     "why": [
-      "固定项目位置，才能找到实际产物，也避免改错别的项目。",
-      "A stable location makes outputs findable and prevents editing the wrong project."
+      "把这个项目的文件放在同一个文件夹，下次才找得到。",
+      "Keep project files together so you can find them next time."
     ],
     "concept": [
-      "文件夹保存本机文件；网页平台的云项目不一定在电脑里。",
-      "A local folder differs from a cloud workspace."
+      "文件夹就是项目文件的存放位置；路径是找到它的地址。",
+      "A folder stores project files; its path tells you where it is."
     ],
     "question": [
       "项目文件现在究竟保存在哪里？",
@@ -58,12 +58,12 @@ export const understanding={
   },
   "open-project": {
     "why": [
-      "对话必须关联正确的项目，AI 才能读到和修改目标文件。",
-      "The chat must target the right project to access its files."
+      "让工具打开你自己的项目文件夹，后面才能修改正确的文件。",
+      "Open your project folder in the tool so later changes reach the right files."
     ],
     "concept": [
-      "普通聊天能输出文字，不代表它有当前项目的文件权限。",
-      "Chat output does not prove project file access."
+      "同一个工具可以打开不同项目；开始前要检查现在打开的是哪一个。",
+      "A tool can open different projects; check which one is active."
     ],
     "question": [
       "怎样核对 AI 操作的是刚建立的文件夹？",
@@ -72,12 +72,12 @@ export const understanding={
   },
   "first-file": {
     "why": [
-      "亲手打开真实文件，能区分 AI 的回复与实际执行。",
-      "Opening a real file separates replies from execution."
+      "亲手打开文件，看自己的说明和规则是不是真的保存好了。",
+      "Open the files yourself to check that your description and rules were saved."
     ],
     "concept": [
-      "文件路径说明文件在哪；只有聊天里的代码块还不是文件。",
-      "A code block in chat is not a saved file."
+      "聊天里出现一段文字，与项目里已经保存一个文件，是两件事。现在要找的是实际文件。",
+      "A chat reply and a saved project file are different. Find the actual file now."
     ],
     "question": [
       "如果 AI 说保存了，却找不到文件，该核对什么？",
@@ -86,12 +86,12 @@ export const understanding={
   },
   "checkpoint": {
     "why": [
-      "修改前保存起点，改坏后才有依据比较和恢复。",
-      "Save a baseline before changes to compare and recover."
+      "Git 保存已经提交的项目版本，改错时可以回到之前保存的版本。AGENTS.md 是写给 AI 工具的项目说明书和规则。",
+      "Git keeps committed project versions you can return to. AGENTS.md explains the project and working rules to the AI tool."
     ],
     "concept": [
-      "Git 初始化只建立仓库；提交才记录一个版本。规则文件还要放在工具实际读取的位置。",
-      "Git initialization creates a repository; commits record versions. Rules must use a supported location."
+      "初始化 Git 是建立保存修改历史的地方；提交才是保存一个版本。AGENTS.md 写明工具做事时要遵守什么。",
+      "Initializing Git creates a place for history; committing saves a version. AGENTS.md states the rules the tool should follow."
     ],
     "question": [
       "有仓库但没有提交，是否已有可恢复版本？",
@@ -100,12 +100,12 @@ export const understanding={
   },
   "clarify": {
     "why": [
-      "先纠正 AI 的理解，避免它把猜测做成产品。",
-      "Correct misunderstandings before guesses become features."
+      "把工具没理解的地方解释清楚，避免做出你不想要的功能。",
+      "Explain unclear points before the tool builds the wrong thing."
     ],
     "concept": [
-      "澄清是补足影响选择的信息，不是让用户先懂所有技术。",
-      "Clarification fills decision gaps, not technical trivia."
+      "不用一次回答所有问题；问一个，答一个，不知道就说还没决定。",
+      "Answer one question at a time; undecided is a valid answer."
     ],
     "question": [
       "这项未知会改变第一版范围吗？",
@@ -114,12 +114,12 @@ export const understanding={
   },
   "scope": {
     "why": [
-      "明确本次边界，才能既做完核心任务，又避免无限加功能。",
-      "A clear boundary enables a useful finish without endless extras."
+      "先决定第一版必须能做哪些事，其他想法留到以后。",
+      "Decide what the first version must do and leave other ideas for later."
     ],
     "concept": [
-      "暂缓功能并非永远删除，而是本次不作为通过条件。",
-      "Deferred features are excluded from this release, not forever."
+      "第一版是你准备先完成并使用的一小部分，不是所有想法一次做完。",
+      "Version one is the useful part you will finish first, not every idea at once."
     ],
     "question": [
       "删掉这项功能，核心任务还能完成吗？",
@@ -128,12 +128,12 @@ export const understanding={
   },
   "requirements": {
     "why": [
-      "留下共同依据，换对话后也能知道什么才算做对。",
-      "Save shared criteria across conversations."
+      "把已经说好的功能写下来，开发时就能照着检查。",
+      "Write agreed features down so you can check the implementation later."
     ],
     "concept": [
-      "需求写用户行为和结果，技术设计再说明实现方式。",
-      "Requirements describe behavior; design explains implementation."
+      "需求文档记录填什么、做什么、应该得到什么结果。",
+      "Requirements record inputs, actions and expected outcomes."
     ],
     "question": [
       "只写“好用”，别人能一致判断通过吗？",
@@ -142,12 +142,12 @@ export const understanding={
   },
   "choose-stack": {
     "why": [
-      "保存位置、费用和平台会影响产品能不能按预期交付。",
-      "Storage, costs and platform affect delivery."
+      "请工具解释准备用哪些东西来做项目，以及会不会产生费用。",
+      "Ask which tools will build the project and what they cost."
     ],
     "concept": [
-      "技术栈是一组实现工具；不是用来帮忙写代码的 AI 工具。",
-      "A tech stack builds the product; an AI assistant helps write it."
+      "前端是看得见的页面；后端处理请求；数据库保存记录。你的项目需要哪部分，就准备哪部分。",
+      "The frontend is the page, the backend processes requests and the database stores records. Prepare the parts your project needs."
     ],
     "question": [
       "为什么本机保存不等于手机电脑自动同步？",
@@ -156,12 +156,12 @@ export const understanding={
   },
   "plan": {
     "why": [
-      "把任务拆成可检查的小变化，才能及时发现偏差。",
-      "Small inspectable tasks expose drift early."
+      "把开发拆成一小项一小项，做完一项就能打开看看。",
+      "Split development into small tasks you can inspect as they finish."
     ],
     "concept": [
-      "通过条件在实现前定义，不能为了显示完成而事后降低。",
-      "Define passing conditions before implementation, not lower them afterward."
+      "任务表告诉你下一项做什么、需要什么、怎样判断做完了。",
+      "A task list names the next job, prerequisites and completion check."
     ],
     "question": [
       "第一项做完，具体能打开或操作什么？",
@@ -170,12 +170,12 @@ export const understanding={
   },
   "preview": {
     "why": [
-      "先跑起来一小部分，比一次生成所有功能更容易检查方向。",
-      "A running small part is easier to assess than an entire generated app."
+      "从任务表第一项开始制作，每次亲手看完结果再继续。",
+      "Build from the first task and inspect each result before continuing."
     ],
     "concept": [
-      "预览地址依赖正在运行的服务；本机地址不是公开网址。",
-      "A local preview depends on its process and is not public."
+      "预览是打开正在开发的作品，看看真实页面和功能是什么样。",
+      "A preview opens the work in progress so you can see its real pages and behavior."
     ],
     "question": [
       "关闭启动窗口后，为什么地址可能打不开？",
@@ -184,12 +184,12 @@ export const understanding={
   },
   "interface": {
     "why": [
-      "界面决定使用者能否找到动作和理解反馈。",
-      "UI determines whether actions and feedback are understandable."
+      "让使用者看得懂文字，找得到输入框和按钮。",
+      "Make labels, fields and buttons understandable and easy to find."
     ],
     "concept": [
-      "外观改动也可能影响功能，所以原流程需要再试。",
-      "Visual changes can affect behavior; retry the original flow."
+      "界面就是使用者看到和操作的页面；这里先改一处具体问题。",
+      "The interface is what people see and use; fix one specific problem here."
     ],
     "question": [
       "这次调整让哪个具体操作更容易了？",
@@ -198,12 +198,12 @@ export const understanding={
   },
   "save": {
     "why": [
-      "真实保存要在刷新或重新打开后仍然有效。",
-      "Persistence must survive refresh or reopening."
+      "让用户填写的内容真正存下来，关掉页面后还能找回。",
+      "Store entered content so it can be found after the page closes."
     ],
     "concept": [
-      "显示成功提示，不证明数据已经写入。",
-      "A success message alone does not prove a write."
+      "看到“保存成功”还要查记录是否真的写入；刷新、重新打开后也应读得到。",
+      "After a success message, check the real record and read it after reopening."
     ],
     "question": [
       "怎样证明保存结果不是只留在当前画面？",
@@ -212,12 +212,12 @@ export const understanding={
   },
   "flow": {
     "why": [
-      "单个按钮能用不代表它们连接后能完成任务。",
-      "Working buttons may still fail as a complete flow."
+      "像使用者一样从头做一遍，检查每个步骤能不能接着往下走。",
+      "Act as a user and check that every action leads to the next."
     ],
     "concept": [
-      "端到端检查从用户入口一直走到最终结果。",
-      "End-to-end checks follow entry to outcome."
+      "完整流程包括打开、输入、提交和看到结果，不能只试一个按钮。",
+      "A complete flow includes opening, input, submission and results, not one button alone."
     ],
     "question": [
       "从第一次打开开始，能独立完成吗？",
@@ -226,12 +226,12 @@ export const understanding={
   },
   "test": {
     "why": [
-      "现实使用包含误操作和失败，不能只检查最顺利的一次。",
-      "Real use includes mistakes and failures."
+      "试试填错、重复点击或服务停止时，作品能不能清楚提示并保留资料。",
+      "Try invalid input, repeat clicks and service failure to check feedback and retained data."
     ],
     "concept": [
-      "边界情况是空白、重复等容易遗漏的输入或操作。",
-      "Edge cases include blank or repeated actions."
+      "异常测试就是故意试一试不顺利的情况，看看作品会怎样处理。",
+      "Failure testing deliberately tries things going wrong to see how the project responds."
     ],
     "question": [
       "除了正常输入，最可能发生哪种误操作？",
@@ -240,12 +240,12 @@ export const understanding={
   },
   "restart": {
     "why": [
-      "作品需要下次还能用，不能依赖当前对话一直开着。",
-      "Work must reopen beyond the current conversation."
+      "确认今天关掉以后，明天照着说明还能打开并继续用。",
+      "Check that you can close it today and reopen it from the instructions tomorrow."
     ],
     "concept": [
-      "启动说明是复现入口，不能依赖猜测端口或重新生成项目。",
-      "Restart instructions reproduce access without guessing or rebuilding."
+      "浏览器页面与后端服务不是同一个东西；关浏览器后服务可能还在运行。",
+      "The browser page and backend are separate; closing the browser may leave the service running."
     ],
     "question": [
       "明天没有这段聊天，还知道怎样打开吗？",
@@ -254,12 +254,12 @@ export const understanding={
   },
   "accept": {
     "why": [
-      "AI 能检查部分行为，是否解决本人问题仍需亲手判断。",
-      "AI checks some behavior; personal use judges fit."
+      "回到最初的想法，亲自看看作品有没有解决自己的问题。",
+      "Return to the original goal and personally check whether the project solves it."
     ],
     "concept": [
-      "自动测试、人工试用和公开发布是不同状态。",
-      "Automated checks, personal acceptance and release are distinct."
+      "验收就是你按照先前约定的方法试用，再决定是否达到了目标。",
+      "Acceptance means trying the agreed checks yourself and deciding whether the goal is met."
     ],
     "question": [
       "是否还有不能接受的问题或未试过的关键步骤？",
@@ -268,12 +268,12 @@ export const understanding={
   },
   "delivery": {
     "why": [
-      "目标用户在哪里使用，决定需要怎样交付。",
-      "Audience and device determine delivery."
+      "先决定自己用还是给别人用，才能知道需要准备哪些文件和服务。",
+      "Choose local or shared use before preparing files and services."
     ],
     "concept": [
-      "自用也可以是完整成果，不一定需要购买域名或公开代码。",
-      "Personal use can be complete without a domain or public code."
+      "交付就是让预期使用者能打开并使用作品，不一定需要公开网址。",
+      "Delivery means intended users can open and use it; a public URL is optional."
     ],
     "question": [
       "需要一个网址、一个安装包，还是本机启动说明？",
@@ -282,12 +282,12 @@ export const understanding={
   },
   "publish": {
     "why": [
-      "静态网页与需要服务器的应用不能用同一发布方法。",
-      "Static sites and server apps need different hosting."
+      "先判断自己的网页是否适合放到 GitHub Pages，再决定下一步。",
+      "Check whether your page fits GitHub Pages before proceeding."
     ],
     "concept": [
-      "静态托管提供网页文件，不自动增加共享数据库。",
-      "Static hosting serves files, not shared storage."
+      "Git 是记录版本的工具；GitHub 是保存和分享代码的网站；GitHub Pages 是它提供的静态网页托管功能。",
+      "Git records versions, GitHub hosts/shares code, and GitHub Pages hosts static webpages."
     ],
     "question": [
       "为什么换了正式网址后看不到原本的本机记录？",
@@ -296,12 +296,12 @@ export const understanding={
   },
   "maintain": {
     "why": [
-      "保存下一步和恢复方法，后续继续才不需要从头再讲。",
-      "Record next actions and recovery to resume without restarting."
+      "把启动、备份和下一项任务写好，下次就能接着做。",
+      "Record startup, backups and the next task so you can resume later."
     ],
     "concept": [
-      "代码备份和用户数据备份需要分别处理。",
-      "Code and user data need separate backups."
+      "备份是另存一份资料；恢复是用那份资料重新打开并确认能用。",
+      "A backup keeps another copy; restoration proves that copy can be opened and used."
     ],
     "question": [
       "只有代码仓库，能恢复用户后续填写的数据吗？",

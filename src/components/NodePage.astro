@@ -69,7 +69,7 @@ const nodeTerms = steps
     </dl>
   </header>
 
-  <aside class="node-progress-summary" aria-label={label('本人核对进度','Your check progress')}><strong>{label('本节点','This milestone')} <span data-node-progress={node.id}>0/{mainSteps.length}</span></strong><span data-main-progress aria-live="polite"></span><small>{label('仅记录本人核对；可随时撤销，不代表网站自动验收。','Self-reported checks; reversible, not automatic verification.')}</small></aside>
+  <aside class="node-progress-summary" aria-label={label('本人核对进度','Your check progress')}><strong>{label('本节点','This milestone')} <span data-node-progress={node.id}>0/{mainSteps.length}</span></strong><span data-main-progress aria-live="polite"></span><small>{label('亲自检查结果后再标记完成；标错了可以撤销。','Mark complete after checking the result yourself; you can undo a mistaken mark.')}</small></aside>
   <nav class="node-action-index" aria-label={label('本节点动作直达','Jump to an action')}>{steps.map((id,i)=><a href={`#${id}`}>{i+1}. {t(lessons.find(l=>l.id===id)!.title,locale)}</a>)}</nav>
   <section class="node-steps" aria-label={label('本节点的步骤', 'Steps in this milestone')}>
     <h2 class="node-section-title">{label(`本节点共 ${steps.length} 个步骤`, `${steps.length} step${steps.length > 1 ? 's' : ''} in this milestone`)}<span>{label('逐项展开，做完一个再进入下一个', 'Open one at a time, finish it, then continue')}</span></h2>
@@ -109,7 +109,7 @@ const nodeTerms = steps
   <NodeResources id={node.id} locale={locale}/>
   <ProjectDraft locale={locale} />
   <p class="local-note" data-learning-status role="status">{label('草稿与进度只保存在当前浏览器。', 'Draft and progress stay in this browser.')}</p>
-  <p class="local-note">{label('本页只呈现本节点的操作、术语和卡点，不把其他节点的内容堆在同一屏。', 'This page shows only this milestone’s actions, terms and blockers.')}</p>
+  <p class="local-note">{label('按顺序完成本页操作，遇到问题时展开对应的检查和处理方法。', 'Complete the actions in order; expand the matching checks and remedies if you get stuck.')}</p>
 </div>
 
 <script>

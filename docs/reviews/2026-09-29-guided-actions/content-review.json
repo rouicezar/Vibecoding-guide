@@ -1,1533 +1,2299 @@
 {
+  "idea": [
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "写清谁会用。在下方想法草稿的第一项，写一个具体的人或群体。",
+        "Name the user. Fill the first field in the idea draft below."
+      ],
+      "tip": [
+        "完成后：例如“我自己”或“店里负责记账的人”。",
+        "Afterwards: For example, yourself or the person keeping shop accounts."
+      ],
+      "expect": [
+        "例如“我自己”或“店里负责记账的人”。",
+        "For example, yourself or the person keeping shop accounts."
+      ],
+      "ifWrong": [
+        "想不到就从自己最近遇到的一件麻烦事开始。",
+        "Start with a recent problem you personally faced."
+      ],
+      "prompt": [
+        "",
+        ""
+      ]
+    },
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "写清要解决什么。接着填写“现在有什么麻烦”和“做完后想怎样用”。",
+        "Describe the problem and how you want to use the finished project."
+      ],
+      "tip": [
+        "完成后：能说出一个具体过程，例如输入学习内容、保存、以后再找。",
+        "Afterwards: A concrete flow, such as enter notes, save them and find them later."
+      ],
+      "expect": [
+        "能说出一个具体过程，例如输入学习内容、保存、以后再找。",
+        "A concrete flow, such as enter notes, save them and find them later."
+      ],
+      "ifWrong": [
+        "不要只写“做一个好用的网站”；补上打开后要做的事。",
+        "Replace “a useful website” with what someone will actually do."
+      ],
+      "prompt": [
+        "",
+        ""
+      ]
+    },
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "写好怎样试用才算做好，再点击“确认，生成我的想法草稿”。第二阶段暂时不做就填“否”。",
+        "Describe how you will test success, then click Confirm and generate my idea. Put “none” for later features if unnecessary."
+      ],
+      "tip": [
+        "完成后：生成的草稿保留了自己的用户、问题、试用方法。",
+        "Afterwards: The draft retains your users, problem and test."
+      ],
+      "expect": [
+        "生成的草稿保留了自己的用户、问题、试用方法。",
+        "The draft retains your users, problem and test."
+      ],
+      "ifWrong": [
+        "有空白就补好再确认；还不知道的事写“尚未确定”。",
+        "Fill missing fields and confirm again; mark unknowns undecided."
+      ],
+      "prompt": [
+        "",
+        ""
+      ]
+    }
+  ],
+  "description": [
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "点击下方模板的“带入前面已确认的材料”，检查是不是自己的想法。",
+        "Click the template’s confirmed-material import button and check the idea."
+      ],
+      "tip": [
+        "完成后：上一步的用户和目标已出现在模板中。",
+        "Afterwards: Your previous users and goal appear."
+      ],
+      "expect": [
+        "上一步的用户和目标已出现在模板中。",
+        "Your previous users and goal appear."
+      ],
+      "ifWrong": [
+        "没有带入时回想法步骤确认草稿，或亲手粘贴已写好的内容。",
+        "Confirm the idea in the preceding step or paste the saved text yourself."
+      ],
+      "prompt": [
+        "",
+        ""
+      ]
+    },
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "补项目名称、在哪种设备上用，以及从打开到完成的一次操作。只写自己想要的使用方法，不需要先选数据库。",
+        "Add the name, devices and one complete use from opening to outcome. You do not need to choose a database yet."
+      ],
+      "tip": [
+        "完成后：别人读完能知道要做什么、给谁用、怎样试。",
+        "Afterwards: A reader knows what to build, for whom and how to test it."
+      ],
+      "expect": [
+        "别人读完能知道要做什么、给谁用、怎样试。",
+        "A reader knows what to build, for whom and how to test it."
+      ],
+      "ifWrong": [
+        "拿不准的条件写“尚未确定”，留给后面和 AI 讨论。",
+        "Mark uncertain conditions undecided for later discussion."
+      ],
+      "prompt": [
+        "",
+        ""
+      ]
+    },
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "点击“确认，生成我的专属内容”，再复制保存好。后面准备 Git 的步骤会用到这段项目说明。",
+        "Confirm your version, then copy and keep it for the Git preparation step."
+      ],
+      "tip": [
+        "完成后：得到一份能直接交给工具的项目说明。",
+        "Afterwards: You have a project description ready to send to the tool."
+      ],
+      "expect": [
+        "得到一份能直接交给工具的项目说明。",
+        "You have a project description ready to send to the tool."
+      ],
+      "ifWrong": [
+        "发现内容有误就修改模板、重新确认，再复制最新版。",
+        "After edits, confirm again and copy the updated version."
+      ],
+      "prompt": [
+        "",
+        ""
+      ]
+    }
+  ],
   "tool": [
     {
       "where": [
-        "本站本步的“官方下载与安装入口”",
-        "This step’s official download entries"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "先确认电脑是 Mac 还是 Windows，再展开下载入口，选一种工具。已装好可用工具时跳过安装，直接核对登录状态和项目入口。",
-        "Check whether your computer uses Mac or Windows, expand the download entries and choose one tool. If already installed, skip installation and check sign-in and the project entry."
+        "从下面的工具入口选一个，打开它的官方网站。先查看是否支持自己的电脑，以及费用是否在预算内。",
+        "Choose one tool from the entries below. Check its official site for your computer and budget."
       ],
       "tip": [
-        "这一步只选一个工具。下面安装动作以桌面工具为例；网页工具直接打开官方网页登录，命令行工具按官方安装说明进入项目，不照搬桌面入口。",
-        "Choose one tool. Installation below illustrates a desktop app; for a web tool sign in on its official site, and for a CLI use its official setup rather than desktop controls."
+        "完成后：选定一个能够操作项目文件的工具。",
+        "Afterwards: One suitable tool can work with project files."
       ],
       "expect": [
-        "你知道选的是哪个工具，打开的是它的官方入口。",
-        "You know the chosen tool and have opened its official entry."
+        "选定一个能够操作项目文件的工具。",
+        "One suitable tool can work with project files."
       ],
       "ifWrong": [
-        "不确定系统时先在电脑系统信息里核对；不要试着下载每个版本。",
-        "If unsure, check the computer’s system information instead of downloading every version."
+        "安装条件不合适就换适合的工具，不必全部安装。",
+        "Choose another if unsuitable; you do not need every tool."
+      ],
+      "prompt": [
+        "",
+        ""
       ]
     },
     {
       "where": [
-        "所选工具的官方下载页与安装窗口",
-        "The chosen tool’s official download page and installer"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "下载与你系统对应的安装文件，打开它，按安装窗口提示完成，再打开应用。",
-        "Download the installer for your OS, open it, follow its instructions and launch the app."
+        "按照所选工具的官方说明安装并登录。已有可用工具就直接打开它；网页工具直接登录工作区。",
+        "Install and sign in using the chosen tool’s instructions, or open your existing tool. Web tools use their online workspace."
       ],
       "tip": [
-        "出现付费或系统权限说明时先看清内容；安装还没完成，不要先发送项目制作任务。",
-        "Read payment or permission explanations; do not send project work before installation finishes."
+        "完成后：能看到项目或对话入口。",
+        "Afterwards: You can find the project or chat entry."
       ],
       "expect": [
-        "能看到应用窗口，或清楚的登录页面。",
-        "An app window or sign-in page is visible."
+        "能看到项目或对话入口。",
+        "You can find the project or chat entry."
       ],
       "ifWrong": [
-        "若提示不支持当前系统，记下原文并回官方兼容说明；此时保留在本步，不假装安装成功。",
-        "For unsupported-system messages, keep the exact text and check official compatibility; remain here until installed."
+        "遇到安装或登录错误，保留报错文字，对照该工具官方帮助处理。",
+        "Keep installation/sign-in errors and consult that tool’s official help."
+      ],
+      "prompt": [
+        "",
+        ""
       ]
     },
     {
       "where": [
-        "所选工具的登录界面",
-        "The chosen tool’s sign-in screen"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "按界面完成本人账号登录；登录后找到与项目或文件夹有关的工作入口。",
-        "Sign in with your own account, then locate the project or folder workspace."
+        "找到输入框，先询问它能怎样帮你处理项目。",
+        "Find the message box and ask how to work on a project."
       ],
       "tip": [
-        "不要把密码或验证码粘贴到本站模板里；免费额度和费用以本人账号显示为准。",
-        "Never paste passwords or verification codes into this guide; check access and costs in your account."
+        "完成后：得到具体入口说明，知道下一步在哪里打开文件夹。",
+        "Afterwards: You know where to open the folder next."
       ],
       "expect": [
-        "你进入了工具工作界面；下一步将创建自己的项目文件夹。",
-        "You are in the tool workspace, ready to create your project folder."
+        "得到具体入口说明，知道下一步在哪里打开文件夹。",
+        "You know where to open the folder next."
       ],
       "ifWrong": [
-        "登录失败就记录它实际显示的错误，先解决登录；只有聊天框但没有项目入口时查看官方项目说明。",
-        "Record sign-in errors and resolve them first; if you see only chat, check official project instructions."
+        "没有文件操作能力时，换能操作项目的工具，或按其说明使用配套编辑器。",
+        "If files cannot be handled, choose a suitable tool or its supported editor."
+      ],
+      "prompt": [
+        "我是第一次使用。请告诉我在哪里选择项目文件夹，以及你能否读取文件、修改文件和运行项目。只介绍操作入口，先不要创建文件。",
+        "I am new. Show me where to select a project folder and whether you can read files, edit them and run the project. Explain the entry only; do not create files."
       ]
     }
   ],
   "folder": [
     {
       "where": [
-        "Mac 访达 / Windows 文件资源管理器",
-        "Mac Finder / Windows File Explorer"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "打开文件管理器，在左侧找到“文稿”或“文档”，进入这个位置。",
-        "Open the file manager and enter Documents from its sidebar."
+        "在电脑上打开“文档”文件夹。Mac 用访达，Windows 用文件资源管理器；使用网页工作区时，直接在工具的项目列表新建项目。",
+        "Open Documents in Finder or File Explorer. For a web workspace, create a project in its project list instead."
       ],
       "tip": [
-        "这是电脑上的文件夹，不是本站资料库，也不是浏览器下载列表。",
-        "This is a computer folder, not the guide’s library or the browser’s download list."
+        "完成后：找到专门存放这个项目的位置。",
+        "Afterwards: You have a dedicated place for this project."
       ],
       "expect": [
-        "窗口显示文稿／文档目录里的内容。",
-        "The window shows the contents of Documents."
+        "找到专门存放这个项目的位置。",
+        "You have a dedicated place for this project."
       ],
       "ifWrong": [
-        "Mac 侧栏没有时可用“前往 → 文稿”；Windows 在文件资源管理器里查找“文档”。",
-        "On Mac use Go → Documents if absent from the sidebar; on Windows locate Documents in File Explorer."
+        "不要把别人的项目文件夹当作新项目，也不要清空已有文件。",
+        "Do not reuse or empty an unrelated project folder."
+      ],
+      "prompt": [
+        "",
+        ""
       ]
     },
     {
       "where": [
-        "刚打开的文稿／文档目录",
-        "The Documents folder you just opened"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "Mac 按 Shift + Command + N；Windows 在文档目录按 Ctrl + Shift + N，新建文件夹。输入自己的项目名称并按回车，双击打开。跟练示例可命名 learning-journal。",
-        "In Documents, press Shift + Command + N on Mac or Ctrl + Shift + N on Windows. Type your project name, press Enter and open the folder. The practice example can be named learning-journal."
+        "创建文件夹并用自己的项目名称命名。Mac 按 Shift+Command+N，Windows 按 Ctrl+Shift+N，输入名称后按回车。",
+        "Create and name a folder: Shift+Command+N on Mac or Ctrl+Shift+N on Windows, then enter a name."
       ],
       "tip": [
-        "看到已有同名文件夹先检查里面是什么，不覆盖或清空别人的项目。",
-        "Inspect an existing same-named folder; do not overwrite or empty another project."
+        "完成后：能打开刚建的空文件夹；网页工具能打开新工作区。",
+        "Afterwards: The new folder or web workspace opens."
       ],
       "expect": [
-        "目录里出现你命名的文件夹。",
-        "Your named folder appears."
+        "能打开刚建的空文件夹；网页工具能打开新工作区。",
+        "The new folder or web workspace opens."
       ],
       "ifWrong": [
-        "无法创建时换到本人有写入权限的位置，记录新的位置；不要随意修改系统权限。",
-        "If creation fails, choose a writable personal location and record it instead of changing system permissions."
+        "同名文件夹已存在时先检查内容，再决定沿用还是另取名字。",
+        "Inspect an existing same-named folder before reusing it."
+      ],
+      "prompt": [
+        "",
+        ""
       ]
     },
     {
       "where": [
-        "自己新建的文件夹",
-        "Your newly created folder"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "选中刚建的文件夹。Mac 按 Option + Command + C 复制路径；Windows 打开文件夹后点击地址栏，再按 Ctrl + C。把复制的位置填入本步记录模板。",
-        "Select the new folder. On Mac press Option + Command + C to copy its path; on Windows open it, click the address bar and press Ctrl + C. Paste the path into this step’s record template."
+        "复制项目位置填到下方模板。Mac 选中文件夹按 Option+Command+C；Windows 打开文件夹后复制地址栏；网页工具记录工作区名称和入口。",
+        "Copy the location into the template: Option+Command+C on a selected Mac folder, the Windows address bar, or your web workspace name and entry."
       ],
       "tip": [
-        "填的是自己电脑上的实际位置，不照抄教程作者路径。这里只记录，还没有让 AI 打开它。",
-        "Use your own actual path, not the author’s. Recording it does not open it in the AI tool."
+        "完成后：模板中的位置能带你回到同一个项目。",
+        "Afterwards: The recorded location leads back to the same project."
       ],
       "expect": [
-        "你能再次找到这个文件夹，记录中有明确位置。",
-        "You can find the folder again and have recorded its location."
+        "模板中的位置能带你回到同一个项目。",
+        "The recorded location leads back to the same project."
       ],
       "ifWrong": [
-        "不会复制完整路径时，先在文件管理器的路径显示位置查看；仍不确定先记录所在目录和名称，下一步核对前不要制作文件。",
-        "Use the file manager’s path display; if unsure, note parent folder/name and verify next before creating files."
-      ]
-    },
-    {
-      "where": [
-        "所选工具是网页工作区时",
-        "If your chosen tool uses a web workspace"
+        "不要照抄示例路径；找不到完整路径时先记录上级目录和名称。",
+        "Use your own path; record its parent folder and name if needed."
       ],
-      "action": [
-        "本步改在该工具的项目列表新建独立工作区，记录名称和实际入口；下一步打开同一工作区。",
-        "Create a dedicated workspace in that tool’s project list, record its name and real entry, then open the same workspace in the next step."
-      ],
-      "tip": [
-        "网页工作区不一定在电脑上有文件夹。模板中如实填写工作区入口，不编造本机路径。",
-        "A web workspace may not have a local folder. Record its real entry rather than inventing a local path."
-      ],
-      "expect": [
-        "能再次打开同一工作区，并查看项目文件。",
-        "The same workspace reopens and exposes its project files."
-      ],
-      "ifWrong": [
-        "不能查看或导出项目文件时，返回工具选择核对它是否适合本项目。",
-        "If project files cannot be viewed/exported, return to tool selection and check suitability."
+      "prompt": [
+        "",
+        ""
       ]
     }
   ],
   "open-project": [
     {
       "where": [
-        "所选 AI 工具的项目／文件夹入口",
-        "The AI tool’s project/folder entry"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "选择打开或添加项目文件夹，选中上一步的文件夹并确认。在这个项目里打开一条对话。",
-        "Open/add the previous folder and confirm, then open a chat within that project."
+        "在所选工具中选择“打开文件夹”或对应的项目入口，选中刚建的文件夹。",
+        "Use Open folder or the equivalent project entry and choose your new folder."
       ],
       "tip": [
-        "入口名称随工具和版本不同。网页工具打开刚记录的工作区；命令行工具先在终端进入原项目目录。不在别的项目会话里发制作任务。",
-        "Names vary by tool/version. Web tools open the recorded workspace; CLIs start from the project directory in a terminal. Do not send work in an unrelated project."
+        "完成后：工具中的项目名称与自己的文件夹一致。",
+        "Afterwards: The tool shows the expected project."
       ],
       "expect": [
-        "对话显示或关联的是你的项目。",
-        "The chat shows or belongs to your project."
+        "工具中的项目名称与自己的文件夹一致。",
+        "The tool shows the expected project."
       ],
       "ifWrong": [
-        "找不到入口先查看本步工具说明；不把普通网页聊天当成已经打开了文件夹。",
-        "Check the tool guidance if the entry is missing; ordinary web chat does not prove folder access."
+        "找不到入口时看下面的界面图或该工具的官方项目说明。",
+        "Use the screenshot below or the tool’s official project instructions."
+      ],
+      "prompt": [
+        "",
+        ""
       ]
     },
     {
       "where": [
-        "本站“本步提示词”编辑框",
-        "This guide’s prompt editor"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "找到下方第 7 项“发给 AI 的话”中的本步模板，把“项目文件夹”换成实际路径，点击确认，再复制生成的提示词。",
-        "Find this step’s template in section 7, “What to send to AI”, enter the real folder path, confirm and copy the generated prompt."
+        "在这个项目中打开对话，把自己的完整路径填入下面这段话后发送。",
+        "Start a chat in this project, replace the path and send this."
       ],
       "tip": [
-        "确认和复制只发生在本站，还没有向工具发消息，也没有检查你的电脑。",
-        "Confirm/copy only prepares text in this guide; it has not messaged the tool or inspected your computer."
+        "完成后：工具返回的实际路径与自己的路径一致。",
+        "Afterwards: The reported path matches yours."
       ],
       "expect": [
-        "本站显示可复制的完整检查话术，路径是你填写的。",
-        "The complete inspection prompt contains your real path."
+        "工具返回的实际路径与自己的路径一致。",
+        "The reported path matches yours."
       ],
       "ifWrong": [
-        "仍有待填字段时先补齐；复制失败就手动选中生成文字复制。",
-        "Complete remaining fields first; if copying fails, select and copy the generated text manually."
-      ]
-    },
-    {
-      "where": [
-        "刚打开的项目对话输入框",
-        "The selected project chat composer"
+        "不一致就重新选择正确项目，不让工具搬动其他项目的文件来凑路径。",
+        "Select the correct project if different; do not move unrelated files to make it match."
       ],
-      "action": [
-        "粘贴刚复制的提示词，检查是本次路径，再发送。等待工具完成这次只读检查。",
-        "Paste the prompt, check the path and send it. Wait for the read-only inspection."
-      ],
-      "tip": [
-        "先不要再发“开始开发”；若出现权限提示，读清它要访问哪个目录。",
-        "Do not send “start building” yet; read the target directory if a permission prompt appears."
-      ],
-      "expect": [
-        "工具回复实际路径、已有文件和是否一致。",
-        "The tool reports actual location, files and whether they match."
-      ],
-      "ifWrong": [
-        "无法访问时按报告选择目录；额度用完就保留本步材料，恢复后在原项目重发检查。不接受编造的文件列表。",
-        "For access failures select the reported directory; if quota runs out, keep this step’s material and repeat the check in the original project after access returns. Do not accept invented files."
-      ]
-    },
-    {
-      "where": [
-        "工具回复与文件管理器中的文件夹",
-        "The tool reply and your file manager"
-      ],
-      "action": [
-        "逐字核对回复里的项目位置；确认一致后，再进入“准备起点”的动作。",
-        "Compare the reported location with your folder; proceed to baseline preparation only when they match."
-      ],
-      "tip": [
-        "“名称相似”不等于同一个目录，尤其注意下载目录和文稿目录的区别。",
-        "Similar names do not mean the same directory; distinguish Downloads from Documents."
-      ],
-      "expect": [
-        "两边指向同一个位置，已有文件也对得上。",
-        "Both point to the same location with matching files."
-      ],
-      "ifWrong": [
-        "不一致就停止，重新选项目再发同一条检查，不让工具移动别的项目凑位置。",
-        "If mismatched, select the correct project and repeat the check; do not move other projects to force a match."
+      "prompt": [
+        "请检查当前打开的项目是不是【我的项目完整路径】。告诉我实际路径，并列出文件夹里已有的文件。只检查，不修改文件。",
+        "Check whether the current project is 【my full project path】. Report its actual path and existing files. Inspect only; do not change files."
       ]
     }
   ],
   "checkpoint": [
     {
       "where": [
-        "本站项目描述与本步模板",
-        "Your guide brief and this step’s template"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "回看已确认的项目描述，在本步模板点击“带入前面已确认的材料”，核对带入内容，再确认并复制。",
-        "Review the confirmed brief, import it into this step’s template, check the imported text, then confirm and copy."
+        "把项目文件夹初始化为 Git 仓库。在刚才的项目对话中发送下面这句话。Git 用来保存修改历史，已经保存的版本可以找回。",
+        "Initialize a Git repository in the project chat. Git keeps saved versions of your files so you can return to them."
       ],
       "tip": [
-        "本站草稿不会自动变成电脑文件；现在是准备让工具保存的文字。",
-        "A guide draft does not automatically become a computer file; you are preparing text for the tool to save."
+        "完成后：工具明确告诉你已经建立或沿用了 Git 仓库。",
+        "Afterwards: The tool confirms a new or existing repository."
       ],
       "expect": [
-        "提示词包含自己的项目描述，不留示例占位文字。",
-        "The prompt contains your brief without example placeholders."
+        "工具明确告诉你已经建立或沿用了 Git 仓库。",
+        "The tool confirms a new or existing repository."
       ],
       "ifWrong": [
-        "没有可带入材料时回到项目描述完成确认；不要让工具替你猜已确认内容。",
-        "If there is no confirmed material, return to the brief and confirm it rather than asking the tool to guess."
+        "提示没有安装 Git 时，请工具按你的系统给出官方安装入口，安装后再做这一项。",
+        "If Git is missing, ask for the official installation steps for your system, install it and retry."
+      ],
+      "prompt": [
+        "请检查当前项目是否已经是 Git 仓库。如果还不是，请把这个项目文件夹初始化为 Git 仓库；如果已经是，请继续使用现有仓库。先不要提交或上传文件。",
+        "Check whether this folder is already a Git repository. If not, initialize one here; otherwise reuse it. Do not commit or upload files yet."
       ]
     },
     {
       "where": [
-        "已经核对位置的项目对话",
-        "The project chat whose location you verified"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "粘贴并发送本步提示词，让工具保存想法、规则和起点版本；等待它报告结果。",
-        "Paste/send this step’s prompt to save the idea, rules and baseline revision; wait for its result."
+        "创建 AGENTS.md。它是写给 AI 工具看的项目说明书和规则，告诉工具应该怎样做事。",
+        "Create AGENTS.md, a project guide and working rules for the AI tool."
       ],
       "tip": [
-        "这次不开发功能。已有规则文件先读再合并，不能因为跟教程就覆盖。",
-        "No feature development yet. Read and merge existing rules instead of overwriting them for the tutorial."
+        "完成后：打开 AGENTS.md，能读到项目的工作规则；其他工具则找到它支持的规则文件。",
+        "Afterwards: You can open the rules file and read the instructions."
       ],
       "expect": [
-        "回复说明 idea.md、规则文件的实际位置和起点版本。",
-        "The reply identifies idea.md, the rules file and a baseline revision."
+        "打开 AGENTS.md，能读到项目的工作规则；其他工具则找到它支持的规则文件。",
+        "You can open the rules file and read the instructions."
       ],
       "ifWrong": [
-        "缺 Git、身份或写权限时，先按报告解决这一项，再重试；不能把没提交写成已留版本。",
-        "Resolve missing Git, identity or write access before retrying; an unmade commit is not a saved revision."
+        "只有聊天回复而没有文件时，请工具给出保存后的实际文件路径。",
+        "If only a chat reply exists, request the actual saved file path."
+      ],
+      "prompt": [
+        "请在项目根目录创建 AGENTS.md，写明：先读项目说明，再做我当前要求的任务；不擅自增加功能；不删除已有成果；完成后告诉我改了哪些文件、怎样检查。已有文件先读并保留原规则，不直接覆盖。若当前工具不支持此文件，请告诉我它支持的规则入口。",
+        "Create AGENTS.md at the project root: read the project description first, do only my current task, do not add features or delete existing work, and report changed files and checks. Read existing rules before updating them. If this tool does not support AGENTS.md, tell me its supported rules entry."
       ]
     },
     {
       "where": [
-        "工具刚才的结果回复",
-        "The tool’s result reply"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "记下文件位置与版本号；下一步打开真实文件，核对保存内容。",
-        "Note the file locations and revision; open the real files in the next step."
+        "把前面写好的项目描述保存成 idea.md。回到“整理项目描述”复制已确认内容，再粘贴进下面的话。",
+        "Save your confirmed description as idea.md. Copy it from the description step into this message."
       ],
       "tip": [
-        "版本号是找回起点的标记，不是验收通过证明。",
-        "A revision identifies a recovery point, not acceptance success."
+        "完成后：打开 idea.md，可以看到自己的项目名称、用户和想做的功能。",
+        "Afterwards: idea.md contains your own project and intended users/features."
       ],
       "expect": [
-        "你知道下一步该打开哪两个文件。",
-        "You know which two files to open next."
+        "打开 idea.md，可以看到自己的项目名称、用户和想做的功能。",
+        "idea.md contains your own project and intended users/features."
       ],
       "ifWrong": [
-        "回复只说“完成”却没有位置时，要求它重新读取并报告真实路径，不重新创建项目。",
-        "If it only says done, ask it to read back and report real paths without recreating the project."
+        "内容不对时指出哪句需要改；不要让工具重新猜一个项目。",
+        "Point out incorrect sentences rather than having the tool invent a new project."
+      ],
+      "prompt": [
+        "请把下面这份项目说明保存到项目根目录的 idea.md。已有同名文件先告诉我差别，不直接覆盖。项目说明：\n【粘贴我已确认的项目描述】",
+        "Save the following description as idea.md at the project root. If it already exists, explain differences before changing it. Description:\n【paste my confirmed description】"
+      ]
+    },
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "让 Git 保存第一个版本。仓库建好还不等于文件已经保存成版本；完成这一项，才有可以回来的记录。",
+        "Save the first Git version. Initializing a repository alone does not save a version."
+      ],
+      "tip": [
+        "完成后：工具给出一次成功提交的版本号，文件仍能正常打开。",
+        "Afterwards: A successful local revision is reported and the files still open."
+      ],
+      "expect": [
+        "工具给出一次成功提交的版本号，文件仍能正常打开。",
+        "A successful local revision is reported and the files still open."
+      ],
+      "ifWrong": [
+        "提交失败先按报错处理，不把初始化成功当成版本已保存；未提交的修改无法靠这次记录找回。",
+        "Resolve commit errors first. Initialization alone does not save uncommitted changes."
+      ],
+      "prompt": [
+        "请先检查本次文件，排除密码、密钥、数据库和自动生成文件。把本步确认过的项目说明与规则文件提交到本地 Git，作为第一个版本，并告诉我版本号。不要推送。缺少提交身份时告诉我需要填写什么，不替我编造身份。",
+        "Inspect this step’s files and exclude passwords, keys, databases and generated files. Commit only the confirmed description and rules locally, then report the revision. Do not push. Ask for missing author identity instead of inventing it."
       ]
     }
   ],
   "first-file": [
     {
       "where": [
-        "本站本步提示词模板",
-        "This guide’s step prompt template"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "找到下方第 7 项“发给 AI 的话”中的本步模板，核对本步内容，确认后复制生成的提示词。先不要标记本动作完成。",
-        "Find this step’s template in section 7, “What to send to AI”, review this step’s text, confirm and copy the generated prompt. Do not mark the action complete yet."
+        "让工具给出刚才两个文件的位置。",
+        "Ask for the two saved file locations."
       ],
       "tip": [
-        "本步只检查已保存文件，不再新建一个练习文件。",
-        "Inspect existing saved files; do not create another practice file."
+        "完成后：得到自己项目中的文件位置。",
+        "Afterwards: The files are located in your project."
       ],
       "expect": [
-        "已复制本步完整提示词，准备切换到原项目对话。",
-        "You have copied this step’s complete prompt and are ready to switch to the original project chat."
+        "得到自己项目中的文件位置。",
+        "The files are located in your project."
       ],
       "ifWrong": [
-        "未生成时先确认模板；复制失败就选中生成文字手动复制。",
-        "Confirm the template if not generated; select/copy the generated text manually if copying fails."
+        "找不到文件就回上一项确认是否真的保存。",
+        "If absent, return to the preceding step and confirm they were saved."
+      ],
+      "prompt": [
+        "请列出本项目 idea.md 和 AGENTS.md（或本工具对应规则文件）的实际路径，并提供可打开的文件链接。只查看，不修改。",
+        "List the actual paths and openable links for idea.md and AGENTS.md, or this tool’s equivalent rules file. Read only."
       ]
     },
     {
       "where": [
-        "所选工具里的原项目对话",
-        "The original project chat in your chosen tool"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "回到原项目对话，把刚复制的文字粘贴进输入框，核对后发送。等待工具返回文件位置。",
-        "Return to the original project chat, paste the copied text, check it and send. Wait for the tool to report file locations."
+        "点击文件链接逐个打开。先看 idea.md 是否是自己的想法，再看规则文件有没有刚才约定的规则。",
+        "Open each file link. Compare idea.md with your idea and the rules file with your instructions."
       ],
       "tip": [
-        "核对项目名称再发送；本站的“确认”不是向工具发送消息。",
-        "Check the project name before sending; Confirm on this guide does not send a message to the tool."
+        "完成后：两个文件内容正确，能在关闭后重新打开。",
+        "Afterwards: Both files are correct and can reopen."
       ],
       "expect": [
-        "工具回复 idea.md 和规则文件的实际位置。",
-        "The tool reports the actual locations of idea.md and the rules file."
+        "两个文件内容正确，能在关闭后重新打开。",
+        "Both files are correct and can reopen."
       ],
       "ifWrong": [
-        "回复缺失文件时回准备起点补保存；不要把聊天中的示例当真实文件。",
-        "For missing files, return to baseline preparation; chat examples are not files."
+        "链接打不开就按实际路径在文件管理器中找，不只看聊天里的代码片段。",
+        "If links fail, find the actual paths in your file manager."
+      ],
+      "prompt": [
+        "",
+        ""
+      ]
+    }
+  ],
+  "clarify": [
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "把 idea.md 交给工具看，让它从你的想法中找出还没说清的地方。",
+        "Ask the tool to read idea.md and find unclear parts."
+      ],
+      "tip": [
+        "完成后：工具先复述，再提出一个你能回答的问题。",
+        "Afterwards: The tool restates the idea and asks an answerable question."
+      ],
+      "expect": [
+        "工具先复述，再提出一个你能回答的问题。",
+        "The tool restates the idea and asks an answerable question."
+      ],
+      "ifWrong": [
+        "问题里有术语就让它解释成生活例子，不勉强猜答案。",
+        "Ask for a simple example if it uses unfamiliar terms."
+      ],
+      "prompt": [
+        "请阅读 idea.md，用普通话复述我想做什么。你拿不准的地方一次只问我一个问题，先不要写代码。",
+        "Read idea.md and restate my goal in everyday language. Ask one question at a time about what is unclear. Do not code yet."
       ]
     },
     {
       "where": [
-        "工具回复的文件链接，或电脑文件管理器",
-        "The file link in the tool reply, or your file manager"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "点击 idea.md 文件链接打开预览；没有可点链接时，在返回的文件夹中找到同名文件并打开。",
-        "Open the idea.md link; if unavailable, find that file in the reported folder and open it."
+        "回答当前问题；不确定就说不确定。等影响第一版的问题都说清后，再保存答案。",
+        "Answer the current question, or say undecided. Save once the first-version questions are clear."
       ],
       "tip": [
-        "看的是文件正文，不是对话里“我已经保存”的一句话。",
-        "Inspect the file contents, not a chat statement claiming it was saved."
+        "完成后：打开 idea.md 能看到自己的答案。",
+        "Afterwards: idea.md contains your answers."
       ],
       "expect": [
-        "正文显示自己确认过的项目用户、目标和范围。",
-        "The file shows your agreed users, goal and scope."
+        "打开 idea.md 能看到自己的答案。",
+        "idea.md contains your answers."
       ],
       "ifWrong": [
-        "找不到时先核对完整路径；工具不能提供预览就用电脑文本编辑器打开，不猜位置。",
-        "Check the full path; if preview is unavailable use a text editor rather than guessing the location."
+        "复述不对就先纠正，再让它保存。",
+        "Correct misunderstandings before saving."
+      ],
+      "prompt": [
+        "请把我刚才确认的答案更新到 idea.md；还没决定的内容单独标出来，不替我决定。",
+        "Update idea.md with the answers I confirmed. List undecided items separately without deciding for me."
+      ]
+    }
+  ],
+  "scope": [
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "先列第一版必须完成的事，再列以后可以做的事。",
+        "Separate essential first-version work from later ideas."
+      ],
+      "tip": [
+        "完成后：两份清单能看懂，没有偷偷加入新功能。",
+        "Afterwards: Both lists are understandable and contain no invented features."
+      ],
+      "expect": [
+        "两份清单能看懂，没有偷偷加入新功能。",
+        "Both lists are understandable and contain no invented features."
+      ],
+      "ifWrong": [
+        "清单太大就按真实使用需要缩小，不能删掉完成核心任务必需的步骤。",
+        "Reduce scope while keeping everything required for the core task."
+      ],
+      "prompt": [
+        "请读 idea.md，分成“第一版必须做”和“以后再做”两份清单。每项用我能亲手操作的一句话说明，先给我看，不写代码。",
+        "Read idea.md and make two lists: needed in version one and later. Describe each as a user action. Show me first; do not code."
       ]
     },
     {
       "where": [
-        "已打开的 idea.md 和规则文件",
-        "The opened idea.md and rules file"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "把正文与自己的描述对照，再打开规则文件检查；一致后回本站核对本动作并继续。",
-        "Compare the brief and inspect the rules file; when correct, return to the guide to record the check and continue."
+        "逐项确认清单，再让工具保存。",
+        "Review each item, then save your decision."
       ],
       "tip": [
-        "只有你亲自打开核对了，才点击本站的“已核对”。",
-        "Click Checked only after personally opening and reviewing the files."
+        "完成后：需求文件写清这次做什么、暂时不做什么。",
+        "Afterwards: The file distinguishes this version from later work."
       ],
       "expect": [
-        "两个真实文件可打开，内容属于当前项目。",
-        "Both real files open and belong to the current project."
+        "需求文件写清这次做什么、暂时不做什么。",
+        "The file distinguishes this version from later work."
       ],
       "ifWrong": [
-        "内容不一致就指出具体段落让工具解释，本次不继续依赖错误材料。",
-        "Identify mismatched passages and ask the tool to explain; do not proceed using incorrect material."
+        "有遗漏先补清单再确认，不带着模糊范围进入开发。",
+        "Fill important gaps before moving into development."
+      ],
+      "prompt": [
+        "请把我确认的范围保存到 docs/requirements.md，保留以后再做的清单。没有确认的内容标为待定。",
+        "Save the confirmed scope to docs/requirements.md, keeping later ideas and marking undecided items."
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "把每项功能写成“填什么、点什么、看到什么”。",
+        "Describe each feature as input, action and visible result."
+      ],
+      "tip": [
+        "完成后：每个功能都有实际操作和能看到的结果。",
+        "Afterwards: Every feature has an observable result."
+      ],
+      "expect": [
+        "每个功能都有实际操作和能看到的结果。",
+        "Every feature has an observable result."
+      ],
+      "ifWrong": [
+        "出现“体验良好”等空泛词时，要求换成具体画面或行为。",
+        "Replace vague claims like good experience with specific behavior."
+      ],
+      "prompt": [
+        "请读 docs/requirements.md，把每个必做功能写清输入内容、操作、正常结果和失败时的提示。给每项编号，先让我确认。",
+        "Read docs/requirements.md. Give each required feature an ID, inputs, actions, normal results and failure messages for my review."
+      ]
+    },
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "对照自己的想法检查，再保存确认后的版本。",
+        "Compare with your idea and save the reviewed version."
+      ],
+      "tip": [
+        "完成后：下一步可以依据这份文件写使用过程。",
+        "Afterwards: The next step can describe use based on this file."
+      ],
+      "expect": [
+        "下一步可以依据这份文件写使用过程。",
+        "The next step can describe use based on this file."
+      ],
+      "ifWrong": [
+        "如果某项自己也看不懂，先要求解释，不直接确认。",
+        "Ask for an explanation before approving unclear items."
+      ],
+      "prompt": [
+        "请把我确认的内容更新到 docs/requirements.md，保留每项怎样测试才算做好，不增加未提出的功能。",
+        "Update docs/requirements.md with confirmed content and a practical check for each feature. Do not add unrequested features."
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "让工具把使用过程像讲故事一样写出来：谁打开哪里，先做什么，接着做什么。",
+        "Describe a person using the project from start to finish."
+      ],
+      "tip": [
+        "完成后：能按文字想象一个人实际使用的顺序。",
+        "Afterwards: You can picture a real person following the sequence."
+      ],
+      "expect": [
+        "能按文字想象一个人实际使用的顺序。",
+        "You can picture a real person following the sequence."
+      ],
+      "ifWrong": [
+        "突然出现尚未说明的账号或页面时，先补它的来源和进入方法。",
+        "Explain any account or page that appears without an introduction."
+      ],
+      "prompt": [
+        "请读 idea.md 和 docs/requirements.md，写出每种用户从打开项目到完成任务的一次完整过程。一步写一个动作，也写出出错后怎样继续。先不要开发。",
+        "Read idea.md and docs/requirements.md. Write each user’s complete journey, one action at a time, including recovery from errors. Do not build yet."
+      ]
+    },
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "按自己会使用的方式读一遍，指出缺少的步骤，再保存。",
+        "Read it as a user, fill gaps and save."
+      ],
+      "tip": [
+        "完成后：使用过程前后接得上，文件能打开。",
+        "Afterwards: The sequence connects and the file opens."
+      ],
+      "expect": [
+        "使用过程前后接得上，文件能打开。",
+        "The sequence connects and the file opens."
+      ],
+      "ifWrong": [
+        "例如写了“付款成功”却没说在哪里付款，就先补上操作。",
+        "Fill missing actions such as where payment starts before saying it succeeded."
+      ],
+      "prompt": [
+        "请把我确认的使用过程保存到 docs/stories.md，并保留对应的需求编号。",
+        "Save the confirmed journeys to docs/stories.md with their requirement IDs."
+      ]
+    }
+  ],
+  "prototype": [
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "先看页面草稿。页面草稿只帮助决定东西放哪里、点击后去哪里。",
+        "Preview a draft to decide what goes where and what buttons do."
+      ],
+      "tip": [
+        "完成后：有能打开查看的页面草稿。",
+        "Afterwards: A draft opens for review."
+      ],
+      "expect": [
+        "有能打开查看的页面草稿。",
+        "A draft opens for review."
+      ],
+      "ifWrong": [
+        "打开方式不清楚就要求准确地址或文件位置。",
+        "Request an exact URL or file location if unclear."
+      ],
+      "prompt": [
+        "请根据 docs/requirements.md 和 docs/stories.md 做一条主要使用过程的页面草稿。告诉我怎样打开，每个按钮会去哪里；还不能实际使用的部分请标明。先不要接数据库。",
+        "Use docs/requirements.md and docs/stories.md to draft the main journey. Tell me how to open it and where buttons lead. Mark simulated behavior. Do not connect a database yet."
+      ]
+    },
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "从第一屏按顺序点一遍，指出找不到入口或看不懂的地方。",
+        "Click through the draft and identify unclear entries."
+      ],
+      "tip": [
+        "完成后：能找到主要输入、按钮和结果。",
+        "Afterwards: Main inputs, buttons and results are easy to find."
+      ],
+      "expect": [
+        "能找到主要输入、按钮和结果。",
+        "Main inputs, buttons and results are easy to find."
+      ],
+      "ifWrong": [
+        "一次只改具体位置，避免一句“更好看”让工具全部重做。",
+        "Name specific changes rather than asking for a complete redesign."
+      ],
+      "prompt": [
+        "请只调整我指出的这些位置：【填写】。保留其他已确认内容，完成后告诉我从哪里再看。",
+        "Change only these locations: 【fill in】. Preserve confirmed work and tell me where to review it."
+      ]
+    },
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "把确认的页面和操作方法保存下来。",
+        "Save the approved screen and action decisions."
+      ],
+      "tip": [
+        "完成后：设计文件可以给后面的开发步骤使用。",
+        "Afterwards: The design file guides later implementation."
+      ],
+      "expect": [
+        "设计文件可以给后面的开发步骤使用。",
+        "The design file guides later implementation."
+      ],
+      "ifWrong": [
+        "把演示效果误写成已开发完成时，要求纠正。",
+        "Correct any demonstration described as finished development."
+      ],
+      "prompt": [
+        "请把确认的页面安排和按钮作用写入 docs/design.md，区分已经能用和仍是演示的部分。",
+        "Write screen arrangements and button behavior to docs/design.md. Separate working features from demonstrations."
+      ]
+    }
+  ],
+  "choose-stack": [
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "告诉工具项目给谁用、需要保存什么、预算多少。让它解释准备采用的做法。",
+        "Give users, storage needs and budget, then ask for an understandable approach."
+      ],
+      "tip": [
+        "完成后：你能理解三个部分分别负责什么。",
+        "Afterwards: You understand the role of each part."
+      ],
+      "expect": [
+        "你能理解三个部分分别负责什么。",
+        "You understand the role of each part."
+      ],
+      "ifWrong": [
+        "方案中有陌生名称时，让工具先解释用途，再谈是否使用。",
+        "Ask what unfamiliar tools do before choosing them."
+      ],
+      "prompt": [
+        "请读已确认需求和 docs/design.md，推荐一种适合我的做法。分别解释页面怎么做、处理请求的程序在哪里运行、数据存在哪里、需要什么费用。先不要安装。",
+        "Read the requirements and docs/design.md. Recommend one approach and explain the page, the program processing requests, data storage and costs. Do not install yet."
+      ]
+    },
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "确认适合自己的做法，并把决定写进设计文件。",
+        "Confirm the approach and record it."
+      ],
+      "tip": [
+        "完成后：后面准备环境时知道要安装什么、先试什么。",
+        "Afterwards: Environment setup knows what to install and try first."
+      ],
+      "expect": [
+        "后面准备环境时知道要安装什么、先试什么。",
+        "Environment setup knows what to install and try first."
+      ],
+      "ifWrong": [
+        "关键条件不能满足时先换做法，不开始大量开发。",
+        "Change an unworkable approach before building extensively."
+      ],
+      "prompt": [
+        "请把我确认的做法、需要准备的账号和最难部分的试验方法写入 docs/design.md。未确定的条件保留待定。",
+        "Save the chosen approach, required accounts and a small test of its hardest part in docs/design.md. Keep unknowns pending."
+      ]
+    }
+  ],
+  "plan": [
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "让工具把要做的功能排成先后顺序。",
+        "Ask for an ordered list of small development tasks."
+      ],
+      "tip": [
+        "完成后：第一项任务明确，后面的任务有顺序。",
+        "Afterwards: The first task is clear and later tasks have an order."
+      ],
+      "expect": [
+        "第一项任务明确，后面的任务有顺序。",
+        "The first task is clear and later tasks have an order."
+      ],
+      "ifWrong": [
+        "第一项就包含整个项目时，让工具继续拆小。",
+        "Split tasks further if the first one is the whole project."
+      ],
+      "prompt": [
+        "请读需求、docs/stories.md 和 docs/design.md，把开发拆成小任务。每项写清先做什么、会新增什么文件或功能、完成后我怎样试。先给我看计划，不写代码。",
+        "Read requirements, docs/stories.md and docs/design.md. Break development into small tasks, each with prerequisites, files/features and a personal test. Show the plan without coding."
+      ]
+    },
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "检查需求是否都被安排到了，再保存任务表。",
+        "Check that all required features are planned and save."
+      ],
+      "tip": [
+        "完成后：能找到下一项该做什么以及完成标准。",
+        "Afterwards: The next task and its passing check are clear."
+      ],
+      "expect": [
+        "能找到下一项该做什么以及完成标准。",
+        "The next task and its passing check are clear."
+      ],
+      "ifWrong": [
+        "漏了某项必做功能就补计划，别靠后面临时想起。",
+        "Add missing essential features to the plan now."
+      ],
+      "prompt": [
+        "请把我确认的任务保存到 tasks/todo.md。每项标记未开始，并保留对应需求编号。",
+        "Save confirmed tasks to tasks/todo.md with requirement IDs and not-started status."
       ]
     }
   ],
   "environment": [
     {
       "where": [
-        "本站本步提示词模板",
-        "This guide’s step prompt template"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "找到下方第 7 项“发给 AI 的话”中的本步模板，核对本步内容，确认后复制生成的提示词。先不要标记本动作完成。",
-        "Find this step’s template in section 7, “What to send to AI”, review this step’s text, confirm and copy the generated prompt. Do not mark the action complete yet."
+        "先检查电脑能否运行这个项目。",
+        "Check whether your computer can run this project."
       ],
       "tip": [
-        "先检查再安装；不要在本站输入框运行命令，那里只是保存文字。",
-        "Inspect before installing. This guide’s text fields store text; they do not run commands."
+        "完成后：知道缺哪些软件，以及从哪里安装。",
+        "Afterwards: You know what is missing and where to install it."
       ],
       "expect": [
-        "已复制本步完整提示词，准备切换到原项目对话。",
-        "You have copied this step’s complete prompt and are ready to switch to the original project chat."
+        "知道缺哪些软件，以及从哪里安装。",
+        "You know what is missing and where to install it."
       ],
       "ifWrong": [
-        "未生成时先确认模板；复制失败就选中生成文字手动复制。",
-        "Confirm the template if not generated; select/copy the generated text manually if copying fails."
+        "不懂报错就复制原文给工具，不同时安装多个不同版本试运气。",
+        "Copy error text instead of trying many random versions."
+      ],
+      "prompt": [
+        "请读 docs/design.md 和 tasks/todo.md，检查本项目需要的运行软件是否已安装。缺什么请给我官方安装入口、适合我的系统的操作，以及怎样确认装好了。先不要开发功能。",
+        "Read docs/design.md and tasks/todo.md. Check required software; for anything missing give official installation steps for my system and a success check. Do not build features."
       ]
     },
     {
       "where": [
-        "所选工具里的原项目对话",
-        "The original project chat in your chosen tool"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "切回原项目对话，粘贴并发送刚复制的提示词。等工具检查完已有环境后，再决定是否需要安装。",
-        "Switch to the original project chat, paste/send the prompt and wait for its environment check before deciding what needs installation."
+        "准备运行所需的依赖。依赖就是项目会用到的现成程序包。",
+        "Install dependencies, the existing software packages your project uses."
       ],
       "tip": [
-        "核对项目名称再发送；本站的“确认”不是向工具发送消息。",
-        "Check the project name before sending; Confirm on this guide does not send a message to the tool."
+        "完成后：必要程序包已安装，没有未解决的安装错误。",
+        "Afterwards: Required packages are installed without unresolved errors."
       ],
       "expect": [
-        "回复区分已有条件、缺少条件和当前要处理的一项。",
-        "The reply distinguishes existing prerequisites, missing ones and the next item."
+        "必要程序包已安装，没有未解决的安装错误。",
+        "Required packages are installed without unresolved errors."
       ],
       "ifWrong": [
-        "若只说重装全部环境，先要求具体缺项和证据，不立即执行。",
-        "If told to reinstall everything, ask for the specific gap and evidence before acting."
+        "权限不足就按工具说明完成当前必要操作，不直接删除配置重来。",
+        "Resolve the specific permission issue rather than deleting configuration."
+      ],
+      "prompt": [
+        "请检查项目已有配置，按确认的方案安装必要依赖，保留已有文件。告诉我运行结果，失败时先解释第一条错误。",
+        "Inspect existing configuration, install only agreed dependencies and preserve files. Report results and explain the first failure if any."
       ]
     },
     {
       "where": [
-        "工具指定的本机安装或命令执行位置",
-        "The installation or command location identified by the tool"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "需要你操作时，先确认在哪个窗口、哪个项目目录执行，再逐项按工具给出的实际步骤做。",
-        "For a manual action, identify the window and project directory before following the tool’s exact instructions one at a time."
+        "启动一个能打开的最小页面，再记下启动方法。",
+        "Start the smallest working page and save the startup instructions."
       ],
       "tip": [
-        "系统、已有依赖和项目方案不同，不能把另一项目的命令不加核对地粘贴进来。",
-        "Commands depend on OS, existing dependencies and design; do not blindly paste commands from another project."
+        "完成后：打开工具给出的地址能看到页面，README 中有下次启动方法。",
+        "Afterwards: The URL opens a page and README explains reopening."
       ],
       "expect": [
-        "当前缺项通过它对应的成功检查。",
-        "The missing prerequisite passes its specific check."
+        "打开工具给出的地址能看到页面，README 中有下次启动方法。",
+        "The URL opens a page and README explains reopening."
       ],
       "ifWrong": [
-        "报错就保留原文和执行位置交给工具，先解决这一项，不连续尝试一串不懂的命令。",
-        "Keep the error and execution location, resolve this item first and avoid trying a chain of unexplained commands."
-      ]
-    },
-    {
-      "where": [
-        "项目对话的运行结果",
-        "The project chat’s runtime result"
+        "地址打不开就核对服务是否还在运行和网址是否相同，不猜端口。",
+        "Check the running service and exact URL instead of guessing ports."
       ],
-      "action": [
-        "让工具启动最小入口并给出实际地址、停止方法和重启方法，再打开它给出的地址。",
-        "Ask the tool to start the minimal entry and give the real URL, stop and restart instructions, then open that URL."
-      ],
-      "tip": [
-        "服务还在运行时才能打开；端口用实际输出，不照抄示例。",
-        "The service must be running; use its actual port, not an example."
-      ],
-      "expect": [
-        "能打开最小项目，README 记录实际启动方法。",
-        "The minimal project opens and README records its real startup method."
-      ],
-      "ifWrong": [
-        "打不开先核对服务是否退出、地址是否一致；将实际提示反馈，不把文件存在当运行成功。",
-        "If unavailable, check whether the service stopped and the address matches; existing files alone do not prove it runs."
+      "prompt": [
+        "请启动本项目最小页面，告诉我在哪里执行、实际打开哪个地址，以及怎样停止。把验证过的方法写入 README.md，检查结果写入 docs/checks.md。",
+        "Start the minimal project. Give the execution location, actual URL and stop method. Save verified instructions in README.md and results in docs/checks.md."
       ]
     }
   ],
   "preview": [
     {
       "where": [
-        "本站本步提示词模板",
-        "This guide’s step prompt template"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "找到下方第 7 项“发给 AI 的话”中的本步模板，核对本步内容，确认后复制生成的提示词。先不要标记本动作完成。",
-        "Find this step’s template in section 7, “What to send to AI”, review this step’s text, confirm and copy the generated prompt. Do not mark the action complete yet."
+        "让工具先读任务表，只做下一项尚未完成的任务。",
+        "Have the tool do the next unfinished task only."
       ],
       "tip": [
-        "一次先做一项，才知道哪里出了问题；不要追加“顺便把剩下的全做完”。",
-        "One task at a time makes problems traceable; do not add a request to finish everything else."
+        "完成后：得到这次修改的说明和能打开的作品入口。",
+        "Afterwards: You receive a change summary and working entry."
       ],
       "expect": [
-        "已复制本步完整提示词，准备切换到原项目对话。",
-        "You have copied this step’s complete prompt and are ready to switch to the original project chat."
+        "得到这次修改的说明和能打开的作品入口。",
+        "You receive a change summary and working entry."
       ],
       "ifWrong": [
-        "未生成时先确认模板；复制失败就选中生成文字手动复制。",
-        "Confirm the template if not generated; select/copy the generated text manually if copying fails."
+        "工具一次做了很多无关功能时，先让它说明改动，回到已确认任务。",
+        "If unrelated work was added, review it and return to the agreed task."
+      ],
+      "prompt": [
+        "请读 tasks/todo.md，找出下一项已经具备开始条件的任务。告诉我这次做什么，再只完成这一项。保留其他文件，完成后给我打开作品的方法和测试结果。",
+        "Read tasks/todo.md and identify the next task whose prerequisites are ready. Explain and complete only that task. Preserve other files and report how to open and test it."
       ]
     },
     {
       "where": [
-        "所选工具里的原项目对话",
-        "The original project chat in your chosen tool"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "在原项目对话粘贴并发送提示词，等待工具完成当前一项任务并报告结果。",
-        "Paste/send the prompt in the original project chat and wait for the tool to finish and report on one task."
+        "打开作品，亲自操作这一项功能。不要只读工具的“完成”回复。",
+        "Open the project and try this feature yourself."
       ],
       "tip": [
-        "核对项目名称再发送；本站的“确认”不是向工具发送消息。",
-        "Check the project name before sending; Confirm on this guide does not send a message to the tool."
+        "完成后：实际结果与任务表中写的相同，或能指出哪里不同。",
+        "Afterwards: The result matches the task or you can name the difference."
       ],
       "expect": [
-        "工具给出当前任务、改动文件、实际入口和检查结果。",
-        "The tool reports the task, changed files, actual entry and checks."
+        "实际结果与任务表中写的相同，或能指出哪里不同。",
+        "The result matches the task or you can name the difference."
       ],
       "ifWrong": [
-        "没有任务编号或实际入口就要求补齐；执行还没结束时不要连发下一项任务。",
-        "Ask for missing task ID/entry; do not send the next task before this one finishes."
+        "打不开就把网址和报错发给工具；没有测试条件就先记未测试。",
+        "Report the URL and error if it will not open; keep unavailable tests pending."
+      ],
+      "prompt": [
+        "",
+        ""
       ]
     },
     {
       "where": [
-        "工具给出的网页／应用入口",
-        "The page/app entry reported by the tool"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "打开实际入口，按本次任务要求操作一次。网页项目使用运行中的 http 地址。",
-        "Open the real entry and perform the task’s action once; web projects use the running HTTP URL."
+        "把实际结果告诉工具，再决定做下一项还是先修问题。",
+        "Report what happened before continuing."
       ],
       "tip": [
-        "能看到页面不代表所有功能都完成；尚未接好的按钮应按任务状态判断。",
-        "A visible page does not mean every feature works; judge unfinished buttons against the task state."
+        "完成后：任务表记录真实进度，可以继续下一项。",
+        "Afterwards: Task status reflects actual progress."
       ],
       "expect": [
-        "看到与当前任务相符的真实结果，并能说出做了什么。",
-        "You see the current task’s actual result and can describe the action."
+        "任务表记录真实进度，可以继续下一项。",
+        "Task status reflects actual progress."
       ],
       "ifWrong": [
-        "画面与预期不同，记录点击顺序、预期和实际结果交给工具；不要直接标完成。",
-        "For a mismatch, record actions, expected and actual results instead of marking complete."
-      ]
-    },
-    {
-      "where": [
-        "原项目对话，再回本站",
-        "The original project chat, then this guide"
+        "失败就保留现象，按后面的反馈和修复步骤处理。",
+        "Record failures and follow the feedback/repair steps."
       ],
-      "action": [
-        "告诉工具本人看到的结果，确认后保存当前任务状态；再按本站进入界面或保存的对应步骤。",
-        "Report your own observation, record the reviewed task state and follow the guide to interface or persistence work."
-      ],
-      "tip": [
-        "本站的进度与项目任务文件不是同一份；这里点完成不会替工具更新项目文件。",
-        "Guide progress and the project task file are separate; checking this page does not update project files."
-      ],
-      "expect": [
-        "项目文件记录实际结果，你知道下个动作要带什么。",
-        "Project notes record actual results and you know the next input."
-      ],
-      "ifWrong": [
-        "工具把未测项标通过时要求恢复真实状态；已经做完的任务只复核，不重复开发。",
-        "Correct any untested work marked passed; review completed tasks rather than rebuilding."
+      "prompt": [
+        "我的实际操作和结果是：【填写】。请更新 tasks/todo.md 和 docs/checks.md；只有已经检查通过的任务才标完成。保存本次已确认修改的本地版本，不推送。",
+        "My actions and results: 【fill in】. Update tasks/todo.md and docs/checks.md; complete only checked tasks. Save the confirmed changes as a local revision without pushing."
       ]
     }
   ],
   "interface": [
     {
       "where": [
-        "作品的预览页面和所选工具的原项目对话",
-        "Your project preview and original tool conversation"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "打开前一步确认的预览地址。找到本次任务的输入框、按钮和结果区，记下缺少或看不懂的位置。",
-        "Open the confirmed preview URL. Find the task’s fields, button and result area; note missing or unclear parts."
+        "打开自己的作品，指出一处用户找不到或看不懂的位置，例如输入框没有名字、按钮挡住文字。",
+        "Open your project and locate one confusing place, such as an unlabeled field or overlapping button."
       ],
       "tip": [
-        "这里的前端就是用户看到并操作的页面；修改的是自己的作品，不是本站。",
-        "Frontend means the page users interact with. Work on your own project."
+        "完成后：知道具体要改哪个页面、哪个位置。",
+        "Afterwards: You can name the page and location to change."
       ],
       "expect": [
-        "能指出输入、操作、结果分别在哪里。",
-        "You can locate input, action and result."
+        "知道具体要改哪个页面、哪个位置。",
+        "You can name the page and location to change."
       ],
       "ifWrong": [
-        "页面打不开时回到预览步骤核对启动地址，先不要求改样式。",
-        "If it will not open, return to preview setup and verify the startup URL before styling."
+        "先解决妨碍使用的地方，不用一句“整体优化”让工具重做全部页面。",
+        "Fix a specific usability problem rather than requesting a complete redesign."
+      ],
+      "prompt": [
+        "",
+        ""
       ]
     },
     {
       "where": [
-        "本站本步提示词模板，然后是工具的原项目对话",
-        "This step’s prompt template, then the original project chat"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "把实际页面、要完成的动作和发现的问题填进模板，确认后复制，粘贴到原项目对话并发送。请工具先核对已有页面，再只完成当前任务。",
-        "Fill in the real page, action and observed problem; confirm, copy, paste into your tool and send. Ask it to inspect existing work and finish only this task."
+        "把这一处问题和希望的效果告诉工具。",
+        "Tell the tool the problem and desired result."
       ],
       "tip": [
-        "提示词中的示例字段换成自己的字段；尚未连接后端时明确标记为演示。",
-        "Replace sample fields with your own. Label unconnected behavior as a demonstration."
+        "完成后：能打开修改后的页面。",
+        "Afterwards: The updated page opens."
       ],
       "expect": [
-        "工具说明修改了哪些文件，给出可打开的页面和待人工检查项。",
-        "The tool names changed files, gives the preview and lists personal checks."
+        "能打开修改后的页面。",
+        "The updated page opens."
       ],
       "ifWrong": [
-        "只有代码片段时，要求工具说明应保存在哪个现有文件；无写入权限时先保存文件再预览。",
-        "For a code snippet alone, ask which existing file should receive it; save before previewing if the tool cannot write."
+        "结果不对就描述具体差别，继续只改这一处。",
+        "Describe the remaining difference and keep the fix focused."
+      ],
+      "prompt": [
+        "请只修改【页面和具体位置】：现在是【实际样子】，我希望【清楚的结果】。保留其他已确认页面和功能，修改后给我查看地址。",
+        "Change only 【page/location】. It currently looks like 【actual】; I need 【specific result】. Preserve other pages/features and give me the review URL."
       ]
     },
     {
       "where": [
-        "作品页面",
-        "Your project page"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "重新打开或刷新工具给出的地址。先不输入就点提交，再填写一条测试内容提交，观察是否出现等待、成功或失败提示。",
-        "Reload the tool’s URL. Submit empty fields, then enter a test item and submit; observe waiting, success or failure."
+        "再操作一次这项功能，然后缩窄窗口，确认文字、输入框和按钮仍能使用。",
+        "Try the feature again and narrow the window to check text, fields and buttons."
       ],
       "tip": [
-        "成功提示必须来自实际处理结果；模拟页面只能验证显示效果，不能证明数据已保存。",
-        "Success must reflect actual processing. Mocked screens only prove presentation."
+        "完成后：页面清楚可用，原功能没有被改坏。",
+        "Afterwards: The page is usable and the original feature still works."
       ],
       "expect": [
-        "空白有说明；处理中不会反复提交；结果提示能看懂。",
-        "Empty input is explained, pending submission is guarded and feedback is understandable."
+        "页面清楚可用，原功能没有被改坏。",
+        "The page is usable and the original feature still works."
       ],
       "ifWrong": [
-        "按钮无反应时记下点击位置与画面，把证据带到排障步骤；不要连续猛点。",
-        "If nothing happens, record the button and screen for diagnosis rather than clicking repeatedly."
-      ]
-    },
-    {
-      "where": [
-        "作品页面与本步记录",
-        "Your project page and step record"
+        "发现遮挡或点击失效就记录位置和画面，再请工具修这一处。",
+        "Record any overlap or failed click and request a focused repair."
       ],
-      "action": [
-        "缩窄浏览器窗口，检查输入和提示是否被遮住；用 Tab 键逐个移动焦点，确认能到达输入框和按钮。记录实际通过及未通过项。",
-        "Narrow the browser window and inspect fields and messages. Use Tab to reach fields and buttons. Record actual passes and failures."
-      ],
-      "tip": [
-        "不为走完教程强行换颜色或重做页面；没有界面的项目说明不适用。",
-        "Do not redesign just to follow the lesson. Explain inapplicability for headless projects."
-      ],
-      "expect": [
-        "当前页面能完成操作，原本可用的功能仍可用。",
-        "The task remains usable and existing behavior still works."
-      ],
-      "ifWrong": [
-        "标出被遮住或键盘无法到达的具体位置，请工具只修这一处，再重复检查。",
-        "Identify the clipped or unreachable control, request a focused fix and repeat the check."
+      "prompt": [
+        "",
+        ""
       ]
     }
   ],
   "save": [
     {
       "where": [
-        "项目需求和工具的原项目对话",
-        "Requirements and original project chat"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "先确认要保存什么、谁能读取、在哪里使用。向工具说明：请核对现有实现，分别指出页面、处理保存的后端、真正存记录的数据库。",
-        "Confirm what is saved, who reads it and where it runs. Ask the tool to identify the page, backend handling saves and database storing records."
+        "先建立真正存放记录的地方。数据库就像项目的登记本，页面关闭后记录还在里面。只展示内容的项目可以跳过保存功能。",
+        "Prepare real storage. A database keeps records after the page closes. Display-only projects can skip storage."
       ],
       "tip": [
-        "后端是接收和处理请求的程序；数据库存放记录。只有展示需求可以不适用，不能把浏览器缓存当成后端数据库。",
-        "The backend processes requests; the database stores records. Display-only projects may skip storage; browser cache is not a backend database."
+        "完成后：知道数据位置和每条记录会保存的内容。",
+        "Afterwards: You know where records live and what they contain."
       ],
       "expect": [
-        "知道三部分分别在哪里，以及本次要补哪一部分。",
-        "You know where all three parts are and what is missing."
+        "知道数据位置和每条记录会保存的内容。",
+        "You know where records live and what they contain."
       ],
       "ifWrong": [
-        "工具只说“已保存”时，要求指出实际存放位置与读取方法，先不标记通过。",
-        "If the tool only says saved, request the actual storage location and reading method before passing."
+        "工具只说“完成”时，追问实际位置和表名；别删库重建。",
+        "Ask for the actual location/table if the response only says done."
+      ],
+      "prompt": [
+        "请读需求，检查本项目的数据应该保存在哪里。需要数据库时，先检查已有内容，再建立缺少的表，告诉我实际位置、每条记录保存哪些字段。不要清空已有数据。",
+        "Read the requirements and inspect storage. If a database is needed, inspect existing content, create only missing tables and report its location and record fields. Do not erase data."
       ]
     },
     {
       "where": [
-        "本站本步模板与工具对话",
-        "This step’s template and tool conversation"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "填写自己的数据需求，确认、复制并发送。先只让工具准备测试数据库：说明存放位置、记录包含哪些字段，检查已有数据后再补缺少的表。",
-        "Fill in data needs, confirm, copy and send. First ask for test database setup: location, record fields and inspection of existing data before adding missing tables."
+        "让后端能够保存和读取记录。后端是收到页面请求后实际处理事情的程序。",
+        "Make the backend save and read records. It is the program processing page requests."
       ],
       "tip": [
-        "表像一张登记表，字段像每列的名字。已有记录先备份；不要用删库重建作为默认准备方法。",
-        "A table resembles a register; fields are its columns. Back up existing records; do not reset storage as setup."
+        "完成后：合法内容有真实编号，数据库里能找到，空白内容没有写入。",
+        "Afterwards: A valid record has a matching database ID; blank input is not inserted."
       ],
       "expect": [
-        "工具报告实际数据库位置、表和字段；原有数据仍在。",
-        "The tool reports the real database location, table and fields without losing data."
+        "合法内容有真实编号，数据库里能找到，空白内容没有写入。",
+        "A valid record has a matching database ID; blank input is not inserted."
       ],
       "ifWrong": [
-        "出现找不到表时先核对数据库完整路径，再让工具补建缺失表；不要删除数据库。",
-        "For a missing table, verify the full database path, then add only the missing table."
+        "保存失败就把错误原文保留，请工具查请求是否到达后端。",
+        "Keep the error and check whether the request reached the backend."
+      ],
+      "prompt": [
+        "请实现或检查保存一条记录和读取列表的后端接口。接口就是页面发送或索取内容的入口。用测试记录检查保存结果，告诉我记录编号，再核对数据库中同一条记录。空白内容应被拒绝。",
+        "Implement or inspect save-one and read-list endpoints. Test a record, report its ID and verify the matching database record. Reject blank input."
       ]
     },
     {
       "where": [
-        "工具对话及其运行输出",
-        "Tool chat and execution output"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "请工具实现或检查“保存一条”和“读取列表”的后端入口，使用一条独特测试内容检查。要求它报告请求结果、记录编号，并只读核对数据库中的同一条记录。",
-        "Ask the tool to implement or inspect save-one and read-list backend endpoints. Use a unique test item, report the response and ID, then read the matching database record."
+        "把页面按钮连接到刚才的保存功能。",
+        "Connect the page’s Save button to the checked backend."
       ],
       "tip": [
-        "接口就是页面向后端提交或索取内容的入口。只看到测试通过不够，要把记录编号与真实数据库对应起来。",
-        "An API is the entry the page uses to send or request data. Match the reported ID to actual storage."
+        "完成后：点一次保存后，能在列表里找到刚才的内容。",
+        "Afterwards: One save produces a record you can find in the list."
       ],
       "expect": [
-        "合法内容有真实记录编号，数据库中能找到相同内容；空白被拒绝且没有新增记录。",
-        "Valid input has a real matching record; blanks are rejected without insertion."
+        "点一次保存后，能在列表里找到刚才的内容。",
+        "One save produces a record you can find in the list."
       ],
       "ifWrong": [
-        "保存失败时保留错误原文和运行输出；请工具先判断请求是否到达后端，不清空数据。",
-        "Preserve the error and output; first check whether the request reached the backend."
+        "只在页面多出一行还不够；请工具用编号核对数据库。",
+        "Match its ID to the database rather than trusting an extra on-screen row."
+      ],
+      "prompt": [
+        "请把页面的保存按钮连接到已检查的后端。保存期间避免重复点击，失败保留输入并解释原因，真正保存成功后再显示成功。告诉我打开哪个地址来试。",
+        "Connect Save to the checked backend. Prevent repeat pending clicks, keep input on failure and show success only after saving. Give me the test URL."
       ]
     },
     {
       "where": [
-        "工具对话，然后是作品页面",
-        "Tool chat, then your project page"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "请工具把页面保存按钮接到已检查的后端入口；给出准确启动方式和网址。打开该网址，输入自己的测试标题和内容，点一次保存并等待结果。",
-        "Ask the tool to connect Save to the checked endpoint and give exact startup instructions and URL. Open it, enter your test title and body, click once and wait."
+        "亲自保存一条独特测试内容，刷新页面，再用另一个浏览器打开同一网址查找它。",
+        "Save unique test content, refresh, then find it in another browser on the same URL."
       ],
       "tip": [
-        "等待时不要重复点击。失败要保留输入；网络没收到回复时先查列表，避免已保存却重复提交。",
-        "Do not click repeatedly. Keep failed input; if the response was lost, check the list before resubmitting."
+        "完成后：同一编号和内容仍能找到。",
+        "Afterwards: The same ID and content remain."
       ],
       "expect": [
-        "页面显示真实成功结果，列表能读到刚才的内容；失败不会假装成功。",
-        "The page reports real success and reads the saved content; failures do not claim success."
+        "同一编号和内容仍能找到。",
+        "The same ID and content remain."
       ],
       "ifWrong": [
-        "页面返回 404 或一段 HTML 时，带上实际网址请工具核对是否打开了正确服务与接口。",
-        "For 404 or HTML responses, give the actual URL to the tool and verify the service and endpoint."
-      ]
-    },
-    {
-      "where": [
-        "第二个浏览器与工具对话",
-        "A second browser and tool chat"
+        "找不到先核对网址、账号和数据库位置，保留原数据。",
+        "Check URL, account and storage location without deleting data."
       ],
-      "action": [
-        "复制同一服务的网址到另一个浏览器，检查刚才的测试记录。再请工具只重启本项目服务，按它给出的地址重新打开并检查。",
-        "Open the same service URL in another browser and find the item. Ask the tool to restart only this project service; reopen its URL and check again."
-      ],
-      "tip": [
-        "第二浏览器检查不能单独证明数据库正确，需与前面的真实数据库核对结合。重启服务不等于删除数据库或恢复出厂设置。",
-        "A second browser alone does not prove correct database storage; combine it with the direct check above. Restarting must not reset storage."
-      ],
-      "expect": [
-        "换浏览器及服务重启后，原记录内容和编号仍可读。",
-        "The record and ID remain readable across browsers and service restart."
-      ],
-      "ifWrong": [
-        "记录消失时保留两次网址、账号和数据库路径，请工具核对是否启动了另一份项目或另一数据库。",
-        "If missing, preserve URLs, accounts and database paths; check for a different project or database."
-      ]
-    },
-    {
-      "where": [
-        "本步记录及测试记录文件",
-        "Step record and project test record"
-      ],
-      "action": [
-        "把测试内容、记录编号、数据库位置、重启前后结果写进记录。多人项目继续检查不同账号可见范围；不具备条件的项目明确写未测试。",
-        "Record test content, ID, database location and before/after restart results. For shared projects test visibility under separate accounts; mark unavailable checks untested."
-      ],
-      "tip": [
-        "不要把密码、访问密钥或真实个人资料粘贴到本站或截图。一次保存成功不等于权限和所有失败情况都通过。",
-        "Do not paste passwords, keys or real personal data into the guide or screenshots. A save does not prove permissions or every failure case."
-      ],
-      "expect": [
-        "证据能对应同一条记录，已测与未测分开，下一步可据此做全流程测试。",
-        "Evidence matches one record, tested and untested checks are separate, ready for flow testing."
-      ],
-      "ifWrong": [
-        "缺哪项就补测哪项；跨账号可见范围不符时先记录问题，按排障流程定位。",
-        "Fill missing evidence; record unexpected cross-account visibility and follow diagnosis."
-      ]
-    }
-  ],
-  "repair-plan": [
-    {
-      "where": [
-        "作品页面和原反馈记录",
-        "Project page and original feedback"
-      ],
-      "action": [
-        "找到一个失败问题，沿用它的编号。写下从打开哪个网址、输入什么、点击哪里，到实际看到什么；附错误文字和发生时间。",
-        "Choose one issue and keep its ID. Record URL, input, clicks, observed result, error text and time."
-      ],
-      "tip": [
-        "每次只复现一个问题，用可清理测试内容。截图先遮住个人资料；不需要懂错误才能记录原文。",
-        "Reproduce one issue with disposable data. Hide private information; copy the error even if unfamiliar."
-      ],
-      "expect": [
-        "别人按记录能走到同一失败位置，预期与实际分别写明。",
-        "The record gives reproducible actions with expected and actual results separated."
-      ],
-      "ifWrong": [
-        "不能稳定重现时记录成功和失败的差别，不编造必现步骤。",
-        "If intermittent, record differences between working and failing attempts."
-      ]
-    },
-    {
-      "where": [
-        "本站本步模板，然后是工具原项目对话",
-        "This step’s template and original project chat"
-      ],
-      "action": [
-        "把问题编号和证据填入模板，确认、复制、粘贴并发送，要求先只读排查。让工具依次核对页面请求、后端响应、数据库记录，指出在哪一处中断。",
-        "Fill in the issue ID and evidence, confirm, copy, paste and send. Request read-only diagnosis through page request, backend response and database record."
-      ],
-      "tip": [
-        "页面没变化、后端报错、数据库没记录是不同线索；有证据才下结论，不按报错关键词直接重装。",
-        "An unchanged page, backend error and missing record are different clues. Diagnose from evidence rather than reinstalling from a keyword."
-      ],
-      "expect": [
-        "工具给出观察到的事实、仍待验证的猜测和最小下一项检查。",
-        "The tool separates observations, hypotheses and the smallest next check."
-      ],
-      "ifWrong": [
-        "需要自己取日志时，请工具给出对应系统的打开位置和复制哪几行；只提供相关错误，移除密钥。",
-        "If logs need manual collection, ask where to open them and which lines to copy; remove secrets."
-      ]
-    },
-    {
-      "where": [
-        "工具给出的修复计划",
-        "The tool’s proposed repair plan"
-      ],
-      "action": [
-        "要求写明只改哪些文件、会不会影响已有记录、如何重新启动，以及怎样重做原失败动作。涉及数据库更改时先备份并在副本上验证。",
-        "Request changed files, impact on records, restart steps and exact reproduction. Back up and validate database changes on a copy first."
-      ],
-      "tip": [
-        "只有原因明确且你理解影响后才确认执行；新增功能另记，不混进修复。",
-        "Confirm only after understanding cause and impact. Keep new features separate."
-      ],
-      "expect": [
-        "计划包含原问题复测、正常保存读取检查、数据保护和失败后恢复方法。",
-        "The plan includes original-case retest, working save/read checks, data protection and recovery."
-      ],
-      "ifWrong": [
-        "计划只有“优化一下”时，要求具体到问题编号和可看到的通过结果，再进入修复步骤。",
-        "If it only says optimize, request an issue-specific change and observable passing result."
-      ]
-    }
-  ],
-  "repair": [
-    {
-      "where": [
-        "工具的原项目对话",
-        "The original project chat"
-      ],
-      "action": [
-        "在本步模板填入已确认的问题编号和计划，确认后复制并发送。明确只执行这一项，结束后报告改动文件、实际检查结果和重新打开作品的方法。",
-        "Fill this step’s template with the approved issue and plan, confirm, copy and send. Execute only that item; request changed files, actual checks and reopening instructions."
-      ],
-      "tip": [
-        "没有确认的计划先回上一步；数据库结构或数据变更应先完成计划中的备份与副本验证。",
-        "Return to planning if unapproved. Complete planned backups and copy-based validation before database changes."
-      ],
-      "expect": [
-        "工具报告与计划一致的修改和真实检查结果，未运行的检查明确标出。",
-        "Reported changes match the plan and distinguish executed from unrun checks."
-      ],
-      "ifWrong": [
-        "工具扩大范围或要求清库时先停止该方案，返回计划说明必要性与恢复办法。",
-        "If scope expands or a reset is proposed, stop that approach and revisit its need and recovery."
-      ]
-    },
-    {
-      "where": [
-        "作品页面",
-        "Your project page"
-      ],
-      "action": [
-        "按工具说明打开修复后的版本，亲自重走原问题的同一组输入和点击，再新增一条测试记录并读取一条旧记录。",
-        "Open the repaired version as instructed; personally repeat the original input and clicks, then save a new test record and read an old one."
-      ],
-      "tip": [
-        "使用同一失败条件才知道问题是否修好；换一条容易成功的输入不算复测。",
-        "Keep the original failure conditions; an easier input is not a retest."
-      ],
-      "expect": [
-        "原失败动作达到预期，正常保存读取和旧数据也正常。",
-        "The original case, normal save/read and old data all behave correctly."
-      ],
-      "ifWrong": [
-        "结果不同于工具报告时保留画面、网址及版本，继续在原编号下补证据，不标记关闭。",
-        "If results differ from the tool report, preserve screen, URL and revision under the same issue; leave it open."
-      ]
-    },
-    {
-      "where": [
-        "原反馈记录和测试记录",
-        "Original feedback and test records"
-      ],
-      "action": [
-        "把修复版本、本人复测结果、受影响功能检查分别记下。失败继续用原编号；通过后回到验收，交付问题还要重新检查交付条件。",
-        "Record the fixed revision, personal retest and affected behavior separately. Keep failed issues open under the same ID; return passed work to acceptance and delivery review if applicable."
-      ],
-      "tip": [
-        "本站勾选完成不会修改项目反馈文件；把实际记录交给工具写回并打开核对。",
-        "Checking this guide does not edit project files. Send the record to the tool and open the saved result."
-      ],
-      "expect": [
-        "记录区分工具测试与本人复测，问题状态有对应证据。",
-        "Tool checks and personal retests are distinct; issue status has evidence."
-      ],
-      "ifWrong": [
-        "未亲自检查或缺少运行条件时写待复测，不把它改成通过。",
-        "Without a personal check or required environment, mark awaiting retest rather than passed."
+      "prompt": [
+        "",
+        ""
       ]
     }
   ],
   "flow": [
     {
       "where": [
-        "实际项目的需求、任务表和工具对话",
-        "Project requirements, tasks and tool chat"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "打开需求与已完成任务，让工具先列一条从进入页面到看到结果的测试路线，注明当前版本、测试入口、要填的内容和每一步预期。",
-        "Open requirements and completed tasks. Ask for one route from entry to outcome, with revision, URL, inputs and expected results."
+        "让工具写一份从打开作品到完成任务的操作清单。",
+        "Ask for a checklist from opening the project to finishing a task."
       ],
       "tip": [
-        "若前端、后端或数据库任务还没完成，回对应开发步骤；不让工具把未做的功能写成测试通过。",
-        "Return to unfinished frontend, backend or database tasks rather than marking them passed."
+        "完成后：得到能照着做的清单。",
+        "Afterwards: You have a usable checklist."
       ],
       "expect": [
-        "有一条准备齐全、能逐步执行的路线。",
-        "One executable route has all prerequisites."
+        "得到能照着做的清单。",
+        "You have a usable checklist."
       ],
       "ifWrong": [
-        "缺账号或服务时要求工具写清创建入口和前置条件，保持未测试。",
-        "For missing accounts/services request setup entries and keep the case untested."
+        "出现没建过的账号或页面时，先回相应步骤准备。",
+        "Prepare any missing account or page before continuing."
+      ],
+      "prompt": [
+        "请读需求和 tasks/todo.md，列一条普通用户完整使用过程。一步只写一个动作，说明输入什么、点击哪里、应该看到什么。没有准备好的功能先标出来。",
+        "Read requirements and tasks/todo.md. Write one ordinary-user journey, one action at a time, with inputs, clicks and expected results. Mark unfinished prerequisites."
       ]
     },
     {
       "where": [
-        "本站本步模板和工具原项目对话",
-        "This step’s template and original tool chat"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "填入真实测试路线，确认、复制并发送，请工具准备可清理的测试资料，先运行它能执行的检查并报告结果。",
-        "Fill the real route, confirm, copy and send. Ask the tool to prepare disposable test data and report checks it can run."
+        "打开作品，照清单逐项做一遍。每次写下自己真正看到的结果。",
+        "Open the project and follow each action, recording what you actually see."
       ],
       "tip": [
-        "测试消息、付款等用测试环境；工具检查与接下来本人操作分别记录。",
-        "Use test environments for messages and payments. Separate tool checks from personal actions."
+        "完成后：能从开始走到结束，或准确指出停在哪一步。",
+        "Afterwards: You finish the flow or can identify the exact stopping point."
       ],
       "expect": [
-        "工具说明测试资料在哪里，哪些已检查、哪些需要本人做。",
-        "Test data location and tool/manual checks are clearly identified."
+        "能从开始走到结束，或准确指出停在哪一步。",
+        "You finish the flow or can identify the exact stopping point."
       ],
       "ifWrong": [
-        "只有“全部正常”时要求给实际输入、输出和未测项，不复制为自己的验收结论。",
-        "Replace an unsupported all-good claim with inputs, outputs and untested cases."
+        "卡住就停，保留输入、网址和错误，不连续乱点。",
+        "Stop on failure and keep input, URL and error."
+      ],
+      "prompt": [
+        "",
+        ""
       ]
     },
     {
       "where": [
-        "作品页面",
-        "Your project page"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "从普通用户入口打开作品，按路线只做一遍：填写独特测试内容，点一次保存，读结果，再刷新或重新打开列表找到同一条记录。记下编号。",
-        "Use the ordinary user entry once: enter unique test content, save once, read feedback, then refresh or reopen the list and find the same ID."
+        "把记录交给工具保存，再检查其他必须完成的使用过程。",
+        "Save your record and cover the remaining required journeys."
       ],
       "tip": [
-        "不要用管理员入口代替普通流程；页面新增一行还需与前一步数据库核对结果对应。",
-        "Do not substitute an admin path. Match the visible record to the earlier storage check."
+        "完成后：每条必做流程都有实际结果。",
+        "Afterwards: Every required journey has an honest result."
       ],
       "expect": [
-        "输入、处理、保存、读回连成一条真实流程。",
-        "Input, processing, persistence and reading form a real complete flow."
+        "每条必做流程都有实际结果。",
+        "Every required journey has an honest result."
       ],
       "ifWrong": [
-        "卡在哪一步就停在那里，保存网址、输入、错误与截图；转反馈步骤记录，按计划修复后重测。",
-        "Stop at the failure; keep URL, input, error and screenshot. Record feedback and retest after planned repair."
-      ]
-    },
-    {
-      "where": [
-        "项目 docs/checks.md 和剩余需求",
-        "Project docs/checks.md and remaining requirements"
+        "有失败先记反馈，修好后重走同一条流程。",
+        "Report failures and repeat the same journey after repair."
       ],
-      "action": [
-        "把本人实际结果交给工具写入 docs/checks.md，打开文件核对。先完成这条，再按必做需求补其他路线。",
-        "Send your observed results to the tool for docs/checks.md and open it to verify. Then cover other required routes."
-      ],
-      "tip": [
-        "记录格式：需求编号／版本／入口／输入／预期／实际／证据／通过、失败或未测试。本站进度不代替项目文件。",
-        "Record requirement ID, revision, entry, input, expected, actual, evidence and pass/fail/untested. Guide progress is separate."
-      ],
-      "expect": [
-        "每个必做需求有检查记录，未测原因明确，可交给异常测试。",
-        "Every required flow has an honest record ready for failure testing."
-      ],
-      "ifWrong": [
-        "发现漏测就补对应路线；不要因为第一条成功而把整份记录改成通过。",
-        "Test missing routes rather than passing everything after one success."
+      "prompt": [
+        "请把以下本人测试记录保存到 docs/checks.md：【粘贴操作、预期、实际结果】。通过、失败和没测试的项目分开写，不代替我填写通过。",
+        "Save my test record to docs/checks.md: 【actions, expected, actual】. Separate passed, failed and untested checks; do not invent passes."
       ]
     }
   ],
   "test": [
     {
       "where": [
-        "需求与本步模板",
-        "Requirements and this step’s template"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "从空输入、过长内容、连续点击、断开服务、不同权限中选适用情况，填入模板并发给工具。请它逐项写出准备条件、操作和应出现的提示。",
-        "Choose relevant blanks, length limits, repeat clicks, service failure and access cases. Send them to the tool for setup, actions and expected messages."
+        "先测试错误输入。在作品里不填必填项就点提交，再试过长内容。",
+        "Try invalid input: submit empty required fields and overly long content."
       ],
       "tip": [
-        "没有登录功能不硬加账号测试；用可清理测试资料，不在他人的正式服务上制造故障。",
-        "Do not add account checks to an app without login. Use disposable data and your test environment."
+        "完成后：页面解释哪里不对，也没有保存无效记录。",
+        "Afterwards: The page explains the problem without saving invalid records."
       ],
       "expect": [
-        "每项异常有操作和明确预期，不适用写原因。",
-        "Each applicable failure case has actions and expected behavior."
+        "页面解释哪里不对，也没有保存无效记录。",
+        "The page explains the problem without saving invalid records."
       ],
       "ifWrong": [
-        "不知道怎样制造异常时要求只给本项目测试环境的方法，未准备好先不执行。",
-        "Ask for a method confined to this project’s test environment before trying a fault."
+        "只有页面拦截还不够，让工具检查后端是否同样拒绝。",
+        "Ask the tool to check backend rejection as well."
+      ],
+      "prompt": [
+        "",
+        ""
       ]
     },
     {
       "where": [
-        "作品测试页面",
-        "The project test page"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "清空必填内容点提交，再试需求规定的过长内容；观察提示和列表。正常内容再提交一次作为对照。",
-        "Submit empty required fields, then content beyond the agreed limit. Inspect messages/list and compare with one valid submission."
+        "检查重复点击和服务中断时会发生什么。先让工具给出只影响本项目测试环境的办法。",
+        "Check repeated clicks and service interruption in this project’s test environment only."
       ],
       "tip": [
-        "错误输入应被解释并拒绝保存，不应清空之前的记录。后台也必须检查，不能只依赖页面拦截。",
-        "Reject invalid input without deleting old records. The backend must validate too."
+        "完成后：有明确的测试和恢复方法。",
+        "Afterwards: You have clear testing and recovery steps."
       ],
       "expect": [
-        "无效输入无新增记录，合法输入仍可保存。",
-        "Invalid input adds no record; valid input still saves."
+        "有明确的测试和恢复方法。",
+        "You have clear testing and recovery steps."
       ],
       "ifWrong": [
-        "页面拦住但后端未测时，请工具直接核对接口校验，保留未测试标记直到有证据。",
-        "If only the page was tested, request a direct backend check and retain untested status until evidenced."
+        "不知道进程属于谁时先不停止，要求工具确认项目和端口。",
+        "Identify the project and port before stopping any process."
+      ],
+      "prompt": [
+        "请列出本项目测试重复点击和服务暂时停止的操作。一次只测一项，说明怎样停止本项目服务和恢复。不要停止其他项目。只测试，先不修代码。",
+        "Give step-by-step tests for repeat clicks and a stopped service, one at a time. Explain how to stop and restore only this project. Test without repairing yet."
       ]
     },
     {
       "where": [
-        "工具对话和作品测试页面",
-        "Tool chat and project test page"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "先保留未提交内容，请工具说明怎样只停止本项目测试服务。确认停下后在页面点保存，记录提示和输入是否保留；再按原方法启动服务。",
-        "Keep unsent content. Ask how to stop only this test service, stop it, try saving and observe feedback/input. Restart as documented."
+        "按说明试一次服务停止后的保存，再恢复服务。",
+        "Try saving with the service stopped, then restore it."
       ],
       "tip": [
-        "仅适用于可控测试环境。恢复后先查记录是否已保存再决定重试，防止重复提交。",
-        "Use a controlled test environment. After recovery query before retrying to avoid duplicates."
+        "完成后：没有假成功，未提交内容保留；恢复后先查列表再决定是否重试。",
+        "Afterwards: No false success; input stays. Check the list before retrying after recovery."
       ],
       "expect": [
-        "服务不可用时没有假成功，输入保留；恢复后可正常读取和保存。",
-        "Unavailable service produces no false success; input remains and normal work resumes."
+        "没有假成功，未提交内容保留；恢复后先查列表再决定是否重试。",
+        "No false success; input stays. Check the list before retrying after recovery."
       ],
       "ifWrong": [
-        "不知道该停哪个进程就不停止，先请工具核对项目和端口；不结束不认识的进程。",
-        "Do not stop an unidentified process; verify its project and port first."
+        "已保存但返回失败时不要重复提交，先请工具按内容和编号核对。",
+        "If it may already be saved, verify content/ID before submitting again."
+      ],
+      "prompt": [
+        "",
+        ""
       ]
     },
     {
       "where": [
-        "docs/checks.md 与反馈步骤",
-        "docs/checks.md and feedback"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "把每项实际结果和未测原因交给工具追加到记录。失败保留编号与证据，进入反馈和修复计划；通过后继续重启检查。",
-        "Append actual results and reasons for untested cases. Keep issue IDs and evidence for feedback/planning; continue to restart checks when ready."
+        "把结果给工具记下来。",
+        "Record the results."
       ],
       "tip": [
-        "连点保护只证明同一次等待中的操作，不能代替网络重试下的重复数据检查。",
-        "Pending-click protection does not establish duplicate safety for network retries."
+        "完成后：失败和未测项没有被改成通过。",
+        "Afterwards: Failures and untested checks are not marked passed."
       ],
       "expect": [
-        "失败、通过、未测试分开，后续知道该修哪项。",
-        "Passes, failures and untested cases are distinct."
+        "失败和未测项没有被改成通过。",
+        "Failures and untested checks are not marked passed."
       ],
       "ifWrong": [
-        "工具自动关闭未测问题时纠正状态；不靠删测试失败记录得到“全通过”。",
-        "Correct automatically closed untested issues rather than deleting failures."
+        "没有相应功能就注明不适用及原因，不为测试临时增加功能。",
+        "Explain inapplicability instead of adding unnecessary features."
+      ],
+      "prompt": [
+        "请把刚才各项异常测试的预期、实际和未测试原因写入 docs/checks.md。失败保持失败，留给反馈与修复步骤处理。",
+        "Write expected/actual results and untested reasons in docs/checks.md. Keep failures open for feedback and repair."
       ]
     }
   ],
   "restart": [
     {
       "where": [
-        "作品页面和 README.md",
-        "Project page and README.md"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "先记录当前网址、测试版本及一条已保存内容的编号。打开 README 找到本项目停止与启动方法。",
-        "Record URL, revision and one saved record ID. Find this project’s stop/start instructions in README."
+        "先记下一条已保存记录，再找到 README.md 里的停止和启动方法。",
+        "Note one saved record and find README’s stop/start instructions."
       ],
       "tip": [
-        "没有数据保存需求的项目只记录核心结果；不要为了测试添加数据库。",
-        "For projects without persistence, record the core result without adding storage."
+        "完成后：知道待会儿要找回哪条记录。",
+        "Afterwards: You know which record to find after reopening."
       ],
       "expect": [
-        "停止前已有可供重开后对照的记录。",
-        "You have a baseline to compare after reopening."
+        "知道待会儿要找回哪条记录。",
+        "You know which record to find after reopening."
       ],
       "ifWrong": [
-        "README 没有实际方法时让工具补入口、执行位置和预期输出，不猜命令。",
-        "Ask for missing entry, execution location and output rather than guessing commands."
+        "方法没写清时，请工具补具体目录、命令和网址。",
+        "Ask for the exact directory, command and URL if missing."
+      ],
+      "prompt": [
+        "",
+        ""
       ]
     },
     {
       "where": [
-        "README 指定的终端或应用入口",
-        "The terminal or app entry named in README"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "先保存未完成编辑，再按说明停止本项目；本机终端通常在运行服务的窗口按 Control+C。然后按同一说明重新启动。",
-        "Save unfinished edits, stop this project as documented, then start it again. Local terminals commonly use Control+C in the running service window."
+        "停止并重新启动本项目。仅关掉浏览器还不算停止后端。",
+        "Stop and restart the project; closing the browser alone does not stop its backend."
       ],
       "tip": [
-        "只关闭浏览器不等于后端已经停止；网页工具和桌面应用使用各自停止/重开方法。",
-        "Closing a browser is not stopping the backend; web tools/native apps have their own restart controls."
+        "完成后：服务重新运行，能打开作品。",
+        "Afterwards: The restarted project opens."
       ],
       "expect": [
-        "原服务停止后重新启动，并给出实际可用入口。",
-        "The service actually stops and starts with a working entry."
+        "服务重新运行，能打开作品。",
+        "The restarted project opens."
       ],
       "ifWrong": [
-        "端口已占用时让工具确认旧进程归属，不能随便关掉其他项目。",
-        "Have the tool identify an occupied port’s owner rather than stopping unrelated projects."
+        "端口占用先查归属；浏览器禁止某端口时换允许的空闲端口，不关闭安全保护。",
+        "Identify occupied ports; use a free allowed port rather than disabling browser protection."
+      ],
+      "prompt": [
+        "请按 README.md 停止并重新启动本项目服务，保留数据库。告诉我实际打开哪个网址；不要新建项目或重置数据。",
+        "Stop and restart this project using README.md, keeping its database. Give the actual URL; do not create a new project or reset data."
       ]
     },
     {
       "where": [
-        "作品页面和 docs/checks.md",
-        "Project page and docs/checks.md"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "打开新启动输出中的地址，找到原记录，再做一次核心操作。把重启前后实际结果、版本、数据库位置交给工具保存并打开核对。",
-        "Open the reported URL, find the original record and repeat a core action. Save and inspect before/after results, revision and storage location."
+        "打开新启动的网址，找刚才那条记录，再做一次主要操作。",
+        "Open the reported URL, find the record and try the main action."
       ],
       "tip": [
-        "换了端口不代表数据必须消失；应核对仍是同一项目和数据位置。",
-        "A changed port should not itself erase data; verify the project and storage identity."
+        "完成后：重开后能继续使用，记录按需求保留。",
+        "Afterwards: The reopened project works and retains required data."
       ],
       "expect": [
-        "重开可用，要求保留的数据仍在，记录足以支持本人验收。",
-        "Reopening works and required data remains, with evidence for acceptance."
+        "重开后能继续使用，记录按需求保留。",
+        "The reopened project works and retains required data."
       ],
       "ifWrong": [
-        "记录丢失先查路径、账号与配置；保留原库，不重新初始化整个项目。",
-        "For missing records inspect paths, account and configuration; preserve storage instead of reinitializing."
+        "丢记录时先核对项目路径和数据库位置，不清库重来。",
+        "Check project and database paths before changing data."
+      ],
+      "prompt": [
+        "我的重开结果是：【填写】。请把实际启动方法和结果更新到 README.md 与 docs/checks.md。",
+        "My reopening result is: 【fill in】. Update README.md and docs/checks.md with actual instructions and results."
+      ]
+    }
+  ],
+  "accept": [
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "重新读最初的项目描述，选出当时说“做完应该能做到”的事情。",
+        "Reread your original description and the things the finished project should do."
+      ],
+      "tip": [
+        "完成后：手里有自己的目标和对应试用方法。",
+        "Afterwards: You have your own goals and practical tests."
+      ],
+      "expect": [
+        "手里有自己的目标和对应试用方法。",
+        "You have your own goals and practical tests."
+      ],
+      "ifWrong": [
+        "目标发生变化时先写清变化，不能临时降低标准把失败算通过。",
+        "Document changed goals instead of silently lowering criteria."
+      ],
+      "prompt": [
+        "",
+        ""
+      ]
+    },
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "像实际使用者一样操作作品，不借助工具临时改数据来完成流程。",
+        "Use the project as its intended user without having the tool patch data mid-flow."
+      ],
+      "tip": [
+        "完成后：知道作品有没有解决最初的问题。",
+        "Afterwards: You know whether it solves the original problem."
+      ],
+      "expect": [
+        "知道作品有没有解决最初的问题。",
+        "You know whether it solves the original problem."
+      ],
+      "ifWrong": [
+        "没有条件亲自试就填未测试，不照抄 AI 的通过结论。",
+        "Mark untested if you cannot try it; do not copy an AI pass."
+      ],
+      "prompt": [
+        "",
+        ""
+      ]
+    },
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "填写下方试用记录并确认，再展开“把本步已确认记录交给 AI 保存”，生成保存话术，复制到项目对话。",
+        "Fill and confirm the trial record, then use the save-in-project section to generate and send its save instruction."
+      ],
+      "tip": [
+        "完成后：docs/acceptance.md 中保存了本人实际操作和结论。",
+        "Afterwards: docs/acceptance.md contains your actual actions and conclusion."
+      ],
+      "expect": [
+        "docs/acceptance.md 中保存了本人实际操作和结论。",
+        "docs/acceptance.md contains your actual actions and conclusion."
+      ],
+      "ifWrong": [
+        "有问题选“记录反馈”，达到目标再选择交付方式。",
+        "Record issues when failing; choose delivery only after goals are met."
+      ],
+      "prompt": [
+        "",
+        ""
+      ]
+    }
+  ],
+  "feedback": [
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "选一个问题，写下从哪里开始、输入什么、点哪里、出现什么。",
+        "Choose one issue and record the entry, input, clicks and result."
+      ],
+      "tip": [
+        "完成后：别人能照着描述走到同一问题。",
+        "Afterwards: Someone else can follow the same steps."
+      ],
+      "expect": [
+        "别人能照着描述走到同一问题。",
+        "Someone else can follow the same steps."
+      ],
+      "ifWrong": [
+        "不要只写“不能用”；不懂原因没关系，记录现象即可。",
+        "Describe the symptom, not merely “broken”; you need not know the cause."
+      ],
+      "prompt": [
+        "",
+        ""
+      ]
+    },
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "把操作记录和报错填进下方模板，确认后复制给工具。",
+        "Fill the template with actions/errors, confirm and send it."
+      ],
+      "tip": [
+        "完成后：反馈文件有问题编号、重现步骤和证据。",
+        "Afterwards: Issues have IDs, reproduction steps and evidence."
+      ],
+      "expect": [
+        "反馈文件有问题编号、重现步骤和证据。",
+        "Issues have IDs, reproduction steps and evidence."
+      ],
+      "ifWrong": [
+        "截图含密码或个人信息时先遮住再发送。",
+        "Hide passwords/private information in screenshots before sharing."
+      ],
+      "prompt": [
+        "请把以下问题整理到 docs/feedback.md，给每项编号，写清预期与实际：【粘贴记录】。先记录和检查原因，不修改代码；还没查明的原因不要写成事实。",
+        "Organize these issues in docs/feedback.md with IDs, expected and actual results: 【paste record】. Record and investigate without changing code. Do not present guesses as facts."
+      ]
+    }
+  ],
+  "repair-plan": [
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "先让工具解释为什么出问题。",
+        "Ask why the issue occurs before changing anything."
+      ],
+      "tip": [
+        "完成后：得到能对应实际问题的解释。",
+        "Afterwards: The explanation fits the observed issue."
+      ],
+      "expect": [
+        "得到能对应实际问题的解释。",
+        "The explanation fits the observed issue."
+      ],
+      "ifWrong": [
+        "原因不明就继续小范围检查，不默认重装或删库。",
+        "Investigate further rather than defaulting to reinstalling or deleting storage."
+      ],
+      "prompt": [
+        "请读 docs/feedback.md 和需求，先检查问题原因，不改代码。把已查明的事实和还要验证的猜测分开，告诉我下一项最小检查。",
+        "Read docs/feedback.md and the requirements. Investigate without changing code. Separate facts from hypotheses and give the next small check."
+      ]
+    },
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "让工具写清准备改哪里、怎么确认改好了，然后自己读一遍。",
+        "Review where the fix will happen and how you will check it."
+      ],
+      "tip": [
+        "完成后：修复计划有具体改动和检查方法。",
+        "Afterwards: The fix and its test are specific."
+      ],
+      "expect": [
+        "修复计划有具体改动和检查方法。",
+        "The fix and its test are specific."
+      ],
+      "ifWrong": [
+        "只有“优化一下”就要求写具体，不直接批准。",
+        "Ask for specifics if it only says optimize."
+      ],
+      "prompt": [
+        "请保存 docs/repair-plan.md：每个问题改哪些文件、会影响哪些原功能、怎样重走失败步骤、修好应该看到什么。涉及数据库先写备份和恢复方法，等我确认再执行。",
+        "Save docs/repair-plan.md with changed files, affected features, original-case retest and expected results. Include backup/recovery before database changes. Wait for my approval."
+      ]
+    }
+  ],
+  "repair": [
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "确认修复计划后，让工具只改这一项问题。",
+        "After reviewing the plan, fix one agreed issue."
+      ],
+      "tip": [
+        "完成后：工具说明改了哪里和怎样再试。",
+        "Afterwards: The tool explains the change and retest."
+      ],
+      "expect": [
+        "工具说明改了哪里和怎样再试。",
+        "The tool explains the change and retest."
+      ],
+      "ifWrong": [
+        "范围扩大或要求清库时先停，回修复计划说明原因。",
+        "Return to planning if the scope expands or a reset is proposed."
+      ],
+      "prompt": [
+        "请按已确认的 docs/repair-plan.md 修复【问题编号】。保护已有数据，只改必要文件，完成后报告实际检查结果和我该怎样复测。",
+        "Follow the approved docs/repair-plan.md for 【issue ID】. Preserve data, change only necessary files and report checks plus my retest steps."
+      ]
+    },
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "亲自重走原来失败的那组操作，再试原本正常的功能。",
+        "Repeat the original failing actions, then check previously working features."
+      ],
+      "tip": [
+        "完成后：原问题解决，原来的保存和读取仍正常。",
+        "Afterwards: The issue is fixed and normal behavior still works."
+      ],
+      "expect": [
+        "原问题解决，原来的保存和读取仍正常。",
+        "The issue is fixed and normal behavior still works."
+      ],
+      "ifWrong": [
+        "仍失败就保留同一问题编号，补新证据，不重新编一个“已解决”的问题。",
+        "Keep the same issue ID and add evidence if it still fails."
+      ],
+      "prompt": [
+        "",
+        ""
+      ]
+    },
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "把自己的复测结果交给工具保存。",
+        "Save your personal retest results."
+      ],
+      "tip": [
+        "完成后：问题状态与本人实际结果一致。",
+        "Afterwards: Issue status matches your result."
+      ],
+      "expect": [
+        "问题状态与本人实际结果一致。",
+        "Issue status matches your result."
+      ],
+      "ifWrong": [
+        "工具与本人结论不一致时，以实际复测为依据继续检查。",
+        "Investigate any difference from the tool’s report."
+      ],
+      "prompt": [
+        "我的复测结果：【填写】。请更新 docs/checks.md 和 docs/feedback.md；只有我实际验证通过的问题才关闭，未测项保留。",
+        "My retest result: 【fill in】. Update docs/checks.md and docs/feedback.md; close only personally verified issues and retain untested items."
       ]
     }
   ],
   "delivery": [
     {
       "where": [
-        "本站交付模板",
-        "This guide’s delivery template"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "写清谁用、在哪台设备用、是只给自己本机用还是要让别人远程打开。确认后生成保存话术，复制给工具写入 docs/delivery.md，再打开核对。",
-        "Specify users, devices and local-only versus remote access. Confirm, generate the save instruction, copy to the tool and inspect docs/delivery.md."
+        "决定谁在哪里使用：自己电脑、别人通过网址、还是下载安装包。填下方模板并确认。",
+        "Choose who uses it and where: your computer, a shared URL or an installer. Fill and confirm the template."
       ],
       "tip": [
-        "自己本机能用就是一种交付结果，不必强行买域名或上线。本站确认不自动创建交付文件。",
-        "Working locally is a valid delivery. Guide confirmation does not create project files."
+        "完成后：选择符合真实使用需要。",
+        "Afterwards: The choice matches actual use."
       ],
       "expect": [
-        "交付对象、设备和范围已保存到实际项目。",
-        "Real project records identify users, devices and distribution scope."
+        "选择符合真实使用需要。",
+        "The choice matches actual use."
       ],
       "ifWrong": [
-        "想不清范围时先选最小真实使用场景，未确认项写待定，不替用户购买服务。",
-        "Choose the smallest real use case, leave unknowns pending and do not buy services on the user’s behalf."
+        "自己电脑能用也是有效结果，不必为了教程公开上线。",
+        "Local use is a valid result; publication is not mandatory."
+      ],
+      "prompt": [
+        "",
+        ""
       ]
     },
     {
       "where": [
-        "工具对话与项目 README",
-        "Tool chat and project README"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "本机使用时让工具写明打开项目、启动服务、访问网址、停止、再次打开和数据位置。把这些步骤发给预期使用者之前先自己照做。",
-        "For local use document project opening, service start, URL, stop, reopen and storage location; follow the instructions yourself first."
+        "展开“把本步已确认记录交给 AI 保存”，生成话术并发给工具。",
+        "Use the save-in-project section to generate and send the save instruction."
       ],
       "tip": [
-        "127.0.0.1 或 localhost 指当前这台电脑；把这个地址发给别人，他们不会连到你的项目。",
-        "127.0.0.1 and localhost mean the current computer. Sending that URL does not connect someone to yours."
+        "完成后：docs/delivery.md 中记录了使用者、设备和交付方式。",
+        "Afterwards: docs/delivery.md records users, devices and delivery method."
       ],
       "expect": [
-        "不用记住对话也能按 README 再次使用。",
-        "README alone is sufficient to reopen and use the project."
+        "docs/delivery.md 中记录了使用者、设备和交付方式。",
+        "docs/delivery.md records users, devices and delivery method."
       ],
       "ifWrong": [
-        "另一台设备不能打开时先判断是否真的要求远程使用，再选对应交付方案。",
-        "If another device cannot connect, first decide whether remote access is required."
+        "文件没出现就让工具给出实际保存位置。",
+        "Request the actual saved location if missing."
+      ],
+      "prompt": [
+        "",
+        ""
       ]
     },
     {
       "where": [
-        "公开使用方案与对应交付分支",
-        "The remote-use plan and relevant delivery branch"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "需要远程使用时，请工具分别说明页面放哪里、后端由哪个服务运行、数据库如何持久保存、需要哪些账号和费用。逐项确认再进入准备检查。",
-        "For remote access ask where the page lives, what runs the backend, how data persists, and which accounts/costs are needed. Confirm before readiness review."
+        "请工具按选好的方式列准备事项。",
+        "Ask what the chosen method requires."
       ],
       "tip": [
-        "静态网页托管不自动运行后端；演示开发服务器不能直接当正式服务。没有账号或未决定费用先停在准备阶段。",
-        "Static hosting does not automatically run a backend; a development server is not production. Stop at preparation if accounts/costs are unresolved."
+        "完成后：知道接下来要准备什么。",
+        "Afterwards: The required preparations are clear."
       ],
       "expect": [
-        "三部分各有实际运行方案，访问权限、数据保留与负责人明确。",
-        "All three parts have a runtime plan with access, retention and ownership."
+        "知道接下来要准备什么。",
+        "The required preparations are clear."
       ],
       "ifWrong": [
-        "只有“上传代码”时要求补后端启动、配置、持久数据和真实用户入口，先不上线。",
-        "A code-upload plan must also explain startup, configuration, persistence and user entry."
+        "localhost 是当前电脑，把这个网址发给别人不会自动分享自己的项目。",
+        "localhost refers to the current computer; sharing it does not share your project."
+      ],
+      "prompt": [
+        "请读 docs/delivery.md。本机使用写清启动、停止、数据位置；远程使用分别说明页面、后端、数据库放在哪里，需要哪些账号和费用。先列方案，不发布。",
+        "Read docs/delivery.md. For local use explain start/stop and storage. For remote use explain where page, backend and database run, with accounts and costs. Plan only; do not publish."
+      ]
+    }
+  ],
+  "release-review": [
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "让工具对照试用记录，看看还有什么没有准备好。",
+        "Check what is still missing before delivery."
+      ],
+      "tip": [
+        "完成后：有明确的已准备和未准备清单。",
+        "Afterwards: Ready and missing items are clearly separated."
+      ],
+      "expect": [
+        "有明确的已准备和未准备清单。",
+        "Ready and missing items are clearly separated."
+      ],
+      "ifWrong": [
+        "没有本人试用记录就回试用步骤补，不让工具代填通过。",
+        "Return to personal testing if its record is absent."
+      ],
+      "prompt": [
+        "请读需求、docs/checks.md、docs/acceptance.md 和 docs/delivery.md。逐项检查功能、启动说明、数据保存、账号和费用，把缺少的条件写清楚。先检查，不发布。",
+        "Read requirements, docs/checks.md, docs/acceptance.md and docs/delivery.md. Check features, startup instructions, data, accounts and costs. List gaps without publishing."
+      ]
+    },
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "保存检查清单，有阻断问题先修好。",
+        "Save the checklist and repair blocking issues first."
+      ],
+      "tip": [
+        "完成后：可以判断是先修问题还是准备交付文件。",
+        "Afterwards: You know whether to repair or prepare delivery files next."
+      ],
+      "expect": [
+        "可以判断是先修问题还是准备交付文件。",
+        "You know whether to repair or prepare delivery files next."
+      ],
+      "ifWrong": [
+        "尚未运行的项目不标通过；缺条件先补条件。",
+        "Do not pass checks that have not run."
+      ],
+      "prompt": [
+        "请把准备情况保存到 docs/release.md，把需要修的问题编号写入 docs/feedback.md。还没制作安装包或部署时，相关试运行写待测试。",
+        "Save readiness to docs/release.md and numbered issues to docs/feedback.md. Mark artifact/deployment trials pending until they actually run."
       ]
     }
   ],
   "package": [
     {
       "where": [
-        "已确认的交付文件与工具对话",
-        "Confirmed delivery files and tool chat"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "在本步模板带上 docs/design.md、docs/delivery.md、docs/release.md，复制发送。让工具先核对准备检查，再说明本项目实际打包或启动步骤。",
-        "Send this step’s template with design, delivery and release records. Ask the tool to check readiness and specify actual build or startup steps."
+        "让工具按已选方式准备给使用者的文件。",
+        "Prepare files for the chosen delivery method."
       ],
       "tip": [
-        "若选择本机使用，可以交付已验证源码、依赖和启动说明；不为了流程硬做安装包。",
-        "Local delivery may be verified source, dependencies and instructions; an installer is not mandatory."
+        "完成后：找到真实文件和配套使用说明。",
+        "Afterwards: Real files and matching instructions are available."
       ],
       "expect": [
-        "交付物、输出位置、依赖及待本人操作的前提明确。",
-        "Output, location, dependencies and personal prerequisites are clear."
+        "找到真实文件和配套使用说明。",
+        "Real files and matching instructions are available."
       ],
       "ifWrong": [
-        "缺交付决定返回选择交付方式，不套用别的项目命令。",
-        "Return to delivery selection if the decision is missing; do not borrow unrelated commands."
+        "缺配置时用占位说明，不能把真实密码和用户数据库打进公开文件。",
+        "Use configuration placeholders; exclude real secrets and user databases from public packages."
+      ],
+      "prompt": [
+        "请读 docs/design.md、docs/delivery.md 和 docs/release.md。按已确认方式准备交付文件，告诉我保存位置、使用者需要安装什么以及怎样启动。只自用时可以提供源码和运行说明，不强行做安装包。",
+        "Read docs/design.md, docs/delivery.md and docs/release.md. Prepare the agreed files and explain location, dependencies and startup. Local use may use source and instructions without an installer."
       ]
     },
     {
       "where": [
-        "工具输出的实际文件位置",
-        "The actual output location"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "执行确认过的准备步骤，找到真实产物和使用说明。请工具列哪些配置要由接收者填写、数据库在哪里，以及怎样保存密钥。",
-        "Run the agreed preparation and find the deliverable and instructions. List recipient configuration, storage and secret handling."
+        "在独立测试目录或目标设备中，像接收者一样照说明打开并使用。",
+        "Try it independently as the recipient would."
       ],
       "tip": [
-        "不要把开发机的密码、密钥或真实用户数据库直接装进公开包；示例配置用占位值并说明填写入口。",
-        "Do not bundle development secrets or real user databases into a public package; document placeholders and setup entries."
+        "完成后：接收者按说明可以使用主要功能。",
+        "Afterwards: The instructions let the recipient use core features."
       ],
       "expect": [
-        "产物存在且能找到，配置和数据交接边界清楚。",
-        "The output exists and configuration/data responsibilities are clear."
+        "接收者按说明可以使用主要功能。",
+        "The instructions let the recipient use core features."
       ],
       "ifWrong": [
-        "构建报错保留第一条有效错误和执行位置，按排障流程处理，不反复重建项目。",
-        "Keep the first meaningful build error and its location for diagnosis."
+        "仅在开发电脑可用时，核对依赖、配置和数据位置；缺设备就记未测试。",
+        "Compare dependencies/configuration/paths if it only works in development; mark unavailable devices untested."
+      ],
+      "prompt": [
+        "请给出独立试运行的方法，不借用已经启动的开发服务。用测试资料检查打开、保存、读取和重开，保留原项目数据。",
+        "Give an isolated trial method without relying on an existing development service. Test opening, saving, reading and reopening with test data while preserving the original."
       ]
     },
     {
       "where": [
-        "隔离测试目录或目标设备",
-        "An isolated test directory or target device"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "按接收者身份，在独立位置照 README 启动或安装交付物，完成填写、保存、读回、重开。使用测试数据并记录实际版本。",
-        "Act as the recipient: follow README to start/install, enter data, save, read and reopen with test data. Record revision."
+        "把这次试运行记录保存下来。",
+        "Save the trial record."
       ],
       "tip": [
-        "不要沿用开发机后台已运行的服务来假装独立交付成功；公开发布仍需下一步本人确认。",
-        "Do not rely on a hidden running development service to claim independent delivery. Public release still needs confirmation."
+        "完成后：下一步能按记录找到同一份交付文件。",
+        "Afterwards: The next step can find the same deliverable."
       ],
       "expect": [
-        "交付物在选定环境能独立使用，相关数据按需求保留。",
-        "The deliverable works independently in the chosen environment with required persistence."
+        "下一步能按记录找到同一份交付文件。",
+        "The next step can find the same deliverable."
       ],
       "ifWrong": [
-        "只在开发机可用时核对运行时、配置、服务和数据路径；缺设备就写未测试。",
-        "For development-only success compare runtime, configuration, services and paths; mark unavailable devices untested."
-      ]
-    },
-    {
-      "where": [
-        "docs/release.md",
-        "docs/release.md"
+        "测试失败先记问题并修复，不把“生成成功”当成“能用”。",
+        "Fix failed trials rather than equating file generation with usability."
       ],
-      "action": [
-        "把产物位置、启动入口、依赖服务、试运行结果和失败恢复办法交给工具保存，打开文件逐项核对，再进入真实入口检查。",
-        "Save artifact location, entry, services, trial results and recovery; open and review before live-entry checks."
-      ],
-      "tip": [
-        "有阻断问题留在修复流程；上传成功、构建成功和用户可用是不同结果。",
-        "Keep blocking issues in repair; upload, build and user usability are different outcomes."
-      ],
-      "expect": [
-        "下一步能按记录找到同一版本和实际入口。",
-        "The next step can find the same revision and entry."
-      ],
-      "ifWrong": [
-        "缺少哪项就补哪项；未测试不改成通过。",
-        "Fill missing evidence without passing untested work."
+      "prompt": [
+        "请将文件位置、版本、实际入口、试运行结果和出错后的恢复方法写入 docs/release.md。未测项保留，先不要正式发布。",
+        "Write artifact location, revision, real entry, trial results and recovery to docs/release.md. Keep untested items and do not publish yet."
       ]
     }
   ],
   "live-check": [
     {
       "where": [
-        "交付记录和工具对话",
-        "Release record and tool chat"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "先检查试运行证据和阻断项。本机交付就确认本机启动入口；公开交付则列目标账号、网址、版本、费用和影响，由本人明确同意后才发布。",
-        "Review trial evidence and blockers. For local delivery confirm the local start entry; for public delivery list account, URL, revision, cost and impact for explicit approval."
+        "先确认实际交付到哪里。本机使用就确认本机启动方法；公开发布先看账号、网址、费用和影响。",
+        "Confirm the real destination. For local use check startup; for publication review account, URL, costs and impact."
       ],
       "tip": [
-        "本机跟练无需执行公开发布；不能把“准备上线”当成发布授权。",
-        "Local practice needs no publication. Readiness is not release authorization."
+        "完成后：你知道将会发生什么，并能决定是否执行。",
+        "Afterwards: You can understand and approve the action."
       ],
       "expect": [
-        "交付范围明确，公开动作有本人确认或保持未执行。",
-        "Scope is clear and publication is approved or remains unexecuted."
+        "你知道将会发生什么，并能决定是否执行。",
+        "You can understand and approve the action."
       ],
       "ifWrong": [
-        "没有目标账号、费用决定或试运行证据时，返回准备步骤补齐。",
-        "Return to preparation for missing account, cost decision or trial evidence."
+        "目标或费用不清楚就先问清，不把“准备好了”当作已经同意发布。",
+        "Clarify unknowns before approval."
+      ],
+      "prompt": [
+        "请读 docs/release.md 和 docs/delivery.md，列出本次要执行的交付动作、目标和费用，等我明确确认后再做。",
+        "Read docs/release.md and docs/delivery.md. List the proposed delivery actions, destination and costs; wait for my explicit confirmation."
       ]
     },
     {
       "where": [
-        "实际使用入口",
-        "The real user entry"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "按所选方式交付后，从普通用户实际入口打开，用测试资料走核心流程，再关闭重开核对。远程项目使用独立浏览器或设备；本机项目核对本机入口即可。",
-        "After the chosen delivery, open the ordinary user entry, complete the core flow and reopen. Use an independent browser/device for remote delivery; local delivery checks the local entry."
+        "确认后执行，再从实际使用者的入口打开。",
+        "After approval, execute and open the intended user entry."
       ],
       "tip": [
-        "商店待审核就是待审核；管理员能打开不能代替普通用户访问。",
-        "Pending store review remains pending; admin access does not prove user access."
+        "完成后：有真实入口，或知道还在等待哪个审核。",
+        "Afterwards: A real entry exists or its pending review is clear."
       ],
       "expect": [
-        "目标使用者可从约定入口完成核心操作，数据和权限符合需求。",
-        "Intended users can complete the flow with correct persistence and permissions."
+        "有真实入口，或知道还在等待哪个审核。",
+        "A real entry exists or its pending review is clear."
       ],
       "ifWrong": [
-        "网址能打开但保存失败时分别检查后端地址、服务状态和数据库；停止扩大发布，按恢复方案处理。",
-        "If the page opens but save fails, check backend address, service and storage; contain release and follow recovery."
+        "本机项目不需要假造公网网址；公开项目用普通用户身份测试。",
+        "Do not invent a public URL for local use; test public access as an ordinary user."
+      ],
+      "prompt": [
+        "我确认执行以下动作：【填写】。请只执行这些动作，报告实际入口与版本。需要审核就记待审核，不提前说已经上线。",
+        "I approve these actions: 【fill in】. Execute only these and report the actual entry and revision. Mark pending reviews honestly."
       ]
     },
     {
       "where": [
-        "交付记录与使用说明",
-        "Release record and user instructions"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "把真实入口、版本、实际检查、未测项、遇到问题找谁写入 docs/release.md，核对 README 与实际一致，然后进入维护。",
-        "Record entry, revision, checks, untested items and support owner in docs/release.md; align README before maintenance."
+        "亲自完成一次主要操作，再关闭重开检查。",
+        "Try the main task and reopen it, then record your result."
       ],
       "tip": [
-        "回退代码前先查数据库格式是否兼容，恢复数据库前先保留当前数据和确认影响范围。",
-        "Check data-format compatibility before code rollback; preserve current data and confirm impact before restoring a database."
+        "完成后：使用者可以按说明使用，结果记录准确。",
+        "Afterwards: Users can follow accurate instructions."
       ],
       "expect": [
-        "接收者拿到能执行的说明，后续维护能找到同一项目与数据。",
-        "Recipients have executable instructions and maintenance can locate the project and data."
+        "使用者可以按说明使用，结果记录准确。",
+        "Users can follow accurate instructions."
       ],
       "ifWrong": [
-        "实际入口变化就更新记录；不能把旧截图当当前版本验收。",
-        "Update changed entries; old screenshots do not prove the current revision."
+        "有问题先停止扩大发布，按既定恢复方法处理；不要盲目覆盖数据库。",
+        "Contain failures and use the planned recovery without blindly overwriting storage."
+      ],
+      "prompt": [
+        "我的实际使用结果：【填写】。请保存到 docs/release.md，并把最新版使用入口和说明更新到 README.md。",
+        "My actual use result: 【fill in】. Save it to docs/release.md and update README.md with the latest entry/instructions."
+      ]
+    }
+  ],
+  "publish": [
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "先判断是否适合 GitHub Pages。它可以托管静态网页，但不会替你运行后端和数据库。",
+        "Check whether GitHub Pages fits. It hosts static pages, not your backend/database service."
+      ],
+      "tip": [
+        "完成后：知道自己的项目是否适合。",
+        "Afterwards: Suitability is clear."
+      ],
+      "expect": [
+        "知道自己的项目是否适合。",
+        "Suitability is clear."
+      ],
+      "ifWrong": [
+        "学习记录全栈示例有后端和数据库，不能只上传页面就当作完整上线。",
+        "The full-stack journal cannot be fully deployed by uploading its page alone."
+      ],
+      "prompt": [
+        "请读 docs/delivery.md，检查项目能否直接导出静态网页。如果依赖后端或私密服务端配置，请说明原因并建议回到交付方式选择。现在只判断，不发布。",
+        "Read docs/delivery.md and assess static export suitability. Explain server/private-configuration dependencies and return to delivery selection if unsuitable. Assess only; do not publish."
+      ]
+    },
+    {
+      "where": [
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
+      ],
+      "action": [
+        "适合时让工具写出实际设置方法，再回准备交付步骤试运行。",
+        "If suitable, prepare exact instructions and return to delivery preparation."
+      ],
+      "tip": [
+        "完成后：有能逐项照做的准备说明。",
+        "Afterwards: The preparation instructions are actionable."
+      ],
+      "expect": [
+        "有能逐项照做的准备说明。",
+        "The preparation instructions are actionable."
+      ],
+      "ifWrong": [
+        "仓库或页面会公开时，先检查文件是否含密码、私密内容，再决定是否发布。",
+        "Review files for secrets/private content before approving public access."
+      ],
+      "prompt": [
+        "请列本项目生成静态文件的方法、输出目录和 GitHub Pages 设置步骤，解释每一步在哪里操作。先只提供方案，不创建远程仓库、不推送、不发布。",
+        "List this project’s static build, output folder and GitHub Pages settings with locations. Provide a plan only; do not create a remote repository, push or publish."
       ]
     }
   ],
   "maintain": [
     {
       "where": [
-        "工具对话、README 和交付记录",
-        "Tool chat, README and release record"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "请工具先列三份东西在哪里：项目代码、作品实际数据、本站学习草稿。逐项写出备份对象、保存位置、负责人和频率。",
-        "Locate three distinct assets: project code, application data and guide drafts. List backup scope, destination, owner and frequency."
+        "先分清要备份什么：项目代码、作品数据库、学习草稿是三份不同资料。",
+        "Distinguish code, application data and learning drafts."
       ],
       "tip": [
-        "提交代码不等于备份数据库；本站“我的项目材料与备份”只备份本站草稿，不备份你的作品数据。",
-        "Code commits do not back up databases. This guide’s material backup covers guide drafts only."
+        "完成后：知道每份资料该从哪里备份。",
+        "Afterwards: Each backup source and destination is clear."
       ],
       "expect": [
-        "知道每份资料的来源与备份范围，能找到实际入口。",
-        "Each source, backup scope and entry is identified."
+        "知道每份资料该从哪里备份。",
+        "Each backup source and destination is clear."
       ],
       "ifWrong": [
-        "工具只给仓库地址时要求补实际数据库位置；没有数据库就说明不适用。",
-        "A repository URL alone is insufficient for application data; document its location or inapplicability."
+        "只有仓库地址时，追问作品数据实际在哪里。",
+        "Ask for data storage if only a repository is listed."
+      ],
+      "prompt": [
+        "请列出本项目代码和实际数据的位置，分别说明怎样备份、备份存在哪里。代码提交不能代替数据库备份。",
+        "List code and actual data locations and how/where each is backed up. A commit does not replace a database backup."
       ]
     },
     {
       "where": [
-        "所选工具的原项目对话",
-        "The original project chat"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "填本步模板并发送：先报告原库完整路径与记录基线，再用数据库支持的一致性备份方法生成带日期的新备份。要求报告输出完整路径、大小和核对结果。",
-        "Send this step’s template: report source path and record baseline, then create a dated new consistent backup using the database’s supported method. Report output path, size and verification."
+        "创建一份带日期的新备份，不覆盖旧文件。",
+        "Create a new dated backup without overwriting older files."
       ],
       "tip": [
-        "不要直接复制正在写入的数据库文件冒充可靠备份；SQLite 可用 backup API，云数据库按服务商导出或快照说明操作。",
-        "Do not casually copy a database while it is being written. SQLite supports its backup API; cloud services have export/snapshot procedures."
+        "完成后：得到能找到的非空备份文件。",
+        "Afterwards: A nonempty backup exists at the reported location."
       ],
       "expect": [
-        "得到非空备份，来源、时间和基线可核对，原数据仍在。",
-        "A nonempty backup has source, time and baseline, with original data preserved."
+        "得到能找到的非空备份文件。",
+        "A nonempty backup exists at the reported location."
       ],
       "ifWrong": [
-        "备份失败先保留原库，检查位置、空间和权限；不删除旧备份来掩盖失败。",
-        "On failure preserve the source and inspect destination, space and permissions."
+        "失败先查空间、路径和权限；不要删除旧备份来试运气。",
+        "Check space, path and permissions on failure."
+      ],
+      "prompt": [
+        "请用数据库支持的一致性备份方法，生成一份新备份。先报告原数据位置、备份位置和当前记录数量，完成后告诉我文件大小。不要清空或覆盖原数据。",
+        "Use the database’s supported consistent-backup method. Report source, destination and current record count, then output size. Preserve original data."
       ]
     },
     {
       "where": [
-        "独立恢复目录或测试数据库",
-        "An isolated restore directory or test database"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "先让工具显示原库和恢复目标的完整路径，确认不是同一个位置。仅在独立目录恢复副本，用单独测试服务打开；本例可让工具用 JOURNAL_DB 指向恢复副本并使用空闲端口。",
-        "Compare full source and restore paths first. Restore only to a separate destination and start an isolated test service. In this example ask the tool to point JOURNAL_DB at the restored copy on a free port."
+        "在独立目录试着恢复这份备份。恢复成功意味着能真的打开并读到记录。",
+        "Restore into a separate test location and actually read the records."
       ],
       "tip": [
-        "恢复练习不能覆盖原库；备份文件存在还不算恢复成功。配置由工具读取本项目后给出，不猜命令。",
-        "Practice must not overwrite the source. An existing backup is not proof of restoration; use project-specific commands."
+        "完成后：能打开恢复副本，找到备份时的旧记录。",
+        "Afterwards: The restored copy opens with records from the backup."
       ],
       "expect": [
-        "原库与恢复库分离，测试服务明确连向恢复副本。",
-        "Source and restored storage are separate and the test service targets the copy."
+        "能打开恢复副本，找到备份时的旧记录。",
+        "The restored copy opens with records from the backup."
       ],
       "ifWrong": [
-        "路径相同或无法判断时立即停下，先改为独立目标；不试着覆盖看看。",
-        "Stop if paths match or are uncertain; choose a separate target before proceeding."
+        "路径相同或不确定就停下，先改成独立位置。",
+        "Stop if the paths match or are uncertain."
+      ],
+      "prompt": [
+        "请把备份恢复到独立测试位置，先让我核对原库和恢复目标不是同一路径。只启动连接恢复副本的测试服务，告诉我打开地址，绝不覆盖原库。",
+        "Restore to a separate test destination. Show source and target paths first. Start only a test service connected to the copy and give its URL. Never overwrite the source."
       ]
     },
     {
       "where": [
-        "恢复副本的作品页面与工具对话",
-        "The restored-copy page and tool chat"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "打开恢复测试地址，核对备份时的记录数量及选定编号、标题、内容。只在副本新增一条“恢复演练”记录，再请工具只读确认原库没有这条新增。",
-        "Open the restore test URL; compare count and chosen IDs/content to the backup baseline. Add a restore-only item to the copy and verify read-only that the source has no such item."
+        "只在恢复副本里新增一条测试记录，再检查原库没有变化。",
+        "Add a test record only to the restored copy and check the source stayed unchanged."
       ],
       "tip": [
-        "备份之后才产生的数据不会自动出现在旧备份中；数量应与备份基线比较。",
-        "An older backup lacks later writes; compare with its own baseline."
+        "完成后：副本能用，原库内容不变，恢复方法已保存。",
+        "Afterwards: The copy works, the source is unchanged and recovery is documented."
       ],
       "expect": [
-        "旧记录恢复正确，副本可新增，原库保持原样。",
-        "Old records are correct, the copy accepts writes and the source stays unchanged."
+        "副本能用，原库内容不变，恢复方法已保存。",
+        "The copy works, the source is unchanged and recovery is documented."
       ],
       "ifWrong": [
-        "数量或内容不符保留副本和日志，先判断备份时间与路径；不把失败副本覆盖到原库。",
-        "Preserve mismatching copies/logs; check backup time and paths, never overwrite the source with the failed copy."
+        "记录不符时保留副本和日志，先查备份日期及路径。",
+        "Preserve mismatches and inspect backup time/paths."
+      ],
+      "prompt": [
+        "请核对恢复副本的旧记录，并只读检查原库没有这次新增。将备份位置、恢复方法和结果写入 docs/handoff.md，停止恢复测试服务。",
+        "Verify old records in the copy and read-only confirm the source lacks the new record. Save backup location, recovery method and results to docs/handoff.md; stop the test service."
       ]
     },
     {
       "where": [
-        "docs/handoff.md 与 README",
-        "docs/handoff.md and README"
+        "按本项说明打开对应页面或项目对话",
+        "Open the page or project chat named in the action"
       ],
       "action": [
-        "把备份和恢复证据、真实运行入口、当前版本、未解决问题、下一任务保存到交接文件并打开核对。停止恢复测试服务，保留已验证备份。",
-        "Save backup/restore evidence, entry, revision, open issues and next task; inspect the handoff. Stop the restore test service and retain verified backups."
+        "记录下次从哪里继续。",
+        "Record where to resume next time."
       ],
       "tip": [
-        "维护频率按可接受的数据损失决定；新需求先更新需求与计划，不直接重做项目。新对话先请工具读取交接文件。",
-        "Choose frequency from acceptable data loss. Plan new scope first; new chats should read the handoff."
+        "完成后：下次可以直接找到原项目和下一项任务。",
+        "Afterwards: The next session can find the project and next task."
       ],
       "expect": [
-        "下次可找到正确版本、数据、入口和下一件事。",
-        "The next session can find the correct revision, data, entry and next task."
+        "下次可以直接找到原项目和下一项任务。",
+        "The next session can find the project and next task."
       ],
       "ifWrong": [
-        "没有条件做恢复时明确写待验证及缺什么，不写“备份正常”代替恢复证据。",
-        "If restoration cannot run, record prerequisites and pending status rather than calling a backup a recovery test."
+        "新需求先说明改什么，再更新需求和计划。",
+        "Describe new scope and update requirements/plans first."
+      ],
+      "prompt": [
+        "请更新 docs/handoff.md：项目位置、当前版本、启动方法、未解决问题、下一项任务。下次新对话先读这份文件，不重新创建项目。",
+        "Update docs/handoff.md with location, revision, startup, open issues and next task. A new chat should read it rather than recreate the project."
       ]
     }
   ]
