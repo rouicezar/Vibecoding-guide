@@ -704,3 +704,9 @@ P26验证：check零错误/警告/提示，build与verify通过；中英产物�
 - [x] format/lint/check/build/16组verify通过，桌面折叠及中英文手机无溢出检查通过。
 - 记录：docs/reviews/2026-09-29-surface-design/results.md；本地预览已更新，未推送发布。
 - 下一步：验收真实页面效果后发布。
+
+## P65 页面融合感修正（2026-09-30）
+
+- [x] 去除侧栏选中项及操作区深色竖边；统一底层底色，减轻面板边缘、投影及跟练区色差。
+- [x] format/build/16组verify通过；浏览器核对计算样式和折叠行为。
+- 记录：docs/reviews/2026-09-30-surface-blending/results.md。未发布；下一步核对实际观感。

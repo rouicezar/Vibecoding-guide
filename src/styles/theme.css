@@ -1221,36 +1221,33 @@ body :focus-visible {
 
 /* Approved illuminated surface design: canvas → lesson sheet → active task. */
 :root {
-  --surface-shadow: 0 2px 5px #25445e06, 0 16px 36px -16px #25445e30;
-  --surface-edge: #ffffffeb;
+  --surface-shadow: 0 2px 6px #25445e03, 0 12px 30px -18px #25445e18;
+  --surface-edge: #ffffff70;
 }
 body {
-  background: #edf3f8;
+  background:
+    radial-gradient(ellipse 1000px 550px at 45% 0, #eaf5f680, transparent),
+    #f3f6f8;
 }
 body .topbar {
   background: linear-gradient(115deg, #fff 15%, #f7fbff 65%, #fff);
-  border-bottom: 1px solid #dce6ef;
-  box-shadow: 0 3px 14px #23496308;
+  border-bottom: 1px solid #e5ecef80;
+  box-shadow: 0 2px 12px #23496304;
 }
 body .app-shell {
-  background:
-    radial-gradient(ellipse 650px 420px at 30% 0, #d8f2f580, transparent),
-    radial-gradient(ellipse 700px 460px at 95% 0, #fffaf1b0, transparent),
-    linear-gradient(145deg, #eff4f8, #eaf2f9);
+  background: transparent;
   min-height: calc(100vh - 64px);
 }
 body .sidebar {
-  background: linear-gradient(105deg, #e6edf4f5, #f0f4f8f0);
-  border-right-color: #d6e1eb;
-  box-shadow: inset -1px 0 0 #fff9;
+  background: transparent;
+  border-right-color: transparent;
+  box-shadow: none;
 }
 body .nav-item.active,
 body .nav-item.active:hover {
   color: #237d84;
-  background: linear-gradient(110deg, #f3ffff, #fff 65%);
-  box-shadow:
-    inset 3px 0 0 #3396a0,
-    0 4px 12px #2d536414;
+  background: linear-gradient(110deg, #ffffffdc, #ffffff90);
+  box-shadow: 0 3px 12px #2d536408;
   border-radius: 8px;
 }
 body #main .node-page {
@@ -1301,7 +1298,7 @@ body #main .node-action-index a {
 body #main .node-step {
   border: 1px solid var(--surface-edge);
   border-radius: 18px;
-  background: linear-gradient(145deg, #fff 35%, #f9fcff);
+  background: linear-gradient(145deg, #ffffffec, #ffffffbf);
   box-shadow: var(--surface-shadow);
   margin-bottom: 24px;
 }
@@ -1351,14 +1348,12 @@ body #main .material-flow > div {
   padding-left: 14px;
 }
 body #main .node-step [data-step-section='actions'] {
-  background: linear-gradient(125deg, #e2f3f3, #f1fafb 55%, #f7fcff);
+  background: linear-gradient(125deg, #eef7f6, #f7fafb 65%, #fbfcfd);
   border: 1px solid #fff;
   border-radius: 14px;
   padding: 20px 22px;
   margin: 18px 0;
-  box-shadow:
-    inset 3px 0 0 #43a4ad,
-    0 5px 16px #3e7c8910;
+  box-shadow: 0 4px 14px #3e7c8906;
 }
 body #main .action-detail[open] {
   background: #ffffffb8;
@@ -1463,4 +1458,15 @@ body #main .node-action-index {
 body #main .node-section-title {
   margin: 16px 0 12px;
   font-size: 16px;
+}
+
+/* Supporting examples share the same neutral surface family. */
+body #main .practice-guide {
+  background: linear-gradient(120deg, #ffffffd9, #f9fbfbd9);
+  border-color: #dfe9e980;
+}
+@media (max-width: 1000px) {
+  body .sidebar {
+    background: #f4f7f9;
+  }
 }
