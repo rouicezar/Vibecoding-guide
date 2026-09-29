@@ -1,0 +1,9 @@
+node_modules
+dist
+dist-pages
+.astro
+.tmp
+docs/reviews
+public
+package-lock.json
+README.zh-CN.md

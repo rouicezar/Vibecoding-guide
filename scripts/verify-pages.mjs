@@ -1,65 +1,163 @@
-import {explorePaths} from '../src/data/explore/index.ts';
-import {readFile,access} from 'node:fs/promises';
+import { explorePaths } from '../src/data/explore/index.ts';
+import { readFile, access } from 'node:fs/promises';
 import assert from 'node:assert/strict';
-import {glossaryPaths} from '../src/data/glossary/index.ts';
-import {learningPaths,lessons} from '../src/data/learning.ts';
-import {nodeForStep} from '../src/data/nodes.ts';
-import {url} from '../src/data/site.ts';
-import {journey,mainJourney} from '../src/data/journey.ts';
-import {routeNodes} from '../src/data/nodes.ts';
-import {practices} from '../src/data/practice.ts';
-import {modules} from '../src/data/site.ts';
-for(const stage of journey.filter(stage=>stage.parent)){
- assert(mainJourney.some(parent=>parent.id===stage.parent),`Invalid branch parent: ${stage.id}`);
+import { glossaryPaths } from '../src/data/glossary/index.ts';
+import { learningPaths, lessons } from '../src/data/learning.ts';
+import { nodeForStep } from '../src/data/nodes.ts';
+import { url } from '../src/data/site.ts';
+import { journey, mainJourney } from '../src/data/journey.ts';
+import { routeNodes } from '../src/data/nodes.ts';
+import { practices } from '../src/data/practice.ts';
+import { modules } from '../src/data/site.ts';
+for (const stage of journey.filter((stage) => stage.parent)) {
+  assert(
+    mainJourney.some((parent) => parent.id === stage.parent),
+    `Invalid branch parent: ${stage.id}`,
+  );
 }
-assert(mainJourney.findIndex(stage=>stage.id==='scope')<mainJourney.findIndex(stage=>stage.id==='requirements'));
-assert(mainJourney.findIndex(stage=>stage.id==='environment')<mainJourney.findIndex(stage=>stage.id==='build'));
-assert(mainJourney.findIndex(stage=>stage.id==='accept')<mainJourney.findIndex(stage=>stage.id==='launch'));
-const covered=new Set(journey.flatMap(stage=>stage.moduleIds));
-for(const item of modules.filter(item=>item.id!=='home'))assert(covered.has(item.id),`Unmapped module: ${item.id}`);
-for(const stage of journey)for(const id of stage.moduleIds)assert(modules.some(item=>item.id===id),`Unknown module: ${id}`);
-assert.equal(new Set(journey.map(stage=>stage.id)).size,journey.length);
-for(const practice of practices){
- assert(practice.steps.length>=3, `Missing practical steps: ${practice.path}`);
- assert(journey.some(s=>s.id===practice.stage), `Missing source stage: ${practice.path}`);
- for(const step of practice.steps)assert(step.check.every(Boolean), `Missing completion check: ${practice.path}`);
+assert(
+  mainJourney.findIndex((stage) => stage.id === 'scope') <
+    mainJourney.findIndex((stage) => stage.id === 'requirements'),
+);
+assert(
+  mainJourney.findIndex((stage) => stage.id === 'environment') <
+    mainJourney.findIndex((stage) => stage.id === 'build'),
+);
+assert(
+  mainJourney.findIndex((stage) => stage.id === 'accept') <
+    mainJourney.findIndex((stage) => stage.id === 'launch'),
+);
+const covered = new Set(journey.flatMap((stage) => stage.moduleIds));
+for (const item of modules.filter((item) => item.id !== 'home'))
+  assert(covered.has(item.id), `Unmapped module: ${item.id}`);
+for (const stage of journey)
+  for (const id of stage.moduleIds)
+    assert(
+      modules.some((item) => item.id === id),
+      `Unknown module: ${id}`,
+    );
+assert.equal(new Set(journey.map((stage) => stage.id)).size, journey.length);
+for (const practice of practices) {
+  assert(
+    practice.steps.length >= 3,
+    `Missing practical steps: ${practice.path}`,
+  );
+  assert(
+    journey.some((s) => s.id === practice.stage),
+    `Missing source stage: ${practice.path}`,
+  );
+  for (const step of practice.steps)
+    assert(
+      step.check.every(Boolean),
+      `Missing completion check: ${practice.path}`,
+    );
 }
-for(const stage of journey){
- assert(stage.incoming.every(Boolean),`Missing incoming material: ${stage.id}`);
- assert(stage.example[0].startsWith('比如：')&&stage.example[1].startsWith('For example:'),`Example not separated: ${stage.id}`);
- for(const [index,prompt] of stage.prompt.entries()){
-  assert(prompt.split('\n').length>=10, `Template too short: ${stage.id}/${index}`);
-  assert(prompt.includes(index===0?'【':'['), `Missing example fields: ${stage.id}/${index}`);
- }
+for (const stage of journey) {
+  assert(
+    stage.incoming.every(Boolean),
+    `Missing incoming material: ${stage.id}`,
+  );
+  assert(
+    stage.example[0].startsWith('比如：') &&
+      stage.example[1].startsWith('For example:'),
+    `Example not separated: ${stage.id}`,
+  );
+  for (const [index, prompt] of stage.prompt.entries()) {
+    assert(
+      prompt.split('\n').length >= 10,
+      `Template too short: ${stage.id}/${index}`,
+    );
+    assert(
+      prompt.includes(index === 0 ? '【' : '['),
+      `Missing example fields: ${stage.id}/${index}`,
+    );
+  }
 }
-const dictionary=JSON.parse(await readFile('src/data/dictionary.json','utf8'));
-const paths=[...explorePaths.map(p=>p+'/'),'roadmap/',...routeNodes.map(n=>`node/${n.id}/`),'library/','','tools/','start/','communicate/','stacks/','components/','terms/',...glossaryPaths.map(p=>p+'/'),...practices.map(p=>p.path+'/'),'data/','check/','launch/','maintain/',...dictionary.entries.map(e=>`components/${e.id}/`),'projects/web/','projects/mini-program/','projects/mobile/','projects/desktop/'];
-for(const locale of ['zh-cn','en'])for(const path of paths){
- const html=await readFile(`dist/${locale}/${path}index.html`,'utf8');
- // Direct second-person guidance is intentional in the approved beginner walkthrough.
- assert(html.includes(`lang="${locale==='en'?'en':'zh-CN'}"`));
- assert.equal((html.match(/<h1[ >]/g)||[]).length,1);
- assert(html.includes(`href="/en/${path}"`)&&html.includes(`href="/zh-cn/${path}"`));
- // Every shared prompt must expose an editable source and explicit confirmation.
- for(const [,id] of html.matchAll(/data-template-text="([^"]+)"/g)){
-  assert(html.includes(`data-template-editor="${id}"`),`Missing editable template: ${locale}/${path}/${id}`);
-  assert(html.includes('data-confirm-template'),`Missing confirmation: ${locale}/${path}/${id}`);
-  assert(html.includes(`data-template-result="${id}" hidden`),`Result shown before confirmation: ${locale}/${path}/${id}`);
- }
- for(const match of html.matchAll(/(?:href|src)="(\/[^"#?]*)(?:[?#][^"]*)?"/g)){
-  const target=match[1];await access(`dist${target}${target.endsWith('/')?'index.html':''}`);
- }
- for(const match of html.matchAll(/href="#([^"]+)"/g))assert(html.includes(`id="${match[1]}"`),`Missing anchor ${match[1]}`);
-}
+const dictionary = JSON.parse(
+  await readFile('src/data/dictionary.json', 'utf8'),
+);
+const paths = [
+  ...explorePaths.map((p) => p + '/'),
+  'roadmap/',
+  ...routeNodes.map((n) => `node/${n.id}/`),
+  'library/',
+  '',
+  'tools/',
+  'start/',
+  'communicate/',
+  'stacks/',
+  'components/',
+  'terms/',
+  ...glossaryPaths.map((p) => p + '/'),
+  ...practices.map((p) => p.path + '/'),
+  'data/',
+  'check/',
+  'launch/',
+  'maintain/',
+  ...dictionary.entries.map((e) => `components/${e.id}/`),
+  'projects/web/',
+  'projects/mini-program/',
+  'projects/mobile/',
+  'projects/desktop/',
+];
+for (const locale of ['zh-cn', 'en'])
+  for (const path of paths) {
+    const html = await readFile(`dist/${locale}/${path}index.html`, 'utf8');
+    // Direct second-person guidance is intentional in the approved beginner walkthrough.
+    assert(html.includes(`lang="${locale === 'en' ? 'en' : 'zh-CN'}"`));
+    assert.equal((html.match(/<h1[ >]/g) || []).length, 1);
+    assert(
+      html.includes(`href="/en/${path}"`) &&
+        html.includes(`href="/zh-cn/${path}"`),
+    );
+    // Every shared prompt must expose an editable source and explicit confirmation.
+    for (const [, id] of html.matchAll(/data-template-text="([^"]+)"/g)) {
+      assert(
+        html.includes(`data-template-editor="${id}"`),
+        `Missing editable template: ${locale}/${path}/${id}`,
+      );
+      assert(
+        html.includes('data-confirm-template'),
+        `Missing confirmation: ${locale}/${path}/${id}`,
+      );
+      assert(
+        html.includes(`data-template-result="${id}" hidden`),
+        `Result shown before confirmation: ${locale}/${path}/${id}`,
+      );
+    }
+    for (const match of html.matchAll(
+      /(?:href|src)="(\/[^"#?]*)(?:[?#][^"]*)?"/g,
+    )) {
+      const target = match[1];
+      await access(`dist${target}${target.endsWith('/') ? 'index.html' : ''}`);
+    }
+    for (const match of html.matchAll(/href="#([^"]+)"/g))
+      assert(html.includes(`id="${match[1]}"`), `Missing anchor ${match[1]}`);
+  }
 /* 旧学习页面不再单独存在：/learn/<步骤> 必须跳转到对应节点页的步骤锚点。 */
-for(const locale of ['zh-cn','en'])for(const lesson of lessons){
- const html=await readFile(`dist/${locale}/learn/${lesson.id}/index.html`,'utf8');
- const target=`${url(locale,`node/${nodeForStep(lesson.id)}`)}#${lesson.id}`;
- assert(html.includes(`url=${target}`),`旧学习页未跳转到节点页：${locale}/${lesson.id} → ${target}`);
- assert(html.includes('content="0;url='),`旧学习页不是即时跳转：${locale}/${lesson.id}`);
+for (const locale of ['zh-cn', 'en'])
+  for (const lesson of lessons) {
+    const html = await readFile(
+      `dist/${locale}/learn/${lesson.id}/index.html`,
+      'utf8',
+    );
+    const target = `${url(locale, `node/${nodeForStep(lesson.id)}`)}#${lesson.id}`;
+    assert(
+      html.includes(`url=${target}`),
+      `旧学习页未跳转到节点页：${locale}/${lesson.id} → ${target}`,
+    );
+    assert(
+      html.includes('content="0;url='),
+      `旧学习页不是即时跳转：${locale}/${lesson.id}`,
+    );
+  }
+for (const locale of ['zh-cn', 'en']) {
+  const index = await readFile(`dist/${locale}/learn/index.html`, 'utf8');
+  assert(
+    index.includes(`url=${url(locale, 'roadmap')}`),
+    `旧学习入口未跳转到路线图：${locale}`,
+  );
 }
-for(const locale of ['zh-cn','en']){
- const index=await readFile(`dist/${locale}/learn/index.html`,'utf8');
- assert(index.includes(`url=${url(locale,'roadmap')}`),`旧学习入口未跳转到路线图：${locale}`);
-}
-console.log(`PASS: ${paths.length*2} localized pages, language counterparts, headings, local links/assets section anchors, copy policy, module coverage structured bilingual templates, branch parents and lifecycle ordering; ${lessons.length*2} legacy learning pages redirect to node-page step anchors.`);
+console.log(
+  `PASS: ${paths.length * 2} localized pages, language counterparts, headings, local links/assets section anchors, copy policy, module coverage structured bilingual templates, branch parents and lifecycle ordering; ${lessons.length * 2} legacy learning pages redirect to node-page step anchors.`,
+);

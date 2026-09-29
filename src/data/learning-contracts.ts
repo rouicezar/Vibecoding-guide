@@ -1,46 +1,128 @@
-import type {Lesson} from './learning';
-import type {Copy} from './site';
-export const fileContracts:Record<string,{reads:string[];writes:string[];back:string}>={
- 'open-project':{reads:[],writes:[],back:'folder'},checkpoint:{reads:[],writes:['idea.md','工具支持的规则文件 / supported rule file','.gitignore'],back:'description'},'first-file':{reads:['idea.md'],writes:[],back:'checkpoint'},
- clarify:{reads:['idea.md'],writes:['idea.md'],back:'first-file'},scope:{reads:['idea.md'],writes:['docs/requirements.md'],back:'clarify'},requirements:{reads:['idea.md','docs/requirements.md'],writes:['docs/requirements.md'],back:'scope'},stories:{reads:['idea.md','docs/requirements.md'],writes:['docs/stories.md'],back:'requirements'},prototype:{reads:['docs/requirements.md','docs/stories.md'],writes:['docs/design.md'],back:'stories'},'choose-stack':{reads:['docs/requirements.md','docs/stories.md','docs/design.md'],writes:['docs/design.md'],back:'prototype'},plan:{reads:['docs/requirements.md','docs/stories.md','docs/design.md'],writes:['tasks/todo.md'],back:'choose-stack'},environment:{reads:['docs/design.md','tasks/todo.md'],writes:['README.md','docs/checks.md'],back:'plan'},preview:{reads:['docs/requirements.md','docs/stories.md','docs/design.md','tasks/todo.md','README.md'],writes:['tasks/todo.md','docs/checks.md'],back:'environment'},interface:{reads:['docs/design.md','tasks/todo.md'],writes:['docs/checks.md'],back:'preview'},save:{reads:['docs/requirements.md','docs/design.md','tasks/todo.md'],writes:['docs/checks.md'],back:'plan'},flow:{reads:['docs/requirements.md','tasks/todo.md'],writes:['docs/checks.md'],back:'preview'},test:{reads:['docs/requirements.md','docs/checks.md'],writes:['docs/checks.md'],back:'flow'},restart:{reads:['README.md'],writes:['docs/checks.md'],back:'environment'},feedback:{reads:[],writes:['docs/feedback.md'],back:'accept'},'repair-plan':{reads:['docs/feedback.md','docs/requirements.md'],writes:['docs/repair-plan.md'],back:'feedback'},repair:{reads:['docs/repair-plan.md','docs/feedback.md'],writes:['docs/checks.md','docs/feedback.md'],back:'repair-plan'},'release-review':{reads:['docs/requirements.md','docs/design.md','docs/checks.md','docs/acceptance.md','docs/delivery.md'],writes:['docs/release.md','docs/feedback.md'],back:'delivery'},package:{reads:['docs/design.md','docs/delivery.md','docs/release.md'],writes:['docs/release.md'],back:'release-review'},'live-check':{reads:['docs/release.md','docs/delivery.md'],writes:['docs/release.md'],back:'package'},publish:{reads:['docs/delivery.md'],writes:[],back:'delivery'},maintain:{reads:['docs/release.md'],writes:['docs/handoff.md'],back:'live-check'},
- accept:{reads:[],writes:['docs/acceptance.md'],back:'test'},
- delivery:{reads:[],writes:['docs/delivery.md'],back:'accept'}
+export const fileContracts: Record<
+  string,
+  { reads: string[]; writes: string[]; back: string }
+> = {
+  'open-project': { reads: [], writes: [], back: 'folder' },
+  checkpoint: {
+    reads: [],
+    writes: [
+      'idea.md',
+      '工具支持的规则文件 / supported rule file',
+      '.gitignore',
+    ],
+    back: 'description',
+  },
+  'first-file': { reads: ['idea.md'], writes: [], back: 'checkpoint' },
+  clarify: { reads: ['idea.md'], writes: ['idea.md'], back: 'first-file' },
+  scope: {
+    reads: ['idea.md'],
+    writes: ['docs/requirements.md'],
+    back: 'clarify',
+  },
+  requirements: {
+    reads: ['idea.md', 'docs/requirements.md'],
+    writes: ['docs/requirements.md'],
+    back: 'scope',
+  },
+  stories: {
+    reads: ['idea.md', 'docs/requirements.md'],
+    writes: ['docs/stories.md'],
+    back: 'requirements',
+  },
+  prototype: {
+    reads: ['docs/requirements.md', 'docs/stories.md'],
+    writes: ['docs/design.md'],
+    back: 'stories',
+  },
+  'choose-stack': {
+    reads: ['docs/requirements.md', 'docs/stories.md', 'docs/design.md'],
+    writes: ['docs/design.md'],
+    back: 'prototype',
+  },
+  plan: {
+    reads: ['docs/requirements.md', 'docs/stories.md', 'docs/design.md'],
+    writes: ['tasks/todo.md'],
+    back: 'choose-stack',
+  },
+  environment: {
+    reads: ['docs/design.md', 'tasks/todo.md'],
+    writes: ['README.md', 'docs/checks.md'],
+    back: 'plan',
+  },
+  preview: {
+    reads: [
+      'docs/requirements.md',
+      'docs/stories.md',
+      'docs/design.md',
+      'tasks/todo.md',
+      'README.md',
+    ],
+    writes: ['tasks/todo.md', 'docs/checks.md'],
+    back: 'environment',
+  },
+  interface: {
+    reads: ['docs/design.md', 'tasks/todo.md'],
+    writes: ['docs/checks.md'],
+    back: 'preview',
+  },
+  save: {
+    reads: ['docs/requirements.md', 'docs/design.md', 'tasks/todo.md'],
+    writes: ['docs/checks.md'],
+    back: 'plan',
+  },
+  flow: {
+    reads: ['docs/requirements.md', 'tasks/todo.md'],
+    writes: ['docs/checks.md'],
+    back: 'preview',
+  },
+  test: {
+    reads: ['docs/requirements.md', 'docs/checks.md'],
+    writes: ['docs/checks.md'],
+    back: 'flow',
+  },
+  restart: {
+    reads: ['README.md'],
+    writes: ['docs/checks.md'],
+    back: 'environment',
+  },
+  feedback: { reads: [], writes: ['docs/feedback.md'], back: 'accept' },
+  'repair-plan': {
+    reads: ['docs/feedback.md', 'docs/requirements.md'],
+    writes: ['docs/repair-plan.md'],
+    back: 'feedback',
+  },
+  repair: {
+    reads: ['docs/repair-plan.md', 'docs/feedback.md'],
+    writes: ['docs/checks.md', 'docs/feedback.md'],
+    back: 'repair-plan',
+  },
+  'release-review': {
+    reads: [
+      'docs/requirements.md',
+      'docs/design.md',
+      'docs/checks.md',
+      'docs/acceptance.md',
+      'docs/delivery.md',
+    ],
+    writes: ['docs/release.md', 'docs/feedback.md'],
+    back: 'delivery',
+  },
+  package: {
+    reads: ['docs/design.md', 'docs/delivery.md', 'docs/release.md'],
+    writes: ['docs/release.md'],
+    back: 'release-review',
+  },
+  'live-check': {
+    reads: ['docs/release.md', 'docs/delivery.md'],
+    writes: ['docs/release.md'],
+    back: 'package',
+  },
+  publish: { reads: ['docs/delivery.md'], writes: [], back: 'delivery' },
+  maintain: {
+    reads: ['docs/release.md'],
+    writes: ['docs/handoff.md'],
+    back: 'live-check',
+  },
+  accept: { reads: [], writes: ['docs/acceptance.md'], back: 'test' },
+  delivery: { reads: [], writes: ['docs/delivery.md'], back: 'accept' },
 };
-export function applyLearningContracts(lessons:Lesson[]){
- const get=(id:string)=>lessons.find(l=>l.id===id)!;
- const update=(id:string,actions:Copy[])=>{get(id).actions=actions;};
- update('description',[
- ['先点击模板里的“带入前面已确认的材料”，再补项目名称、设备与第一版使用过程；已有编辑不会被覆盖。','Use the confirmed-material button, then add name, device and first-version flow; existing edits are retained.'],
- ['确认生成后，“准备 Git 与项目规则”可带入这份描述并交给 AI 保存到真实项目；本站草稿不会自动变成项目文件。','After confirmation, the “Prepare Git and project rules” milestone can import this description and have AI save it in the real project; a guide draft is not a project file.']]);
- get('tool').where=['所选AI工具的官方安装或工作区入口','The chosen tool’s official install or workspace entry'];
- update('folder',[
- ['在Mac访达或Windows文件资源管理器的文档目录，新建以自己项目命名的文件夹；网页工具则建立独立项目工作区。','Create a project-named folder in Mac Finder or Windows File Explorer Documents; web tools use a separate workspace.'],
- ['复制实际路径或工作区入口到下方模板，确认后保存；已有文件先保留。','Copy the actual path/workspace entry into the template, confirm and preserve existing files.']]);
- get('folder').where=['电脑文件管理器或网页工具的项目列表','The file manager or web tool project list'];get('folder').expected=['能打开自己的项目目录或工作区，并知道实际位置。','The project folder/workspace opens and its real location is known.'];
- update('open-project',[
- ['在所选工具中打开“创建项目文件夹”记录的位置，在该项目下建立对话。','Open the location recorded in the “Create the project folder” milestone and start a project conversation.'],
- ['带入已确认位置，发送只读核对提示词；核对返回路径和现有文件。','Import the confirmed location, send the read-only check and compare the returned path/files.']]);get('open-project').expected=['工具与本人确认的是同一项目位置，文件列表可核对。','The tool and user identify the same verifiable project location.'];
- update('preview',[
- ['每次读取任务表，只执行当前依赖已满足的一项任务；完成后查看实际结果与测试证据。','Read the task list and execute one ready task, then inspect actual output and evidence.'],
- ['本人核对当前任务后记录结果和版本。界面和保存任务分别按接下来的对应步骤处理；已完成的任务只复核，不重复开发。其余任务按任务表重复本步，全部必做项完成后再进入完整流程检查。','Record this task’s review and revision. Use the following interface and persistence steps for those tasks; review completed work without rebuilding. Repeat this step for remaining planned tasks, then check the full flow after required work is complete.']]);
- get('preview').prompt=[get('preview').prompt![0]+' 将需求编号、任务编号、实际测试及未测项写入 docs/checks.md。任务先标待本人核对；收到本人明确结果后才标通过，再保存仅属于本任务的本地版本，报告版本号与安全恢复说明，不覆盖无关工作。',get('preview').prompt![1]+' Record requirement/task IDs, actual checks and untested work in docs/checks.md. Mark awaiting personal review first; mark passed only after the user reports success, then save only this task’s local revision and safe recovery instructions while preserving unrelated work.'];
- get('plan').prompt=[
- '读取已确认需求、用户故事和设计，只制定开发计划。将每个必做需求编号映射到一个或多个任务，覆盖全部第一版范围；把第一条完整流程作为先做顺序，不删除其他必做项。每项含任务编号、依赖、产物、适用测试、通过条件与状态；关键能力实验先做。展示供本人确认后保存 tasks/todo.md，未确认项单列。本步不安装、不写代码。',
- 'Read confirmed requirements, stories and design. Plan only: map every required requirement ID to tasks covering all version-one scope. Start with one complete flow without dropping others. Include task ID, dependencies, outputs, applicable tests, criteria and status; prioritize feasibility checks. Show for confirmation, then save tasks/todo.md and list unknowns. Do not install or implement.' ];
- get('choose-stack').prompt=[get('choose-stack').prompt![0]+' 将最难能力和交付资格的最小验证写入设计，列设备/账号前提、预期结果及失败时替代方案；实验在环境准备后执行。',get('choose-stack').prompt![1]+' Record a minimal feasibility test for the hardest capability and delivery eligibility, including device/account prerequisites, expected result and alternatives. Execute after environment preparation.'];
- get('environment').prompt=[
- '读取已确认设计与 tasks/todo.md，仅准备本项目运行环境并验证最小入口。先检查系统、已有文件、运行时、包管理器和锁文件；保留已有配置。缺安装/权限条件先给本人对应官方入口、执行位置和成功检查；不得假装已安装。条件满足后按确认方案安装必要依赖、启动最小项目，报告真实网址/设备入口/命令、日志和停止方法。验证重新启动，并先执行设计中已确认的最小能力实验；失败记阻断并返回选型，不开发后续功能。把真实操作写入 README.md，结果写入 docs/checks.md，不发布。',
- 'Read design and tasks/todo.md. Prepare only this project’s runtime and minimal entry. Inspect OS, files, runtime, package manager and lockfile; preserve configuration. Explain missing installation/access with official entry, execution location and verification. Install only agreed dependencies, start the minimal entry, and report actual URL/device/command, logs and stop method. Verify restart and any approved feasibility experiment; record failures as blockers and return to selection. Save actual instructions in README.md and evidence in docs/checks.md; do not build later features or publish.' ];
- get('flow').prompt=[get('flow').prompt![0]+' 开始前列适用测试账号/可清理资料和创建入口；先测一条再覆盖其他必做流程。',get('flow').prompt![1]+' Before testing, list applicable test accounts/disposable data and setup entries; start with one flow, then cover other required flows.'];
- get('release-review').prompt=[
- '读取需求、设计、docs/checks.md、docs/acceptance.md 和 docs/delivery.md，先核对是否对应当前版本；缺本人验收或交付决定就停止，并指出应补“亲自测试完整使用过程”和“选择交付方式”，不替本人填通过。只做交付前准备评估，逐项列已核验、未满足、不适用、未验证及证据到 docs/release.md。尚未制作产物的试运行明确待“准备部署脚本或安装包”，不编造结果。阻断项编号记录到 docs/feedback.md，供修复计划使用。本步不修复、不制作产物、不发布。',
- 'Read requirements, design, checks, docs/acceptance.md and docs/delivery.md and compare revisions. If personal acceptance or delivery decisions are missing, stop and point to “Test the full journey personally” and “Choose how to deliver” without inventing a pass. Assess preparation only, recording verified, unmet, inapplicable and unverified conditions with evidence in docs/release.md. Artifact trials remain pending “Prepare deployment or packaging”. Number blockers in docs/feedback.md for repair planning. Do not repair, package or release.' ];
- for(const id of ['test','feedback'])for(const issue of get(id).issues){issue.action=['只收集当前现象、操作、版本与报错原文，必要时只读排查；本步不修代码。失败记录到反馈，按“先确定怎么修、怎样算修好”确认计划后再修复。','Collect symptoms, actions, revision and exact errors; use read-only diagnosis if needed. Do not repair here. Record feedback and confirm the plan in “Plan the fix and its passing checks” first.'];issue.expected=['有可核对的实际记录，未执行仍标未测试，失败仍标失败。','Verifiable records exist; untested and failed results keep their status.'];}
-
- get('maintain').prompt=[
- '读取当前项目、README、任务表和交付记录，整理维护交接并在获准测试环境核验备份恢复，不重新创建项目。保存 docs/handoff.md：实际项目位置、版本、运行入口、已验证/未验证项、下一任务；按本项目需要列维护表（负责人、频率、控制台/文件入口、操作、正常结果、失败处理），涵盖适用的数据备份与测试环境恢复、用量账单、日志、更新和有效期。同步README的实际运行说明与任务表。只能在获准测试环境执行恢复演练；无条件则标待验证。新需求先列受影响文档和测试，等本人确认后再进入开发，不自动开始新功能。',
- 'Read the project, README, task list and release record. Prepare the maintenance handoff and verify backup/restore in the authorized test environment without recreating the project. Save docs/handoff.md with actual location, revision, entry, verified/unverified status and next task. Add applicable maintenance rows: owner, frequency, console/file entry, action, normal result and failure response for backup/test restore, billing, logs, updates and expiry. Sync README and task status. Restore only in an authorized test environment; mark unavailable trials unverified. For new scope, propose affected documents/tests and wait for confirmation before development.' ];
- get('package').actions=get('package').actions.map(copy=>[copy[0].replace('重新打开和数据保留','重新打开及需求要求的数据保留'),copy[1]] as Copy);
- get('package').prompt=[get('package').prompt![0].replace('检查核心操作、重新打开和数据保留','检查核心操作、重新打开和需求要求的数据保留').replace('记录版本及结果','将产物实际位置、依赖服务、版本及结果保存到 docs/release.md'),get('package').prompt![1]+' Check data retention only if required; record actual artifact location, dependencies and evidence in docs/release.md.'];
- for(const lesson of lessons){const contract=fileContracts[lesson.id];if(!contract||!lesson.prompt||lesson.templateKind==='worksheet')continue;lesson.prompt=[`先检查能否读取${contract.reads.length?contract.reads.join('、'):'当前项目位置'}。缺失或无访问能力时，明确缺项与需本人操作的入口，停止本步执行，不编造文件或前序结论。\n`+lesson.prompt[0],`First check access to ${contract.reads.length?contract.reads.join(', '):'the current project location'}. If missing or inaccessible, identify the prerequisite and owner action, then stop rather than invent prior work.\n`+lesson.prompt[1]];}
-}

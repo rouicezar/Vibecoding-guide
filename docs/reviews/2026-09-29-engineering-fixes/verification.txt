@@ -1,0 +1,84 @@
+## npm-ci
+added 371 packages, and audited 372 packages in 5s
+
+114 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+npm warn install-scripts 2 packages have install scripts not yet covered by allowScripts:
+npm warn install-scripts   esbuild@0.28.2 (postinstall: node install.js)
+npm warn install-scripts   fsevents@2.3.3 (install: (install scripts present))
+npm warn install-scripts
+npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
+
+## format-check
+> vibe-coding-guide@0.1.0 format:check
+> prettier --check "src/scripts/**/*.ts" "src/data/learning*.ts" src/data/micro-actions.ts "src/styles/*.css" src/components/NodeStep.astro src/components/ProjectDraft.astro src/layouts/Shell.astro "src/pages/**/*.astro" "scripts/*.mjs" "tests/**/*.mjs" *.mjs .prettierrc.json ".github/workflows/*.yml"
+
+Checking formatting...
+All matched files use Prettier code style!
+
+## lint
+> vibe-coding-guide@0.1.0 lint
+> eslint .
+
+## check
+Result (117 files):
+- 0 errors
+- 0 warnings
+- 8 hints
+
+## unit
+> vibe-coding-guide@0.1.0 verify:unit
+> node scripts/verify-project-storage.mjs && node scripts/verify-disclosures.mjs
+
+PASS: old-tab writes and exports remain in original project; restore/create failures at every write roll back exactly.
+PASS: restore open and closed states by stable key; inserted disclosures keep defaults; malformed/legacy states ignored.
+
+## verify
+> vibe-coding-guide@0.1.0 verify
+> node scripts/verify-pages.mjs && node scripts/verify-nodes.mjs && node scripts/verify-stacks.mjs && node scripts/extract-dictionary.mjs --check && node scripts/verify-learning.mjs && node scripts/verify-navigation.mjs && node scripts/verify-step-prompts.mjs && node scripts/verify-library.mjs && node scripts/verify-demo-library.mjs && node scripts/verify-glossary.mjs && node scripts/verify-learning-handoffs.mjs && node scripts/verify-explore.mjs && node scripts/verify-learning-experience.mjs && node scripts/verify-fullstack-practice.mjs && node scripts/verify-guided-actions.mjs && node scripts/verify-teaching-chain.mjs
+
+PASS: 2142 localized pages, language counterparts, headings, local links/assets section anchors, copy policy, module coverage structured bilingual templates, branch parents and lifecycle ordering; 62 legacy learning pages redirect to node-page step anchors.
+PASS: 18 个节点页结构一致（9 个固定槽位、同一顺序；区块 A 在前、B/C/D 在后；侧栏与路线图均指向节点页）、27 个线性步骤 + 4 个分支步骤（含 1 个可选）覆盖全部 31 个教学动作、槽位数据齐备、术语无死链。
+PASS: stack rules preserve unknowns, existing projects and device constraints; five product scenarios.
+PASS: 212 entries, 25 categories, all source fields preserved and compared.
+PASS: 6 phases, 31 action/help/return routes; corrupt-state rejection, schema version, draft preservation and unknown-progress filtering.
+PASS: every action explains purpose and concepts; prerequisite order and repair/delivery loops are navigable.
+PASS: safe return navigation; unified bilingual phases; legacy routes redirect to current nodes; troubleshooting preserved; optional repairs excluded from resume.
+PASS: 31 step template coverage, bilingual field validation, scoped context, document handoffs and repair reassessment. Not an external AI execution test.
+PASS: four product types × four fit dimensions in both languages; 25 component categories and 212 entries covered; 10 resource topics have decisions, limits, checks and live return routes.
+PASS: 212 bilingual example pages and templates; {"visual":32,"simplified":3,"exercise":177}; 9 scoped resource prompts and 4 validated records. Runtime interaction is verified separately in browser evidence.
+PASS: 755 bilingual glossary entries, 27 categories, 15 diagrams, 18 comparisons; legacy anchors, task links, aliases, examples and rendered detail pages checked. Human comprehension is not measured by these tests.
+PASS: 31 step links, file contracts, 12 scoped branches; 12 bilingual empty-template rejections; project isolation, full backup, safe restore, locale handoff. Not a real device or AI-run acceptance test.
+PASS: original 10 chapters, cover and footer retained; 145 source link occurrences preserved; 50 scoped ideas / 10 groups / 19 repositories; 130 research pages and revenue notices.
+PASS: 86 bilingual micro-operations; 755 term assignments; 18 reference groups; resume, repair, completion and reversible progress invariants; rendered controls.
+PASS: real completion handler blocks navigation on failed storage and persists progress after retry.
+PASS: 31 bilingual full-stack supplements, rendered guidance and prompt selection; separate stories handoff; backend persistence and non-destructive recovery criteria; 3 image assets. This is content validation, not a learner completion claim.
+PASS: 31 teaching sections / 86 follow-along operations; bilingual location, action, reminder, observation and recovery rendered through existing UI.
+PASS: 12 optional branches have per-action bilingual prompts.
+PASS: first-run instructions match the idea fields and worksheet purpose.
+PASS: every bilingual step has collapsible actions/materials and only the first action starts expanded.
+PASS: 31 prerequisite/producer handoffs, early delivery branch, 7 expanded teaching sections in both languages and official screenshot placements. This does not claim real learner acceptance.
+
+## browser-discovery
+Listing tests:
+  [desktop] › core.spec.mjs:26:1 › disclosure state and hash navigation
+  [desktop] › core.spec.mjs:29:1 › two tabs keep project ownership
+  [desktop] › core.spec.mjs:33:1 › confirm, edit, reload, switch language
+  [desktop] › core.spec.mjs:36:1 › existing visual contracts
+  [desktop] › core.spec.mjs:39:1 › search loads the built index
+  [desktop] › core.spec.mjs:46:1 › backup validation and recovery
+  [mobile] › core.spec.mjs:26:1 › disclosure state and hash navigation
+  [mobile] › core.spec.mjs:29:1 › two tabs keep project ownership
+  [mobile] › core.spec.mjs:33:1 › confirm, edit, reload, switch language
+  [mobile] › core.spec.mjs:36:1 › existing visual contracts
+  [mobile] › core.spec.mjs:39:1 › search loads the built index
+  [mobile] › core.spec.mjs:46:1 › backup validation and recovery
+Total: 12 tests in 1 file
+
+## pages
+PASS: 2383 Pages HTML documents have base-prefixed, existing local links/assets.
+
+## dependency audit
+{"info": 0, "low": 0, "moderate": 0, "high": 0, "critical": 0, "total": 0}

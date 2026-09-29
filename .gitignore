@@ -5,6 +5,7 @@
 # Dependencies and generated output
 node_modules/
 dist/
+dist-pages/
 .astro/
 coverage/
 playwright-report/

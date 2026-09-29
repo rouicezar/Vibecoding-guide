@@ -1,1 +1,17 @@
-{ "extends": "astro/tsconfigs/strict", "include": [".astro/types.d.ts", "**/*"], "exclude": ["dist", "node_modules", "组件词典", "vibe-ui-dictionary"] }
+{
+  "extends": "astro/tsconfigs/strict",
+  "include": [
+    ".astro/types.d.ts",
+    "**/*"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "组件词典",
+    "vibe-ui-dictionary",
+    "dist-pages",
+    ".tmp",
+    "playwright-report",
+    "test-results"
+  ]
+}

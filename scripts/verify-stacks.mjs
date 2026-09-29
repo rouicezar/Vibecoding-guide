@@ -1,12 +1,26 @@
 import assert from 'node:assert/strict';
-import {selectStacks} from '../src/data/stacks.ts';
-const base={type:'content',data:'none',device:'basic',budget:'zero',existing:'no',login:'no',maintenance:'limited'};
-assert.deepEqual(selectStacks(base).ids,['astro']);
-assert.deepEqual(selectStacks({...base,data:'shared',login:'yes'}).ids,['react','astro']);
-for(const key of Object.keys(base))assert.equal(selectStacks({...base,[key]:'unknown'}).ids.length,0,key);
-assert.equal(selectStacks({...base,existing:'yes'}).ids.length,0);
-assert.equal(selectStacks({...base,device:'native'}).ids.length,0);
-assert.equal(selectStacks({...base,type:'mini'}).ids.length,0);
-assert.deepEqual(selectStacks({...base,type:'mobile'}).ids,['expo']);
-assert.deepEqual(selectStacks({...base,type:'desktop'}).ids,['tauri']);
-console.log('PASS: stack rules preserve unknowns, existing projects and device constraints; five product scenarios.');
+import { selectStacks } from '../src/data/stacks.ts';
+const base = {
+  type: 'content',
+  data: 'none',
+  device: 'basic',
+  budget: 'zero',
+  existing: 'no',
+  login: 'no',
+  maintenance: 'limited',
+};
+assert.deepEqual(selectStacks(base).ids, ['astro']);
+assert.deepEqual(selectStacks({ ...base, data: 'shared', login: 'yes' }).ids, [
+  'react',
+  'astro',
+]);
+for (const key of Object.keys(base))
+  assert.equal(selectStacks({ ...base, [key]: 'unknown' }).ids.length, 0, key);
+assert.equal(selectStacks({ ...base, existing: 'yes' }).ids.length, 0);
+assert.equal(selectStacks({ ...base, device: 'native' }).ids.length, 0);
+assert.equal(selectStacks({ ...base, type: 'mini' }).ids.length, 0);
+assert.deepEqual(selectStacks({ ...base, type: 'mobile' }).ids, ['expo']);
+assert.deepEqual(selectStacks({ ...base, type: 'desktop' }).ids, ['tauri']);
+console.log(
+  'PASS: stack rules preserve unknowns, existing projects and device constraints; five product scenarios.',
+);

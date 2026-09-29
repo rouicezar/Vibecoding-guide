@@ -1,0 +1,5 @@
+{
+  "compared": 466,
+  "exclusion": "Project selector and options: new regression project labels legitimately change intrinsic select width from 201 to 245.5px",
+  "differences": []
+}

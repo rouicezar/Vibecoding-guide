@@ -4,14 +4,20 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=26.7.0 <27"
   },
   "scripts": {
     "dev": "astro dev --host 127.0.0.1",
     "check": "astro check",
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview --host 127.0.0.1",
-    "verify": "node scripts/verify-pages.mjs && node scripts/verify-nodes.mjs && node scripts/verify-stacks.mjs && node scripts/extract-dictionary.mjs --check && node scripts/verify-learning.mjs && node scripts/verify-navigation.mjs && node scripts/verify-step-prompts.mjs && node scripts/verify-library.mjs && node scripts/verify-demo-library.mjs && node scripts/verify-glossary.mjs && node scripts/verify-learning-handoffs.mjs && node scripts/verify-explore.mjs && node scripts/verify-learning-experience.mjs && node scripts/verify-fullstack-practice.mjs && node scripts/verify-guided-actions.mjs && node scripts/verify-teaching-chain.mjs"
+    "verify": "node scripts/verify-pages.mjs && node scripts/verify-nodes.mjs && node scripts/verify-stacks.mjs && node scripts/extract-dictionary.mjs --check && node scripts/verify-learning.mjs && node scripts/verify-navigation.mjs && node scripts/verify-step-prompts.mjs && node scripts/verify-library.mjs && node scripts/verify-demo-library.mjs && node scripts/verify-glossary.mjs && node scripts/verify-learning-handoffs.mjs && node scripts/verify-explore.mjs && node scripts/verify-learning-experience.mjs && node scripts/verify-fullstack-practice.mjs && node scripts/verify-guided-actions.mjs && node scripts/verify-teaching-chain.mjs",
+    "verify:unit": "node scripts/verify-project-storage.mjs && node scripts/verify-disclosures.mjs",
+    "format": "prettier --write \"src/scripts/**/*.ts\" \"src/data/learning*.ts\" src/data/micro-actions.ts \"src/styles/*.css\" src/components/NodeStep.astro src/components/ProjectDraft.astro src/layouts/Shell.astro \"src/pages/**/*.astro\" \"scripts/*.mjs\" \"tests/**/*.mjs\" *.mjs .prettierrc.json \".github/workflows/*.yml\"",
+    "format:check": "prettier --check \"src/scripts/**/*.ts\" \"src/data/learning*.ts\" src/data/micro-actions.ts \"src/styles/*.css\" src/components/NodeStep.astro src/components/ProjectDraft.astro src/layouts/Shell.astro \"src/pages/**/*.astro\" \"scripts/*.mjs\" \"tests/**/*.mjs\" *.mjs .prettierrc.json \".github/workflows/*.yml\"",
+    "lint": "eslint .",
+    "build:pages": "SITE_BASE=/Vibecoding-guide astro build --outDir dist-pages && node scripts/prepare-pages.mjs dist-pages && pagefind --site dist-pages && node scripts/verify-pages-base.mjs dist-pages",
+    "test:browser": "playwright test"
   },
   "dependencies": {
     "@lucide/astro": "1.47.0",
@@ -19,7 +25,13 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.63.0",
+    "eslint": "10.11.0",
     "pagefind": "1.5.2",
-    "typescript": "6.0.3"
+    "prettier": "3.9.9",
+    "prettier-plugin-astro": "1.1.0",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.71.0"
   }
 }

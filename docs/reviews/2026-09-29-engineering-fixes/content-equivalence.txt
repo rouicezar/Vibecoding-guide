@@ -1,0 +1,1 @@
+PASS: 31 lessons and 86 bilingual actions retain all previous visible fields exactly.

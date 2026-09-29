@@ -1,28 +1,288 @@
-import {ideaFields,projectList,activeProject,readConfirmed,projectStorage as localStorage} from './project-storage.ts';
-export function validateTemplate(value:string,original=''):string {if(!value.trim())throw new Error('empty');const fields=[...original.matchAll(/【[^】]*】|\[[^\]]*\]/g)].filter(match=>{const start=original.lastIndexOf('\n',match.index)+1;const end=match.index!+match[0].length;const heading=!original.slice(start,match.index).trim()&&/^[^\r\n]+/.test(original.slice(end))&&!/填写|粘贴|补充|fill|paste/i.test(match[0]);return !heading;});if(fields.some(match=>value.includes(match[0])))throw new Error('unfilled');return value.trim();}
-export function initTemplates(){const en=document.documentElement.lang==='en';document.querySelectorAll<HTMLElement>('.prompt-template').forEach(root=>{
- try{const owner=root.querySelector('[data-template-owner]');if(owner)owner.textContent=(en?'Project: ':'所属项目：')+(projectList().find(p=>p.id===activeProject())?.name??'—');}catch{}
- const editor=root.querySelector<HTMLTextAreaElement>('[data-template-editor]');if(!editor)return;
- const confirm=root.querySelector<HTMLButtonElement>('[data-confirm-template]')!;const id=editor.dataset.templateEditor!;const code=root.querySelector<HTMLElement>('[data-template-text]')!;const copy=root.querySelector<HTMLButtonElement>('[data-copy-template]')!;const output=root.querySelector<HTMLElement>('[data-template-result]')!;const status=root.querySelector<HTMLElement>('[data-template-status]')!;const saved=root.querySelector<HTMLElement>('[data-template-save]')!;const key=`vibe-template-v1:${document.documentElement.lang}:${id}`;const original=editor.value;const revision='2026-09-27';const reset=root.querySelector<HTMLButtonElement>('[data-reset-template]')!;let confirmed='';let ownChange=false;let canSave=true;let restored=false;
- const invalidate=()=>{confirmed='';copy.disabled=true;output.hidden=true;status.textContent='';};
- try{const raw=localStorage.getItem(key);if(raw){const data=JSON.parse(raw);if(typeof data.draft!=='string')throw Error();editor.value=data.draft;restored=true;reset.hidden=false;saved.textContent=data.revision===revision?(en?'This project’s draft restored. Updated: ':'已恢复本项目草稿。修改时间：')+(data.updatedAt??'—'):(en?'An older template draft was preserved. Back it up before using the current template below.':'已保留旧版模板草稿。可先备份，再用下方本步新版模板对照替换。');}}catch{canSave=false;saved.textContent=en?'Saved draft could not be read; original data is preserved. Keep a manual copy.':'旧草稿无法读取，原记录未覆盖。请手动留底。';}
- if(!restored)editor.value=code.textContent??editor.value;
- const persist=()=>{if(!canSave)return;try{localStorage.setItem(key,JSON.stringify({draft:editor.value,confirmed,revision,updatedAt:new Date().toISOString()}));saved.textContent=en?'Draft saved in this browser. Confirm to prepare a copy.':'草稿已保存到当前浏览器。确认后生成可复制内容。';}catch{saved.textContent=en?'Saving failed. Keep the text before leaving.':'保存失败，离开前请保留当前文字。';}};
- reset.addEventListener('click',()=>{editor.value=original;invalidate();persist();reset.hidden=true;});
- editor.addEventListener('input',()=>{invalidate();persist();});
- const accept=(text:string)=>{confirm.disabled=false;editor.value=text;confirmed=text;ownChange=true;code.textContent=text;copy.disabled=false;output.hidden=false;status.textContent=en?'Ready to copy.':'已生成，可以复制。';persist();};
- confirm.addEventListener('click',()=>{try{accept(validateTemplate(editor.value,original));}catch{invalidate();saved.textContent=en?'Replace each template field before confirming, or write undecided.':'请替换本步模板的待填字段，未知项写“尚未确定”，再确认生成。';editor.focus();}});
- if(id.startsWith('scene-')||id==='stack-request'){confirm.disabled=true;saved.textContent=en?'Complete and submit the form above first.':'请先填写并提交上方材料表单。';}
- const handoff=root.querySelector<HTMLButtonElement>('[data-use-material]');
- handoff?.addEventListener('click',()=>{let value=editor.value;let changed=false;const replace=(token:string,text:string)=>{if(text&&value.includes(token)){value=value.replace(token,text);changed=true;}};
- if(id==='learn-description'){try{const state=JSON.parse(localStorage.getItem('vibe-guide-learning-v1')||'null');if(state?.ideaConfirmed===state?.idea&&state?.idea){const values=ideaFields(state.idea);const tokens=en?['[fill in]','[fill in]','[actions and expected results]','[none, details or undecided]']:['【填写实际使用者】','【填写用户使用后能解决的具体问题】','【填写操作和应该看到的结果】','【填写；没有填否，未决定填尚未确定】'];if(en){const lines=value.split('\n');[1,2,5,6].forEach((n,i)=>{if(values[i]&&!/[【\[]/.test(values[i])){lines[n]=lines[n].replace(tokens[i],values[i]);changed=true;}});value=lines.join('\n');}else tokens.forEach((token,i)=>{if(values[i]&&!/[【\[]/.test(values[i]))replace(token,values[i]);});}}catch{}}
- if(id==='learn-checkpoint')replace(en?'[paste the prepared brief]':'【粘贴项目描述步骤生成的文本】',readConfirmed('learn-description'));
- if(id==='learn-open-project'){const folder=readConfirmed('learn-folder');const path=folder.split('\n').find(line=>/^(完整位置|Full location)[:：]/.test(line))?.replace(/^[^:：]+[:：]\s*/,'');replace(en?'[full path]':'【填写完整路径】',path||'');}
- const platform=localStorage.getItem('vibe-selected-platform');if(id==='learn-description'&&platform)replace(en?'Devices: [fill in]':'使用设备：【填写电脑浏览器、手机、桌面应用等】',en?'Devices: '+platform:'使用设备：'+platform);
- if(changed){editor.value=value;invalidate();persist();saved.textContent=en?'Confirmed material added. Review the remaining fields.':'已带入已确认材料，请核对并补充剩余字段。';}else saved.textContent=en?'No confirmed matching material. Confirm the previous step first; existing edits were kept.':'没有可带入的已确认材料，或字段已填写。请先确认前一步；已有编辑已保留。';});
- // Existing generators provide their confirmed form values; edits invalidate that confirmation.
- root.addEventListener('template:ready',()=>{try{accept(validateTemplate(code.textContent!.trim(),original));}catch{confirm.disabled=false;editor.value=code.textContent??'';invalidate();saved.textContent=en?'Complete the remaining template fields, then confirm.':'请补齐剩余待填字段，再确认。';}});
- root.addEventListener('template:dirty',()=>{confirm.disabled=true;invalidate();saved.textContent=en?'Source material changed. Generate again.':'填写材料已修改，请重新生成。';});
- new MutationObserver(()=>{if(ownChange){ownChange=false;return;}if(code.textContent===confirmed)return;editor.value=code.textContent??'';invalidate();}).observe(code,{childList:true,characterData:true,subtree:true});
- copy.addEventListener('click',async()=>{if(copy.disabled||!confirmed)return;status.textContent=en?'Copying…':'正在复制…';let timer:ReturnType<typeof setTimeout>|undefined;try{await Promise.race([navigator.clipboard.writeText(confirmed),new Promise((_,reject)=>{timer=setTimeout(()=>reject(Error()),1800);})]);status.textContent=en?'Copied.':'已复制。';}catch{const range=document.createRange();range.selectNodeContents(code);const selection=getSelection();selection?.removeAllRanges();selection?.addRange(range);status.textContent=en?'Text selected. Press Ctrl+C / ⌘C to copy.':'已选中文字，请按 Ctrl+C / ⌘C 复制。';}finally{if(timer)clearTimeout(timer);}});
- });}
+import {
+  ideaFields,
+  projectList,
+  pageProject,
+  readConfirmed,
+  projectStorage as localStorage,
+} from './project-storage.ts';
+export function validateTemplate(value: string, original = ''): string {
+  if (!value.trim()) throw new Error('empty');
+  const fields = [...original.matchAll(/【[^】]*】|\[[^\]]*\]/g)].filter(
+    (match) => {
+      const start = original.lastIndexOf('\n', match.index) + 1;
+      const end = match.index! + match[0].length;
+      const heading =
+        !original.slice(start, match.index).trim() &&
+        /^[^\r\n]+/.test(original.slice(end)) &&
+        !/填写|粘贴|补充|fill|paste/i.test(match[0]);
+      return !heading;
+    },
+  );
+  if (fields.some((match) => value.includes(match[0])))
+    throw new Error('unfilled');
+  return value.trim();
+}
+export function initTemplates() {
+  const en = document.documentElement.lang === 'en';
+  document.querySelectorAll<HTMLElement>('.prompt-template').forEach((root) => {
+    try {
+      const owner = root.querySelector('[data-template-owner]');
+      if (owner)
+        owner.textContent =
+          (en ? 'Project: ' : '所属项目：') +
+          (projectList().find((p) => p.id === pageProject())?.name ?? '—');
+    } catch {
+      /* Preserve the editor when saved material cannot be read. */
+    }
+    const editor = root.querySelector<HTMLTextAreaElement>(
+      '[data-template-editor]',
+    );
+    if (!editor) return;
+    const confirm = root.querySelector<HTMLButtonElement>(
+      '[data-confirm-template]',
+    )!;
+    const id = editor.dataset.templateEditor!;
+    const code = root.querySelector<HTMLElement>('[data-template-text]')!;
+    const copy = root.querySelector<HTMLButtonElement>('[data-copy-template]')!;
+    const output = root.querySelector<HTMLElement>('[data-template-result]')!;
+    const status = root.querySelector<HTMLElement>('[data-template-status]')!;
+    const saved = root.querySelector<HTMLElement>('[data-template-save]')!;
+    const key = `vibe-template-v1:${document.documentElement.lang}:${id}`;
+    const original = editor.value;
+    const revision = '2026-09-27';
+    const reset = root.querySelector<HTMLButtonElement>(
+      '[data-reset-template]',
+    )!;
+    let confirmed = '';
+    let ownChange = false;
+    let canSave = true;
+    let restored = false;
+    const invalidate = () => {
+      confirmed = '';
+      copy.disabled = true;
+      output.hidden = true;
+      status.textContent = '';
+    };
+    try {
+      const raw = localStorage.getItem(key);
+      if (raw) {
+        const data = JSON.parse(raw);
+        if (typeof data.draft !== 'string') throw Error();
+        editor.value = data.draft;
+        restored = true;
+        reset.hidden = false;
+        saved.textContent =
+          data.revision === revision
+            ? (en
+                ? 'This project’s draft restored. Updated: '
+                : '已恢复本项目草稿。修改时间：') + (data.updatedAt ?? '—')
+            : en
+              ? 'An older template draft was preserved. Back it up before using the current template below.'
+              : '已保留旧版模板草稿。可先备份，再用下方本步新版模板对照替换。';
+      }
+    } catch {
+      canSave = false;
+      saved.textContent = en
+        ? 'Saved draft could not be read; original data is preserved. Keep a manual copy.'
+        : '旧草稿无法读取，原记录未覆盖。请手动留底。';
+    }
+    if (!restored) editor.value = code.textContent ?? editor.value;
+    const persist = () => {
+      if (!canSave) return;
+      try {
+        localStorage.setItem(
+          key,
+          JSON.stringify({
+            draft: editor.value,
+            confirmed,
+            revision,
+            updatedAt: new Date().toISOString(),
+          }),
+        );
+        saved.textContent = en
+          ? 'Draft saved in this browser. Confirm to prepare a copy.'
+          : '草稿已保存到当前浏览器。确认后生成可复制内容。';
+      } catch {
+        saved.textContent = en
+          ? 'Saving failed. Keep the text before leaving.'
+          : '保存失败，离开前请保留当前文字。';
+      }
+    };
+    reset.addEventListener('click', () => {
+      editor.value = original;
+      invalidate();
+      persist();
+      reset.hidden = true;
+    });
+    editor.addEventListener('input', () => {
+      invalidate();
+      persist();
+    });
+    const accept = (text: string) => {
+      confirm.disabled = false;
+      editor.value = text;
+      confirmed = text;
+      ownChange = true;
+      code.textContent = text;
+      copy.disabled = false;
+      output.hidden = false;
+      status.textContent = en ? 'Ready to copy.' : '已生成，可以复制。';
+      persist();
+    };
+    confirm.addEventListener('click', () => {
+      try {
+        accept(validateTemplate(editor.value, original));
+      } catch {
+        invalidate();
+        saved.textContent = en
+          ? 'Replace each template field before confirming, or write undecided.'
+          : '请替换本步模板的待填字段，未知项写“尚未确定”，再确认生成。';
+        editor.focus();
+      }
+    });
+    if (id.startsWith('scene-') || id === 'stack-request') {
+      confirm.disabled = true;
+      saved.textContent = en
+        ? 'Complete and submit the form above first.'
+        : '请先填写并提交上方材料表单。';
+    }
+    const handoff = root.querySelector<HTMLButtonElement>(
+      '[data-use-material]',
+    );
+    handoff?.addEventListener('click', () => {
+      let value = editor.value;
+      let changed = false;
+      const replace = (token: string, text: string) => {
+        if (text && value.includes(token)) {
+          value = value.replace(token, text);
+          changed = true;
+        }
+      };
+      if (id === 'learn-description') {
+        try {
+          const state = JSON.parse(
+            localStorage.getItem('vibe-guide-learning-v1') || 'null',
+          );
+          if (state?.ideaConfirmed === state?.idea && state?.idea) {
+            const values = ideaFields(state.idea);
+            const tokens = en
+              ? [
+                  '[fill in]',
+                  '[fill in]',
+                  '[actions and expected results]',
+                  '[none, details or undecided]',
+                ]
+              : [
+                  '【填写实际使用者】',
+                  '【填写用户使用后能解决的具体问题】',
+                  '【填写操作和应该看到的结果】',
+                  '【填写；没有填否，未决定填尚未确定】',
+                ];
+            if (en) {
+              const lines = value.split('\n');
+              [1, 2, 5, 6].forEach((n, i) => {
+                if (values[i] && !/[【[]/.test(values[i])) {
+                  lines[n] = lines[n].replace(tokens[i], values[i]);
+                  changed = true;
+                }
+              });
+              value = lines.join('\n');
+            } else
+              tokens.forEach((token, i) => {
+                if (values[i] && !/[【[]/.test(values[i]))
+                  replace(token, values[i]);
+              });
+          }
+        } catch {
+          /* Preserve the editor when saved material cannot be read. */
+        }
+      }
+      if (id === 'learn-checkpoint')
+        replace(
+          en ? '[paste the prepared brief]' : '【粘贴项目描述步骤生成的文本】',
+          readConfirmed('learn-description'),
+        );
+      if (id === 'learn-open-project') {
+        const folder = readConfirmed('learn-folder');
+        const path = folder
+          .split('\n')
+          .find((line) => /^(完整位置|Full location)[:：]/.test(line))
+          ?.replace(/^[^:：]+[:：]\s*/, '');
+        replace(en ? '[full path]' : '【填写完整路径】', path || '');
+      }
+      const platform = localStorage.getItem('vibe-selected-platform');
+      if (id === 'learn-description' && platform)
+        replace(
+          en
+            ? 'Devices: [fill in]'
+            : '使用设备：【填写电脑浏览器、手机、桌面应用等】',
+          en ? 'Devices: ' + platform : '使用设备：' + platform,
+        );
+      if (changed) {
+        editor.value = value;
+        invalidate();
+        persist();
+        saved.textContent = en
+          ? 'Confirmed material added. Review the remaining fields.'
+          : '已带入已确认材料，请核对并补充剩余字段。';
+      } else
+        saved.textContent = en
+          ? 'No confirmed matching material. Confirm the previous step first; existing edits were kept.'
+          : '没有可带入的已确认材料，或字段已填写。请先确认前一步；已有编辑已保留。';
+    });
+    // Existing generators provide their confirmed form values; edits invalidate that confirmation.
+    root.addEventListener('template:ready', () => {
+      try {
+        accept(validateTemplate(code.textContent!.trim(), original));
+      } catch {
+        confirm.disabled = false;
+        editor.value = code.textContent ?? '';
+        invalidate();
+        saved.textContent = en
+          ? 'Complete the remaining template fields, then confirm.'
+          : '请补齐剩余待填字段，再确认。';
+      }
+    });
+    root.addEventListener('template:dirty', () => {
+      confirm.disabled = true;
+      invalidate();
+      saved.textContent = en
+        ? 'Source material changed. Generate again.'
+        : '填写材料已修改，请重新生成。';
+    });
+    new MutationObserver(() => {
+      if (ownChange) {
+        ownChange = false;
+        return;
+      }
+      if (code.textContent === confirmed) return;
+      editor.value = code.textContent ?? '';
+      invalidate();
+    }).observe(code, { childList: true, characterData: true, subtree: true });
+    copy.addEventListener('click', async () => {
+      if (copy.disabled || !confirmed) return;
+      status.textContent = en ? 'Copying…' : '正在复制…';
+      let timer: ReturnType<typeof setTimeout> | undefined;
+      try {
+        await Promise.race([
+          navigator.clipboard.writeText(confirmed),
+          new Promise((_, reject) => {
+            timer = setTimeout(() => reject(Error()), 1800);
+          }),
+        ]);
+        status.textContent = en ? 'Copied.' : '已复制。';
+      } catch {
+        const range = document.createRange();
+        range.selectNodeContents(code);
+        const selection = getSelection();
+        selection?.removeAllRanges();
+        selection?.addRange(range);
+        status.textContent = en
+          ? 'Text selected. Press Ctrl+C / ⌘C to copy.'
+          : '已选中文字，请按 Ctrl+C / ⌘C 复制。';
+      } finally {
+        if (timer) clearTimeout(timer);
+      }
+    });
+  });
+}

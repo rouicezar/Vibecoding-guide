@@ -1,33 +1,48 @@
-name: Publish GitHub Pages
+name: Validate and publish GitHub Pages
 on:
+  pull_request:
   push:
     branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
 concurrency:
-  group: github-pages
-  cancel-in-progress: false
+  group: pages-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
-  build:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version-file: .nvmrc
           cache: npm
       - run: npm ci
-      - run: npm run check
+      - run: npm run format:check && npm run lint && npm run check && npm run verify:unit
       - run: npm run build && npm run verify
-      - run: npx astro build && node scripts/prepare-pages.mjs && npx pagefind --site dist && node scripts/verify-pages-base.mjs
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:browser
+      - run: npm run build:pages
+      - run: npm run test:browser
         env:
-          SITE_BASE: /Vibecoding-guide
-      - uses: actions/upload-pages-artifact@v3
+          TEST_DIST: dist-pages
+          TEST_BASE: /Vibecoding-guide
+          TEST_PORT: 4343
+      - uses: actions/upload-artifact@v4
+        if: failure()
         with:
-          path: dist
+          name: browser-failure-evidence
+          path: |
+            playwright-report
+            test-results
+      - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        with:
+          path: dist-pages
   deploy:
-    needs: build
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: validate
     runs-on: ubuntu-latest
     permissions:
       pages: write
