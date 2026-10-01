@@ -50,8 +50,13 @@ test('backup validation and recovery', async ({ page }) => {
 test('milestone header and resource grid remain usable', async ({ page }) => {
   await page.goto(origin + '/zh-cn/node/description/');
   await expect(page.locator('.node-head h1')).toHaveCount(1);
-  await expect(page.locator('.node-meta > div')).toHaveCount(1);
+  // 页头两格：做完得到什么 / 这个节点要做多少事（含实际操作量）。
+  await expect(page.locator('.node-meta > div')).toHaveCount(2);
+  await expect(page.locator('.node-meta')).toContainText('这个节点要做多少事');
+  await expect(page.locator('.node-meta')).toContainText('次亲手操作');
   await expect(page.locator('.node-action-index')).toHaveCount(0);
+  // 单步节点不出现动作直达，也不出现主线进度分母不一致的情况。
+  await expect(page.locator('.node-start-here')).toHaveCount(1);
   await page.locator('.node-why > summary').click();
   await expect(page.locator('.node-why')).toHaveAttribute('open', '');
   await page.goto(origin + '/en/node/checkpoint/');
@@ -109,4 +114,109 @@ test('mobile home cards stay separate when text wraps', async ({ page }) => {
       expect(geometry.fits).toBe(true);
     }
   }
+});
+
+/* 本轮修复的运行时行为：起点定位、跳步纠正、不适用不计入已核对。 */
+const seed = (page, completed, checks) =>
+  page.addInitScript(
+    ([c, k]) =>
+      localStorage.setItem(
+        'vibe-guide-learning-v1',
+        JSON.stringify({
+          version: 1,
+          idea: 'x',
+          later: '',
+          completed: c,
+          current: 'idea',
+          ...(k ? { checks: k } : {}),
+        }),
+      ),
+    [completed, checks],
+  );
+
+test('node page points to the first unchecked action', async ({ page }) => {
+  await seed(page, ['idea', 'description'], null);
+  // tool 节点只有 tool 一步，尚未核对 → 应直接指向本节点的第一步。
+  await page.goto(`${origin}/zh-cn/node/tool/`);
+  const start = page.locator('[data-start-here]');
+  await expect(start).toContainText('从这里开始');
+  await expect(start).toContainText('打开一个能制作文件的 AI 工具');
+  await expect(start.locator('a')).toHaveAttribute(
+    'href',
+    '/zh-cn/node/tool/#tool',
+  );
+  // 本节点已完成时改为指向路线图，而不是留空。
+  await seed(page, ['idea', 'description', 'tool'], null);
+  await page.goto(`${origin}/zh-cn/node/tool/`);
+  await expect(page.locator('[data-start-here]')).toContainText('已全部核对');
+});
+
+test('jumping ahead is corrected to the real next action', async ({ page }) => {
+  await seed(page, [], null);
+  // 侧栏 18 个节点全部可点；直接进最后一个节点时必须说明真正该做哪一步。
+  await page.goto(`${origin}/zh-cn/node/maintain/`);
+  const start = page.locator('[data-start-here]');
+  await expect(start).toContainText('还没有核对完这个节点之前的动作');
+  await expect(start).toContainText('先记下自己的想法');
+  await expect(start.locator('.start-out-of-turn a')).toHaveAttribute(
+    'href',
+    /node\/idea\/#idea/,
+  );
+});
+
+test('not-applicable is not counted as checked', async ({ page }) => {
+  await seed(page, ['preview', 'interface', 'save'], {
+    // parseLearning 要求核对记录四个字段齐全，缺一整份状态会被判为损坏。
+    preview: { verdict: 'passed', version: 'a', date: 'd', note: 'n' },
+    interface: {
+      verdict: 'not-applicable',
+      version: 'a',
+      date: 'd',
+      note: '静态页面，无需账号',
+    },
+    save: {
+      verdict: 'not-applicable',
+      version: 'a',
+      date: 'd',
+      note: '静态页面，不存数据',
+    },
+  });
+  await page.goto(`${origin}/zh-cn/node/preview/`);
+  // preview 节点 4 步：1 步已核对通过、2 步不适用、1 步未做。
+  // 侧栏也有同名标记，限定在节点页进度块内取。
+  await expect(
+    page.locator('.node-progress-summary [data-node-progress="preview"]'),
+  ).toHaveText('1/4（2 项不适用）');
+  await expect(page.locator('[data-progress="interface"]')).toHaveText(
+    '不适用',
+  );
+  await expect(page.locator('[data-progress="preview"]')).toHaveText(
+    '已核对 ✓',
+  );
+  await expect(page.locator('[data-progress="save"]')).toHaveText('不适用');
+});
+
+test('repair keeps the milestone it was entered from', async ({ page }) => {
+  for (const node of ['release-review', 'package', 'live-check']) {
+    await seed(page, [], null);
+    await page.goto(`${origin}/zh-cn/node/${node}/`);
+    // 流程内的修复入口必须留在本节点。
+    await expect(
+      page.locator(`[data-follow-step="feedback"]`).first(),
+    ).toHaveAttribute('href', `/zh-cn/node/${node}/#feedback`);
+    // 修完能回到本节点，而不是被送到 accept。
+    await expect(page.locator('.step-return').first()).toHaveAttribute(
+      'href',
+      `/zh-cn/node/${node}/`,
+    );
+  }
+});
+
+test('optional steps stay out of the main sequence', async ({ page }) => {
+  await page.goto(`${origin}/zh-cn/node/package/`);
+  await expect(page.locator('.node-progress-summary')).toContainText('0/1');
+  await expect(page.locator('.node-start-title')).toContainText('共 1 个步骤');
+  await expect(page.locator('.node-optional')).toContainText(
+    '符合条件才做的可选步骤',
+  );
 });

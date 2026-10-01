@@ -8,6 +8,7 @@ import NodeResources from './NodeResources.astro';
 import ProjectDraft from './ProjectDraft.astro';
 import { phases, lessons } from '../data/learning';
 import { stepSupport } from '../data/learning-support';
+import { nodeEffort } from '../data/node-effort';
 import { glossary } from '../data/glossary';
 import { t, url, type Locale, type Copy } from '../data/site';
 import {
@@ -34,6 +35,14 @@ const phaseIndex = phases.findIndex((p) => p.id === node.phaseId) + 1;
 const total = routeNodes.length;
 const steps = node.stepIds;
 const mainSteps = steps.filter((id) => !optionalSteps[id]);
+/**
+ * 可选步骤单独成区，不进入主线编号。
+ * 否则 package 节点会同时显示「0/1」和「共 2 个步骤 · 按顺序完成」，
+ * 把 publish 这种「不适用就不做」的步骤说成必做。
+ */
+const optionalStepIds = steps.filter((id) => optionalSteps[id]);
+/** 本节点要亲手做的实际操作量；与「步骤数」不同，避免用户低估投入。 */
+const nodeWork = nodeEffort(node.id);
 const lastSupport = stepSupport.find(
   (s) => s.id === mainSteps[mainSteps.length - 1],
 );
@@ -60,7 +69,7 @@ const plan = (ids: string[], fallback?: { href: string; label: Copy }) =>
       : fallback?.label) as Copy | undefined,
   }));
 const nodePlan = plan(
-  steps,
+  mainSteps,
   next
     ? {
         href: url(locale, `node/${next.id}`),
@@ -72,6 +81,30 @@ const nodePlan = plan(
     : undefined,
 );
 const repairPlan = plan(repairStepIds);
+/** 可选步骤内部没有「下一步」，最后一步回到主线最后一个必做步骤。 */
+const optionalPlan = plan(
+  optionalStepIds,
+  mainSteps.length
+    ? {
+        href: `#${mainSteps[mainSteps.length - 1]}`,
+        label: [
+          '回到本节点必做步骤',
+          'Back to this milestone’s required actions',
+        ],
+      }
+    : undefined,
+);
+/**
+ * 修复回路的返回入口：必须回到用户进入修复时所在的那个节点，
+ * 而不是固定的 accept —— 否则在 live-check / package 发现问题的用户修完会走错方向。
+ */
+const repairReturn = {
+  href: url(locale, `node/${node.id}`),
+  label: [
+    `修好后回到本节点：${node.title[0]}`,
+    `After repair, back to this milestone: ${node.title[1]}`,
+  ] as Copy,
+};
 /** 本节点出现的词：合并全部步骤的术语并去重，顺序按步骤出现先后。 */
 const seen = new Set<string>();
 const nodeTerms = steps
@@ -123,12 +156,75 @@ const nodeTerms = steps
         </dt>
         <dd>{t(lastSupport.output, locale)}</dd>
       </div>
+      <div>
+        <dt>
+          {label('这个节点要做多少事', 'How much work this milestone is')}
+        </dt>
+        <dd>
+          {label(
+            `${mainSteps.length} 个步骤，约 ${nodeWork.main} 次亲手操作`,
+            `${mainSteps.length} step${mainSteps.length > 1 ? 's' : ''}, about ${nodeWork.main} hands-on actions`,
+          )}
+          {nodeTerms.length > 0 && (
+            <small class="node-work-extra">
+              {label(
+                `过程中会遇到 ${nodeTerms.length} 个词，卡住时可随时展开上方词表`,
+                `${nodeTerms.length} words come up; open the list above whenever one blocks you`,
+              )}
+            </small>
+          )}
+          {optionalStepIds.length > 0 && (
+            <small class="node-work-extra">
+              {label(
+                `另有 ${optionalStepIds.length} 个可选步骤（${nodeWork.optional} 次操作），不符合条件可跳过`,
+                `${optionalStepIds.length} optional step${optionalStepIds.length > 1 ? 's' : ''} (${nodeWork.optional} actions), skippable if not applicable`,
+              )}
+            </small>
+          )}
+        </dd>
+      </div>
     </dl>
     <details class="node-why">
       <summary>{label('为什么要有这一节点？', 'Why this milestone?')}</summary>
       <p>{t(node.why, locale)}</p>
     </details>
   </header>
+
+  {/**
+   * 首屏定位：首次进入不知道从哪开始，跳步进入也不知道自己跳到了哪。
+   * 由 progress.ts 用本地进度填充，未开始时不渲染占位内容。
+   */}
+  <nav class="node-start-here" data-start-here aria-live="polite"></nav>
+
+  {/**
+   * 术语表放在动手之前，而不是全部做完后才出现在页面末尾。
+   * 原本 preview 节点做完 13 次操作才看到 10 个词，用户已经带着一堆疑问做完了。
+   * 现在默认折叠：知道有多少词、想先预习再展开，不增加首屏负担。
+   */}
+  {nodeTerms.length > 0 && (
+    <details class="node-terms">
+      <summary>
+        {label(
+          `本节点会遇到的 ${nodeTerms.length} 个词`,
+          `${nodeTerms.length} words in this milestone`,
+        )}
+        <span>
+          {label(
+            '想先预习再展开；每个步骤里也有对应的解释',
+            'Expand to preview; each action also explains its own words',
+          )}
+        </span>
+      </summary>
+      <div class="node-term-list">
+        {nodeTerms.map((term) => (
+          <a href={url(locale, `terms/${term!.id}`)}>
+            <strong>{t(term!.name, locale)}</strong>
+            <span>{t(term!.definition, locale)}</span>
+          </a>
+        ))}
+      </div>
+    </details>
+  )}
 
   <aside
     class="node-progress-summary"
@@ -146,12 +242,12 @@ const nodeTerms = steps
       )}
     </small>
   </aside>
-  {steps.length > 1 && (
+  {mainSteps.length > 1 && (
     <nav
       class="node-action-index"
       aria-label={label('本节点动作直达', 'Jump to an action')}
     >
-      {steps.map((id, i) => (
+      {mainSteps.map((id, i) => (
         <a href={`#${id}`}>
           {i + 1}. {t(lessons.find((l) => l.id === id)!.title, locale)}
         </a>
@@ -166,8 +262,8 @@ const nodeTerms = steps
       {label('开始操作', 'Start here')}
       <span>
         {label(
-          `共 ${steps.length} 个步骤 · 按顺序完成`,
-          `${steps.length} step${steps.length > 1 ? 's' : ''} · Follow in order`,
+          `共 ${mainSteps.length} 个步骤 · ${nodeWork.main} 次亲手操作 · 按顺序完成`,
+          `${mainSteps.length} step${mainSteps.length > 1 ? 's' : ''} · ${nodeWork.main} hands-on actions · Follow in order`,
         )}
       </span>
     </h2>
@@ -175,14 +271,46 @@ const nodeTerms = steps
       <NodeStep
         stepId={step.stepId}
         index={i + 1}
-        total={steps.length}
+        total={mainSteps.length}
         locale={locale}
+        originNode={node.id}
         open={i === 0}
         nextHref={step.nextHref}
         nextLabel={step.nextLabel}
       />
     ))}
   </section>
+
+  {optionalPlan.length > 0 && (
+    <section
+      class="node-optional"
+      aria-label={label(
+        '本节点的可选步骤',
+        'Optional actions in this milestone',
+      )}
+    >
+      <h2 class="node-section-title">
+        {label('符合条件才做的可选步骤', 'Optional action, only if it applies')}
+        <span>
+          {label(
+            '不计入本节点进度；不符合条件就直接跳过，做完回到上面的必做步骤。',
+            'Not counted in this milestone’s progress. Skip it if it does not apply, then return to the required actions above.',
+          )}
+        </span>
+      </h2>
+      {optionalPlan.map((step, i) => (
+        <NodeStep
+          stepId={step.stepId}
+          index={i + 1}
+          total={optionalPlan.length}
+          locale={locale}
+          originNode={node.id}
+          nextHref={step.nextHref}
+          nextLabel={step.nextLabel}
+        />
+      ))}
+    </section>
+  )}
 
   {showRepair && (
     <section class="node-repair" aria-label={t(repairTitle, locale)}>
@@ -202,35 +330,12 @@ const nodeTerms = steps
           index={i + 1}
           total={repairLessons.length}
           locale={locale}
+          originNode={node.id}
+          returnTo={repairReturn}
           nextHref={step.nextHref}
           nextLabel={step.nextLabel}
         />
       ))}
-    </section>
-  )}
-
-  {nodeTerms.length > 0 && (
-    <section
-      class="node-terms"
-      aria-label={label('本节点出现的词', 'Words in this milestone')}
-    >
-      <h2 class="node-section-title">
-        {label('本节点出现的词', 'Words in this milestone')}
-        <span>
-          {label(
-            '按出现顺序排列，点开可查完整解释',
-            'In order of appearance; open for the full explanation',
-          )}
-        </span>
-      </h2>
-      <div class="node-term-list">
-        {nodeTerms.map((term) => (
-          <a href={url(locale, `terms/${term!.id}`)}>
-            <strong>{t(term!.name, locale)}</strong>
-            <span>{t(term!.definition, locale)}</span>
-          </a>
-        ))}
-      </div>
     </section>
   )}
 
@@ -411,6 +516,13 @@ const nodeTerms = steps
     color: #1c2f47;
     line-height: 1.6;
   }
+  .node-work-extra {
+    display: block;
+    margin-top: 6px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #64748b;
+  }
   .node-section-title {
     display: flex;
     flex-direction: column;
@@ -423,6 +535,12 @@ const nodeTerms = steps
     font-size: 13px;
     font-weight: 400;
     color: #64748b;
+  }
+  .node-optional {
+    margin-top: 34px;
+  }
+  .node-optional .node-section-title {
+    margin-top: 0;
   }
   .node-repair {
     border: 1px dashed #a38bd1;
@@ -443,6 +561,33 @@ const nodeTerms = steps
   }
   .node-repair .node-section-title span {
     flex-basis: 100%;
+  }
+  .node-terms {
+    margin-top: 18px;
+    border: 1px solid #dfe6ee;
+    border-radius: 10px;
+    padding: 4px 16px;
+    background: #fafcfe;
+  }
+  .node-terms > summary {
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 650;
+    color: #3d5470;
+    min-height: 44px;
+    padding: 11px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    justify-content: center;
+  }
+  .node-terms > summary span {
+    font-size: 13px;
+    font-weight: 400;
+    color: #64748b;
+  }
+  .node-terms .node-term-list {
+    padding-bottom: 16px;
   }
   .node-term-list {
     display: grid;
@@ -519,6 +664,40 @@ const nodeTerms = steps
     }
   }
 
+  .node-start-here:empty {
+    display: none;
+  }
+  .node-start-here {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 18px;
+    padding: 13px 16px;
+    border: 1px solid #b9cade;
+    border-left: 4px solid #df3044;
+    border-radius: 10px;
+    background: #fbfdff;
+    font-size: 14px;
+    color: #36516e;
+  }
+  .node-start-here strong {
+    color: #17243b;
+  }
+  .node-start-here a {
+    color: #326f9c;
+    font-weight: 650;
+    text-decoration: none;
+  }
+  .node-start-here .start-out-of-turn {
+    flex-basis: 100%;
+    font-size: 13px;
+    color: #7a5c1f;
+    background: #fff8e8;
+    border-radius: 7px;
+    padding: 8px 10px;
+    line-height: 1.6;
+  }
   .node-progress-summary {
     display: flex;
     gap: 12px;

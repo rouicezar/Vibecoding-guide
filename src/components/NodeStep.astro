@@ -14,7 +14,7 @@ import { stepSupport, referenceAnswers } from '../data/learning-support';
 import { fileContracts } from '../data/learning-contracts';
 import { glossary } from '../data/glossary';
 import { t, url, type Locale, type Copy } from '../data/site';
-import { nodeForStep, optionalSteps } from '../data/nodes';
+import { nodeForStep, optionalSteps, repairStepIds } from '../data/nodes';
 /**
  * 一个步骤的固定结构。18 个节点、31 个步骤共用这一个模板：
  *   固定区块 A 操作示意 → 9 个编号槽位（顺序固定）→ 固定区块 B 项目分支 → 固定区块 C 示例资料
@@ -29,6 +29,13 @@ interface Props {
   open?: boolean;
   nextHref?: string;
   nextLabel?: Copy;
+  /**
+   * 本步骤渲染在哪个节点页上。修复回路的三个步骤在四个入口节点上各渲染一次，
+   * 跨节点引用必须回到当前节点，否则用户会被弹回 accept 且无法返回。
+   */
+  originNode?: string;
+  /** 修复回路专用：离开修复区时回到本节点的入口。 */
+  returnTo?: { href: string; label: Copy };
 }
 const {
   stepId,
@@ -38,6 +45,8 @@ const {
   open = false,
   nextHref,
   nextLabel,
+  originNode,
+  returnTo,
 } = Astro.props;
 const lesson = lessons.find((l) => l.id === stepId);
 if (!lesson) throw new Error(`未知步骤：${stepId}`);
@@ -52,11 +61,13 @@ const contract = fileContracts[lesson.id];
 const answer = referenceAnswers[lesson.id];
 const optional = optionalSteps[stepId];
 const practice = fullstackRows.find((row) => row.id === stepId)!;
+/** 本步骤要亲手做的操作数，让用户在展开前就知道这一屏有多长。 */
+const stepWork = microActions[stepId].length;
 const heading = (n: number, zh: string, en: string) =>
   `<h3 class="slot-title"><span class="slot-number">${String(n).padStart(2, '0')}</span>${t([zh, en] as const, locale)}</h3>`;
 /** 跨节点引用另一步骤时用完整地址，只有同节点内的步骤才用页内锚点。 */
 const stepHref = (id: string) =>
-  `${url(locale, `node/${nodeForStep(id)}`)}#${id}`;
+  `${url(locale, `node/${nodeForStep(id, originNode)}`)}#${id}`;
 ---
 
 <details class="node-step" id={stepId} data-node-step={stepId} open={open}>
@@ -68,6 +79,12 @@ const stepHref = (id: string) =>
     </span>
     <span class="step-title">
       {t(lesson.title, locale)}
+      <em class="step-work">
+        {label(
+          `${stepWork} 次操作`,
+          `${stepWork} action${stepWork > 1 ? 's' : ''}`,
+        )}
+      </em>
       {optional && <em class="step-optional">{label('可选', 'Optional')}</em>}
     </span>
     <span class="step-progress" data-progress={stepId}>
@@ -615,6 +632,9 @@ const stepHref = (id: string) =>
                   : 'learn-help'
               }
               data-follow-step={choice.id}
+              data-repair-from={
+                repairStepIds.includes(choice.id) ? originNode : undefined
+              }
               data-complete={
                 ['feedback', 'repair-plan'].includes(choice.id)
                   ? undefined
@@ -641,6 +661,11 @@ const stepHref = (id: string) =>
         <button type="button" class="learn-primary" data-finish={lesson.id}>
           {label('已核对，记录完成', 'Checked, mark complete')}
         </button>
+      )}
+      {returnTo && (
+        <a class="step-return" href={returnTo.href}>
+          {t(returnTo.label, locale)} →
+        </a>
       )}
     </div>
   </div>
@@ -692,6 +717,14 @@ const stepHref = (id: string) =>
     line-height: 1.5;
     flex: 1;
   }
+  .step-work {
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 400;
+    color: #7b8ea5;
+    margin-left: 8px;
+    white-space: nowrap;
+  }
   .step-optional {
     font-style: normal;
     font-size: 11px;
@@ -702,6 +735,18 @@ const stepHref = (id: string) =>
     padding: 3px 9px;
     margin-left: 8px;
     vertical-align: middle;
+  }
+  .step-return {
+    margin-left: auto;
+    font-size: 13px;
+    color: #7b5fc0;
+    text-decoration: none;
+    border-bottom: 1px solid #d9cdf5;
+    padding-bottom: 2px;
+    white-space: nowrap;
+  }
+  .step-return:hover {
+    border-bottom-color: #7b5fc0;
   }
   .step-optional-note {
     display: flex;
@@ -950,6 +995,10 @@ const stepHref = (id: string) =>
   }
   .step-progress[data-done='true'] {
     color: #246c50;
+  }
+  /* 不适用用中性色，避免与「已核对通过」的绿色混淆。 */
+  .step-progress[data-waived='true'] {
+    color: #6b5b8a;
   }
   .undo-progress {
     padding: 10px 12px;

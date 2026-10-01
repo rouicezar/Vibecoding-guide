@@ -4,16 +4,28 @@ import {
 } from './project-storage.ts';
 import { ideaTemplate as ideaTemplates } from '../data/idea-template.ts';
 import { lessons } from '../data/learning.ts';
-import { nextMainStep, repairStepIds, optionalSteps } from '../data/nodes.ts';
-import { resumeStep, canComplete } from '../data/learning-progress.ts';
+import {
+  nextMainStep,
+  repairStepIds,
+  repairEntryNodeIds,
+  repairOriginFor,
+  optionalSteps,
+} from '../data/nodes.ts';
+import {
+  resumeStep,
+  canComplete,
+  checkedSteps,
+} from '../data/learning-progress.ts';
 const key = 'vibe-guide-learning-v1';
+/** 主动进入的修复分支。from 记录从哪个节点进来的，修完好才知道回到哪里。 */
+type ActiveBranch = { step: string; from: string };
 type State = {
   version: 1;
   idea: string;
   later: string;
   completed: string[];
   current: string;
-  activeBranch?: string;
+  activeBranch?: ActiveBranch;
   ideaConfirmed?: string;
   lastViewed?: string;
   checks?: Record<
@@ -55,8 +67,29 @@ export function parseLearning(raw: string | null): State {
       ))
   )
     throw Error('Invalid check record');
-  if (s.activeBranch !== undefined && !repairStepIds.includes(s.activeBranch))
+  // 旧版本把 activeBranch 存成裸字符串（只有步骤，没有来源节点）。
+  // 迁移为 { step, from }，来源缺失时按第一个修复入口节点处理，与旧版行为一致。
+  const branch = s.activeBranch as unknown;
+  if (branch === undefined) {
     delete s.activeBranch;
+  } else if (typeof branch === 'string') {
+    if (repairStepIds.includes(branch))
+      s.activeBranch = { step: branch, from: repairEntryNodeIds[0] };
+    else delete s.activeBranch;
+  } else if (
+    branch &&
+    typeof branch === 'object' &&
+    'step' in branch &&
+    'from' in branch &&
+    typeof (branch as ActiveBranch).step === 'string' &&
+    typeof (branch as ActiveBranch).from === 'string' &&
+    repairStepIds.includes((branch as ActiveBranch).step) &&
+    repairEntryNodeIds.includes((branch as ActiveBranch).from)
+  ) {
+    s.activeBranch = branch as ActiveBranch;
+  } else {
+    delete s.activeBranch;
+  }
   return {
     ...s,
     completed: s.completed.filter((id: string) =>
@@ -169,7 +202,11 @@ export function initLearning() {
         const id = el.dataset.followStep!;
         if (repairStepIds.includes(id)) {
           const old = { ...state };
-          state.activeBranch = id;
+          // 当前页面所属节点即修复入口来源；页面未声明时按第一个入口节点处理。
+          state.activeBranch = {
+            step: id,
+            from: repairOriginFor(root.dataset.node),
+          };
           state.current = id;
           if (!save()) {
             state = old;
@@ -362,11 +399,22 @@ export function initLearning() {
       el.addEventListener('click', (event) => {
         const id = el.dataset.complete ?? el.dataset.finish!;
         const entry = panels.get(id);
+        // 需要核对的步骤没有面板就是缺陷，不是「免检」：一律阻止完成。
+        const needsCheck = checkedSteps.includes(id);
         if (
-          entry &&
-          (entry.dirty || !canComplete(id, state.checks?.[id]?.verdict ?? ''))
+          needsCheck &&
+          (!entry ||
+            entry.dirty ||
+            !canComplete(id, state.checks?.[id]?.verdict ?? ''))
         ) {
           event.preventDefault();
+          if (!entry) {
+            // 面板缺失属于渲染缺陷：明确告知，不静默放行也不抛错。
+            status.textContent = en
+              ? 'The check panel for this action is missing. Reload the page; completion is blocked.'
+              : '本步骤的核对面板缺失，请刷新页面；完成操作已被阻止。';
+            return;
+          }
           entry.panel.open = true;
           entry.panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
           entry.message.textContent = en
@@ -377,15 +425,19 @@ export function initLearning() {
         const previous = { ...state, completed: [...state.completed] };
         if (!state.completed.includes(id)) state.completed.push(id);
         const follow = el.dataset.followStep;
-        if (follow && repairStepIds.includes(follow))
-          state.activeBranch = follow;
-        else if (
+        if (follow && repairStepIds.includes(follow)) {
+          // 从哪个入口节点点的「记录反馈」，修完就回哪个节点。
+          const from = repairOriginFor(
+            el.dataset.repairFrom ?? root.dataset.node,
+          );
+          state.activeBranch = { step: follow, from };
+        } else if (
           repairStepIds.includes(id) ||
           (follow &&
             ['accept', 'release-review', 'package', 'live-check'].includes(id))
         )
           delete state.activeBranch;
-        state.current = resumeStep(state) ?? 'maintain';
+        state.current = resumeStep(state)?.step ?? 'maintain';
         if (!save()) {
           state = previous;
           event.preventDefault();

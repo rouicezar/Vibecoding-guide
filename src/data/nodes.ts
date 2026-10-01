@@ -350,11 +350,21 @@ export const nodePhases = phases.map((phase) => ({
 export const nodePhaseById = (id: RouteNode['phaseId']) =>
   nodePhases.find((p) => p.id === id);
 
-/** 一个步骤属于哪个节点；修复回路的三个步骤归到第一个入口节点。 */
-export const nodeForStep = (stepId: string): string => {
+/**
+ * 修复回路的三个步骤在四个入口节点上各渲染一次。
+ * 归属节点必须跟着「从哪个节点进来的」走，否则用户在 live-check 遇到问题会被弹回 accept，
+ * 修完也无路返回。fromNode 是当前渲染页面所属节点；不在入口列表里时退回第一个入口节点。
+ */
+export const repairOriginFor = (fromNode?: string): string =>
+  fromNode && repairEntryNodeIds.includes(fromNode)
+    ? fromNode
+    : repairEntryNodeIds[0];
+
+/** 一个步骤属于哪个节点；修复回路的三个步骤归到进入它们的那个节点。 */
+export const nodeForStep = (stepId: string, fromNode?: string): string => {
   const node = routeNodes.find((n) => n.stepIds.includes(stepId));
   if (node) return node.id;
-  if (repairStepIds.includes(stepId)) return repairEntryNodeIds[0];
+  if (repairStepIds.includes(stepId)) return repairOriginFor(fromNode);
   throw new Error(`步骤没有归属节点：${stepId}`);
 };
 
@@ -365,8 +375,8 @@ export const nodeById = (id: string) =>
   routeNodes.find((node) => node.id === id);
 
 /** 直接指向某一步骤所在节点页的锚点；避免经过 /learn/<步骤> 的跳转页。 */
-export const stepUrl = (locale: Locale, stepId: string) =>
-  `${url(locale, `node/${nodeForStep(stepId)}`)}#${stepId}`;
+export const stepUrl = (locale: Locale, stepId: string, fromNode?: string) =>
+  `${url(locale, `node/${nodeForStep(stepId, fromNode)}`)}#${stepId}`;
 
 /** 旧 16 节点（journey.ts）id → 18 节点 id，用于把旧入口导到新的节点页。 */
 export const legacyNodeMap: Record<string, string> = Object.fromEntries(

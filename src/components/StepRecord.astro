@@ -1,5 +1,6 @@
 ---
 import { t, type Locale } from '../data/site';
+import { checkedSteps } from '../data/learning-progress';
 const { id, locale } = Astro.props as { id: string; locale: Locale };
 const savePath = id === 'accept' ? 'docs/acceptance.md' : 'docs/delivery.md';
 ---
@@ -45,19 +46,7 @@ const savePath = id === 'accept' ? 'docs/acceptance.md' : 'docs/delivery.md';
     <p role="status" data-record-status></p>
   </details>
 )}
-{[
-  'preview',
-  'interface',
-  'save',
-  'flow',
-  'test',
-  'restart',
-  'accept',
-  'repair',
-  'release-review',
-  'package',
-  'live-check',
-].includes(id) && (
+{checkedSteps.includes(id) && (
   <details class="learn-details" data-personal-check data-check-for={id}>
     <summary>
       {t(

@@ -293,7 +293,7 @@ const outcomes = [
       if (state.idea || state.completed.length || state.activeBranch) {
         const next = resumeStep(state);
         const a = home.querySelector<HTMLAnchorElement>('[data-resume]')!;
-        a.href = stepUrl(locale, next ?? 'maintain');
+        a.href = stepUrl(locale, next?.step ?? 'maintain', next?.from);
         a.textContent = next
           ? locale === 'en'
             ? 'Continue where I left off →'

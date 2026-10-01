@@ -84,6 +84,7 @@ Most project documentation is currently in Chinese.
 - [Technical architecture](docs/architecture.md)
 - [Implementation plan](tasks/plan.md) and [task records](tasks/todo.md)
 - [Research implementation and verification](docs/reviews/2026-09-27-explore/实施记录.md)
+- [Flow, milestone and experience repair results](docs/reviews/2026-10-02-structure-repair/results.md)
 - [GitHub Pages deployment record](docs/reviews/2026-09-27-pages/发布记录.md)
 
 ## Development workflow

@@ -87,6 +87,7 @@ npm run verify
 - [18 节点页信息结构统一：实施记录](docs/reviews/2026-09-28-node-structure/实施记录.md)（2026-09-28）
 - [全流程通畅性审查：从想法到上线](docs/reviews/2026-09-28-flow-completeness/审查报告.md)（2026-09-28，含实施结果）
 - [UI 审计：可优化空间](docs/reviews/2026-09-28-ui-audit/审查报告.md)（2026-09-28，品牌图一项已修，其余待处理）
+- [流程、节点与体验全量修复：实施记录](docs/reviews/2026-10-02-structure-repair/results.md)（2026-10-02，R1–R9 已完成）
 - [实施计划](tasks/plan.md)与[任务记录](tasks/todo.md)
 - [调研板块实施与验证记录](docs/reviews/2026-09-27-explore/实施记录.md)
 - [GitHub Pages 发布记录](docs/reviews/2026-09-27-pages/发布记录.md)

@@ -2,8 +2,10 @@
 import Icon from './Icon.astro';
 import { t, url, type Locale } from '../data/site';
 import { nodePhases, routeNodes, optionalSteps } from '../data/nodes';
+import { nodeEffort } from '../data/node-effort';
 const { locale, path } = Astro.props as { locale: Locale; path: string };
 const current = path.startsWith('node/') ? path.split('/')[1] : undefined;
+const label = (zh: string, en: string) => t([zh, en], locale);
 ---
 
 <nav aria-label={t(['学习导航', 'Learning navigation'], locale)}>
@@ -52,7 +54,16 @@ const current = path.startsWith('node/') ? path.split('/')[1] : undefined;
             <span class="node-number">
               {String(node.order).padStart(2, '0')}
             </span>
-            <span>{t(node.title, locale)}</span>
+            <span class="node-label">
+              {t(node.title, locale)}
+              {/* 步骤数会低估投入；同时给出实际要亲手做的操作数。 */}
+              <em class="node-effort">
+                {label(
+                  `${nodeEffort(node.id).main} 次操作`,
+                  `${nodeEffort(node.id).main} actions`,
+                )}
+              </em>
+            </span>
             <small data-node-progress={node.id}>
               0/{node.stepIds.filter((id) => !optionalSteps[id]).length}
             </small>
@@ -107,6 +118,17 @@ const current = path.startsWith('node/') ? path.split('/')[1] : undefined;
     border-radius: 5px;
     padding: 5px 6px;
     flex-shrink: 0;
+  }
+  .node-label {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+  .node-effort {
+    font-style: normal;
+    font-size: 11px;
+    color: #7b8ea5;
   }
   .nav-item.active .node-number {
     background: #df3044;

@@ -14,6 +14,8 @@ import { fileContracts } from '../src/data/learning-contracts.ts';
 import { lessons, phases } from '../src/data/learning.ts';
 import { stepSupport } from '../src/data/learning-support.ts';
 import { glossary } from '../src/data/glossary/index.ts';
+import { checkedSteps } from '../src/data/learning-progress.ts';
+import { nodeEffort } from '../src/data/node-effort.ts';
 
 /* 1. 18 个节点，编号连续，阶段合法 */
 assert(routeNodes.length > 0, '路线不能为空');
@@ -194,26 +196,22 @@ const HEAD = [
   '完整路线图',
   '为什么要有这一节点',
   '做完这一节点，你会得到什么？',
-  '本节点出现的词',
+  '这个节点要做多少事',
+  '本节点会遇到的',
   '上一节点',
   '下一节点',
 ];
 const BLOCK_A = 'class="step-visual"';
 const BLOCK_B_OR_C = ['按我的项目类型，展开具体操作', '看示例或查资料'];
 const BLOCK_D = '记录本次核对结论与版本';
-const CHECKABLE = [
-  'preview',
-  'interface',
-  'save',
-  'flow',
-  'test',
-  'restart',
-  'accept',
-  'repair',
-  'release-review',
-  'package',
-  'live-check',
-];
+/**
+ * 需核对步骤清单直接取自 learning-progress.checkedSteps，
+ * 避免这里再维护一份会与实际渲染脱节的副本。
+ */
+const CHECKABLE = checkedSteps;
+const mainStepIds = (node) => node.stepIds.filter((id) => !optionalSteps[id]);
+const optionalStepIds = (node) =>
+  node.stepIds.filter((id) => optionalSteps[id]);
 for (const locale of ['zh-cn', 'en']) {
   for (const node of routeNodes) {
     const html = await readFile(
@@ -261,10 +259,34 @@ for (const locale of ['zh-cn', 'en']) {
           html.includes(head),
           `${locale}/${node.id}: 页头缺少「${head}」`,
         );
+      // 步骤数只算必做步骤：可选步骤单独成区，不能混进「按顺序完成」的总数里。
       assert(
-        html.includes(`共 ${node.stepIds.length} 个步骤`),
+        html.includes(`共 ${mainStepIds(node).length} 个步骤`),
         `${locale}/${node.id}: 未显示这一节点需要做几步？`,
       );
+      assert(
+        html.includes(
+          `${mainStepIds(node).length} 个步骤，约 ${nodeEffort(node.id).main} 次亲手操作`,
+        ),
+        `${locale}/${node.id}: 未显示这一节点的实际操作量`,
+      );
+      assert(
+        html.includes('data-start-here'),
+        `${locale}/${node.id}: 缺少首屏「从这里开始」定位`,
+      );
+      const optionalIds = optionalStepIds(node);
+      if (optionalIds.length) {
+        assert(
+          html.includes('符合条件才做的可选步骤'),
+          `${locale}/${node.id}: 可选步骤必须单独成区并说明可跳过`,
+        );
+        // 可选步骤不得出现在主线编号里。
+        assert(
+          html.indexOf('符合条件才做的可选步骤') <
+            html.indexOf(`id="${optionalIds[0]}"`),
+          `${locale}/${node.id}: 可选步骤区块位置异常`,
+        );
+      }
       assert(
         html.includes(`节点 ${node.order} / ${routeNodes.length}`),
         `${locale}/${node.id}: 未显示节点序号`,
