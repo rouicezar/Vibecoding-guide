@@ -1025,18 +1025,32 @@ const stepHref = (id: string) =>
     }
   }
 
+  .support-actions {
+    container-type: inline-size;
+  }
   .support-actions > li {
     padding: 10px 0 18px;
   }
   .micro-check {
     display: grid;
-    grid-template-columns: 100px 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 8px 12px;
     font-size: 14px;
     line-height: 1.8;
     border-left: 3px solid #bed8d3;
     padding: 10px 14px;
     background: #f7fafb;
+  }
+  .micro-check dd + dt {
+    margin-top: 10px;
+  }
+  @container (min-width: 700px) {
+    .micro-check {
+      grid-template-columns: max-content minmax(0, 1fr);
+    }
+    .micro-check dd + dt {
+      margin-top: 0;
+    }
   }
   .micro-check dt {
     font-weight: 650;

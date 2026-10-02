@@ -482,39 +482,37 @@
   text-wrap: balance;
 }
 
-/* Let wrapped mobile copy determine card positions, not fixed top offsets. */
-@media (max-width: 900px) {
-  .home-journey {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 24px;
-    height: auto;
-    padding-top: 12px;
-  }
-  .home-journey .journey-note {
-    position: relative;
-    inset: auto;
-    width: 90%;
-    max-width: 100%;
-    min-width: 0;
-  }
-  .home-journey .note-brief {
-    align-self: flex-end;
-  }
-  .home-journey .journey-note > div {
-    min-width: 0;
-    overflow-wrap: anywhere;
-  }
-  .home-journey .journey-thread {
-    height: 100%;
-    opacity: 0.5;
-  }
-  .home-journey figcaption {
-    position: relative;
-    inset: auto;
-    align-self: flex-end;
-    text-align: right;
-    line-height: 1.6;
-  }
+/* Let content height set card positions at every width, retaining the stagger. */
+.home-journey {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  height: auto;
+  padding-top: 12px;
+}
+.home-journey .journey-note {
+  position: relative;
+  inset: auto;
+  width: 90%;
+  max-width: 100%;
+  min-width: 0;
+}
+.home-journey .note-brief {
+  align-self: flex-end;
+}
+.home-journey .journey-note > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.home-journey .journey-thread {
+  height: 100%;
+  opacity: 0.5;
+}
+.home-journey figcaption {
+  position: relative;
+  inset: auto;
+  align-self: flex-end;
+  text-align: right;
+  line-height: 1.6;
 }

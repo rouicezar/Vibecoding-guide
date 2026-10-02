@@ -1,0 +1,480 @@
+{
+  "nodes": [
+    {
+      "path": "/zh-cn/node/idea/",
+      "labels": [],
+      "overflow": false
+    },
+    {
+      "path": "/zh-cn/node/description/",
+      "labels": [],
+      "overflow": false
+    },
+    {
+      "path": "/zh-cn/node/tool/",
+      "labels": [],
+      "overflow": false
+    },
+    {
+      "path": "/zh-cn/node/folder/",
+      "labels": [],
+      "overflow": false
+    },
+    {
+      "path": "/zh-cn/node/open-project/",
+      "labels": [],
+      "overflow": false
+    },
+    {
+      "path": "/zh-cn/node/checkpoint/",
+      "labels": [],
+      "overflow": false
+    },
+    {
+      "path": "/zh-cn/node/clarify/",
+      "labels": [],
+      "overflow": false
+    },
+    {
+      "path": "/zh-cn/node/requirements/",
+      "labels": [],
+      "overflow": false
+    },
+    {
+      "path": "/zh-cn/node/prototype/",
+      "labels": [],
+      "overflow": false
+    },
+    {
+      "path": "/zh-cn/node/plan/",
+      "labels": [],
+      "overflow": false
+    },
+    {
+      "path": "/zh-cn/node/environment/",
+      "labels": [],
+      "overflow": false
+    },
+    {
+      "path": "/zh-cn/node/preview/",
+      "labels": [],
+      "overflow": false
+    },
+    {
+      "path": "/zh-cn/node/accept/",
+      "labels": [],
+      "overflow": false
+    },
+    {
+      "path": "/zh-cn/node/delivery/",
+      "labels": [],
+      "overflow": false
+    },
+    {
+      "path": "/zh-cn/node/release-review/",
+      "labels": [],
+      "overflow": false
+    },
+    {
+      "path": "/zh-cn/node/package/",
+      "labels": [],
+      "overflow": false
+    },
+    {
+      "path": "/zh-cn/node/live-check/",
+      "labels": [],
+      "overflow": false
+    },
+    {
+      "path": "/zh-cn/node/maintain/",
+      "labels": [],
+      "overflow": false
+    }
+  ],
+  "responsive": [
+    {
+      "width": 1440,
+      "locale": "zh-cn",
+      "page": "roadmap",
+      "minGap": 32,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "locale": "zh-cn",
+      "page": "description",
+      "columns": "196px 783px",
+      "labels": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "page": "roadmap",
+      "minGap": 31.9998779296875,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "page": "description",
+      "columns": "300.398px 654.672px",
+      "labels": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "locale": "zh-cn",
+      "page": "roadmap",
+      "minGap": 32,
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "locale": "zh-cn",
+      "page": "description",
+      "columns": "601px",
+      "labels": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "locale": "en",
+      "page": "roadmap",
+      "minGap": 28,
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "locale": "en",
+      "page": "description",
+      "columns": "565.07px",
+      "labels": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "locale": "zh-cn",
+      "page": "roadmap",
+      "minGap": 28,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "locale": "zh-cn",
+      "page": "description",
+      "columns": "273px",
+      "labels": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "page": "roadmap",
+      "minGap": 28,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "page": "description",
+      "columns": "273px",
+      "labels": [
+        1,
+        2,
+        1,
+        2,
+        1,
+        2
+      ],
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "locale": "zh-cn",
+      "page": "roadmap",
+      "minGap": 28,
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "locale": "zh-cn",
+      "page": "description",
+      "columns": "203px",
+      "labels": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "locale": "en",
+      "page": "roadmap",
+      "minGap": 28,
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "locale": "en",
+      "page": "description",
+      "columns": "203px",
+      "labels": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "overflow": false
+    }
+  ],
+  "otherBeforeHomeFix": [
+    {
+      "width": 1280,
+      "path": "/zh-cn/",
+      "cardOverlap": true,
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "path": "/en/",
+      "cardOverlap": true,
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "path": "/zh-cn/library/",
+      "cardOverlap": false,
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "path": "/en/library/",
+      "cardOverlap": false,
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "path": "/zh-cn/terms/",
+      "cardOverlap": false,
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "path": "/zh-cn/explore/",
+      "cardOverlap": false,
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "path": "/zh-cn/node/preview/",
+      "cardOverlap": false,
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "path": "/en/node/preview/",
+      "cardOverlap": false,
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "path": "/zh-cn/",
+      "cardOverlap": false,
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "path": "/en/",
+      "cardOverlap": false,
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "path": "/zh-cn/library/",
+      "cardOverlap": false,
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "path": "/en/library/",
+      "cardOverlap": false,
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "path": "/zh-cn/terms/",
+      "cardOverlap": false,
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "path": "/zh-cn/explore/",
+      "cardOverlap": false,
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "path": "/zh-cn/node/preview/",
+      "cardOverlap": false,
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "path": "/en/node/preview/",
+      "cardOverlap": false,
+      "overflow": false
+    }
+  ],
+  "homeAfterFix": [
+    {
+      "width": 1440,
+      "locale": "zh-cn",
+      "gaps": [
+        24.388885498046875,
+        24
+      ],
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "locale": "en",
+      "gaps": [
+        24.17083740234375,
+        24
+      ],
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "locale": "zh-cn",
+      "gaps": [
+        24.36956787109375,
+        24
+      ],
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "locale": "en",
+      "gaps": [
+        24.128173828125,
+        24
+      ],
+      "overflow": false
+    },
+    {
+      "width": 1100,
+      "locale": "zh-cn",
+      "gaps": [
+        24,
+        24
+      ],
+      "overflow": false
+    },
+    {
+      "width": 1100,
+      "locale": "en",
+      "gaps": [
+        24,
+        24
+      ],
+      "overflow": false
+    },
+    {
+      "width": 960,
+      "locale": "zh-cn",
+      "gaps": [
+        24,
+        24
+      ],
+      "overflow": false
+    },
+    {
+      "width": 960,
+      "locale": "en",
+      "gaps": [
+        24,
+        24
+      ],
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "locale": "zh-cn",
+      "gaps": [
+        24,
+        24
+      ],
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "locale": "en",
+      "gaps": [
+        24,
+        24
+      ],
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "locale": "zh-cn",
+      "gaps": [
+        24,
+        24
+      ],
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "locale": "en",
+      "gaps": [
+        24,
+        24
+      ],
+      "overflow": false
+    }
+  ]
+}
