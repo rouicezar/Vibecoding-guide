@@ -143,7 +143,7 @@ test('node page points to the first unchecked action', async ({ page }) => {
   await expect(start).toContainText('打开一个能制作文件的 AI 工具');
   await expect(start.locator('a')).toHaveAttribute(
     'href',
-    '/zh-cn/node/tool/#tool',
+    `${process.env.TEST_BASE || ''}/zh-cn/node/tool/#tool`,
   );
   // 本节点已完成时改为指向路线图，而不是留空。
   await seed(page, ['idea', 'description', 'tool'], null);
@@ -203,11 +203,14 @@ test('repair keeps the milestone it was entered from', async ({ page }) => {
     // 流程内的修复入口必须留在本节点。
     await expect(
       page.locator(`[data-follow-step="feedback"]`).first(),
-    ).toHaveAttribute('href', `/zh-cn/node/${node}/#feedback`);
+    ).toHaveAttribute(
+      'href',
+      `${process.env.TEST_BASE || ''}/zh-cn/node/${node}/#feedback`,
+    );
     // 修完能回到本节点，而不是被送到 accept。
     await expect(page.locator('.step-return').first()).toHaveAttribute(
       'href',
-      `/zh-cn/node/${node}/`,
+      `${process.env.TEST_BASE || ''}/zh-cn/node/${node}/`,
     );
   }
 });
