@@ -3,7 +3,11 @@ import { readFile } from 'node:fs/promises';
 import { microActions } from '../src/data/micro-actions.ts';
 import { stepSupport } from '../src/data/learning-support.ts';
 import { lessons } from '../src/data/learning.ts';
-import { routeNodes, linearStepIds } from '../src/data/nodes.ts';
+import {
+  routeNodes,
+  linearStepIds,
+  repairEntryNodeIds,
+} from '../src/data/nodes.ts';
 import {
   mainProgress,
   nodeProgress,
@@ -52,30 +56,76 @@ for (const node of routeNodes) {
   assert(resourcesForNode(node.id).every(Boolean));
 }
 const accepted = linearStepIds.slice(0, linearStepIds.indexOf('accept') + 1);
-assert.equal(resumeStep({ completed: accepted }), 'delivery');
-assert.equal(
+assert.deepEqual(resumeStep({ completed: accepted }), { step: 'delivery' });
+assert.deepEqual(
   resumeStep({ completed: accepted, activeBranch: 'repair-plan' }),
-  'repair-plan',
+  { step: 'repair-plan' },
 );
 assert.equal(resumeStep({ completed: linearStepIds }), undefined);
-assert.equal(
-  resumeStep({ completed: accepted, activeBranch: 'bogus' }),
-  'delivery',
-);
+assert.deepEqual(resumeStep({ completed: accepted, activeBranch: 'bogus' }), {
+  step: 'delivery',
+});
+// 修复分支必须记住从哪个节点进入的，否则修完无法回到原节点。
+for (const from of repairEntryNodeIds) {
+  assert.deepEqual(
+    resumeStep({
+      completed: accepted,
+      activeBranch: { step: 'repair-plan', from },
+    }),
+    { step: 'repair-plan', from },
+    `resume keeps repair origin ${from}`,
+  );
+}
 assert.deepEqual(mainProgress([...linearStepIds, ...linearStepIds, 'repair']), {
   done: linearStepIds.length,
+  waived: 0,
   total: linearStepIds.length,
 });
-assert.deepEqual(nodeProgress('package', ['publish']), { done: 0, total: 1 });
+assert.deepEqual(nodeProgress('package', ['publish']), {
+  done: 0,
+  waived: 0,
+  total: 1,
+});
 assert.deepEqual(nodeProgress('preview', ['preview', 'interface']), {
   done: 2,
+  waived: 0,
   total: 4,
 });
-assert.deepEqual(nodeProgress('preview', ['preview']), { done: 1, total: 4 });
+assert.deepEqual(nodeProgress('preview', ['preview']), {
+  done: 1,
+  waived: 0,
+  total: 4,
+});
 assert(canComplete('save', 'not-applicable'));
 assert(!canComplete('accept', 'not-applicable'));
 assert(!canComplete('preview', 'failed'));
 assert(!canComplete('preview', 'not-tested'));
+// 「不适用」必须与「已核对」分开计数，不能混进完成数里冒充通过。
+const waivedChecks = {
+  interface: { verdict: 'not-applicable' },
+  save: { verdict: 'not-applicable' },
+  test: { verdict: 'not-applicable' },
+  preview: { verdict: 'passed' },
+};
+assert.deepEqual(
+  nodeProgress('preview', ['preview', 'interface'], waivedChecks),
+  {
+    done: 1,
+    waived: 1,
+    total: 4,
+  },
+);
+const waivedMain = mainProgress(linearStepIds, waivedChecks);
+assert.equal(waivedMain.total, linearStepIds.length);
+assert.equal(waivedMain.done + waivedMain.waived, linearStepIds.length);
+assert.equal(waivedMain.waived, 3);
+assert(waivedMain.done < linearStepIds.length);
+// 真实核对结论仍照常计入。
+assert.deepEqual(mainProgress(['accept'], { accept: { verdict: 'passed' } }), {
+  done: 1,
+  waived: 0,
+  total: linearStepIds.length,
+});
 for (const locale of ['zh-cn', 'en']) {
   for (const node of routeNodes) {
     const html = await readFile(
