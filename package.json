@@ -23,7 +23,7 @@
     "quality": "npm run format:check && npm run lint && npm run check && npm run verify:engineering && npm run verify:unit"
   },
   "dependencies": {
-    "@lucide/astro": "1.47.0",
+    "@lucide/astro": "1.48.0",
     "astro": "7.3.3"
   },
   "devDependencies": {
