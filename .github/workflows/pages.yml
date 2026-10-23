@@ -24,7 +24,14 @@ jobs:
       - run: npm run quality
       - run: npm run audit:dependencies
       - run: npm run build && npm run verify
-      - run: npx playwright install --with-deps chromium
+      - name: Install browser test dependencies
+        timeout-minutes: 5
+        run: |
+          # The runner's Azure HTTP mirror can stall on the CJK font packages.
+          if [ -f /etc/apt/apt-mirrors.txt ]; then
+            sudo sed -i 's|http://azure.archive.ubuntu.com/ubuntu|https://archive.ubuntu.com/ubuntu|g' /etc/apt/apt-mirrors.txt
+          fi
+          npx playwright install --with-deps chromium
       - run: npm run test:browser
       - run: npm run build:pages
       - run: npm run test:browser

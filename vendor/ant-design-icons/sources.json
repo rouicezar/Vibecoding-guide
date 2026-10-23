@@ -1,0 +1,212 @@
+{
+  "discoveredAt": "https://www.iconfont.cn/collections/detail?cid=9402",
+  "download": "https://registry.npmjs.org/@ant-design/icons-svg/-/icons-svg-4.6.0.tgz",
+  "version": "4.6.0",
+  "license": "MIT",
+  "assets": {
+    "bulb": {
+      "sha256": "1f4f377b83bc535948b0fbf3d516d02a51a6f355e102eee2460134e097235eda",
+      "source": "inline-svg/outlined/bulb.svg"
+    },
+    "team": {
+      "sha256": "bbe14c1d6b3ec1e4b4721058220ac1d44bc2bd4ee4fcc6b9ead46c2e4df5ede7",
+      "source": "inline-svg/outlined/team.svg"
+    },
+    "aim": {
+      "sha256": "dc9b1ff760f589c6164078a4afdc1e225600336c7df0628a732ea48a4db851df",
+      "source": "inline-svg/outlined/aim.svg"
+    },
+    "folder-open": {
+      "sha256": "0a177f1f959e425e693a022d19eda8a3e5afb0a3b1fe7e3a8ff4695ec90774ba",
+      "source": "inline-svg/outlined/folder-open.svg"
+    },
+    "folder-add": {
+      "sha256": "975bb093716c6d67f260c043164cbcb9034f1950e5fb10366fef27925fb476a5",
+      "source": "inline-svg/outlined/folder-add.svg"
+    },
+    "file-text": {
+      "sha256": "c63a3e755cec6dfa1aed856ddcd22911d16d4b38e3e13476df72f15e5bdf9795",
+      "source": "inline-svg/outlined/file-text.svg"
+    },
+    "file-done": {
+      "sha256": "4e66efb144915b55f8312c3784716691337f2e95435e750dd6705aa934ebc94e",
+      "source": "inline-svg/outlined/file-done.svg"
+    },
+    "save": {
+      "sha256": "bb11e47d630031c3a6a71cef743b3febd4303fb94352aa3f50c6ff0986676a26",
+      "source": "inline-svg/outlined/save.svg"
+    },
+    "reload": {
+      "sha256": "7c5d2c84701f9a61c1c874c10d953eb8e1f9c110fec936308f1892ed7b473a17",
+      "source": "inline-svg/outlined/reload.svg"
+    },
+    "select": {
+      "sha256": "08d94827264ed6132f001d919d25ef841330130a409fff514925b457bb139505",
+      "source": "inline-svg/outlined/select.svg"
+    },
+    "branches": {
+      "sha256": "a8f387048c7a93380f1485ca610ce34df2235af257fa6972fc37f54406d07abf",
+      "source": "inline-svg/outlined/branches.svg"
+    },
+    "safety-certificate": {
+      "sha256": "56b540c31f99094ca4c3c26d2ade1347a3ced5c94132f8ac65e311293d558b28",
+      "source": "inline-svg/outlined/safety-certificate.svg"
+    },
+    "inbox": {
+      "sha256": "68596de643583ec9e8fe30b1599b3b46b52c4171a005c65c7705b84b89416b22",
+      "source": "inline-svg/outlined/inbox.svg"
+    },
+    "rocket": {
+      "sha256": "e3d34f4a1c8aa915840eab94aeeece66ee58bad9591a341568b830d249ee2a8f",
+      "source": "inline-svg/outlined/rocket.svg"
+    },
+    "audit": {
+      "sha256": "ccd219e545fb2b879e4b83f9f9eb6511378403c1311a2bf50a4594c2ac8d8c25",
+      "source": "inline-svg/outlined/audit.svg"
+    },
+    "fork": {
+      "sha256": "b029969fb077828190a7392d70a74c05e6a3200746d5439e596c38c627c950e9",
+      "source": "inline-svg/outlined/fork.svg"
+    },
+    "environment": {
+      "sha256": "af9cff96d7ac17f2522a2d69ee3e48d0f8873f45060abbc64a402deae05b5b38",
+      "source": "inline-svg/outlined/environment.svg"
+    },
+    "login": {
+      "sha256": "49f47f8806e10cc2e531508a10da8a395a1d6c8eb2d1e0586a87e596664a0221",
+      "source": "inline-svg/outlined/login.svg"
+    },
+    "download": {
+      "sha256": "a47638a67c99b57713f7c654c4c540f33e5072a9166478bfe2c06d4104699f0c",
+      "source": "inline-svg/outlined/download.svg"
+    },
+    "bug": {
+      "sha256": "3f47efe58c128b43079abb0cd870b092ff35cd1eb0181be1f088fc0c53882816",
+      "source": "inline-svg/outlined/bug.svg"
+    },
+    "edit": {
+      "sha256": "9179249d0e7b88cad056b70426c3a880665ca9db578ba6b51926284a83bfd219",
+      "source": "inline-svg/outlined/edit.svg"
+    },
+    "eye": {
+      "sha256": "ca545385afc10fba55bd3fee796d3028acf2ea719c15691edcc2be13b31882b9",
+      "source": "inline-svg/outlined/eye.svg"
+    },
+    "poweroff": {
+      "sha256": "ec77693990b062e7a5001ef7a9bb498601dfbb60577e190d205b32dba611f4f5",
+      "source": "inline-svg/outlined/poweroff.svg"
+    },
+    "question-circle": {
+      "sha256": "399da9e2b3ef5cda7fcdd5876ef5d42fab27ca3675d4ee80d5a6e59c34c36cf8",
+      "source": "inline-svg/outlined/question-circle.svg"
+    },
+    "tool": {
+      "sha256": "e6f50b7e9c8585aebdd8bfc3fe74d3ec90a759f4d7dc7fb274c87f5d0db828e3",
+      "source": "inline-svg/outlined/tool.svg"
+    },
+    "code": {
+      "sha256": "72a8b130f67d519292819b8ee205c63dbe62f03d09937e348273944863ddad05",
+      "source": "inline-svg/outlined/code.svg"
+    },
+    "cluster": {
+      "sha256": "06440199998a411836dda930800e2677f65adda509127587a0b57e2f42191fba",
+      "source": "inline-svg/outlined/cluster.svg"
+    },
+    "home": {
+      "sha256": "750790799b86818999f02f62026db9a646c9b2a559e3e44df3866f1a7a7ccfbc",
+      "source": "inline-svg/outlined/home.svg"
+    },
+    "appstore": {
+      "sha256": "05870c4ee3bd31c536244513c12df0839bb65ad13d36d7120a6a62f352ea2a67",
+      "source": "inline-svg/outlined/appstore.svg"
+    },
+    "global": {
+      "sha256": "6c1c685964af2df49688fc5eb3ae5e39b541913659a16779534f9287f0104cf0",
+      "source": "inline-svg/outlined/global.svg"
+    },
+    "mobile": {
+      "sha256": "51aef52969d4d4e5e5557898698911557ce9e8b63e5c29a89051cefcd5b3209b",
+      "source": "inline-svg/outlined/mobile.svg"
+    },
+    "desktop": {
+      "sha256": "c66cbfe85864874f6c27b4877d14bfccb83883212435795e67f28925c811a60c",
+      "source": "inline-svg/outlined/desktop.svg"
+    },
+    "message": {
+      "sha256": "1eb7c813c0b48991a444ed26e475376df5bd64230cfb5ba2c587068c8a9e7a72",
+      "source": "inline-svg/outlined/message.svg"
+    },
+    "build": {
+      "sha256": "83a47c018ee22011b96819c78e1a67b3fb3646842465444264206b57aceb540a",
+      "source": "inline-svg/outlined/build.svg"
+    },
+    "layout": {
+      "sha256": "a6c276feeb8fb12acd24cd2f555a4b86eedb13e8797ecb066e951330d688d65a",
+      "source": "inline-svg/outlined/layout.svg"
+    },
+    "database": {
+      "sha256": "fcacb7bdc9f7752e9e63d88f06f483ca9ca51422ca5286cc065cb257d62783e5",
+      "source": "inline-svg/outlined/database.svg"
+    },
+    "ordered-list": {
+      "sha256": "7827e0e0889aed04f723ca33e918d7ab10a9e2c8a121163596b2f21277eda819",
+      "source": "inline-svg/outlined/ordered-list.svg"
+    },
+    "upload": {
+      "sha256": "3d07ecaeec76c820602ad673faa9140b3b1ed86d262e811292357d9b4dde855c",
+      "source": "inline-svg/outlined/upload.svg"
+    },
+    "setting": {
+      "sha256": "10169e1ac1bcaf98d4340ac9f29674f8afac8796e5b6f6fc063953beb862064a",
+      "source": "inline-svg/outlined/setting.svg"
+    },
+    "arrow-right": {
+      "sha256": "03b4d89999c5e237bb6643fcd593a92c7fb0aeb0998f490ba5ce686811ffcfe1",
+      "source": "inline-svg/outlined/arrow-right.svg"
+    },
+    "search": {
+      "sha256": "2e9ac2cc3cc98da2c623fd07ee412c771dc649d46587c1d144b6e5a98d9c440c",
+      "source": "inline-svg/outlined/search.svg"
+    },
+    "menu": {
+      "sha256": "e919d3d502e97ef1b630aa5f4e25f27029a8b8f7d602436c80d973ff9a0f6375",
+      "source": "inline-svg/outlined/menu.svg"
+    },
+    "close": {
+      "sha256": "591ea8a0548d98a3ab26540d644dcbaca1c3e59058b3a8f02e539517deb26068",
+      "source": "inline-svg/outlined/close.svg"
+    },
+    "check": {
+      "sha256": "4189610aa5608e671b9442b511046f71ff86d8860bc9444cccc2bbbd303af15b",
+      "source": "inline-svg/outlined/check.svg"
+    },
+    "copy": {
+      "sha256": "f735fbbddc91f05f5ca7b09fb95b726e127676a9fb1fb487b22e100b390b5db0",
+      "source": "inline-svg/outlined/copy.svg"
+    },
+    "book": {
+      "sha256": "6ed5b5fa144e94e0b12e7095fa25d4e1d3d3e4f15c10b38caf017aee3ade694e",
+      "source": "inline-svg/outlined/book.svg"
+    },
+    "right": {
+      "sha256": "41dc3923062d1a6dbf40574f89c74b2daaa3c236700737f319c0467a8abeb7b8",
+      "source": "inline-svg/outlined/right.svg"
+    },
+    "export": {
+      "sha256": "6cc7d023bffdefa0232e2fec689639762e424ef3a7168a5e43bc85113cfd60a7",
+      "source": "inline-svg/outlined/export.svg"
+    },
+    "arrow-left": {
+      "sha256": "683fa9b9c70e6c72281271b3bf809d0a8f6402b687bf123d528a404a2c14fc11",
+      "source": "inline-svg/outlined/arrow-left.svg"
+    },
+    "info-circle": {
+      "sha256": "1b6f1b9aaf1cfaac92c693f9753d9cfb62c20af6cbd1a22f3cbf293ac339b6e5",
+      "source": "inline-svg/outlined/info-circle.svg"
+    },
+    "warning": {
+      "sha256": "35527ac1fe47c9e2cfbbf624d559e7e24f1f454db8391f7fd20a3fca15f0ec1c",
+      "source": "inline-svg/outlined/warning.svg"
+    }
+  }
+}

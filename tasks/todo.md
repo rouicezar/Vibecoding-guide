@@ -752,3 +752,10 @@ P26验证：check零错误/警告/提示，build与verify通过；中英产物�
 - [x] 修复桌面首页卡片重叠；18节点展开验证、中英文多断点和主要页面抽查通过。
 - [x] 补布局回归测试；quality、build、verify通过。报告：docs/reviews/2026-10-02-visual-repair/report.md。
 - 下一步：以截图和真实页面核对恢复效果，避免用色值/间距数量代替视觉验收。
+
+## P72 内联图标统一（2026-10-23）
+
+- [x] 核对iconfont偏好：Codex memories_v2与MyNote均有记录，GBrain可检索；最新导入0失败，但doctor整体未通过。
+- [x] iconfont官方库选型、核对Ant Design MIT，52个语义名称统一为本地SVG代码，不用外链；保留授权与逐素材哈希。
+- [x] quality、全套verify及2383页Pages资源校验通过；桌面/手机18组实际浏览器检查通过。
+- 报告：docs/reviews/2026-10-23-icons/report.md；后续按真实使用反馈调整个别语义，避免再次改变整体布局。

@@ -75,7 +75,7 @@ const label = (zh: string, en: string) => t([zh, en], locale);
     <a class="nav-item" href={url(locale, 'library')}>
       <Icon name="book" size={20} />
       {t(['查资料', 'Reference library'], locale)}
-      <span aria-hidden="true">↗</span>
+      <Icon name="external" size={16} />
     </a>
     <a class="nav-item" href={url(locale, 'terms')}>
       <Icon name="question" size={20} />

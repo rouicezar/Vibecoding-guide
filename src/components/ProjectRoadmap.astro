@@ -60,7 +60,9 @@ const groups = nodePhases.map((phase) => ({
         <header>
           <span>{label(`阶段 ${i + 1}`, `STAGE ${i + 1}`)}</span>
           <h2>{t(group.title, locale)}</h2>
-          <span class="direction">{i % 2 === 0 ? '→' : '←'}</span>
+          <span class="direction">
+            <Icon name={i % 2 === 0 ? 'arrow' : 'back'} size={22} />
+          </span>
         </header>
         <ol style={`--count:${group.nodes.length}`}>
           {group.nodes.map((node) => (

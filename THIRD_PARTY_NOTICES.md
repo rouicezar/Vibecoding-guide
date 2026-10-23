@@ -8,3 +8,5 @@
 - `public/brand/vibe-guide-mark*.png` 为本站使用的生成品牌图；MIT不授予冒充本站或暗示背书的权利。
 
 新增外部素材时记录来源、取得日期和适用条款；不能确认使用条件时不要将其作为本站自有素材再分发。
+
+- 站点通用图标采用Ant Design Icons 4.6.0 outlined，Copyright (c) 2018-present Ant UED，MIT。完整许可证：`vendor/ant-design-icons/LICENSE`；来源与逐素材哈希：`vendor/ant-design-icons/sources.json`。iconfont仅作为候选发现入口，文件通过官方开源包取得；该授权不扩展至iconfont其他作者的作品。
