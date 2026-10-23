@@ -32,3 +32,11 @@ MIT：https://github.com/ant-design/ant-design-icons/blob/master/LICENSE
 - 正式Pages子路径构建2383页的链接和资源验证通过。
 - 本地浏览器：1280/390/320px × 首页/路线图中英文、开发节点、资料库，18组均无横向溢出、无缺失path、无图标外部引用。数据browser-results.json；实际截图roadmap.png。
 - 图标按钮的名称继续由按钮/链接提供；图标旁的原有文字完整保留。测试通过不等于用户对新图形偏好的视觉验收。
+
+## 收尾索引刷新与依赖修补
+
+按现有refresh-mynote流程刷新完成：17873/17873 chunks已embedding、backlog=0、extract clean、doctor hard-fail=0。原先独立doctor输出的类型/pack元数据提示仍作为历史诊断保留，不等同本次刷新失败。跨会话留痕已追加，没有重复写偏好。
+
+远端安全门禁发现已有传递依赖的新公告（http-cache-semantics、sharp、source-map-js、vite）；采用npm audit fix允许的兼容更新，不使用force或升级直接框架主版本，再执行质量/构建/回归验证。
+
+兼容修补结果：11个传递依赖包变化，直接依赖Astro仍固定7.3.3，官方npm审计0已知漏洞；sharp更新到0.35.5、source-map-js到1.2.2、http-cache-semantics到4.3.0，Vite及其配套绑定按原声明范围更新。
