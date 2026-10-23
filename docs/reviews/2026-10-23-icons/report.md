@@ -40,3 +40,5 @@ MIT：https://github.com/ant-design/ant-design-icons/blob/master/LICENSE
 远端安全门禁发现已有传递依赖的新公告（http-cache-semantics、sharp、source-map-js、vite）；采用npm audit fix允许的兼容更新，不使用force或升级直接框架主版本，再执行质量/构建/回归验证。
 
 兼容修补结果：11个传递依赖包变化，直接依赖Astro仍固定7.3.3，官方npm审计0已知漏洞；sharp更新到0.35.5、source-map-js到1.2.2、http-cache-semantics到4.3.0，Vite及其配套绑定按原声明范围更新。
+
+CI运行器补充：Azure Ubuntu HTTP镜像下载25.9MB测试依赖超过6分钟（日志停在字体包下载），一次重试后改为同Ubuntu官方HTTPS archive源，保留完整浏览器测试，并给安装步骤5分钟超时；不改变用户电脑的软件源或减少测试。
