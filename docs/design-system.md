@@ -94,9 +94,11 @@ GitHub 以仓库产品界面为参考，不采用官网营销首屏。Hugging Fa
 
 ## 6. 图标
 
-统一使用 [Lucide](https://lucide.dev/guide/) 线性 SVG，按需引入；原生 Astro 区域静态输出，React 区域使用对应组件。禁止混入不同描边风格、装饰性 emoji 或随机图标字体。
+新增图标或SVG时先搜索iconfont，按用途、风格与具体授权筛选，优先同套复用；没有适合且授权可用的素材才自行绘制。不默认iconfont全站素材均可免费商用。
 
-通用图标 16px，导航 18px，主要入口 20px；采用一致 2px 描边并在实际尺寸检查清晰度。图标与文字间距 8px，视觉居中，不机械依赖字符基线。
+本轮采用在[iconfont官方库](https://www.iconfont.cn/collections/detail?cid=9402)发现的Ant Design线性图标体系；实际文件取自官方`@ant-design/icons-svg@4.6.0`的outlined集合，通过`Icon.astro`静态输出。来源与哈希记录于`vendor/ant-design-icons/sources.json`，MIT全文随文件保留。没有复制iconfont用户上传的未知授权文件。
+
+采用同套outlined轮廓、currentColor和统一尺寸接口，保持现有16–28px使用场景及文字间距；不强行给填充路径添加描边。内联SVG无外部图标请求，无整套字体下载。图标旁有文字时对屏幕阅读器隐藏；仅图标按钮由按钮提供名称。品牌Logo与工具商标独立管理，教程原样组件演示保留原有图标。
 
 | 板块 | 图形语义 |
 | --- | --- |
